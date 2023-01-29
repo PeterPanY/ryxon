@@ -1,6 +1,6 @@
 {
   "name": "@ryxon/ryxon",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Mobile UI Components built on Vue",
   "main": "lib/ryxon.cjs.js",
   "module": "es/index.mjs",
