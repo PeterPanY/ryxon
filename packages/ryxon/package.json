@@ -45,8 +45,8 @@
     "components"
   ],
   "dependencies": {
-    "@ryxon/popperjs": "workspace:*",
-    "@ryxon/use": "workspace:*"
+    "@ryxon/popperjs": "^1.0.1",
+    "@ryxon/use": "^1.0.1"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
