@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render action text when using action-text prop 1`] = `
+<div class="r-search__action"
+     role="button"
+     tabindex="0"
+>
+  Custom Text
+</div>
+`;
+
+exports[`should render label slot correctly 1`] = `
+<label class="r-search__label"
+       for="r-search-input"
+>
+  Custom Label
+</label>
+`;
+
+exports[`should render left icon when using left-icon prop 1`] = `
+<div class="r-field__left-icon">
+  <i class="r-badge__wrapper r-icon r-icon-setting-o">
+  </i>
+</div>
+`;
+
+exports[`should render left slot correctly 1`] = `
+<div class="r-search">
+  Custom Left Content
+  <div class="r-search__content r-search__content--square">
+    <div class="r-cell r-cell--borderless r-field r-search__field">
+      <div class="r-field__left-icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="search"
+                 id="r-search-input"
+                 class="r-field__control"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render right icon when using right-icon prop 1`] = `
+<div class="r-field__right-icon">
+  <i class="r-badge__wrapper r-icon r-icon-setting-o">
+  </i>
+</div>
+`;
+
+exports[`should render right-icon slot correctly 1`] = `
+<div class="r-field__right-icon">
+  Custom Right Icon
+</div>
+`;

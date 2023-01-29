@@ -1,0 +1,29 @@
+:root {
+  --r-list-text-color: var(--r-text-color-2);
+  --r-list-text-font-size: var(--r-font-size-md);
+  --r-list-text-line-height: 50px;
+  --r-list-loading-icon-size: 16px;
+}
+
+.r-list {
+  &__loading,
+  &__finished-text,
+  &__error-text {
+    color: var(--r-list-text-color);
+    font-size: var(--r-list-text-font-size);
+    line-height: var(--r-list-text-line-height);
+    text-align: center;
+  }
+
+  &__placeholder {
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__loading-icon {
+    .r-loading__spinner {
+      width: var(--r-list-loading-icon-size);
+      height: var(--r-list-loading-icon-size);
+    }
+  }
+}

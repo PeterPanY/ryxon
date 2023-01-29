@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change arrow direction when using arrow-direction prop 1`] = `
+<i class="r-badge__wrapper r-icon r-icon-arrow-down r-cell__right-icon">
+</i>
+`;
+
+exports[`should change icon class prefix when using icon-prefix prop 1`] = `
+<div class="r-cell">
+  <i class="r-badge__wrapper my-icon my-icon-success r-cell__left-icon">
+  </i>
+</div>
+`;
+
+exports[`should render extra slot correctly 1`] = `
+<div class="r-cell">
+  Custom Extra
+</div>
+`;
+
+exports[`should render icon slot correctly 1`] = `
+<div class="r-cell">
+  Custom Icon
+</div>
+`;
+
+exports[`should render label slot correctly 1`] = `
+<div class="r-cell">
+  <div class="r-cell__title">
+    <span>
+      Title
+    </span>
+    <div class="r-cell__label">
+      Custom Label
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render tag prop correctly 1`] = `
+<a class="r-cell">
+</a>
+`;
+
+exports[`should render title slot correctly 1`] = `
+<div class="r-cell">
+  <div class="r-cell__title">
+    Custom Title
+  </div>
+</div>
+`;
+
+exports[`should render value slot correctly 1`] = `
+<div class="r-cell">
+  <div class="r-cell__value">
+    Custom Value
+  </div>
+</div>
+`;

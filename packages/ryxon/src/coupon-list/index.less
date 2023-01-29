@@ -1,0 +1,86 @@
+:root {
+  --r-coupon-list-background: var(--r-background);
+  --r-coupon-list-field-padding: 5px 0 5px var(--r-padding-md);
+  --r-coupon-list-exchange-button-height: 32px;
+  --r-coupon-list-close-button-height: 40px;
+  --r-coupon-list-empty-tip-color: var(--r-text-color-2);
+  --r-coupon-list-empty-tip-font-size: var(--r-font-size-md);
+  --r-coupon-list-empty-tip-line-height: var(--r-line-height-md);
+}
+
+.r-coupon-list {
+  position: relative;
+  height: 100%;
+  background: var(--r-coupon-list-background);
+
+  &__field {
+    padding: var(--r-coupon-list-field-padding);
+
+    .r-field__body {
+      height: 34px;
+      padding-left: var(--r-padding-sm);
+      line-height: 34px;
+      background: var(--r-background);
+      border-radius: var(--r-radius-max);
+
+      &::placeholder {
+        color: var(--r-text-color-3);
+      }
+    }
+
+    .r-field__clear {
+      margin-right: 0;
+    }
+  }
+
+  &__exchange-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--r-background-2);
+  }
+
+  &__exchange {
+    flex: none;
+    height: var(--r-coupon-list-exchange-button-height);
+    font-size: var(--r-font-size-lg);
+    line-height: calc(var(--r-coupon-list-exchange-button-height) - 2px);
+    border: 0;
+  }
+
+  .r-tabs__wrap {
+    box-shadow: 0 6px 12px -12px var(--r-gray-6);
+  }
+
+  &__list {
+    box-sizing: border-box;
+    padding: var(--r-padding-md) 0 var(--r-padding-lg);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &--with-bottom {
+      padding-bottom: 50px;
+    }
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px var(--r-padding-md);
+    font-weight: var(--r-font-bold);
+    background-color: var(--r-background-2);
+  }
+
+  &__close {
+    height: var(--r-coupon-list-close-button-height);
+  }
+
+  &__empty-tip {
+    color: var(--r-coupon-list-empty-tip-color);
+    font-size: var(--r-coupon-list-empty-tip-font-size);
+    line-height: var(--r-coupon-list-empty-tip-line-height);
+  }
+}

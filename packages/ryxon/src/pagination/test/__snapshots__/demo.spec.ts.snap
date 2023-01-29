@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <nav role="navigation"
+       class="r-pagination"
+  >
+    <ul class="r-pagination__items">
+      <li class="r-pagination__item r-pagination__item--disabled r-pagination__item--prev r-hairline--surround">
+        <button type="button"
+                disabled
+        >
+          Prev
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--active r-pagination__item--page r-hairline--surround">
+        <button type="button"
+                aria-current="true"
+        >
+          1
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          2
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          3
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          4
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          5
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--next r-hairline--surround">
+        <button type="button">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div>
+  <nav role="navigation"
+       class="r-pagination"
+       size="small"
+  >
+    <ul class="r-pagination__items">
+      <li class="r-pagination__item r-pagination__item--disabled r-pagination__item--border r-pagination__item--prev r-hairline--surround">
+        <button type="button"
+                disabled
+        >
+          Prev
+        </button>
+      </li>
+      <li class="r-pagination__page-desc">
+        1/12
+      </li>
+      <li class="r-pagination__item r-pagination__item--border r-pagination__item--next r-hairline--surround">
+        <button type="button">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div>
+  <nav role="navigation"
+       class="r-pagination"
+  >
+    <ul class="r-pagination__items">
+      <li class="r-pagination__item r-pagination__item--disabled r-pagination__item--prev r-hairline--surround">
+        <button type="button"
+                disabled
+        >
+          Prev
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--active r-pagination__item--page r-hairline--surround">
+        <button type="button"
+                aria-current="true"
+        >
+          1
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          2
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          3
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          ...
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--next r-hairline--surround">
+        <button type="button">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div>
+  <nav role="navigation"
+       class="r-pagination"
+  >
+    <ul class="r-pagination__items">
+      <li class="r-pagination__item r-pagination__item--disabled r-pagination__item--prev r-hairline--surround">
+        <button type="button"
+                disabled
+        >
+          <i class="r-badge__wrapper r-icon r-icon-arrow-left">
+          </i>
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--active r-pagination__item--page r-hairline--surround">
+        <button type="button"
+                aria-current="true"
+        >
+          1
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          2
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          3
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          4
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--page r-hairline--surround">
+        <button type="button">
+          5
+        </button>
+      </li>
+      <li class="r-pagination__item r-pagination__item--next r-hairline--surround">
+        <button type="button">
+          <i class="r-badge__wrapper r-icon r-icon-arrow">
+          </i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

@@ -1,0 +1,53 @@
+:root {
+  --r-progress-height: 4px;
+  --r-progress-color: var(--r-primary-color);
+  --r-progress-inactive-color: var(--r-gray-5);
+  --r-progress-background: var(--r-gray-3);
+  --r-progress-pivot-padding: 0 5px;
+  --r-progress-pivot-text-color: var(--r-white);
+  --r-progress-pivot-font-size: var(--r-font-size-xs);
+  --r-progress-pivot-line-height: 1.6;
+  --r-progress-pivot-background: var(--r-primary-color);
+}
+
+.r-progress {
+  position: relative;
+  height: var(--r-progress-height);
+  background: var(--r-progress-background);
+  border-radius: var(--r-progress-height);
+
+  &__portion {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--r-progress-color);
+    border-radius: inherit;
+    transform-origin: 0;
+    transition: all var(--r-duration-base) var(--r-ease-out);
+
+    &--inactive {
+      background: var(--r-progress-inactive-color);
+    }
+  }
+
+  &__pivot {
+    position: absolute;
+    top: 50%;
+    box-sizing: border-box;
+    min-width: 3.6em;
+    padding: var(--r-progress-pivot-padding);
+    color: var(--r-progress-pivot-text-color);
+    font-size: var(--r-progress-pivot-font-size);
+    line-height: var(--r-progress-pivot-line-height);
+    text-align: center;
+    word-break: keep-all;
+    background: var(--r-progress-pivot-background);
+    border-radius: 1em;
+    transition: all var(--r-duration-base) var(--r-ease-out);
+
+    &--inactive {
+      background: var(--r-progress-inactive-color);
+    }
+  }
+}

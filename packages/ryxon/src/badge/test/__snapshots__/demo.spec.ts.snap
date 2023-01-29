@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      5
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      10
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      Hot
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      9+
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      20+
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      99+
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed"
+         style="background: rgb(25, 137, 250);"
+    >
+      5
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed"
+         style="background: rgb(25, 137, 250);"
+    >
+      10
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed"
+         style="background: rgb(25, 137, 250);"
+    >
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      <i class="r-badge__wrapper r-icon r-ir-success badge-icon">
+      </i>
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      <i class="r-badge__wrapper r-icon r-ir-cross badge-icon">
+      </i>
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-right r-badge--fixed">
+      <i class="r-badge__wrapper r-icon r-ir-down badge-icon">
+      </i>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--top-left r-badge--fixed">
+      10
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--bottom-left r-badge--fixed">
+      10
+    </div>
+  </div>
+  <div class="r-badge__wrapper">
+    <div class="child">
+    </div>
+    <div class="r-badge r-badge--bottom-right r-badge--fixed">
+      10
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-badge r-badge--top-right"
+       style="marr-left: 16px;"
+  >
+    20
+  </div>
+  <div class="r-badge r-badge--top-right"
+       style="marr-left: 16px;"
+  >
+    99+
+  </div>
+</div>
+`;

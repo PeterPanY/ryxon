@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render left slot correctly 1`] = `
+<div class="r-nav-bar__left r-haptics-feedback">
+  Custom Left
+</div>
+`;
+
+exports[`should render left slot correctly 2`] = `
+<div class="r-nav-bar__right r-haptics-feedback">
+  Custom Right
+</div>
+`;
+
+exports[`should render placeholder element when using placeholder prop 1`] = `
+<div class="r-nav-bar__placeholder"
+     style="height: 50px;"
+>
+  <div class="r-nav-bar r-nav-bar--fixed r-hairline--bottom">
+    <div class="r-nav-bar__content">
+      <div class="r-nav-bar__title r-ellipsis">
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render slots correctly when set clickable to false 1`] = `
+<div class="r-nav-bar__left">
+  Custom Left
+</div>
+`;
+
+exports[`should render slots correctly when set clickable to false 2`] = `
+<div class="r-nav-bar__right">
+  Custom Right
+</div>
+`;
+
+exports[`should render title slot correctly 1`] = `
+<div class="r-nav-bar__title r-ellipsis">
+  Custom Title
+</div>
+`;

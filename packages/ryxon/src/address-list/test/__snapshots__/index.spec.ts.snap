@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render tag slot correctly 1`] = `
+<div class="r-address-list">
+  <div class="r-radio-group"
+       role="radiogroup"
+  >
+  </div>
+  <div class="r-address-list__bottom r-safe-area-bottom">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--block r-button--round r-address-list__add"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Add new address
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,72 @@
+{
+  "name": "@ryxon/ryxon",
+  "version": "1.0.2",
+  "description": "Mobile UI Components built on Vue",
+  "main": "lib/ryxon.cjs.js",
+  "module": "es/index.mjs",
+  "style": "lib/index.css",
+  "typings": "lib/index.d.ts",
+  "unpkg": "lib/ryxon.min.js",
+  "jsdelivr": "lib/ryxon.min.js",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "scripts": {
+    "dev": "ryxon-cli dev",
+    "lint": "ryxon-cli lint",
+    "test": "ryxon-cli test",
+    "build": "ryxon-cli build",
+    "build:site": "ryxon-cli build-site",
+    "release": "cp ../../README.md ./ && ryxon-cli release && rm ./README.md",
+    "release:site": "pnpm build:site && npx gh-pages -d site-dist --add",
+    "test:watch": "ryxon-cli test --watch",
+    "test:coverage": "open test/coverage/index.html"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterPanY/ryxon.git",
+    "directory": "packages/ryxon"
+  },
+  "bugs": "https://github.com/PeterPanY/ryxon/issues",
+  "author": "PeterPanY",
+  "license": "MIT",
+  "keywords": [
+    "ui",
+    "vue",
+    "vue3",
+    "mobile",
+    "frontend",
+    "component",
+    "components"
+  ],
+  "dependencies": {
+    "@ryxon/popperjs": "workspace:*",
+    "@ryxon/use": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/jest": "^29.1.1",
+    "@ryxon/area-data": "workspace:*",
+    "@ryxon/cli": "workspace:*",
+    "@ryxon/eslint-config": "workspace:*",
+    "@ryxon/icons": "workspace:*",
+    "@vue/runtime-core": "^3.2.38",
+    "@vue/test-utils": "^2.0.2",
+    "typescript": "^4.8.2",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.5"
+  },
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.css"
+  ],
+  "web-types": "lib/web-types.json"
+}

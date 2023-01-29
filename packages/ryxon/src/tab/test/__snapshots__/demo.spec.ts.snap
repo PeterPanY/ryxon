@@ -1,0 +1,1366 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 4
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-0"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-1"
+           style
+      >
+        content of tab 2
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line r-tabs__nav--complete"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 4
+          </span>
+        </div>
+        <div id="r-tabs-4"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 5
+          </span>
+        </div>
+        <div id="r-tabs-5"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 6
+          </span>
+        </div>
+        <div id="r-tabs-6"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 7
+          </span>
+        </div>
+        <div id="r-tabs-7"
+             role="tab"
+             class="r-tab r-tab--line r-tab--grow"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 8
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-4"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-5"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-6"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-7"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--disabled"
+             aria-selected="false"
+             aria-disabled="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--card">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--card"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--card r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--card"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--card"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div>
+      <div class="r-sticky">
+        <div>
+          <div class="r-tabs__wrap">
+            <div role="tablist"
+                 class="r-tabs__nav r-tabs__nav--line"
+                 aria-orientation="horizontal"
+            >
+              <div id="r-tabs-0"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--active"
+                   tabindex="0"
+                   aria-selected="true"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text r-tab__text--ellipsis">
+                  Tab 1
+                </span>
+              </div>
+              <div id="r-tabs-1"
+                   role="tab"
+                   class="r-tab r-tab--line"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text r-tab__text--ellipsis">
+                  Tab 2
+                </span>
+              </div>
+              <div id="r-tabs-2"
+                   role="tab"
+                   class="r-tab r-tab--line"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text r-tab__text--ellipsis">
+                  Tab 3
+                </span>
+              </div>
+              <div id="r-tabs-3"
+                   role="tab"
+                   class="r-tab r-tab--line"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text r-tab__text--ellipsis">
+                  Tab 4
+                </span>
+              </div>
+              <div class="r-tabs__line"
+                   style="transform: translateX(50px) translateX(-50%);"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line r-tabs__nav--shrink r-tabs__nav--complete"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 4
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        Content 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="r-tabs r-tabs--card">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--card r-tabs__nav--shrink r-tabs__nav--complete"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--card r-tab--shrink r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--card r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--card r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--card r-tab--shrink"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text">
+            Tab 4
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        Content 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            <i class="r-badge__wrapper r-icon r-icon-more-o">
+            </i>
+            Tab
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            <i class="r-badge__wrapper r-icon r-icon-more-o">
+            </i>
+            Tab
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 4
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content r-tabs__content--animated">
+      <div class="r-swipe r-tabs__track">
+        <div style="transition-duration: 0ms; transform: translateX(0px); width: 400px;"
+             class="r-swipe__track"
+        >
+          <div class="r-swipe-item r-tab__panel-wrapper"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="0"
+               aria-hidden="false"
+               aria-labelledby="r-tabs-0"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              content of tab 1
+            </div>
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-1"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              content of tab 2
+            </div>
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-2"
+               style="width: 100px;"
+          >
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-3"
+               style="width: 100px;"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 4
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content r-tabs__content--animated">
+      <div class="r-swipe r-tabs__track">
+        <div style="transition-duration: 0ms; transform: translateX(0px); width: 400px;"
+             class="r-swipe__track"
+        >
+          <div class="r-swipe-item r-tab__panel-wrapper"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="0"
+               aria-hidden="false"
+               aria-labelledby="r-tabs-0"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              content of tab 1
+            </div>
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-1"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              content of tab 2
+            </div>
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-2"
+               style="width: 100px;"
+          >
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper r-tab__panel-wrapper--inactive"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-3"
+               style="width: 100px;"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div>
+      <div class="r-sticky">
+        <div>
+          <div class="r-tabs__wrap">
+            <div role="tablist"
+                 class="r-tabs__nav r-tabs__nav--line r-tabs__nav--complete"
+                 aria-orientation="horizontal"
+            >
+              <div id="r-tabs-0"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow r-tab--active"
+                   tabindex="0"
+                   aria-selected="true"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 1
+                </span>
+              </div>
+              <div id="r-tabs-1"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 2
+                </span>
+              </div>
+              <div id="r-tabs-2"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 3
+                </span>
+              </div>
+              <div id="r-tabs-3"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 4
+                </span>
+              </div>
+              <div id="r-tabs-4"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 5
+                </span>
+              </div>
+              <div id="r-tabs-5"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 6
+                </span>
+              </div>
+              <div id="r-tabs-6"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 7
+                </span>
+              </div>
+              <div id="r-tabs-7"
+                   role="tab"
+                   class="r-tab r-tab--line r-tab--grow"
+                   tabindex="-1"
+                   aria-selected="false"
+                   aria-controls="r-tab"
+              >
+                <span class="r-tab__text">
+                  Tab 8
+                </span>
+              </div>
+              <div class="r-tabs__line"
+                   style="transform: translateX(50px) translateX(-50%);"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-1"
+      >
+        content of tab 2
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-2"
+      >
+        content of tab 3
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-3"
+      >
+        content of tab 4
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-4"
+      >
+        content of tab 5
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-5"
+      >
+        content of tab 6
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-6"
+      >
+        content of tab 7
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-7"
+      >
+        content of tab 8
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-tabs r-tabs--line">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 1
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 2
+          </span>
+        </div>
+        <div id="r-tabs-2"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 3
+          </span>
+        </div>
+        <div id="r-tabs-3"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Tab 4
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        content of tab 1
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-2"
+           style="display: none;"
+      >
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-3"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+`;

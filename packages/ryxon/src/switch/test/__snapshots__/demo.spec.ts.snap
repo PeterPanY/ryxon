@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on r-switch--disabled"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on r-switch--loading"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+      <div class="r-loading r-loading--circular r-switch__loading"
+           aria-live="polite"
+           aria-busy="true"
+      >
+        <span class="r-loading__spinner r-loading__spinner--circular">
+          <svg class="r-loading__circular"
+               viewbox="25 25 50 50"
+          >
+            <circle cx="50"
+                    cy="50"
+                    r="20"
+                    fill="none"
+            >
+            </circle>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on"
+       style="font-size: 22px;"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on"
+       style="background-color: rgb(238, 10, 36);"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+      <div class="icon-wrapper">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="switch"
+       class="r-switch r-switch--on"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-switch__node">
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--center">
+    <div class="r-cell__title">
+      <span>
+        Title
+      </span>
+    </div>
+    <div role="switch"
+         class="r-switch r-switch--on"
+         tabindex="0"
+         aria-checked="true"
+    >
+      <div class="r-switch__node">
+      </div>
+    </div>
+  </div>
+</div>
+`;

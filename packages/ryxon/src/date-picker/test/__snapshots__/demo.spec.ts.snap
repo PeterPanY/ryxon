@@ -1,0 +1,1016 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Choose Date
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 66px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2020
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              2021
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2022
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2023
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2024
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2025
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              01
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              02
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              03
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              04
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              05
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              06
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              07
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              08
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              09
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              10
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              11
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              12
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              01
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              02
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              03
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              04
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              05
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              06
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              07
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              08
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              09
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              10
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              11
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              12
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              13
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              14
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              15
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              16
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              17
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              18
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              19
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              20
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              21
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              22
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              23
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              24
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              25
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              26
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              27
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              28
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              29
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              30
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              31
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Choose Year-Month
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 66px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2020
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              2021
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2022
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2023
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2024
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2025
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              01
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              02
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              03
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              04
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              05
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              06
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              07
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              08
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              09
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              10
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              11
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              12
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Choose Year-Month
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 66px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2020 Year
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              2021 Year
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2022 Year
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2023 Year
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2024 Year
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2025 Year
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              01 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              02 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              03 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              04 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              05 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              06 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              07 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              08 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              09 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              10 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              11 Month
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              12 Month
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 66px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2020
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              2021
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2022
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2023
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2024
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              2025
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              06
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              12
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+`;

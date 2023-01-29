@@ -1,0 +1,359 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="demo-button-row">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Primary
+        </span>
+      </div>
+    </button>
+    <button type="button"
+            class="r-button r-button--success r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Success
+        </span>
+      </div>
+    </button>
+    <button type="button"
+            class="r-button r-button--default r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Default
+        </span>
+      </div>
+    </button>
+  </div>
+  <button type="button"
+          class="r-button r-button--danger r-button--normal"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Danger
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--warning r-button--normal"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Warning
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--plain"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Plain
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--success r-button--normal r-button--plain"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Plain
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--plain r-button--hairline r-hairline--surround"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Hairline
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--success r-button--normal r-button--plain r-button--hairline r-hairline--surround"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Hairline
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--disabled"
+          disabled
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Disabled
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--success r-button--normal r-button--disabled"
+          disabled
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Disabled
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--loading"
+  >
+    <div class="r-button__content">
+      <div class="r-loading r-loading--circular r-button__loading"
+           aria-live="polite"
+           aria-busy="true"
+      >
+        <span class="r-loading__spinner r-loading__spinner--circular">
+          <svg class="r-loading__circular"
+               viewbox="25 25 50 50"
+          >
+            <circle cx="50"
+                    cy="50"
+                    r="20"
+                    fill="none"
+            >
+            </circle>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--loading"
+  >
+    <div class="r-button__content">
+      <div class="r-loading r-loading--spinner r-button__loading"
+           aria-live="polite"
+           aria-busy="true"
+      >
+        <span class="r-loading__spinner r-loading__spinner--spinner">
+          <i class="r-loading__line r-loading__line--1">
+          </i>
+          <i class="r-loading__line r-loading__line--2">
+          </i>
+          <i class="r-loading__line r-loading__line--3">
+          </i>
+          <i class="r-loading__line r-loading__line--4">
+          </i>
+          <i class="r-loading__line r-loading__line--5">
+          </i>
+          <i class="r-loading__line r-loading__line--6">
+          </i>
+          <i class="r-loading__line r-loading__line--7">
+          </i>
+          <i class="r-loading__line r-loading__line--8">
+          </i>
+          <i class="r-loading__line r-loading__line--9">
+          </i>
+          <i class="r-loading__line r-loading__line--10">
+          </i>
+          <i class="r-loading__line r-loading__line--11">
+          </i>
+          <i class="r-loading__line r-loading__line--12">
+          </i>
+        </span>
+      </div>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--success r-button--normal r-button--loading"
+  >
+    <div class="r-button__content">
+      <div class="r-loading r-loading--circular r-button__loading"
+           aria-live="polite"
+           aria-busy="true"
+      >
+        <span class="r-loading__spinner r-loading__spinner--circular">
+          <svg class="r-loading__circular"
+               viewbox="25 25 50 50"
+          >
+            <circle cx="50"
+                    cy="50"
+                    r="20"
+                    fill="none"
+            >
+            </circle>
+          </svg>
+        </span>
+      </div>
+      <span class="r-button__text">
+        Loading...
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--square"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Square
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--success r-button--normal r-button--round"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Round
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal"
+  >
+    <div class="r-button__content">
+      <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+      </i>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal"
+  >
+    <div class="r-button__content">
+      <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+      </i>
+      <span class="r-button__text">
+        Button
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--plain"
+  >
+    <div class="r-button__content">
+      <i class="r-badge__wrapper r-icon r-button__icon">
+        <img class="r-icon__image"
+             src="https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png"
+        >
+      </i>
+      <span class="r-button__text">
+        Button
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--large"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Large
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Normal
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--small"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Small
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--mini"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Mini
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal r-button--block"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Block Element
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        URL
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--primary r-button--normal"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Vue Router
+      </span>
+    </div>
+  </button>
+</div>
+<div>
+  <button type="button"
+          class="r-button r-button--default r-button--normal"
+          style="color: white; background: rgb(114, 50, 221); border-color: #7232dd;"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Pure
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--default r-button--normal r-button--plain"
+          style="color: rgb(114, 50, 221); border-color: #7232dd;"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Pure
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--default r-button--normal"
+          style="color: white; border: 0px;"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Gradient
+      </span>
+    </div>
+  </button>
+</div>
+`;

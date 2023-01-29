@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should apply active color to loading icon 1`] = `
+<div class="r-loading r-loading--circular r-switch__loading"
+     aria-live="polite"
+     aria-busy="true"
+>
+  <span class="r-loading__spinner r-loading__spinner--circular"
+        style="color: red;"
+  >
+    <svg class="r-loading__circular"
+         viewbox="25 25 50 50"
+    >
+      <circle cx="50"
+              cy="50"
+              r="20"
+              fill="none"
+      >
+      </circle>
+    </svg>
+  </span>
+</div>
+`;
+
+exports[`should apply inactive color to loading icon 1`] = `
+<div class="r-loading r-loading--circular r-switch__loading"
+     aria-live="polite"
+     aria-busy="true"
+>
+  <span class="r-loading__spinner r-loading__spinner--circular"
+        style="color: black;"
+  >
+    <svg class="r-loading__circular"
+         viewbox="25 25 50 50"
+    >
+      <circle cx="50"
+              cy="50"
+              r="20"
+              fill="none"
+      >
+      </circle>
+    </svg>
+  </span>
+</div>
+`;
+
+exports[`should render background slot correctly 1`] = `
+<div role="switch"
+     class="r-switch"
+     tabindex="0"
+     aria-checked="false"
+>
+  <div class="r-switch__node">
+  </div>
+  Custom background
+</div>
+`;
+
+exports[`should render node slot correctly 1`] = `
+<div role="switch"
+     class="r-switch"
+     tabindex="0"
+     aria-checked="false"
+>
+  <div class="r-switch__node">
+    Custom node
+  </div>
+</div>
+`;

@@ -1,0 +1,51 @@
+{
+  "name": "create-ryxon-cli-app",
+  "version": "2.1.0",
+  "description": "Create RyxonCLI App",
+  "main": "lib/index.js",
+  "bin": {
+    "create-ryxon-cli-app": "./lib/index.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rimraf ./lib && tsc",
+    "release": "pnpm build & release-it",
+    "prepare": "pnpm build"
+  },
+  "files": [
+    "lib",
+    "generators"
+  ],
+  "keywords": [
+    "ryxon"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterPanY/ryxon.git",
+    "directory": "packages/create-ryxon-cli-app"
+  },
+  "bugs": "https://github.com/PeterPanY/ryxon/issues",
+  "author": "PeterPanY",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "release-it": "^15.4.1",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "consola": "^2.11.3",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "enquirer": "2.3.6",
+    "picocolors": "^1.0.0"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: create-ryxon-cli-app ${version}"
+    }
+  }
+}

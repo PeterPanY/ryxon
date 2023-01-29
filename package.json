@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "pnpm --dir ./packages/ryxon dev",
+    "lint": "pnpm --dir ./packages/ryxon lint",
+    "test": "pnpm --dir ./packages/ryxon test",
+    "test:watch": "pnpm --dir ./packages/ryxon test:watch",
+    "docs:dev": "pnpm --dir ./packages/ryxon-docs docs:dev",
+    "build": "pnpm --dir ./packages/ryxon build",
+    "build:site": "pnpm --dir ./packages/ryxon build:site"
+  },
+  "nano-staged": {
+    "*.md": "prettier --write",
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix"
+  },
+  "engines": {
+    "pnpm": ">= 7.0.0"
+  },
+  "packageManager": "pnpm@7.20.0",
+  "devDependencies": {
+    "@ryxon/cli": "workspace:*",
+    "@ryxon/eslint-config": "workspace:*",
+    "eslint": "^8.31.0",
+    "husky": "^8.0.1",
+    "nano-staged": "^0.8.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
+  }
+}

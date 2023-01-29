@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render title slot correctly 1`] = `
+<div class="r-cell-group__title">
+  Custom Title
+</div>
+<div class="r-cell-group r-hairline--top-bottom">
+</div>
+`;

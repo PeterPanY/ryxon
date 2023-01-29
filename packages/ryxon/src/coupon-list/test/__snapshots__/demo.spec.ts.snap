@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell r-cell--clickable r-coupon-cell"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Coupon
+      </span>
+    </div>
+    <div class="r-cell__value r-coupon-cell__value">
+      <span>
+        You have 2 coupons
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+`;

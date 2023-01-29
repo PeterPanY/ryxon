@@ -1,0 +1,443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Label
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Text"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <form class="r-form">
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Text
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="text"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Text"
+                   autocomplete="off"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Phone
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="tel"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Phone"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Digit
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="tel"
+                   inputmode="numeric"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Digit"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Number
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="text"
+                   inputmode="decimal"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Number"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Password
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="password"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Password"
+                   autocomplete="off"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 readonly
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="r-cell r-field r-field--disabled">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 disabled
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-field__left-icon">
+        <i class="r-badge__wrapper r-icon r-icon-smile-o">
+        </i>
+      </div>
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Show Icon"
+                 aria-labelledby="r-field-label"
+          >
+          <div class="r-field__right-icon">
+            <i class="r-badge__wrapper r-icon r-icon-warning-o">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-cell r-field">
+      <div class="r-field__left-icon">
+        <i class="r-badge__wrapper r-icon r-icon-music-o">
+        </i>
+      </div>
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Show Clear Icon"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field r-field--error">
+      <div class="r-cell__title r-field__label r-field__label--required">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Username
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control r-field__control--error"
+                 placeholder="Username"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label r-field__label--required">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Phone
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Phone"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+        <div class="r-field__error-message">
+          Invalid phone
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-cell--center r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          SMS
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="SMS"
+                 aria-labelledby="r-field-label"
+          >
+          <div class="r-field__button">
+            <button type="button"
+                    class="r-button r-button--primary r-button--small"
+            >
+              <div class="r-button__content">
+                <span class="r-button__text">
+                  Send SMS
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Format On Change"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Format On Blur"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <textarea id="r-field-input"
+                    rows="1"
+                    class="r-field__control"
+                    placeholder="Message"
+                    style="height: auto;"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Message
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <textarea id="r-field-input"
+                    rows="2"
+                    class="r-field__control"
+                    placeholder="Message"
+                    aria-labelledby="r-field-label"
+                    style="height: auto;"
+          >
+          </textarea>
+        </div>
+        <div class="r-field__word-limit">
+          <span class="r-field__word-num">
+            0
+          </span>
+          /50
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field">
+      <div class="r-cell__title r-field__label">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Text
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control r-field__control--right"
+                 placeholder="Input Align Right"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell r-field r-field--label-top">
+      <div class="r-cell__title r-field__label r-field__label--top">
+        <label id="r-field-label"
+               for="r-field-input"
+        >
+          Tel
+        </label>
+      </div>
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Please input tel number"
+                 aria-labelledby="r-field-label"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

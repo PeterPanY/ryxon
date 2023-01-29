@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <form class="r-form r-contact-edit">
+    <div class="r-contact-edit__fields">
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Name
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="text"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Name"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-field">
+        <div class="r-cell__title r-field__label">
+          <label id="r-field-label"
+                 for="r-field-input"
+          >
+            Phone
+          </label>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="tel"
+                   id="r-field-input"
+                   class="r-field__control"
+                   placeholder="Phone"
+                   aria-labelledby="r-field-label"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-cell r-cell--borderless r-contact-edit__switch-cell">
+      <div class="r-cell__title">
+        <span>
+          Set as the default contact
+        </span>
+      </div>
+      <div role="switch"
+           class="r-switch"
+           tabindex="0"
+           aria-checked="false"
+      >
+        <div class="r-switch__node">
+        </div>
+      </div>
+    </div>
+    <div class="r-contact-edit__buttons">
+      <button type="submit"
+              class="r-button r-button--primary r-button--normal r-button--block r-button--round r-contact-edit__button"
+      >
+        <div class="r-button__content">
+          <span class="r-button__text">
+            Save
+          </span>
+        </div>
+      </button>
+      <button type="button"
+              class="r-button r-button--default r-button--normal r-button--block r-button--round r-contact-edit__button"
+      >
+        <div class="r-button__content">
+          <span class="r-button__text">
+            Delete
+          </span>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>
+`;

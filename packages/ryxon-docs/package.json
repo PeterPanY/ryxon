@@ -1,0 +1,28 @@
+{
+  "name": "@ryxon/docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev . --host",
+    "docs:build": "vitepress build .",
+    "docs:serve": "vitepress serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@ryxon/components": "workspace:*",
+    "@ryxon/ryxon": "workspace:*",
+    "fast-glob": "^3.2.11",
+    "sass": "^1.54.5",
+    "vitepress": "^1.0.0-alpha.9",
+    "vitepress-theme-demoblock": "^1.4.2"
+  },
+  "dependencies": {
+    "markdown-it-container": "^3.0.0",
+    "prism-theme-vars": "^0.2.4",
+    "prismjs": "^1.28.0",
+    "unplugin-vue-define-options": "^0.10.0"
+  }
+}

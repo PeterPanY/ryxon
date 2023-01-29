@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-card">
+    <div class="r-card__header">
+      <a class="r-card__thumb">
+        <div class="r-image"
+             style="width: 100%; height: 100%;"
+        >
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/ipad.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </a>
+      <div class="r-card__content">
+        <div>
+          <div class="r-card__title r-multi-ellipsis--l2">
+            Title
+          </div>
+          <div class="r-card__desc r-ellipsis">
+            Description
+          </div>
+        </div>
+        <div class="r-card__bottom">
+          <div class="r-card__price">
+            <div>
+              <span class="r-card__price-currency">
+                ¥
+              </span>
+              <span class="r-card__price-integer">
+                2
+              </span>
+              .
+              <span class="r-card__price-decimal">
+                00
+              </span>
+            </div>
+          </div>
+          <div class="r-card__num">
+            x2
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-card">
+    <div class="r-card__header">
+      <a class="r-card__thumb">
+        <div class="r-image"
+             style="width: 100%; height: 100%;"
+        >
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/ipad.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div class="r-card__tag">
+          <transition-stub appear="false"
+                           persisted="false"
+                           css="true"
+          >
+            <span class="r-tag r-tag--mark r-tag--primary">
+              Tag
+            </span>
+          </transition-stub>
+        </div>
+      </a>
+      <div class="r-card__content">
+        <div>
+          <div class="r-card__title r-multi-ellipsis--l2">
+            Title
+          </div>
+          <div class="r-card__desc r-ellipsis">
+            Description
+          </div>
+        </div>
+        <div class="r-card__bottom">
+          <div class="r-card__price">
+            <div>
+              <span class="r-card__price-currency">
+                ¥
+              </span>
+              <span class="r-card__price-integer">
+                2
+              </span>
+              .
+              <span class="r-card__price-decimal">
+                00
+              </span>
+            </div>
+          </div>
+          <div class="r-card__origin-price">
+            ¥ 10.00
+          </div>
+          <div class="r-card__num">
+            x2
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-card">
+    <div class="r-card__header">
+      <a class="r-card__thumb">
+        <div class="r-image"
+             style="width: 100%; height: 100%;"
+        >
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/ipad.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </a>
+      <div class="r-card__content">
+        <div>
+          <div class="r-card__title r-multi-ellipsis--l2">
+            Title
+          </div>
+          <div class="r-card__desc r-ellipsis">
+            Description
+          </div>
+          <transition-stub appear="false"
+                           persisted="false"
+                           css="true"
+                           style="margin-right: 5px;"
+          >
+            <span class="r-tag r-tag--plain r-tag--primary">
+              Tag
+            </span>
+          </transition-stub>
+          <transition-stub appear="false"
+                           persisted="false"
+                           css="true"
+          >
+            <span class="r-tag r-tag--plain r-tag--primary">
+              Tag
+            </span>
+          </transition-stub>
+        </div>
+        <div class="r-card__bottom">
+          <div class="r-card__price">
+            <div>
+              <span class="r-card__price-currency">
+                ¥
+              </span>
+              <span class="r-card__price-integer">
+                2
+              </span>
+              .
+              <span class="r-card__price-decimal">
+                00
+              </span>
+            </div>
+          </div>
+          <div class="r-card__num">
+            x2
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-card__footer">
+      <button type="button"
+              class="r-button r-button--default r-button--mini r-button--round"
+      >
+        <div class="r-button__content">
+          <span class="r-button__text">
+            Button
+          </span>
+        </div>
+      </button>
+      <button type="button"
+              class="r-button r-button--default r-button--mini r-button--round"
+      >
+        <div class="r-button__content">
+          <span class="r-button__text">
+            Button
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

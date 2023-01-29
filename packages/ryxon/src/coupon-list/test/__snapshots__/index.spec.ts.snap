@@ -1,0 +1,1289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should be the sames as the last snapshot when render coupon list 1`] = `
+<div class="r-coupon-list">
+  <div class="r-coupon-list__exchange-bar">
+    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Coupon code"
+          >
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--plain r-button--disabled r-coupon-list__exchange"
+            disabled
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Exchange
+        </span>
+      </div>
+    </button>
+  </div>
+  <div class="r-tabs r-tabs--line r-coupon-list__tab">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Available (6)
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Unavailable (2)
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                </h2>
+                <p class="r-coupon__condition">
+                  Unlimited
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="false"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                  <span>
+                    ¥
+                  </span>
+                  1.5
+                </h2>
+                <p class="r-coupon__condition">
+                  Unlimited
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                  name
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="true"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="r-coupon__description">
+              description
+            </p>
+          </div>
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                  <span>
+                    ¥
+                  </span>
+                  1
+                </h2>
+                <p class="r-coupon__condition">
+                  Unlimited
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                  name
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="false"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="r-coupon__description">
+              description
+            </p>
+          </div>
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                  <span>
+                    ¥
+                  </span>
+                  1.23
+                </h2>
+                <p class="r-coupon__condition">
+                  Unlimited
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                  name
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="false"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="r-coupon__description">
+              description
+            </p>
+          </div>
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                  88% off
+                </h2>
+                <p class="r-coupon__condition">
+                  At least 0.5
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                  name
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="false"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="r-coupon">
+            <div class="r-coupon__content">
+              <div class="r-coupon__head">
+                <h2 class="r-coupon__amount">
+                  90% off
+                </h2>
+                <p class="r-coupon__condition">
+                  At least 0.5
+                </p>
+              </div>
+              <div class="r-coupon__body">
+                <p class="r-coupon__name">
+                  name
+                </p>
+                <p class="r-coupon__valid">
+                  2017.03.10 - 2017.12.30
+                </p>
+                <div role="checkbox"
+                     class="r-checkbox r-coupon__corner"
+                     tabindex="0"
+                     aria-checked="false"
+                >
+                  <div class="r-checkbox__icon r-checkbox__icon--round">
+                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    </i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="r-coupon-list__bottom">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--block r-button--round r-coupon-list__close"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Close
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should have two "r-coupon-list__empty" classes when render coupon list is empty 1`] = `
+<div class="r-coupon-list">
+  <div class="r-coupon-list__exchange-bar">
+    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Coupon code"
+          >
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--plain r-button--disabled r-coupon-list__exchange"
+            disabled
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Exchange
+        </span>
+      </div>
+    </button>
+  </div>
+  <div class="r-tabs r-tabs--line r-coupon-list__tab">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Available (0)
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Unavailable (0)
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-0"
+           style="display: none;"
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-empty">
+            <div class="r-empty__image">
+              <svg viewbox="0 0 160 160">
+                <defs>
+                  <linearGradient x1="50%"
+                                  x2="50%"
+                                  y2="100%"
+                                  id="r-empty-5"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient x1="95%"
+                                  y1="48%"
+                                  x2="5.5%"
+                                  y2="51%"
+                                  id="r-empty-6"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient y1="45%"
+                                  x2="100%"
+                                  y2="54%"
+                                  id="r-empty-7"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <defs>
+                  <linearGradient id="r-empty-a"
+                                  x1="64%"
+                                  y1="100%"
+                                  x2="64%"
+                  >
+                    <stop stop-color="#FFF"
+                          offset="0%"
+                          stop-opacity="0.5"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M36 131V53H16v20H2v58h34z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                  <path d="M123 15h22v14h9v77h-31V15z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                </g>
+                <defs>
+                  <linearGradient id="r-empty-b"
+                                  x1="64%"
+                                  y1="97%"
+                                  x2="64%"
+                                  y2="0%"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                          stop-opacity="0.3"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M87 6c3 0 7 3 8 6a8 8 0 1 1-1 16H80a7 7 0 0 1-8-6c0-4 3-7 6-7 0-5 4-9 9-9Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                  <path d="M19 23c2 0 3 1 4 3 2 0 4 2 4 4a4 4 0 0 1-4 3v1h-7v-1l-1 1c-2 0-3-2-3-4 0-1 1-3 3-3 0-2 2-4 4-4Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                </g>
+                <g transform="translate(36 50)"
+                   fill="none"
+                >
+                  <g transform="translate(8)">
+                    <rect fill="#EBEDF0"
+                          opacity=".6"
+                          x="38"
+                          y="13"
+                          width="36"
+                          height="53"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="url(#r-empty-5)"
+                          width="64"
+                          height="66"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="#FFF"
+                          x="6"
+                          y="6"
+                          width="52"
+                          height="55"
+                          rx="1"
+                    >
+                    </rect>
+                    <g transform="translate(15 17)"
+                       fill="url(#r-empty-6)"
+                    >
+                      <rect width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                      <path d="M0 14h34v6H0z">
+                      </path>
+                      <rect y="28"
+                            width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                    </g>
+                  </g>
+                  <rect fill="url(#r-empty-7)"
+                        y="61"
+                        width="88"
+                        height="28"
+                        rx="1"
+                  >
+                  </rect>
+                  <rect fill="#F7F8FA"
+                        x="29"
+                        y="72"
+                        width="30"
+                        height="6"
+                        rx="1"
+                  >
+                  </rect>
+                </g>
+              </svg>
+            </div>
+            <div class="r-empty__bottom">
+              <p class="r-coupon-list__empty-tip">
+                No coupons
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-1"
+           style
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-empty">
+            <div class="r-empty__image">
+              <svg viewbox="0 0 160 160">
+                <defs>
+                  <linearGradient x1="50%"
+                                  x2="50%"
+                                  y2="100%"
+                                  id="r-empty-5"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient x1="95%"
+                                  y1="48%"
+                                  x2="5.5%"
+                                  y2="51%"
+                                  id="r-empty-6"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient y1="45%"
+                                  x2="100%"
+                                  y2="54%"
+                                  id="r-empty-7"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <defs>
+                  <linearGradient id="r-empty-a"
+                                  x1="64%"
+                                  y1="100%"
+                                  x2="64%"
+                  >
+                    <stop stop-color="#FFF"
+                          offset="0%"
+                          stop-opacity="0.5"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M36 131V53H16v20H2v58h34z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                  <path d="M123 15h22v14h9v77h-31V15z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                </g>
+                <defs>
+                  <linearGradient id="r-empty-b"
+                                  x1="64%"
+                                  y1="97%"
+                                  x2="64%"
+                                  y2="0%"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                          stop-opacity="0.3"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M87 6c3 0 7 3 8 6a8 8 0 1 1-1 16H80a7 7 0 0 1-8-6c0-4 3-7 6-7 0-5 4-9 9-9Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                  <path d="M19 23c2 0 3 1 4 3 2 0 4 2 4 4a4 4 0 0 1-4 3v1h-7v-1l-1 1c-2 0-3-2-3-4 0-1 1-3 3-3 0-2 2-4 4-4Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                </g>
+                <g transform="translate(36 50)"
+                   fill="none"
+                >
+                  <g transform="translate(8)">
+                    <rect fill="#EBEDF0"
+                          opacity=".6"
+                          x="38"
+                          y="13"
+                          width="36"
+                          height="53"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="url(#r-empty-5)"
+                          width="64"
+                          height="66"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="#FFF"
+                          x="6"
+                          y="6"
+                          width="52"
+                          height="55"
+                          rx="1"
+                    >
+                    </rect>
+                    <g transform="translate(15 17)"
+                       fill="url(#r-empty-6)"
+                    >
+                      <rect width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                      <path d="M0 14h34v6H0z">
+                      </path>
+                      <rect y="28"
+                            width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                    </g>
+                  </g>
+                  <rect fill="url(#r-empty-7)"
+                        y="61"
+                        width="88"
+                        height="28"
+                        rx="1"
+                  >
+                  </rect>
+                  <rect fill="#F7F8FA"
+                        x="29"
+                        y="72"
+                        width="30"
+                        height="6"
+                        rx="1"
+                  >
+                  </rect>
+                </g>
+              </svg>
+            </div>
+            <div class="r-empty__bottom">
+              <p class="r-coupon-list__empty-tip">
+                No coupons
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="r-coupon-list__bottom">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--block r-button--round r-coupon-list__close"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Close
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should render list-footer slot correctly 1`] = `
+<div class="r-coupon-list">
+  <div class="r-coupon-list__exchange-bar">
+    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Coupon code"
+          >
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--plain r-button--disabled r-coupon-list__exchange"
+            disabled
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Exchange
+        </span>
+      </div>
+    </button>
+  </div>
+  <div class="r-tabs r-tabs--line r-coupon-list__tab">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Available (0)
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Unavailable (0)
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%); transition-duration: 0.3s;"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-0"
+           style="display: none;"
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-empty">
+            <div class="r-empty__image">
+              <svg viewbox="0 0 160 160">
+                <defs>
+                  <linearGradient x1="50%"
+                                  x2="50%"
+                                  y2="100%"
+                                  id="r-empty-5"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient x1="95%"
+                                  y1="48%"
+                                  x2="5.5%"
+                                  y2="51%"
+                                  id="r-empty-6"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient y1="45%"
+                                  x2="100%"
+                                  y2="54%"
+                                  id="r-empty-7"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <defs>
+                  <linearGradient id="r-empty-a"
+                                  x1="64%"
+                                  y1="100%"
+                                  x2="64%"
+                  >
+                    <stop stop-color="#FFF"
+                          offset="0%"
+                          stop-opacity="0.5"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M36 131V53H16v20H2v58h34z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                  <path d="M123 15h22v14h9v77h-31V15z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                </g>
+                <defs>
+                  <linearGradient id="r-empty-b"
+                                  x1="64%"
+                                  y1="97%"
+                                  x2="64%"
+                                  y2="0%"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                          stop-opacity="0.3"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M87 6c3 0 7 3 8 6a8 8 0 1 1-1 16H80a7 7 0 0 1-8-6c0-4 3-7 6-7 0-5 4-9 9-9Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                  <path d="M19 23c2 0 3 1 4 3 2 0 4 2 4 4a4 4 0 0 1-4 3v1h-7v-1l-1 1c-2 0-3-2-3-4 0-1 1-3 3-3 0-2 2-4 4-4Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                </g>
+                <g transform="translate(36 50)"
+                   fill="none"
+                >
+                  <g transform="translate(8)">
+                    <rect fill="#EBEDF0"
+                          opacity=".6"
+                          x="38"
+                          y="13"
+                          width="36"
+                          height="53"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="url(#r-empty-5)"
+                          width="64"
+                          height="66"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="#FFF"
+                          x="6"
+                          y="6"
+                          width="52"
+                          height="55"
+                          rx="1"
+                    >
+                    </rect>
+                    <g transform="translate(15 17)"
+                       fill="url(#r-empty-6)"
+                    >
+                      <rect width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                      <path d="M0 14h34v6H0z">
+                      </path>
+                      <rect y="28"
+                            width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                    </g>
+                  </g>
+                  <rect fill="url(#r-empty-7)"
+                        y="61"
+                        width="88"
+                        height="28"
+                        rx="1"
+                  >
+                  </rect>
+                  <rect fill="#F7F8FA"
+                        x="29"
+                        y="72"
+                        width="30"
+                        height="6"
+                        rx="1"
+                  >
+                  </rect>
+                </g>
+              </svg>
+            </div>
+            <div class="r-empty__bottom">
+              <p class="r-coupon-list__empty-tip">
+                No coupons
+              </p>
+            </div>
+          </div>
+          List Footer
+        </div>
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-1"
+           style
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-empty">
+            <div class="r-empty__image">
+              <svg viewbox="0 0 160 160">
+                <defs>
+                  <linearGradient x1="50%"
+                                  x2="50%"
+                                  y2="100%"
+                                  id="r-empty-5"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient x1="95%"
+                                  y1="48%"
+                                  x2="5.5%"
+                                  y2="51%"
+                                  id="r-empty-6"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                  <linearGradient y1="45%"
+                                  x2="100%"
+                                  y2="54%"
+                                  id="r-empty-7"
+                  >
+                    <stop stop-color="#EAEDF1"
+                          offset="0%"
+                    >
+                    </stop>
+                    <stop stop-color="#DCDEE0"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <defs>
+                  <linearGradient id="r-empty-a"
+                                  x1="64%"
+                                  y1="100%"
+                                  x2="64%"
+                  >
+                    <stop stop-color="#FFF"
+                          offset="0%"
+                          stop-opacity="0.5"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M36 131V53H16v20H2v58h34z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                  <path d="M123 15h22v14h9v77h-31V15z"
+                        fill="url(#r-empty-a)"
+                  >
+                  </path>
+                </g>
+                <defs>
+                  <linearGradient id="r-empty-b"
+                                  x1="64%"
+                                  y1="97%"
+                                  x2="64%"
+                                  y2="0%"
+                  >
+                    <stop stop-color="#F2F3F5"
+                          offset="0%"
+                          stop-opacity="0.3"
+                    >
+                    </stop>
+                    <stop stop-color="#F2F3F5"
+                          offset="100%"
+                    >
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <g opacity=".8">
+                  <path d="M87 6c3 0 7 3 8 6a8 8 0 1 1-1 16H80a7 7 0 0 1-8-6c0-4 3-7 6-7 0-5 4-9 9-9Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                  <path d="M19 23c2 0 3 1 4 3 2 0 4 2 4 4a4 4 0 0 1-4 3v1h-7v-1l-1 1c-2 0-3-2-3-4 0-1 1-3 3-3 0-2 2-4 4-4Z"
+                        fill="url(#r-empty-b)"
+                  >
+                  </path>
+                </g>
+                <g transform="translate(36 50)"
+                   fill="none"
+                >
+                  <g transform="translate(8)">
+                    <rect fill="#EBEDF0"
+                          opacity=".6"
+                          x="38"
+                          y="13"
+                          width="36"
+                          height="53"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="url(#r-empty-5)"
+                          width="64"
+                          height="66"
+                          rx="2"
+                    >
+                    </rect>
+                    <rect fill="#FFF"
+                          x="6"
+                          y="6"
+                          width="52"
+                          height="55"
+                          rx="1"
+                    >
+                    </rect>
+                    <g transform="translate(15 17)"
+                       fill="url(#r-empty-6)"
+                    >
+                      <rect width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                      <path d="M0 14h34v6H0z">
+                      </path>
+                      <rect y="28"
+                            width="34"
+                            height="6"
+                            rx="1"
+                      >
+                      </rect>
+                    </g>
+                  </g>
+                  <rect fill="url(#r-empty-7)"
+                        y="61"
+                        width="88"
+                        height="28"
+                        rx="1"
+                  >
+                  </rect>
+                  <rect fill="#F7F8FA"
+                        x="29"
+                        y="72"
+                        width="30"
+                        height="6"
+                        rx="1"
+                  >
+                  </rect>
+                </g>
+              </svg>
+            </div>
+            <div class="r-empty__bottom">
+              <p class="r-coupon-list__empty-tip">
+                No coupons
+              </p>
+            </div>
+          </div>
+          Disabled List Footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="r-coupon-list__bottom">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--block r-button--round r-coupon-list__close"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Close
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should use custom src when using empty-image prop 1`] = `
+<div class="r-coupon-list">
+  <div class="r-coupon-list__exchange-bar">
+    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
+      <div class="r-cell__value r-field__value">
+        <div class="r-field__body">
+          <input type="text"
+                 id="r-field-input"
+                 class="r-field__control"
+                 placeholder="Coupon code"
+          >
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--plain r-button--disabled r-coupon-list__exchange"
+            disabled
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Exchange
+        </span>
+      </div>
+    </button>
+  </div>
+  <div class="r-tabs r-tabs--line r-coupon-list__tab">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--active"
+             tabindex="0"
+             aria-selected="true"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Available (0)
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line"
+             tabindex="-1"
+             aria-selected="false"
+             aria-controls="r-tab"
+        >
+          <span class="r-tab__text r-tab__text--ellipsis">
+            Unavailable (0)
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%);"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content">
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="0"
+           aria-labelledby="r-tabs-0"
+           style
+      >
+        <div class="r-coupon-list__list r-coupon-list__list--with-bottom"
+             style="height: 624px;"
+        >
+          <div class="r-empty">
+            <div class="r-empty__image">
+              <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/xxx.jpeg">
+            </div>
+            <div class="r-empty__bottom">
+              <p class="r-coupon-list__empty-tip">
+                No coupons
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="r-tab"
+           role="tabpanel"
+           class="r-tab__panel"
+           tabindex="-1"
+           aria-labelledby="r-tabs-1"
+           style="display: none;"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="r-coupon-list__bottom">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal r-button--block r-button--round r-coupon-list__close"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Close
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;

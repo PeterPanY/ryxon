@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render placeholder element when using placeholder prop 1`] = `
+<div class="r-tabbar__placeholder"
+     style="height: 50px;"
+>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+  </div>
+</div>
+`;

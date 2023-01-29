@@ -1,0 +1,36 @@
+{
+  "name": "@ryxon/icons",
+  "version": "2.0.0",
+  "description": "ryxon icons",
+  "main": "./src/config.js",
+  "types": "./src/config.d.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "release": "release-it"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterPanY/ryxon.git",
+    "directory": "packages/ryxon-icons"
+  },
+  "bugs": "https://github.com/PeterPanY/ryxon/issues",
+  "author": "PeterPanY",
+  "license": "MIT",
+  "devDependencies": {
+    "release-it": "^15.4.1"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @ryxon/icons ${version}",
+      "addUntrackedFiles": true,
+      "requireCleanWorkingDir": false
+    }
+  }
+}

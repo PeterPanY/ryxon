@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell-group r-hairline--top-bottom">
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+        <div class="r-cell__label">
+          Description
+        </div>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group r-cell-group--inset">
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+        <div class="r-cell__label">
+          Description
+        </div>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--large">
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+  <div class="r-cell r-cell--large">
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+      <div class="r-cell__label">
+        Description
+      </div>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell">
+    <i class="r-badge__wrapper r-icon r-icon-location-o r-cell__left-icon">
+    </i>
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow-down r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        URL
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Vue Router
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell-group__title">
+    Group 1
+  </div>
+  <div class="r-cell-group r-hairline--top-bottom">
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="r-cell-group__title">
+    Group 2
+  </div>
+  <div class="r-cell-group r-hairline--top-bottom">
+    <div class="r-cell">
+      <div class="r-cell__title">
+        <span>
+          Cell title
+        </span>
+      </div>
+      <div class="r-cell__value">
+        <span>
+          Content
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span class="custom-title">
+        Cell title
+      </span>
+      <transition-stub appear="false"
+                       persisted="false"
+                       css="true"
+      >
+        <span class="r-tag r-tag--primary">
+          Tag
+        </span>
+      </transition-stub>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell">
+    <i class="r-badge__wrapper r-icon r-icon-shop-o r-cell__left-icon">
+    </i>
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-search search-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--center">
+    <div class="r-cell__title">
+      <span>
+        Cell title
+      </span>
+      <div class="r-cell__label">
+        Description
+      </div>
+    </div>
+    <div class="r-cell__value">
+      <span>
+        Content
+      </span>
+    </div>
+  </div>
+</div>
+`;

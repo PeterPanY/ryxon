@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render title slot correctly 1`] = `
+<div role="tablist"
+     class="r-sidebar"
+>
+  <div role="tab"
+       class="r-sidebar-item r-sidebar-item--select"
+       tabindex="0"
+       aria-selected="true"
+  >
+    <div class="r-badge__wrapper r-sidebar-item__text">
+      Custom Title
+    </div>
+  </div>
+</div>
+`;

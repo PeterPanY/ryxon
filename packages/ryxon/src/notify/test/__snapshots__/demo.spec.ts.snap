@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Basic Usage
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Primary
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Success
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Danger
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Warning
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Custom Color
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Custom Position
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Custom Duration
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Use Notify Component
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-popup-slide-top"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+`;

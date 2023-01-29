@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-row">
+    <div class="r-col r-col--8">
+      span: 8
+    </div>
+    <div class="r-col r-col--8">
+      span: 8
+    </div>
+    <div class="r-col r-col--8">
+      span: 8
+    </div>
+  </div>
+  <div class="r-row">
+    <div class="r-col r-col--4">
+      span: 4
+    </div>
+    <div class="r-col r-col--10 r-col--offset-4">
+      offset: 4, span: 10
+    </div>
+  </div>
+  <div class="r-row">
+    <div class="r-col r-col--12 r-col--offset-12">
+      offset: 12, span: 12
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-row">
+    <div class="r-col r-col--8"
+         style="padding-right: 13.333333333333334px;"
+    >
+      span: 8
+    </div>
+    <div style="padding-left: 6.666666666666666px; padding-right: 6.666666666666668px;"
+         class="r-col r-col--8"
+    >
+      span: 8
+    </div>
+    <div style="padding-left: 13.333333333333332px;"
+         class="r-col r-col--8"
+    >
+      span: 8
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-row r-row--justify-center">
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+  </div>
+  <div class="r-row r-row--justify-end">
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+  </div>
+  <div class="r-row r-row--justify-space-between">
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+  </div>
+  <div class="r-row r-row--justify-space-around">
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+    <div class="r-col r-col--6">
+      span: 6
+    </div>
+  </div>
+</div>
+`;

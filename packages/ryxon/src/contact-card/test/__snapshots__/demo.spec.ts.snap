@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell r-cell--center r-cell--clickable r-cell--borderless r-contact-card r-contact-card--add"
+       role="button"
+       tabindex="0"
+  >
+    <i class="r-badge__wrapper r-icon r-icon-add-square r-cell__left-icon">
+    </i>
+    <div class="r-cell__title r-contact-card__title">
+      Add contact
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--center r-cell--clickable r-cell--borderless r-contact-card r-contact-card--edit"
+       role="button"
+       tabindex="0"
+  >
+    <i class="r-badge__wrapper r-icon r-icon-contact r-cell__left-icon">
+    </i>
+    <div class="r-cell__title r-contact-card__title">
+      <div>
+        Name：John Snow
+      </div>
+      <div>
+        Phone：13000000000
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--center r-cell--borderless r-contact-card r-contact-card--edit">
+    <i class="r-badge__wrapper r-icon r-icon-contact r-cell__left-icon">
+    </i>
+    <div class="r-cell__title r-contact-card__title">
+      <div>
+        Name：John Snow
+      </div>
+      <div>
+        Phone：13000000000
+      </div>
+    </div>
+  </div>
+</div>
+`;

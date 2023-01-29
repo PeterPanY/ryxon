@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render default slot correctly 1`] = `
+<button type="button"
+        class="r-button r-button--default r-button--large r-action-bar-button"
+>
+  <div class="r-button__content">
+    <span class="r-button__text">
+      Content
+    </span>
+  </div>
+</button>
+`;

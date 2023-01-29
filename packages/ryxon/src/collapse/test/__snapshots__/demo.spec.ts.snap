@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-collapse r-hairline--top-bottom">
+    <div class="r-collapse-item">
+      <div class="r-cell r-cell--clickable r-collapse-item__title r-collapse-item__title--expanded"
+           role="button"
+           tabindex="0"
+           aria-expanded="true"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title1
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+      <div class="r-collapse-item__wrapper">
+        <div class="r-collapse-item__content">
+          Content 1
+        </div>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title2
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title3
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-collapse r-hairline--top-bottom">
+    <div class="r-collapse-item">
+      <div class="r-cell r-cell--clickable r-collapse-item__title r-collapse-item__title--expanded"
+           role="button"
+           tabindex="0"
+           aria-expanded="true"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title1
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+      <div class="r-collapse-item__wrapper">
+        <div class="r-collapse-item__content">
+          Content 1
+        </div>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title2
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title3
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-collapse r-hairline--top-bottom">
+    <div class="r-collapse-item">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title1
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-collapse-item__title r-collapse-item__title--disabled"
+           role="button"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title2
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-collapse-item__title r-collapse-item__title--disabled"
+           role="button"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title3
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-collapse r-hairline--top-bottom">
+    <div class="r-collapse-item">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          Title1
+          <i class="r-badge__wrapper r-icon r-icon-question-o">
+          </i>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-shop-o r-cell__left-icon">
+        </i>
+        <div class="r-cell__title">
+          <span>
+            Title2
+          </span>
+        </div>
+        <div class="r-cell__value">
+          <span>
+            Content
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-collapse r-hairline--top-bottom">
+    <div class="r-collapse-item">
+      <div class="r-cell r-cell--clickable r-collapse-item__title r-collapse-item__title--expanded"
+           role="button"
+           tabindex="0"
+           aria-expanded="true"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title1
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+      <div class="r-collapse-item__wrapper">
+        <div class="r-collapse-item__content">
+          Content 1
+        </div>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title2
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+    <div class="r-collapse-item r-collapse-item--border">
+      <div class="r-cell r-cell--clickable r-collapse-item__title"
+           role="button"
+           tabindex="0"
+           aria-expanded="false"
+      >
+        <div class="r-cell__title">
+          <span>
+            Title3
+          </span>
+        </div>
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        </i>
+      </div>
+    </div>
+  </div>
+  <div class="demo-collapse-buttons">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Open All
+        </span>
+      </div>
+    </button>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Toggle All
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;

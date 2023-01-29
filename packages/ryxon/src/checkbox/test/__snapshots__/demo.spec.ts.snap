@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div role="checkbox"
+       class="r-checkbox"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label">
+      Checkbox
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox r-checkbox--disabled"
+       aria-checked="false"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--disabled">
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label r-checkbox__label--disabled">
+      Checkbox
+    </span>
+  </div>
+  <div role="checkbox"
+       class="r-checkbox r-checkbox--disabled"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--disabled r-checkbox__icon--checked">
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label r-checkbox__label--disabled">
+      Checkbox
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--square r-checkbox__icon--checked">
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label">
+      Custom Shape
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+      <i class="r-badge__wrapper r-icon r-icon-success"
+         style="border-color: #ee0a24; background-color: rgb(238, 10, 36);"
+      >
+      </i>
+    </div>
+    <span class="r-checkbox__label">
+      Custom Color
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked"
+         style="font-size: 24px;"
+    >
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label">
+      Custom Icon Size
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+      <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png">
+    </div>
+    <span class="r-checkbox__label">
+      Custom Icon
+    </span>
+  </div>
+</div>
+<div>
+  <div role="checkbox"
+       class="r-checkbox r-checkbox--label-disabled"
+       tabindex="0"
+       aria-checked="true"
+  >
+    <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+      <i class="r-badge__wrapper r-icon r-icon-success">
+      </i>
+    </div>
+    <span class="r-checkbox__label">
+      Checkbox
+    </span>
+  </div>
+</div>
+<div>
+  <div class="r-checkbox-group">
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="true"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox a
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="true"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox b
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-checkbox-group r-checkbox-group--horizontal">
+    <div role="checkbox"
+         class="r-checkbox r-checkbox--horizontal"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox a
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox r-checkbox--horizontal"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox b
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-checkbox-group">
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox a
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox b
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox c
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-checkbox-group">
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox a
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox b
+      </span>
+    </div>
+    <div role="checkbox"
+         class="r-checkbox"
+         tabindex="0"
+         aria-checked="false"
+    >
+      <div class="r-checkbox__icon r-checkbox__icon--round">
+        <i class="r-badge__wrapper r-icon r-icon-success">
+        </i>
+      </div>
+      <span class="r-checkbox__label">
+        Checkbox c
+      </span>
+    </div>
+  </div>
+  <div class="demo-checkbox-buttons">
+    <button type="button"
+            class="r-button r-button--primary r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Check All
+        </span>
+      </div>
+    </button>
+    <button type="button"
+            class="r-button r-button--primary r-button--normal"
+    >
+      <div class="r-button__content">
+        <span class="r-button__text">
+          Inverse
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+<div>
+  <div class="r-checkbox-group">
+    <div class="r-cell-group r-cell-group--inset">
+      <div class="r-cell r-cell--clickable"
+           role="button"
+           tabindex="0"
+      >
+        <div class="r-cell__title">
+          <span>
+            Checkbox a
+          </span>
+        </div>
+        <div role="checkbox"
+             class="r-checkbox"
+             tabindex="0"
+             aria-checked="false"
+        >
+          <div class="r-checkbox__icon r-checkbox__icon--round">
+            <i class="r-badge__wrapper r-icon r-icon-success">
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="r-cell r-cell--clickable"
+           role="button"
+           tabindex="0"
+      >
+        <div class="r-cell__title">
+          <span>
+            Checkbox b
+          </span>
+        </div>
+        <div role="checkbox"
+             class="r-checkbox"
+             tabindex="0"
+             aria-checked="false"
+        >
+          <div class="r-checkbox__icon r-checkbox__icon--round">
+            <i class="r-badge__wrapper r-icon r-icon-success">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

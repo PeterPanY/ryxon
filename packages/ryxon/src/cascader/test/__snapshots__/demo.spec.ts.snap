@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Area
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Select Area"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Area
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Select Area"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Area
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Select Area"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Area
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Select Area"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Area
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Select Area"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+`;

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should emit failed event when validating failed 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               name="A"
+               class="r-field__control"
+        >
+      </div>
+      <div class="r-field__error-message">
+        A failed
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               name="B"
+               class="r-field__control"
+        >
+      </div>
+      <div class="r-field__error-message">
+        B failed
+      </div>
+    </div>
+  </div>
+</form>
+`;

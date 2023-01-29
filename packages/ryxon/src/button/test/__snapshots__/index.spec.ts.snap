@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change icon class prefix when using icon-prefix prop 1`] = `
+<button type="button"
+        class="r-button r-button--default r-button--normal"
+>
+  <div class="r-button__content">
+    <i class="r-badge__wrapper my-icon my-icon-success r-button__icon">
+    </i>
+  </div>
+</button>
+`;
+
+exports[`should render icon in the right side when setting icon-position to right 1`] = `
+<button type="button"
+        class="r-button r-button--default r-button--normal"
+>
+  <div class="r-button__content">
+    <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+    </i>
+  </div>
+</button>
+`;
+
+exports[`should render icon slot correctly 1`] = `
+<button type="button"
+        class="r-button r-button--default r-button--normal"
+>
+  <div class="r-button__content">
+    <div class="r-button__icon">
+      Custom Icon
+    </div>
+    <span class="r-button__text">
+      Text
+    </span>
+  </div>
+</button>
+`;
+
+exports[`should render loading slot correctly 1`] = `
+<button type="button"
+        class="r-button r-button--default r-button--normal r-button--loading"
+>
+  <div class="r-button__content">
+    Custom Loading
+  </div>
+</button>
+`;

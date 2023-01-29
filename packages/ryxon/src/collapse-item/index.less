@@ -1,0 +1,75 @@
+@import '../style/mixins/hairline';
+
+:root {
+  --r-collapse-item-duration: var(--r-duration-base);
+  --r-collapse-item-content-padding: var(--r-padding-sm)
+    var(--r-padding-md);
+  --r-collapse-item-content-font-size: var(--r-font-size-md);
+  --r-collapse-item-content-line-height: 1.5;
+  --r-collapse-item-content-text-color: var(--r-text-color-2);
+  --r-collapse-item-content-background: var(--r-background-2);
+  --r-collapse-item-title-disabled-color: var(--r-text-color-3);
+}
+
+.r-collapse-item {
+  position: relative;
+
+  &--border {
+    &::after {
+      .hairline-top(var(--r-border-color), var(--r-padding-md), var(--r-padding-md));
+    }
+  }
+
+  &__title {
+    .r-cell__right-icon::before {
+      // using translateZ to fix safari rendering issues
+      // see: https://github.com/PeterPanY/ryxon/issues/8608
+      transform: rotate(90deg) translateZ(0);
+      transition: transform var(--r-collapse-item-duration);
+    }
+
+    &::after {
+      right: var(--r-padding-md);
+      display: none;
+    }
+
+    &--expanded {
+      .r-cell__right-icon::before {
+        transform: rotate(-90deg);
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &--borderless {
+      &::after {
+        display: none;
+      }
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+
+      &,
+      & .r-cell__right-icon {
+        color: var(--r-collapse-item-title-disabled-color);
+      }
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    transition: height var(--r-collapse-item-duration) ease-in-out;
+    will-change: height;
+  }
+
+  &__content {
+    padding: var(--r-collapse-item-content-padding);
+    color: var(--r-collapse-item-content-text-color);
+    font-size: var(--r-collapse-item-content-font-size);
+    line-height: var(--r-collapse-item-content-line-height);
+    background: var(--r-collapse-item-content-background);
+  }
+}

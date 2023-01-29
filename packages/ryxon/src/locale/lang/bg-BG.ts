@@ -1,0 +1,71 @@
+export default {
+  name: 'Име',
+  tel: 'Телефон',
+  save: 'Запазване',
+  confirm: 'Потвърди',
+  cancel: 'Отказ',
+  delete: 'Изтриване',
+  loading: 'Зареждане...',
+  noCoupon: 'Без купони',
+  nameEmpty: 'Моля, попълнете името',
+  addContact: 'Добавяне на контакт',
+  telInvalid: 'Неправилно формиран телефонен номер',
+  rCalendar: {
+    end: 'Край',
+    start: 'Старт',
+    title: 'Календар',
+    weekdays: [
+      'неделя',
+      'понеделник',
+      'вторник',
+      'сряда',
+      'четвъртък',
+      'петък',
+      'събота',
+    ],
+    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    rangePrompt: (maxRange: number) => `Изберете не повече от ${maxRange} дни`,
+  },
+  rCascader: {
+    select: 'Избор',
+  },
+  rPagination: {
+    prev: 'Предишна',
+    next: 'Напред',
+  },
+  rPullRefresh: {
+    pulling: 'Издърпайте за опресняване...',
+    loosing: 'Разхлабен за опресняване...',
+  },
+  rSubmitBar: {
+    label: 'Общо:',
+  },
+  rCoupon: {
+    unlimited: 'Неограничен',
+    discount: (discount: number) => `${discount * 10}% отстъпка`,
+    condition: (condition: number) => `Поне ${condition}`,
+  },
+  rCouponCell: {
+    title: 'Купон',
+    count: (count: number) => `Имате ${count} купони`,
+  },
+  rCouponList: {
+    exchange: 'Размяна',
+    close: 'Затвори',
+    enable: 'Налично',
+    disabled: 'Недостъпно',
+    placeholder: 'Код на купон',
+  },
+  rAddressEdit: {
+    area: 'Площ',
+    postal: 'Пощенски',
+    areaEmpty: 'Моля, изберете зона за получаване',
+    addressEmpty: 'Адресът не може да бъде празен',
+    postalEmpty: 'Грешен пощенски код',
+    addressDetail: 'Адрес',
+    defaultAddress: 'Задаване като адрес по подразбиране',
+  },
+  rAddressList: {
+    add: 'Добавяне на нов адрес',
+  },
+};

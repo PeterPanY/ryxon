@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button text correctly 1`] = `
+<div class="r-hairline--top r-dialog__footer">
+  <button type="button"
+          class="r-button r-button--default r-button--large r-dialog__cancel"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Custom Cancel
+      </span>
+    </div>
+  </button>
+  <button type="button"
+          class="r-button r-button--default r-button--large r-dialog__confirm r-hairline--left"
+  >
+    <div class="r-button__content">
+      <span class="r-button__text">
+        Custom Confirm
+      </span>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`should render default slot correctly 1`] = `
+<div class="r-dialog__content">
+  Custom Message
+</div>
+`;
+
+exports[`should render footer slot correctly 1`] = `
+<div role="dialog"
+     tabindex="0"
+     class="r-popup r-popup--center r-dialog"
+     aria-labelledby="message"
+>
+  <div class="r-dialog__content r-dialog__content--isolated">
+    <div class="r-dialog__message">
+      message
+    </div>
+  </div>
+  Custom Footer
+</div>
+`;
+
+exports[`should render title slot correctly 1`] = `
+<div class="r-dialog__header r-dialog__header--isolated">
+  Custom Title
+</div>
+`;

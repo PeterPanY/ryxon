@@ -1,0 +1,640 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Delaware
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Florida
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Wenzhou
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Indiana
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Maine
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable r-field"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        City
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               readonly
+               placeholder="Choose City"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 22px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Delaware
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Florida
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Wenzhou
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Indiana
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Maine
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Monday
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Tuesday
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Wednesday
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Thursday
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Friday
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Morning
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Afternoon
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Evening
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Zhejiang
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Fujian
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Hangzhou
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Wenzhou
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Xihu
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Yuhang
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 66px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="-1"
+              class="r-picker-column__item r-picker-column__item--disabled"
+          >
+            <div class="r-ellipsis">
+              Delaware
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Florida
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Wenzhou
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-loading r-loading--circular r-picker__loading"
+         aria-live="polite"
+         aria-busy="true"
+    >
+      <span class="r-loading__spinner r-loading__spinner--circular">
+        <svg class="r-loading__circular"
+             viewbox="25 25 50 50"
+        >
+          <circle cx="50"
+                  cy="50"
+                  r="20"
+                  fill="none"
+          >
+          </circle>
+        </svg>
+      </span>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-picker">
+    <div class="r-picker__toolbar">
+      <button type="button"
+              class="r-picker__cancel r-haptics-feedback"
+      >
+        Cancel
+      </button>
+      <div class="r-picker__title r-ellipsis">
+        Title
+      </div>
+      <button type="button"
+              class="r-picker__confirm r-haptics-feedback"
+      >
+        Confirm
+      </button>
+    </div>
+    <div class="r-picker__columns"
+         style="height: 264px;"
+    >
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Zhejiang
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Fujian
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Hangzhou
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Wenzhou
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker-column">
+        <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+            class="r-picker-column__wrapper"
+        >
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item r-picker-column__item--selected"
+          >
+            <div class="r-ellipsis">
+              Xihu
+            </div>
+          </li>
+          <li role="button"
+              style="height: 44px;"
+              tabindex="0"
+              class="r-picker-column__item"
+          >
+            <div class="r-ellipsis">
+              Yuhang
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="r-picker__mask"
+           style="background-size: 100% 110px;"
+      >
+      </div>
+      <div class="r-hairline-unset--top-bottom r-picker__frame"
+           style="height: 44px;"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+`;

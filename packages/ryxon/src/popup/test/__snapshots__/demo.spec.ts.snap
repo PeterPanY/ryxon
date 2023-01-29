@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Show Popup
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-arrow-up r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          From Top
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-arrow-down r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          From Bottom
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-arrow-left r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          From Left
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-arrow r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          From Right
+        </span>
+      </div>
+    </div>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-top"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-left"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-right"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Close Icon
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Custom Icon
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Icon Position
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Round Corner (center)
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-fade"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Round Corner (bottom)
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Listen To Click Events
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Listen To Display Events
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+  <transition-stub name="r-fade"
+                   appear="true"
+                   persisted="false"
+                   css="true"
+                   role="button"
+                   tabindex="0"
+  >
+  </transition-stub>
+  <transition-stub name="r-popup-slide-bottom"
+                   appear="false"
+                   persisted="false"
+                   css="true"
+  >
+  </transition-stub>
+</div>
+<div>
+  <div class="r-cell r-cell--clickable"
+       role="button"
+       tabindex="0"
+  >
+    <div class="r-cell__title">
+      <span>
+        Get Container
+      </span>
+    </div>
+    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    </i>
+  </div>
+</div>
+`;

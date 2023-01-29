@@ -1,0 +1,143 @@
+:root {
+  --r-dialog-width: 320px;
+  --r-dialog-small-screen-width: 90%;
+  --r-dialog-font-size: var(--r-font-size-lg);
+  --r-dialog-transition: var(--r-duration-base);
+  --r-dialog-radius: 16px;
+  --r-dialog-background: var(--r-background-2);
+  --r-dialog-header-font-weight: var(--r-font-bold);
+  --r-dialog-header-line-height: 24px;
+  --r-dialog-header-padding-top: 26px;
+  --r-dialog-header-isolated-padding: var(--r-padding-lg) 0;
+  --r-dialog-message-padding: var(--r-padding-lg);
+  --r-dialog-message-font-size: var(--r-font-size-md);
+  --r-dialog-message-line-height: var(--r-line-height-md);
+  --r-dialog-message-max-height: 60vh;
+  --r-dialog-has-title-message-text-color: var(--r-gray-7);
+  --r-dialog-has-title-message-padding-top: var(--r-padding-xs);
+  --r-dialog-button-height: 48px;
+  --r-dialog-round-button-height: 36px;
+  --r-dialog-confirm-button-text-color: var(--r-primary-color);
+}
+
+.r-dialog {
+  top: 45%;
+  width: var(--r-dialog-width);
+  overflow: hidden;
+  font-size: var(--r-dialog-font-size);
+  background: var(--r-dialog-background);
+  border-radius: var(--r-dialog-radius);
+  backface-visibility: hidden; // avoid blurry text after scale animation
+  transition: var(--r-dialog-transition);
+  transition-property: transform, opacity;
+
+  @media (max-width: 321px) {
+    width: var(--r-dialog-small-screen-width);
+  }
+
+  &__header {
+    color: var(--r-text-color);
+    padding-top: var(--r-dialog-header-padding-top);
+    font-weight: var(--r-dialog-header-font-weight);
+    line-height: var(--r-dialog-header-line-height);
+    text-align: center;
+
+    &--isolated {
+      padding: var(--r-dialog-header-isolated-padding);
+    }
+  }
+
+  &__content {
+    &--isolated {
+      display: flex;
+      align-items: center;
+      min-height: 104px;
+    }
+  }
+
+  &__message {
+    color: var(--r-text-color);
+    flex: 1;
+    max-height: var(--r-dialog-message-max-height);
+    padding: 26px var(--r-dialog-message-padding);
+    overflow-y: auto;
+    font-size: var(--r-dialog-message-font-size);
+    line-height: var(--r-dialog-message-line-height);
+
+    // allow newline character
+    white-space: pre-wrap;
+    text-align: center;
+    word-wrap: break-word;
+    -webkit-overflow-scrolling: touch;
+
+    &--has-title {
+      padding-top: var(--r-dialog-has-title-message-padding-top);
+      color: var(--r-dialog-has-title-message-text-color);
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    &--justify {
+      text-align: justify;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  &__confirm,
+  &__cancel {
+    flex: 1;
+    height: var(--r-dialog-button-height);
+    margin: 0;
+    border: 0;
+  }
+
+  &__confirm {
+    &,
+    &:active {
+      color: var(--r-dialog-confirm-button-text-color);
+    }
+  }
+
+  &--round-button {
+    .r-dialog__footer {
+      position: relative;
+      height: auto;
+      padding: var(--r-padding-xs) var(--r-padding-lg) var(--r-padding-md);
+    }
+
+    .r-dialog__message {
+      padding-bottom: var(--r-padding-md);
+      color: var(--r-text-color);
+    }
+
+    .r-dialog__confirm,
+    .r-dialog__cancel {
+      height: var(--r-dialog-round-button-height);
+    }
+
+    .r-dialog__confirm {
+      color: var(--r-white);
+    }
+  }
+
+  &-bounce-enter-from {
+    transform: translate3d(0, -50%, 0) scale(0.7);
+    opacity: 0;
+  }
+
+  &-bounce-leave-active {
+    transform: translate3d(0, -50%, 0) scale(0.9);
+    opacity: 0;
+  }
+}

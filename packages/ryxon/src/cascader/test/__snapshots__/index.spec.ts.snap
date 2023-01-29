@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change close icon when using close-icon prop 1`] = `
+<i class="r-badge__wrapper r-icon r-icon-success r-cascader__close-icon r-haptics-feedback">
+</i>
+`;
+
+exports[`should render option slot correctly 1`] = `
+<li role="menuitemradio"
+    class="r-cascader__option"
+    tabindex="-1"
+    aria-checked="false"
+>
+  Custom Option foo
+</li>
+`;
+
+exports[`should render options-top、options-bottom slots correctly 1`] = `
+<div class="r-tab__panel">
+  Top, tab index: 0
+  <ul role="menu"
+      class="r-cascader__options"
+  >
+    <li role="menuitemradio"
+        class="r-cascader__option r-cascader__option--selected"
+        tabindex="0"
+        aria-checked="true"
+    >
+      <span>
+        Zhejiang
+      </span>
+      <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+      </i>
+    </li>
+    <li role="menuitemradio"
+        class="r-cascader__option"
+        tabindex="-1"
+        aria-checked="false"
+    >
+      <span>
+        Jiangsu
+      </span>
+    </li>
+  </ul>
+  Bottom, tab index: 0
+</div>
+`;
+
+exports[`should render title slot correctly 1`] = `
+<h2 class="r-cascader__title">
+  Custom Title
+</h2>
+`;
+
+exports[`should select correct option when value changed 1`] = `
+<li role="menuitemradio"
+    class="r-cascader__option r-cascader__option--selected"
+    tabindex="0"
+    aria-checked="true"
+>
+  <span>
+    Wenzhou
+  </span>
+  <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+  </i>
+</li>
+`;
+
+exports[`should update tabs when previous tab is clicked 1`] = `
+<div class="r-cascader">
+  <div class="r-cascader__header">
+    <h2 class="r-cascader__title">
+    </h2>
+    <i class="r-badge__wrapper r-icon r-icon-cross r-cascader__close-icon r-haptics-feedback">
+    </i>
+  </div>
+  <div class="r-tabs r-tabs--line r-cascader__tabs">
+    <div class="r-tabs__wrap">
+      <div role="tablist"
+           class="r-tabs__nav r-tabs__nav--line r-tabs__nav--shrink r-tabs__nav--complete"
+           aria-orientation="horizontal"
+      >
+        <div id="r-tabs-0"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink r-cascader__tab"
+             tabindex="-1"
+             aria-selected="false"
+        >
+          <span class="r-tab__text">
+            Jiangsu
+          </span>
+        </div>
+        <div id="r-tabs-1"
+             role="tab"
+             class="r-tab r-tab--line r-tab--shrink r-tab--active r-cascader__tab r-cascader__tab--unselected"
+             tabindex="0"
+             aria-selected="true"
+        >
+          <span class="r-tab__text">
+            Select
+          </span>
+        </div>
+        <div class="r-tabs__line"
+             style="transform: translateX(50px) translateX(-50%); transition-duration: 0.3s;"
+        >
+        </div>
+      </div>
+    </div>
+    <div class="r-tabs__content r-tabs__content--animated">
+      <div class="r-swipe r-tabs__track">
+        <div style="transition-duration: 0ms; transform: translateX(0px); width: 200px;"
+             class="r-swipe__track"
+        >
+          <div class="r-swipe-item r-tab__panel-wrapper"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="-1"
+               aria-hidden="true"
+               aria-labelledby="r-tabs-0"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              <ul role="menu"
+                  class="r-cascader__options"
+              >
+                <li role="menuitemradio"
+                    class="r-cascader__option"
+                    tabindex="-1"
+                    aria-checked="false"
+                >
+                  <span>
+                    Zhejiang
+                  </span>
+                </li>
+                <li role="menuitemradio"
+                    class="r-cascader__option r-cascader__option--selected"
+                    tabindex="0"
+                    aria-checked="true"
+                >
+                  <span>
+                    Jiangsu
+                  </span>
+                  <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+                  </i>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="r-swipe-item r-tab__panel-wrapper"
+               id="r-tab"
+               role="tabpanel"
+               tabindex="0"
+               aria-hidden="false"
+               aria-labelledby="r-tabs-1"
+               style="width: 100px;"
+          >
+            <div class="r-tab__panel">
+              <ul role="menu"
+                  class="r-cascader__options"
+              >
+                <li role="menuitemradio"
+                    class="r-cascader__option"
+                    tabindex="-1"
+                    aria-checked="false"
+                >
+                  <span>
+                    Nanjing
+                  </span>
+                </li>
+                <li role="menuitemradio"
+                    class="r-cascader__option"
+                    tabindex="-1"
+                    aria-checked="false"
+                >
+                  <span>
+                    Wuxi
+                  </span>
+                </li>
+                <li role="menuitemradio"
+                    class="r-cascader__option"
+                    tabindex="-1"
+                    aria-checked="false"
+                >
+                  <span>
+                    Xuzhou
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

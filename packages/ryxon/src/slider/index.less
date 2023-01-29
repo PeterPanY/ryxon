@@ -1,0 +1,104 @@
+:root {
+  --r-slider-active-background: var(--r-primary-color);
+  --r-slider-inactive-background: var(--r-gray-3);
+  --r-slider-disabled-opacity: var(--r-disabled-opacity);
+  --r-slider-bar-height: 2px;
+  --r-slider-button-width: 24px;
+  --r-slider-button-height: 24px;
+  --r-slider-button-radius: 50%;
+  --r-slider-button-background: var(--r-white);
+  --r-slider-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.r-theme-dark {
+  --r-slider-inactive-background: var(--r-background-3);
+}
+
+.r-slider {
+  position: relative;
+  width: 100%;
+  height: var(--r-slider-bar-height);
+  background: var(--r-slider-inactive-background);
+  border-radius: var(--r-radius-max);
+  cursor: pointer;
+
+  // use pseudo element to expand click area
+  &::before {
+    position: absolute;
+    top: calc(var(--r-padding-xs) * -1);
+    right: 0;
+    bottom: calc(var(--r-padding-xs) * -1);
+    left: 0;
+    content: '';
+  }
+
+  &__bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--r-slider-active-background);
+    border-radius: inherit;
+    transition: all var(--r-duration-fast);
+  }
+
+  &__button {
+    width: var(--r-slider-button-width);
+    height: var(--r-slider-button-height);
+    background: var(--r-slider-button-background);
+    border-radius: var(--r-slider-button-radius);
+    box-shadow: var(--r-slider-button-shadow);
+
+    &-wrapper {
+      position: absolute;
+      cursor: grab;
+      top: 50%;
+
+      &--right {
+        right: 0;
+        transform: translate3d(50%, -50%, 0);
+      }
+
+      &--left {
+        left: 0;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: var(--r-slider-disabled-opacity);
+
+    .r-slider__button-wrapper {
+      cursor: not-allowed;
+    }
+  }
+
+  &--vertical {
+    display: inline-block;
+    width: var(--r-slider-bar-height);
+    height: 100%;
+
+    .r-slider__button-wrapper--right {
+      top: auto;
+      right: 50%;
+      bottom: 0;
+      transform: translate3d(50%, 50%, 0);
+    }
+
+    .r-slider__button-wrapper--left {
+      top: 0;
+      right: 50%;
+      left: auto;
+      transform: translate3d(50%, -50%, 0);
+    }
+
+    // use pseudo element to expand click area
+    &::before {
+      top: 0;
+      right: calc(var(--r-padding-xs) * -1);
+      bottom: 0;
+      left: calc(var(--r-padding-xs) * -1);
+    }
+  }
+}

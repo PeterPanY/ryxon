@@ -1,0 +1,97 @@
+:root {
+  --r-grid-item-content-padding: var(--r-padding-md) var(--r-padding-xs);
+  --r-grid-item-content-background: var(--r-background-2);
+  --r-grid-item-content-active-color: var(--r-active-color);
+  --r-grid-item-icon-size: 28px;
+  --r-grid-item-text-color: var(--r-text-color);
+  --r-grid-item-text-font-size: var(--r-font-size-sm);
+}
+
+.r-grid-item {
+  position: relative;
+  box-sizing: border-box;
+
+  &--square {
+    height: 0;
+  }
+
+  &__icon {
+    font-size: var(--r-grid-item-icon-size);
+  }
+
+  &__text {
+    color: var(--r-grid-item-text-color);
+    font-size: var(--r-grid-item-text-font-size);
+    line-height: 1.5;
+    // https://github.com/PeterPanY/ryxon/issues/3894
+    word-break: break-all;
+  }
+
+  &__icon + &__text {
+    margin-top: var(--r-padding-xs);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    padding: var(--r-grid-item-content-padding);
+    background: var(--r-grid-item-content-background);
+
+    &::after {
+      z-index: 1;
+      border-width: 0 var(--r-border-width) var(--r-border-width) 0;
+    }
+
+    &--square {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    &--center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--horizontal {
+      flex-direction: row;
+
+      .r-grid-item__text {
+        margin: 0 0 0 var(--r-padding-xs);
+      }
+    }
+
+    &--reverse {
+      flex-direction: column-reverse;
+
+      .r-grid-item__text {
+        margin: 0 0 var(--r-padding-xs);
+      }
+    }
+
+    &--horizontal&--reverse {
+      flex-direction: row-reverse;
+
+      .r-grid-item__text {
+        margin: 0 var(--r-padding-xs) 0 0;
+      }
+    }
+
+    &--surround {
+      &::after {
+        border-width: var(--r-border-width);
+      }
+    }
+
+    &--clickable {
+      cursor: pointer;
+
+      &:active {
+        background-color: var(--r-grid-item-content-active-color);
+      }
+    }
+  }
+}

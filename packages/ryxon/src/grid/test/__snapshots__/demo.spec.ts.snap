@@ -1,0 +1,460 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid">
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center">
+        <div class="r-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg"
+               class="r-image__img"
+               style="object-fit: contain;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center">
+        <div class="r-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg"
+               class="r-image__img"
+               style="object-fit: contain;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center">
+        <div class="r-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-3.jpeg"
+               class="r-image__img"
+               style="object-fit: contain;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item r-grid-item--square"
+         style="flex-basis: 25%; padding-top: 25%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div style="padding-left: 10px;"
+       class="r-grid"
+  >
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 33.333333333333336%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 50%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-home-o r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          Vue Router
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 50%;"
+    >
+      <div role="button"
+           class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
+           tabindex="0"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-search r-grid-item__icon">
+        </i>
+        <span class="r-grid-item__text">
+          URL
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-grid r-hairline--top">
+    <div class="r-grid-item"
+         style="flex-basis: 50%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-home-o r-grid-item__icon">
+          <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+          </div>
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+    <div class="r-grid-item"
+         style="flex-basis: 50%;"
+    >
+      <div class="r-grid-item__content r-grid-item__content--center r-hairline">
+        <i class="r-badge__wrapper r-icon r-icon-search r-grid-item__icon">
+          <div class="r-badge r-badge--top-right r-badge--fixed">
+            99+
+          </div>
+        </i>
+        <span class="r-grid-item__text">
+          Text
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

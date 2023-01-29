@@ -1,0 +1,394 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="*"
+               multiple
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div class="r-uploader__mask">
+          <div class="r-loading r-loading--circular r-uploader__loading"
+               aria-live="polite"
+               aria-busy="true"
+          >
+            <span class="r-loading__spinner r-loading__spinner--circular">
+              <svg class="r-loading__circular"
+                   viewbox="25 25 50 50"
+              >
+                <circle cx="50"
+                        cy="50"
+                        r="20"
+                        fill="none"
+                >
+                </circle>
+              </svg>
+            </span>
+          </div>
+          <div class="r-uploader__mask-message">
+            Uploading...
+          </div>
+        </div>
+      </div>
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div class="r-uploader__mask">
+          <i class="r-badge__wrapper r-icon r-icon-close r-uploader__mask-icon">
+          </i>
+          <div class="r-uploader__mask-message">
+            Failed
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/sand.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+               multiple
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/sand.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+               multiple
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__input-wrapper">
+        <button type="button"
+                class="r-button r-button--primary r-button--normal"
+        >
+          <div class="r-button__content">
+            <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+            </i>
+            <span class="r-button__text">
+              Upload File
+            </span>
+          </div>
+        </button>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+          <div class="r-uploader__preview-cover">
+            <div class="preview-cover r-ellipsis">
+              Image Name
+            </div>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image"
+             style="width: 60px; height: 60px;"
+        >
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__upload"
+           style="width: 60px; height: 60px;"
+      >
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper r-uploader__wrapper--disabled">
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="image/*"
+               disabled
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-uploader">
+    <div class="r-uploader__wrapper">
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/sand.jpeg"
+               class="r-image__img"
+               style="object-fit: cover;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+        <div role="button"
+             class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+             tabindex="0"
+             aria-label="Delete"
+        >
+          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          </i>
+        </div>
+      </div>
+      <div class="r-uploader__preview">
+        <div class="r-image r-uploader__preview-image">
+          <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg"
+               class="r-image__img"
+               style="object-fit: contain;"
+          >
+          <div class="r-image__loading">
+            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="r-uploader__upload">
+        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        </i>
+        <input type="file"
+               class="r-uploader__input"
+               accept="*"
+               multiple
+        >
+      </div>
+    </div>
+  </div>
+</div>
+`;

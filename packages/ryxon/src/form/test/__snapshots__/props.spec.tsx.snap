@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render colon when using colon prop 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__title r-field__label">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Label:
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field">
+    <div class="r-cell__title r-field__label">
+      Custom Label:
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+        >
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`should render error-message-align prop correctly 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+        >
+      </div>
+      <div class="r-field__error-message r-field__error-message--right">
+        Error
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`should render input-align prop correctly 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control r-field__control--right"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <div class="r-field__control r-field__control--right r-field__control--custom">
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`should render label-align prop correctly 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field r-field--label-right">
+    <div class="r-cell__title r-field__label r-field__label--right">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Label
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field r-field--label-center">
+    <div class="r-cell__title r-field__label r-field__label--center">
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Label
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`should render label-width prop correctly 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__title r-field__label"
+         style="width: 5rem;"
+    >
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Label
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field">
+    <div class="r-cell__title r-field__label"
+         style="width: 10vw;"
+    >
+      <label id="r-field-label"
+             for="r-field-input"
+      >
+        Label
+      </label>
+    </div>
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               class="r-field__control"
+               aria-labelledby="r-field-label"
+        >
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`should validate first field when using validate-first prop 1`] = `
+<form class="r-form">
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               name="A"
+               class="r-field__control"
+        >
+      </div>
+      <div class="r-field__error-message">
+        A failed
+      </div>
+    </div>
+  </div>
+  <div class="r-cell r-field">
+    <div class="r-cell__value r-field__value">
+      <div class="r-field__body">
+        <input type="text"
+               id="r-field-input"
+               name="B"
+               class="r-field__control"
+        >
+      </div>
+    </div>
+  </div>
+</form>
+`;

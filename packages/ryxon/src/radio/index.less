@@ -1,0 +1,96 @@
+:root {
+  --r-radio-size: 20px;
+  --r-radio-border-color: var(--r-gray-5);
+  --r-radio-duration: var(--r-duration-fast);
+  --r-radio-label-margin: var(--r-padding-xs);
+  --r-radio-label-color: var(--r-text-color);
+  --r-radio-checked-icon-color: var(--r-primary-color);
+  --r-radio-disabled-icon-color: var(--r-gray-5);
+  --r-radio-disabled-label-color: var(--r-text-color-3);
+  --r-radio-disabled-background: var(--r-border-color);
+}
+
+.r-radio {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--label-disabled {
+    cursor: default;
+  }
+
+  &--horizontal {
+    margin-right: var(--r-padding-sm);
+  }
+
+  &__icon {
+    flex: none;
+    height: 1em;
+    font-size: var(--r-radio-size);
+    line-height: 1em;
+    cursor: pointer;
+
+    .r-icon {
+      display: block;
+      box-sizing: border-box;
+      width: 1.25em;
+      height: 1.25em;
+      color: transparent;
+      font-size: 0.8em;
+      line-height: 1.25;
+      text-align: center;
+      border: 1px solid var(--r-radio-border-color);
+      transition-duration: var(--r-radio-duration);
+      transition-property: color, border-color, background-color;
+    }
+
+    &--round {
+      .r-icon {
+        border-radius: 100%;
+      }
+    }
+
+    &--checked {
+      .r-icon {
+        color: var(--r-white);
+        background-color: var(--r-radio-checked-icon-color);
+        border-color: var(--r-radio-checked-icon-color);
+      }
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+
+      .r-icon {
+        background-color: var(--r-radio-disabled-background);
+        border-color: var(--r-radio-disabled-icon-color);
+      }
+    }
+
+    &--disabled&--checked {
+      .r-icon {
+        color: var(--r-radio-disabled-icon-color);
+      }
+    }
+  }
+
+  &__label {
+    margin-left: var(--r-radio-label-margin);
+    color: var(--r-radio-label-color);
+    line-height: var(--r-radio-size);
+
+    &--left {
+      margin: 0 var(--r-radio-label-margin) 0 0;
+    }
+
+    &--disabled {
+      color: var(--r-radio-disabled-label-color);
+    }
+  }
+}

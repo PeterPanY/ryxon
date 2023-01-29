@@ -1,0 +1,352 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+        <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+        </div>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        </i>
+        <div class="r-badge r-badge--top-right r-badge--fixed">
+          5
+        </div>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+        <div class="r-badge r-badge--top-right r-badge--fixed">
+          20
+        </div>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png">
+        <div class="r-badge r-badge--top-right r-badge--fixed">
+          3
+        </div>
+      </div>
+      <div class="r-tabbar-item__text">
+        <span>
+          Custom
+        </span>
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         style="color: rgb(238, 10, 36);"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div role="tablist"
+       class="r-tabbar r-tabbar--fixed r-hairline--top-bottom r-safe-area-bottom"
+  >
+    <div role="tab"
+         class="r-tabbar-item r-tabbar-item--active"
+         tabindex="0"
+         aria-selected="true"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab 1
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-search">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab 2
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab 3
+      </div>
+    </div>
+    <div role="tab"
+         class="r-tabbar-item"
+         tabindex="0"
+         aria-selected="false"
+    >
+      <div class="r-badge__wrapper r-tabbar-item__icon">
+        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        </i>
+      </div>
+      <div class="r-tabbar-item__text">
+        Tab 4
+      </div>
+    </div>
+  </div>
+</div>
+`;

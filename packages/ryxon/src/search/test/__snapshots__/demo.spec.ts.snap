@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render demo and match snapshot 1`] = `
+<div>
+  <div class="r-search">
+    <div class="r-search__content r-search__content--square">
+      <div class="r-cell r-cell--borderless r-field r-search__field">
+        <div class="r-field__left-icon">
+          <i class="r-badge__wrapper r-icon r-icon-search">
+          </i>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="search"
+                   id="r-search-input"
+                   class="r-field__control"
+                   placeholder="Placeholder"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <form action="/">
+    <div class="r-search r-search--show-action">
+      <div class="r-search__content r-search__content--square">
+        <div class="r-cell r-cell--borderless r-field r-search__field">
+          <div class="r-field__left-icon">
+            <i class="r-badge__wrapper r-icon r-icon-search">
+            </i>
+          </div>
+          <div class="r-cell__value r-field__value">
+            <div class="r-field__body">
+              <input type="search"
+                     id="r-search-input"
+                     class="r-field__control"
+                     placeholder="Placeholder"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="r-search__action"
+           role="button"
+           tabindex="0"
+      >
+        Cancel
+      </div>
+    </div>
+  </form>
+</div>
+<div>
+  <div class="r-search">
+    <div class="r-search__content r-search__content--square">
+      <div class="r-cell r-cell--borderless r-field r-search__field">
+        <div class="r-field__left-icon">
+          <i class="r-badge__wrapper r-icon r-icon-search">
+          </i>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="search"
+                   id="r-search-input"
+                   class="r-field__control r-field__control--center"
+                   placeholder="Placeholder"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-search">
+    <div class="r-search__content r-search__content--square">
+      <div class="r-cell r-cell--borderless r-field r-field--disabled r-search__field">
+        <div class="r-field__left-icon">
+          <i class="r-badge__wrapper r-icon r-icon-search">
+          </i>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="search"
+                   id="r-search-input"
+                   class="r-field__control"
+                   disabled
+                   placeholder="Placeholder"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-search"
+       style="background: rgb(79, 192, 141);"
+  >
+    <div class="r-search__content r-search__content--round">
+      <div class="r-cell r-cell--borderless r-field r-search__field">
+        <div class="r-field__left-icon">
+          <i class="r-badge__wrapper r-icon r-icon-search">
+          </i>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="search"
+                   id="r-search-input"
+                   class="r-field__control"
+                   placeholder="Placeholder"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="r-search r-search--show-action">
+    <div class="r-search__content r-search__content--square">
+      <label class="r-search__label"
+             for="r-search-input"
+      >
+        Address
+      </label>
+      <div class="r-cell r-cell--borderless r-field r-search__field">
+        <div class="r-field__left-icon">
+          <i class="r-badge__wrapper r-icon r-icon-search">
+          </i>
+        </div>
+        <div class="r-cell__value r-field__value">
+          <div class="r-field__body">
+            <input type="search"
+                   id="r-search-input"
+                   class="r-field__control"
+                   placeholder="Placeholder"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r-search__action"
+         role="button"
+         tabindex="0"
+    >
+      <div>
+        Search
+      </div>
+    </div>
+  </div>
+</div>
+`;

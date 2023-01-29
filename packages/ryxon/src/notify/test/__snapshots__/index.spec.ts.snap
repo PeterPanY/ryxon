@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Notify correctly 1`] = `
+<div
+  class="r-popup r-popup--top r-notify r-notify--danger r-popup-slide-top-enter-from r-popup-slide-top-enter-active"
+  role="dialog"
+  style="z-index: 2001; transition-duration: 0.2s;"
+  tabindex="0"
+>
+  
+  test
+  
+  <!---->
+</div>
+`;

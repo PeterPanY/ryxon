@@ -1,0 +1,135 @@
+@keyframes r-slide-up-enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes r-slide-up-leave {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes r-slide-down-enter {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes r-slide-down-leave {
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes r-slide-left-enter {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes r-slide-left-leave {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes r-slide-right-enter {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes r-slide-right-leave {
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes r-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes r-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes r-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.r-fade {
+  &-enter-active {
+    animation: var(--r-duration-base) r-fade-in both var(--r-ease-out);
+  }
+
+  &-leave-active {
+    animation: var(--r-duration-base) r-fade-out both var(--r-ease-in);
+  }
+}
+
+.r-slide-up {
+  &-enter-active {
+    animation: r-slide-up-enter var(--r-duration-base) both
+      var(--r-ease-out);
+  }
+
+  &-leave-active {
+    animation: r-slide-up-leave var(--r-duration-base) both
+      var(--r-ease-in);
+  }
+}
+
+.r-slide-down {
+  &-enter-active {
+    animation: r-slide-down-enter var(--r-duration-base) both
+      var(--r-ease-out);
+  }
+
+  &-leave-active {
+    animation: r-slide-down-leave var(--r-duration-base) both
+      var(--r-ease-in);
+  }
+}
+
+.r-slide-left {
+  &-enter-active {
+    animation: r-slide-left-enter var(--r-duration-base) both
+      var(--r-ease-out);
+  }
+
+  &-leave-active {
+    animation: r-slide-left-leave var(--r-duration-base) both
+      var(--r-ease-in);
+  }
+}
+
+.r-slide-right {
+  &-enter-active {
+    animation: r-slide-right-enter var(--r-duration-base) both
+      var(--r-ease-out);
+  }
+
+  &-leave-active {
+    animation: r-slide-right-leave var(--r-duration-base) both
+      var(--r-ease-in);
+  }
+}

@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should filter options when using filter prop 1`] = `
+<div class="r-picker">
+  <div class="r-picker__toolbar">
+    <button type="button"
+            class="r-picker__cancel r-haptics-feedback"
+    >
+      Cancel
+    </button>
+    <button type="button"
+            class="r-picker__confirm r-haptics-feedback"
+    >
+      Confirm
+    </button>
+  </div>
+  <div class="r-picker__columns"
+       style="height: 264px;"
+  >
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            2000
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            2010
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            10
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            10
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            20
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            30
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker__mask"
+         style="background-size: 100% 110px;"
+    >
+    </div>
+    <div class="r-hairline-unset--top-bottom r-picker__frame"
+         style="height: 44px;"
+    >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should format options correctly when using formatter prop 1`] = `
+<div class="r-picker">
+  <div class="r-picker__toolbar">
+    <button type="button"
+            class="r-picker__cancel r-haptics-feedback"
+    >
+      Cancel
+    </button>
+    <button type="button"
+            class="r-picker__confirm r-haptics-feedback"
+    >
+      Confirm
+    </button>
+  </div>
+  <div class="r-picker__columns"
+       style="height: 264px;"
+  >
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            2000 year
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            2010 year
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            10 month
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker-column">
+      <ul style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;"
+          class="r-picker-column__wrapper"
+      >
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item r-picker-column__item--selected"
+        >
+          <div class="r-ellipsis">
+            10 day
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            20 day
+          </div>
+        </li>
+        <li role="button"
+            style="height: 44px;"
+            tabindex="0"
+            class="r-picker-column__item"
+        >
+          <div class="r-ellipsis">
+            30 day
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="r-picker__mask"
+         style="background-size: 100% 110px;"
+    >
+    </div>
+    <div class="r-hairline-unset--top-bottom r-picker__frame"
+         style="height: 44px;"
+    >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render title slot correctly 1`] = `
+<div class="r-picker__toolbar">
+  <button type="button"
+          class="r-picker__cancel r-haptics-feedback"
+  >
+    Cancel
+  </button>
+  Custom title
+  <button type="button"
+          class="r-picker__confirm r-haptics-feedback"
+  >
+    Confirm
+  </button>
+</div>
+`;

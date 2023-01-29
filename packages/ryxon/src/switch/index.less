@@ -1,0 +1,75 @@
+:root {
+  --r-switch-size: 26px;
+  --r-switch-width: calc(1.8em + 4px);
+  --r-switch-height: calc(1em + 4px);
+  --r-switch-node-size: 1em;
+  --r-switch-node-background: var(--r-white);
+  --r-switch-node-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05);
+  --r-switch-background: rgba(120, 120, 128, 0.16);
+  --r-switch-on-background: var(--r-primary-color);
+  --r-switch-duration: var(--r-duration-base);
+  --r-switch-disabled-opacity: var(--r-disabled-opacity);
+}
+
+.r-theme-dark {
+  --r-switch-background: rgba(120, 120, 128, 0.32);
+}
+
+.r-switch {
+  position: relative;
+  display: inline-block;
+  box-sizing: content-box;
+  width: var(--r-switch-width);
+  height: var(--r-switch-height);
+  font-size: var(--r-switch-size);
+  background: var(--r-switch-background);
+  border-radius: var(--r-switch-node-size);
+  cursor: pointer;
+  transition: background-color var(--r-switch-duration);
+
+  &__node {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: var(--r-switch-node-size);
+    height: var(--r-switch-node-size);
+    // https://github.com/PeterPanY/ryxon/issues/9839
+    font-size: inherit;
+    background: var(--r-switch-node-background);
+    border-radius: 100%;
+    box-shadow: var(--r-switch-node-shadow);
+    transition: transform var(--r-switch-duration)
+      cubic-bezier(0.3, 1.05, 0.4, 1.05);
+  }
+
+  &__loading {
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    line-height: 1;
+  }
+
+  &--on {
+    background: var(--r-switch-on-background);
+
+    .r-switch__node {
+      transform: translateX(
+        calc(var(--r-switch-width) - var(--r-switch-node-size) - 4px)
+      );
+    }
+
+    .r-switch__loading {
+      color: var(--r-switch-on-background);
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: var(--r-switch-disabled-opacity);
+  }
+
+  &--loading {
+    cursor: default;
+  }
+}
