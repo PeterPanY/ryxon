@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@ryxon/components": "workspace:*",
-    "@ryxon/ryxon": "^1.0.7",
+    "ryxon": "^1.0.7",
     "fast-glob": "^3.2.11",
     "sass": "^1.54.5",
     "vitepress": "^1.0.0-alpha.9",
