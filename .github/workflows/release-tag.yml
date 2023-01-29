@@ -20,4 +20,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           body: |
-            更新内容参见。
+            更新内容参见 [CHANGELOG](https://vant-ui.github.io/vant/#/zh-CN/changelog)。
+
+            Please refer to [CHANGELOG](https://vant-ui.github.io/vant/#/en-US/changelog) for details.
