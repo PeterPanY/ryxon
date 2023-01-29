@@ -1,5 +1,5 @@
 {
-  "name": "@ryxon/ryxon",
+  "name": "ryxon",
   "version": "1.0.6",
   "description": "Mobile UI Components built on Vue",
   "main": "lib/ryxon.cjs.js",
