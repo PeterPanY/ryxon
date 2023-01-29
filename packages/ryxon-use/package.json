@@ -1,6 +1,6 @@
 {
   "name": "@ryxon/use",
-  "version": "1.4.4",
+  "version": "1.0.0",
   "description": "Ryxon Composition API",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
