@@ -21,7 +21,7 @@
           <div class="example-source language-vue" v-html="decodedSource"></div>
         </div>
       </Transition>
-      
+
       <Transition name="r-fade-in-linear">
         <div
           v-show="sourceVisible"
@@ -51,7 +51,7 @@ const n = 'button/basic'
 const formatPathDemos = computed(() => {
   const demoObj = {}
 
-  Object.keys(demos || {}).forEach(key => {
+  Object.keys(demos || {}).forEach((key) => {
     demoObj[key.replace('../../../examples/', '').replace('.vue', '')] =
       demos[key].default
   })
@@ -77,7 +77,7 @@ function toggleSourceVisible() {
 .example-showcase {
   padding: 0.8rem;
   margin: 0.5px;
-  >.r-icon {
+  > .r-icon {
     margin-right: 16px;
     font-size: 26px;
   }
@@ -109,9 +109,10 @@ function toggleSourceVisible() {
     right: 0;
     bottom: 0;
     z-index: 10;
+    background: var(--r-white);
 
     &:hover {
-      color: var(--r-color-primary);
+      color: var(--r-primary-color);
     }
   }
   .example-source-wrapper {
@@ -129,5 +130,4 @@ function toggleSourceVisible() {
   margin: 0px 0;
   border-top: 1px solid var(--border-color);
 }
-
 </style>

@@ -10,11 +10,12 @@ import Theme from 'vitepress/dist/client/theme-default/index.js'
 export default define<ThemeType>({
   ...Theme,
   enhanceApp: ({ app }) => {
-    Object.keys(Ryxon).forEach(key => {
-      if (key.startsWith('R') && Ryxon[key].name) {
+    Object.keys(Ryxon).forEach((key) => {
+      // key.startsWith('R')
+      if (Ryxon[key].name) {
         app.component(Ryxon[key].name, Ryxon[key])
       }
     })
     globals.forEach(([name, comp]) => app.component(name, comp))
-  }
+  },
 })

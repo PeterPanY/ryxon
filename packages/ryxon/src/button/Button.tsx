@@ -3,7 +3,7 @@ import {
   type PropType,
   type CSSProperties,
   type ExtractPropTypes,
-} from 'vue';
+} from 'vue'
 
 // Utils
 import {
@@ -13,12 +13,12 @@ import {
   makeStringProp,
   createNamespace,
   BORDER_SURROUND,
-} from '../utils';
-import { useRoute, routeProps } from '../composables/use-route';
+} from '../utils'
+import { useRoute, routeProps } from '../composables/use-route'
 
 // Components
-import { Icon } from '../icon';
-import { Loading, LoadingType } from '../loading';
+import { Icon } from '../icon'
+import { Loading, LoadingType } from '../loading'
 
 // Types
 import {
@@ -26,65 +26,60 @@ import {
   ButtonType,
   ButtonNativeType,
   ButtonIconPosition,
-} from './types';
+} from './types'
 
-const [name, bem] = createNamespace('button');
+const [, bem] = createNamespace('button')
 
 export const buttonProps = extend({}, routeProps, {
-  tag: makeStringProp<keyof HTMLElementTagNameMap>('button'),
-  text: String,
-  icon: String,
-  type: makeStringProp<ButtonType>('default'),
-  size: makeStringProp<ButtonSize>('normal'),
-  color: String,
-  block: Boolean,
-  plain: Boolean,
-  round: Boolean,
-  square: Boolean,
-  loading: Boolean,
-  hairline: Boolean,
-  disabled: Boolean,
-  iconPrefix: String,
-  nativeType: makeStringProp<ButtonNativeType>('button'),
-  loadingSize: numericProp,
-  loadingText: String,
-  loadingType: String as PropType<LoadingType>,
-  iconPosition: makeStringProp<ButtonIconPosition>('left'),
-});
+  type: makeStringProp<ButtonType>('default'), // 类型，可选值为 primary success warning danger
+  size: makeStringProp<ButtonSize>('normal'), // 尺寸，可选值为 large small mini
+  text: String, // 按钮文字
+  color: String, // 按钮颜色
+  icon: String, // 左侧图标名称或图片链接
+  iconPrefix: String, // 图标类名前缀
+  iconPosition: makeStringProp<ButtonIconPosition>('left'), // 图标展示位置
+  tag: makeStringProp<keyof HTMLElementTagNameMap>('button'), // 按钮根节点的 HTML 标签
+  nativeType: makeStringProp<ButtonNativeType>('button'), // 原生 button 标签的 type 属性
+  block: Boolean, // 是否为块级元素
+  plain: Boolean, // 是否为朴素按钮
+  square: Boolean, // 	是否为方形按钮
+  round: Boolean, // 是否为圆形按钮
+  disabled: Boolean, // 是否禁用按钮
+  hairline: Boolean, // 是否使用 0.5px 边框
+  loading: Boolean, // 是否显示为加载状态
+  loadingText: String, // 加载状态提示文字
+  loadingType: String as PropType<LoadingType>, // 	加载图标类型
+  loadingSize: numericProp, // 加载图标大小
+})
 
-export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
+export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 
 export default defineComponent({
-  name,
-
+  name: 'RButton',
   props: buttonProps,
-
   emits: ['click'],
-
   setup(props, { emit, slots }) {
-    const route = useRoute();
-
+    const route = useRoute()
     const renderLoadingIcon = () => {
       if (slots.loading) {
-        return slots.loading();
+        return slots.loading()
       }
-
       return (
         <Loading
           size={props.loadingSize}
           type={props.loadingType}
           class={bem('loading')}
         />
-      );
-    };
+      )
+    }
 
     const renderIcon = () => {
       if (props.loading) {
-        return renderLoadingIcon();
+        return renderLoadingIcon()
       }
 
       if (slots.icon) {
-        return <div class={bem('icon')}>{slots.icon()}</div>;
+        return <div class={bem('icon')}>{slots.icon()}</div>
       }
 
       if (props.icon) {
@@ -94,54 +89,54 @@ export default defineComponent({
             class={bem('icon')}
             classPrefix={props.iconPrefix}
           />
-        );
+        )
       }
-    };
+    }
 
     const renderText = () => {
-      let text;
+      let text
       if (props.loading) {
-        text = props.loadingText;
+        text = props.loadingText
       } else {
-        text = slots.default ? slots.default() : props.text;
+        text = slots.default ? slots.default() : props.text
       }
 
       if (text) {
-        return <span class={bem('text')}>{text}</span>;
+        return <span class={bem('text')}>{text}</span>
       }
-    };
+    }
 
     const getStyle = () => {
-      const { color, plain } = props;
+      const { color, plain } = props
       if (color) {
         const style: CSSProperties = {
           color: plain ? color : 'white',
-        };
+        }
 
         if (!plain) {
           // Use background instead of backgroundColor to make linear-gradient work
-          style.background = color;
+          style.background = color
         }
 
         // hide border when color is linear-gradient
         if (color.includes('gradient')) {
-          style.border = 0;
+          style.border = 0
         } else {
-          style.borderColor = color;
+          style.borderColor = color
         }
 
-        return style;
+        return style
       }
-    };
+    }
 
     const onClick = (event: MouseEvent) => {
       if (props.loading) {
-        preventDefault(event);
+        preventDefault(event)
       } else if (!props.disabled) {
-        emit('click', event);
-        route();
+        emit('click', event)
+        route()
       }
-    };
+    }
 
     return () => {
       const {
@@ -157,7 +152,7 @@ export default defineComponent({
         hairline,
         nativeType,
         iconPosition,
-      } = props;
+      } = props
 
       const classes = [
         bem([
@@ -174,7 +169,7 @@ export default defineComponent({
           },
         ]),
         { [BORDER_SURROUND]: hairline },
-      ];
+      ]
 
       return (
         <tag
@@ -190,7 +185,7 @@ export default defineComponent({
             {iconPosition === 'right' && renderIcon()}
           </div>
         </tag>
-      );
-    };
+      )
+    }
   },
-});
+})

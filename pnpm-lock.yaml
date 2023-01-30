@@ -191,7 +191,7 @@ importers:
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
       prismjs: ^1.28.0
-      ryxon: ^1.0.7
+      ryxon: workspace:*
       sass: ^1.54.5
       unplugin-vue-define-options: ^0.10.0
       vitepress: ^1.0.0-alpha.9
