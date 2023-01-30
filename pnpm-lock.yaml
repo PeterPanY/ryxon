@@ -47,8 +47,8 @@ importers:
       '@ryxon/cli': workspace:*
       '@ryxon/eslint-config': workspace:*
       '@ryxon/icons': workspace:*
-      '@ryxon/popperjs': workspace:*
-      '@ryxon/use': workspace:*
+      '@ryxon/popperjs': ^1.0.1
+      '@ryxon/use': ^1.0.1
       '@types/jest': ^29.1.1
       '@types/node': ^18.11.18
       '@vue/runtime-core': ^3.2.38
@@ -187,11 +187,11 @@ importers:
   packages/ryxon-docs:
     specifiers:
       '@ryxon/components': workspace:*
-      '@ryxon/ryxon': workspace:*
       fast-glob: ^3.2.11
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
       prismjs: ^1.28.0
+      ryxon: ^1.0.7
       sass: ^1.54.5
       unplugin-vue-define-options: ^0.10.0
       vitepress: ^1.0.0-alpha.9
@@ -203,8 +203,8 @@ importers:
       unplugin-vue-define-options: 0.10.0
     devDependencies:
       '@ryxon/components': link:../ryxon-components
-      '@ryxon/ryxon': link:../ryxon
       fast-glob: 3.2.12
+      ryxon: link:../ryxon
       sass: 1.57.1
       vitepress: 1.0.0-alpha.36_sass@1.57.1
       vitepress-theme-demoblock: 1.4.2_sass@1.57.1
