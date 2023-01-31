@@ -24,14 +24,6 @@ Contains color specifications, font specifications, and component design specifi
 
 <a class="design-download" href="https://github.com/PeterPanY/ryxon/blob/main/packages/ryxon/docs/assets/design.sketch?raw=true">Download</a>
 
-### Icons (Sketch)
-
-Contains icon library resources.
-
-<img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/design-icons-0321.png" style="width: 80%; box-shadow: 0 1px 2px rgba(0,0,0,.2)">
-
-<a class="design-download" href="https://github.com/PeterPanY/ryxon/blob/main/packages/ryxon-icons/assets/icons.sketch?raw=true">Download</a>
-
 ### Axure
 
 <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/ryxon-axure-0905.png" style="width: 80%; box-shadow: 0 1px 2px rgba(0,0,0,.2)">

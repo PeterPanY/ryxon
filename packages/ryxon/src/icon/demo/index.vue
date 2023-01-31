@@ -1,38 +1,38 @@
 <script setup lang="ts">
-import RIcon from '..';
-import RTabs from '../../tabs';
-import RTab from '../../tab';
-import RRow from '../../row';
-import RCol from '../../col';
+import RIcon from '..'
+import RTabs from '../../tabs'
+import RTab from '../../tab'
+import RRow from '../../row'
+import RCol from '../../col'
 // import * as Icons from '@ryxon/icons';
-import { ref } from 'vue';
-import { cdnURL, useTranslate } from '../../../docs/site';
-import { showNotify } from '../../notify';
+import { ref } from 'vue'
+import { cdnURL, useTranslate } from '../../../docs/site'
+import { showNotify } from '../../notify'
 
 // from https://30secondsofcode.org
 function copyToClipboard(str: string) {
-  const el = document.createElement('textarea');
-  el.value = str;
-  el.setAttribute('readonly', '');
-  el.style.position = 'absolute';
-  el.style.left = '-9999px';
-  document.body.appendChild(el);
+  const el = document.createElement('textarea')
+  el.value = str
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
 
-  const selection = document.getSelection();
+  const selection = document.getSelection()
 
   if (!selection) {
-    return;
+    return
   }
 
-  const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+  const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false
 
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
 
   if (selected) {
-    selection.removeAllRanges();
-    selection.addRange(selected);
+    selection.removeAllRanges()
+    selection.addRange(selected)
   }
 }
 
@@ -59,36 +59,36 @@ const t = useTranslate({
     color: 'Icon Color',
     size: 'Icon Size',
   },
-});
+})
 
-const tab = ref(0);
-const demoIcon = 'chat-o';
-const demoImage = cdnURL('icon-demo.png');
+const tab = ref(0)
+const demoIcon = 'chat-o'
+const demoImage = cdnURL('icon-demo.png')
 
 const copy = (icon: string, option: Record<string, unknown> = {}) => {
-  let tag = `<r-icon name="${icon}"`;
+  let tag = `<r-icon name="${icon}"`
   if ('dot' in option) {
-    tag = `${tag} ${option.dot ? 'dot' : ''}`;
+    tag = `${tag} ${option.dot ? 'dot' : ''}`
   }
   if ('badge' in option) {
-    tag = `${tag} badge="${option.badge}"`;
+    tag = `${tag} badge="${option.badge}"`
   }
   if ('color' in option) {
-    tag = `${tag} color="${option.color}"`;
+    tag = `${tag} color="${option.color}"`
   }
   if ('size' in option) {
-    tag = `${tag} size="${option.size}"`;
+    tag = `${tag} size="${option.size}"`
   }
-  tag = `${tag} />`;
-  copyToClipboard(tag);
+  tag = `${tag} />`
+  copyToClipboard(tag)
 
   showNotify({
     type: 'success',
     duration: 1500,
     className: 'demo-icon-notify',
     message: `${t('copied')}：${tag}`,
-  });
-};
+  })
+}
 </script>
 
 <template>
@@ -146,48 +146,6 @@ const copy = (icon: string, option: Record<string, unknown> = {}) => {
         </r-row>
       </demo-block>
     </r-tab>
-
-    <!-- <r-tab class="demo-icon-tab-panel" :title="t('basic')">
-      <r-row>
-        <r-col
-          v-for="icon in Icons.basic"
-          :key="icon"
-          span="6"
-          @click="copy(icon)"
-        >
-          <r-icon :name="icon" />
-          <span>{{ icon }}</span>
-        </r-col>
-      </r-row>
-    </r-tab> -->
-
-    <!-- <r-tab class="demo-icon-tab-panel" :title="t('outline')">
-      <r-row>
-        <r-col
-          v-for="icon in icons.outline"
-          :key="icon"
-          span="6"
-          @click="copy(icon)"
-        >
-          <r-icon :name="icon" />
-          <span>{{ icon }}</span>
-        </r-col>
-      </r-row>
-    </r-tab> -->
-
-    <!-- <r-tab class="demo-icon-tab-panel" :title="t('filled')">
-      <r-row>
-        <r-col
-          v-for="icon in icons.filled"
-          :key="icon"
-          span="6"
-          @click="copy(icon)"
-        >
-          <r-icon :name="icon" />
-          <span>{{ icon }}</span>
-        </r-col>
-      </r-row>
-    </r-tab> -->
   </r-tabs>
 </template>
 

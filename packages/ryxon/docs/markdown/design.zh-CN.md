@@ -24,14 +24,6 @@
 
 <a class="design-download" href="https://github.com/PeterPanY/ryxon/blob/main/packages/ryxon/docs/assets/design.sketch?raw=true">下载</a>
 
-### 图标设计稿（Sketch）
-
-包含 Sketch 格式的图标库资源。
-
-<img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/design-icons-0321.png" style="width: 80%; box-shadow: 0 1px 2px rgba(0,0,0,.2)">
-
-<a class="design-download" href="https://github.com/PeterPanY/ryxon/blob/main/packages/ryxon-icons/assets/icons.sketch?raw=true">下载</a>
-
 #### 在线资源
 
 Ryxon 的所有图标都托管在 **iconfont.cn** 上，点此查看：[Ryxon 图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=31945)。
