@@ -4,7 +4,7 @@ import RTabs from '../../tabs';
 import RTab from '../../tab';
 import RRow from '../../row';
 import RCol from '../../col';
-import icons from '@ryxon/icons';
+// import * as Icons from '@ryxon/icons';
 import { ref } from 'vue';
 import { cdnURL, useTranslate } from '../../../docs/site';
 import { showNotify } from '../../notify';
@@ -147,10 +147,10 @@ const copy = (icon: string, option: Record<string, unknown> = {}) => {
       </demo-block>
     </r-tab>
 
-    <r-tab class="demo-icon-tab-panel" :title="t('basic')">
+    <!-- <r-tab class="demo-icon-tab-panel" :title="t('basic')">
       <r-row>
         <r-col
-          v-for="icon in icons.basic"
+          v-for="icon in Icons.basic"
           :key="icon"
           span="6"
           @click="copy(icon)"
@@ -159,9 +159,9 @@ const copy = (icon: string, option: Record<string, unknown> = {}) => {
           <span>{{ icon }}</span>
         </r-col>
       </r-row>
-    </r-tab>
+    </r-tab> -->
 
-    <r-tab class="demo-icon-tab-panel" :title="t('outline')">
+    <!-- <r-tab class="demo-icon-tab-panel" :title="t('outline')">
       <r-row>
         <r-col
           v-for="icon in icons.outline"
@@ -173,9 +173,9 @@ const copy = (icon: string, option: Record<string, unknown> = {}) => {
           <span>{{ icon }}</span>
         </r-col>
       </r-row>
-    </r-tab>
+    </r-tab> -->
 
-    <r-tab class="demo-icon-tab-panel" :title="t('filled')">
+    <!-- <r-tab class="demo-icon-tab-panel" :title="t('filled')">
       <r-row>
         <r-col
           v-for="icon in icons.filled"
@@ -187,7 +187,7 @@ const copy = (icon: string, option: Record<string, unknown> = {}) => {
           <span>{{ icon }}</span>
         </r-col>
       </r-row>
-    </r-tab>
+    </r-tab> -->
   </r-tabs>
 </template>
 
