@@ -1,16 +1,16 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 import {
   extend,
   numericProp,
   unknownProp,
   makeStringProp,
-  createNamespace,
-} from '../utils';
-import { Popup } from '../popup';
-import { popupSharedProps } from '../popup/shared';
-import type { NotifyType, NotifyPosition } from './types';
+  createNamespace
+} from '../utils'
+import { Popup } from '../popup'
+import { popupSharedProps } from '../popup/shared'
+import type { NotifyType, NotifyPosition } from './types'
 
-const [name, bem] = createNamespace('notify');
+const [, bem] = createNamespace('notify')
 
 export const notifyProps = extend({}, popupSharedProps, {
   type: makeStringProp<NotifyType>('danger'),
@@ -19,20 +19,17 @@ export const notifyProps = extend({}, popupSharedProps, {
   position: makeStringProp<NotifyPosition>('top'),
   className: unknownProp,
   background: String,
-  lockScroll: Boolean,
-});
+  lockScroll: Boolean
+})
 
-export type NotifyProps = ExtractPropTypes<typeof notifyProps>;
+export type NotifyProps = ExtractPropTypes<typeof notifyProps>
 
 export default defineComponent({
-  name,
-
+  name: 'RNotify',
   props: notifyProps,
-
   emits: ['update:show'],
-
   setup(props, { emit, slots }) {
-    const updateShow = (show: boolean) => emit('update:show', show);
+    const updateShow = (show: boolean) => emit('update:show', show)
 
     return () => (
       <Popup
@@ -40,7 +37,7 @@ export default defineComponent({
         class={[bem([props.type]), props.className]}
         style={{
           color: props.color,
-          background: props.background,
+          background: props.background
         }}
         overlay={false}
         zIndex={props.zIndex}
@@ -51,6 +48,6 @@ export default defineComponent({
       >
         {slots.default ? slots.default() : props.message}
       </Popup>
-    );
-  },
-});
+    )
+  }
+})

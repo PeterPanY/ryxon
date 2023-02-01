@@ -29,15 +29,15 @@
 //   };
 // });
 const handleClick = (name) => {
-  var aux = document.createElement('input');
-  aux.setAttribute('value', `<r-icon name="${name}" />`);
-  document.body.appendChild(aux);
-  aux.select();
-  document.execCommand('copy');
-  document.body.removeChild(aux);
+  var aux = document.createElement('input')
+  aux.setAttribute('value', `<r-icon name="${name}" />`)
+  document.body.appendChild(aux)
+  aux.select()
+  document.execCommand('copy')
+  document.body.removeChild(aux)
 
   // RMessage.success('复制成功')
-};
+}
 </script>
 
 <style lang="scss">

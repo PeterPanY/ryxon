@@ -1,7 +1,7 @@
 /**
- * The z-index of Popup components.
+ * Popup 组件的z-index.
 
- * Will affect this components:
+ * 影响的组件:
  *   - ActionSheet
  *   - Calendar
  *   - Dialog
@@ -13,12 +13,12 @@
  *   - ShareSheet
  *   - Toast
  */
-let globalZIndex = 2000;
+let globalZIndex = 2000
 
 /** the global z-index is automatically incremented after reading */
-export const useGlobalZIndex = () => ++globalZIndex;
+export const useGlobalZIndex = () => ++globalZIndex
 
 /** reset the global z-index */
 export const setGlobalZIndex = (val: number) => {
-  globalZIndex = val;
-};
+  globalZIndex = val
+}

@@ -4,8 +4,8 @@ import {
   withKeys,
   defineComponent,
   type PropType,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -22,25 +22,25 @@ import {
   makeStringProp,
   callInterceptor,
   createNamespace,
-  type ComponentInstance,
-} from '../utils';
-import { popupSharedProps, popupSharedPropKeys } from '../popup/shared';
+  type ComponentInstance
+} from '../utils'
+import { popupSharedProps, popupSharedPropKeys } from '../popup/shared'
 
 // Components
-import { Popup } from '../popup';
-import { Button } from '../button';
-import { ActionBar } from '../action-bar';
-import { ActionBarButton } from '../action-bar-button';
+import { Popup } from '../popup'
+import { Button } from '../button'
+import { ActionBar } from '../action-bar'
+import { ActionBarButton } from '../action-bar-button'
 
 // Types
 import type {
   DialogTheme,
   DialogAction,
   DialogMessage,
-  DialogMessageAlign,
-} from './types';
+  DialogMessageAlign
+} from './types'
 
-const [name, bem, t] = createNamespace('dialog');
+const [, bem, t] = createNamespace('dialog')
 
 export const dialogProps = extend({}, popupSharedProps, {
   title: String,
@@ -61,122 +61,119 @@ export const dialogProps = extend({}, popupSharedProps, {
   confirmButtonColor: String,
   confirmButtonDisabled: Boolean,
   showConfirmButton: truthProp,
-  closeOnClickOverlay: Boolean,
-});
+  closeOnClickOverlay: Boolean
+})
 
-export type DialogProps = ExtractPropTypes<typeof dialogProps>;
+export type DialogProps = ExtractPropTypes<typeof dialogProps>
 
 const popupInheritKeys = [
   ...popupSharedPropKeys,
   'transition',
-  'closeOnPopstate',
-] as const;
+  'closeOnPopstate'
+] as const
 
 export default defineComponent({
-  name,
-
+  name: 'RDialog',
   props: dialogProps,
-
   emits: ['confirm', 'cancel', 'keydown', 'update:show'],
-
   setup(props, { emit, slots }) {
-    const root = ref<ComponentInstance>();
+    const root = ref<ComponentInstance>()
     const loading = reactive({
       confirm: false,
-      cancel: false,
-    });
+      cancel: false
+    })
 
-    const updateShow = (value: boolean) => emit('update:show', value);
+    const updateShow = (value: boolean) => emit('update:show', value)
 
     const close = (action: DialogAction) => {
-      updateShow(false);
-      props.callback?.(action);
-    };
+      updateShow(false)
+      props.callback?.(action)
+    }
 
     const getActionHandler = (action: DialogAction) => () => {
       // should not trigger close event when hidden
       if (!props.show) {
-        return;
+        return
       }
 
-      emit(action);
+      emit(action)
 
       if (props.beforeClose) {
-        loading[action] = true;
+        loading[action] = true
         callInterceptor(props.beforeClose, {
           args: [action],
           done() {
-            close(action);
-            loading[action] = false;
+            close(action)
+            loading[action] = false
           },
           canceled() {
-            loading[action] = false;
-          },
-        });
+            loading[action] = false
+          }
+        })
       } else {
-        close(action);
+        close(action)
       }
-    };
+    }
 
-    const onCancel = getActionHandler('cancel');
-    const onConfirm = getActionHandler('confirm');
+    const onCancel = getActionHandler('cancel')
+    const onConfirm = getActionHandler('confirm')
     const onKeydown = withKeys(
       (event: KeyboardEvent) => {
         // skip keyboard events of child elements
         if (event.target !== root.value?.popupRef?.value) {
-          return;
+          return
         }
 
         const onEventType: Record<string, () => void> = {
           Enter: props.showConfirmButton ? onConfirm : noop,
-          Escape: props.showCancelButton ? onCancel : noop,
-        };
+          Escape: props.showCancelButton ? onCancel : noop
+        }
 
-        onEventType[event.key]();
-        emit('keydown', event);
+        onEventType[event.key]()
+        emit('keydown', event)
       },
       ['enter', 'esc']
-    );
+    )
 
     const renderTitle = () => {
-      const title = slots.title ? slots.title() : props.title;
+      const title = slots.title ? slots.title() : props.title
       if (title) {
         return (
           <div
             class={bem('header', {
-              isolated: !props.message && !slots.default,
+              isolated: !props.message && !slots.default
             })}
           >
             {title}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderMessage = (hasTitle: boolean) => {
-      const { message, allowHtml, messageAlign } = props;
+      const { message, allowHtml, messageAlign } = props
       const classNames = bem('message', {
         'has-title': hasTitle,
-        [messageAlign as string]: messageAlign,
-      });
+        [messageAlign as string]: messageAlign
+      })
 
-      const content = isFunction(message) ? message() : message;
+      const content = isFunction(message) ? message() : message
 
       if (allowHtml && typeof content === 'string') {
-        return <div class={classNames} innerHTML={content} />;
+        return <div class={classNames} innerHTML={content} />
       }
 
-      return <div class={classNames}>{content}</div>;
-    };
+      return <div class={classNames}>{content}</div>
+    }
 
     const renderContent = () => {
       if (slots.default) {
-        return <div class={bem('content')}>{slots.default()}</div>;
+        return <div class={bem('content')}>{slots.default()}</div>
       }
 
-      const { title, message, allowHtml } = props;
+      const { title, message, allowHtml } = props
       if (message) {
-        const hasTitle = !!(title || slots.title);
+        const hasTitle = !!(title || slots.title)
         return (
           <div
             // add key to force re-render
@@ -186,9 +183,9 @@ export default defineComponent({
           >
             {renderMessage(hasTitle)}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderButtons = () => (
       <div class={[BORDER_TOP, bem('footer')]}>
@@ -215,7 +212,7 @@ export default defineComponent({
           />
         )}
       </div>
-    );
+    )
 
     const renderRoundButtons = () => (
       <ActionBar class={bem('footer')}>
@@ -242,19 +239,19 @@ export default defineComponent({
           />
         )}
       </ActionBar>
-    );
+    )
 
     const renderFooter = () => {
       if (slots.footer) {
-        return slots.footer();
+        return slots.footer()
       }
       return props.theme === 'round-button'
         ? renderRoundButtons()
-        : renderButtons();
-    };
+        : renderButtons()
+    }
 
     return () => {
-      const { width, title, theme, message, className } = props;
+      const { width, title, theme, message, className } = props
       return (
         <Popup
           ref={root}
@@ -271,7 +268,7 @@ export default defineComponent({
           {renderContent()}
           {renderFooter()}
         </Popup>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

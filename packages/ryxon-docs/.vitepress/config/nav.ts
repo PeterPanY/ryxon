@@ -8,7 +8,7 @@ function getNav() {
       link: string
       text: string
       activeMatch?: string
-    }[] = Object.values(locales).map(item => ({
+    }[] = Object.values(locales).map((item) => ({
       ...item,
       link: `${lang}${item.link}`
     }))

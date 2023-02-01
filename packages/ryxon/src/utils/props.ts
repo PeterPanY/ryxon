@@ -1,39 +1,39 @@
 /**
- * prop type helpers
- * help us to write less code and reduce bundle size
+ * prop type 助手
+ * 帮助我们编写更少的代码并减少捆绑包的大小
  */
-import type { PropType } from 'vue';
+import type { PropType } from 'vue'
 
-export const unknownProp = null as unknown as PropType<unknown>;
+export const unknownProp = null as unknown as PropType<unknown>
 
-export const numericProp = [Number, String];
+export const numericProp = [Number, String]
 
 export const truthProp = {
   type: Boolean,
-  default: true as const,
-};
+  default: true as const
+}
 
 export const makeRequiredProp = <T>(type: T) => ({
   type,
-  required: true as const,
-});
+  required: true as const
+})
 
 export const makeArrayProp = <T>() => ({
   type: Array as PropType<T[]>,
-  default: () => [],
-});
+  default: () => []
+})
 
 export const makeNumberProp = <T>(defaultVal: T) => ({
   type: Number,
-  default: defaultVal,
-});
+  default: defaultVal
+})
 
 export const makeNumericProp = <T>(defaultVal: T) => ({
   type: numericProp,
-  default: defaultVal,
-});
+  default: defaultVal
+})
 
 export const makeStringProp = <T>(defaultVal: T) => ({
   type: String as unknown as PropType<T>,
-  default: defaultVal,
-});
+  default: defaultVal
+})

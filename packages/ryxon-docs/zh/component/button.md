@@ -1,6 +1,6 @@
 ---
 title: Button
-lang: en-US
+lang: zh
 ---
 
 # Button
@@ -59,17 +59,17 @@ button/custom
 
 ## Button Attributes
 
-| Attribute         | Description                                                 | Type               | Accepted Values                                    | Default |
-| ----------------- | ----------------------------------------------------------- | ------------------ | -------------------------------------------------- | ------- |
-| size              | button size                                                 | string             | large / default /small                             | —       |
-| type              | button type                                                 | string             | primary / success / warning / danger / info / text | —       |
-| plain             | determine whether it's a plain button                       | boolean            | —                                                  | false   |
-| round             | determine whether it's a round button                       | boolean            | —                                                  | false   |
-| circle            | determine whether it's a circle button                      | boolean            | —                                                  | false   |
-| disabled          | disable the button                                          | boolean            | —                                                  | false   |
+| Attribute | Description | Type | Accepted Values | Default |
+| --- | --- | --- | --- | --- |
+| size | button size | string | large / default /small | — |
+| type | button type | string | primary / success / warning / danger / info / text | — |
+| plain | determine whether it's a plain button | boolean | — | false |
+| round | determine whether it's a round button | boolean | — | false |
+| circle | determine whether it's a circle button | boolean | — | false |
+| disabled | disable the button | boolean | — | false |
 
 ## Button Slots
 
-| Name    | Description                 |
-| ------- | --------------------------- |
-| —       | customize default content   |
+| Name | Description               |
+| ---- | ------------------------- |
+| —    | customize default content |

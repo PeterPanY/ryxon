@@ -187,6 +187,7 @@ importers:
   packages/ryxon-docs:
     specifiers:
       '@ryxon/components': workspace:*
+      '@ryxon/icons': workspace:*
       fast-glob: ^3.2.11
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
@@ -203,6 +204,7 @@ importers:
       unplugin-vue-define-options: 0.10.0
     devDependencies:
       '@ryxon/components': link:../ryxon-components
+      '@ryxon/icons': link:../ryxon-icons
       fast-glob: 3.2.12
       ryxon: link:../ryxon
       sass: 1.57.1

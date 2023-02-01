@@ -6,6 +6,19 @@
         {
           "link": "/button",
           "text": "Button 按钮"
+        },
+        {
+          "link": "/icon",
+          "text": "Icon 图标"
+        }
+      ]
+    },
+    "feedback": {
+      "text": "Feedback 反馈组件",
+      "children": [
+        {
+          "link": "/toast",
+          "text": "Toast 消息提示"
         }
       ]
     }

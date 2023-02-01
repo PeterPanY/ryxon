@@ -4,7 +4,7 @@ import guideLocale from '../i18n/pages/guide.json'
 function getGuideSidebar() {
   const result = {}
   Object.entries(guideLocale).map(([lang, val]) => {
-    result[`/${lang}/guide/`] = Object.values(val).map(item =>
+    result[`/${lang}/guide/`] = Object.values(val).map((item) =>
       mapPrefix(item, lang, '/guide')
     )
   })
@@ -14,7 +14,7 @@ function getGuideSidebar() {
 function getComponentsSideBar() {
   const result = {}
   Object.entries(componentLocale).map(([lang, val]) => {
-    result[`/${lang}/component/`] = Object.values(val).map(item =>
+    result[`/${lang}/component/`] = Object.values(val).map((item) =>
       mapPrefix(item, lang, '/component')
     )
   })
@@ -38,7 +38,7 @@ function mapPrefix(item: Item, lang: string, prefix = '') {
   if (item.children && item.children.length > 0) {
     const res = {
       ...item,
-      items: item.children.map(child => mapPrefix(child, lang, prefix))
+      items: item.children.map((child) => mapPrefix(child, lang, prefix))
     }
     delete res.children
     return res

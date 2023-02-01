@@ -1,9 +1,9 @@
-import { withInstall } from '../utils';
-import _Toast from './Toast';
+import { withInstall } from '../utils'
+import _Toast from './Toast'
 
-export const Toast = withInstall(_Toast);
-export default Toast;
-export { toastProps } from './Toast';
+export const Toast = withInstall(_Toast)
+export default Toast
+export { toastProps } from './Toast'
 export {
   showToast,
   closeToast,
@@ -12,20 +12,20 @@ export {
   showSuccessToast,
   allowMultipleToast,
   setToastDefaultOptions,
-  resetToastDefaultOptions,
-} from './function-call';
+  resetToastDefaultOptions
+} from './function-call'
 
-export type { ToastProps } from './Toast';
+export type { ToastProps } from './Toast'
 export type {
   ToastType,
   ToastOptions,
   ToastPosition,
   ToastThemeVars,
-  ToastWordBreak,
-} from './types';
+  ToastWordBreak
+} from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RToast: typeof Toast;
+    RToast: typeof Toast
   }
 }
