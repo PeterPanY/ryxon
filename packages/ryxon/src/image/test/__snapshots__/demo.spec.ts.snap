@@ -10,7 +10,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-image__img"
       >
       <div class="r-image__loading">
-        <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+        <i class="r-badge__wrapper r-icon r-image__loading-icon">
         </i>
       </div>
     </div>
@@ -29,7 +29,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: contain;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -48,7 +48,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: cover;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -67,7 +67,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: fill;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -86,7 +86,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: none;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -105,7 +105,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: scale-down;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -128,7 +128,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: cover; object-position: left;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -150,7 +150,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: cover; object-position: center;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -172,7 +172,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: cover; object-position: right;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -194,7 +194,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: contain; object-position: top;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -216,7 +216,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: contain; object-position: center;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -238,7 +238,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: contain; object-position: bottom;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -264,7 +264,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: contain;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -283,7 +283,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: cover;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -302,7 +302,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: fill;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -321,7 +321,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: none;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -340,7 +340,7 @@ exports[`should render demo and match snapshot 1`] = `
              style="object-fit: scale-down;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -359,7 +359,7 @@ exports[`should render demo and match snapshot 1`] = `
            style="width: 100%; height: 27vw;"
       >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -427,7 +427,7 @@ exports[`should render demo and match snapshot 1`] = `
              class="r-image__img"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -445,7 +445,7 @@ exports[`should render demo and match snapshot 1`] = `
              class="r-image__img"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>

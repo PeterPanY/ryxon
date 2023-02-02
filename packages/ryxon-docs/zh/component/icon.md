@@ -3,7 +3,7 @@ title: Icon
 lang: zh
 ---
 
-# Icon
+# Icon 图标
 
 Ryxon 常用图标集合
 

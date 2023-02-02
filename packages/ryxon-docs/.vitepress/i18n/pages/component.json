@@ -13,6 +13,15 @@
         }
       ]
     },
+    "data": {
+      "text": "Data 数据展示",
+      "children": [
+        {
+          "link": "/badge",
+          "text": "Badge 徽章"
+        }
+      ]
+    },
     "feedback": {
       "text": "Feedback 反馈组件",
       "children": [

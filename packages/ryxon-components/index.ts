@@ -1,3 +1,4 @@
+export * from '../ryxon/src/badge'
 export * from '../ryxon/src/button'
 export * from '../ryxon/src/icon'
 export * from '../ryxon/src/switch'

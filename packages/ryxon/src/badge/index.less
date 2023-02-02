@@ -5,7 +5,6 @@
   --r-badge-font-size: var(--r-font-size-sm);
   --r-badge-font-weight: var(--r-font-bold);
   --r-badge-border-width: var(--r-border-width);
-  --r-badge-background: var(--r-danger-color);
   --r-badge-dot-color: var(--r-danger-color);
   --r-badge-dot-size: 8px;
   --r-badge-font: -apple-system-font, helvetica neue, arial, sans-serif;
@@ -22,9 +21,25 @@
   font-family: var(--r-badge-font);
   line-height: 1.2;
   text-align: center;
-  background: var(--r-badge-background);
+
   border: var(--r-badge-border-width) solid var(--r-background-2);
   border-radius: var(--r-radius-max);
+
+  &--primary {
+    background: var(--r-primary-color);
+  }
+  &--success {
+    background: var(--r-success-color);
+  }
+  &--warning {
+    background: var(--r-warning-color);
+  }
+  &--danger {
+    background: var(--r-danger-color);
+  }
+  &--info {
+    background: var(--r-info-color);
+  }
 
   &--fixed {
     position: absolute;
@@ -59,7 +74,6 @@
     width: var(--r-badge-dot-size);
     min-width: 0;
     height: var(--r-badge-dot-size);
-    background: var(--r-badge-dot-color);
     border-radius: 100%;
     border: none;
     padding: 0;

@@ -24,7 +24,7 @@ exports[`should render default slot correctly 1`] = `
        class="r-image__img"
   >
   <div class="r-image__loading">
-    <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+    <i class="r-badge__wrapper r-icon r-image__loading-icon">
     </i>
   </div>
   Custom Default
@@ -35,7 +35,7 @@ exports[`should render loading placeholder when using lazy-load prop 1`] = `
 <div class="r-image">
   <img class="r-image__img">
   <div class="r-image__loading">
-    <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+    <i class="r-badge__wrapper r-icon r-image__loading-icon">
     </i>
   </div>
 </div>
@@ -44,7 +44,7 @@ exports[`should render loading placeholder when using lazy-load prop 1`] = `
 exports[`should watch src and reset 1`] = `
 <div class="r-image">
   <div class="r-image__loading">
-    <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+    <i class="r-badge__wrapper r-icon r-image__loading-icon">
     </i>
   </div>
 </div>
