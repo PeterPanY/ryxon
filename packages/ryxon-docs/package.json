@@ -14,6 +14,7 @@
   "devDependencies": {
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
+    "clipboard-copy": "^4.0.1",
     "ryxon": "workspace:*",
     "fast-glob": "^3.2.11",
     "sass": "^1.54.5",

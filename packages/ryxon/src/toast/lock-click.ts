@@ -1,5 +1,6 @@
 let lockCount = 0
 
+// 锁定
 export function lockClick(lock: boolean) {
   if (lock) {
     if (!lockCount) {

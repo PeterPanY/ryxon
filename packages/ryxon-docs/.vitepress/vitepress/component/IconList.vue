@@ -1,72 +1,136 @@
 <template>
-  <div class="demo-icon">
-    <div class="demo-icon-item">
-      <ul class="demo-icon-list">
-        <!-- <li
-          v-for="item in list"
-          :key="item.name"
-          @click="handleClick(item.name)"
-        >
-          <span class="demo-svg-icon">
-            <RIcon :name="item.name" :size="20" />
-            <span class="icon-name">{{ item.title }}</span>
-          </span>
-        </li> -->
-      </ul>
-    </div>
+  <div class="demo-icon-switch">
+    <span>复制SVG内容</span>
+    <r-switch v-model="copyIcon" size="20px" />
+    <span>复制图标代码</span>
+  </div>
+  <div v-for="item in categories" :key="item.name" class="demo-icon-item">
+    <div class="demo-icon-title">{{ item.name }}</div>
+    <ul class="demo-icon-list">
+      <li
+        v-for="component in item.icons"
+        :key="component.name"
+        :ref="component.name"
+        class="icon-item"
+        @click="copySvgIcon(component.name, $refs)"
+      >
+        <span class="demo-svg-icon">
+          <RIcon :size="20">
+            <component :is="component" />
+          </RIcon>
+          <span class="icon-name">{{ component.name }}</span>
+        </span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts" setup>
-// import {  } from '@ryxon/components';
-// RMessage\RIcon/ svgs
+import { ref, markRaw } from 'vue'
+import type { DefineComponent } from 'vue'
+import clipboardCopy from 'clipboard-copy'
+import { showToast } from '@ryxon/components'
+import * as Icons from '@ryxon/icons'
+import IconCategories from './icons-categories.json'
 
-// const list = Object.keys(svgs).map((key) => {
-//   const name = key.replace('./svg/', '').replace('.svg', '');
-//   return {
-//     name,
-//     title: name,
-//   };
-// });
-const handleClick = (name) => {
-  var aux = document.createElement('input')
-  aux.setAttribute('value', `<r-icon name="${name}" />`)
-  document.body.appendChild(aux)
-  aux.select()
-  document.execCommand('copy')
-  document.body.removeChild(aux)
-
-  // RMessage.success('复制成功')
+type CategoriesItem = {
+  name: string
+  icons: DefineComponent[]
 }
+
+const copyIcon = ref(true)
+
+const copyContent = async (content) => {
+  try {
+    await clipboardCopy(content)
+
+    showToast({
+      message: '复制成功',
+      type: 'success'
+    })
+  } catch {
+    showToast({
+      message: '复制失败',
+      type: 'danger'
+    })
+  }
+}
+
+const copySvgIcon = async (name, refs) => {
+  if (copyIcon.value) {
+    await copyContent(`<r-icon><${name} /></r-icon>`)
+  } else {
+    const content = refs[name]?.[0].querySelector('svg')?.outerHTML ?? ''
+    await copyContent(content)
+  }
+}
+
+const categories = markRaw<CategoriesItem[]>([])
+const iconMap = new Map(Object.entries(Icons))
+
+IconCategories.categories.forEach((o) => {
+  const result: CategoriesItem = {
+    name: o.name,
+    icons: []
+  }
+  o.items.forEach((i) => {
+    const icon = iconMap.get(i)
+    if (icon) {
+      result.icons.push(icon)
+      iconMap.delete(i)
+    }
+  })
+  categories.push(result)
+})
+
+categories.push({ name: 'Other', icons: Array.from(iconMap.values()) })
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .demo-icon {
-  .demo-icon-item {
+  &-switch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-item {
     margin-top: 24px;
-    .demo-icon-title {
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 26px;
+    &:first-child {
+      margin-top: 0;
     }
-    .demo-icon-list {
-      overflow: hidden;
-      list-style: none;
-      padding: 0 !important;
-      border-top: 1px solid var(--r-border-color);
-      border-left: 1px solid var(--r-border-color);
-      border-radius: 4px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      > li {
-        text-align: center;
-        color: var(--r-text-color-regular);
-        height: 90px;
-        font-size: 13px;
-        border-right: 1px solid var(--r-border-color);
-        border-bottom: 1px solid var(--r-border-color);
-        transition: background-color var(--r-transition-duration);
+  }
+  &-title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  &-list {
+    overflow: hidden;
+    list-style: none;
+    padding: 0 !important;
+    border-top: 1px solid var(--r-border-color);
+    border-left: 1px solid var(--r-border-color);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    .icon-item {
+      text-align: center;
+      color: var(--r-gray-7);
+      height: 90px;
+      font-size: 13px;
+      border-right: 1px solid var(--r-border-color);
+      border-bottom: 1px solid var(--r-border-color);
+      transition: background-color var(--r-duration-base);
+      &:hover {
+        background-color: var(--r-gray-3);
+        .r-icon {
+          color: var(--r-gray-8);
+        }
+        color: var(--r-gray-8);
       }
+
       .demo-svg-icon {
         display: flex;
         flex-direction: column;
@@ -74,6 +138,7 @@ const handleClick = (name) => {
         justify-content: center;
         height: 100%;
         cursor: pointer;
+
         .icon-name {
           margin-top: 8px;
         }

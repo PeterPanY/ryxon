@@ -6,11 +6,7 @@ export default Toast
 export { toastProps } from './Toast'
 export {
   showToast,
-  closeToast,
-  showFailToast,
-  showLoadingToast,
-  showSuccessToast,
-  allowMultipleToast,
+  notAllowMultipleToast,
   setToastDefaultOptions,
   resetToastDefaultOptions
 } from './function-call'

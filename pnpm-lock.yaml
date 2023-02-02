@@ -188,6 +188,7 @@ importers:
     specifiers:
       '@ryxon/components': workspace:*
       '@ryxon/icons': workspace:*
+      clipboard-copy: ^4.0.1
       fast-glob: ^3.2.11
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
@@ -205,6 +206,7 @@ importers:
     devDependencies:
       '@ryxon/components': link:../ryxon-components
       '@ryxon/icons': link:../ryxon-icons
+      clipboard-copy: 4.0.1
       fast-glob: 3.2.12
       ryxon: link:../ryxon
       sass: 1.57.1
@@ -4135,6 +4137,10 @@ packages:
     resolution: {integrity: sha512-lj5zydbH786t6gpXe6oNX7CM5YKhd0CDhcXG8pKyRa2Nz5cgj1yhnNKxDi/MyPYwjyvAG5oVBeDdYCGUAgD8lQ==}
     dependencies:
       typanion: 3.12.1
+    dev: true
+
+  /clipboard-copy/4.0.1:
+    resolution: {integrity: sha512-wOlqdqziE/NNTUJsfSgXmBMIrYmfd5V0HCGsR8uAKHcg+h9NENWINcfRjtWGU77wDHC8B8ijV4hMTGYbrKovng==}
     dev: true
 
   /cliui/7.0.4:

@@ -1,13 +1,23 @@
 {
-  "hash": "56b55467",
-  "browserHash": "f031dbb5",
+  "hash": "6164b741",
+  "browserHash": "fce2b676",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "7a5fb12c",
+      "fileHash": "7a70974b",
       "needsInterop": false
+    },
+    "clipboard-copy": {
+      "src": "../../../../../node_modules/.pnpm/clipboard-copy@4.0.1/node_modules/clipboard-copy/index.js",
+      "file": "clipboard-copy.js",
+      "fileHash": "70672379",
+      "needsInterop": true
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
 }

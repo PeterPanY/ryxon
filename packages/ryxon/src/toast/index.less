@@ -1,44 +1,40 @@
 :root {
-  --r-toast-max-width: 70%;
+  --r-toast-max-width: 80%;
   --r-toast-font-size: var(--r-font-size-md);
   --r-toast-text-color: var(--r-white);
   --r-toast-loading-icon-color: var(--r-white);
   --r-toast-line-height: var(--r-line-height-md);
   --r-toast-radius: var(--r-radius-lg);
   --r-toast-background: rgba(0, 0, 0, 0.7);
-  --r-toast-icon-size: 36px;
+  --r-toast-icon-size: 14px;
   --r-toast-text-min-width: 96px;
   --r-toast-text-padding: var(--r-padding-xs) var(--r-padding-sm);
   --r-toast-default-padding: var(--r-padding-md);
-  --r-toast-default-width: 88px;
-  --r-toast-default-min-height: 88px;
-  --r-toast-position-top-distance: 20%;
+  --r-toast-position-top-distance: 20px;
   --r-toast-position-bottom-distance: 20%;
 }
 
 .r-toast {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
-  transition: all var(--r-duration-fast);
-
-  // hack for avoid max-width when use left & fixed
-  width: var(--r-toast-default-width);
+  width: fit-content;
   max-width: var(--r-toast-max-width);
-  min-height: var(--r-toast-default-min-height);
+  box-sizing: border-box;
+  border-radius: var(--r-toast-radius);
+  position: fixed;
+  background: var(--r-toast-background);
+  width: fit-content;
+  transition: all var(--r-duration-fast);
   padding: var(--r-toast-default-padding);
+  display: flex;
+  align-items: center;
+
   color: var(--r-toast-text-color);
   font-size: var(--r-toast-font-size);
   line-height: var(--r-toast-line-height);
 
-  // allow newline character
+  // 允许换行符
   white-space: pre-wrap;
   word-break: break-all;
   text-align: center;
-  background: var(--r-toast-background);
-  border-radius: var(--r-toast-radius);
 
   &--break {
     &-normal {
@@ -53,48 +49,62 @@
   }
 
   &--unclickable {
-    // lock scroll
+    // 禁止滚动
     overflow: hidden;
     cursor: not-allowed;
 
-    // should not add pointer-events: none directly to body tag
-    // that will cause unexpected tap-highlight-color in mobile safari
+    // 不应该将 pointer-events: none 直接添加在body上
+    // 这将在移动端safari中导致意外的轻敲高亮颜色
     * {
       pointer-events: none;
     }
   }
 
-  &--text,
-  &--html {
-    width: fit-content;
-    min-width: var(--r-toast-text-min-width);
-    min-height: 0;
-    padding: var(--r-toast-text-padding);
-
-    .r-toast__text {
-      margin-top: 0;
-    }
-  }
-
   &--top {
-    top: var(--r-toast-position-top-distance);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 
   &--bottom {
-    top: auto;
-    bottom: var(--r-toast-position-bottom-distance);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  &--text,
+  &--html {
+    width: fit-content;
+    padding: var(--r-toast-text-padding);
   }
 
   &__icon {
     font-size: var(--r-toast-icon-size);
+    margin-right: 10px;
   }
 
   &__loading {
     padding: var(--r-padding-base);
     color: var(--r-toast-loading-icon-color);
   }
+}
 
-  &__text {
-    margin-top: var(--r-padding-xs);
-  }
+.r-toast--success {
+  --r-toast-background: var(--r-success-color-light-9);
+  --r-toast-text-color: var(--r-success-color);
+}
+
+.r-toast--warning {
+  --r-toast-background: var(--r-warning-color-light-9);
+  --r-toast-text-color: var(--r-warning-color);
+}
+
+.r-toast--info {
+  --r-toast-background: var(--r-info-color-light-9);
+  --r-toast-text-color: var(--r-info-color);
+}
+
+.r-toast--danger {
+  --r-toast-background: var(--r-danger-color-light-9);
+  --r-toast-text-color: var(--r-danger-color);
 }

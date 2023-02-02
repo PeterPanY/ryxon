@@ -10,35 +10,36 @@ import {
   onActivated,
   onDeactivated,
   defineComponent,
+  type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
-import { popupSharedProps } from './shared';
+import { popupSharedProps } from './shared'
 import {
   isDef,
   extend,
   makeStringProp,
   callInterceptor,
   createNamespace,
-  HAPTICS_FEEDBACK,
-} from '../utils';
+  HAPTICS_FEEDBACK
+} from '../utils'
 
 // Composables
-import { useEventListener } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
-import { useLockScroll } from '../composables/use-lock-scroll';
-import { useLazyRender } from '../composables/use-lazy-render';
-import { POPUP_TOGGLE_KEY } from '../composables/on-popup-reopen';
-import { useGlobalZIndex } from '../composables/use-global-z-index';
+import { useEventListener } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
+import { useLockScroll } from '../composables/use-lock-scroll'
+import { useLazyRender } from '../composables/use-lazy-render'
+import { POPUP_TOGGLE_KEY } from '../composables/on-popup-reopen'
+import { useGlobalZIndex } from '../composables/use-global-z-index'
 
 // Components
-import { Icon } from '../icon';
-import { Overlay } from '../overlay';
+import { Icon } from '../icon'
+import { Overlay } from '../overlay'
 
 // Types
-import type { PopupPosition, PopupCloseIconPosition } from './types';
+import type { PopupPosition, PopupCloseIconPosition } from './types'
 
 export const popupProps = extend({}, popupSharedProps, {
   round: Boolean,
@@ -51,19 +52,18 @@ export const popupProps = extend({}, popupSharedProps, {
   closeIconPosition: makeStringProp<PopupCloseIconPosition>('top-right'),
   safeAreaInsetTop: Boolean,
   safeAreaInsetBottom: Boolean,
-});
+  customStyle: Object as PropType<CSSProperties>,
+  id: String
+})
 
-export type PopupProps = ExtractPropTypes<typeof popupProps>;
+export type PopupProps = ExtractPropTypes<typeof popupProps>
 
-const [name, bem] = createNamespace('popup');
+const [, bem] = createNamespace('popup')
 
 export default defineComponent({
-  name,
-
+  name: 'RPopup',
   inheritAttrs: false,
-
   props: popupProps,
-
   emits: [
     'open',
     'close',
@@ -72,64 +72,67 @@ export default defineComponent({
     'keydown',
     'update:show',
     'clickOverlay',
-    'clickCloseIcon',
+    'clickCloseIcon'
   ],
 
   setup(props, { emit, attrs, slots }) {
-    let opened: boolean;
-    let shouldReopen: boolean;
+    let opened: boolean
+    let shouldReopen: boolean
 
-    const zIndex = ref<number>();
-    const popupRef = ref<HTMLElement>();
+    const zIndex = ref<number>()
+    const popupRef = ref<HTMLElement>()
 
-    const lazyRender = useLazyRender(() => props.show || !props.lazyRender);
+    const lazyRender = useLazyRender(() => props.show || !props.lazyRender)
 
     const style = computed(() => {
-      const style: CSSProperties = {
-        zIndex: zIndex.value,
-      };
+      const style: CSSProperties = extend(
+        {
+          zIndex: zIndex.value
+        },
+        props.customStyle
+      )
 
       if (isDef(props.duration)) {
         const key =
           props.position === 'center'
             ? 'animationDuration'
-            : 'transitionDuration';
-        style[key] = `${props.duration}s`;
+            : 'transitionDuration'
+        style[key] = `${props.duration}s`
       }
 
-      return style;
-    });
+      return style
+    })
 
     const open = () => {
       if (!opened) {
-        opened = true;
+        opened = true
 
         zIndex.value =
-          props.zIndex !== undefined ? +props.zIndex : useGlobalZIndex();
+          props.zIndex !== undefined ? +props.zIndex : useGlobalZIndex()
 
-        emit('open');
+        emit('open')
       }
-    };
+    }
 
     const close = () => {
       if (opened) {
         callInterceptor(props.beforeClose, {
           done() {
-            opened = false;
-            emit('close');
-            emit('update:show', false);
-          },
-        });
+            opened = false
+            emit('close')
+            emit('update:show', false)
+          }
+        })
       }
-    };
+    }
 
     const onClickOverlay = (event: MouseEvent) => {
-      emit('clickOverlay', event);
+      emit('clickOverlay', event)
 
       if (props.closeOnClickOverlay) {
-        close();
+        close()
       }
-    };
+    }
 
     const renderOverlay = () => {
       if (props.overlay) {
@@ -145,14 +148,14 @@ export default defineComponent({
             tabindex={props.closeOnClickOverlay ? 0 : undefined}
             onClick={onClickOverlay}
           />
-        );
+        )
       }
-    };
+    }
 
     const onClickCloseIcon = (event: MouseEvent) => {
-      emit('clickCloseIcon', event);
-      close();
-    };
+      emit('clickCloseIcon', event)
+      close()
+    }
 
     const renderCloseIcon = () => {
       if (props.closeable) {
@@ -163,21 +166,21 @@ export default defineComponent({
             name={props.closeIcon}
             class={[
               bem('close-icon', props.closeIconPosition),
-              HAPTICS_FEEDBACK,
+              HAPTICS_FEEDBACK
             ]}
             classPrefix={props.iconPrefix}
             onClick={onClickCloseIcon}
           />
-        );
+        )
       }
-    };
+    }
 
-    const onOpened = () => emit('opened');
-    const onClosed = () => emit('closed');
-    const onKeydown = (event: KeyboardEvent) => emit('keydown', event);
+    const onOpened = () => emit('opened')
+    const onClosed = () => emit('closed')
+    const onKeydown = (event: KeyboardEvent) => emit('keydown', event)
 
     const renderPopup = lazyRender(() => {
-      const { round, position, safeAreaInsetTop, safeAreaInsetBottom } = props;
+      const { round, position, safeAreaInsetTop, safeAreaInsetBottom } = props
 
       return (
         <div
@@ -186,15 +189,16 @@ export default defineComponent({
           style={style.value}
           role="dialog"
           tabindex={0}
+          id={props.id}
           class={[
             bem({
               round,
-              [position]: position,
+              [position]: position
             }),
             {
               'r-safe-area-top': safeAreaInsetTop,
-              'r-safe-area-bottom': safeAreaInsetBottom,
-            },
+              'r-safe-area-bottom': safeAreaInsetBottom
+            }
           ]}
           onKeydown={onKeydown}
           {...attrs}
@@ -202,13 +206,13 @@ export default defineComponent({
           {slots.default?.()}
           {renderCloseIcon()}
         </div>
-      );
-    });
+      )
+    })
 
     const renderTransition = () => {
-      const { position, transition, transitionAppear } = props;
+      const { position, transition, transitionAppear } = props
       const name =
-        position === 'center' ? 'r-fade' : `r-popup-slide-${position}`;
+        position === 'center' ? 'r-fade' : `r-popup-slide-${position}`
 
       return (
         <Transition
@@ -218,61 +222,61 @@ export default defineComponent({
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
         />
-      );
-    };
+      )
+    }
 
     watch(
       () => props.show,
       (show) => {
         if (show && !opened) {
-          open();
+          open()
 
           if (attrs.tabindex === 0) {
             nextTick(() => {
-              popupRef.value?.focus();
-            });
+              popupRef.value?.focus()
+            })
           }
         }
         if (!show && opened) {
-          opened = false;
-          emit('close');
+          opened = false
+          emit('close')
         }
       }
-    );
+    )
 
-    useExpose({ popupRef });
+    useExpose({ popupRef })
 
-    useLockScroll(popupRef, () => props.show && props.lockScroll);
+    useLockScroll(popupRef, () => props.show && props.lockScroll)
 
     useEventListener('popstate', () => {
       if (props.closeOnPopstate) {
-        close();
-        shouldReopen = false;
+        close()
+        shouldReopen = false
       }
-    });
+    })
 
     onMounted(() => {
       if (props.show) {
-        open();
+        open()
       }
-    });
+    })
 
     onActivated(() => {
       if (shouldReopen) {
-        emit('update:show', true);
-        shouldReopen = false;
+        emit('update:show', true)
+        shouldReopen = false
       }
-    });
+    })
 
     onDeactivated(() => {
       // teleported popup should be closed when deactivated
       if (props.show && props.teleport) {
-        close();
-        shouldReopen = true;
+        close()
+        shouldReopen = true
       }
-    });
+    })
 
-    provide(POPUP_TOGGLE_KEY, () => props.show);
+    provide(POPUP_TOGGLE_KEY, () => props.show)
 
     return () => {
       if (props.teleport) {
@@ -281,7 +285,7 @@ export default defineComponent({
             {renderOverlay()}
             {renderTransition()}
           </Teleport>
-        );
+        )
       }
 
       return (
@@ -289,7 +293,7 @@ export default defineComponent({
           {renderOverlay()}
           {renderTransition()}
         </>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

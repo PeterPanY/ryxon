@@ -4,6 +4,8 @@ import { mountComponent, usePopupState } from '../utils/mount-component'
 import RToast from './Toast'
 import type { ToastType, ToastOptions, ToastWrapperInstance } from './types'
 
+import { queue } from './instance'
+
 const defaultOptions: ToastOptions = {
   icon: '',
   type: 'text',
@@ -12,22 +14,22 @@ const defaultOptions: ToastOptions = {
   overlay: false,
   onClose: undefined,
   onOpened: undefined,
-  duration: 2000,
+  duration: 3000,
   teleport: 'body',
   iconSize: undefined,
   iconPrefix: undefined,
-  position: 'middle',
+  position: 'top',
   transition: 'r-fade',
   forbidClick: false,
   loadingType: undefined,
   overlayClass: '',
   overlayStyle: undefined,
   closeOnClick: false,
-  closeOnClickOverlay: false
+  closeOnClickOverlay: false,
+  offset: 20
 }
 
-let queue: ToastWrapperInstance[] = []
-let allowMultiple = false
+let allowMultiple = true
 let currentOptions = extend({}, defaultOptions)
 
 // default options of specific type
@@ -40,7 +42,12 @@ function parseOptions(message: string | ToastOptions): ToastOptions {
   return { message }
 }
 
+let seed = 1
+
+// 创建实例
 function createInstance() {
+  const id = `toast_${seed++}`
+
   const { instance, unmount } = mountComponent({
     setup() {
       const message = ref('')
@@ -48,7 +55,10 @@ function createInstance() {
 
       const onClosed = () => {
         if (allowMultiple) {
-          queue = queue.filter((item) => item !== instance)
+          const idx = queue.findIndex((item) => item === instance)
+
+          if (idx !== -1) queue.splice(idx, 1)
+
           unmount()
         }
       }
@@ -58,28 +68,26 @@ function createInstance() {
           onClosed,
           'onUpdate:show': toggle
         }
-        return <RToast {...state} {...attrs} />
+
+        return <RToast id={id} {...state} {...attrs} />
       }
 
-      // support dynamic modification of message
+      // 支持消息的动态修改
       watch(message, (val) => {
         state.message = val
       })
 
-      // rewrite render function
+      // 重写渲染函数
       ;(getCurrentInstance() as any).render = render
 
-      return {
-        open,
-        close,
-        message
-      }
+      return { id, open, close, message }
     }
   })
 
   return instance as ToastWrapperInstance
 }
 
+// 获取实例
 function getInstance() {
   if (!queue.length || allowMultiple) {
     const instance = createInstance()
@@ -89,6 +97,7 @@ function getInstance() {
   return queue[queue.length - 1]
 }
 
+// 展示提示
 export function showToast(options: string | ToastOptions = {}) {
   if (!inBrowser) {
     return {} as ToastWrapperInstance
@@ -109,28 +118,7 @@ export function showToast(options: string | ToastOptions = {}) {
   return toast
 }
 
-const createMethod = (type: ToastType) => (options: string | ToastOptions) =>
-  showToast(extend({ type }, parseOptions(options)))
-
-export const showLoadingToast = createMethod('loading')
-export const showSuccessToast = createMethod('success')
-export const showFailToast = createMethod('error')
-
-export const closeToast = (all?: boolean) => {
-  if (queue.length) {
-    if (all) {
-      queue.forEach((toast) => {
-        toast.close()
-      })
-      queue = []
-    } else if (!allowMultiple) {
-      queue[0].close()
-    } else {
-      queue.shift()?.close()
-    }
-  }
-}
-
+// 暴露修改默认配置
 export function setToastDefaultOptions(options: ToastOptions): void
 export function setToastDefaultOptions(
   type: ToastType,
@@ -147,6 +135,7 @@ export function setToastDefaultOptions(
   }
 }
 
+// 暴露重置默认配置
 export const resetToastDefaultOptions = (type?: ToastType) => {
   if (typeof type === 'string') {
     defaultOptionsMap.delete(type)
@@ -156,6 +145,7 @@ export const resetToastDefaultOptions = (type?: ToastType) => {
   }
 }
 
-export const allowMultipleToast = (value = true) => {
+// 暴露设置多个提示的方法
+export const notAllowMultipleToast = (value = false) => {
   allowMultiple = value
 }

@@ -1,5 +1,6 @@
 import {
   h,
+  toRaw,
   watch,
   computed,
   onMounted,
@@ -20,7 +21,8 @@ import {
   makeStringProp,
   makeNumberProp,
   createNamespace,
-  TypeComponentsMap
+  TypeComponentsMap,
+  iconPropType
 } from '../utils'
 import { lockClick } from './lock-click'
 
@@ -28,6 +30,8 @@ import { lockClick } from './lock-click'
 import { Icon } from '../icon'
 import { Popup } from '../popup'
 import { Loading, LoadingType } from '../loading'
+
+import { getLastOffset } from './instance'
 
 // Types
 import type { ToastType, ToastPosition, ToastWordBreak } from './types'
@@ -45,14 +49,14 @@ const popupInheritProps = [
 ] as const
 
 export const toastProps = {
-  icon: String,
+  icon: iconPropType,
   show: Boolean,
   type: makeStringProp<ToastType>('text'),
   overlay: Boolean,
   message: numericProp,
   iconSize: numericProp,
-  duration: makeNumberProp(2000),
-  position: makeStringProp<ToastPosition>('middle'),
+  duration: makeNumberProp(3000),
+  position: makeStringProp<ToastPosition>('top'),
   teleport: [String, Object] as PropType<TeleportProps['to']>,
   wordBreak: String as PropType<ToastWordBreak>,
   className: unknownProp,
@@ -63,7 +67,10 @@ export const toastProps = {
   overlayClass: unknownProp,
   overlayStyle: Object as PropType<CSSProperties>,
   closeOnClick: Boolean,
-  closeOnClickOverlay: Boolean
+  closeOnClickOverlay: Boolean,
+  offset: makeNumberProp(20),
+  customStyle: Object as PropType<CSSProperties>,
+  id: String
 }
 
 export type ToastProps = ExtractPropTypes<typeof toastProps>
@@ -101,9 +108,16 @@ export default defineComponent({
       const hasIcon = computed(() => icon || TypeComponentsMap[type] || '')
 
       if (hasIcon.value) {
+        const iconComp = toRaw(hasIcon.value)
+
         return (
-          <Icon size={iconSize} class={bem('icon')} classPrefix={iconPrefix}>
-            {h(hasIcon.value)}
+          <Icon
+            name={!iconComp.name ? iconComp : ''}
+            size={iconSize}
+            class={bem('icon')}
+            classPrefix={iconPrefix}
+          >
+            {iconComp.name && h(iconComp)}
           </Icon>
         )
       }
@@ -148,6 +162,22 @@ export default defineComponent({
     onMounted(toggleClickable)
     onUnmounted(toggleClickable)
 
+    const lastOffset = computed(() => getLastOffset(props.id))
+
+    const offset = computed(() => props.offset + lastOffset.value.bottom)
+
+    const offsetBottom = computed(() => lastOffset.value.top - props.offset)
+
+    const customStyle = computed<CSSProperties>(() => ({
+      top: props.position === 'top' ? `${offset.value}px` : 'auto',
+      bottom:
+        props.position === 'bottom'
+          ? offsetBottom.value > 0
+            ? `calc(100vh - ${offsetBottom.value}px)`
+            : `${props.offset}px`
+          : 'auto'
+    }))
+
     return () => (
       <Popup
         class={[
@@ -158,6 +188,12 @@ export default defineComponent({
           ]),
           props.className
         ]}
+        id={props.id}
+        customStyle={
+          props.position === 'top' || props.position === 'bottom'
+            ? customStyle.value
+            : {}
+        }
         lockScroll={false}
         onClick={onClick}
         onClosed={clearTimer}

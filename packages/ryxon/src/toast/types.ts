@@ -8,13 +8,13 @@ export type ToastType =
   | 'success'
   | 'warning'
   | 'info'
-  | 'error'
+  | 'danger'
   | 'html'
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 export type ToastWordBreak = 'break-all' | 'break-word' | 'normal'
 
 export type ToastOptions = {
-  icon?: string
+  icon?: unknown
   type?: ToastType
   mask?: boolean
   message?: Numeric
@@ -35,11 +35,14 @@ export type ToastOptions = {
   overlayClass?: unknown
   overlayStyle?: Record<string, any>
   closeOnClickOverlay?: boolean
+  offset?: number
+  id?: number
 }
 
 export type ToastWrapperInstance = ComponentPublicInstance<
   { message: Numeric },
   {
+    id: string
     close: () => void
     /**
      * @private

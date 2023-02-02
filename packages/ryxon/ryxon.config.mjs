@@ -7,18 +7,18 @@ export default {
     skipInstall: ['lazyload'],
     packageManager: 'pnpm',
     extensions: {
-      esm: '.mjs',
+      esm: '.mjs'
     },
     site: {
       publicPath:
-        (typeof window === 'undefined' && process.env.PUBLIC_PATH) || '/ryxon/',
+        (typeof window === 'undefined' && process.env.PUBLIC_PATH) || '/ryxon/'
     },
     vetur: {
-      tagPrefix: 'r-',
+      tagPrefix: 'r-'
     },
     css: {
-      removeSourceFile: true,
-    },
+      removeSourceFile: true
+    }
   },
   site: {
     defaultLang: 'en-US',
@@ -30,7 +30,7 @@ export default {
       // { label: 'v3', link: '/ryxon/v3/' },
     ],
     baiduAnalytics: {
-      seed: 'af5d41bc4e446e76665dbe3ec18d55c3',
+      seed: 'af5d41bc4e446e76665dbe3ec18d55c3'
     },
     headHtml: `<script>
 if (location.host === 'youzan.github.io') {
@@ -48,8 +48,8 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
         links: [
           {
             logo: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/github.svg',
-            url: 'https://github.com/PeterPanY/ryxon',
-          },
+            url: 'https://github.com/PeterPanY/ryxon'
+          }
         ],
         nav: [
           {
@@ -57,418 +57,410 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
             items: [
               {
                 path: 'home',
-                title: '介绍',
+                title: '介绍'
               },
               {
                 path: 'quickstart',
-                title: '快速上手',
+                title: '快速上手'
               },
               {
                 path: 'advanced-usage',
-                title: '进阶用法',
+                title: '进阶用法'
               },
               {
                 path: 'faq',
-                title: '常见问题',
+                title: '常见问题'
               },
               {
                 path: 'changelog',
-                title: '更新日志',
+                title: '更新日志'
               },
               {
                 path: 'release-note-v4',
-                title: '4.0 更新介绍',
+                title: '4.0 更新介绍'
               },
               {
                 path: 'contribution',
-                title: '贡献指南',
+                title: '贡献指南'
               },
               {
                 path: 'design',
-                title: '设计资源',
+                title: '设计资源'
               },
               {
                 path: 'style-guide',
-                title: '风格指南',
+                title: '风格指南'
               },
               {
                 path: 'locale',
-                title: '国际化',
-              },
-            ],
+                title: '国际化'
+              }
+            ]
           },
           {
             title: '基础组件',
             items: [
               {
                 path: 'button',
-                title: 'Button 按钮',
+                title: 'Button 按钮'
               },
               {
                 path: 'cell',
-                title: 'Cell 单元格',
+                title: 'Cell 单元格'
               },
               {
                 path: 'config-provider',
-                title: 'ConfigProvider 全局配置',
-              },
-              {
-                path: 'icon',
-                title: 'Icon 图标',
+                title: 'ConfigProvider 全局配置'
               },
               {
                 path: 'image',
-                title: 'Image 图片',
+                title: 'Image 图片'
               },
               {
                 path: 'col',
-                title: 'Layout 布局',
+                title: 'Layout 布局'
               },
               {
                 path: 'popup',
-                title: 'Popup 弹出层',
+                title: 'Popup 弹出层'
               },
               {
                 path: 'space',
-                title: 'Space 间距',
+                title: 'Space 间距'
               },
               {
                 path: 'style',
-                title: 'Style 内置样式',
-              },
-              {
-                path: 'toast',
-                title: 'Toast 轻提示',
-              },
-            ],
+                title: 'Style 内置样式'
+              }
+            ]
           },
           {
             title: '表单组件',
             items: [
               {
                 path: 'calendar',
-                title: 'Calendar 日历',
+                title: 'Calendar 日历'
               },
               {
                 path: 'cascader',
-                title: 'Cascader 级联选择',
+                title: 'Cascader 级联选择'
               },
               {
                 path: 'checkbox',
-                title: 'Checkbox 复选框',
+                title: 'Checkbox 复选框'
               },
               {
                 path: 'date-picker',
-                title: 'DatePicker 日期选择',
+                title: 'DatePicker 日期选择'
               },
               {
                 path: 'field',
-                title: 'Field 输入框',
+                title: 'Field 输入框'
               },
               {
                 path: 'form',
-                title: 'Form 表单',
+                title: 'Form 表单'
               },
               {
                 path: 'number-keyboard',
-                title: 'NumberKeyboard 数字键盘',
+                title: 'NumberKeyboard 数字键盘'
               },
               {
                 path: 'password-input',
-                title: 'PasswordInput 密码输入框',
+                title: 'PasswordInput 密码输入框'
               },
               {
                 path: 'picker',
-                title: 'Picker 选择器',
+                title: 'Picker 选择器'
               },
               {
                 path: 'picker-group',
-                title: 'PickerGroup 选择器组',
+                title: 'PickerGroup 选择器组'
               },
               {
                 path: 'radio',
-                title: 'Radio 单选框',
+                title: 'Radio 单选框'
               },
               {
                 path: 'rate',
-                title: 'Rate 评分',
+                title: 'Rate 评分'
               },
               {
                 path: 'search',
-                title: 'Search 搜索',
+                title: 'Search 搜索'
               },
               {
                 path: 'slider',
-                title: 'Slider 滑块',
+                title: 'Slider 滑块'
               },
               {
                 path: 'stepper',
-                title: 'Stepper 步进器',
+                title: 'Stepper 步进器'
               },
               {
                 path: 'switch',
-                title: 'Switch 开关',
+                title: 'Switch 开关'
               },
               {
                 path: 'time-picker',
-                title: 'TimePicker 时间选择',
+                title: 'TimePicker 时间选择'
               },
               {
                 path: 'uploader',
-                title: 'Uploader 文件上传',
-              },
-            ],
+                title: 'Uploader 文件上传'
+              }
+            ]
           },
           {
             title: '反馈组件',
             items: [
               {
                 path: 'action-sheet',
-                title: 'ActionSheet 动作面板',
+                title: 'ActionSheet 动作面板'
               },
               {
                 path: 'dialog',
-                title: 'Dialog 弹出框',
+                title: 'Dialog 弹出框'
               },
               {
                 path: 'dropdown-menu',
-                title: 'DropdownMenu 下拉菜单',
+                title: 'DropdownMenu 下拉菜单'
               },
               {
                 path: 'loading',
-                title: 'Loading 加载',
+                title: 'Loading 加载'
               },
               {
                 path: 'notify',
-                title: 'Notify 消息通知',
+                title: 'Notify 消息通知'
               },
               {
                 path: 'overlay',
-                title: 'Overlay 遮罩层',
+                title: 'Overlay 遮罩层'
               },
               {
                 path: 'pull-refresh',
-                title: 'PullRefresh 下拉刷新',
+                title: 'PullRefresh 下拉刷新'
               },
               {
                 path: 'share-sheet',
-                title: 'ShareSheet 分享面板',
+                title: 'ShareSheet 分享面板'
               },
               {
                 path: 'swipe-cell',
-                title: 'SwipeCell 滑动单元格',
-              },
-            ],
+                title: 'SwipeCell 滑动单元格'
+              }
+            ]
           },
           {
             title: '展示组件',
             items: [
               {
                 path: 'badge',
-                title: 'Badge 徽标',
+                title: 'Badge 徽标'
               },
               {
                 path: 'circle',
-                title: 'Circle 环形进度条',
+                title: 'Circle 环形进度条'
               },
               {
                 path: 'collapse',
-                title: 'Collapse 折叠面板',
+                title: 'Collapse 折叠面板'
               },
               {
                 path: 'count-down',
-                title: 'CountDown 倒计时',
+                title: 'CountDown 倒计时'
               },
               {
                 path: 'divider',
-                title: 'Divider 分割线',
+                title: 'Divider 分割线'
               },
               {
                 path: 'empty',
-                title: 'Empty 空状态',
+                title: 'Empty 空状态'
               },
               {
                 path: 'image-preview',
-                title: 'ImagePreview 图片预览',
+                title: 'ImagePreview 图片预览'
               },
               {
                 path: 'lazyload',
-                title: 'Lazyload 懒加载',
+                title: 'Lazyload 懒加载'
               },
               {
                 path: 'list',
-                title: 'List 列表',
+                title: 'List 列表'
               },
               {
                 path: 'notice-bar',
-                title: 'NoticeBar 通知栏',
+                title: 'NoticeBar 通知栏'
               },
               {
                 path: 'popover',
-                title: 'Popover 气泡弹出框',
+                title: 'Popover 气泡弹出框'
               },
               {
                 path: 'progress',
-                title: 'Progress 进度条',
+                title: 'Progress 进度条'
               },
               {
                 path: 'skeleton',
-                title: 'Skeleton 骨架屏',
+                title: 'Skeleton 骨架屏'
               },
               {
                 path: 'steps',
-                title: 'Steps 步骤条',
+                title: 'Steps 步骤条'
               },
               {
                 path: 'sticky',
-                title: 'Sticky 粘性布局',
+                title: 'Sticky 粘性布局'
               },
               {
                 path: 'swipe',
-                title: 'Swipe 轮播',
+                title: 'Swipe 轮播'
               },
               {
                 path: 'tag',
-                title: 'Tag 标签',
-              },
-            ],
+                title: 'Tag 标签'
+              }
+            ]
           },
           {
             title: '导航组件',
             items: [
               {
                 path: 'action-bar',
-                title: 'ActionBar 动作栏',
+                title: 'ActionBar 动作栏'
               },
               {
                 path: 'grid',
-                title: 'Grid 宫格',
+                title: 'Grid 宫格'
               },
               {
                 path: 'index-bar',
-                title: 'IndexBar 索引栏',
+                title: 'IndexBar 索引栏'
               },
               {
                 path: 'nav-bar',
-                title: 'NavBar 导航栏',
+                title: 'NavBar 导航栏'
               },
               {
                 path: 'pagination',
-                title: 'Pagination 分页',
+                title: 'Pagination 分页'
               },
               {
                 path: 'sidebar',
-                title: 'Sidebar 侧边导航',
+                title: 'Sidebar 侧边导航'
               },
               {
                 path: 'tab',
-                title: 'Tab 标签页',
+                title: 'Tab 标签页'
               },
               {
                 path: 'tabbar',
-                title: 'Tabbar 标签栏',
+                title: 'Tabbar 标签栏'
               },
               {
                 path: 'tree-select',
-                title: 'TreeSelect 分类选择',
+                title: 'TreeSelect 分类选择'
               },
               {
                 path: 'back-top',
-                title: 'BackTop 回到顶部',
-              },
-            ],
+                title: 'BackTop 回到顶部'
+              }
+            ]
           },
           {
             title: '业务组件',
             items: [
               {
                 path: 'address-edit',
-                title: 'AddressEdit 地址编辑',
+                title: 'AddressEdit 地址编辑'
               },
               {
                 path: 'address-list',
-                title: 'AddressList 地址列表',
+                title: 'AddressList 地址列表'
               },
               {
                 path: 'area',
-                title: 'Area 省市区选择',
+                title: 'Area 省市区选择'
               },
               {
                 path: 'card',
-                title: 'Card 商品卡片',
+                title: 'Card 商品卡片'
               },
               {
                 path: 'contact-card',
-                title: 'ContactCard 联系人卡片',
+                title: 'ContactCard 联系人卡片'
               },
               {
                 path: 'contact-edit',
-                title: 'ContactEdit 联系人编辑',
+                title: 'ContactEdit 联系人编辑'
               },
               {
                 path: 'contact-list',
-                title: 'ContactList 联系人列表',
+                title: 'ContactList 联系人列表'
               },
               {
                 path: 'coupon-list',
-                title: 'Coupon 优惠券',
+                title: 'Coupon 优惠券'
               },
               {
                 path: 'submit-bar',
-                title: 'SubmitBar 提交订单栏',
-              },
-            ],
+                title: 'SubmitBar 提交订单栏'
+              }
+            ]
           },
           {
             title: '组合式 API',
             items: [
               {
                 path: 'vant-use-intro',
-                title: '介绍',
+                title: '介绍'
               },
               {
                 path: 'use-click-away',
-                title: 'useClickAway',
+                title: 'useClickAway'
               },
               {
                 path: 'use-count-down',
-                title: 'useCountDown',
+                title: 'useCountDown'
               },
               {
                 path: 'use-custom-field-value',
-                title: 'useCustomFieldValue',
+                title: 'useCustomFieldValue'
               },
               {
                 path: 'use-event-listener',
-                title: 'useEventListener',
+                title: 'useEventListener'
               },
               {
                 path: 'use-page-visibility',
-                title: 'usePageVisibility',
+                title: 'usePageVisibility'
               },
               {
                 path: 'use-rect',
-                title: 'useRect',
+                title: 'useRect'
               },
               {
                 path: 'use-relation',
-                title: 'useRelation',
+                title: 'useRelation'
               },
               {
                 path: 'use-scroll-parent',
-                title: 'useScrollParent',
+                title: 'useScrollParent'
               },
               {
                 path: 'use-toggle',
-                title: 'useToggle',
+                title: 'useToggle'
               },
               {
                 path: 'use-window-size',
-                title: 'useWindowSize',
-              },
-            ],
-          },
-        ],
+                title: 'useWindowSize'
+              }
+            ]
+          }
+        ]
       },
       'en-US': {
         title: 'Ryxon',
@@ -479,8 +471,8 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
         links: [
           {
             logo: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/github.svg',
-            url: 'https://github.com/PeterPanY/ryxon',
-          },
+            url: 'https://github.com/PeterPanY/ryxon'
+          }
         ],
         nav: [
           {
@@ -488,403 +480,395 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
             items: [
               {
                 path: 'home',
-                title: 'Introduction',
+                title: 'Introduction'
               },
               {
                 path: 'quickstart',
-                title: 'Quickstart',
+                title: 'Quickstart'
               },
               {
                 path: 'advanced-usage',
-                title: 'Advanced Usage',
+                title: 'Advanced Usage'
               },
               {
                 path: 'changelog',
-                title: 'Changelog',
+                title: 'Changelog'
               },
               {
                 path: 'design',
-                title: 'Design Resources',
+                title: 'Design Resources'
               },
               {
                 path: 'locale',
-                title: 'Internationalization',
-              },
-            ],
+                title: 'Internationalization'
+              }
+            ]
           },
           {
             title: 'Basic Components',
             items: [
               {
                 path: 'button',
-                title: 'Button',
+                title: 'Button'
               },
               {
                 path: 'cell',
-                title: 'Cell',
+                title: 'Cell'
               },
               {
                 path: 'config-provider',
-                title: 'ConfigProvider',
-              },
-              {
-                path: 'icon',
-                title: 'Icon',
+                title: 'ConfigProvider'
               },
               {
                 path: 'image',
-                title: 'Image',
+                title: 'Image'
               },
               {
                 path: 'col',
-                title: 'Layout',
+                title: 'Layout'
               },
               {
                 path: 'popup',
-                title: 'Popup',
+                title: 'Popup'
               },
               {
                 path: 'space',
-                title: 'Space',
+                title: 'Space'
               },
               {
                 path: 'style',
-                title: 'Built-in style',
-              },
-              {
-                path: 'toast',
-                title: 'Toast',
-              },
-            ],
+                title: 'Built-in style'
+              }
+            ]
           },
           {
             title: 'Form Components',
             items: [
               {
                 path: 'calendar',
-                title: 'Calendar',
+                title: 'Calendar'
               },
               {
                 path: 'cascader',
-                title: 'Cascader',
+                title: 'Cascader'
               },
               {
                 path: 'checkbox',
-                title: 'Checkbox',
+                title: 'Checkbox'
               },
               {
                 path: 'date-picker',
-                title: 'DatePicker',
+                title: 'DatePicker'
               },
               {
                 path: 'field',
-                title: 'Field',
+                title: 'Field'
               },
               {
                 path: 'form',
-                title: 'Form',
+                title: 'Form'
               },
               {
                 path: 'number-keyboard',
-                title: 'NumberKeyboard',
+                title: 'NumberKeyboard'
               },
               {
                 path: 'password-input',
-                title: 'PasswordInput',
+                title: 'PasswordInput'
               },
               {
                 path: 'picker',
-                title: 'Picker',
+                title: 'Picker'
               },
               {
                 path: 'picker-group',
-                title: 'PickerGroup',
+                title: 'PickerGroup'
               },
               {
                 path: 'radio',
-                title: 'Radio',
+                title: 'Radio'
               },
               {
                 path: 'rate',
-                title: 'Rate',
+                title: 'Rate'
               },
               {
                 path: 'search',
-                title: 'Search',
+                title: 'Search'
               },
               {
                 path: 'slider',
-                title: 'Slider',
+                title: 'Slider'
               },
               {
                 path: 'stepper',
-                title: 'Stepper',
+                title: 'Stepper'
               },
               {
                 path: 'switch',
-                title: 'Switch',
+                title: 'Switch'
               },
               {
                 path: 'time-picker',
-                title: 'TimePicker',
+                title: 'TimePicker'
               },
               {
                 path: 'uploader',
-                title: 'Uploader',
-              },
-            ],
+                title: 'Uploader'
+              }
+            ]
           },
           {
             title: 'Action Components',
             items: [
               {
                 path: 'action-sheet',
-                title: 'ActionSheet',
+                title: 'ActionSheet'
               },
               {
                 path: 'dialog',
-                title: 'Dialog',
+                title: 'Dialog'
               },
               {
                 path: 'dropdown-menu',
-                title: 'DropdownMenu',
+                title: 'DropdownMenu'
               },
               {
                 path: 'loading',
-                title: 'Loading',
+                title: 'Loading'
               },
               {
                 path: 'notify',
-                title: 'Notify',
+                title: 'Notify'
               },
               {
                 path: 'overlay',
-                title: 'Overlay',
+                title: 'Overlay'
               },
               {
                 path: 'pull-refresh',
-                title: 'PullRefresh',
+                title: 'PullRefresh'
               },
               {
                 path: 'share-sheet',
-                title: 'ShareSheet',
+                title: 'ShareSheet'
               },
               {
                 path: 'swipe-cell',
-                title: 'SwipeCell',
-              },
-            ],
+                title: 'SwipeCell'
+              }
+            ]
           },
           {
             title: 'Display Components',
             items: [
               {
                 path: 'badge',
-                title: 'Badge',
+                title: 'Badge'
               },
               {
                 path: 'circle',
-                title: 'Circle',
+                title: 'Circle'
               },
               {
                 path: 'collapse',
-                title: 'Collapse',
+                title: 'Collapse'
               },
               {
                 path: 'count-down',
-                title: 'CountDown',
+                title: 'CountDown'
               },
               {
                 path: 'divider',
-                title: 'Divider',
+                title: 'Divider'
               },
               {
                 path: 'empty',
-                title: 'Empty',
+                title: 'Empty'
               },
               {
                 path: 'image-preview',
-                title: 'ImagePreview',
+                title: 'ImagePreview'
               },
               {
                 path: 'lazyload',
-                title: 'Lazyload',
+                title: 'Lazyload'
               },
               {
                 path: 'list',
-                title: 'List',
+                title: 'List'
               },
               {
                 path: 'notice-bar',
-                title: 'NoticeBar',
+                title: 'NoticeBar'
               },
               {
                 path: 'popover',
-                title: 'Popover',
+                title: 'Popover'
               },
               {
                 path: 'progress',
-                title: 'Progress',
+                title: 'Progress'
               },
               {
                 path: 'skeleton',
-                title: 'Skeleton',
+                title: 'Skeleton'
               },
               {
                 path: 'steps',
-                title: 'Steps',
+                title: 'Steps'
               },
               {
                 path: 'sticky',
-                title: 'Sticky',
+                title: 'Sticky'
               },
               {
                 path: 'swipe',
-                title: 'Swipe',
+                title: 'Swipe'
               },
               {
                 path: 'tag',
-                title: 'Tag',
-              },
-            ],
+                title: 'Tag'
+              }
+            ]
           },
           {
             title: 'Navigation Components',
             items: [
               {
                 path: 'action-bar',
-                title: 'ActionBar',
+                title: 'ActionBar'
               },
               {
                 path: 'grid',
-                title: 'Grid',
+                title: 'Grid'
               },
               {
                 path: 'index-bar',
-                title: 'IndexBar',
+                title: 'IndexBar'
               },
               {
                 path: 'nav-bar',
-                title: 'NavBar',
+                title: 'NavBar'
               },
               {
                 path: 'pagination',
-                title: 'Pagination',
+                title: 'Pagination'
               },
               {
                 path: 'sidebar',
-                title: 'Sidebar',
+                title: 'Sidebar'
               },
               {
                 path: 'tab',
-                title: 'Tab',
+                title: 'Tab'
               },
               {
                 path: 'tabbar',
-                title: 'Tabbar',
+                title: 'Tabbar'
               },
               {
                 path: 'tree-select',
-                title: 'TreeSelect',
+                title: 'TreeSelect'
               },
               {
                 path: 'back-top',
-                title: 'BackTop',
-              },
-            ],
+                title: 'BackTop'
+              }
+            ]
           },
           {
             title: 'Business Components',
             items: [
               {
                 path: 'address-edit',
-                title: 'AddressEdit',
+                title: 'AddressEdit'
               },
               {
                 path: 'address-list',
-                title: 'AddressList',
+                title: 'AddressList'
               },
               {
                 path: 'area',
-                title: 'Area',
+                title: 'Area'
               },
               {
                 path: 'card',
-                title: 'Card',
+                title: 'Card'
               },
               {
                 path: 'contact-card',
-                title: 'ContactCard',
+                title: 'ContactCard'
               },
               {
                 path: 'contact-edit',
-                title: 'ContactEdit',
+                title: 'ContactEdit'
               },
               {
                 path: 'contact-list',
-                title: 'ContactList',
+                title: 'ContactList'
               },
               {
                 path: 'coupon-list',
-                title: 'Coupon',
+                title: 'Coupon'
               },
               {
                 path: 'submit-bar',
-                title: 'SubmitBar',
-              },
-            ],
+                title: 'SubmitBar'
+              }
+            ]
           },
           {
             title: 'Composables',
             items: [
               {
                 path: 'vant-use-intro',
-                title: 'Intro',
+                title: 'Intro'
               },
               {
                 path: 'use-click-away',
-                title: 'useClickAway',
+                title: 'useClickAway'
               },
               {
                 path: 'use-count-down',
-                title: 'useCountDown',
+                title: 'useCountDown'
               },
               {
                 path: 'use-custom-field-value',
-                title: 'useCustomFieldValue',
+                title: 'useCustomFieldValue'
               },
               {
                 path: 'use-event-listener',
-                title: 'useEventListener',
+                title: 'useEventListener'
               },
               {
                 path: 'use-page-visibility',
-                title: 'usePageVisibility',
+                title: 'usePageVisibility'
               },
               {
                 path: 'use-rect',
-                title: 'useRect',
+                title: 'useRect'
               },
               {
                 path: 'use-relation',
-                title: 'useRelation',
+                title: 'useRelation'
               },
               {
                 path: 'use-scroll-parent',
-                title: 'useScrollParent',
+                title: 'useScrollParent'
               },
               {
                 path: 'use-toggle',
-                title: 'useToggle',
+                title: 'useToggle'
               },
               {
                 path: 'use-window-size',
-                title: 'useWindowSize',
-              },
-            ],
-          },
-        ],
-      },
-    },
-  },
-};
+                title: 'useWindowSize'
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
