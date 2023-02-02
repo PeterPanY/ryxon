@@ -465,7 +465,7 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
       'en-US': {
         title: 'Ryxon',
         subtitle: ' (for Vue 3)',
-        description: 'Lightweight Mobile UI Components built on Vue',
+        description: 'Lightweight Components built on Vue',
         logo: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/logo.png',
         langLabel: 'EN',
         links: [

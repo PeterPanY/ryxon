@@ -1,7 +1,7 @@
 {
   "name": "ryxon",
   "version": "1.0.9",
-  "description": "Mobile UI Components built on Vue",
+  "description": "Components built on Vue",
   "main": "lib/ryxon.cjs.js",
   "module": "es/index.mjs",
   "style": "lib/index.css",
@@ -39,7 +39,6 @@
     "ui",
     "vue",
     "vue3",
-    "mobile",
     "frontend",
     "component",
     "components"

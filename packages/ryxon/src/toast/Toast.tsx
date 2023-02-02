@@ -105,19 +105,34 @@ export default defineComponent({
       const { icon, type, iconSize, iconPrefix, loadingType } = props
 
       // 获取类型图标
-      const hasIcon = computed(() => icon || TypeComponentsMap[type] || '')
+      const hasIcon = computed(() => {
+        if (icon) {
+          return icon
+        }
+        if (
+          type === 'success' ||
+          type === 'warning' ||
+          type === 'info' ||
+          type === 'danger'
+        ) {
+          return TypeComponentsMap[type]
+        }
+        return ''
+      })
 
       if (hasIcon.value) {
         const iconComp = toRaw(hasIcon.value)
 
+        const isSting = typeof iconComp === 'string'
+
         return (
           <Icon
-            name={!iconComp.name ? iconComp : ''}
+            name={isSting ? iconComp : ''}
             size={iconSize}
             class={bem('icon')}
             classPrefix={iconPrefix}
           >
-            {iconComp.name && h(iconComp)}
+            {!isSting && h(iconComp)}
           </Icon>
         )
       }
@@ -162,7 +177,12 @@ export default defineComponent({
     onMounted(toggleClickable)
     onUnmounted(toggleClickable)
 
-    const lastOffset = computed(() => getLastOffset(props.id))
+    const lastOffset = computed(() => {
+      if (props.id) {
+        return getLastOffset(props.id)
+      }
+      return { top: 0, bottom: 0 }
+    })
 
     const offset = computed(() => props.offset + lastOffset.value.bottom)
 
