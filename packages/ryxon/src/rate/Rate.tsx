@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref, type ExtractPropTypes } from 'vue';
+import { computed, defineComponent, ref, type ExtractPropTypes } from 'vue'
 
 // Utils
 import {
@@ -9,25 +9,25 @@ import {
   makeStringProp,
   makeNumberProp,
   makeNumericProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
 // Composables
-import { useRect, useCustomFieldValue, useEventListener } from '@ryxon/use';
-import { useRefs } from '../composables/use-refs';
-import { useTouch } from '../composables/use-touch';
+import { useRect, useCustomFieldValue, useEventListener } from '@ryxon/use'
+import { useRefs } from '../composables/use-refs'
+import { useTouch } from '../composables/use-touch'
 
 // Components
-import { Icon } from '../icon';
+import { Icon } from '../icon'
 
-const [name, bem] = createNamespace('rate');
+const [, bem] = createNamespace('rate')
 
-type RateStatus = 'full' | 'half' | 'void';
+type RateStatus = 'full' | 'half' | 'void'
 
 type RateListItem = {
-  value: number;
-  status: RateStatus;
-};
+  value: number
+  status: RateStatus
+}
 
 function getRateStatus(
   value: number,
@@ -36,22 +36,22 @@ function getRateStatus(
   readonly: boolean
 ): RateListItem {
   if (value >= index) {
-    return { status: 'full', value: 1 };
+    return { status: 'full', value: 1 }
   }
 
   if (value + 0.5 >= index && allowHalf && !readonly) {
-    return { status: 'half', value: 0.5 };
+    return { status: 'half', value: 0.5 }
   }
 
   if (value + 1 >= index && allowHalf && readonly) {
-    const cardinal = 10 ** 10;
+    const cardinal = 10 ** 10
     return {
       status: 'half',
-      value: Math.round((value - index + 1) * cardinal) / cardinal,
-    };
+      value: Math.round((value - index + 1) * cardinal) / cardinal
+    }
   }
 
-  return { status: 'void', value: 0 };
+  return { status: 'void', value: 0 }
 }
 
 export const rateProps = {
@@ -68,25 +68,25 @@ export const rateProps = {
   touchable: truthProp,
   iconPrefix: String,
   modelValue: makeNumberProp(0),
-  disabledColor: String,
-};
+  disabledColor: String
+}
 
-export type RateProps = ExtractPropTypes<typeof rateProps>;
+export type RateProps = ExtractPropTypes<typeof rateProps>
 
 export default defineComponent({
-  name,
+  name: 'RRate',
 
   props: rateProps,
 
   emits: ['change', 'update:modelValue'],
 
   setup(props, { emit }) {
-    const touch = useTouch();
-    const [itemRefs, setItemRefs] = useRefs();
-    const groupRef = ref<Element>();
+    const touch = useTouch()
+    const [itemRefs, setItemRefs] = useRefs()
+    const groupRef = ref<Element>()
 
     const untouchable = () =>
-      props.readonly || props.disabled || !props.touchable;
+      props.readonly || props.disabled || !props.touchable
 
     const list = computed<RateListItem[]>(() =>
       Array(+props.count)
@@ -99,28 +99,28 @@ export default defineComponent({
             props.readonly
           )
         )
-    );
+    )
 
     let ranges: Array<{
-      left: number;
-      top: number;
-      height: number;
-      score: number;
-    }>;
+      left: number
+      top: number
+      height: number
+      score: number
+    }>
 
-    let groupRefRect: DOMRect;
-    let minRectTop = Number.MAX_SAFE_INTEGER;
-    let maxRectTop = Number.MIN_SAFE_INTEGER;
+    let groupRefRect: DOMRect
+    let minRectTop = Number.MAX_SAFE_INTEGER
+    let maxRectTop = Number.MIN_SAFE_INTEGER
 
     const updateRanges = () => {
-      groupRefRect = useRect(groupRef);
+      groupRefRect = useRect(groupRef)
 
-      const rects = itemRefs.value.map(useRect);
+      const rects = itemRefs.value.map(useRect)
 
-      ranges = [];
+      ranges = []
       rects.forEach((rect, index) => {
-        minRectTop = Math.min(rect.top, minRectTop);
-        maxRectTop = Math.max(rect.top, maxRectTop);
+        minRectTop = Math.min(rect.top, minRectTop)
+        maxRectTop = Math.max(rect.top, maxRectTop)
 
         if (props.allowHalf) {
           ranges.push(
@@ -128,25 +128,25 @@ export default defineComponent({
               score: index + 0.5,
               left: rect.left,
               top: rect.top,
-              height: rect.height,
+              height: rect.height
             },
             {
               score: index + 1,
               left: rect.left + rect.width / 2,
               top: rect.top,
-              height: rect.height,
+              height: rect.height
             }
-          );
+          )
         } else {
           ranges.push({
             score: index + 1,
             left: rect.left,
             top: rect.top,
-            height: rect.height,
-          });
+            height: rect.height
+          })
         }
-      });
-    };
+      })
+    }
 
     const getScoreByPosition = (x: number, y: number) => {
       for (let i = ranges.length - 1; i > 0; i--) {
@@ -156,48 +156,48 @@ export default defineComponent({
             y >= ranges[i].top &&
             y <= ranges[i].top + ranges[i].height
           ) {
-            return ranges[i].score;
+            return ranges[i].score
           }
         } else {
-          const curTop = y < groupRefRect.top ? minRectTop : maxRectTop;
+          const curTop = y < groupRefRect.top ? minRectTop : maxRectTop
 
           if (x > ranges[i].left && ranges[i].top === curTop) {
-            return ranges[i].score;
+            return ranges[i].score
           }
         }
       }
-      return props.allowHalf ? 0.5 : 1;
-    };
+      return props.allowHalf ? 0.5 : 1
+    }
 
     const select = (index: number) => {
       if (!props.disabled && !props.readonly && index !== props.modelValue) {
-        emit('update:modelValue', index);
-        emit('change', index);
+        emit('update:modelValue', index)
+        emit('change', index)
       }
-    };
+    }
 
     const onTouchStart = (event: TouchEvent) => {
       if (untouchable()) {
-        return;
+        return
       }
 
-      touch.start(event);
-      updateRanges();
-    };
+      touch.start(event)
+      updateRanges()
+    }
 
     const onTouchMove = (event: TouchEvent) => {
       if (untouchable()) {
-        return;
+        return
       }
 
-      touch.move(event);
+      touch.move(event)
 
       if (touch.isHorizontal()) {
-        const { clientX, clientY } = event.touches[0];
-        preventDefault(event);
-        select(getScoreByPosition(clientX, clientY));
+        const { clientX, clientY } = event.touches[0]
+        preventDefault(event)
+        select(getScoreByPosition(clientX, clientY))
       }
-    };
+    }
 
     const renderStar = (item: RateListItem, index: number) => {
       const {
@@ -211,26 +211,26 @@ export default defineComponent({
         voidColor,
         allowHalf,
         iconPrefix,
-        disabledColor,
-      } = props;
-      const score = index + 1;
-      const isFull = item.status === 'full';
-      const isVoid = item.status === 'void';
-      const renderHalf = allowHalf && item.value > 0 && item.value < 1;
+        disabledColor
+      } = props
+      const score = index + 1
+      const isFull = item.status === 'full'
+      const isVoid = item.status === 'void'
+      const renderHalf = allowHalf && item.value > 0 && item.value < 1
 
-      let style;
+      let style
       if (gutter && score !== +count) {
         style = {
-          paddingRight: addUnit(gutter),
-        };
+          paddingRight: addUnit(gutter)
+        }
       }
 
       const onClickItem = (event: MouseEvent) => {
-        updateRanges();
+        updateRanges()
         select(
           allowHalf ? getScoreByPosition(event.clientX, event.clientY) : score
-        );
-      };
+        )
+      }
 
       return (
         <div
@@ -263,15 +263,15 @@ export default defineComponent({
             />
           )}
         </div>
-      );
-    };
+      )
+    }
 
-    useCustomFieldValue(() => props.modelValue);
+    useCustomFieldValue(() => props.modelValue)
 
     // useEventListener will set passive to `false` to eliminate the warning of Chrome
     useEventListener('touchmove', onTouchMove, {
-      target: groupRef,
-    });
+      target: groupRef
+    })
 
     return () => (
       <div
@@ -279,7 +279,7 @@ export default defineComponent({
         role="radiogroup"
         class={bem({
           readonly: props.readonly,
-          disabled: props.disabled,
+          disabled: props.disabled
         })}
         tabindex={props.disabled ? undefined : 0}
         aria-disabled={props.disabled}
@@ -288,6 +288,6 @@ export default defineComponent({
       >
         {list.value.map(renderStar)}
       </div>
-    );
-  },
-});
+    )
+  }
+})

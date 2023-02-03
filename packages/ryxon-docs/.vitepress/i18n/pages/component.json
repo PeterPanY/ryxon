@@ -4,6 +4,10 @@
       "text": "Basic 基础组件",
       "children": [
         {
+          "link": "/config-provider",
+          "text": "Config Provider 全局配置"
+        },
+        {
           "link": "/button",
           "text": "Button 按钮"
         },
