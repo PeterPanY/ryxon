@@ -1,6 +1,6 @@
-import { Ref, unref } from 'vue';
+import { Ref, unref } from 'vue'
 
-const isWindow = (val: unknown): val is Window => val === window;
+const isWindow = (val: unknown): val is Window => val === window
 
 const makeDOMRect = (width: number, height: number) =>
   ({
@@ -9,23 +9,23 @@ const makeDOMRect = (width: number, height: number) =>
     right: width,
     bottom: height,
     width,
-    height,
-  } as DOMRect);
+    height
+  } as DOMRect)
 
 export const useRect = (
   elementOrRef: Element | Window | Ref<Element | Window | undefined>
 ) => {
-  const element = unref(elementOrRef);
+  const element = unref(elementOrRef)
 
   if (isWindow(element)) {
-    const width = element.innerWidth;
-    const height = element.innerHeight;
-    return makeDOMRect(width, height);
+    const width = element.innerWidth
+    const height = element.innerHeight
+    return makeDOMRect(width, height)
   }
 
   if (element?.getBoundingClientRect) {
-    return element.getBoundingClientRect();
+    return element.getBoundingClientRect()
   }
 
-  return makeDOMRect(0, 0);
-};
+  return makeDOMRect(0, 0)
+}

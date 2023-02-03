@@ -17,6 +17,15 @@
         }
       ]
     },
+    "form": {
+      "text": "Form 表单组件",
+      "children": [
+        {
+          "link": "/select",
+          "text": "Select 选择器"
+        }
+      ]
+    },
     "data": {
       "text": "Data 数据展示",
       "children": [
@@ -32,6 +41,14 @@
         {
           "link": "/toast",
           "text": "Toast 消息提示"
+        },
+        {
+          "link": "/popover",
+          "text": "Popover 气泡弹出框"
+        },
+        {
+          "link": "/tooltip",
+          "text": "Tooltip 文字提示"
         }
       ]
     }

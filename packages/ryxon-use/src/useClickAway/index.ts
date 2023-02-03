@@ -1,10 +1,10 @@
-import { Ref, unref } from 'vue';
-import { inBrowser } from '../utils';
-import { useEventListener } from '../useEventListener';
+import { Ref, unref } from 'vue'
+import { inBrowser } from '../utils'
+import { useEventListener } from '../useEventListener'
 
 export type UseClickAwayOptions = {
-  eventName?: string;
-};
+  eventName?: string
+}
 
 export function useClickAway(
   target:
@@ -15,22 +15,22 @@ export function useClickAway(
   options: UseClickAwayOptions = {}
 ) {
   if (!inBrowser) {
-    return;
+    return
   }
 
-  const { eventName = 'click' } = options;
+  const { eventName = 'click' } = options
 
   const onClick = (event: Event) => {
-    const targets = Array.isArray(target) ? target : [target];
+    const targets = Array.isArray(target) ? target : [target]
     const isClickAway = targets.every((item) => {
-      const element = unref(item);
-      return element && !element.contains(event.target as Node);
-    });
+      const element = unref(item)
+      return element && !element.contains(event.target as Node)
+    })
 
     if (isClickAway) {
-      listener(event);
+      listener(event)
     }
-  };
+  }
 
-  useEventListener(eventName, onClick, { target: document });
+  useEventListener(eventName, onClick, { target: document })
 }

@@ -1,67 +1,67 @@
-import { Ref, watch, isRef, unref, onUnmounted, onDeactivated } from 'vue';
-import { onMountedOrActivated } from '../onMountedOrActivated';
-import { inBrowser } from '../utils';
+import { Ref, watch, isRef, unref, onUnmounted, onDeactivated } from 'vue'
+import { onMountedOrActivated } from '../onMountedOrActivated'
+import { inBrowser } from '../utils'
 
-type TargetRef = EventTarget | Ref<EventTarget | undefined>;
+type TargetRef = EventTarget | Ref<EventTarget | undefined>
 
 export type UseEventListenerOptions = {
-  target?: TargetRef;
-  capture?: boolean;
-  passive?: boolean;
-};
+  target?: TargetRef
+  capture?: boolean
+  passive?: boolean
+}
 
 export function useEventListener<K extends keyof DocumentEventMap>(
   type: K,
   listener: (event: DocumentEventMap[K]) => void,
   options?: UseEventListenerOptions
-): void;
+): void
 export function useEventListener(
   type: string,
   listener: EventListener,
   options?: UseEventListenerOptions
-): void;
+): void
 export function useEventListener(
   type: string,
   listener: EventListener,
   options: UseEventListenerOptions = {}
 ) {
   if (!inBrowser) {
-    return;
+    return
   }
 
-  const { target = window, passive = false, capture = false } = options;
+  const { target = window, passive = false, capture = false } = options
 
-  let attached: boolean;
+  let attached: boolean
 
   const add = (target?: TargetRef) => {
-    const element = unref(target);
+    const element = unref(target)
 
     if (element && !attached) {
       element.addEventListener(type, listener, {
         capture,
-        passive,
-      });
-      attached = true;
+        passive
+      })
+      attached = true
     }
-  };
+  }
 
   const remove = (target?: TargetRef) => {
-    const element = unref(target);
+    const element = unref(target)
 
     if (element && attached) {
-      element.removeEventListener(type, listener, capture);
-      attached = false;
+      element.removeEventListener(type, listener, capture)
+      attached = false
     }
-  };
+  }
 
-  onUnmounted(() => remove(target));
-  onDeactivated(() => remove(target));
-  onMountedOrActivated(() => add(target));
+  onUnmounted(() => remove(target))
+  onDeactivated(() => remove(target))
+  onMountedOrActivated(() => add(target))
 
   if (isRef(target)) {
     watch(target, (val, oldVal) => {
-      remove(oldVal);
-      add(val);
-    });
+      remove(oldVal)
+      add(val)
+    })
   }
 }

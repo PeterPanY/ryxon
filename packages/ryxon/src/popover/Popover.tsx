@@ -1,4 +1,5 @@
 import {
+  h,
   ref,
   watch,
   nextTick,
@@ -9,9 +10,9 @@ import {
   type PropType,
   type CSSProperties,
   type TeleportProps,
-  type ExtractPropTypes,
-} from 'vue';
-import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs';
+  type ExtractPropTypes
+} from 'vue'
+import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
 
 // Utils
 import {
@@ -24,26 +25,26 @@ import {
   makeArrayProp,
   makeStringProp,
   createNamespace,
-  type ComponentInstance,
-} from '../utils';
+  type ComponentInstance
+} from '../utils'
 
 // Composables
-import { useClickAway } from '@ryxon/use';
-import { useSyncPropRef } from '../composables/use-sync-prop-ref';
+import { useClickAway } from '@ryxon/use'
+import { useSyncPropRef } from '../composables/use-sync-prop-ref'
 
 // Components
-import { Icon } from '../icon';
-import { Popup } from '../popup';
+import { Icon } from '../icon'
+import { Popup } from '../popup'
 
 // Types
 import {
   PopoverTheme,
   PopoverAction,
   PopoverTrigger,
-  PopoverPlacement,
-} from './types';
+  PopoverPlacement
+} from './types'
 
-const [name, bem] = createNamespace('popover');
+const [name, bem] = createNamespace('popover')
 
 const popupProps = [
   'overlay',
@@ -51,8 +52,8 @@ const popupProps = [
   'teleport',
   'overlayStyle',
   'overlayClass',
-  'closeOnClickOverlay',
-] as const;
+  'closeOnClickOverlay'
+] as const
 
 export const popoverProps = {
   show: Boolean,
@@ -71,34 +72,34 @@ export const popoverProps = {
   closeOnClickOutside: truthProp,
   offset: {
     type: Array as unknown as PropType<[number, number]>,
-    default: () => [0, 8],
+    default: () => [0, 8]
   },
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body',
-  },
-};
+    default: 'body'
+  }
+}
 
-export type PopoverProps = ExtractPropTypes<typeof popoverProps>;
+export type PopoverProps = ExtractPropTypes<typeof popoverProps>
 
 export default defineComponent({
   name,
 
   props: popoverProps,
 
-  emits: ['select', 'touchstart', 'update:show'],
+  emits: ['select', 'click', 'update:show'],
 
   setup(props, { emit, slots, attrs }) {
-    let popper: Instance | null;
+    let popper: Instance | null
 
-    const popupRef = ref<HTMLElement>();
-    const wrapperRef = ref<HTMLElement>();
-    const popoverRef = ref<ComponentInstance>();
+    const popupRef = ref<HTMLElement>()
+    const wrapperRef = ref<HTMLElement>()
+    const popoverRef = ref<ComponentInstance>()
 
     const show = useSyncPropRef(
       () => props.show,
       (value) => emit('update:show', value)
-    );
+    )
 
     const getPopoverOptions = () => ({
       placement: props.placement,
@@ -107,16 +108,16 @@ export default defineComponent({
           name: 'computeStyles',
           options: {
             adaptive: false,
-            gpuAcceleration: false,
-          },
+            gpuAcceleration: false
+          }
         },
         extend({}, offsetModifier, {
           options: {
-            offset: props.offset,
-          },
-        }),
-      ],
-    });
+            offset: props.offset
+          }
+        })
+      ]
+    })
 
     const createPopperInstance = () => {
       if (wrapperRef.value && popoverRef.value) {
@@ -124,46 +125,46 @@ export default defineComponent({
           wrapperRef.value,
           popoverRef.value.popupRef.value,
           getPopoverOptions()
-        );
+        )
       }
-      return null;
-    };
+      return null
+    }
 
     const updateLocation = () => {
       nextTick(() => {
         if (!show.value) {
-          return;
+          return
         }
 
         if (!popper) {
-          popper = createPopperInstance();
+          popper = createPopperInstance()
         } else {
-          popper.setOptions(getPopoverOptions());
+          popper.setOptions(getPopoverOptions())
         }
-      });
-    };
+      })
+    }
 
     const updateShow = (value: boolean) => {
-      show.value = value;
-    };
+      show.value = value
+    }
 
     const onClickWrapper = () => {
       if (props.trigger === 'click') {
-        show.value = !show.value;
+        show.value = !show.value
       }
-    };
+    }
 
     const onClickAction = (action: PopoverAction, index: number) => {
       if (action.disabled) {
-        return;
+        return
       }
 
-      emit('select', action, index);
+      emit('select', action, index)
 
       if (props.closeOnClickAction) {
-        show.value = false;
+        show.value = false
       }
-    };
+    }
 
     const onClickAway = () => {
       if (
@@ -171,29 +172,33 @@ export default defineComponent({
         props.closeOnClickOutside &&
         (!props.overlay || props.closeOnClickOverlay)
       ) {
-        show.value = false;
+        show.value = false
       }
-    };
+    }
 
     const renderActionContent = (action: PopoverAction, index: number) => {
       if (slots.action) {
-        return slots.action({ action, index });
+        return slots.action({ action, index })
       }
+
+      const isString = typeof action.icon === 'string'
 
       return [
         action.icon && (
           <Icon
-            name={action.icon}
+            name={isString ? action.icon : ''}
             classPrefix={props.iconPrefix}
             class={bem('action-icon')}
-          />
+          >
+            {!isString && h(action.icon)}
+          </Icon>
         ),
-        <div class={[bem('action-text'), BORDER_BOTTOM]}>{action.text}</div>,
-      ];
-    };
+        <div class={[bem('action-text'), BORDER_BOTTOM]}>{action.text}</div>
+      ]
+    }
 
     const renderAction = (action: PopoverAction, index: number) => {
-      const { icon, color, disabled, className } = action;
+      const { icon, color, disabled, className } = action
       return (
         <div
           role="menuitem"
@@ -205,28 +210,28 @@ export default defineComponent({
         >
           {renderActionContent(action, index)}
         </div>
-      );
-    };
+      )
+    }
 
     onMounted(() => {
-      updateLocation();
+      updateLocation()
       watchEffect(() => {
-        popupRef.value = popoverRef.value?.popupRef.value;
-      });
-    });
+        popupRef.value = popoverRef.value?.popupRef.value
+      })
+    })
 
     onBeforeUnmount(() => {
       if (popper) {
-        popper.destroy();
-        popper = null;
+        popper.destroy()
+        popper = null
       }
-    });
+    })
 
-    watch(() => [show.value, props.offset, props.placement], updateLocation);
+    watch(() => [show.value, props.offset, props.placement], updateLocation)
 
     useClickAway([wrapperRef, popupRef], onClickAway, {
-      eventName: 'touchstart',
-    });
+      eventName: 'click'
+    })
 
     return () => (
       <>
@@ -250,6 +255,6 @@ export default defineComponent({
           </div>
         </Popup>
       </>
-    );
-  },
-});
+    )
+  }
+})

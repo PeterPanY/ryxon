@@ -1,20 +1,18 @@
-export const inBrowser = typeof window !== 'undefined';
+export const inBrowser = typeof window !== 'undefined'
 
-// Keep forward compatible
-// should be removed in next major version
-export const supportsPassive = true;
-
+// h5定时器
 export function raf(fn: FrameRequestCallback): number {
-  return inBrowser ? requestAnimationFrame(fn) : -1;
+  return inBrowser ? requestAnimationFrame(fn) : -1
 }
 
+// 清除h5定时器
 export function cancelRaf(id: number) {
   if (inBrowser) {
-    cancelAnimationFrame(id);
+    cancelAnimationFrame(id)
   }
 }
 
-// double raf for animation
+// 动画的双重 raf
 export function doubleRaf(fn: FrameRequestCallback): void {
-  raf(() => raf(fn));
+  raf(() => raf(fn))
 }

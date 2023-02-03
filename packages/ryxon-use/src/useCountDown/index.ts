@@ -1,39 +1,33 @@
-import {
-  ref,
-  computed,
-  onActivated,
-  onDeactivated,
-  onBeforeUnmount,
-} from 'vue';
-import { raf, cancelRaf, inBrowser } from '../utils';
+import { ref, computed, onActivated, onDeactivated, onBeforeUnmount } from 'vue'
+import { raf, cancelRaf, inBrowser } from '../utils'
 
 export type CurrentTime = {
-  days: number;
-  hours: number;
-  total: number;
-  minutes: number;
-  seconds: number;
-  milliseconds: number;
-};
+  days: number
+  hours: number
+  total: number
+  minutes: number
+  seconds: number
+  milliseconds: number
+}
 
 export type UseCountDownOptions = {
-  time: number;
-  millisecond?: boolean;
-  onChange?: (current: CurrentTime) => void;
-  onFinish?: () => void;
-};
+  time: number
+  millisecond?: boolean
+  onChange?: (current: CurrentTime) => void
+  onFinish?: () => void
+}
 
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
+const SECOND = 1000
+const MINUTE = 60 * SECOND
+const HOUR = 60 * MINUTE
+const DAY = 24 * HOUR
 
 function parseTime(time: number): CurrentTime {
-  const days = Math.floor(time / DAY);
-  const hours = Math.floor((time % DAY) / HOUR);
-  const minutes = Math.floor((time % HOUR) / MINUTE);
-  const seconds = Math.floor((time % MINUTE) / SECOND);
-  const milliseconds = Math.floor(time % SECOND);
+  const days = Math.floor(time / DAY)
+  const hours = Math.floor((time % DAY) / HOUR)
+  const minutes = Math.floor((time % HOUR) / MINUTE)
+  const seconds = Math.floor((time % MINUTE) / SECOND)
+  const milliseconds = Math.floor(time % SECOND)
 
   return {
     total: time,
@@ -41,118 +35,118 @@ function parseTime(time: number): CurrentTime {
     hours,
     minutes,
     seconds,
-    milliseconds,
-  };
+    milliseconds
+  }
 }
 
 function isSameSecond(time1: number, time2: number): boolean {
-  return Math.floor(time1 / 1000) === Math.floor(time2 / 1000);
+  return Math.floor(time1 / 1000) === Math.floor(time2 / 1000)
 }
 
 export function useCountDown(options: UseCountDownOptions) {
-  let rafId: number;
-  let endTime: number;
-  let counting: boolean;
-  let deactivated: boolean;
+  let rafId: number
+  let endTime: number
+  let counting: boolean
+  let deactivated: boolean
 
-  const remain = ref(options.time);
-  const current = computed(() => parseTime(remain.value));
+  const remain = ref(options.time)
+  const current = computed(() => parseTime(remain.value))
 
   const pause = () => {
-    counting = false;
-    cancelRaf(rafId);
-  };
+    counting = false
+    cancelRaf(rafId)
+  }
 
-  const getCurrentRemain = () => Math.max(endTime - Date.now(), 0);
+  const getCurrentRemain = () => Math.max(endTime - Date.now(), 0)
 
   const setRemain = (value: number) => {
-    remain.value = value;
-    options.onChange?.(current.value);
+    remain.value = value
+    options.onChange?.(current.value)
 
     if (value === 0) {
-      pause();
-      options.onFinish?.();
+      pause()
+      options.onFinish?.()
     }
-  };
+  }
 
   const microTick = () => {
     rafId = raf(() => {
       // in case of call reset immediately after finish
       if (counting) {
-        setRemain(getCurrentRemain());
+        setRemain(getCurrentRemain())
 
         if (remain.value > 0) {
-          microTick();
+          microTick()
         }
       }
-    });
-  };
+    })
+  }
 
   const macroTick = () => {
     rafId = raf(() => {
       // in case of call reset immediately after finish
       if (counting) {
-        const remainRemain = getCurrentRemain();
+        const remainRemain = getCurrentRemain()
 
         if (!isSameSecond(remainRemain, remain.value) || remainRemain === 0) {
-          setRemain(remainRemain);
+          setRemain(remainRemain)
         }
 
         if (remain.value > 0) {
-          macroTick();
+          macroTick()
         }
       }
-    });
-  };
+    })
+  }
 
   const tick = () => {
     // should not start counting in server
     // see: https://github.com/PeterPanY/ryxon/issues/7807
     if (!inBrowser) {
-      return;
+      return
     }
 
     if (options.millisecond) {
-      microTick();
+      microTick()
     } else {
-      macroTick();
+      macroTick()
     }
-  };
+  }
 
   const start = () => {
     if (!counting) {
-      endTime = Date.now() + remain.value;
-      counting = true;
-      tick();
+      endTime = Date.now() + remain.value
+      counting = true
+      tick()
     }
-  };
+  }
 
   const reset = (totalTime: number = options.time) => {
-    pause();
-    remain.value = totalTime;
-  };
+    pause()
+    remain.value = totalTime
+  }
 
-  onBeforeUnmount(pause);
+  onBeforeUnmount(pause)
 
   onActivated(() => {
     if (deactivated) {
-      counting = true;
-      deactivated = false;
-      tick();
+      counting = true
+      deactivated = false
+      tick()
     }
-  });
+  })
 
   onDeactivated(() => {
     if (counting) {
-      pause();
-      deactivated = true;
+      pause()
+      deactivated = true
     }
-  });
+  })
 
   return {
     start,
     pause,
     reset,
-    current,
-  };
+    current
+  }
 }
