@@ -1,13 +1,13 @@
 <template>
-  <r-popover v-model:show="showPopover1" :actions="actions">
+  <r-popover v-model:show="showPopover1" :actions="actions" trigger="hover">
     <template #reference>
-      <r-button type="primary">浅色风格</r-button>
+      <r-button type="primary">浅色风格hover</r-button>
     </template>
   </r-popover>
 
   <r-popover v-model:show="showPopover2" theme="dark" :actions="actions">
     <template #reference>
-      <r-button type="primary">深色风格</r-button>
+      <r-button type="primary">深色风格Click</r-button>
     </template>
   </r-popover>
 </template>

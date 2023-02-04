@@ -1,5 +1,6 @@
-export type PopoverTheme = 'light' | 'dark';
-export type PopoverTrigger = 'manual' | 'click';
+export type PopoverTheme = 'light' | 'dark'
+export type PopoverTrigger = 'manual' | 'click' | 'focus' | 'hover'
+
 export type PopoverPlacement =
   | 'top'
   | 'top-start'
@@ -12,29 +13,29 @@ export type PopoverPlacement =
   | 'right-end'
   | 'bottom'
   | 'bottom-start'
-  | 'bottom-end';
+  | 'bottom-end'
 
 export type PopoverAction = {
-  text: string;
-  icon?: string;
-  color?: string;
-  disabled?: boolean;
-  className?: string;
-  [key: PropertyKey]: any;
-};
+  text: string
+  icon?: string
+  color?: string
+  disabled?: boolean
+  className?: string
+  [key: PropertyKey]: any
+}
 
 export type PopoverThemeVars = {
-  popoverArrowSize?: string;
-  popoverRadius?: string;
-  popoverActionWidth?: string;
-  popoverActionHeight?: string;
-  popoverActionFontSize?: string;
-  popoverActionLineHeight?: number | string;
-  popoverActionIconSize?: string;
-  popoverLightTextColor?: string;
-  popoverLightBackground?: string;
-  popoverLightActionDisabledTextColor?: string;
-  popoverDarkTextColor?: string;
-  popoverDarkBackground?: string;
-  popoverDarkActionDisabledTextColor?: string;
-};
+  popoverArrowSize?: string
+  popoverRadius?: string
+  popoverActionWidth?: string
+  popoverActionHeight?: string
+  popoverActionFontSize?: string
+  popoverActionLineHeight?: number | string
+  popoverActionIconSize?: string
+  popoverLightTextColor?: string
+  popoverLightBackground?: string
+  popoverLightActionDisabledTextColor?: string
+  popoverDarkTextColor?: string
+  popoverDarkBackground?: string
+  popoverDarkActionDisabledTextColor?: string
+}

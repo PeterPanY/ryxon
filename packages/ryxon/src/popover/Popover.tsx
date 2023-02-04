@@ -148,10 +148,21 @@ export default defineComponent({
       show.value = value
     }
 
+    // 点击事件
     const onClickWrapper = () => {
-      if (props.trigger === 'click') {
-        show.value = !show.value
-      }
+      if (props.trigger === 'click') show.value = !show.value
+    }
+
+    // 显示
+    const onShowWrapper = () => {
+      if (props.trigger === 'hover' || props.trigger === 'focus')
+        show.value = true
+    }
+
+    // 隐藏
+    const onHideWrapper = () => {
+      if (props.trigger === 'hover' || props.trigger === 'focus')
+        show.value = false
     }
 
     const onClickAction = (action: PopoverAction, index: number) => {
@@ -235,7 +246,15 @@ export default defineComponent({
 
     return () => (
       <>
-        <span ref={wrapperRef} class={bem('wrapper')} onClick={onClickWrapper}>
+        <span
+          ref={wrapperRef}
+          class={bem('wrapper')}
+          onClick={onClickWrapper}
+          onMouseenter={onShowWrapper}
+          onMouseleave={onHideWrapper}
+          onFocus={onShowWrapper}
+          onBlur={onHideWrapper}
+        >
           {slots.reference?.()}
         </span>
         <Popup
