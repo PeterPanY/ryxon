@@ -1,18 +1,18 @@
-import { withInstall } from '../utils';
-import _Cascader from './Cascader';
+import { withInstall } from '../utils'
+import _Cascader from './Cascader'
 
-export const Cascader = withInstall(_Cascader);
-export default Cascader;
-export { cascaderProps } from './Cascader';
-export type { CascaderProps } from './Cascader';
+export const Cascader = withInstall(_Cascader)
+export default Cascader
+export { cascaderProps } from './Cascader'
+export type { CascaderProps } from './Cascader'
 export type {
   CascaderOption,
   CascaderThemeVars,
-  CascaderFieldNames,
-} from './types';
+  CascaderInputNames
+} from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RCascader: typeof Cascader;
+    RCascader: typeof Cascader
   }
 }

@@ -48,7 +48,7 @@ importers:
       '@ryxon/eslint-config': workspace:*
       '@ryxon/icons': workspace:*
       '@ryxon/popperjs': ^1.0.1
-      '@ryxon/use': ^1.0.1
+      '@ryxon/use': ^1.0.2
       '@types/jest': ^29.1.1
       '@types/node': ^18.11.18
       '@vue/runtime-core': ^3.2.38

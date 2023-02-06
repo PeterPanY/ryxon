@@ -2,25 +2,25 @@
 
 exports[`should render demo and match snapshot 1`] = `
 <div>
-  <div class="r-cell r-cell--clickable r-field"
+  <div class="r-cell r-cell--clickable r-input"
        role="button"
        tabindex="0"
   >
-    <div class="r-cell__title r-field__label">
-      <label id="r-field-label"
-             for="r-field-input"
+    <div class="r-cell__title r-input__label">
+      <label id="r-input-label"
+             for="r-input-input"
       >
         Area
       </label>
     </div>
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
-               class="r-field__control"
+               id="r-input-input"
+               class="r-input__control"
                readonly
                placeholder="Select Area"
-               aria-labelledby="r-field-label"
+               aria-labelledby="r-input-label"
         >
       </div>
     </div>
@@ -29,25 +29,25 @@ exports[`should render demo and match snapshot 1`] = `
   </div>
 </div>
 <div>
-  <div class="r-cell r-cell--clickable r-field"
+  <div class="r-cell r-cell--clickable r-input"
        role="button"
        tabindex="0"
   >
-    <div class="r-cell__title r-field__label">
-      <label id="r-field-label"
-             for="r-field-input"
+    <div class="r-cell__title r-input__label">
+      <label id="r-input-label"
+             for="r-input-input"
       >
         Area
       </label>
     </div>
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
-               class="r-field__control"
+               id="r-input-input"
+               class="r-input__control"
                readonly
                placeholder="Select Area"
-               aria-labelledby="r-field-label"
+               aria-labelledby="r-input-label"
         >
       </div>
     </div>
@@ -56,25 +56,25 @@ exports[`should render demo and match snapshot 1`] = `
   </div>
 </div>
 <div>
-  <div class="r-cell r-cell--clickable r-field"
+  <div class="r-cell r-cell--clickable r-input"
        role="button"
        tabindex="0"
   >
-    <div class="r-cell__title r-field__label">
-      <label id="r-field-label"
-             for="r-field-input"
+    <div class="r-cell__title r-input__label">
+      <label id="r-input-label"
+             for="r-input-input"
       >
         Area
       </label>
     </div>
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
-               class="r-field__control"
+               id="r-input-input"
+               class="r-input__control"
                readonly
                placeholder="Select Area"
-               aria-labelledby="r-field-label"
+               aria-labelledby="r-input-label"
         >
       </div>
     </div>
@@ -83,25 +83,25 @@ exports[`should render demo and match snapshot 1`] = `
   </div>
 </div>
 <div>
-  <div class="r-cell r-cell--clickable r-field"
+  <div class="r-cell r-cell--clickable r-input"
        role="button"
        tabindex="0"
   >
-    <div class="r-cell__title r-field__label">
-      <label id="r-field-label"
-             for="r-field-input"
+    <div class="r-cell__title r-input__label">
+      <label id="r-input-label"
+             for="r-input-input"
       >
         Area
       </label>
     </div>
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
-               class="r-field__control"
+               id="r-input-input"
+               class="r-input__control"
                readonly
                placeholder="Select Area"
-               aria-labelledby="r-field-label"
+               aria-labelledby="r-input-label"
         >
       </div>
     </div>
@@ -110,25 +110,25 @@ exports[`should render demo and match snapshot 1`] = `
   </div>
 </div>
 <div>
-  <div class="r-cell r-cell--clickable r-field"
+  <div class="r-cell r-cell--clickable r-input"
        role="button"
        tabindex="0"
   >
-    <div class="r-cell__title r-field__label">
-      <label id="r-field-label"
-             for="r-field-input"
+    <div class="r-cell__title r-input__label">
+      <label id="r-input-label"
+             for="r-input-input"
       >
         Area
       </label>
     </div>
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
-               class="r-field__control"
+               id="r-input-input"
+               class="r-input__control"
                readonly
                placeholder="Select Area"
-               aria-labelledby="r-field-label"
+               aria-labelledby="r-input-label"
         >
       </div>
     </div>

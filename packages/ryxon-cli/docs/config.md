@@ -35,8 +35,8 @@ export default {
   // bundle config
   build: {
     site: {
-      publicPath: '/demo-ui/',
-    },
+      publicPath: '/demo-ui/'
+    }
   },
   // documentation site config
   site: {
@@ -53,22 +53,22 @@ export default {
         items: [
           {
             path: 'home',
-            title: 'home',
-          },
-        ],
+            title: 'home'
+          }
+        ]
       },
       {
         title: 'basic components',
         items: [
           {
             path: 'my-button',
-            title: 'MyButton',
-          },
-        ],
-      },
-    ],
-  },
-};
+            title: 'MyButton'
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ### name
@@ -91,10 +91,10 @@ Note: relative path is calculated based on `src`.
 module.exports = {
   build: {
     css: {
-      base: 'style/global.scss',
-    },
-  },
-};
+      base: 'style/global.scss'
+    }
+  }
+}
 ```
 
 ### build.css.preprocessor
@@ -108,10 +108,10 @@ CSS preprocessor config, support `less` and `sass`. Use `less` by default.
 module.exports = {
   build: {
     css: {
-      preprocessor: 'sass',
-    },
-  },
-};
+      preprocessor: 'sass'
+    }
+  }
+}
 ```
 
 ### build.css.removeSourceFile
@@ -125,10 +125,10 @@ Whether to remove the source style files after build.
 module.exports = {
   build: {
     css: {
-      removeSourceFile: true,
-    },
-  },
-};
+      removeSourceFile: true
+    }
+  }
+}
 ```
 
 ### build.site.publicPath
@@ -144,10 +144,10 @@ Generally, documentation site will be deployed to subpath of domain. For example
 module.exports = {
   build: {
     site: {
-      publicPath: '/demo-ui/',
-    },
-  },
-};
+      publicPath: '/demo-ui/'
+    }
+  }
+}
 ```
 
 ### build.srcDir
@@ -158,9 +158,9 @@ module.exports = {
 ```js
 module.exports = {
   build: {
-    srcDir: 'myDir',
-  },
-};
+    srcDir: 'myDir'
+  }
+}
 ```
 
 ### build.namedExport
@@ -185,18 +185,18 @@ Custom [vite config](https://vitejs.dev/config/), requires `@ryxon/cli>= 4.0.0`.
 module.exports = {
   build: {
     configureVite(config) {
-      config.server.port = 3000;
-      return config;
-    },
-  },
-};
+      config.server.port = 3000
+      return config
+    }
+  }
+}
 ```
 
 ```js
 module.exports = {
   build: {
     configureVite(config) {
-      const { BUILD_TARGET } = process.env;
+      const { BUILD_TARGET } = process.env
 
       if (BUILD_TARGET === 'package') {
         // component library bundle config
@@ -206,10 +206,10 @@ module.exports = {
         // documentation site bundle config
       }
 
-      return config;
-    },
-  },
-};
+      return config
+    }
+  }
+}
 ```
 
 Note that you are not allowed to import vite plugins in `ryxon.config.mjs`, because the file will be bundled into the website code.
@@ -234,12 +234,12 @@ The type of `BundleOptions`:
 ```ts
 type BundleOption = {
   // Whether to minify code (Tips: es format output can't be minified by vite)
-  minify?: boolean;
+  minify?: boolean
   // Formats, can be set to 'es' | 'cjs' | 'umd' | 'iife'
-  formats: LibraryFormats[];
+  formats: LibraryFormats[]
   // Dependencies to external (Vue is externaled by default)
-  external?: string[];
-};
+  external?: string[]
+}
 ```
 
 Default value：
@@ -248,18 +248,18 @@ Default value：
 const DEFAULT_OPTIONS: BundleOption[] = [
   {
     minify: false,
-    formats: ['umd'],
+    formats: ['umd']
   },
   {
     minify: true,
-    formats: ['umd'],
+    formats: ['umd']
   },
   {
     minify: false,
     formats: ['es', 'cjs'],
-    external: allDependencies,
-  },
-];
+    external: allDependencies
+  }
+]
 ```
 
 ### site.title
@@ -305,13 +305,13 @@ module.exports = {
             // nav title
             title: 'title',
             // should hide phone emulator(false by default)
-            hideSimulator: true,
-          },
-        ],
-      },
-    ],
-  },
-};
+            hideSimulator: true
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ### site.versions
@@ -327,11 +327,11 @@ module.exports = {
     versions: [
       {
         label: 'v1',
-        link: 'https://ryxon-ui.github.io/ryxon/v1/',
-      },
-    ],
-  },
-};
+        link: 'https://ryxon-ui.github.io/ryxon/v1/'
+      }
+    ]
+  }
+}
 ```
 
 ### site.baiduAnalytics
@@ -348,10 +348,10 @@ module.exports = {
       // 打开百度统计 ->『管理』->『代码获取』
       // find the followed URL: "https://hm.baidu.com/hm.js?xxxxx"
       // add `xxxxx` in the seed
-      seed: 'xxxxx',
-    },
-  },
-};
+      seed: 'xxxxx'
+    }
+  }
+}
 ```
 
 ### site.hideSimulator
@@ -400,14 +400,14 @@ PostCSS default config:
 ```js
 module.exports = {
   plugins: {
-    autoprefixer: {},
-  },
-};
+    autoprefixer: {}
+  }
+}
 ```
 
 ## browserslist
 
-Add browserslist field to `package.json` file is recommended. It's used by `autoprefixer` to determine the version of target browser, ensuring compatibility of compiled code.
+Add browserslist input to `package.json` file is recommended. It's used by `autoprefixer` to determine the version of target browser, ensuring compatibility of compiled code.
 
 You can add the following config for mobile:
 

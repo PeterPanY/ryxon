@@ -4,8 +4,8 @@ import {
   defineComponent,
   onBeforeUnmount,
   type PropType,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -20,36 +20,36 @@ import {
   makeStringProp,
   makeNumericProp,
   type Numeric,
-  type ComponentInstance,
-} from '../utils';
+  type ComponentInstance
+} from '../utils'
 import {
   bem,
   name,
   isOversize,
   filterFiles,
   isImageFile,
-  readFileContent,
-} from './utils';
+  readFileContent
+} from './utils'
 
 // Composables
-import { useCustomFieldValue } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
+import { useCustomInputValue } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Components
-import { Icon } from '../icon';
-import { showImagePreview, type ImagePreviewOptions } from '../image-preview';
-import UploaderPreviewItem from './UploaderPreviewItem';
+import { Icon } from '../icon'
+import { showImagePreview, type ImagePreviewOptions } from '../image-preview'
+import UploaderPreviewItem from './UploaderPreviewItem'
 
 // Types
-import type { ImageFit } from '../image';
+import type { ImageFit } from '../image'
 import type {
   UploaderExpose,
   UploaderMaxSize,
   UploaderAfterRead,
   UploaderBeforeRead,
   UploaderResultType,
-  UploaderFileListItem,
-} from './types';
+  UploaderFileListItem
+} from './types'
 
 export const uploaderProps = {
   name: makeNumericProp(''),
@@ -78,11 +78,11 @@ export const uploaderProps = {
   previewFullImage: truthProp,
   maxSize: {
     type: [Number, String, Function] as PropType<UploaderMaxSize>,
-    default: Infinity,
-  },
-};
+    default: Infinity
+  }
+}
 
-export type UploaderProps = ExtractPropTypes<typeof uploaderProps>;
+export type UploaderProps = ExtractPropTypes<typeof uploaderProps>
 
 export default defineComponent({
   name,
@@ -95,59 +95,59 @@ export default defineComponent({
     'clickUpload',
     'closePreview',
     'clickPreview',
-    'update:modelValue',
+    'update:modelValue'
   ],
 
   setup(props, { emit, slots }) {
-    const inputRef = ref();
-    const urls: string[] = [];
+    const inputRef = ref()
+    const urls: string[] = []
 
     const getDetail = (index = props.modelValue.length) => ({
       name: props.name,
-      index,
-    });
+      index
+    })
 
     const resetInput = () => {
       if (inputRef.value) {
-        inputRef.value.value = '';
+        inputRef.value.value = ''
       }
-    };
+    }
 
     const onAfterRead = (
       items: UploaderFileListItem | UploaderFileListItem[]
     ) => {
-      resetInput();
+      resetInput()
 
       if (isOversize(items, props.maxSize)) {
         if (Array.isArray(items)) {
-          const result = filterFiles(items, props.maxSize);
-          items = result.valid;
-          emit('oversize', result.invalid, getDetail());
+          const result = filterFiles(items, props.maxSize)
+          items = result.valid
+          emit('oversize', result.invalid, getDetail())
 
           if (!items.length) {
-            return;
+            return
           }
         } else {
-          emit('oversize', items, getDetail());
-          return;
+          emit('oversize', items, getDetail())
+          return
         }
       }
-      items = reactive(items);
-      emit('update:modelValue', [...props.modelValue, ...toArray(items)]);
+      items = reactive(items)
+      emit('update:modelValue', [...props.modelValue, ...toArray(items)])
 
       if (props.afterRead) {
-        props.afterRead(items, getDetail());
+        props.afterRead(items, getDetail())
       }
-    };
+    }
 
     const readFile = (files: File | File[]) => {
-      const { maxCount, modelValue, resultType } = props;
+      const { maxCount, modelValue, resultType } = props
 
       if (Array.isArray(files)) {
-        const remainCount = +maxCount - modelValue.length;
+        const remainCount = +maxCount - modelValue.length
 
         if (files.length > remainCount) {
-          files = files.slice(0, remainCount);
+          files = files.slice(0, remainCount)
         }
 
         Promise.all(
@@ -157,126 +157,126 @@ export default defineComponent({
             const result: UploaderFileListItem = {
               file,
               status: '',
-              message: '',
-            };
-
-            if (contents[index]) {
-              result.content = contents[index] as string;
+              message: ''
             }
 
-            return result;
-          });
+            if (contents[index]) {
+              result.content = contents[index] as string
+            }
 
-          onAfterRead(fileList);
-        });
+            return result
+          })
+
+          onAfterRead(fileList)
+        })
       } else {
         readFileContent(files, resultType).then((content) => {
           const result: UploaderFileListItem = {
             file: files as File,
             status: '',
-            message: '',
-          };
-
-          if (content) {
-            result.content = content;
+            message: ''
           }
 
-          onAfterRead(result);
-        });
+          if (content) {
+            result.content = content
+          }
+
+          onAfterRead(result)
+        })
       }
-    };
+    }
 
     const onChange = (event: Event) => {
-      const { files } = event.target as HTMLInputElement;
+      const { files } = event.target as HTMLInputElement
 
       if (props.disabled || !files || !files.length) {
-        return;
+        return
       }
 
       const file =
-        files.length === 1 ? files[0] : ([].slice.call(files) as File[]);
+        files.length === 1 ? files[0] : ([].slice.call(files) as File[])
 
       if (props.beforeRead) {
-        const response = props.beforeRead(file, getDetail());
+        const response = props.beforeRead(file, getDetail())
 
         if (!response) {
-          resetInput();
-          return;
+          resetInput()
+          return
         }
 
         if (isPromise(response)) {
           response
             .then((data) => {
               if (data) {
-                readFile(data);
+                readFile(data)
               } else {
-                readFile(file);
+                readFile(file)
               }
             })
-            .catch(resetInput);
-          return;
+            .catch(resetInput)
+          return
         }
       }
 
-      readFile(file);
-    };
+      readFile(file)
+    }
 
-    let imagePreview: ComponentInstance | undefined;
+    let imagePreview: ComponentInstance | undefined
 
-    const onClosePreview = () => emit('closePreview');
+    const onClosePreview = () => emit('closePreview')
 
     const previewImage = (item: UploaderFileListItem) => {
       if (props.previewFullImage) {
-        const imageFiles = props.modelValue.filter(isImageFile);
+        const imageFiles = props.modelValue.filter(isImageFile)
         const images = imageFiles
           .map((item) => {
             if (item.file && !item.url && item.status !== 'failed') {
-              item.url = URL.createObjectURL(item.file);
-              urls.push(item.url);
+              item.url = URL.createObjectURL(item.file)
+              urls.push(item.url)
             }
-            return item.url;
+            return item.url
           })
-          .filter(Boolean) as string[];
+          .filter(Boolean) as string[]
 
         imagePreview = showImagePreview(
           extend(
             {
               images,
               startPosition: imageFiles.indexOf(item),
-              onClose: onClosePreview,
+              onClose: onClosePreview
             },
             props.previewOptions
           )
-        );
+        )
       }
-    };
+    }
 
     const closeImagePreview = () => {
       if (imagePreview) {
-        imagePreview.close();
+        imagePreview.close()
       }
-    };
+    }
 
     const deleteFile = (item: UploaderFileListItem, index: number) => {
-      const fileList = props.modelValue.slice(0);
-      fileList.splice(index, 1);
+      const fileList = props.modelValue.slice(0)
+      fileList.splice(index, 1)
 
-      emit('update:modelValue', fileList);
-      emit('delete', item, getDetail(index));
-    };
+      emit('update:modelValue', fileList)
+      emit('delete', item, getDetail(index))
+    }
 
     const renderPreviewItem = (item: UploaderFileListItem, index: number) => {
       const needPickData = [
         'imageFit',
         'deletable',
         'previewSize',
-        'beforeDelete',
-      ] as const;
+        'beforeDelete'
+      ] as const
 
       const previewData = extend(
         pick(props, needPickData),
         pick(item, needPickData, true)
-      );
+      )
 
       return (
         <UploaderPreviewItem
@@ -289,20 +289,20 @@ export default defineComponent({
           {...pick(props, ['name', 'lazyLoad'])}
           {...previewData}
         />
-      );
-    };
+      )
+    }
 
     const renderPreviewList = () => {
       if (props.previewImage) {
-        return props.modelValue.map(renderPreviewItem);
+        return props.modelValue.map(renderPreviewItem)
       }
-    };
+    }
 
-    const onClickUpload = (event: MouseEvent) => emit('clickUpload', event);
+    const onClickUpload = (event: MouseEvent) => emit('clickUpload', event)
 
     const renderUpload = () => {
       if (props.modelValue.length >= props.maxCount) {
-        return;
+        return
       }
 
       const Input = props.readonly ? null : (
@@ -316,7 +316,7 @@ export default defineComponent({
           disabled={props.disabled}
           onChange={onChange}
         />
-      );
+      )
 
       if (slots.default) {
         return (
@@ -324,7 +324,7 @@ export default defineComponent({
             {slots.default()}
             {Input}
           </div>
-        );
+        )
       }
 
       return (
@@ -340,24 +340,24 @@ export default defineComponent({
           )}
           {Input}
         </div>
-      );
-    };
+      )
+    }
 
     const chooseFile = () => {
       if (inputRef.value && !props.disabled) {
-        inputRef.value.click();
+        inputRef.value.click()
       }
-    };
+    }
 
     onBeforeUnmount(() => {
-      urls.forEach((url) => URL.revokeObjectURL(url));
-    });
+      urls.forEach((url) => URL.revokeObjectURL(url))
+    })
 
     useExpose<UploaderExpose>({
       chooseFile,
-      closeImagePreview,
-    });
-    useCustomFieldValue(() => props.modelValue);
+      closeImagePreview
+    })
+    useCustomInputValue(() => props.modelValue)
 
     return () => (
       <div class={bem()}>
@@ -366,6 +366,6 @@ export default defineComponent({
           {renderUpload()}
         </div>
       </div>
-    );
-  },
-});
+    )
+  }
+})

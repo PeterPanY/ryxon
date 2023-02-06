@@ -100,7 +100,7 @@ The format of `tsconfig.declaration.json` is as follows:
 }
 ```
 
-Please add the `typings` field in `package.json` after generate type declaration:
+Please add the `typings` input in `package.json` after generate type declaration:
 
 ```json
 {

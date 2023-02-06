@@ -5,8 +5,8 @@ import {
   nextTick,
   onMounted,
   defineComponent,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -15,22 +15,22 @@ import {
   makeArrayProp,
   makeStringProp,
   makeNumberProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
 // Composables
-import { useRefs } from '../composables/use-refs';
+import { useRefs } from '../composables/use-refs'
 
 // Components
-import { Tab } from '../tab';
-import { Tabs } from '../tabs';
-import { Empty } from '../empty';
-import { Field } from '../field';
-import { Button } from '../button';
-import { Coupon, CouponInfo } from '../coupon';
-import { useRect } from '@ryxon/use';
+import { Tab } from '../tab'
+import { Tabs } from '../tabs'
+import { Empty } from '../empty'
+import { Input } from '../input'
+import { Button } from '../button'
+import { Coupon, CouponInfo } from '../coupon'
+import { useRect } from '@ryxon/use'
 
-const [name, bem, t] = createNamespace('coupon-list');
+const [name, bem, t] = createNamespace('coupon-list')
 export const couponListProps = {
   code: makeStringProp(''),
   coupons: makeArrayProp<CouponInfo>(),
@@ -49,10 +49,10 @@ export const couponListProps = {
   exchangeButtonText: String,
   displayedCouponIndex: makeNumberProp(-1),
   exchangeButtonLoading: Boolean,
-  exchangeButtonDisabled: Boolean,
-};
+  exchangeButtonDisabled: Boolean
+}
 
-export type CouponListProps = ExtractPropTypes<typeof couponListProps>;
+export type CouponListProps = ExtractPropTypes<typeof couponListProps>
 
 export default defineComponent({
   name,
@@ -62,13 +62,13 @@ export default defineComponent({
   emits: ['change', 'exchange', 'update:code'],
 
   setup(props, { emit, slots }) {
-    const [couponRefs, setCouponRefs] = useRefs();
+    const [couponRefs, setCouponRefs] = useRefs()
 
-    const root = ref<HTMLElement>();
-    const barRef = ref<HTMLElement>();
-    const activeTab = ref(0);
-    const listHeight = ref(0);
-    const currentCode = ref(props.code);
+    const root = ref<HTMLElement>()
+    const barRef = ref<HTMLElement>()
+    const activeTab = ref(0)
+    const listHeight = ref(0)
+    const currentCode = ref(props.code)
 
     const buttonDisabled = computed(
       () =>
@@ -76,45 +76,45 @@ export default defineComponent({
         (props.exchangeButtonDisabled ||
           !currentCode.value ||
           currentCode.value.length < props.exchangeMinLength)
-    );
+    )
 
     const updateListHeight = () => {
-      const TABS_HEIGHT = 44;
-      const rootHeight = useRect(root).height;
-      const headerHeight = useRect(barRef).height + TABS_HEIGHT;
+      const TABS_HEIGHT = 44
+      const rootHeight = useRect(root).height
+      const headerHeight = useRect(barRef).height + TABS_HEIGHT
       listHeight.value =
         (rootHeight > headerHeight ? rootHeight : windowHeight.value) -
-        headerHeight;
-    };
+        headerHeight
+    }
 
     const onExchange = () => {
-      emit('exchange', currentCode.value);
+      emit('exchange', currentCode.value)
 
       // auto clear currentCode when not use v-model
       if (!props.code) {
-        currentCode.value = '';
+        currentCode.value = ''
       }
-    };
+    }
 
     const scrollToCoupon = (index: number) => {
-      nextTick(() => couponRefs.value[index]?.scrollIntoView());
-    };
+      nextTick(() => couponRefs.value[index]?.scrollIntoView())
+    }
 
     const renderEmpty = () => (
       <Empty image={props.emptyImage}>
         <p class={bem('empty-tip')}>{t('noCoupon')}</p>
       </Empty>
-    );
+    )
 
     const renderExchangeBar = () => {
       if (props.showExchangeBar) {
         return (
           <div ref={barRef} class={bem('exchange-bar')}>
-            <Field
+            <Input
               v-model={currentCode.value}
               clearable
               border={false}
-              class={bem('field')}
+              class={bem('input')}
               placeholder={props.inputPlaceholder || t('placeholder')}
               maxlength="20"
             />
@@ -128,14 +128,14 @@ export default defineComponent({
               onClick={onExchange}
             />
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderCouponTab = () => {
-      const { coupons } = props;
-      const count = props.showCount ? ` (${coupons.length})` : '';
-      const title = (props.enabledTitle || t('enable')) + count;
+      const { coupons } = props
+      const count = props.showCount ? ` (${coupons.length})` : ''
+      const title = (props.enabledTitle || t('enable')) + count
 
       return (
         <Tab title={title}>
@@ -157,13 +157,13 @@ export default defineComponent({
             {slots['list-footer']?.()}
           </div>
         </Tab>
-      );
-    };
+      )
+    }
 
     const renderDisabledTab = () => {
-      const { disabledCoupons } = props;
-      const count = props.showCount ? ` (${disabledCoupons.length})` : '';
-      const title = (props.disabledTitle || t('disabled')) + count;
+      const { disabledCoupons } = props
+      const count = props.showCount ? ` (${disabledCoupons.length})` : ''
+      const title = (props.disabledTitle || t('disabled')) + count
 
       return (
         <Tab title={title}>
@@ -183,24 +183,24 @@ export default defineComponent({
             {slots['disabled-list-footer']?.()}
           </div>
         </Tab>
-      );
-    };
+      )
+    }
 
     watch(
       () => props.code,
       (value) => {
-        currentCode.value = value;
+        currentCode.value = value
       }
-    );
+    )
 
-    watch(windowHeight, updateListHeight);
-    watch(currentCode, (value) => emit('update:code', value));
-    watch(() => props.displayedCouponIndex, scrollToCoupon);
+    watch(windowHeight, updateListHeight)
+    watch(currentCode, (value) => emit('update:code', value))
+    watch(() => props.displayedCouponIndex, scrollToCoupon)
 
     onMounted(() => {
-      updateListHeight();
-      scrollToCoupon(props.displayedCouponIndex);
-    });
+      updateListHeight()
+      scrollToCoupon(props.displayedCouponIndex)
+    })
 
     return () => (
       <div ref={root} class={bem()}>
@@ -221,6 +221,6 @@ export default defineComponent({
           />
         </div>
       </div>
-    );
-  },
-});
+    )
+  }
+})

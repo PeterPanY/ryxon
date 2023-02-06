@@ -1,17 +1,17 @@
 {
-  "hash": "5dbfb3be",
-  "browserHash": "f5312455",
+  "hash": "f053e0a6",
+  "browserHash": "08ed0d0a",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "1fd17dba",
+      "fileHash": "c7ff02cf",
       "needsInterop": false
     },
     "clipboard-copy": {
       "src": "../../../../../node_modules/.pnpm/clipboard-copy@4.0.1/node_modules/clipboard-copy/index.js",
       "file": "clipboard-copy.js",
-      "fileHash": "3d00d3d5",
+      "fileHash": "dd5d46a5",
       "needsInterop": true
     }
   },

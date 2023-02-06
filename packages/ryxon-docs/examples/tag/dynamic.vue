@@ -9,13 +9,13 @@
   >
     {{ tag }}
   </r-tag>
-  <r-field
+  <r-input
     v-if="inputVisible"
     ref="InputRef"
     v-model="inputValue"
     @keyup.enter="handleInputConfirm"
     @blur="handleInputConfirm"
-  ></r-field>
+  ></r-input>
   <r-button v-else class="button-new-tag ml-1" size="mini" @click="showInput">
     + New Tag
   </r-button>

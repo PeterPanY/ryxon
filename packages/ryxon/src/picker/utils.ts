@@ -1,113 +1,113 @@
-import { isDef, clamp, extend, createNamespace, type Numeric } from '../utils';
-import type { Ref } from 'vue';
-import type { PickerOption, PickerColumn, PickerFieldNames } from './types';
+import { isDef, clamp, extend, createNamespace, type Numeric } from '../utils'
+import type { Ref } from 'vue'
+import type { PickerOption, PickerColumn, PickerInputNames } from './types'
 
-const [name, bem, t] = createNamespace('picker');
+const [name, bem, t] = createNamespace('picker')
 
-export { name, bem, t };
+export { name, bem, t }
 
 export const getFirstEnabledOption = (
   options: PickerOption[]
 ): PickerOption | undefined =>
-  options.find((option) => !option.disabled) || options[0];
+  options.find((option) => !option.disabled) || options[0]
 
 export function getColumnsType(
   columns: PickerColumn | PickerColumn[],
-  fields: Required<PickerFieldNames>
+  inputs: Required<PickerInputNames>
 ) {
-  const firstColumn = columns[0];
+  const firstColumn = columns[0]
   if (firstColumn) {
     if (Array.isArray(firstColumn)) {
-      return 'multiple';
+      return 'multiple'
     }
-    if (fields.children in firstColumn) {
-      return 'cascade';
+    if (inputs.children in firstColumn) {
+      return 'cascade'
     }
   }
-  return 'default';
+  return 'default'
 }
 
 export function findIndexOfEnabledOption(
   options: PickerOption[],
   index: number
 ) {
-  index = clamp(index, 0, options.length);
+  index = clamp(index, 0, options.length)
 
   for (let i = index; i < options.length; i++) {
-    if (!options[i].disabled) return i;
+    if (!options[i].disabled) return i
   }
   for (let i = index - 1; i >= 0; i--) {
-    if (!options[i].disabled) return i;
+    if (!options[i].disabled) return i
   }
 
-  return 0;
+  return 0
 }
 
 export const isOptionExist = (
   options: PickerOption[],
   value: Numeric | undefined,
-  fields: Required<PickerFieldNames>
+  inputs: Required<PickerInputNames>
 ) =>
   value !== undefined &&
-  !!options.find((option) => option[fields.value] === value);
+  !!options.find((option) => option[inputs.value] === value)
 
 export function findOptionByValue(
   options: PickerOption[],
   value: Numeric,
-  fields: Required<PickerFieldNames>
+  inputs: Required<PickerInputNames>
 ): PickerOption | undefined {
-  const index = options.findIndex((option) => option[fields.value] === value);
-  const enabledIndex = findIndexOfEnabledOption(options, index);
-  return options[enabledIndex];
+  const index = options.findIndex((option) => option[inputs.value] === value)
+  const enabledIndex = findIndexOfEnabledOption(options, index)
+  return options[enabledIndex]
 }
 
 export function formatCascadeColumns(
   columns: PickerColumn | PickerColumn[],
-  fields: Required<PickerFieldNames>,
+  inputs: Required<PickerInputNames>,
   selectedValues: Ref<Numeric[]>
 ) {
-  const formatted: PickerColumn[] = [];
+  const formatted: PickerColumn[] = []
 
   let cursor: PickerOption | undefined = {
-    [fields.children]: columns,
-  };
-  let columnIndex = 0;
+    [inputs.children]: columns
+  }
+  let columnIndex = 0
 
-  while (cursor && cursor[fields.children]) {
-    const options: PickerOption[] = cursor[fields.children];
-    const value = selectedValues.value[columnIndex];
+  while (cursor && cursor[inputs.children]) {
+    const options: PickerOption[] = cursor[inputs.children]
+    const value = selectedValues.value[columnIndex]
 
     cursor = isDef(value)
-      ? findOptionByValue(options, value, fields)
-      : undefined;
+      ? findOptionByValue(options, value, inputs)
+      : undefined
 
     if (!cursor && options.length) {
-      const firstValue = getFirstEnabledOption(options)![fields.value];
-      cursor = findOptionByValue(options, firstValue, fields);
+      const firstValue = getFirstEnabledOption(options)![inputs.value]
+      cursor = findOptionByValue(options, firstValue, inputs)
     }
 
-    columnIndex++;
-    formatted.push(options);
+    columnIndex++
+    formatted.push(options)
   }
 
-  return formatted;
+  return formatted
 }
 
 export function getElementTranslateY(element: Element) {
-  const { transform } = window.getComputedStyle(element);
-  const translateY = transform.slice(7, transform.length - 1).split(', ')[5];
-  return Number(translateY);
+  const { transform } = window.getComputedStyle(element)
+  const translateY = transform.slice(7, transform.length - 1).split(', ')[5]
+  return Number(translateY)
 }
 
-export function assignDefaultFields(
-  fields: PickerFieldNames | undefined
-): Required<PickerFieldNames> {
+export function assignDefaultInputs(
+  inputs: PickerInputNames | undefined
+): Required<PickerInputNames> {
   return extend(
     {
       text: 'text',
       value: 'value',
-      children: 'children',
+      children: 'children'
     },
-    fields
-  );
+    inputs
+  )
 }

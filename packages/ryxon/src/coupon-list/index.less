@@ -1,6 +1,6 @@
 :root {
   --r-coupon-list-background: var(--r-background);
-  --r-coupon-list-field-padding: 5px 0 5px var(--r-padding-md);
+  --r-coupon-list-input-padding: 5px 0 5px var(--r-padding-md);
   --r-coupon-list-exchange-button-height: 32px;
   --r-coupon-list-close-button-height: 40px;
   --r-coupon-list-empty-tip-color: var(--r-text-color-2);
@@ -13,10 +13,10 @@
   height: 100%;
   background: var(--r-coupon-list-background);
 
-  &__field {
-    padding: var(--r-coupon-list-field-padding);
+  &__input {
+    padding: var(--r-coupon-list-input-padding);
 
-    .r-field__body {
+    .r-input__body {
       height: 34px;
       padding-left: var(--r-padding-sm);
       line-height: 34px;
@@ -28,7 +28,7 @@
       }
     }
 
-    .r-field__clear {
+    .r-input__clear {
       margin-right: 0;
     }
   }

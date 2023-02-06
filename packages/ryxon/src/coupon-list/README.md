@@ -9,12 +9,12 @@ Used for redemption and selection of coupons.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { CouponCell, CouponList } from 'ryxon';
+import { createApp } from 'vue'
+import { CouponCell, CouponList } from 'ryxon'
 
-const app = createApp();
-app.use(CouponCell);
-app.use(CouponList);
+const app = createApp()
+app.use(CouponCell)
+app.use(CouponList)
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ app.use(CouponList);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -59,20 +59,20 @@ export default {
       startAt: 1489104000,
       endAt: 1514592000,
       valueDesc: '1.5',
-      unitDesc: '元',
-    };
+      unitDesc: '元'
+    }
 
-    const coupons = ref([coupon]);
-    const showList = ref(false);
-    const chosenCoupon = ref(-1);
+    const coupons = ref([coupon])
+    const showList = ref(false)
+    const chosenCoupon = ref(-1)
 
     const onChange = (index) => {
-      showList.value = false;
-      chosenCoupon.value = index;
-    };
+      showList.value = false
+      chosenCoupon.value = index
+    }
     const onExchange = (code) => {
-      coupons.value.push(coupon);
-    };
+      coupons.value.push(coupon)
+    }
 
     return {
       coupons,
@@ -80,10 +80,10 @@ export default {
       onChange,
       onExchange,
       chosenCoupon,
-      disabledCoupons: [coupon],
-    };
-  },
-};
+      disabledCoupons: [coupon]
+    }
+  }
+}
 ```
 
 ## API
@@ -154,7 +154,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { CouponCellProps, CouponListProps } from 'ryxon';
+import type { CouponCellProps, CouponListProps } from 'ryxon'
 ```
 
 ## Theming
@@ -183,7 +183,7 @@ The component provides the following CSS variables, which can be used to customi
 | --r-coupon-description-border-color | _var(--r-border-color)_ | - |
 | --r-coupon-checkbox-color | _var(--r-danger-color)_ | - |
 | --r-coupon-list-background | _var(--r-background)_ | - |
-| --r-coupon-list-field-padding | _5px 0 5px var(--r-padding-md)_ | - |
+| --r-coupon-list-input-padding | _5px 0 5px var(--r-padding-md)_ | - |
 | --r-coupon-list-exchange-button-height | _32px_ | - |
 | --r-coupon-list-close-button-height | _40px_ | - |
 | --r-coupon-list-empty-tip-color | _var(--r-text-color-2)_ | - |

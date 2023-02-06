@@ -3,12 +3,12 @@
 exports[`should be the sames as the last snapshot when render coupon list 1`] = `
 <div class="r-coupon-list">
   <div class="r-coupon-list__exchange-bar">
-    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
-      <div class="r-cell__value r-field__value">
-        <div class="r-field__body">
+    <div class="r-cell r-cell--borderless r-input r-coupon-list__input">
+      <div class="r-cell__value r-input__value">
+        <div class="r-input__body">
           <input type="text"
-                 id="r-field-input"
-                 class="r-field__control"
+                 id="r-input-input"
+                 class="r-input__control"
                  placeholder="Coupon code"
           >
         </div>
@@ -295,12 +295,12 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
 exports[`should have two "r-coupon-list__empty" classes when render coupon list is empty 1`] = `
 <div class="r-coupon-list">
   <div class="r-coupon-list__exchange-bar">
-    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
-      <div class="r-cell__value r-field__value">
-        <div class="r-field__body">
+    <div class="r-cell r-cell--borderless r-input r-coupon-list__input">
+      <div class="r-cell__value r-input__value">
+        <div class="r-input__body">
           <input type="text"
-                 id="r-field-input"
-                 class="r-field__control"
+                 id="r-input-input"
+                 class="r-input__control"
                  placeholder="Coupon code"
           >
         </div>
@@ -739,12 +739,12 @@ exports[`should have two "r-coupon-list__empty" classes when render coupon list 
 exports[`should render list-footer slot correctly 1`] = `
 <div class="r-coupon-list">
   <div class="r-coupon-list__exchange-bar">
-    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
-      <div class="r-cell__value r-field__value">
-        <div class="r-field__body">
+    <div class="r-cell r-cell--borderless r-input r-coupon-list__input">
+      <div class="r-cell__value r-input__value">
+        <div class="r-input__body">
           <input type="text"
-                 id="r-field-input"
-                 class="r-field__control"
+                 id="r-input-input"
+                 class="r-input__control"
                  placeholder="Coupon code"
           >
         </div>
@@ -1185,12 +1185,12 @@ exports[`should render list-footer slot correctly 1`] = `
 exports[`should use custom src when using empty-image prop 1`] = `
 <div class="r-coupon-list">
   <div class="r-coupon-list__exchange-bar">
-    <div class="r-cell r-cell--borderless r-field r-coupon-list__field">
-      <div class="r-cell__value r-field__value">
-        <div class="r-field__body">
+    <div class="r-cell r-cell--borderless r-input r-coupon-list__input">
+      <div class="r-cell__value r-input__value">
+        <div class="r-input__body">
           <input type="text"
-                 id="r-field-input"
-                 class="r-field__control"
+                 id="r-input-input"
+                 class="r-input__control"
                  placeholder="Coupon code"
           >
         </div>

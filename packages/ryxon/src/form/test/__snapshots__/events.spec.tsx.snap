@@ -2,30 +2,30 @@
 
 exports[`should emit failed event when validating failed 1`] = `
 <form class="r-form">
-  <div class="r-cell r-field">
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+  <div class="r-cell r-input">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
+               id="r-input-input"
                name="A"
-               class="r-field__control"
+               class="r-input__control"
         >
       </div>
-      <div class="r-field__error-message">
+      <div class="r-input__error-message">
         A failed
       </div>
     </div>
   </div>
-  <div class="r-cell r-field">
-    <div class="r-cell__value r-field__value">
-      <div class="r-field__body">
+  <div class="r-cell r-input">
+    <div class="r-cell__value r-input__value">
+      <div class="r-input__body">
         <input type="text"
-               id="r-field-input"
+               id="r-input-input"
                name="B"
-               class="r-field__control"
+               class="r-input__control"
         >
       </div>
-      <div class="r-field__error-message">
+      <div class="r-input__error-message">
         B failed
       </div>
     </div>

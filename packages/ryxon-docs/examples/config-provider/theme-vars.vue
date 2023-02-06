@@ -3,11 +3,11 @@
     默认主题
     <r-config-provider>
       <r-form>
-        <r-field name="slider" label="滑块">
+        <r-input name="slider" label="滑块">
           <template #input>
             <r-slider v-model="slider" />
           </template>
-        </r-field>
+        </r-input>
 
         <div style="margin: 16px">
           <r-button round block type="primary" native-type="submit">
@@ -22,11 +22,11 @@
     定制主题
     <r-config-provider :theme-vars="themeVars">
       <r-form>
-        <r-field name="slider" label="滑块">
+        <r-input name="slider" label="滑块">
           <template #input>
             <r-slider v-model="slider" />
           </template>
-        </r-field>
+        </r-input>
 
         <div style="margin: 16px">
           <r-button round block type="primary" native-type="submit">

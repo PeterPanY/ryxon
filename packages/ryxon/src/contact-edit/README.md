@@ -9,11 +9,11 @@ Edit and save the contact information.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { ContactEdit } from 'ryxon';
+import { createApp } from 'vue'
+import { ContactEdit } from 'ryxon'
 
-const app = createApp();
-app.use(ContactEdit);
+const app = createApp()
+app.use(ContactEdit)
 ```
 
 ## Usage
@@ -32,24 +32,24 @@ app.use(ContactEdit);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     const editingContact = ref({
       tel: '',
-      name: '',
-    });
-    const onSave = (contactInfo) => showToast('Save');
-    const onDelete = (contactInfo) => showToast('Delete');
+      name: ''
+    })
+    const onSave = (contactInfo) => showToast('Save')
+    const onDelete = (contactInfo) => showToast('Delete')
     return {
       onSave,
       onDelete,
-      editingContact,
-    };
-  },
-};
+      editingContact
+    }
+  }
+}
 ```
 
 ## API
@@ -85,7 +85,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { ContactEditInfo, ContactEditProps } from 'ryxon';
+import type { ContactEditInfo, ContactEditProps } from 'ryxon'
 ```
 
 ## Theming
@@ -97,8 +97,8 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value | Description |
 | --- | --- | --- |
 | --r-contact-edit-padding | _var(--r-padding-md)_ | - |
-| --r-contact-edit-fields-radius | _var(--r-radius-md)_ | - |
+| --r-contact-edit-inputs-radius | _var(--r-radius-md)_ | - |
 | --r-contact-edit-buttons-padding | _var(--r-padding-xl) 0_ | - |
 | --r-contact-edit-button-margin-bottom | _var(--r-padding-sm)_ | - |
 | --r-contact-edit-button-font-size | _var(--r-font-size-lg)_ | - |
-| --r-contact-edit-field-label-width | _4.1em_ | - |
+| --r-contact-edit-input-label-width | _4.1em_ | - |

@@ -3,85 +3,85 @@
 exports[`should render demo and match snapshot 1`] = `
 <div>
   <form class="r-form r-address-edit">
-    <div class="r-address-edit__fields">
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+    <div class="r-address-edit__inputs">
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Name
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
-                   class="r-field__control"
+                   id="r-input-input"
+                   class="r-input__control"
                    placeholder="Name"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Phone
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="tel"
-                   id="r-field-input"
-                   class="r-field__control"
+                   id="r-input-input"
+                   class="r-input__control"
                    placeholder="Phone"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-cell--clickable r-field"
+      <div class="r-cell r-cell--clickable r-input"
            role="button"
            tabindex="0"
       >
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Area
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
-                   class="r-field__control"
+                   id="r-input-input"
+                   class="r-input__control"
                    readonly
                    placeholder="Area"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
         <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
-      <div class="r-cell r-field r-address-edit-detail">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input r-address-edit-detail">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Address
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <textarea id="r-field-input"
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <textarea id="r-input-input"
                       rows="1"
-                      class="r-field__control"
+                      class="r-input__control"
                       placeholder="Address"
-                      aria-labelledby="r-field-label"
+                      aria-labelledby="r-input-label"
                       style="height: auto;"
             >
             </textarea>

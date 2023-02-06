@@ -9,22 +9,22 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Cascader } from 'ryxon';
+import { createApp } from 'vue'
+import { Cascader } from 'ryxon'
 
-const app = createApp();
-app.use(Cascader);
+const app = createApp()
+app.use(Cascader)
 ```
 
 ## 代码演示
 
 ### 基础用法
 
-级联选择组件可以搭配 Field 和 Popup 组件使用，示例如下：
+级联选择组件可以搭配 Input 和 Popup 组件使用，示例如下：
 
 ```html
-<r-field
-  v-model="fieldValue"
+<r-input
+  v-model="inputValue"
   is-link
   readonly
   label="地区"
@@ -43,41 +43,41 @@ app.use(Cascader);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
-    const fieldValue = ref('');
-    const cascaderValue = ref('');
+    const show = ref(false)
+    const inputValue = ref('')
+    const cascaderValue = ref('')
     // 选项列表，children 代表子选项，支持多级嵌套
     const options = [
       {
         text: '浙江省',
         value: '330000',
-        children: [{ text: '杭州市', value: '330100' }],
+        children: [{ text: '杭州市', value: '330100' }]
       },
       {
         text: '江苏省',
         value: '320000',
-        children: [{ text: '南京市', value: '320100' }],
-      },
-    ];
+        children: [{ text: '南京市', value: '320100' }]
+      }
+    ]
     // 全部选项选择完毕后，会触发 finish 事件
     const onFinish = ({ selectedOptions }) => {
-      show.value = false;
-      fieldValue.value = selectedOptions.map((option) => option.text).join('/');
-    };
+      show.value = false
+      inputValue.value = selectedOptions.map((option) => option.text).join('/')
+    }
 
     return {
       show,
       options,
       onFinish,
-      fieldValue,
-      cascaderValue,
-    };
-  },
-};
+      inputValue,
+      cascaderValue
+    }
+  }
+}
 ```
 
 ### 自定义颜色
@@ -100,8 +100,8 @@ export default {
 可以监听 `change` 事件并动态设置 `options`，实现异步加载选项。
 
 ```html
-<r-field
-  v-model="fieldValue"
+<r-input
+  v-model="inputValue"
   is-link
   readonly
   label="地区"
@@ -121,90 +121,90 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
-    const fieldValue = ref('');
-    const cascaderValue = ref('');
+    const show = ref(false)
+    const inputValue = ref('')
+    const cascaderValue = ref('')
     const options = ref([
       {
         text: '浙江省',
         value: '330000',
-        children: [],
-      },
-    ]);
+        children: []
+      }
+    ])
     const onChange = ({ value }) => {
       if (value === options.value[0].value) {
         setTimeout(() => {
           options.value[0].children = [
             { text: '杭州市', value: '330100' },
-            { text: '宁波市', value: '330200' },
-          ];
-        }, 500);
+            { text: '宁波市', value: '330200' }
+          ]
+        }, 500)
       }
-    };
+    }
     const onFinish = ({ selectedOptions }) => {
-      show.value = false;
-      fieldValue.value = selectedOptions.map((option) => option.text).join('/');
-    };
+      show.value = false
+      inputValue.value = selectedOptions.map((option) => option.text).join('/')
+    }
 
     return {
       show,
       options,
       onFinish,
-      fieldValue,
-      cascaderValue,
-    };
-  },
-};
+      inputValue,
+      cascaderValue
+    }
+  }
+}
 ```
 
 ### 自定义字段名
 
-通过 `field-names` 属性可以自定义 `options` 里的字段名称。
+通过 `input-names` 属性可以自定义 `options` 里的字段名称。
 
 ```html
 <r-cascader
   v-model="code"
   title="请选择所在地区"
   :options="options"
-  :field-names="fieldNames"
+  :input-names="inputNames"
 />
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const code = ref('');
-    const fieldNames = {
+    const code = ref('')
+    const inputNames = {
       text: 'name',
       value: 'code',
-      children: 'items',
-    };
+      children: 'items'
+    }
     const options = [
       {
         name: '浙江省',
         code: '330000',
-        items: [{ name: '杭州市', code: '330100' }],
+        items: [{ name: '杭州市', code: '330100' }]
       },
       {
         name: '江苏省',
         code: '320000',
-        items: [{ name: '南京市', code: '320100' }],
-      },
-    ];
+        items: [{ name: '南京市', code: '320100' }]
+      }
+    ]
 
     return {
       code,
       options,
-      fieldNames,
-    };
-  },
-};
+      inputNames
+    }
+  }
+}
 ```
 
 ### 自定义选项上方内容
@@ -224,30 +224,30 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const code = ref('');
+    const code = ref('')
     const options = [
       {
         name: '浙江省',
         code: '330000',
-        items: [{ name: '杭州市', code: '330100' }],
+        items: [{ name: '杭州市', code: '330100' }]
       },
       {
         name: '江苏省',
         code: '320000',
-        items: [{ name: '南京市', code: '320100' }],
-      },
-    ];
+        items: [{ name: '南京市', code: '320100' }]
+      }
+    ]
 
     return {
       code,
-      options,
-    };
-  },
-};
+      options
+    }
+  }
+}
 ```
 
 ## API
@@ -265,7 +265,7 @@ export default {
 | closeable | 是否显示关闭图标 | _boolean_ | `true` |
 | show-header `v3.4.2` | 是否展示标题栏 | _boolean_ | `true` |
 | close-icon `v3.0.10` | 关闭图标名称或图片链接，等同于 Icon 组件的 [name 属性](#/zh-CN/icon#props) | _string_ | `cross` |
-| field-names `v3.0.4` | 自定义 `options` 结构中的字段 | _CascaderFieldNames_ | `{ text: 'text', value: 'value', children: 'children' }` |
+| input-names `v3.0.4` | 自定义 `options` 结构中的字段 | _CascaderInputNames_ | `{ text: 'text', value: 'value', children: 'children' }` |
 
 ### CascaderOption 数据结构
 
@@ -303,7 +303,7 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { CascaderProps, CascaderOption, CascaderFieldNames } from 'ryxon';
+import type { CascaderProps, CascaderOption, CascaderInputNames } from 'ryxon'
 ```
 
 ## 主题定制
@@ -312,18 +312,18 @@ import type { CascaderProps, CascaderOption, CascaderFieldNames } from 'ryxon';
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                 | 默认值                    | 描述 |
-| ------------------------------------ | ------------------------- | ---- |
-| --r-cascader-header-height         | _48px_                    | -    |
+| 名称                               | 默认值                  | 描述 |
+| ---------------------------------- | ----------------------- | ---- |
+| --r-cascader-header-height         | _48px_                  | -    |
 | --r-cascader-header-padding        | _0 var(--r-padding-md)_ | -    |
 | --r-cascader-title-font-size       | _var(--r-font-size-lg)_ | -    |
-| --r-cascader-title-line-height     | _20px_                    | -    |
-| --r-cascader-close-icon-size       | _22px_                    | -    |
+| --r-cascader-title-line-height     | _20px_                  | -    |
+| --r-cascader-close-icon-size       | _22px_                  | -    |
 | --r-cascader-close-icon-color      | _var(--r-gray-5)_       | -    |
-| --r-cascader-selected-icon-size    | _18px_                    | -    |
-| --r-cascader-tabs-height           | _48px_                    | -    |
+| --r-cascader-selected-icon-size    | _18px_                  | -    |
+| --r-cascader-tabs-height           | _48px_                  | -    |
 | --r-cascader-active-color          | _var(--r-danger-color)_ | -    |
-| --r-cascader-options-height        | _384px_                   | -    |
+| --r-cascader-options-height        | _384px_                 | -    |
 | --r-cascader-option-disabled-color | _var(--r-text-color-3)_ | -    |
 | --r-cascader-tab-color             | _var(--r-text-color)_   | -    |
 | --r-cascader-unselected-tab-color  | _var(--r-text-color-2)_ | -    |

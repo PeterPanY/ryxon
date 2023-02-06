@@ -83,7 +83,7 @@ Ryxon 组件有两种主色调，部分组件采用蓝色 `#1989fa` 作为主色
 - 不再受到 `babel-plugin-import` 的 import 限制，可以从 Ryxon 中导入除组件以外的内容，比如 Ryxon 中新增的 `showToast` 方法，或是 `buttonProps` 对象：
 
 ```ts
-import { showToast, buttonProps } from 'ryxon';
+import { showToast, buttonProps } from 'ryxon'
 ```
 
 在包体积方面，移除 `babel-plugin-import` 对项目的 JS 体积不会有影响，因为 Ryxon 默认支持通过 Tree Shaking 来移除不需要的 JS 代码，而 CSS 代码可以通过 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件实现按需引入，详细用法请参考 [「快速上手」](https://ryxon-ui.github.io/ryxon/#/zh-CN/quickstart)。
@@ -120,10 +120,10 @@ Ryxon 3 提供了一些组件工具函数，比如调用 `Dialog()` 函数，可
 
 ```ts
 // 函数调用
-Dialog({ message: 'Hello World!' });
+Dialog({ message: 'Hello World!' })
 
 // 组件注册
-app.use('r-dialog', Dialog.Component);
+app.use('r-dialog', Dialog.Component)
 ```
 
 以上 API 设计导致 Dialog 等支持工具函数的组件与常规组件存在用法差异，容易被误用；同时也导致 `unplugin-vue-components` 无法自动引入 Dialog 等组件。
@@ -132,12 +132,11 @@ app.use('r-dialog', Dialog.Component);
 
 ```ts
 // 函数调用
-showDialog({ message: 'Hello World!' });
+showDialog({ message: 'Hello World!' })
 
 // 组件注册
-app.use('r-dialog', Dialog);
+app.use('r-dialog', Dialog)
 ```
-
 
 ### 事件命名调整
 
@@ -147,21 +146,21 @@ app.use('r-dialog', Dialog);
 
 ```js
 // Ryxon
-emit('clickInput');
+emit('clickInput')
 ```
 
 这项改动**不影响原有的模板代码**，Vue 会自动在模板中对事件名进行格式转换，因此你无须做任何更改。
 
 ```html
 <!-- 以下代码可以照常运行，无须做任何更改 -->
-<r-field @click-input="onClick" />
+<r-input @click-input="onClick" />
 ```
 
 如果你在 JSX 中使用 Ryxon 组件，需要将监听的事件名调整为驼峰格式，原有的中划线格式将不再生效，新的监听方式更加符合 JSX 本身的规范：
 
 ```jsx
 // Ryxon
-<Field onClickInput={onClick} />
+<Input onClickInput={onClick} />
 ```
 
 ### 移除 Less 变量
@@ -200,9 +199,9 @@ npm add stylelint@13 @ryxon/stylelint-config
 
 同时，Ryxon 3.x 也会进入维护状态，后续 Ryxon 各个版本的维护状态如下：
 
-| 名称   | 框架  | 发布时间  | 维护状态                                |
-| ------ | ----- | --------- | --------------------------------------- |
-| Ryxon | Vue 3 | `2023.01` | 持续迭代新功能                          |                 |
+| 名称  | 框架  | 发布时间  | 维护状态       |
+| ----- | ----- | --------- | -------------- | --- |
+| Ryxon | Vue 3 | `2023.01` | 持续迭代新功能 |     |
 
 ### 最后
 

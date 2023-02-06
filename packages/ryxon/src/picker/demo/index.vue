@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import WithPopup from './WithPopup.vue';
-import RPicker, {
-  PickerChangeEventParams,
-  PickerConfirmEventParams,
-} from '..';
+import { ref } from 'vue'
+import WithPopup from './WithPopup.vue'
+import RPicker, { PickerChangeEventParams, PickerConfirmEventParams } from '..'
 import {
   dateColumns,
   basicColumns,
   cascadeColumns,
   disabledColumns,
-  customKeyColumns,
-} from './data';
-import { showToast } from '../../toast';
-import { useTranslate } from '../../../docs/site';
+  customKeyColumns
+} from './data'
+import { showToast } from '../../toast'
+import { useTranslate } from '../../../docs/site'
 
 const t = useTranslate({
   'zh-CN': {
@@ -29,7 +26,7 @@ const t = useTranslate({
     multipleColumns: '多列选择',
     customChildrenKey: '自定义 Columns 结构',
     customChildrenColumns: customKeyColumns['zh-CN'],
-    toastContent: (value: string) => `当前值：${value}`,
+    toastContent: (value: string) => `当前值：${value}`
   },
   'en-US': {
     cascade: 'Cascade',
@@ -42,30 +39,30 @@ const t = useTranslate({
     cascadeColumns: cascadeColumns['en-US'],
     disabledColumns: disabledColumns['en-US'],
     multipleColumns: 'Multiple Columns',
-    customChildrenKey: 'Custom Columns Fields',
+    customChildrenKey: 'Custom Columns Inputs',
     customChildrenColumns: customKeyColumns['en-US'],
     toastContent: (value: string, index: number) =>
-      `Value: ${value}, Index：${index}`,
-  },
-});
+      `Value: ${value}, Index：${index}`
+  }
+})
 
-const customFieldName = {
+const customInputName = {
   text: 'cityName',
   value: 'cityName',
-  children: 'cities',
-};
+  children: 'cities'
+}
 
-const selectedValues = ref(['Wenzhou']);
+const selectedValues = ref(['Wenzhou'])
 
 const onChange1 = ({ selectedValues }: PickerChangeEventParams) => {
-  showToast(t('toastContent', selectedValues.join(',')));
-};
+  showToast(t('toastContent', selectedValues.join(',')))
+}
 
 const onConfirm = ({ selectedValues }: PickerConfirmEventParams) => {
-  showToast(t('toastContent', selectedValues.join(',')));
-};
+  showToast(t('toastContent', selectedValues.join(',')))
+}
 
-const onCancel = () => showToast(t('cancel'));
+const onCancel = () => showToast(t('cancel'))
 </script>
 
 <template>
@@ -114,7 +111,7 @@ const onCancel = () => showToast(t('cancel'));
     <r-picker
       :title="t('title')"
       :columns="t('customChildrenColumns')"
-      :columns-field-names="customFieldName"
+      :columns-input-names="customInputName"
     />
   </demo-block>
 </template>

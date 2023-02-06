@@ -4,16 +4,16 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <div class="r-search">
     <div class="r-search__content r-search__content--square">
-      <div class="r-cell r-cell--borderless r-field r-search__field">
-        <div class="r-field__left-icon">
+      <div class="r-cell r-cell--borderless r-input r-search__input">
+        <div class="r-input__left-icon">
           <i class="r-badge__wrapper r-icon">
           </i>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="search"
                    id="r-search-input"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Placeholder"
             >
           </div>
@@ -26,16 +26,16 @@ exports[`should render demo and match snapshot 1`] = `
   <form action="/">
     <div class="r-search r-search--show-action">
       <div class="r-search__content r-search__content--square">
-        <div class="r-cell r-cell--borderless r-field r-search__field">
-          <div class="r-field__left-icon">
+        <div class="r-cell r-cell--borderless r-input r-search__input">
+          <div class="r-input__left-icon">
             <i class="r-badge__wrapper r-icon">
             </i>
           </div>
-          <div class="r-cell__value r-field__value">
-            <div class="r-field__body">
+          <div class="r-cell__value r-input__value">
+            <div class="r-input__body">
               <input type="search"
                      id="r-search-input"
-                     class="r-field__control"
+                     class="r-input__control"
                      placeholder="Placeholder"
               >
             </div>
@@ -54,16 +54,16 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <div class="r-search">
     <div class="r-search__content r-search__content--square">
-      <div class="r-cell r-cell--borderless r-field r-search__field">
-        <div class="r-field__left-icon">
+      <div class="r-cell r-cell--borderless r-input r-search__input">
+        <div class="r-input__left-icon">
           <i class="r-badge__wrapper r-icon">
           </i>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="search"
                    id="r-search-input"
-                   class="r-field__control r-field__control--center"
+                   class="r-input__control r-input__control--center"
                    placeholder="Placeholder"
             >
           </div>
@@ -75,16 +75,16 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <div class="r-search">
     <div class="r-search__content r-search__content--square">
-      <div class="r-cell r-cell--borderless r-field r-field--disabled r-search__field">
-        <div class="r-field__left-icon">
+      <div class="r-cell r-cell--borderless r-input r-input--disabled r-search__input">
+        <div class="r-input__left-icon">
           <i class="r-badge__wrapper r-icon">
           </i>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="search"
                    id="r-search-input"
-                   class="r-field__control"
+                   class="r-input__control"
                    disabled
                    placeholder="Placeholder"
             >
@@ -99,16 +99,16 @@ exports[`should render demo and match snapshot 1`] = `
        style="background: rgb(79, 192, 141);"
   >
     <div class="r-search__content r-search__content--round">
-      <div class="r-cell r-cell--borderless r-field r-search__field">
-        <div class="r-field__left-icon">
+      <div class="r-cell r-cell--borderless r-input r-search__input">
+        <div class="r-input__left-icon">
           <i class="r-badge__wrapper r-icon">
           </i>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="search"
                    id="r-search-input"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Placeholder"
             >
           </div>
@@ -125,16 +125,16 @@ exports[`should render demo and match snapshot 1`] = `
       >
         Address
       </label>
-      <div class="r-cell r-cell--borderless r-field r-search__field">
-        <div class="r-field__left-icon">
+      <div class="r-cell r-cell--borderless r-input r-search__input">
+        <div class="r-input__left-icon">
           <i class="r-badge__wrapper r-icon">
           </i>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="search"
                    id="r-search-input"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Placeholder"
             >
           </div>

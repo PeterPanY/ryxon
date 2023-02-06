@@ -3,25 +3,25 @@ import {
   defineComponent,
   type PropType,
   type InjectionKey,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
-import { numericProp, createNamespace, makeArrayProp } from '../utils';
+import { numericProp, createNamespace, makeArrayProp } from '../utils'
 
 // Composables
-import { useChildren, useCustomFieldValue } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
+import { useChildren, useCustomInputValue } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Types
-import type { CheckerDirection } from '../checkbox/Checker';
+import type { CheckerDirection } from '../checkbox/Checker'
 import type {
   CheckboxGroupExpose,
   CheckboxGroupProvide,
-  CheckboxGroupToggleAllOptions,
-} from './types';
+  CheckboxGroupToggleAllOptions
+} from './types'
 
-const [name, bem] = createNamespace('checkbox-group');
+const [name, bem] = createNamespace('checkbox-group')
 
 export const checkboxGroupProps = {
   max: numericProp,
@@ -29,13 +29,13 @@ export const checkboxGroupProps = {
   iconSize: numericProp,
   direction: String as PropType<CheckerDirection>,
   modelValue: makeArrayProp<unknown>(),
-  checkedColor: String,
-};
+  checkedColor: String
+}
 
-export type CheckboxGroupProps = ExtractPropTypes<typeof checkboxGroupProps>;
+export type CheckboxGroupProps = ExtractPropTypes<typeof checkboxGroupProps>
 
 export const CHECKBOX_GROUP_KEY: InjectionKey<CheckboxGroupProvide> =
-  Symbol(name);
+  Symbol(name)
 
 export default defineComponent({
   name,
@@ -45,43 +45,43 @@ export default defineComponent({
   emits: ['change', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    const { children, linkChildren } = useChildren(CHECKBOX_GROUP_KEY);
+    const { children, linkChildren } = useChildren(CHECKBOX_GROUP_KEY)
 
-    const updateValue = (value: unknown[]) => emit('update:modelValue', value);
+    const updateValue = (value: unknown[]) => emit('update:modelValue', value)
 
     const toggleAll = (options: CheckboxGroupToggleAllOptions = {}) => {
       if (typeof options === 'boolean') {
-        options = { checked: options };
+        options = { checked: options }
       }
 
-      const { checked, skipDisabled } = options;
+      const { checked, skipDisabled } = options
 
       const checkedChildren = children.filter((item: any) => {
         if (!item.props.bindGroup) {
-          return false;
+          return false
         }
         if (item.props.disabled && skipDisabled) {
-          return item.checked.value;
+          return item.checked.value
         }
-        return checked ?? !item.checked.value;
-      });
+        return checked ?? !item.checked.value
+      })
 
-      const names = checkedChildren.map((item: any) => item.name);
-      updateValue(names);
-    };
+      const names = checkedChildren.map((item: any) => item.name)
+      updateValue(names)
+    }
 
     watch(
       () => props.modelValue,
       (value) => emit('change', value)
-    );
+    )
 
-    useExpose<CheckboxGroupExpose>({ toggleAll });
-    useCustomFieldValue(() => props.modelValue);
+    useExpose<CheckboxGroupExpose>({ toggleAll })
+    useCustomInputValue(() => props.modelValue)
     linkChildren({
       props,
-      updateValue,
-    });
+      updateValue
+    })
 
-    return () => <div class={bem([props.direction])}>{slots.default?.()}</div>;
-  },
-});
+    return () => <div class={bem([props.direction])}>{slots.default?.()}</div>
+  }
+})

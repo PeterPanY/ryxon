@@ -4,7 +4,6 @@
 
 The current document is the changelog of Ryxon
 
-
 ### Intro
 
 Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
@@ -49,7 +48,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 **Bug Fixes**
 
 - Badge: fix badge offset of different position [#11400](https://github.com/PeterPanY/ryxon/issues/11400)
-- Form: filter no name field's value [#11410](https://github.com/PeterPanY/ryxon/issues/11410)
+- Form: filter no name input's value [#11410](https://github.com/PeterPanY/ryxon/issues/11410)
 - Picker: picker loading color in dark theme [#11405](https://github.com/PeterPanY/ryxon/issues/11405)
 
 ### [v4.0.4](https://github.com/PeterPanY/ryxon/compare/v4.0.3...v4.0.4)
@@ -58,7 +57,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Bug Fixes**
 
-- Field: incorrect cursor position when value length exceeds maxlength or when formatter is used [#11360](https://github.com/PeterPanY/ryxon/issues/11360)
+- Input: incorrect cursor position when value length exceeds maxlength or when formatter is used [#11360](https://github.com/PeterPanY/ryxon/issues/11360)
 - Image: load event missing params [#11406](https://github.com/PeterPanY/ryxon/issues/11406)
 
 ### [v4.0.3](https://github.com/PeterPanY/ryxon/compare/v4.0.2...v4.0.3)
@@ -67,7 +66,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Bug Fixes**
 
-- Field: failed to dynamically set empty label [#11373](https://github.com/PeterPanY/ryxon/issues/11373)
+- Input: failed to dynamically set empty label [#11373](https://github.com/PeterPanY/ryxon/issues/11373)
 - ImagePreview: fix loading when previewing images [#11376](https://github.com/PeterPanY/ryxon/issues/11376)
 
 ### [v4.0.2](https://github.com/PeterPanY/ryxon/compare/v4.0.1...v4.0.2)
@@ -76,7 +75,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Bug Fixes**
 
-- Field: incorrect cursor position when using formatter [#11348](https://github.com/PeterPanY/ryxon/issues/11348)
+- Input: incorrect cursor position when using formatter [#11348](https://github.com/PeterPanY/ryxon/issues/11348)
 - Image: load event not triggered in nuxt3 [128972](https://github.com/PeterPanY/ryxon/commit/128972a75329d4b14028d00cd23dac66038e2d4c)
 - NavBar: update placeholder height when window resized [#11351](https://github.com/PeterPanY/ryxon/issues/11351)
 
@@ -90,7 +89,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Bug Fixes**
 
-- Field: set selection range only when focused [#11333](https://github.com/PeterPanY/ryxon/issues/11333)
+- Input: set selection range only when focused [#11333](https://github.com/PeterPanY/ryxon/issues/11333)
 
 ### [v4.0.0](https://github.com/PeterPanY/ryxon/compare/v4.0.0-rc.9...v4.0.0)
 
@@ -105,7 +104,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Bug Fixes**
 
-- Field: keep selection position after updating value [#11308](https://github.com/PeterPanY/ryxon/issues/11308)
+- Input: keep selection position after updating value [#11308](https://github.com/PeterPanY/ryxon/issues/11308)
 
 ### [v4.0.0-rc.9](https://github.com/PeterPanY/ryxon/compare/v4.0.0-rc.8...v4.0.0-rc.9)
 
@@ -166,7 +165,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 **Bug Fixes**
 
 - CouponList: fix the style of coupon checkbox [#11153](https://github.com/PeterPanY/ryxon/issues/11153)
-- CouponList: incorrect field style [#11155](https://github.com/PeterPanY/ryxon/issues/11155)
+- CouponList: incorrect input style [#11155](https://github.com/PeterPanY/ryxon/issues/11155)
 - Swipe: failed to render when inside popup [#11162](https://github.com/PeterPanY/ryxon/issues/11162)
 
 ### [v4.0.0-rc.5](https://github.com/PeterPanY/ryxon/compare/v4.0.0-rc.4...v4.0.0-rc.5)
@@ -175,7 +174,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Feature**
 
-- Field: support label-position top [#11102](https://github.com/PeterPanY/ryxon/issues/11102)
+- Input: support label-position top [#11102](https://github.com/PeterPanY/ryxon/issues/11102)
 - Loading: add icon slot [#11109](https://github.com/PeterPanY/ryxon/issues/11109)
 - NavBar: add clickable prop [#11048](https://github.com/PeterPanY/ryxon/issues/11048)
 - Stepper: add auto-fixed prop [#11071](https://github.com/PeterPanY/ryxon/issues/11071)
@@ -192,7 +191,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 **Feature**
 
-- Field: add message param to 'end-validate' method [#11080](https://github.com/PeterPanY/ryxon/issues/11080)
+- Input: add message param to 'end-validate' method [#11080](https://github.com/PeterPanY/ryxon/issues/11080)
 
 **Bug Fixes**
 
@@ -355,7 +354,7 @@ Ryxon follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 - CalendarDay: add default margin-bottom [#10441](https://github.com/PeterPanY/ryxon/issues/10441)
 - Empty: support set the image size separately [#10465](https://github.com/PeterPanY/ryxon/issues/10465)
-- Field: add enterkeyhint prop [#10478](https://github.com/PeterPanY/ryxon/issues/10478)
+- Input: add enterkeyhint prop [#10478](https://github.com/PeterPanY/ryxon/issues/10478)
 - Form: add getValues method [#10511](https://github.com/PeterPanY/ryxon/issues/10511)
 - Icon: add some icons for ShareSheet [#10468](https://github.com/PeterPanY/ryxon/issues/10468)
 - Locale: add Danish lang [#10513](https://github.com/PeterPanY/ryxon/issues/10513)

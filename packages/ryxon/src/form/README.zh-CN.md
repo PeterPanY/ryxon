@@ -2,39 +2,39 @@
 
 ### 介绍
 
-用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型，需要与 [Field 输入框](#/zh-CN/field) 组件搭配使用。
+用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型，需要与 [Input 输入框](#/zh-CN/input) 组件搭配使用。
 
 ### 引入
 
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Form, Field, CellGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { Form, Input, CellGroup } from 'ryxon'
 
-const app = createApp();
-app.use(Form);
-app.use(Field);
-app.use(CellGroup);
+const app = createApp()
+app.use(Form)
+app.use(Input)
+app.use(CellGroup)
 ```
 
 ## 代码演示
 
 ### 基础用法
 
-在表单中，每个 [Field 组件](#/zh-CN/field) 代表一个表单项，使用 Field 的 `rules` 属性定义校验规则。
+在表单中，每个 [Input 组件](#/zh-CN/input) 代表一个表单项，使用 Input 的 `rules` 属性定义校验规则。
 
 ```html
 <r-form @submit="onSubmit">
   <r-cell-group inset>
-    <r-field
+    <r-input
       v-model="username"
       name="用户名"
       label="用户名"
       placeholder="用户名"
       :rules="[{ required: true, message: '请填写用户名' }]"
     />
-    <r-field
+    <r-input
       v-model="password"
       type="password"
       name="密码"
@@ -44,31 +44,29 @@ app.use(CellGroup);
     />
   </r-cell-group>
   <div style="margin: 16px;">
-    <r-button round block type="primary" native-type="submit">
-      提交
-    </r-button>
+    <r-button round block type="primary" native-type="submit"> 提交 </r-button>
   </div>
 </r-form>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const username = ref('');
-    const password = ref('');
+    const username = ref('')
+    const password = ref('')
     const onSubmit = (values) => {
-      console.log('submit', values);
-    };
+      console.log('submit', values)
+    }
 
     return {
       username,
       password,
-      onSubmit,
-    };
-  },
-};
+      onSubmit
+    }
+  }
+}
 ```
 
 ### 校验规则
@@ -79,28 +77,28 @@ export default {
 <r-form @failed="onFailed">
   <r-cell-group inset>
     <!-- 通过 pattern 进行正则校验 -->
-    <r-field
+    <r-input
       v-model="value1"
       name="pattern"
       placeholder="正则校验"
       :rules="[{ pattern, message: '请输入正确内容' }]"
     />
     <!-- 通过 validator 进行函数校验 -->
-    <r-field
+    <r-input
       v-model="value2"
       name="validator"
       placeholder="函数校验"
       :rules="[{ validator, message: '请输入正确内容' }]"
     />
     <!-- 通过 validator 返回错误提示 -->
-    <r-field
+    <r-input
       v-model="value3"
       name="validatorMessage"
       placeholder="校验函数返回错误提示"
       :rules="[{ validator: validatorMessage }]"
     />
     <!-- 通过 validator 进行异步函数校验 -->
-    <r-field
+    <r-input
       v-model="value4"
       name="asyncValidator"
       placeholder="异步函数校验"
@@ -108,45 +106,43 @@ export default {
     />
   </r-cell-group>
   <div style="margin: 16px;">
-    <r-button round block type="primary" native-type="submit">
-      提交
-    </r-button>
+    <r-button round block type="primary" native-type="submit"> 提交 </r-button>
   </div>
 </r-form>
 ```
 
 ```js
-import { ref } from 'vue';
-import { closeToast, showLoadingToast } from 'ryxon';
+import { ref } from 'vue'
+import { closeToast, showLoadingToast } from 'ryxon'
 
 export default {
   setup() {
-    const value1 = ref('');
-    const value2 = ref('');
-    const value3 = ref('abc');
-    const value4 = ref('');
-    const pattern = /\d{6}/;
+    const value1 = ref('')
+    const value2 = ref('')
+    const value3 = ref('abc')
+    const value4 = ref('')
+    const pattern = /\d{6}/
 
     // 校验函数返回 true 表示校验通过，false 表示不通过
-    const validator = (val) => /1\d{10}/.test(val);
+    const validator = (val) => /1\d{10}/.test(val)
 
     // 校验函数可以直接返回一段错误提示
-    const validatorMessage = (val) => `${val} 不合法，请重新输入`;
+    const validatorMessage = (val) => `${val} 不合法，请重新输入`
 
     // 校验函数可以返回 Promise，实现异步校验
     const asyncValidator = (val) =>
       new Promise((resolve) => {
-        showLoadingToast('验证中...');
+        showLoadingToast('验证中...')
 
         setTimeout(() => {
-          closeToast();
-          resolve(val === '1234');
-        }, 1000);
-      });
+          closeToast()
+          resolve(val === '1234')
+        }, 1000)
+      })
 
     const onFailed = (errorInfo) => {
-      console.log('failed', errorInfo);
-    };
+      console.log('failed', errorInfo)
+    }
 
     return {
       value1,
@@ -156,10 +152,10 @@ export default {
       pattern,
       onFailed,
       validator,
-      asyncValidator,
-    };
-  },
-};
+      asyncValidator
+    }
+  }
+}
 ```
 
 ### 表单项类型 - 开关
@@ -167,22 +163,22 @@ export default {
 在表单中使用 [Switch 组件](#/zh-CN/switch)。
 
 ```html
-<r-field name="switch" label="开关">
+<r-input name="switch" label="开关">
   <template #input>
     <r-switch v-model="checked" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(false);
-    return { checked };
-  },
-};
+    const checked = ref(false)
+    return { checked }
+  }
+}
 ```
 
 ### 表单项类型 - 复选框
@@ -190,34 +186,34 @@ export default {
 在表单中使用 [Checkbox 组件](#/zh-CN/checkbox)。
 
 ```html
-<r-field name="checkbox" label="复选框">
+<r-input name="checkbox" label="复选框">
   <template #input>
     <r-checkbox v-model="checked" shape="square" />
   </template>
-</r-field>
-<r-field name="checkboxGroup" label="复选框组">
+</r-input>
+<r-input name="checkboxGroup" label="复选框组">
   <template #input>
     <r-checkbox-group v-model="groupChecked" direction="horizontal">
       <r-checkbox name="1" shape="square">复选框 1</r-checkbox>
       <r-checkbox name="2" shape="square">复选框 2</r-checkbox>
     </r-checkbox-group>
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(false);
-    const groupChecked = ref([]);
+    const checked = ref(false)
+    const groupChecked = ref([])
     return {
       checked,
-      groupChecked,
-    };
-  },
-};
+      groupChecked
+    }
+  }
+}
 ```
 
 ### 表单项类型 - 单选框
@@ -225,25 +221,25 @@ export default {
 在表单中使用 [Radio 组件](#/zh-CN/radio)。
 
 ```html
-<r-field name="radio" label="单选框">
+<r-input name="radio" label="单选框">
   <template #input>
     <r-radio-group v-model="checked" direction="horizontal">
       <r-radio name="1">单选框 1</r-radio>
       <r-radio name="2">单选框 2</r-radio>
     </r-radio-group>
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
-    return { checked };
-  },
-};
+    const checked = ref('1')
+    return { checked }
+  }
+}
 ```
 
 ### 表单项类型 - 步进器
@@ -251,22 +247,22 @@ export default {
 在表单中使用 [Stepper 组件](#/zh-CN/stepper)。
 
 ```html
-<r-field name="stepper" label="步进器">
+<r-input name="stepper" label="步进器">
   <template #input>
     <r-stepper v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(1);
-    return { value };
-  },
-};
+    const value = ref(1)
+    return { value }
+  }
+}
 ```
 
 ### 表单项类型 - 评分
@@ -274,22 +270,22 @@ export default {
 在表单中使用 [Rate 组件](#/zh-CN/rate)。
 
 ```html
-<r-field name="rate" label="评分">
+<r-input name="rate" label="评分">
   <template #input>
     <r-rate v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3);
-    return { value };
-  },
-};
+    const value = ref(3)
+    return { value }
+  }
+}
 ```
 
 ### 表单项类型 - 滑块
@@ -297,22 +293,22 @@ export default {
 在表单中使用 [Slider 组件](#/zh-CN/slider)。
 
 ```html
-<r-field name="slider" label="滑块">
+<r-input name="slider" label="滑块">
   <template #input>
     <r-slider v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(50);
-    return { value };
-  },
-};
+    const value = ref(50)
+    return { value }
+  }
+}
 ```
 
 ### 表单项类型 - 文件上传
@@ -320,24 +316,24 @@ export default {
 在表单中使用 [Uploader 组件](#/zh-CN/uploader)。
 
 ```html
-<r-field name="uploader" label="文件上传">
+<r-input name="uploader" label="文件上传">
   <template #input>
     <r-uploader v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
     const value = ref([
-      { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' },
-    ]);
-    return { value };
-  },
-};
+      { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' }
+    ])
+    return { value }
+  }
+}
 ```
 
 ### 表单项类型 - 选择器
@@ -345,7 +341,7 @@ export default {
 在表单中使用 [Picker 组件](#/zh-CN/picker)。
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -364,33 +360,33 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showPicker = ref(false);
+    const result = ref('')
+    const showPicker = ref(false)
     const columns = [
       { text: '杭州', value: 'Hangzhou' },
       { text: '宁波', value: 'Ningbo' },
       { text: '温州', value: 'Wenzhou' },
       { text: '绍兴', value: 'Shaoxing' },
-      { text: '湖州', value: 'Huzhou' },
-    ];
+      { text: '湖州', value: 'Huzhou' }
+    ]
 
     const onConfirm = ({ selectedOptions }) => {
-      result.value = selectedOptions[0]?.text;
-      showPicker.value = false;
-    };
+      result.value = selectedOptions[0]?.text
+      showPicker.value = false
+    }
 
     return {
       result,
       columns,
       onConfirm,
-      showPicker,
-    };
-  },
-};
+      showPicker
+    }
+  }
+}
 ```
 
 ### 表单项类型 - 日期选择器
@@ -398,7 +394,7 @@ export default {
 在表单中使用 [DatePicker 组件](#/zh-CN/date-picker)。
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -413,24 +409,24 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showPicker = ref(false);
+    const result = ref('')
+    const showPicker = ref(false)
     const onConfirm = ({ selectedValues }) => {
-      result.value = selectedValues.join('/');
-      showPicker.value = false;
-    };
+      result.value = selectedValues.join('/')
+      showPicker.value = false
+    }
 
     return {
       result,
       onConfirm,
-      showPicker,
-    };
-  },
-};
+      showPicker
+    }
+  }
+}
 ```
 
 ### 表单项类型 - 省市区选择器
@@ -438,7 +434,7 @@ export default {
 在表单中使用 [Area 组件](#/zh-CN/area)。
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -457,26 +453,26 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { areaList } from '@ryxon/area-data';
+import { ref } from 'vue'
+import { areaList } from '@ryxon/area-data'
 
 export default {
   setup() {
-    const result = ref('');
-    const showArea = ref(false);
+    const result = ref('')
+    const showArea = ref(false)
     const onConfirm = ({ selectedOptions }) => {
-      showArea.value = false;
-      areaCode.value = selectedOptions.map((item) => item.text).join('/');
-    };
+      showArea.value = false
+      areaCode.value = selectedOptions.map((item) => item.text).join('/')
+    }
 
     return {
       result,
       areaList,
       showArea,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### 表单项类型 - 日历
@@ -484,7 +480,7 @@ export default {
 在表单中使用 [Calendar 组件](#/zh-CN/calendar)。
 
 ```html
-<r-field
+<r-input
   v-model="value"
   is-link
   readonly
@@ -497,24 +493,24 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showCalendar = ref(false);
+    const result = ref('')
+    const showCalendar = ref(false)
     const onConfirm = (date) => {
-      result.value = `${date.getMonth() + 1}/${date.getDate()}`;
-      showCalendar.value = false;
-    };
+      result.value = `${date.getMonth() + 1}/${date.getDate()}`
+      showCalendar.value = false
+    }
 
     return {
       result,
       onConfirm,
-      showCalendar,
-    };
-  },
-};
+      showCalendar
+    }
+  }
+}
 ```
 
 ## API
@@ -537,11 +533,11 @@ export default {
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | _boolean_ | `true` |
 | submit-on-enter | 是否在按下回车键时提交表单 | _boolean_ | `true` |
 
-> 表单项的 API 参见：[Field 组件](#/zh-CN/field#api)
+> 表单项的 API 参见：[Input 组件](#/zh-CN/input#api)
 
 ### Rule 数据结构
 
-使用 Field 的 `rules` 属性可以定义校验规则，可选属性如下:
+使用 Input 的 `rules` 属性可以定义校验规则，可选属性如下:
 
 | 键名 | 说明 | 类型 |
 | --- | --- | --- |
@@ -580,26 +576,26 @@ export default {
 | getValues `v3.4.8` | 获取所有表单项当前的值 | - | _Record<string, unknown>_ |
 | validate | 验证表单，支持传入一个或多个 `name` 来验证单个或部分表单项，不传入 `name` 时，会验证所有表单项 | _name?: string \| string[]_ | _Promise\<void\>_ |
 | resetValidation | 重置表单项的验证提示，支持传入一个或多个 `name` 来重置单个或部分表单项，不传入 `name` 时，会重置所有表单项 | _name?: string \| string[]_ | - |
-| getValidationStatus `v3.5.0` | 获取所有表单项的校验状态，状态包括 `passed`、`failed`、`unvalidated` | - | _Record\<string, FieldValidationStatus\>_ |
-| scrollToField | 滚动到对应表单项的位置，默认滚动到顶部，第二个参数传 false 可滚动至底部 | _name: string, alignToTop: boolean_ | - |
+| getValidationStatus `v3.5.0` | 获取所有表单项的校验状态，状态包括 `passed`、`failed`、`unvalidated` | - | _Record\<string, InputValidationStatus\>_ |
+| scrollToInput | 滚动到对应表单项的位置，默认滚动到顶部，第二个参数传 false 可滚动至底部 | _name: string, alignToTop: boolean_ | - |
 
 ### 类型定义
 
 组件导出以下类型定义：
 
 ```ts
-import type { FormProps, FormInstance } from 'ryxon';
+import type { FormProps, FormInstance } from 'ryxon'
 ```
 
 `FormInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { FormInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { FormInstance } from 'ryxon'
 
-const formRef = ref<FormInstance>();
+const formRef = ref<FormInstance>()
 
-formRef.value?.submit();
+formRef.value?.submit()
 ```
 
 ### Slots
@@ -612,4 +608,4 @@ formRef.value?.submit();
 
 ### 如何自定义表单项？
 
-Ryxon 支持在 Form 组件中插入自定义的表单项，具体用法参见 [useCustomFieldValue](#/zh-CN/use-custom-field-value)。
+Ryxon 支持在 Form 组件中插入自定义的表单项，具体用法参见 [useCustomInputValue](#/zh-CN/use-custom-input-value)。

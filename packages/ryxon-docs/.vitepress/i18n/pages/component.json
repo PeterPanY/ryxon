@@ -21,6 +21,14 @@
       "text": "Form 表单组件",
       "children": [
         {
+          "link": "/form",
+          "text": "Form 表单"
+        },
+        {
+          "link": "/input",
+          "text": "Input 输入框"
+        },
+        {
           "link": "/select",
           "text": "Select 选择器"
         }

@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { NumberKeyboard } from 'ryxon';
+import { createApp } from 'vue'
+import { NumberKeyboard } from 'ryxon'
 
-const app = createApp();
-app.use(NumberKeyboard);
+const app = createApp()
+app.use(NumberKeyboard)
 ```
 
 ## 代码演示
@@ -33,22 +33,22 @@ app.use(NumberKeyboard);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(true);
-    const onInput = (value) => showToast(value);
-    const onDelete = () => showToast('删除');
+    const show = ref(true)
+    const onInput = (value) => showToast(value)
+    const onDelete = () => showToast('删除')
 
     return {
       show,
       onInput,
-      onDelete,
-    };
-  },
-};
+      onDelete
+    }
+  }
+}
 ```
 
 > 点击键盘以外的区域时，键盘会自动收起，通过阻止元素上的 touchstart 事件冒泡可以避免键盘收起。
@@ -145,7 +145,7 @@ export default {
 可以通过 `v-model` 绑定键盘当前输入值，并通过 `maxlength` 属性来限制输入长度。
 
 ```html
-<r-field v-model="value" readonly clickable @touchstart.stop="show = true" />
+<r-input v-model="value" readonly clickable @touchstart.stop="show = true" />
 <r-number-keyboard
   v-model="value"
   :show="show"
@@ -155,18 +155,18 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(true);
-    const value = ref('');
+    const show = ref(true)
+    const value = ref('')
     return {
       show,
-      value,
-    };
-  },
-};
+      value
+    }
+  }
+}
 ```
 
 ## API
@@ -217,7 +217,7 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { NumberKeyboardProps, NumberKeyboardTheme } from 'ryxon';
+import type { NumberKeyboardProps, NumberKeyboardTheme } from 'ryxon'
 ```
 
 ## 主题定制
@@ -226,23 +226,23 @@ import type { NumberKeyboardProps, NumberKeyboardTheme } from 'ryxon';
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                    | 默认值                     | 描述 |
-| --------------------------------------- | -------------------------- | ---- |
+| 名称                                  | 默认值                   | 描述 |
+| ------------------------------------- | ------------------------ | ---- |
 | --r-number-keyboard-background        | _var(--r-gray-2)_        | -    |
-| --r-number-keyboard-key-height        | _48px_                     | -    |
-| --r-number-keyboard-key-font-size     | _28px_                     | -    |
+| --r-number-keyboard-key-height        | _48px_                   | -    |
+| --r-number-keyboard-key-font-size     | _28px_                   | -    |
 | --r-number-keyboard-key-active-color  | _var(--r-gray-3)_        | -    |
 | --r-number-keyboard-key-background    | _var(--r-white)_         | -    |
 | --r-number-keyboard-delete-font-size  | _var(--r-font-size-lg)_  | -    |
 | --r-number-keyboard-title-color       | _var(--r-gray-7)_        | -    |
-| --r-number-keyboard-title-height      | _34px_                     | -    |
+| --r-number-keyboard-title-height      | _34px_                   | -    |
 | --r-number-keyboard-title-font-size   | _var(--r-font-size-lg)_  | -    |
 | --r-number-keyboard-close-padding     | _0 var(--r-padding-md)_  | -    |
 | --r-number-keyboard-close-color       | _var(--r-link-color)_    | -    |
 | --r-number-keyboard-close-font-size   | _var(--r-font-size-md)_  | -    |
 | --r-number-keyboard-button-text-color | _var(--r-white)_         | -    |
 | --r-number-keyboard-button-background | _var(--r-primary-color)_ | -    |
-| --r-number-keyboard-z-index           | _100_                      | -    |
+| --r-number-keyboard-z-index           | _100_                    | -    |
 
 ## 常见问题
 

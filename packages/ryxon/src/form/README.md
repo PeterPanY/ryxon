@@ -2,20 +2,20 @@
 
 ### Intro
 
-Used for data entry and verification, and supports input boxes, radio buttons, check boxes, file uploads and other types. Should be used with [Field](#/en-US/field) component.
+Used for data entry and verification, and supports input boxes, radio buttons, check boxes, file uploads and other types. Should be used with [Input](#/en-US/input) component.
 
 ### Install
 
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Form, Field, CellGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { Form, Input, CellGroup } from 'ryxon'
 
-const app = createApp();
-app.use(Form);
-app.use(Field);
-app.use(CellGroup);
+const app = createApp()
+app.use(Form)
+app.use(Input)
+app.use(CellGroup)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(CellGroup);
 ```html
 <r-form @submit="onSubmit">
   <r-cell-group inset>
-    <r-field
+    <r-input
       v-model="username"
       name="Username"
       label="Username"
       placeholder="Username"
       :rules="[{ required: true, message: 'Username is required' }]"
     />
-    <r-field
+    <r-input
       v-model="password"
       type="password"
       name="Password"
@@ -50,23 +50,23 @@ app.use(CellGroup);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const username = ref('');
-    const password = ref('');
+    const username = ref('')
+    const password = ref('')
     const onSubmit = (values) => {
-      console.log('submit', values);
-    };
+      console.log('submit', values)
+    }
 
     return {
       username,
       password,
-      onSubmit,
-    };
-  },
-};
+      onSubmit
+    }
+  }
+}
 ```
 
 ### Validate Rules
@@ -74,25 +74,25 @@ export default {
 ```html
 <r-form @failed="onFailed">
   <r-cell-group inset>
-    <r-field
+    <r-input
       v-model="value1"
       name="pattern"
       placeholder="Use pattern"
       :rules="[{ pattern, message: 'Error message' }]"
     />
-    <r-field
+    <r-input
       v-model="value2"
       name="validator"
       placeholder="Use validator"
       :rules="[{ validator, message: 'Error message' }]"
     />
-    <r-field
+    <r-input
       v-model="value3"
       name="validatorMessage"
       placeholder="Use validator to return message"
       :rules="[{ validator: validatorMessage }]"
     />
-    <r-field
+    <r-input
       v-model="value4"
       name="asyncValidator"
       placeholder="Use async validator"
@@ -108,34 +108,34 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { closeToast, showLoadingToast } from 'ryxon';
+import { ref } from 'vue'
+import { closeToast, showLoadingToast } from 'ryxon'
 
 export default {
   setup() {
-    const value1 = ref('');
-    const value2 = ref('');
-    const value3 = ref('abc');
-    const value4 = ref('');
-    const pattern = /\d{6}/;
+    const value1 = ref('')
+    const value2 = ref('')
+    const value3 = ref('abc')
+    const value4 = ref('')
+    const pattern = /\d{6}/
 
-    const validator = (val) => /1\d{10}/.test(val);
+    const validator = (val) => /1\d{10}/.test(val)
 
-    const validatorMessage = (val) => `${val} is invalid`;
+    const validatorMessage = (val) => `${val} is invalid`
 
     const asyncValidator = (val) =>
       new Promise((resolve) => {
-        showLoadingToast('Validating...');
+        showLoadingToast('Validating...')
 
         setTimeout(() => {
-          closeToast();
-          resolve(val === '1234');
-        }, 1000);
-      });
+          closeToast()
+          resolve(val === '1234')
+        }, 1000)
+      })
 
     const onFailed = (errorInfo) => {
-      console.log('failed', errorInfo);
-    };
+      console.log('failed', errorInfo)
+    }
 
     return {
       value1,
@@ -146,180 +146,180 @@ export default {
       onFailed,
       validator,
       asyncValidator,
-      validatorMessage,
-    };
-  },
-};
+      validatorMessage
+    }
+  }
+}
 ```
 
-### Field Type - Switch
+### Input Type - Switch
 
 ```html
-<r-field name="switch" label="Switch">
+<r-input name="switch" label="Switch">
   <template #input>
     <r-switch v-model="checked" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(false);
-    return { checked };
-  },
-};
+    const checked = ref(false)
+    return { checked }
+  }
+}
 ```
 
-### Field Type - Checkbox
+### Input Type - Checkbox
 
 ```html
-<r-field name="checkbox" label="Checkbox">
+<r-input name="checkbox" label="Checkbox">
   <template #input>
     <r-checkbox v-model="checked" shape="square" />
   </template>
-</r-field>
-<r-field name="checkboxGroup" label="CheckboxGroup">
+</r-input>
+<r-input name="checkboxGroup" label="CheckboxGroup">
   <template #input>
     <r-checkbox-group v-model="groupChecked" direction="horizontal">
       <r-checkbox name="1" shape="square">Checkbox 1</r-checkbox>
       <r-checkbox name="2" shape="square">Checkbox 2</r-checkbox>
     </r-checkbox-group>
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(false);
-    const groupChecked = ref([]);
+    const checked = ref(false)
+    const groupChecked = ref([])
     return {
       checked,
-      groupChecked,
-    };
-  },
-};
+      groupChecked
+    }
+  }
+}
 ```
 
-### Field Type - Radio
+### Input Type - Radio
 
 ```html
-<r-field name="radio" label="Radio">
+<r-input name="radio" label="Radio">
   <template #input>
     <r-radio-group v-model="checked" direction="horizontal">
       <r-radio name="1">Radio 1</r-radio>
       <r-radio name="2">Radio 2</r-radio>
     </r-radio-group>
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
-    return { checked };
-  },
-};
+    const checked = ref('1')
+    return { checked }
+  }
+}
 ```
 
-### Field Type - Stepper
+### Input Type - Stepper
 
 ```html
-<r-field name="stepper" label="Stepper">
+<r-input name="stepper" label="Stepper">
   <template #input>
     <r-stepper v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(1);
-    return { value };
-  },
-};
+    const value = ref(1)
+    return { value }
+  }
+}
 ```
 
-### Field Type - Rate
+### Input Type - Rate
 
 ```html
-<r-field name="rate" label="Rate">
+<r-input name="rate" label="Rate">
   <template #input>
     <r-rate v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3);
-    return { value };
-  },
-};
+    const value = ref(3)
+    return { value }
+  }
+}
 ```
 
-### Field Type - Slider
+### Input Type - Slider
 
 ```html
-<r-field name="slider" label="Slider">
+<r-input name="slider" label="Slider">
   <template #input>
     <r-slider v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(50);
-    return { value };
-  },
-};
+    const value = ref(50)
+    return { value }
+  }
+}
 ```
 
-### Field Type - Uploader
+### Input Type - Uploader
 
 ```html
-<r-field name="uploader" label="Uploader">
+<r-input name="uploader" label="Uploader">
   <template #input>
     <r-uploader v-model="value" />
   </template>
-</r-field>
+</r-input>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
     const value = ref([
-      { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' },
-    ]);
-    return { value };
-  },
-};
+      { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' }
+    ])
+    return { value }
+  }
+}
 ```
 
-### Field Type - Picker
+### Input Type - Picker
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -338,39 +338,39 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showPicker = ref(false);
+    const result = ref('')
+    const showPicker = ref(false)
     const columns = [
       { text: 'Delaware', value: 'Delaware' },
       { text: 'Florida', value: 'Florida' },
       { text: 'Georqia', value: 'Georqia' },
       { text: 'Indiana', value: 'Indiana' },
-      { text: 'Maine', value: 'Maine' },
-    ];
+      { text: 'Maine', value: 'Maine' }
+    ]
 
     const onConfirm = ({ selectedOptions }) => {
-      result.value = selectedOptions[0]?.text;
-      showPicker.value = false;
-    };
+      result.value = selectedOptions[0]?.text
+      showPicker.value = false
+    }
 
     return {
       result,
       columns,
       onConfirm,
-      showPicker,
-    };
-  },
-};
+      showPicker
+    }
+  }
+}
 ```
 
-### Field Type - DatePicker
+### Input Type - DatePicker
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -385,30 +385,30 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showPicker = ref(false);
+    const result = ref('')
+    const showPicker = ref(false)
     const onConfirm = ({ selectedValues }) => {
-      result.value = selectedValues.join('/');
-      showPicker.value = false;
-    };
+      result.value = selectedValues.join('/')
+      showPicker.value = false
+    }
 
     return {
       result,
       onConfirm,
-      showPicker,
-    };
-  },
-};
+      showPicker
+    }
+  }
+}
 ```
 
-### Field Type - Area
+### Input Type - Area
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -427,32 +427,32 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { areaList } from '@ryxon/area-data';
+import { ref } from 'vue'
+import { areaList } from '@ryxon/area-data'
 
 export default {
   setup() {
-    const result = ref('');
-    const showArea = ref(false);
+    const result = ref('')
+    const showArea = ref(false)
     const onConfirm = ({ selectedOptions }) => {
-      showArea.value = false;
-      areaCode.value = selectedOptions.map((item) => item.text).join('/');
-    };
+      showArea.value = false
+      areaCode.value = selectedOptions.map((item) => item.text).join('/')
+    }
 
     return {
       result,
       areaList,
       showArea,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
-### Field Type - Calendar
+### Input Type - Calendar
 
 ```html
-<r-field
+<r-input
   v-model="result"
   is-link
   readonly
@@ -465,24 +465,24 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const result = ref('');
-    const showCalendar = ref(false);
+    const result = ref('')
+    const showCalendar = ref(false)
     const onConfirm = (date) => {
-      result.value = `${date.getMonth() + 1}/${date.getDate()}`;
-      showCalendar.value = false;
-    };
+      result.value = `${date.getMonth() + 1}/${date.getDate()}`
+      showCalendar.value = false
+    }
 
     return {
       result,
       onConfirm,
-      showCalendar,
-    };
-  },
-};
+      showCalendar
+    }
+  }
+}
 ```
 
 ## API
@@ -491,16 +491,16 @@ export default {
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| label-width | Field label width | _number \| string_ | `6.2em` |
-| label-align | Field label align, can be set to `center` `right` `top` | _string_ | `left` |
-| input-align | Field input align, can be set to `center` `right` | _string_ | `left` |
+| label-width | Input label width | _number \| string_ | `6.2em` |
+| label-align | Input label align, can be set to `center` `right` `top` | _string_ | `left` |
+| input-align | Input input align, can be set to `center` `right` | _string_ | `left` |
 | error-message-align | Error message align, can be set to `center` `right` | _string_ | `left` |
 | validate-trigger | When to validate the form, can be set to `onChange`、`onSubmit`, supports using array to set multiple values | _string \| string[]_ | `onBlur` |
 | colon | Whether to display colon after label | _boolean_ | `false` |
 | disabled | Whether to disable form | _boolean_ | `false` |
 | readonly | Whether to be readonly | _boolean_ | `false` |
 | validate-first | Whether to stop the validation when a rule fails | _boolean_ | `false` |
-| scroll-to-error | Whether to scroll to the error field when validation failed | _boolean_ | `false` |
+| scroll-to-error | Whether to scroll to the error input when validation failed | _boolean_ | `false` |
 | show-error | Whether to highlight input when validation failed | _boolean_ | `false` |
 | show-error-message | Whether to show error message when validation failed | _boolean_ | `true` |
 | submit-on-enter | Whether to submit form on enter | _boolean_ | `true` |
@@ -509,7 +509,7 @@ export default {
 
 | Key | Description | Type |
 | --- | --- | --- |
-| required | Whether to be a required field, the value is not allowed to be empty (empty string, empty array, `false`, `undefined`, `null`) | _boolean_ |
+| required | Whether to be a required input, the value is not allowed to be empty (empty string, empty array, `false`, `undefined`, `null`) | _boolean_ |
 | message | Error message, can be a function to dynamically return message content | _string \| (value, rule) => string_ |
 | validator | Custom validator, can return a Promise to validate dynamically | _(value, rule) => boolean \| string \| Promise_ |
 | pattern | Regexp pattern, if the regexp cannot match, means that the validation fails | _RegExp_ |
@@ -542,26 +542,26 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Form i
 | getValues `v3.4.8` | Get current form values | - | _Record<string, unknown>_ |
 | validate | Validate form | _name?: string \| string[]_ | _Promise\<void\>_ |
 | resetValidation | Reset validation | _name?: string \| string[]_ | - |
-| getValidationStatus `v3.5.0` | Get validation status of all fields，status can be `passed`、`failed`、`unvalidated` | - | _Record\<string, FieldValidationStatus\>_ |
-| scrollToField | Scroll to field | _name: string, alignToTop: boolean_ | - |
+| getValidationStatus `v3.5.0` | Get validation status of all inputs，status can be `passed`、`failed`、`unvalidated` | - | _Record\<string, InputValidationStatus\>_ |
+| scrollToInput | Scroll to input | _name: string, alignToTop: boolean_ | - |
 
 ### Types
 
 The component exports the following type definitions:
 
 ```ts
-import type { FormProps, FormInstance } from 'ryxon';
+import type { FormProps, FormInstance } from 'ryxon'
 ```
 
 `FormInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { FormInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { FormInstance } from 'ryxon'
 
-const formRef = ref<FormInstance>();
+const formRef = ref<FormInstance>()
 
-formRef.value?.submit();
+formRef.value?.submit()
 ```
 
 ### Slots

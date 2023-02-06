@@ -27,7 +27,7 @@ export type ConfigProviderThemeVars =
     import('../dropdown-item').DropdownItemThemeVars &
     import('../dropdown-menu').DropdownMenuThemeVars &
     import('../empty').EmptyThemeVars &
-    import('../field').FieldThemeVars &
+    import('../input').InputThemeVars &
     import('../grid-item').GridItemThemeVars &
     import('../image').ImageThemeVars &
     import('../image-preview').ImagePreviewThemeVars &
@@ -69,4 +69,4 @@ export type ConfigProviderThemeVars =
     import('../tag').TagThemeVars &
     import('../toast').ToastThemeVars &
     import('../tree-select').TreeSelectThemeVars &
-    import('../uploader').UploaderThemeVars;
+    import('../uploader').UploaderThemeVars

@@ -9,11 +9,11 @@ Input box component for search scenarios.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Search } from 'ryxon';
+import { createApp } from 'vue'
+import { Search } from 'ryxon'
 
-const app = createApp();
-app.use(Search);
+const app = createApp()
+app.use(Search)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(Search);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref('');
-    return { value };
-  },
-};
+    const value = ref('')
+    return { value }
+  }
+}
 ```
 
 ### Listen to Events
@@ -52,21 +52,21 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref('');
-    const onSearch = (val) => showToast(val);
-    const onCancel = () => showToast('Cancel');
+    const value = ref('')
+    const onSearch = (val) => showToast(val)
+    const onCancel = () => showToast('Cancel')
     return {
       value,
       onSearch,
-      onCancel,
-    };
-  },
-};
+      onCancel
+    }
+  }
+}
 ```
 
 > Tips: There will be a search button on the keyboard when Search is inside a form in iOS.
@@ -113,21 +113,21 @@ Use `action` slot to custom right button, `cancel` event will no longer be Emitt
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref('');
-    const onSearch = (val) => showToast(val);
-    const onClickButton = () => showToast(value.value);
+    const value = ref('')
+    const onSearch = (val) => showToast(val)
+    const onClickButton = () => showToast(value.value)
     return {
       value,
       onSearch,
-      onClickButton,
-    };
-  },
-};
+      onClickButton
+    }
+  }
+}
 ```
 
 ## API
@@ -139,9 +139,9 @@ export default {
 | v-model | Input value | _number \| string_ | - |
 | label | Left side label | _string_ | - |
 | name `v3.2.3` | As the identifier when submitting the form | _string_ | - |
-| shape | Shape of field, can be set to `round` | _string_ | `square` |
+| shape | Shape of input, can be set to `round` | _string_ | `square` |
 | id `v3.2.2` | Input id, the for attribute of the label also will be set | _string_ | `r-search-n-input` |
-| background | Background color of field | _string_ | `#f2f2f2` |
+| background | Background color of input | _string_ | `#f2f2f2` |
 | maxlength | Max length of value | _number \| string_ | - |
 | placeholder | Placeholder | _string_ | - |
 | clearable | Whether to be clearable | _boolean_ | `true` |
@@ -150,13 +150,13 @@ export default {
 | autofocus | Whether to auto focus, unsupported in iOS | _boolean_ | `false` |
 | show-action | Whether to show right action button | _boolean_ | `false` |
 | action-text | Text of action button | _string_ | `Cancel` |
-| disabled | Whether to disable field | _boolean_ | `false` |
+| disabled | Whether to disable input | _boolean_ | `false` |
 | readonly | Whether to be readonly | _boolean_ | `false` |
 | error | Whether to mark the input content in red | _boolean_ | `false` |
 | error-message `v3.0.12` | Error message | _string_ | - |
 | formatter `v3.0.12` | Input value formatter | _(val: string) => string_ | - |
 | format-trigger `v3.0.12` | When to format value, can be set to `onBlur` | _string_ | `onChange` |
-| input-align | Text align of field, can be set to `center` `right` | _string_ | `left` |
+| input-align | Text align of input, can be set to `center` `right` | _string_ | `left` |
 | left-icon | Left icon name | _string_ | `search` |
 | right-icon | Right icon name | _string_ | - |
 | autocomplete `v3.2.3` | [autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) attribute of native input element | _string_ | - |
@@ -189,18 +189,18 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Search
 The component exports the following type definitions:
 
 ```ts
-import type { SearchProps, SearchShape, SearchInstance } from 'ryxon';
+import type { SearchProps, SearchShape, SearchInstance } from 'ryxon'
 ```
 
 `SearchInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { SearchInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { SearchInstance } from 'ryxon'
 
-const searchRef = ref<SearchInstance>();
+const searchRef = ref<SearchInstance>()
 
-searchRef.value?.focus();
+searchRef.value?.focus()
 ```
 
 ### Slots
@@ -219,13 +219,13 @@ searchRef.value?.focus();
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name                            | Default Value                | Description |
-| ------------------------------- | ---------------------------- | ----------- |
+| Name                          | Default Value              | Description |
+| ----------------------------- | -------------------------- | ----------- |
 | --r-search-padding            | _10px var(--r-padding-sm)_ | -           |
 | --r-search-background         | _var(--r-background-2)_    | -           |
 | --r-search-content-background | _var(--r-gray-1)_          | -           |
-| --r-search-input-height       | _34px_                       | -           |
-| --r-search-label-padding      | _0 5px_                      | -           |
+| --r-search-input-height       | _34px_                     | -           |
+| --r-search-label-padding      | _0 5px_                    | -           |
 | --r-search-label-color        | _var(--r-text-color)_      | -           |
 | --r-search-label-font-size    | _var(--r-font-size-md)_    | -           |
 | --r-search-left-icon-color    | _var(--r-gray-6)_          | -           |

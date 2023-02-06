@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Picker } from 'ryxon';
+import { createApp } from 'vue'
+import { Picker } from 'ryxon'
 
-const app = createApp();
-app.use(Picker);
+const app = createApp()
+app.use(Picker)
 ```
 
 ## 代码演示
@@ -39,7 +39,7 @@ Picker 组件通过 `columns` 属性配置选项数据，`columns` 是一个包�
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -48,33 +48,33 @@ export default {
       { text: '宁波', value: 'Ningbo' },
       { text: '温州', value: 'Wenzhou' },
       { text: '绍兴', value: 'Shaoxing' },
-      { text: '湖州', value: 'Huzhou' },
-    ];
+      { text: '湖州', value: 'Huzhou' }
+    ]
     const onConfirm = ({ selectedValues }) => {
-      showToast(`当前值: ${selectedValues.join(',')}`);
-    };
+      showToast(`当前值: ${selectedValues.join(',')}`)
+    }
     const onChange = ({ selectedValues }) => {
-      showToast(`当前值: ${selectedValues.join(',')}`);
-    };
-    const onCancel = () => showToast('取消');
+      showToast(`当前值: ${selectedValues.join(',')}`)
+    }
+    const onCancel = () => showToast('取消')
 
     return {
       columns,
       onChange,
       onCancel,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### 搭配弹出层使用
 
-在实际场景中，Picker 通常作为用于辅助表单填写，可以搭配 Popup 和 Field 实现该效果。
+在实际场景中，Picker 通常作为用于辅助表单填写，可以搭配 Popup 和 Input 实现该效果。
 
 ```html
-<r-field
-  v-model="fieldValue"
+<r-input
+  v-model="inputValue"
   is-link
   readonly
   label="城市"
@@ -91,7 +91,7 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -100,24 +100,24 @@ export default {
       { text: '宁波', value: 'Ningbo' },
       { text: '温州', value: 'Wenzhou' },
       { text: '绍兴', value: 'Shaoxing' },
-      { text: '湖州', value: 'Huzhou' },
-    ];
-    const fieldValue = ref('');
-    const showPicker = ref(false);
+      { text: '湖州', value: 'Huzhou' }
+    ]
+    const inputValue = ref('')
+    const showPicker = ref(false)
 
     const onConfirm = ({ selectedOptions }) => {
-      showPicker.value = false;
-      fieldValue.value = selectedOptions[0].text;
-    };
+      showPicker.value = false
+      inputValue.value = selectedOptions[0].text
+    }
 
     return {
       columns,
       onConfirm,
-      fieldValue,
-      showPicker,
-    };
-  },
-};
+      inputValue,
+      showPicker
+    }
+  }
+}
 ```
 
 ### 双向绑定
@@ -131,7 +131,7 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -140,16 +140,16 @@ export default {
       { text: '宁波', value: 'Ningbo' },
       { text: '温州', value: 'Wenzhou' },
       { text: '绍兴', value: 'Shaoxing' },
-      { text: '湖州', value: 'Huzhou' },
-    ];
-    const selectedValues = ref(['Wenzhou']);
+      { text: '湖州', value: 'Huzhou' }
+    ]
+    const selectedValues = ref(['Wenzhou'])
 
     return {
       columns,
-      selectedValues,
-    };
-  },
-};
+      selectedValues
+    }
+  }
+}
 ```
 
 ### 多列选择
@@ -170,19 +170,19 @@ export default {
         { text: '周二', value: 'Tuesday' },
         { text: '周三', value: 'Wednesday' },
         { text: '周四', value: 'Thursday' },
-        { text: '周五', value: 'Friday' },
+        { text: '周五', value: 'Friday' }
       ],
       // 第二列
       [
         { text: '上午', value: 'Morning' },
         { text: '下午', value: 'Afternoon' },
-        { text: '晚上', value: 'Evening' },
-      ],
-    ];
+        { text: '晚上', value: 'Evening' }
+      ]
+    ]
 
-    return { columns };
-  },
-};
+    return { columns }
+  }
+}
 ```
 
 ### 级联选择
@@ -206,18 +206,18 @@ export default {
             value: 'Hangzhou',
             children: [
               { text: '西湖区', value: 'Xihu' },
-              { text: '余杭区', value: 'Yuhang' },
-            ],
+              { text: '余杭区', value: 'Yuhang' }
+            ]
           },
           {
             text: '温州',
             value: 'Wenzhou',
             children: [
               { text: '鹿城区', value: 'Lucheng' },
-              { text: '瓯海区', value: 'Ouhai' },
-            ],
-          },
-        ],
+              { text: '瓯海区', value: 'Ouhai' }
+            ]
+          }
+        ]
       },
       {
         text: '福建',
@@ -228,24 +228,24 @@ export default {
             value: 'Fuzhou',
             children: [
               { text: '鼓楼区', value: 'Gulou' },
-              { text: '台江区', value: 'Taijiang' },
-            ],
+              { text: '台江区', value: 'Taijiang' }
+            ]
           },
           {
             text: '厦门',
             value: 'Xiamen',
             children: [
               { text: '思明区', value: 'Siming' },
-              { text: '海沧区', value: 'Haicang' },
-            ],
-          },
-        ],
-      },
-    ];
+              { text: '海沧区', value: 'Haicang' }
+            ]
+          }
+        ]
+      }
+    ]
 
-    return { columns };
-  },
-};
+    return { columns }
+  }
+}
 ```
 
 > 级联选择的数据嵌套深度需要保持一致，如果部分选项没有子选项，可以使用空字符串进行占位。
@@ -264,11 +264,11 @@ export default {
     const columns = [
       { text: '杭州', value: 'Hangzhou', disabled: true },
       { text: '宁波', value: 'Ningbo' },
-      { text: '温州', value: 'Wenzhou' },
-    ];
-    return { columns };
-  },
-};
+      { text: '温州', value: 'Wenzhou' }
+    ]
+    return { columns }
+  }
+}
 ```
 
 ### 加载状态
@@ -280,21 +280,21 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const columns = ref([]);
-    const loading = ref(true);
+    const columns = ref([])
+    const loading = ref(true)
 
     setTimeout(() => {
-      columns.value = [{ text: '选项', value: 'option' }];
-      loading.value = false;
-    }, 1000);
+      columns.value = [{ text: '选项', value: 'option' }]
+      loading.value = false
+    }, 1000)
 
-    return { columns, loading };
-  },
-};
+    return { columns, loading }
+  }
+}
 ```
 
 ### 自定义 Columns 的结构
@@ -303,7 +303,7 @@ export default {
 <r-picker
   :title="标题"
   :columns="columns"
-  :columns-field-names="customFieldName"
+  :columns-input-names="customInputName"
 />
 ```
 
@@ -316,41 +316,41 @@ export default {
         cities: [
           {
             cityName: '杭州',
-            cities: [{ cityName: '西湖区' }, { cityName: '余杭区' }],
+            cities: [{ cityName: '西湖区' }, { cityName: '余杭区' }]
           },
           {
             cityName: '温州',
-            cities: [{ cityName: '鹿城区' }, { cityName: '瓯海区' }],
-          },
-        ],
+            cities: [{ cityName: '鹿城区' }, { cityName: '瓯海区' }]
+          }
+        ]
       },
       {
         cityName: '福建',
         cities: [
           {
             cityName: '福州',
-            cities: [{ cityName: '鼓楼区' }, { cityName: '台江区' }],
+            cities: [{ cityName: '鼓楼区' }, { cityName: '台江区' }]
           },
           {
             cityName: '厦门',
-            cities: [{ cityName: '思明区' }, { cityName: '海沧区' }],
-          },
-        ],
-      },
-    ];
+            cities: [{ cityName: '思明区' }, { cityName: '海沧区' }]
+          }
+        ]
+      }
+    ]
 
-    const customFieldName = {
+    const customInputName = {
       text: 'cityName',
       value: 'cityName',
-      children: 'cities',
-    };
+      children: 'cities'
+    }
 
     return {
       columns,
-      customFieldName,
-    };
-  },
-};
+      customInputName
+    }
+  }
+}
 ```
 
 ## API
@@ -360,7 +360,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | columns | 对象数组，配置每一列显示的数据 | _PickerOption[] \| PickerOption[][]_ | `[]` |
-| columns-field-names | 自定义 `columns` 结构中的字段 | _object_ | `{ text: 'text', value: 'value', children: 'children' }` |
+| columns-input-names | 自定义 `columns` 结构中的字段 | _object_ | `{ text: 'text', value: 'value', children: 'children' }` |
 | title | 顶部栏标题 | _string_ | - |
 | confirm-button-text | 确认按钮文字 | _string_ | `确认` |
 | cancel-button-text | 取消按钮文字 | _string_ | `取消` |
@@ -422,23 +422,23 @@ import type {
   PickerColumn,
   PickerOption,
   PickerInstance,
-  PickerFieldNames,
+  PickerInputNames,
   PickerToolbarPosition,
   PickerCancelEventParams,
   PickerChangeEventParams,
-  PickerConfirmEventParams,
-} from 'ryxon';
+  PickerConfirmEventParams
+} from 'ryxon'
 ```
 
 `PickerInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { PickerInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { PickerInstance } from 'ryxon'
 
-const pickerRef = ref<PickerInstance>();
+const pickerRef = ref<PickerInstance>()
 
-pickerRef.value?.confirm();
+pickerRef.value?.confirm()
 ```
 
 ## 主题定制
@@ -447,23 +447,23 @@ pickerRef.value?.confirm();
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                 | 默认值                      | 描述 |
-| ------------------------------------ | --------------------------- | ---- |
-| --r-picker-background              | _var(--r-background-2)_   | -    |
-| --r-picker-toolbar-height          | _44px_                      | -    |
-| --r-picker-title-font-size         | _var(--r-font-size-lg)_   | -    |
-| --r-picker-title-line-height       | _var(--r-line-height-md)_ | -    |
-| --r-picker-action-padding          | _0 var(--r-padding-md)_   | -    |
-| --r-picker-action-font-size        | _var(--r-font-size-md)_   | -    |
-| --r-picker-confirm-action-color    | _var(--r-link-color)_     | -    |
-| --r-picker-cancel-action-color     | _var(--r-text-color-2)_   | -    |
-| --r-picker-option-padding          | _0 var(--r-padding-base)_ | -    |
-| --r-picker-option-font-size        | _var(--r-font-size-lg)_   | -    |
-| --r-picker-option-text-color       | _var(--r-text-color)_     | -    |
-| --r-picker-option-disabled-opacity | _0.3_                       | -    |
-| --r-picker-mask-color              | _linear-gradient_           | -    |
-| --r-picker-loading-icon-color      | _var(--r-primary-color)_  | -    |
-| --r-picker-loading-mask-color      | _rgba(255, 255, 255, 0.9)_  | -    |
+| 名称                               | 默认值                     | 描述 |
+| ---------------------------------- | -------------------------- | ---- |
+| --r-picker-background              | _var(--r-background-2)_    | -    |
+| --r-picker-toolbar-height          | _44px_                     | -    |
+| --r-picker-title-font-size         | _var(--r-font-size-lg)_    | -    |
+| --r-picker-title-line-height       | _var(--r-line-height-md)_  | -    |
+| --r-picker-action-padding          | _0 var(--r-padding-md)_    | -    |
+| --r-picker-action-font-size        | _var(--r-font-size-md)_    | -    |
+| --r-picker-confirm-action-color    | _var(--r-link-color)_      | -    |
+| --r-picker-cancel-action-color     | _var(--r-text-color-2)_    | -    |
+| --r-picker-option-padding          | _0 var(--r-padding-base)_  | -    |
+| --r-picker-option-font-size        | _var(--r-font-size-lg)_    | -    |
+| --r-picker-option-text-color       | _var(--r-text-color)_      | -    |
+| --r-picker-option-disabled-opacity | _0.3_                      | -    |
+| --r-picker-mask-color              | _linear-gradient_          | -    |
+| --r-picker-loading-icon-color      | _var(--r-primary-color)_   | -    |
+| --r-picker-loading-mask-color      | _rgba(255, 255, 255, 0.9)_ | -    |
 
 ## 常见问题
 

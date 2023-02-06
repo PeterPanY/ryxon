@@ -1,4 +1,5 @@
 import {
+  h,
   ref,
   watch,
   provide,
@@ -14,6 +15,7 @@ import {
 // Utils
 import {
   isDef,
+  isString,
   extend,
   addUnit,
   toArray,
@@ -22,6 +24,7 @@ import {
   unknownProp,
   resetScroll,
   formatNumber,
+  iconPropType,
   preventDefault,
   makeStringProp,
   makeNumericProp,
@@ -46,7 +49,7 @@ import { cellSharedProps } from '../cell/Cell'
 import {
   useParent,
   useEventListener,
-  CUSTOM_FIELD_INJECTION_KEY
+  CUSTOM_INPUT_INJECTION_KEY
 } from '@ryxon/use'
 import { useId } from '../composables/use-id'
 import { useExpose } from '../composables/use-expose'
@@ -76,8 +79,8 @@ const [name, bem] = createNamespace('input')
 export const inputSharedProps = {
   id: String,
   name: String,
-  leftIcon: String,
-  rightIcon: String,
+  leftIcon: iconPropType,
+  rightIcon: iconPropType,
   autofocus: Boolean,
   clearable: Boolean,
   maxlength: numericProp,
@@ -414,7 +417,7 @@ export default defineComponent({
     const onClickRightIcon = (event: MouseEvent) =>
       emit('clickRightIcon', event)
 
-    const onClear = (event: TouchEvent) => {
+    const onClear = (event: MouseEvent) => {
       preventDefault(event)
       emit('update:modelValue', '')
       emit('clear', event)
@@ -515,7 +518,14 @@ export default defineComponent({
             {leftIconSlot ? (
               leftIconSlot()
             ) : (
-              <Icon name={props.leftIcon} classPrefix={props.iconPrefix} />
+              <Icon
+                name={isString(props.leftIcon) ? props.leftIcon : ''}
+                classPrefix={props.iconPrefix}
+              >
+                {props.leftIcon &&
+                  !isString(props.leftIcon) &&
+                  h(props.leftIcon)}
+              </Icon>
             )}
           </div>
         )
@@ -531,7 +541,14 @@ export default defineComponent({
             {rightIconSlot ? (
               rightIconSlot()
             ) : (
-              <Icon name={props.rightIcon} classPrefix={props.iconPrefix} />
+              <Icon
+                name={isString(props.rightIcon) ? props.rightIcon : ''}
+                classPrefix={props.iconPrefix}
+              >
+                {props.rightIcon &&
+                  !isString(props.rightIcon) &&
+                  h(props.rightIcon)}
+              </Icon>
             )}
           </div>
         )
@@ -608,7 +625,7 @@ export default defineComponent({
       getValidationStatus
     })
 
-    provide(CUSTOM_FIELD_INJECTION_KEY, {
+    provide(CUSTOM_INPUT_INJECTION_KEY, {
       customValue,
       resetValidation,
       validateWithTrigger
@@ -629,8 +646,8 @@ export default defineComponent({
       nextTick(adjustTextareaSize)
     })
 
-    // useEventListener will set passive to `false` to eliminate the warning of Chrome
-    useEventListener('touchstart', onClear, {
+    // useEventListener将被动设置为“false”以消除Chrome的警告
+    useEventListener('click', onClear, {
       target: computed(() => clearIconRef.value?.$el)
     })
 

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import RField from '../../field';
-import RPopup from '../../popup';
-import RCascader, { CascaderOption } from '..';
-import { computed, reactive } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { deepClone } from '../../utils/deep-clone';
-import zhCNOptions from './area-zh-CN';
-import enUSOptions from './area-en-US';
-import type { Numeric } from '../../utils';
+import RInput from '../../input'
+import RPopup from '../../popup'
+import RCascader, { CascaderOption } from '..'
+import { computed, reactive } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { deepClone } from '../../utils/deep-clone'
+import zhCNOptions from './area-zh-CN'
+import enUSOptions from './area-en-US'
+import type { Numeric } from '../../utils'
 
 const t = useTranslate({
   'zh-CN': {
@@ -20,16 +20,16 @@ const t = useTranslate({
       {
         text: '浙江省',
         value: '330000',
-        children: [],
-      },
+        children: []
+      }
     ],
     asyncOptions2: [
       { text: '杭州市', value: '330100' },
-      { text: '宁波市', value: '330200' },
+      { text: '宁波市', value: '330200' }
     ],
     currentLevel: (level: number) => `当前为第 ${level} 级`,
     customContent: '自定义选项上方内容',
-    customFieldNames: '自定义字段名',
+    customInputNames: '自定义字段名'
   },
   'en-US': {
     area: 'Area',
@@ -41,110 +41,110 @@ const t = useTranslate({
       {
         text: 'Zhejiang',
         value: '330000',
-        children: [],
-      },
+        children: []
+      }
     ],
     asyncOptions2: [
       { text: 'Hangzhou', value: '330100' },
-      { text: 'Ningbo', value: '330200' },
+      { text: 'Ningbo', value: '330200' }
     ],
     currentLevel: (level: number) => `Current level is ${level}`,
     customContent: 'Custom Content',
-    customFieldNames: 'Custom Field Names',
-  },
-});
+    customInputNames: 'Custom Input Names'
+  }
+})
 
 type StateItem = {
-  show: boolean;
-  value: Numeric | undefined;
-  result: string;
-  options?: CascaderOption[];
-  tabIndex?: number;
-};
+  show: boolean
+  value: Numeric | undefined
+  result: string
+  options?: CascaderOption[]
+  tabIndex?: number
+}
 
 const baseState = reactive<StateItem>({
   show: false,
   value: '',
-  result: '',
-});
+  result: ''
+})
 const customColorState = reactive<StateItem>({
   show: false,
   value: undefined,
-  result: '',
-});
+  result: ''
+})
 const asyncState = reactive<StateItem>({
   show: false,
   value: undefined,
   result: '',
-  options: t('asyncOptions1'),
-});
-const customFieldState = reactive<StateItem>({
+  options: t('asyncOptions1')
+})
+const customInputState = reactive<StateItem>({
   show: false,
   value: undefined,
-  result: '',
-});
+  result: ''
+})
 
-const fieldNames = {
+const inputNames = {
   text: 'name',
   value: 'code',
-  children: 'items',
-};
+  children: 'items'
+}
 
 const customContentState = reactive<StateItem>({
   show: false,
   value: undefined,
-  result: '',
-});
+  result: ''
+})
 
-const customFieldOptions = computed(() => {
-  const options = deepClone(t('options'));
-  const adjustFieldName = (item: CascaderOption) => {
+const customInputOptions = computed(() => {
+  const options = deepClone(t('options'))
+  const adjustInputName = (item: CascaderOption) => {
     if ('text' in item) {
-      item.name = item.text;
-      delete item.text;
+      item.name = item.text
+      delete item.text
     }
     if ('value' in item) {
-      item.code = item.value;
-      delete item.value;
+      item.code = item.value
+      delete item.value
     }
     if ('children' in item) {
-      item.items = item.children;
-      delete item.children;
-      item.items.forEach(adjustFieldName);
+      item.items = item.children
+      delete item.children
+      item.items.forEach(adjustInputName)
     }
-  };
-  options.forEach(adjustFieldName);
-  return options;
-});
+  }
+  options.forEach(adjustInputName)
+  return options
+})
 
 const loadDynamicOptions = ({ value }: CascaderOption) => {
   if (value === '330000') {
     setTimeout(() => {
-      asyncState.options![0].children = t('asyncOptions2');
-    }, 500);
+      asyncState.options![0].children = t('asyncOptions2')
+    }, 500)
   }
-};
+}
 
 const onFinish = (
   state: StateItem,
   {
     value,
-    selectedOptions,
+    selectedOptions
   }: { value: Numeric; selectedOptions: CascaderOption[] }
 ) => {
   const result = selectedOptions
     .map((option) => option.text || option.name)
-    .join('/');
+    .join('/')
 
-  state.show = false;
-  state.value = value;
-  state.result = result;
-};
+  state.show = false
+  state.value = value
+  state.result = result
+}
 </script>
 
 <template>
   <demo-block card :title="t('basicUsage')">
-    <r-field
+    <r-input
       v-model="baseState.result"
       is-link
       readonly
@@ -169,7 +169,7 @@ const onFinish = (
   </demo-block>
 
   <demo-block card :title="t('customColor')">
-    <r-field
+    <r-input
       v-model="customColorState.result"
       is-link
       readonly
@@ -195,7 +195,7 @@ const onFinish = (
   </demo-block>
 
   <demo-block card :title="t('asyncOptions')">
-    <r-field
+    <r-input
       v-model="asyncState.result"
       is-link
       readonly
@@ -220,35 +220,35 @@ const onFinish = (
     </r-popup>
   </demo-block>
 
-  <demo-block card :title="t('customFieldNames')">
-    <r-field
-      v-model="customFieldState.result"
+  <demo-block card :title="t('customInputNames')">
+    <r-input
+      v-model="customInputState.result"
       is-link
       readonly
       :label="t('area')"
       :placeholder="t('selectArea')"
-      @click="customFieldState.show = true"
+      @click="customInputState.show = true"
     />
     <r-popup
-      v-model:show="customFieldState.show"
+      v-model:show="customInputState.show"
       round
       teleport="body"
       position="bottom"
       safe-area-inset-bottom
     >
       <r-cascader
-        v-model="customFieldState.value"
+        v-model="customInputState.value"
         :title="t('selectArea')"
-        :options="customFieldOptions"
-        :field-names="fieldNames"
-        @close="customFieldState.show = false"
-        @finish="onFinish(customFieldState, $event)"
+        :options="customInputOptions"
+        :input-names="inputNames"
+        @close="customInputState.show = false"
+        @finish="onFinish(customInputState, $event)"
       />
     </r-popup>
   </demo-block>
 
   <demo-block card :title="t('customContent')">
-    <r-field
+    <r-input
       v-model="customContentState.result"
       is-link
       readonly
@@ -266,8 +266,8 @@ const onFinish = (
       <r-cascader
         v-model="customContentState.value"
         :title="t('selectArea')"
-        :options="customFieldOptions"
-        :field-names="fieldNames"
+        :options="customInputOptions"
+        :input-names="inputNames"
         @close="customContentState.show = false"
         @finish="onFinish(customContentState, $event)"
       >

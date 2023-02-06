@@ -50,7 +50,7 @@ const onPlacementChange = (value: PopoverPlacement) => {
     margin-left: var(--r-padding-md);
   }
 
-  .r-field {
+  .r-input {
     width: auto;
     margin: 0 12px;
     overflow: hidden;

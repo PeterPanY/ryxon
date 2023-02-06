@@ -4,8 +4,8 @@ import {
   nextTick,
   defineComponent,
   type PropType,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 import {
   extend,
   truthProp,
@@ -14,19 +14,19 @@ import {
   makeStringProp,
   createNamespace,
   HAPTICS_FEEDBACK,
-  type Numeric,
-} from '../utils';
+  type Numeric
+} from '../utils'
 
 // Components
-import { Tab } from '../tab';
-import { Tabs } from '../tabs';
-import { Icon } from '../icon';
+import { Tab } from '../tab'
+import { Tabs } from '../tabs'
+import { Icon } from '../icon'
 
 // Types
-import type { TabsClickTabEventParams } from '../tabs/types';
-import type { CascaderTab, CascaderOption, CascaderFieldNames } from './types';
+import type { TabsClickTabEventParams } from '../tabs/types'
+import type { CascaderTab, CascaderOption, CascaderInputNames } from './types'
 
-const [name, bem, t] = createNamespace('cascader');
+const [name, bem, t] = createNamespace('cascader')
 
 export const cascaderProps = {
   title: String,
@@ -36,12 +36,12 @@ export const cascaderProps = {
   closeIcon: makeStringProp('cross'),
   showHeader: truthProp,
   modelValue: numericProp,
-  fieldNames: Object as PropType<CascaderFieldNames>,
+  inputNames: Object as PropType<CascaderInputNames>,
   placeholder: String,
-  activeColor: String,
-};
+  activeColor: String
+}
 
-export type CascaderProps = ExtractPropTypes<typeof cascaderProps>;
+export type CascaderProps = ExtractPropTypes<typeof cascaderProps>
 
 export default defineComponent({
   name,
@@ -51,21 +51,21 @@ export default defineComponent({
   emits: ['close', 'change', 'finish', 'clickTab', 'update:modelValue'],
 
   setup(props, { slots, emit }) {
-    const tabs = ref<CascaderTab[]>([]);
-    const activeTab = ref(0);
+    const tabs = ref<CascaderTab[]>([])
+    const activeTab = ref(0)
 
     const {
       text: textKey,
       value: valueKey,
-      children: childrenKey,
+      children: childrenKey
     } = extend(
       {
         text: 'text',
         value: 'value',
-        children: 'children',
+        children: 'children'
       },
-      props.fieldNames
-    );
+      props.inputNames
+    )
 
     const getSelectedOptionsByValue = (
       options: CascaderOption[],
@@ -73,119 +73,119 @@ export default defineComponent({
     ): CascaderOption[] | undefined => {
       for (const option of options) {
         if (option[valueKey] === value) {
-          return [option];
+          return [option]
         }
 
         if (option[childrenKey]) {
           const selectedOptions = getSelectedOptionsByValue(
             option[childrenKey],
             value
-          );
+          )
           if (selectedOptions) {
-            return [option, ...selectedOptions];
+            return [option, ...selectedOptions]
           }
         }
       }
-    };
+    }
 
     const updateTabs = () => {
-      const { options, modelValue } = props;
+      const { options, modelValue } = props
 
       if (modelValue !== undefined) {
-        const selectedOptions = getSelectedOptionsByValue(options, modelValue);
+        const selectedOptions = getSelectedOptionsByValue(options, modelValue)
 
         if (selectedOptions) {
-          let optionsCursor = options;
+          let optionsCursor = options
 
           tabs.value = selectedOptions.map((option) => {
             const tab = {
               options: optionsCursor,
-              selected: option,
-            };
+              selected: option
+            }
 
             const next = optionsCursor.find(
               (item) => item[valueKey] === option[valueKey]
-            );
+            )
             if (next) {
-              optionsCursor = next[childrenKey];
+              optionsCursor = next[childrenKey]
             }
 
-            return tab;
-          });
+            return tab
+          })
 
           if (optionsCursor) {
             tabs.value.push({
               options: optionsCursor,
-              selected: null,
-            });
+              selected: null
+            })
           }
 
           nextTick(() => {
-            activeTab.value = tabs.value.length - 1;
-          });
+            activeTab.value = tabs.value.length - 1
+          })
 
-          return;
+          return
         }
       }
 
       tabs.value = [
         {
           options,
-          selected: null,
-        },
-      ];
-    };
+          selected: null
+        }
+      ]
+    }
 
     const onSelect = (option: CascaderOption, tabIndex: number) => {
       if (option.disabled) {
-        return;
+        return
       }
 
-      tabs.value[tabIndex].selected = option;
+      tabs.value[tabIndex].selected = option
 
       if (tabs.value.length > tabIndex + 1) {
-        tabs.value = tabs.value.slice(0, tabIndex + 1);
+        tabs.value = tabs.value.slice(0, tabIndex + 1)
       }
 
       if (option[childrenKey]) {
         const nextTab = {
           options: option[childrenKey],
-          selected: null,
-        };
+          selected: null
+        }
 
         if (tabs.value[tabIndex + 1]) {
-          tabs.value[tabIndex + 1] = nextTab;
+          tabs.value[tabIndex + 1] = nextTab
         } else {
-          tabs.value.push(nextTab);
+          tabs.value.push(nextTab)
         }
 
         nextTick(() => {
-          activeTab.value++;
-        });
+          activeTab.value++
+        })
       }
 
       const selectedOptions = tabs.value
         .map((tab) => tab.selected)
-        .filter(Boolean);
+        .filter(Boolean)
 
-      emit('update:modelValue', option[valueKey]);
+      emit('update:modelValue', option[valueKey])
 
       const params = {
         value: option[valueKey],
         tabIndex,
-        selectedOptions,
-      };
-      emit('change', params);
+        selectedOptions
+      }
+      emit('change', params)
 
       if (!option[childrenKey]) {
-        emit('finish', params);
+        emit('finish', params)
       }
-    };
+    }
 
-    const onClose = () => emit('close');
+    const onClose = () => emit('close')
 
     const onClickTab = ({ name, title }: TabsClickTabEventParams) =>
-      emit('clickTab', name, title);
+      emit('clickTab', name, title)
 
     const renderHeader = () =>
       props.showHeader ? (
@@ -201,24 +201,24 @@ export default defineComponent({
             />
           ) : null}
         </div>
-      ) : null;
+      ) : null
 
     const renderOption = (
       option: CascaderOption,
       selectedOption: CascaderOption | null,
       tabIndex: number
     ) => {
-      const { disabled } = option;
+      const { disabled } = option
       const selected = !!(
         selectedOption && option[valueKey] === selectedOption[valueKey]
-      );
-      const color = option.color || (selected ? props.activeColor : undefined);
+      )
+      const color = option.color || (selected ? props.activeColor : undefined)
 
       const Text = slots.option ? (
         slots.option({ option, selected })
       ) : (
         <span>{option[textKey]}</span>
-      );
+      )
 
       return (
         <li
@@ -235,8 +235,8 @@ export default defineComponent({
             <Icon name="success" class={bem('selected-icon')} />
           ) : null}
         </li>
-      );
-    };
+      )
+    }
 
     const renderOptions = (
       options: CascaderOption[],
@@ -248,26 +248,26 @@ export default defineComponent({
           renderOption(option, selectedOption, tabIndex)
         )}
       </ul>
-    );
+    )
 
     const renderTab = (tab: CascaderTab, tabIndex: number) => {
-      const { options, selected } = tab;
-      const placeholder = props.placeholder || t('select');
-      const title = selected ? selected[textKey] : placeholder;
+      const { options, selected } = tab
+      const placeholder = props.placeholder || t('select')
+      const title = selected ? selected[textKey] : placeholder
 
       return (
         <Tab
           title={title}
           titleClass={bem('tab', {
-            unselected: !selected,
+            unselected: !selected
           })}
         >
           {slots['options-top']?.({ tabIndex })}
           {renderOptions(options, selected, tabIndex)}
           {slots['options-bottom']?.({ tabIndex })}
         </Tab>
-      );
-    };
+      )
+    }
 
     const renderTabs = () => (
       <Tabs
@@ -281,28 +281,28 @@ export default defineComponent({
       >
         {tabs.value.map(renderTab)}
       </Tabs>
-    );
+    )
 
-    updateTabs();
-    watch(() => props.options, updateTabs, { deep: true });
+    updateTabs()
+    watch(() => props.options, updateTabs, { deep: true })
     watch(
       () => props.modelValue,
       (value) => {
         if (value !== undefined) {
-          const values = tabs.value.map((tab) => tab.selected?.[valueKey]);
+          const values = tabs.value.map((tab) => tab.selected?.[valueKey])
           if (values.includes(value)) {
-            return;
+            return
           }
         }
-        updateTabs();
+        updateTabs()
       }
-    );
+    )
 
     return () => (
       <div class={bem()}>
         {renderHeader()}
         {renderTabs()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

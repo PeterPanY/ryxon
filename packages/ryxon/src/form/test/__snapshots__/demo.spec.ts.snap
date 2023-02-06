@@ -4,42 +4,42 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <form class="r-form">
     <div class="r-cell-group r-cell-group--inset">
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Username
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="username"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Username"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Password
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="password"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="password"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Password"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
@@ -61,82 +61,82 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <form class="r-form">
     <div class="r-cell-group r-cell-group--inset">
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Label
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="pattern"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Use pattern"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Label
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="validator"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Use validator"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Label
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="validatorMessage"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Use validator to return message"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Label
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="asyncValidator"
-                   class="r-field__control"
+                   class="r-input__control"
                    placeholder="Use async validator"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
@@ -158,17 +158,17 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <form class="r-form">
     <div class="r-cell-group r-cell-group--inset">
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Switch
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div role="switch"
                    class="r-switch"
                    tabindex="0"
@@ -181,17 +181,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Checkbox
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div role="checkbox"
                    class="r-checkbox"
                    tabindex="0"
@@ -206,17 +206,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Checkbox Group
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div class="r-checkbox-group r-checkbox-group--horizontal">
                 <div role="checkbox"
                      class="r-checkbox r-checkbox--horizontal"
@@ -249,17 +249,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Radio
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div class="r-radio-group r-radio-group--horizontal"
                    role="radiogroup"
               >
@@ -294,17 +294,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Stepper
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div role="group"
                    class="r-stepper"
               >
@@ -330,17 +330,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Rate
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div role="radiogroup"
                    class="r-rate"
                    tabindex="0"
@@ -402,17 +402,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Slider
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div class="r-slider">
                 <div class="r-slider__bar"
                      style="width: 50%; left: 0%;"
@@ -434,17 +434,17 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-field">
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+      <div class="r-cell r-input">
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Uploader
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
-            <div class="r-field__control r-field__control--custom">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
+            <div class="r-input__control r-input__control--custom">
               <div class="r-uploader">
                 <div class="r-uploader__wrapper">
                   <div class="r-uploader__preview">
@@ -481,104 +481,104 @@ exports[`should render demo and match snapshot 1`] = `
           </div>
         </div>
       </div>
-      <div class="r-cell r-cell--clickable r-field"
+      <div class="r-cell r-cell--clickable r-input"
            role="button"
            tabindex="0"
       >
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Picker
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="picker"
-                   class="r-field__control"
+                   class="r-input__control"
                    readonly
                    placeholder="Select city"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
         <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
-      <div class="r-cell r-cell--clickable r-field"
+      <div class="r-cell r-cell--clickable r-input"
            role="button"
            tabindex="0"
       >
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Datetime Picker
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="datePicker"
-                   class="r-field__control"
+                   class="r-input__control"
                    readonly
                    placeholder="Select time"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
         <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
-      <div class="r-cell r-cell--clickable r-field"
+      <div class="r-cell r-cell--clickable r-input"
            role="button"
            tabindex="0"
       >
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Area Picker
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="area"
-                   class="r-field__control"
+                   class="r-input__control"
                    readonly
                    placeholder="Select area"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>
         <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
-      <div class="r-cell r-cell--clickable r-field"
+      <div class="r-cell r-cell--clickable r-input"
            role="button"
            tabindex="0"
       >
-        <div class="r-cell__title r-field__label">
-          <label id="r-field-label"
-                 for="r-field-input"
+        <div class="r-cell__title r-input__label">
+          <label id="r-input-label"
+                 for="r-input-input"
           >
             Calendar
           </label>
         </div>
-        <div class="r-cell__value r-field__value">
-          <div class="r-field__body">
+        <div class="r-cell__value r-input__value">
+          <div class="r-input__body">
             <input type="text"
-                   id="r-field-input"
+                   id="r-input-input"
                    name="calendar"
-                   class="r-field__control"
+                   class="r-input__control"
                    readonly
                    placeholder="Select date"
-                   aria-labelledby="r-field-label"
+                   aria-labelledby="r-input-label"
             >
           </div>
         </div>

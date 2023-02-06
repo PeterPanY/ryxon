@@ -1,9 +1,9 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
-import { addUnit, numericProp, unknownProp, createNamespace } from '../utils';
-import { useCustomFieldValue } from '@ryxon/use';
-import { Loading } from '../loading';
+import { defineComponent, type ExtractPropTypes } from 'vue'
+import { addUnit, numericProp, unknownProp, createNamespace } from '../utils'
+import { useCustomInputValue } from '@ryxon/use'
+import { Loading } from '../loading'
 
-const [name, bem] = createNamespace('switch');
+const [name, bem] = createNamespace('switch')
 
 export const switchProps = {
   size: numericProp,
@@ -14,15 +14,15 @@ export const switchProps = {
   inactiveColor: String,
   activeValue: {
     type: unknownProp,
-    default: true as unknown,
+    default: true as unknown
   },
   inactiveValue: {
     type: unknownProp,
-    default: false as unknown,
-  },
-};
+    default: false as unknown
+  }
+}
 
-export type SwitchProps = ExtractPropTypes<typeof switchProps>;
+export type SwitchProps = ExtractPropTypes<typeof switchProps>
 
 export default defineComponent({
   name,
@@ -32,35 +32,35 @@ export default defineComponent({
   emits: ['change', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    const isChecked = () => props.modelValue === props.activeValue;
+    const isChecked = () => props.modelValue === props.activeValue
 
     const onClick = () => {
       if (!props.disabled && !props.loading) {
-        const newValue = isChecked() ? props.inactiveValue : props.activeValue;
-        emit('update:modelValue', newValue);
-        emit('change', newValue);
+        const newValue = isChecked() ? props.inactiveValue : props.activeValue
+        emit('update:modelValue', newValue)
+        emit('change', newValue)
       }
-    };
+    }
 
     const renderLoading = () => {
       if (props.loading) {
-        const color = isChecked() ? props.activeColor : props.inactiveColor;
-        return <Loading class={bem('loading')} color={color} />;
+        const color = isChecked() ? props.activeColor : props.inactiveColor
+        return <Loading class={bem('loading')} color={color} />
       }
       if (slots.node) {
-        return slots.node();
+        return slots.node()
       }
-    };
+    }
 
-    useCustomFieldValue(() => props.modelValue);
+    useCustomInputValue(() => props.modelValue)
 
     return () => {
-      const { size, loading, disabled, activeColor, inactiveColor } = props;
-      const checked = isChecked();
+      const { size, loading, disabled, activeColor, inactiveColor } = props
+      const checked = isChecked()
       const style = {
         fontSize: addUnit(size),
-        backgroundColor: checked ? activeColor : inactiveColor,
-      };
+        backgroundColor: checked ? activeColor : inactiveColor
+      }
 
       return (
         <div
@@ -68,7 +68,7 @@ export default defineComponent({
           class={bem({
             on: checked,
             loading,
-            disabled,
+            disabled
           })}
           style={style}
           tabindex={disabled ? undefined : 0}
@@ -78,7 +78,7 @@ export default defineComponent({
           <div class={bem('node')}>{renderLoading()}</div>
           {slots.background?.()}
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

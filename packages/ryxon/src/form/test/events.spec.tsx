@@ -1,118 +1,118 @@
-import { later, mount } from '../../../test';
-import { submitForm, mountSimpleRulesForm } from './shared';
-import { Form } from '..';
-import { Field } from '../../field';
+import { later, mount } from '../../../test'
+import { submitForm, mountSimpleRulesForm } from './shared'
+import { Form } from '..'
+import { Input } from '../../input'
 
 test('should emit submit event when submitting form', async () => {
-  const onSubmit = jest.fn();
+  const onSubmit = jest.fn()
   const wrapper = mount({
     render() {
       return (
         <Form onSubmit={onSubmit}>
-          <Field name="A" modelValue="bar" />
+          <Input name="A" modelValue="bar" />
         </Form>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  await submitForm(wrapper);
+  await submitForm(wrapper)
 
-  expect(onSubmit).toHaveBeenCalledWith({ A: 'bar' });
-});
+  expect(onSubmit).toHaveBeenCalledWith({ A: 'bar' })
+})
 
 test('should emit failed event when validating failed', async () => {
-  const onFailed = jest.fn();
+  const onFailed = jest.fn()
   const { form } = mountSimpleRulesForm({
     methods: {
-      onFailed,
-    },
-  });
+      onFailed
+    }
+  })
 
-  await submitForm(form);
+  await submitForm(form)
 
-  expect(form.html()).toMatchSnapshot();
+  expect(form.html()).toMatchSnapshot()
   expect(onFailed).toHaveBeenCalledWith({
     errors: [
       { name: 'A', message: 'A failed' },
-      { name: 'B', message: 'B failed' },
+      { name: 'B', message: 'B failed' }
     ],
-    values: { A: '', B: '' },
-  });
-});
+    values: { A: '', B: '' }
+  })
+})
 
 test('should emit failed event correctly when rule message is empty', async () => {
-  const onFailed = jest.fn();
+  const onFailed = jest.fn()
   const wrapper = mount({
     render() {
       return (
         <Form ref="form" onFailed={onFailed}>
-          <Field name="A" rules={this.rulesA} modelValue="" />
+          <Input name="A" rules={this.rulesA} modelValue="" />
         </Form>
-      );
+      )
     },
     data() {
       return {
-        rulesA: [{ required: true }],
-      };
-    },
-  });
+        rulesA: [{ required: true }]
+      }
+    }
+  })
 
-  await submitForm(wrapper);
+  await submitForm(wrapper)
 
   expect(onFailed).toHaveBeenCalledWith({
     errors: [{ name: 'A', message: '' }],
-    values: { A: '' },
-  });
-});
+    values: { A: '' }
+  })
+})
 
-test('Field should emit startValidate event when validation start', async () => {
-  const onStart = jest.fn();
+test('Input should emit startValidate event when validation start', async () => {
+  const onStart = jest.fn()
   const wrapper = mount({
     render() {
       return (
         <Form>
-          <Field
+          <Input
             name="A"
             rules={[{ required: true }]}
             modelValue="bar"
             onStartValidate={onStart}
           />
         </Form>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  await submitForm(wrapper);
-  expect(onStart).toHaveBeenCalledTimes(1);
-});
+  await submitForm(wrapper)
+  expect(onStart).toHaveBeenCalledTimes(1)
+})
 
-test('Field should emit endValidate event when validation end', async () => {
-  const onEnd = jest.fn();
+test('Input should emit endValidate event when validation end', async () => {
+  const onEnd = jest.fn()
   const rules = [
     {
       validator: () =>
         new Promise<boolean>((resolve) => {
-          setTimeout(() => resolve(true), 10);
-        }),
-    },
-  ];
+          setTimeout(() => resolve(true), 10)
+        })
+    }
+  ]
   const wrapper = mount({
     render() {
       return (
         <Form>
-          <Field
+          <Input
             name="A"
             rules={rules}
             modelValue="bar"
             onEndValidate={onEnd}
           />
         </Form>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  await submitForm(wrapper);
-  expect(onEnd).toHaveBeenCalledTimes(0);
-  await later(50);
-  expect(onEnd).toHaveBeenCalledTimes(1);
-});
+  await submitForm(wrapper)
+  expect(onEnd).toHaveBeenCalledTimes(0)
+  await later(50)
+  expect(onEnd).toHaveBeenCalledTimes(1)
+})

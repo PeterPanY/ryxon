@@ -22,12 +22,12 @@ pnpm add @ryxon/use
 ### Demo
 
 ```js
-import { useWindowSize } from '@ryxon/use';
+import { useWindowSize } from '@ryxon/use'
 
-const { width, height } = useWindowSize();
+const { width, height } = useWindowSize()
 
-console.log(width.value); // -> window width
-console.log(height.value); // -> window height
+console.log(width.value) // -> window width
+console.log(height.value) // -> window height
 ```
 
 ### API List
@@ -36,7 +36,7 @@ console.log(height.value); // -> window height
 | --- | --- |
 | [useClickAway](#/en-US/use-click-away) | Triggers a callback when user clicks outside of the target element |
 | [useCountDown](#/en-US/use-count-down) | Used to manage the countdown |
-| [useCustomFieldValue](#/en-US/use-custom-field-value) | Used to custom Field value |
+| [useCustomInputValue](#/en-US/use-custom-input-value) | Used to custom Input value |
 | [useEventListener](#/en-US/use-event-listener) | Used to attach event |
 | [usePageVisibility](#/en-US/use-page-visibility) | Get the visible state of the page |
 | [useRect](#/en-US/use-rect) | Get the size of an element and its position relative to the viewport |

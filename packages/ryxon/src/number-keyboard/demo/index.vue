@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import RCell from '../../cell';
-import RField from '../../field';
-import RNumberKeyboard from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RCell from '../../cell'
+import RInput from '../../input'
+import RNumberKeyboard from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showToast } from '../../toast'
 
 const t = useTranslate({
   'zh-CN': {
@@ -21,7 +21,7 @@ const t = useTranslate({
     clickToInput: '点此输入',
     extraKey: '左下角按键内容',
     multiExtraKey: '配置多个按键',
-    randomKeyOrder: '随机数字键盘',
+    randomKeyOrder: '随机数字键盘'
   },
   'en-US': {
     close: 'Close',
@@ -37,16 +37,16 @@ const t = useTranslate({
     clickToInput: 'Click To Input',
     extraKey: 'IdNumber Keyboard',
     multiExtraKey: 'Multiple ExtraKey',
-    randomKeyOrder: 'Random Key Order',
-  },
-});
+    randomKeyOrder: 'Random Key Order'
+  }
+})
 
-const value = ref('');
-const keyboard = ref('default');
+const value = ref('')
+const keyboard = ref('default')
 
-const onInput = (value: string) => showToast(`${t('input')}: ${value}`);
-const onDelete = () => showToast(t('delete'));
-const isTest = process.env.NODE_ENV === 'test';
+const onInput = (value: string) => showToast(`${t('input')}: ${value}`)
+const onDelete = () => showToast(t('delete'))
+const isTest = process.env.NODE_ENV === 'test'
 </script>
 
 <template>
@@ -81,7 +81,7 @@ const isTest = process.env.NODE_ENV === 'test';
       :title="t('button6')"
       @touchstart.stop="keyboard = 'randomKeyOrder'"
     />
-    <r-field
+    <r-input
       v-model="value"
       readonly
       clickable

@@ -14,7 +14,7 @@
 
 ## v1.4.1
 
-- Add `exports` field to package.json, support nuxt 3.
+- Add `exports` input to package.json, support nuxt 3.
 
 ## v1.4.0
 
@@ -47,7 +47,7 @@
 
 ### v1.3.0
 
-- Added `useCustomFieldValue` method
+- Added `useCustomInputValue` method
 
 ### v1.2.2
 

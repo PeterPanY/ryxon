@@ -1,4 +1,4 @@
-# useCustomFieldValue
+# useCustomInputValue
 
 ### 介绍
 
@@ -8,27 +8,27 @@
 
 ### 基本用法
 
-如果需要自定义表单项，可以在 Field 组件的 `input` 插槽中插入你的自定义组件，并在自定义组件内部调用 `useCustomFieldValue` 方法。
+如果需要自定义表单项，可以在 Input 组件的 `input` 插槽中插入你的自定义组件，并在自定义组件内部调用 `useCustomInputValue` 方法。
 
 #### 自定义组件
 
-首先，在你的自定义组件中，调用 `useCustomFieldValue` 方法，并传入一个回调函数，这个函数返回值为表单项的值。
+首先，在你的自定义组件中，调用 `useCustomInputValue` 方法，并传入一个回调函数，这个函数返回值为表单项的值。
 
 ```js
 // MyComponent.vue
-import { ref } from 'vue';
-import { useCustomFieldValue } from '@ryxon/use';
+import { ref } from 'vue'
+import { useCustomInputValue } from '@ryxon/use'
 
 export default {
   setup() {
-    const myValue = ref(0);
+    const myValue = ref(0)
 
-    // 此处传入的值会替代 Field 组件内部的 value
-    useCustomFieldValue(() => myValue.value);
+    // 此处传入的值会替代 Input 组件内部的 value
+    useCustomInputValue(() => myValue.value)
 
-    return { myValue };
-  },
-};
+    return { myValue }
+  }
+}
 ```
 
 #### 表单
@@ -38,12 +38,12 @@ export default {
 ```html
 <r-form>
   <!-- 这是一个自定义表单项 -->
-  <!-- 当表单提交时，会包括 useCustomFieldValue 中传入的值 -->
-  <r-field name="my-field" label="自定义表单项">
+  <!-- 当表单提交时，会包括 useCustomInputValue 中传入的值 -->
+  <r-input name="my-input" label="自定义表单项">
     <template #input>
       <my-component />
     </template>
-  </r-field>
+  </r-input>
 </r-form>
 ```
 
@@ -52,7 +52,7 @@ export default {
 ### 类型定义
 
 ```ts
-function useCustomFieldValue(customValue: () => unknown): void;
+function useCustomInputValue(customValue: () => unknown): void
 ```
 
 ### 参数

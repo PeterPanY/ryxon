@@ -15,7 +15,7 @@ export type {
   InputClearTrigger,
   InputFormatTrigger,
   InputRuleValidator,
-  FiledRuleFormatter,
+  InputRuleFormatter,
   InputValidateError,
   InputAutosizeConfig,
   InputValidateTrigger,

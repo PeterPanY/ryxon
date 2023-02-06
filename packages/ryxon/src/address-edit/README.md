@@ -9,11 +9,11 @@ Used to create, update, and delete receiving addresses.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { AddressEdit } from 'ryxon';
+import { createApp } from 'vue'
+import { AddressEdit } from 'ryxon'
 
-const app = createApp();
-app.use(AddressEdit);
+const app = createApp()
+app.use(AddressEdit)
 ```
 
 ## Usage
@@ -35,37 +35,37 @@ app.use(AddressEdit);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const searchResult = ref([]);
+    const searchResult = ref([])
 
-    const onSave = () => showToast('save');
-    const onDelete = () => showToast('delete');
+    const onSave = () => showToast('save')
+    const onDelete = () => showToast('delete')
     const onChangeDetail = (val) => {
       if (val) {
         searchResult.value = [
           {
             name: 'Name1',
-            address: 'Address',
-          },
-        ];
+            address: 'Address'
+          }
+        ]
       } else {
-        searchResult.value = [];
+        searchResult.value = []
       }
-    };
+    }
 
     return {
       onSave,
       onDelete,
       areaList,
       searchResult,
-      onChangeDetail,
-    };
-  },
-};
+      onChangeDetail
+    }
+  }
+}
 ```
 
 ## API
@@ -76,14 +76,14 @@ export default {
 | --- | --- | --- | --- |
 | area-list | Area List | _object_ | - |
 | area-columns-placeholder | placeholder of area columns | _string[]_ | `[]` |
-| area-placeholder | placeholder of area input field | _string_ | `Area` |
+| area-placeholder | placeholder of area input input | _string_ | `Area` |
 | address-info | Address Info | _AddressEditInfo_ | `{}` |
 | search-result | Address search result | _AddressEditSearchItem[]_ | `[]` |
 | show-delete | Whether to show delete button | _boolean_ | `false` |
 | show-set-default | Whether to show default address switch | _boolean_ | `false` |
 | show-search-result | Whether to show address search result | _boolean_ | `false` |
 | show-area | Whether to show area cell | _boolean_ | `true` |
-| show-detail | Whether to show detail field | _boolean_ | `true` |
+| show-detail | Whether to show detail input | _boolean_ | `true` |
 | disable-area | Whether to disable area select | _boolean_ | `false` |
 | save-button-text | Save button text | _string_ | `Save` |
 | delete-button-text | Delete button text | _string_ | `Delete` |
@@ -100,10 +100,10 @@ export default {
 | Event | Description | Arguments |
 | --- | --- | --- |
 | save | Emitted when the save button is clicked | _info: AddressEditInfo_ |
-| focus | Emitted when field is focused | _key: string_ |
+| focus | Emitted when input is focused | _key: string_ |
 | delete | Emitted when confirming delete | _info: AddressEditInfo_ |
 | select-search | Emitted when a search result is selected | _value: string_ |
-| click-area | Emitted when the area field is clicked | - |
+| click-area | Emitted when the area input is clicked | - |
 | change-area | Emitted when area changed | _selectedOptions: PickerOption[]_ |
 | change-detail | Emitted when address detail changed | _value: string_ |
 | change-default | Emitted when switching default address | _checked: boolean_ |
@@ -131,19 +131,19 @@ import type {
   AddressEditInfo,
   AddressEditProps,
   AddressEditInstance,
-  AddressEditSearchItem,
-} from 'ryxon';
+  AddressEditSearchItem
+} from 'ryxon'
 ```
 
 `AddressEditInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { AddressEditInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { AddressEditInstance } from 'ryxon'
 
-const addressEditRef = ref<AddressEditInstance>();
+const addressEditRef = ref<AddressEditInstance>()
 
-addressEditRef.value?.setAddressDetail('');
+addressEditRef.value?.setAddressDetail('')
 ```
 
 ### AddressEditInfo Data Structure

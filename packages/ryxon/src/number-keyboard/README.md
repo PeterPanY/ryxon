@@ -9,11 +9,11 @@ The NumberKeyboard component can be used with [PasswordInput](#/en-US/password-i
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { NumberKeyboard } from 'ryxon';
+import { createApp } from 'vue'
+import { NumberKeyboard } from 'ryxon'
 
-const app = createApp();
-app.use(NumberKeyboard);
+const app = createApp()
+app.use(NumberKeyboard)
 ```
 
 ## Usage
@@ -31,22 +31,22 @@ app.use(NumberKeyboard);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(true);
-    const onInput = (value) => showToast(value);
-    const onDelete = () => showToast('delete');
+    const show = ref(true)
+    const onInput = (value) => showToast(value)
+    const onDelete = () => showToast('delete')
 
     return {
       show,
       onInput,
-      onDelete,
-    };
-  },
-};
+      onDelete
+    }
+  }
+}
 ```
 
 ### Keyboard With Sidebar
@@ -138,7 +138,7 @@ Use `random-key-order` prop to shuffle the order of keys.
 ### Bind Value
 
 ```html
-<r-field v-model="value" readonly clickable @touchstart.stop="show = true" />
+<r-input v-model="value" readonly clickable @touchstart.stop="show = true" />
 <r-number-keyboard
   v-model="value"
   :show="show"
@@ -148,18 +148,18 @@ Use `random-key-order` prop to shuffle the order of keys.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(true);
-    const value = ref('');
+    const show = ref(true)
+    const value = ref('')
     return {
       show,
-      value,
-    };
-  },
-};
+      value
+    }
+  }
+}
 ```
 
 ## API
@@ -210,7 +210,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { NumberKeyboardProps, NumberKeyboardTheme } from 'ryxon';
+import type { NumberKeyboardProps, NumberKeyboardTheme } from 'ryxon'
 ```
 
 ## Theming

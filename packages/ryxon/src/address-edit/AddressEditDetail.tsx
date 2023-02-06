@@ -1,18 +1,18 @@
-import { ref, defineComponent, type PropType } from 'vue';
+import { ref, defineComponent, type PropType } from 'vue'
 
 // Utils
-import { createNamespace, numericProp } from '../utils';
+import { createNamespace, numericProp } from '../utils'
 
 // Components
-import { Cell } from '../cell';
-import { Field } from '../field';
+import { Cell } from '../cell'
+import { Input } from '../input'
 
 // Types
-import type { AddressEditSearchItem } from './types';
-import type { FieldRule, FieldInstance } from '../field/types';
+import type { AddressEditSearchItem } from './types'
+import type { InputRule, InputInstance } from '../input/types'
 
-const [name, bem] = createNamespace('address-edit-detail');
-const t = createNamespace('address-edit')[2];
+const [name, bem] = createNamespace('address-edit-detail')
+const t = createNamespace('address-edit')[2]
 
 export default defineComponent({
   name,
@@ -21,32 +21,32 @@ export default defineComponent({
     show: Boolean,
     rows: numericProp,
     value: String,
-    rules: Array as PropType<FieldRule[]>,
+    rules: Array as PropType<InputRule[]>,
     focused: Boolean,
     maxlength: numericProp,
     searchResult: Array as PropType<AddressEditSearchItem[]>,
-    showSearchResult: Boolean,
+    showSearchResult: Boolean
   },
 
   emits: ['blur', 'focus', 'input', 'selectSearch'],
 
   setup(props, { emit }) {
-    const field = ref<FieldInstance>();
+    const input = ref<InputInstance>()
 
     const showSearchResult = () =>
-      props.focused && props.searchResult && props.showSearchResult;
+      props.focused && props.searchResult && props.showSearchResult
 
     const onSelect = (express: AddressEditSearchItem) => {
-      emit('selectSearch', express);
-      emit('input', `${express.address || ''} ${express.name || ''}`.trim());
-    };
+      emit('selectSearch', express)
+      emit('input', `${express.address || ''} ${express.name || ''}`.trim())
+    }
 
     const renderSearchResult = () => {
       if (!showSearchResult()) {
-        return;
+        return
       }
 
-      const { searchResult } = props;
+      const { searchResult } = props
       return searchResult!.map((express) => (
         <Cell
           clickable
@@ -58,21 +58,21 @@ export default defineComponent({
           border={false}
           onClick={() => onSelect(express)}
         />
-      ));
-    };
+      ))
+    }
 
-    const onBlur = (event: Event) => emit('blur', event);
-    const onFocus = (event: Event) => emit('focus', event);
-    const onInput = (value: string) => emit('input', value);
+    const onBlur = (event: Event) => emit('blur', event)
+    const onFocus = (event: Event) => emit('focus', event)
+    const onInput = (value: string) => emit('input', value)
 
     return () => {
       if (props.show) {
         return (
           <>
-            <Field
+            <Input
               autosize
               clearable
-              ref={field}
+              ref={input}
               class={bem()}
               rows={props.rows}
               type="textarea"
@@ -88,8 +88,8 @@ export default defineComponent({
             />
             {renderSearchResult()}
           </>
-        );
+        )
       }
-    };
-  },
-});
+    }
+  }
+})

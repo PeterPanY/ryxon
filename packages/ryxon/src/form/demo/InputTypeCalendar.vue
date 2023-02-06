@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import RField from '../../field';
-import RCalendar from '../../calendar';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
+import RInput from '../../input'
+import RCalendar from '../../calendar'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
 
 const t = useTranslate({
   'zh-CN': {
     calendar: '日历',
-    placeholder: '点击选择日期',
+    placeholder: '点击选择日期'
   },
   'en-US': {
     calendar: 'Calendar',
-    placeholder: 'Select date',
-  },
-});
+    placeholder: 'Select date'
+  }
+})
 
-const result = ref('');
-const showCalendar = ref(false);
+const result = ref('')
+const showCalendar = ref(false)
 
-const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`;
+const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`
 
 const onConfirm = (date: Date) => {
-  result.value = formatDate(date);
-  showCalendar.value = false;
-};
+  result.value = formatDate(date)
+  showCalendar.value = false
+}
 </script>
 
 <template>
-  <r-field
+  <r-input
     v-model="result"
     is-link
     readonly

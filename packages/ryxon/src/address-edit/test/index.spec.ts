@@ -26,10 +26,10 @@ const createComponent = (addressInfo = {}) => {
     }
   })
 
-  const fields = wrapper.findAll('.r-field')
+  const inputs = wrapper.findAll('.r-input')
   return {
     vm: wrapper.vm,
-    fields,
+    inputs,
     wrapper
   }
 }
@@ -60,52 +60,52 @@ test('should allow to custom validator with validator prop', async () => {
   })
 
   await submitForm(wrapper)
-  expect(wrapper.find('.r-field__error-message').html()).toMatchSnapshot()
+  expect(wrapper.find('.r-input__error-message').html()).toMatchSnapshot()
 })
 
 test('should valid name and render error message correctly', async () => {
-  const { fields, wrapper } = createComponent({
+  const { inputs, wrapper } = createComponent({
     name: ''
   })
 
   await submitForm(wrapper)
-  expect(fields[0].html()).toMatchSnapshot()
+  expect(inputs[0].html()).toMatchSnapshot()
 })
 
 test('should valid tel and render error message correctly', async () => {
-  const { fields, wrapper } = createComponent({
+  const { inputs, wrapper } = createComponent({
     tel: ''
   })
 
   await submitForm(wrapper)
-  expect(fields[1].html()).toMatchSnapshot()
+  expect(inputs[1].html()).toMatchSnapshot()
 })
 
 test('should valid area code and render error message correctly', async () => {
-  const { fields, wrapper } = createComponent({
+  const { inputs, wrapper } = createComponent({
     areaCode: ''
   })
 
   await submitForm(wrapper)
-  expect(fields[2].html()).toMatchSnapshot()
+  expect(inputs[2].html()).toMatchSnapshot()
 })
 
 test('should valid address detail and render error message correctly', async () => {
-  const { fields, wrapper } = createComponent({
+  const { inputs, wrapper } = createComponent({
     addressDetail: ''
   })
 
   await submitForm(wrapper)
   await later()
-  expect(fields[3].html()).toMatchSnapshot()
+  expect(inputs[3].html()).toMatchSnapshot()
 })
 
 test('should emit changeDetail event after changing address detail', () => {
   const wrapper = mount(AddressEdit)
-  const field = wrapper.findAll('.r-field__control')[3]
+  const input = wrapper.findAll('.r-input__control')[3]
 
-  ;(field.element as HTMLInputElement).value = '123'
-  field.trigger('input')
+  ;(input.element as HTMLInputElement).value = '123'
+  input.trigger('input')
   expect(wrapper.emitted('changeDetail')).toEqual([['123']])
 })
 
@@ -121,9 +121,9 @@ test('should show search result after focusing to address detail', async () => {
     }
   })
 
-  const field = wrapper.findAll('.r-field__control')[3]
-  const input = field.element as HTMLInputElement
-  await field.trigger('focus')
+  const inputControl = wrapper.findAll('.r-input__control')[3]
+  const input = inputControl.element as HTMLInputElement
+  await inputControl.trigger('focus')
 
   const items = wrapper.findAll('.r-icon-location-o')
   ;(items[0].element.parentNode as HTMLElement).click()
@@ -159,15 +159,15 @@ test('should update address detail after calling the setAddressDetail method', a
   expect(textarea.element.value).toEqual('test')
 })
 
-test('should emit clickArea event after clicking the area field', () => {
+test('should emit clickArea event after clicking the area input', () => {
   const wrapper = mount(AddressEdit, {
     props: {
       disableArea: true
     }
   })
 
-  const field = wrapper.findAll('.r-field')[2]
-  field.trigger('click')
+  const input = wrapper.findAll('.r-input')[2]
+  input.trigger('click')
   expect(wrapper.emitted('clickArea')).toHaveLength(1)
 })
 

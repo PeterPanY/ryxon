@@ -1,24 +1,24 @@
-import { withInstall } from '../utils';
-import _Picker, { PickerProps } from './Picker';
+import { withInstall } from '../utils'
+import _Picker, { PickerProps } from './Picker'
 
-export const Picker = withInstall(_Picker);
-export default Picker;
-export { pickerProps } from './Picker';
-export type { PickerProps };
+export const Picker = withInstall(_Picker)
+export default Picker
+export { pickerProps } from './Picker'
+export type { PickerProps }
 export type {
   PickerColumn,
   PickerOption,
   PickerInstance,
   PickerThemeVars,
-  PickerFieldNames,
+  PickerInputNames,
   PickerToolbarPosition,
   PickerCancelEventParams,
   PickerChangeEventParams,
-  PickerConfirmEventParams,
-} from './types';
+  PickerConfirmEventParams
+} from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RPicker: typeof Picker;
+    RPicker: typeof Picker
   }
 }

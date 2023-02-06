@@ -1,21 +1,21 @@
 :root {
   --r-contact-edit-padding: var(--r-padding-md);
-  --r-contact-edit-fields-radius: var(--r-radius-md);
+  --r-contact-edit-inputs-radius: var(--r-radius-md);
   --r-contact-edit-buttons-padding: var(--r-padding-xl) 0;
   --r-contact-edit-button-margin-bottom: var(--r-padding-sm);
   --r-contact-edit-button-font-size: var(--r-font-size-lg);
-  --r-contact-edit-field-label-width: 4.1em;
+  --r-contact-edit-input-label-width: 4.1em;
 }
 
 .r-contact-edit {
   padding: var(--r-contact-edit-padding);
 
-  &__fields {
+  &__inputs {
     overflow: hidden;
-    border-radius: var(--r-contact-edit-fields-radius);
+    border-radius: var(--r-contact-edit-inputs-radius);
 
-    .r-field__label {
-      width: var(--r-contact-edit-field-label-width);
+    .r-input__label {
+      width: var(--r-contact-edit-input-label-width);
     }
   }
 
@@ -23,7 +23,7 @@
     margin-top: 10px;
     padding-top: 9px;
     padding-bottom: 9px;
-    border-radius: var(--r-contact-edit-fields-radius);
+    border-radius: var(--r-contact-edit-inputs-radius);
   }
 
   &__buttons {

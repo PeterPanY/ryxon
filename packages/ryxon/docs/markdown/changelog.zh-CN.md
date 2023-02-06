@@ -57,7 +57,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Bug Fixes**
 
-- Field: 修复使用 formatter 时光标位置可能错误的问题 [#11360](https://github.com/PeterPanY/ryxon/issues/11360)
+- Input: 修复使用 formatter 时光标位置可能错误的问题 [#11360](https://github.com/PeterPanY/ryxon/issues/11360)
 - Image: 修复 load 事件未正确触发导致 ImagePreview 报错的问题 [#11406](https://github.com/PeterPanY/ryxon/issues/11406)
 
 ### [v4.0.3](https://github.com/PeterPanY/ryxon/compare/v4.0.2...v4.0.3)
@@ -66,7 +66,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Bug Fixes**
 
-- Field: 修复动态设置空的 label 不生效的问题 [#11373](https://github.com/PeterPanY/ryxon/issues/11373)
+- Input: 修复动态设置空的 label 不生效的问题 [#11373](https://github.com/PeterPanY/ryxon/issues/11373)
 - ImagePreview: 修复图片可能加载失败的问题 [#11376](https://github.com/PeterPanY/ryxon/issues/11376)
 
 ### [v4.0.2](https://github.com/PeterPanY/ryxon/compare/v4.0.1...v4.0.2)
@@ -75,7 +75,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Bug Fixes**
 
-- Field: 修复使用 formatter 时光标位置错误的问题 [#11348](https://github.com/PeterPanY/ryxon/issues/11348)
+- Input: 修复使用 formatter 时光标位置错误的问题 [#11348](https://github.com/PeterPanY/ryxon/issues/11348)
 - Image: 修复在 Nuxt 3 下图片可能无法展示的问题 [128972](https://github.com/PeterPanY/ryxon/commit/128972a75329d4b14028d00cd23dac66038e2d4c)
 - NavBar: 修复屏幕旋转时 placeholder 未自动适配高度的问题 [#11351](https://github.com/PeterPanY/ryxon/issues/11351)
 
@@ -89,7 +89,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Bug Fixes**
 
-- Field: 修复未选中时修改绑定的值会导致键盘弹出的问题 [#11333](https://github.com/PeterPanY/ryxon/issues/11333)
+- Input: 修复未选中时修改绑定的值会导致键盘弹出的问题 [#11333](https://github.com/PeterPanY/ryxon/issues/11333)
 
 ### [v4.0.0](https://github.com/PeterPanY/ryxon/compare/v4.0.0-rc.9...v4.0.0)
 
@@ -106,7 +106,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Bug Fixes**
 
-- Field: 修复格式化值后，光标位置错误的问题 [#11308](https://github.com/PeterPanY/ryxon/issues/11308)
+- Input: 修复格式化值后，光标位置错误的问题 [#11308](https://github.com/PeterPanY/ryxon/issues/11308)
 
 ### [v4.0.0-rc.9](https://github.com/PeterPanY/ryxon/compare/v4.0.0-rc.8...v4.0.0-rc.9)
 
@@ -176,7 +176,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Feature**
 
-- Field: 支持将 label-position 设置为 top [#11102](https://github.com/PeterPanY/ryxon/issues/11102)
+- Input: 支持将 label-position 设置为 top [#11102](https://github.com/PeterPanY/ryxon/issues/11102)
 - Loading: 新增 icon 插槽 [#11109](https://github.com/PeterPanY/ryxon/issues/11109)
 - NavBar: 新增 clickable 属性 [#11048](https://github.com/PeterPanY/ryxon/issues/11048)
 - Stepper: 新增 auto-fixed 属性 [#11071](https://github.com/PeterPanY/ryxon/issues/11071)
@@ -193,7 +193,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 **Feature**
 
-- Field: end-validate 事件新增 message 参数 [#11080](https://github.com/PeterPanY/ryxon/issues/11080)
+- Input: end-validate 事件新增 message 参数 [#11080](https://github.com/PeterPanY/ryxon/issues/11080)
 
 **Bug Fixes**
 
@@ -357,7 +357,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 
 - CalendarDay: 增加日期行间距 [#10441](https://github.com/PeterPanY/ryxon/issues/10441)
 - Empty: 支持单独设置 image 的宽高 [#10465](https://github.com/PeterPanY/ryxon/issues/10465)
-- Field: 新增 enterkeyhint 属性 [#10478](https://github.com/PeterPanY/ryxon/issues/10478)
+- Input: 新增 enterkeyhint 属性 [#10478](https://github.com/PeterPanY/ryxon/issues/10478)
 - Form: 新增 getValues 方法 [#10511](https://github.com/PeterPanY/ryxon/issues/10511)
 - Icon: 新增 qq、weibo 等图标 [#10468](https://github.com/PeterPanY/ryxon/issues/10468)
 - Locale: 新增 Danish 丹麦语 [#10513](https://github.com/PeterPanY/ryxon/issues/10513)
@@ -435,7 +435,7 @@ Ryxon 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
 - Card: 调整 `--r-card-desc-color` 变量的默认值为 `--r-text-color-2`
 - ContactList: 重命名 `--r-contact-list-item-radio-icon-color` 为 `--r-contact-list-radio-color`
 - CouponList: 重命名 `--r-coupon-corner-checkbox-icon-color` 为 `--r-coupon-checkbox-color`
-- Field: 调整 `--r-field-label-color` 变量的默认值为 `--r-text-color`
+- Input: 调整 `--r-input-label-color` 变量的默认值为 `--r-text-color`
 - Switch: 移除 `--r-switch-border` 变量
 - Switch: 调整 `--r-switch-size` 变量的默认值为 `26px`
 - Switch: 调整 `--r-switch-background` 变量的默认值为 `rgba(120, 120, 128, 0.16)`

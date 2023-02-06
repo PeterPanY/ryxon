@@ -1,4 +1,4 @@
-import { defineComponent, type PropType, type ExtractPropTypes } from 'vue';
+import { defineComponent, type PropType, type ExtractPropTypes } from 'vue'
 
 // Utils
 import {
@@ -6,23 +6,23 @@ import {
   truthProp,
   numericProp,
   preventDefault,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
 // Composables
-import { useChildren } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
+import { useChildren } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Types
 import type {
-  FieldTextAlign,
-  FieldValidateError,
-  FieldValidateTrigger,
-  FieldValidationStatus,
-} from '../field/types';
-import type { FormExpose } from './types';
+  InputTextAlign,
+  InputValidateError,
+  InputValidateTrigger,
+  InputValidationStatus
+} from '../input/types'
+import type { FormExpose } from './types'
 
-const [name, bem] = createNamespace('form');
+const [name, bem] = createNamespace('form')
 
 export const formProps = {
   colon: Boolean,
@@ -30,22 +30,22 @@ export const formProps = {
   readonly: Boolean,
   showError: Boolean,
   labelWidth: numericProp,
-  labelAlign: String as PropType<FieldTextAlign>,
-  inputAlign: String as PropType<FieldTextAlign>,
+  labelAlign: String as PropType<InputTextAlign>,
+  inputAlign: String as PropType<InputTextAlign>,
   scrollToError: Boolean,
   validateFirst: Boolean,
   submitOnEnter: truthProp,
   showErrorMessage: truthProp,
-  errorMessageAlign: String as PropType<FieldTextAlign>,
+  errorMessageAlign: String as PropType<InputTextAlign>,
   validateTrigger: {
     type: [String, Array] as PropType<
-      FieldValidateTrigger | FieldValidateTrigger[]
+      InputValidateTrigger | InputValidateTrigger[]
     >,
-    default: 'onBlur',
-  },
-};
+    default: 'onBlur'
+  }
+}
 
-export type FormProps = ExtractPropTypes<typeof formProps>;
+export type FormProps = ExtractPropTypes<typeof formProps>
 
 export default defineComponent({
   name,
@@ -55,153 +55,153 @@ export default defineComponent({
   emits: ['submit', 'failed'],
 
   setup(props, { emit, slots }) {
-    const { children, linkChildren } = useChildren(FORM_KEY);
+    const { children, linkChildren } = useChildren(FORM_KEY)
 
-    const getFieldsByNames = (names?: string[]) => {
+    const getInputsByNames = (names?: string[]) => {
       if (names) {
-        return children.filter((field) => names.includes(field.name));
+        return children.filter((input) => names.includes(input.name))
       }
-      return children;
-    };
+      return children
+    }
 
     const validateSeq = (names?: string[]) =>
       new Promise<void>((resolve, reject) => {
-        const errors: FieldValidateError[] = [];
-        const fields = getFieldsByNames(names);
+        const errors: InputValidateError[] = []
+        const inputs = getInputsByNames(names)
 
-        fields
+        inputs
           .reduce(
-            (promise, field) =>
+            (promise, input) =>
               promise.then(() => {
                 if (!errors.length) {
-                  return field.validate().then((error?: FieldValidateError) => {
+                  return input.validate().then((error?: InputValidateError) => {
                     if (error) {
-                      errors.push(error);
+                      errors.push(error)
                     }
-                  });
+                  })
                 }
               }),
             Promise.resolve()
           )
           .then(() => {
             if (errors.length) {
-              reject(errors);
+              reject(errors)
             } else {
-              resolve();
+              resolve()
             }
-          });
-      });
+          })
+      })
 
     const validateAll = (names?: string[]) =>
       new Promise<void>((resolve, reject) => {
-        const fields = getFieldsByNames(names);
-        Promise.all(fields.map((item) => item.validate())).then((errors) => {
-          errors = errors.filter(Boolean);
+        const inputs = getInputsByNames(names)
+        Promise.all(inputs.map((item) => item.validate())).then((errors) => {
+          errors = errors.filter(Boolean)
 
           if (errors.length) {
-            reject(errors);
+            reject(errors)
           } else {
-            resolve();
+            resolve()
           }
-        });
-      });
+        })
+      })
 
-    const validateField = (name: string) => {
-      const matched = children.find((item) => item.name === name);
+    const validateInput = (name: string) => {
+      const matched = children.find((item) => item.name === name)
 
       if (matched) {
         return new Promise<void>((resolve, reject) => {
-          matched.validate().then((error?: FieldValidateError) => {
+          matched.validate().then((error?: InputValidateError) => {
             if (error) {
-              reject(error);
+              reject(error)
             } else {
-              resolve();
+              resolve()
             }
-          });
-        });
+          })
+        })
       }
 
-      return Promise.reject();
-    };
+      return Promise.reject()
+    }
 
     const validate = (name?: string | string[]) => {
       if (typeof name === 'string') {
-        return validateField(name);
+        return validateInput(name)
       }
-      return props.validateFirst ? validateSeq(name) : validateAll(name);
-    };
+      return props.validateFirst ? validateSeq(name) : validateAll(name)
+    }
 
     const resetValidation = (name?: string | string[]) => {
       if (typeof name === 'string') {
-        name = [name];
+        name = [name]
       }
 
-      const fields = getFieldsByNames(name);
-      fields.forEach((item) => {
-        item.resetValidation();
-      });
-    };
+      const inputs = getInputsByNames(name)
+      inputs.forEach((item) => {
+        item.resetValidation()
+      })
+    }
 
     const getValidationStatus = () =>
-      children.reduce<Record<string, FieldValidationStatus>>((form, field) => {
-        form[field.name] = field.getValidationStatus();
-        return form;
-      }, {});
+      children.reduce<Record<string, InputValidationStatus>>((form, input) => {
+        form[input.name] = input.getValidationStatus()
+        return form
+      }, {})
 
-    const scrollToField = (
+    const scrollToInput = (
       name: string,
       options?: boolean | ScrollIntoViewOptions
     ) => {
       children.some((item) => {
         if (item.name === name) {
-          item.$el.scrollIntoView(options);
-          return true;
+          item.$el.scrollIntoView(options)
+          return true
         }
-        return false;
-      });
-    };
+        return false
+      })
+    }
 
     const getValues = () =>
-      children.reduce<Record<string, unknown>>((form, field) => {
-        if (field.name !== undefined) {
-          form[field.name] = field.formValue.value;
+      children.reduce<Record<string, unknown>>((form, input) => {
+        if (input.name !== undefined) {
+          form[input.name] = input.formValue.value
         }
-        return form;
-      }, {});
+        return form
+      }, {})
 
     const submit = () => {
-      const values = getValues();
+      const values = getValues()
 
       validate()
         .then(() => emit('submit', values))
-        .catch((errors: FieldValidateError[]) => {
-          emit('failed', { values, errors });
+        .catch((errors: InputValidateError[]) => {
+          emit('failed', { values, errors })
 
           if (props.scrollToError && errors[0].name) {
-            scrollToField(errors[0].name);
+            scrollToInput(errors[0].name)
           }
-        });
-    };
+        })
+    }
 
     const onSubmit = (event: Event) => {
-      preventDefault(event);
-      submit();
-    };
+      preventDefault(event)
+      submit()
+    }
 
-    linkChildren({ props });
+    linkChildren({ props })
     useExpose<FormExpose>({
       submit,
       validate,
       getValues,
-      scrollToField,
+      scrollToInput,
       resetValidation,
-      getValidationStatus,
-    });
+      getValidationStatus
+    })
 
     return () => (
       <form class={bem()} onSubmit={onSubmit}>
         {slots.default?.()}
       </form>
-    );
-  },
-});
+    )
+  }
+})

@@ -55,7 +55,7 @@ export type InputRuleValidator = (
   rule: InputRule
 ) => boolean | string | Promise<boolean | string>
 
-export type FiledRuleFormatter = (value: any, rule: InputRule) => string
+export type InputRuleFormatter = (value: any, rule: InputRule) => string
 
 export type InputRule = {
   pattern?: RegExp
@@ -63,7 +63,7 @@ export type InputRule = {
   message?: InputRuleMessage
   required?: boolean
   validator?: InputRuleValidator
-  formatter?: FiledRuleFormatter
+  formatter?: InputRuleFormatter
   validateEmpty?: boolean
 }
 

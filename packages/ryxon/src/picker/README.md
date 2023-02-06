@@ -9,11 +9,11 @@ The picker component is usually used with [Popup](#/en-US/popup) Component.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Picker } from 'ryxon';
+import { createApp } from 'vue'
+import { Picker } from 'ryxon'
 
-const app = createApp();
-app.use(Picker);
+const app = createApp()
+app.use(Picker)
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ app.use(Picker);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -40,31 +40,31 @@ export default {
       { text: 'Florida', value: 'Florida' },
       { text: 'Wenzhou', value: 'Wenzhou' },
       { text: 'Indiana', value: 'Indiana' },
-      { text: 'Maine', value: 'Maine' },
-    ];
+      { text: 'Maine', value: 'Maine' }
+    ]
     const onConfirm = ({ selectedValues }) => {
-      showToast(`Value: ${selectedValues.join(',')}`);
-    };
+      showToast(`Value: ${selectedValues.join(',')}`)
+    }
     const onChange = ({ selectedValues }) => {
-      showToast(`Value: ${selectedValues.join(',')}`);
-    };
-    const onCancel = () => showToast('Cancel');
+      showToast(`Value: ${selectedValues.join(',')}`)
+    }
+    const onCancel = () => showToast('Cancel')
 
     return {
       columns,
       onChange,
       onCancel,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### With Popup
 
 ```html
-<r-field
-  v-model="fieldValue"
+<r-input
+  v-model="inputValue"
   is-link
   readonly
   label="City"
@@ -82,7 +82,7 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -91,24 +91,24 @@ export default {
       { text: 'Florida', value: 'Florida' },
       { text: 'Wenzhou', value: 'Wenzhou' },
       { text: 'Indiana', value: 'Indiana' },
-      { text: 'Maine', value: 'Maine' },
-    ];
-    const fieldValue = ref('');
-    const showPicker = ref(false);
+      { text: 'Maine', value: 'Maine' }
+    ]
+    const inputValue = ref('')
+    const showPicker = ref(false)
 
     const onConfirm = ({ selectedOptions }) => {
-      showPicker.value = false;
-      fieldValue.value = selectedOptions[0].text;
-    };
+      showPicker.value = false
+      inputValue.value = selectedOptions[0].text
+    }
 
     return {
       columns,
       onConfirm,
-      fieldValue,
-      showPicker,
-    };
-  },
-};
+      inputValue,
+      showPicker
+    }
+  }
+}
 ```
 
 ### v-model
@@ -120,7 +120,7 @@ Using `v-model` to bind selected values.
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -129,16 +129,16 @@ export default {
       { text: 'Florida', value: 'Florida' },
       { text: 'Wenzhou', value: 'Wenzhou' },
       { text: 'Indiana', value: 'Indiana' },
-      { text: 'Maine', value: 'Maine' },
-    ];
-    const selectedValues = ref(['Wenzhou']);
+      { text: 'Maine', value: 'Maine' }
+    ]
+    const selectedValues = ref(['Wenzhou'])
 
     return {
       columns,
-      selectedValues,
-    };
-  },
-};
+      selectedValues
+    }
+  }
+}
 ```
 
 ### Multiple Columns
@@ -156,18 +156,18 @@ export default {
         { text: 'Tuesday', value: 'Tuesday' },
         { text: 'Wednesday', value: 'Wednesday' },
         { text: 'Thursday', value: 'Thursday' },
-        { text: 'Friday', value: 'Friday' },
+        { text: 'Friday', value: 'Friday' }
       ],
       [
         { text: 'Morning', value: 'Morning' },
         { text: 'Afternoon', value: 'Afternoon' },
-        { text: 'Evening', value: 'Evening' },
-      ],
-    ];
+        { text: 'Evening', value: 'Evening' }
+      ]
+    ]
 
-    return { columns };
-  },
-};
+    return { columns }
+  }
+}
 ```
 
 ### Cascade
@@ -189,18 +189,18 @@ export default {
             value: 'Hangzhou',
             children: [
               { text: 'Xihu', value: 'Xihu' },
-              { text: 'Yuhang', value: 'Yuhang' },
-            ],
+              { text: 'Yuhang', value: 'Yuhang' }
+            ]
           },
           {
             text: 'Wenzhou',
             value: 'Wenzhou',
             children: [
               { text: 'Lucheng', value: 'Lucheng' },
-              { text: 'Ouhai', value: 'Ouhai' },
-            ],
-          },
-        ],
+              { text: 'Ouhai', value: 'Ouhai' }
+            ]
+          }
+        ]
       },
       {
         text: 'Fujian',
@@ -211,24 +211,24 @@ export default {
             value: 'Fuzhou',
             children: [
               { text: 'Gulou', value: 'Gulou' },
-              { text: 'Taijiang', value: 'Taijiang' },
-            ],
+              { text: 'Taijiang', value: 'Taijiang' }
+            ]
           },
           {
             text: 'Xiamen',
             value: 'Xiamen',
             children: [
               { text: 'Siming', value: 'Siming' },
-              { text: 'Haicang', value: 'Haicang' },
-            ],
-          },
-        ],
-      },
-    ];
+              { text: 'Haicang', value: 'Haicang' }
+            ]
+          }
+        ]
+      }
+    ]
 
-    return { columns };
-  },
-};
+    return { columns }
+  }
+}
 ```
 
 ### Disable option
@@ -243,11 +243,11 @@ export default {
     const columns = [
       { text: 'Delaware', value: 'Delaware', disabled: true },
       { text: 'Florida', value: 'Florida' },
-      { text: 'Wenzhou', value: 'Wenzhou' },
-    ];
-    return { columns };
-  },
-};
+      { text: 'Wenzhou', value: 'Wenzhou' }
+    ]
+    return { columns }
+  }
+}
 ```
 
 ### Loading
@@ -259,30 +259,30 @@ When Picker columns data is acquired asynchronously, use `loading` prop to show 
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const columns = ref([]);
-    const loading = ref(true);
+    const columns = ref([])
+    const loading = ref(true)
 
     setTimeout(() => {
-      columns.value = [{ text: 'Option', value: 'option' }];
-      loading.value = false;
-    }, 1000);
+      columns.value = [{ text: 'Option', value: 'option' }]
+      loading.value = false
+    }, 1000)
 
-    return { columns, loading };
-  },
-};
+    return { columns, loading }
+  }
+}
 ```
 
-### Custom Columns Field
+### Custom Columns Input
 
 ```html
 <r-picker
   :title="Title"
   :columns="columns"
-  :columns-field-names="customFieldName"
+  :columns-input-names="customInputName"
 />
 ```
 
@@ -295,41 +295,41 @@ export default {
         cities: [
           {
             cityName: 'Hangzhou',
-            cities: [{ cityName: 'Xihu' }, { cityName: 'Yuhang' }],
+            cities: [{ cityName: 'Xihu' }, { cityName: 'Yuhang' }]
           },
           {
             cityName: 'Wenzhou',
-            cities: [{ cityName: 'Lucheng' }, { cityName: 'Ouhai' }],
-          },
-        ],
+            cities: [{ cityName: 'Lucheng' }, { cityName: 'Ouhai' }]
+          }
+        ]
       },
       {
         cityName: 'Fujian',
         cities: [
           {
             cityName: 'Fuzhou',
-            cities: [{ cityName: 'Gulou' }, { cityName: 'Taijiang' }],
+            cities: [{ cityName: 'Gulou' }, { cityName: 'Taijiang' }]
           },
           {
             cityName: 'Xiamen',
-            cities: [{ cityName: 'Siming' }, { cityName: 'Haicang' }],
-          },
-        ],
-      },
-    ];
+            cities: [{ cityName: 'Siming' }, { cityName: 'Haicang' }]
+          }
+        ]
+      }
+    ]
 
-    const customFieldName = {
+    const customInputName = {
       text: 'cityName',
       value: 'cityName',
-      children: 'cities',
-    };
+      children: 'cities'
+    }
 
     return {
       columns,
-      customFieldName,
-    };
-  },
-};
+      customInputName
+    }
+  }
+}
 ```
 
 ## API
@@ -339,7 +339,7 @@ export default {
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | columns | Columns data | _PickerOption[] \| PickerOption[][]_ | `[]` |
-| columns-field-names | custom columns field | _object_ | `{ text: 'text', value: 'value', children: 'children' }` |
+| columns-input-names | custom columns input | _object_ | `{ text: 'text', value: 'value', children: 'children' }` |
 | title | Toolbar title | _string_ | - |
 | confirm-button-text | Text of confirm button | _string_ | `Confirm` |
 | cancel-button-text | Text of cancel button | _string_ | `Cancel` |
@@ -401,23 +401,23 @@ import type {
   PickerColumn,
   PickerOption,
   PickerInstance,
-  PickerFieldNames,
+  PickerInputNames,
   PickerToolbarPosition,
   PickerCancelEventParams,
   PickerChangeEventParams,
-  PickerConfirmEventParams,
-} from 'ryxon';
+  PickerConfirmEventParams
+} from 'ryxon'
 ```
 
 `PickerInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { PickerInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { PickerInstance } from 'ryxon'
 
-const pickerRef = ref<PickerInstance>();
+const pickerRef = ref<PickerInstance>()
 
-pickerRef.value?.confirm();
+pickerRef.value?.confirm()
 ```
 
 ## Theming

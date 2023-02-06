@@ -3,31 +3,31 @@ import {
   reactive,
   defineComponent,
   type PropType,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
-import { isMobile, createNamespace, extend } from '../utils';
+import { isMobile, createNamespace, extend } from '../utils'
 
 // Components
-import { Cell } from '../cell';
-import { Form } from '../form';
-import { Field } from '../field';
-import { Button } from '../button';
-import { Switch } from '../switch';
+import { Cell } from '../cell'
+import { Form } from '../form'
+import { Input } from '../input'
+import { Button } from '../button'
+import { Switch } from '../switch'
 
-const [name, bem, t] = createNamespace('contact-edit');
+const [name, bem, t] = createNamespace('contact-edit')
 
 export type ContactEditInfo = {
-  tel: string;
-  name: string;
-  isDefault?: boolean;
-};
+  tel: string
+  name: string
+  isDefault?: boolean
+}
 
 const DEFAULT_CONTACT: ContactEditInfo = {
   tel: '',
-  name: '',
-};
+  name: ''
+}
 
 export const contactEditProps = {
   isEdit: Boolean,
@@ -37,15 +37,15 @@ export const contactEditProps = {
   setDefaultLabel: String,
   contactInfo: {
     type: Object as PropType<ContactEditInfo>,
-    default: () => extend({}, DEFAULT_CONTACT),
+    default: () => extend({}, DEFAULT_CONTACT)
   },
   telValidator: {
     type: Function as PropType<(val: string) => boolean>,
-    default: isMobile,
-  },
-};
+    default: isMobile
+  }
+}
 
-export type ContactEditProps = ExtractPropTypes<typeof contactEditProps>;
+export type ContactEditProps = ExtractPropTypes<typeof contactEditProps>
 
 export default defineComponent({
   name,
@@ -55,15 +55,15 @@ export default defineComponent({
   emits: ['save', 'delete', 'changeDefault'],
 
   setup(props, { emit }) {
-    const contact = reactive(extend({}, DEFAULT_CONTACT, props.contactInfo));
+    const contact = reactive(extend({}, DEFAULT_CONTACT, props.contactInfo))
 
     const onSave = () => {
       if (!props.isSaving) {
-        emit('save', contact);
+        emit('save', contact)
       }
-    };
+    }
 
-    const onDelete = () => emit('delete', contact);
+    const onDelete = () => emit('delete', contact)
 
     const renderButtons = () => (
       <div class={bem('buttons')}>
@@ -87,14 +87,14 @@ export default defineComponent({
           />
         )}
       </div>
-    );
+    )
 
     const renderSwitch = () => (
       <Switch
         v-model={contact.isDefault}
         onChange={(checked: boolean) => emit('changeDefault', checked)}
       />
-    );
+    )
 
     const renderSetDefault = () => {
       if (props.showSetDefault) {
@@ -105,19 +105,19 @@ export default defineComponent({
             class={bem('switch-cell')}
             border={false}
           />
-        );
+        )
       }
-    };
+    }
 
     watch(
       () => props.contactInfo,
       (value) => extend(contact, DEFAULT_CONTACT, value)
-    );
+    )
 
     return () => (
       <Form class={bem()} onSubmit={onSave}>
-        <div class={bem('fields')}>
-          <Field
+        <div class={bem('inputs')}>
+          <Input
             v-model={contact.name}
             clearable
             label={t('name')}
@@ -125,13 +125,13 @@ export default defineComponent({
             maxlength="30"
             placeholder={t('name')}
           />
-          <Field
+          <Input
             v-model={contact.tel}
             clearable
             type="tel"
             label={t('tel')}
             rules={[
-              { validator: props.telValidator, message: t('telInvalid') },
+              { validator: props.telValidator, message: t('telInvalid') }
             ]}
             placeholder={t('tel')}
           />
@@ -139,6 +139,6 @@ export default defineComponent({
         {renderSetDefault()}
         {renderButtons()}
       </Form>
-    );
-  },
-});
+    )
+  }
+})

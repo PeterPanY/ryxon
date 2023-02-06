@@ -13,7 +13,7 @@ import {
 } from '../utils'
 
 // Composables
-import { useRect, useCustomFieldValue, useEventListener } from '@ryxon/use'
+import { useRect, useCustomInputValue, useEventListener } from '@ryxon/use'
 import { useRefs } from '../composables/use-refs'
 import { useTouch } from '../composables/use-touch'
 
@@ -266,7 +266,7 @@ export default defineComponent({
       )
     }
 
-    useCustomFieldValue(() => props.modelValue)
+    useCustomInputValue(() => props.modelValue)
 
     // useEventListener will set passive to `false` to eliminate the warning of Chrome
     useEventListener('touchmove', onTouchMove, {
