@@ -12,6 +12,7 @@ import '../../../ryxon/src/rate/index.less'
 import '../../../ryxon/src/select/index.less'
 import '../../../ryxon/src/slider/index.less'
 import '../../../ryxon/src/switch/index.less'
+import '../../../ryxon/src/tag/index.less'
 import '../../../ryxon/src/toast/index.less'
 import '../../../ryxon/src/tooltip/index.less'
 

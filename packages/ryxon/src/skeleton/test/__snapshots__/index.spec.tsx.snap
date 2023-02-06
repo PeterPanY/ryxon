@@ -46,7 +46,7 @@ exports[`should render with row width array correctly 1`] = `
 
 exports[`should skeleton image render correctly 1`] = `
 <div class="r-skeleton-image r-skeleton-image--square">
-  <i class="r-badge__wrapper r-icon r-icon-photo r-skeleton-image__icon">
+  <i class="r-badge__wrapper r-icon r-skeleton-image__icon">
   </i>
 </div>
 `;

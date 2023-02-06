@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
         Show ShareSheet
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -39,7 +39,7 @@ exports[`should render demo and match snapshot 1`] = `
         Show ShareSheet
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -67,7 +67,7 @@ exports[`should render demo and match snapshot 1`] = `
         Show ShareSheet
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -95,7 +95,7 @@ exports[`should render demo and match snapshot 1`] = `
         Show ShareSheet
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"

@@ -20,7 +20,7 @@ exports[`should change icon class prefix when using icon-prefix prop 1`] = `
        tabindex="0"
        class="r-popup r-popup--center"
   >
-    <i class="r-badge__wrapper my-icon my-icon-cross r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
+    <i class="r-badge__wrapper my-icon r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
        role="button"
        tabindex="0"
     >
@@ -30,7 +30,7 @@ exports[`should change icon class prefix when using icon-prefix prop 1`] = `
 `;
 
 exports[`should render correct close icon when using close-icon prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-success r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
+<i class="r-badge__wrapper r-icon r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
    role="button"
    tabindex="0"
 >

@@ -31,7 +31,7 @@ exports[`should render demo and match snapshot 1`] = `
 <div>
   <div class="r-submit-bar r-safe-area-bottom">
     <div class="r-submit-bar__tip">
-      <i class="r-badge__wrapper r-icon r-icon-info-o r-submit-bar__tip-icon">
+      <i class="r-badge__wrapper r-icon r-submit-bar__tip-icon">
       </i>
       <span class="r-submit-bar__tip-text">
         Some tips
@@ -119,7 +119,7 @@ exports[`should render demo and match snapshot 1`] = `
            aria-checked="true"
       >
         <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-          <i class="r-badge__wrapper r-icon r-icon-success">
+          <i class="r-badge__wrapper r-icon">
           </i>
         </div>
         <span class="r-checkbox__label">

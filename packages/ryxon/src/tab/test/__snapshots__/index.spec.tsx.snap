@@ -148,7 +148,7 @@ exports[`should render badge prop correctly 1`] = `
   <div class="r-badge__wrapper">
     <span class="r-tab__text r-tab__text--ellipsis">
     </span>
-    <div class="r-badge r-badge--top-right r-badge--fixed">
+    <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
       10
     </div>
   </div>

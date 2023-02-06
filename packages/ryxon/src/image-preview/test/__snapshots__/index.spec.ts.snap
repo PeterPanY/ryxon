@@ -41,14 +41,14 @@ exports[`render image 1`] = `
 `;
 
 exports[`should change close icon position when using close-icon-position prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-clear r-image-preview__close-icon r-image-preview__close-icon--top-left r-haptics-feedback"
+<i class="r-badge__wrapper r-icon r-image-preview__close-icon r-image-preview__close-icon--top-left r-haptics-feedback"
    role="button"
 >
 </i>
 `;
 
 exports[`should change close icon when using close-icon prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-success r-image-preview__close-icon r-image-preview__close-icon--top-right r-haptics-feedback"
+<i class="r-badge__wrapper r-icon r-image-preview__close-icon r-image-preview__close-icon--top-right r-haptics-feedback"
    role="button"
 >
 </i>

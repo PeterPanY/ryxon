@@ -24,11 +24,7 @@ export default {
     defaultLang: 'en-US',
     darkModeClass: 'r-theme-dark',
     lightModeClass: 'r-theme-light',
-    versions: [
-      // { label: 'v1', link: '/ryxon/v1/' },
-      // { label: 'v2', link: '/ryxon/v2/' },
-      // { label: 'v3', link: '/ryxon/v3/' },
-    ],
+    versions: [],
     baiduAnalytics: {
       seed: 'af5d41bc4e446e76665dbe3ec18d55c3'
     },
@@ -42,7 +38,7 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
       'zh-CN': {
         title: 'Ryxon',
         subtitle: '（适用于 Vue 3）',
-        description: '轻量、可靠的移动端组件库',
+        description: '轻量、可靠的组件库',
         logo: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/logo.png',
         langLabel: '中',
         links: [
@@ -107,10 +103,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
               {
                 path: 'cell',
                 title: 'Cell 单元格'
-              },
-              {
-                path: 'config-provider',
-                title: 'ConfigProvider 全局配置'
               },
               {
                 path: 'image',
@@ -256,10 +248,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
             title: '展示组件',
             items: [
               {
-                path: 'badge',
-                title: 'Badge 徽标'
-              },
-              {
                 path: 'circle',
                 title: 'Circle 环形进度条'
               },
@@ -294,10 +282,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
               {
                 path: 'notice-bar',
                 title: 'NoticeBar 通知栏'
-              },
-              {
-                path: 'popover',
-                title: 'Popover 气泡弹出框'
               },
               {
                 path: 'progress',
@@ -516,10 +500,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
                 title: 'Cell'
               },
               {
-                path: 'config-provider',
-                title: 'ConfigProvider'
-              },
-              {
                 path: 'image',
                 title: 'Image'
               },
@@ -663,10 +643,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
             title: 'Display Components',
             items: [
               {
-                path: 'badge',
-                title: 'Badge'
-              },
-              {
                 path: 'circle',
                 title: 'Circle'
               },
@@ -701,10 +677,6 @@ location.href = location.href.replace('youzan.github.io', 'ryxon-ui.github.io');
               {
                 path: 'notice-bar',
                 title: 'NoticeBar'
-              },
-              {
-                path: 'popover',
-                title: 'Popover'
               },
               {
                 path: 'progress',

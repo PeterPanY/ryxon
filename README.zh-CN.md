@@ -4,7 +4,7 @@
 
 <h1 align="center">Ryxon</h1>
 
-<p align="center">轻量、可靠的移动端 Vue 组件库</p>
+<p align="center">轻量、可靠的 Vue 组件库</p>
 
 <p align="center">
     <img src="https://img.shields.io/npm/v/ryxon?style=flat-square" alt="npm version" />
@@ -23,14 +23,14 @@
 
 ### 介绍
 
-Ryxon 是一个**轻量、可靠的移动端组件库**，于 2023 年开源。
+Ryxon 是一个**轻量、可靠的组件库**，于 2023 年开源。
 
 目前 Ryxon 官方提供了[Vue 3 版本](https://ryxon-contrib.gitee.io/ryxon)
 
 ## 特性
 
 - 🚀 性能极佳，组件平均体积小于 1KB（min+gzip）
-- 🚀 70+ 个高质量组件，覆盖移动端主流场景
+- 🚀 70+ 个高质量组件，覆盖主流场景
 - 🚀 零外部依赖，不依赖三方 npm 包
 - 💪 使用 TypeScript 编写，提供完整的类型定义
 - 💪 单元测试覆盖率超过 90%，提供稳定性保障
@@ -67,16 +67,16 @@ pnpm add ryxon
 ## 快速上手
 
 ```js
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 // 1. 引入你需要的组件
-import { Button } from 'ryxon';
+import { Button } from 'ryxon'
 // 2. 引入组件样式
-import 'ryxon/lib/index.css';
+import 'ryxon/lib/index.css'
 
-const app = createApp();
+const app = createApp()
 
 // 3. 注册你需要的组件
-app.use(Button);
+app.use(Button)
 ```
 
 ryxon 也支持按需引入、CDN 引入等方式，详细说明见 [快速上手](https://ryxon-contrib.gitee.io/ryxon#/zh-CN/quickstart).
@@ -115,16 +115,13 @@ Ryxon 支持现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue 3 一致�
 - [码云镜像仓库](https://gitee.com/ryxon-contrib/ryxon)
 - [Discussions 讨论区](https://github.com/PeterPanY/ryxon/discussions)
 
-
 ## 核心团队
 
 以下是 Ryxon 和 Ryxon Weapp 的核心贡献者们：
 
-
 ## 贡献者们
 
 感谢以下小伙伴们为 Ryxon 发展做出的贡献：
-
 
 ## 贡献指南
 

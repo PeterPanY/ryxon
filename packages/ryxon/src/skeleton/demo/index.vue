@@ -12,7 +12,7 @@ const t = useTranslate({
     showAvatar: '显示头像',
     showChildren: '显示子组件',
     title: '关于 Ryxon',
-    desc: 'Ryxon 是一套轻量、可靠的移动端 Vue 组件库，提供了丰富的基础组件和业务组件，帮助开发者快速搭建应用。',
+    desc: 'Ryxon 是一套轻量、可靠的 Vue 组件库，提供了丰富的基础组件和业务组件，帮助开发者快速搭建应用。',
     customContent: '自定义展示内容'
   },
   'en-US': {

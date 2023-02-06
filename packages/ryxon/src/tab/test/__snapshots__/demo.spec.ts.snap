@@ -839,7 +839,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-controls="r-tab"
         >
           <span class="r-tab__text r-tab__text--ellipsis">
-            <i class="r-badge__wrapper r-icon r-icon-more-o">
+            <i class="r-badge__wrapper r-icon">
             </i>
             Tab
           </span>
@@ -852,7 +852,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-controls="r-tab"
         >
           <span class="r-tab__text r-tab__text--ellipsis">
-            <i class="r-badge__wrapper r-icon r-icon-more-o">
+            <i class="r-badge__wrapper r-icon">
             </i>
             Tab
           </span>

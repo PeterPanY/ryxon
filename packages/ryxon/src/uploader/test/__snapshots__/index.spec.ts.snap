@@ -12,7 +12,7 @@ exports[`delete preview image 1`] = `
              style="object-fit: cover;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -21,14 +21,14 @@ exports[`delete preview image 1`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__upload"
          style="width: 30px; height: 30px;"
     >
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -43,7 +43,7 @@ exports[`disable preview image 1`] = `
 <div class="r-uploader">
   <div class="r-uploader__wrapper">
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -59,7 +59,7 @@ exports[`disable preview image 2`] = `
   <div class="r-uploader__wrapper">
     <div class="r-uploader__preview">
       <div class="r-uploader__file">
-        <i class="r-badge__wrapper r-icon r-icon-description r-uploader__file-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__file-icon">
         </i>
         <div class="r-uploader__file-name r-ellipsis">
           test.jpg
@@ -70,12 +70,12 @@ exports[`disable preview image 2`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -90,7 +90,7 @@ exports[`file message should be reactive 1`] = `
 <div class="r-uploader">
   <div class="r-uploader__wrapper">
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -111,7 +111,7 @@ exports[`image-fit prop 1`] = `
              style="object-fit: contain;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -120,12 +120,12 @@ exports[`image-fit prop 1`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -146,7 +146,7 @@ exports[`render preview image 1`] = `
              style="object-fit: cover;"
         >
         <div class="r-image__loading">
-          <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+          <i class="r-badge__wrapper r-icon r-image__loading-icon">
           </i>
         </div>
       </div>
@@ -155,13 +155,13 @@ exports[`render preview image 1`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__preview">
       <div class="r-uploader__file">
-        <i class="r-badge__wrapper r-icon r-icon-description r-uploader__file-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__file-icon">
         </i>
         <div class="r-uploader__file-name r-ellipsis">
           https://fastly.jsdelivr.net/npm/@ryxon/assets/test.pdf
@@ -172,13 +172,13 @@ exports[`render preview image 1`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__preview">
       <div class="r-uploader__file">
-        <i class="r-badge__wrapper r-icon r-icon-description r-uploader__file-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__file-icon">
         </i>
         <div class="r-uploader__file-name r-ellipsis">
           test.jpg
@@ -189,12 +189,12 @@ exports[`render preview image 1`] = `
            tabindex="0"
            aria-label="Delete"
       >
-        <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
         </i>
       </div>
     </div>
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"
@@ -209,7 +209,7 @@ exports[`should not render upload input when using readonly prop 1`] = `
 <div class="r-uploader">
   <div class="r-uploader__wrapper">
     <div class="r-uploader__upload r-uploader__upload--readonly">
-      <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
     </div>
   </div>
@@ -236,7 +236,7 @@ exports[`upload-icon prop 1`] = `
 <div class="r-uploader">
   <div class="r-uploader__wrapper">
     <div class="r-uploader__upload">
-      <i class="r-badge__wrapper r-icon r-icon-add r-uploader__upload-icon">
+      <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
       </i>
       <input type="file"
              class="r-uploader__input"

@@ -1,535 +1,535 @@
-import { Field } from '..';
-import { mount, later } from '../../../test';
+import { Field } from '..'
+import { mount, later } from '../../../test'
 
 test('should emit "update:modelValue" event when after inputting', () => {
-  const wrapper = mount(Field);
-  const input = wrapper.find('input');
+  const wrapper = mount(Field)
+  const input = wrapper.find('input')
 
-  input.element.value = '1';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1');
-});
+  input.element.value = '1'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1')
+})
 
 test('should emit clickInput event when input is clicked', () => {
-  const wrapper = mount(Field);
-  wrapper.find('input').trigger('click');
-  expect(wrapper.emitted('clickInput')[0][0]).toBeTruthy();
-});
+  const wrapper = mount(Field)
+  wrapper.find('input').trigger('click')
+  expect(wrapper.emitted('clickInput')[0][0]).toBeTruthy()
+})
 
 test('should emit clickInput event when using input slot', () => {
   const wrapper = mount(Field, {
     slots: {
-      input: () => 'Custom Input',
-    },
-  });
+      input: () => 'Custom Input'
+    }
+  })
 
-  wrapper.find('.r-field__control').trigger('click');
-  expect(wrapper.emitted('clickInput')[0][0]).toBeTruthy();
-});
+  wrapper.find('.r-field__control').trigger('click')
+  expect(wrapper.emitted('clickInput')[0][0]).toBeTruthy()
+})
 
 test('should emit clickLeftIcon event when left icon is clicked', () => {
   const wrapper = mount(Field, {
     props: {
-      leftIcon: 'contact',
-    },
-  });
+      leftIcon: 'contact'
+    }
+  })
 
-  wrapper.find('.r-field__left-icon').trigger('click');
-  expect(wrapper.emitted('clickLeftIcon')[0][0]).toBeTruthy();
-});
+  wrapper.find('.r-field__left-icon').trigger('click')
+  expect(wrapper.emitted('clickLeftIcon')[0][0]).toBeTruthy()
+})
 
 test('should emit clickRightIcon event when right icon is clicked', () => {
   const wrapper = mount(Field, {
     props: {
-      rightIcon: 'search',
-    },
-  });
+      rightIcon: 'search'
+    }
+  })
 
-  wrapper.find('.r-field__right-icon').trigger('click');
-  expect(wrapper.emitted('clickRightIcon')[0][0]).toBeTruthy();
-});
+  wrapper.find('.r-field__right-icon').trigger('click')
+  expect(wrapper.emitted('clickRightIcon')[0][0]).toBeTruthy()
+})
 
 test('should format input value when type is number', () => {
   const wrapper = mount(Field, {
     props: {
       type: 'number',
-      modelValue: '',
-    },
-  });
+      modelValue: ''
+    }
+  })
 
-  const input = wrapper.find('input');
+  const input = wrapper.find('input')
 
-  input.element.value = '1';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1');
+  input.element.value = '1'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1')
 
-  input.element.value = '1.2.';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('1.2');
+  input.element.value = '1.2.'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('1.2')
 
-  input.element.value = '123abc';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('123');
-});
+  input.element.value = '123abc'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('123')
+})
 
 test('should format input value when type is digit', () => {
   const wrapper = mount(Field, {
     props: {
       type: 'digit',
-      modelValue: '',
-    },
-  });
+      modelValue: ''
+    }
+  })
 
-  const input = wrapper.find('input');
+  const input = wrapper.find('input')
 
-  input.element.value = '1';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1');
+  input.element.value = '1'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('1')
 
-  input.element.value = '1.';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('1');
+  input.element.value = '1.'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('1')
 
-  input.element.value = '123abc';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('123');
-});
+  input.element.value = '123abc'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('123')
+})
 
 test('should render textarea when type is textarea', async () => {
   const wrapper = mount(Field, {
     props: {
       type: 'textarea',
-      autosize: true,
-    },
-  });
+      autosize: true
+    }
+  })
 
-  await later();
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  await later()
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should autosize textarea field', async () => {
   const wrapper = mount(Field, {
     props: {
       type: 'textarea',
-      autosize: {},
-    },
-  });
+      autosize: {}
+    }
+  })
 
-  const value = '1'.repeat(20);
-  const textarea = wrapper.find('.r-field__control');
+  const value = '1'.repeat(20)
+  const textarea = wrapper.find('.r-field__control')
 
-  await wrapper.setProps({ modelValue: value });
-  expect(textarea.element.value).toEqual(value);
-});
+  await wrapper.setProps({ modelValue: value })
+  expect(textarea.element.value).toEqual(value)
+})
 
 test('should allow autosize prop be be an object', async () => {
-  window.scrollTo = jest.fn();
+  window.scrollTo = jest.fn()
 
   const wrapper = mount(Field, {
     props: {
       type: 'textarea',
       autosize: {
         maxHeight: 100,
-        minHeight: 50,
-      },
-    },
-  });
+        minHeight: 50
+      }
+    }
+  })
 
-  const textarea = wrapper.find('.r-field__control');
+  const textarea = wrapper.find('.r-field__control')
 
-  await later();
-  expect(textarea.style.height).toEqual('50px');
-});
+  await later()
+  expect(textarea.style.height).toEqual('50px')
+})
 
 test('should call input.focus when vm.focus is called', () => {
-  const wrapper = mount(Field);
-  const onFocus = jest.fn();
-  wrapper.find('input').element.focus = onFocus;
+  const wrapper = mount(Field)
+  const onFocus = jest.fn()
+  wrapper.find('input').element.focus = onFocus
 
-  wrapper.vm.focus();
-  expect(onFocus).toHaveBeenCalledTimes(1);
-});
+  wrapper.vm.focus()
+  expect(onFocus).toHaveBeenCalledTimes(1)
+})
 
 test('should call input.blur when vm.blur is called', () => {
-  const wrapper = mount(Field);
-  const onBlur = jest.fn();
-  wrapper.find('input').element.blur = onBlur;
+  const wrapper = mount(Field)
+  const onBlur = jest.fn()
+  wrapper.find('input').element.blur = onBlur
 
-  wrapper.vm.blur();
-  expect(onBlur).toHaveBeenCalledTimes(1);
-});
+  wrapper.vm.blur()
+  expect(onBlur).toHaveBeenCalledTimes(1)
+})
 
 test('should limit maxlength of input value when using maxlength prop', async () => {
   const wrapper = mount(Field, {
     props: {
       type: 'number',
       maxlength: 3,
-      modelValue: 1234,
-    },
-  });
+      modelValue: 1234
+    }
+  })
 
-  const input = wrapper.find('input');
-  expect(input.element.value).toEqual('123');
+  const input = wrapper.find('input')
+  expect(input.element.value).toEqual('123')
 
-  input.element.value = 1234;
-  input.trigger('input');
-  expect(input.element.value).toEqual('123');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('123');
-  await wrapper.setProps({ modelValue: '123' });
+  input.element.value = 1234
+  input.trigger('input')
+  expect(input.element.value).toEqual('123')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('123')
+  await wrapper.setProps({ modelValue: '123' })
 
   // see: https://github.com/PeterPanY/ryxon/issues/7265
-  input.element.value = 1423;
-  input.trigger('input');
-  expect(input.element.value).toEqual('123');
-});
+  input.element.value = 1423
+  input.trigger('input')
+  expect(input.element.value).toEqual('123')
+})
 
 test('should render clear icon when using clearable prop', async () => {
   const wrapper = mount(Field, {
     props: {
       clearable: true,
-      modelValue: 'test',
-    },
-  });
+      modelValue: 'test'
+    }
+  })
 
-  expect(wrapper.find('.r-field__clear').exists()).toBeFalsy();
-  const input = wrapper.find('input');
-  await input.trigger('focus');
-  expect(wrapper.find('.r-field__clear').exists()).toBeTruthy();
+  expect(wrapper.find('.r-field__clear').exists()).toBeFalsy()
+  const input = wrapper.find('input')
+  await input.trigger('focus')
+  expect(wrapper.find('.r-field__clear').exists()).toBeTruthy()
 
-  wrapper.find('.r-field__clear').trigger('touchstart');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('');
-  expect(wrapper.emitted('clear')[0][0]).toBeTruthy();
-});
+  wrapper.find('.r-field__clear').trigger('touchstart')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('')
+  expect(wrapper.emitted('clear')[0][0]).toBeTruthy()
+})
 
 test('should always render clear icon when clear-trigger prop is always', () => {
   const wrapper = mount(Field, {
     props: {
       clearable: true,
       modelValue: 'test',
-      clearTrigger: 'always',
-    },
-  });
+      clearTrigger: 'always'
+    }
+  })
 
-  expect(wrapper.find('.r-field__clear').exists()).toBeTruthy();
-});
+  expect(wrapper.find('.r-field__clear').exists()).toBeTruthy()
+})
 
 test('should render input slot correctly', () => {
   const wrapper = mount(Field, {
     slots: {
-      input: () => 'Custom Input',
-    },
-  });
+      input: () => 'Custom Input'
+    }
+  })
 
-  expect(wrapper.find('.r-field__control').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-field__control').html()).toMatchSnapshot()
+})
 
 test('should render label slot correctly', () => {
   const wrapper = mount(Field, {
     slots: {
-      label: () => 'Custom Label',
-    },
-  });
+      label: () => 'Custom Label'
+    }
+  })
 
-  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot()
+})
 
 test('should render extra slot correctly', () => {
   const wrapper = mount(Field, {
     slots: {
-      extra: () => 'Extra',
-    },
-  });
+      extra: () => 'Extra'
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should change cell size when using size prop', () => {
   const wrapper = mount(Field, {
     props: {
-      size: 'large',
-    },
-  });
-  expect(wrapper.classes()).toContain('r-cell--large');
-});
+      size: 'large'
+    }
+  })
+  expect(wrapper.classes()).toContain('r-cell--large')
+})
 
 test('should allow to set label width with unit', () => {
   const wrapper = mount(Field, {
     props: {
       label: 'Label',
-      labelWidth: '10rem',
-    },
-  });
+      labelWidth: '10rem'
+    }
+  })
 
-  const label = wrapper.find('.r-field__label').element;
-  expect(label.style.width).toEqual('10rem');
-});
+  const label = wrapper.find('.r-field__label').element
+  expect(label.style.width).toEqual('10rem')
+})
 
 test('should allow to set label width without unit', () => {
   const wrapper = mount(Field, {
     props: {
       label: 'Label',
-      labelWidth: 100,
-    },
-  });
+      labelWidth: 100
+    }
+  })
 
-  const label = wrapper.find('.r-field__label').element;
-  expect(label.style.width).toEqual('100px');
-});
+  const label = wrapper.find('.r-field__label').element
+  expect(label.style.width).toEqual('100px')
+})
 
 test('should render label class name when using label-class prop', () => {
   const wrapper = mount(Field, {
     props: {
       label: 'Label',
-      labelClass: 'custom-class',
-    },
-  });
+      labelClass: 'custom-class'
+    }
+  })
 
-  expect(wrapper.find('.r-field__label').classes()).toContain('custom-class');
-});
+  expect(wrapper.find('.r-field__label').classes()).toContain('custom-class')
+})
 
 test('should change arrow direction when using arrow-direction prop', () => {
   const wrapper = mount(Field, {
     props: {
       isLink: true,
-      arrowDirection: 'up',
-    },
-  });
-  expect(wrapper.find('.r-icon-arrow-up').exists()).toBeTruthy();
-});
+      arrowDirection: 'up'
+    }
+  })
+  expect(wrapper.find('.r-icon-arrow-up').exists()).toBeTruthy()
+})
 
 test('should allow to format value with formatter prop', () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: 'abc123',
-      formatter: (value) => value.replace(/\d/g, ''),
-    },
-  });
+      formatter: (value) => value.replace(/\d/g, '')
+    }
+  })
 
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('abc');
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('abc')
 
-  const input = wrapper.find('input');
-  input.element.value = '123efg';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('efg');
-});
+  const input = wrapper.find('input')
+  input.element.value = '123efg'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('efg')
+})
 
 test('should trigger format after blurring when format-trigger prop is blur', async () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: 'abc123',
       formatTrigger: 'onBlur',
-      formatter: (value) => value.replace(/\d/g, ''),
-    },
-  });
+      formatter: (value) => value.replace(/\d/g, '')
+    }
+  })
 
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('abc');
-  await wrapper.setProps({ modelValue: 'abc' });
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('abc')
+  await wrapper.setProps({ modelValue: 'abc' })
 
-  const input = wrapper.find('input');
-  input.element.value = '123efg';
-  input.trigger('input');
-  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('123efg');
-  await wrapper.setProps({ modelValue: '123efg' });
+  const input = wrapper.find('input')
+  input.element.value = '123efg'
+  input.trigger('input')
+  expect(wrapper.emitted('update:modelValue')[1][0]).toEqual('123efg')
+  await wrapper.setProps({ modelValue: '123efg' })
 
-  input.trigger('blur');
-  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('efg');
-});
+  input.trigger('blur')
+  expect(wrapper.emitted('update:modelValue')[2][0]).toEqual('efg')
+})
 
 test('should render word limit correctly', () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: 'foo',
       maxlength: 3,
-      showWordLimit: true,
-    },
-  });
-  expect(wrapper.find('.r-field__word-limit').html()).toMatchSnapshot();
-});
+      showWordLimit: true
+    }
+  })
+  expect(wrapper.find('.r-field__word-limit').html()).toMatchSnapshot()
+})
 
 test('should render word limit correctly when modelValue is undefined', () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: undefined,
       maxlength: 3,
-      showWordLimit: true,
-    },
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+      showWordLimit: true
+    }
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should render word limit correctly when modelValue is null', () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: undefined,
       maxlength: 3,
-      showWordLimit: true,
-    },
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+      showWordLimit: true
+    }
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should render input name when using name prop', () => {
   const wrapper = mount(Field, {
     props: {
-      name: 'foo',
-    },
-  });
-  expect(wrapper.find('input').element.getAttribute('name')).toEqual('foo');
-});
+      name: 'foo'
+    }
+  })
+  expect(wrapper.find('input').element.getAttribute('name')).toEqual('foo')
+})
 
 test('should allow to destroy field', () => {
-  mount(Field).unmount();
-});
+  mount(Field).unmount()
+})
 
 test('should render colon when using colon prop', () => {
   const wrapper = mount(Field, {
     props: {
       label: 'foo',
-      colon: true,
-    },
-  });
-  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot();
-});
+      colon: true
+    }
+  })
+  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot()
+})
 
 test('should blur search input after pressing enter', async () => {
   const wrapper = mount(Field, {
     props: {
-      type: 'search',
-    },
-  });
+      type: 'search'
+    }
+  })
 
-  const onBlur = jest.fn();
-  wrapper.find('input').element.blur = onBlur;
-  await wrapper.find('input').trigger('keypress.enter');
-  expect(onBlur).toHaveBeenCalledTimes(1);
-});
+  const onBlur = jest.fn()
+  wrapper.find('input').element.blur = onBlur
+  await wrapper.find('input').trigger('keypress.enter')
+  expect(onBlur).toHaveBeenCalledTimes(1)
+})
 
 test('should format value after mounted if initial modelValue is null', () => {
   const wrapper = mount(Field, {
     props: {
-      modelValue: null,
-    },
-  });
+      modelValue: null
+    }
+  })
 
-  expect(wrapper.find('input').element.value).toEqual('');
-  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('');
-});
+  expect(wrapper.find('input').element.value).toEqual('')
+  expect(wrapper.emitted('update:modelValue')[0][0]).toEqual('')
+})
 
 test('should allow to set autocomplete attribute', () => {
   const wrapper = mount(Field, {
     props: {
-      autocomplete: 'on',
-    },
-  });
+      autocomplete: 'on'
+    }
+  })
   expect(wrapper.find('input').element.getAttribute('autocomplete')).toEqual(
     'on'
-  );
-});
+  )
+})
 
 test('should allow to set enterkeyhint attribute', () => {
   const wrapper = mount(Field, {
     props: {
-      enterkeyhint: 'done',
-    },
-  });
+      enterkeyhint: 'done'
+    }
+  })
   expect(wrapper.find('input').element.getAttribute('enterkeyhint')).toEqual(
     'done'
-  );
-});
+  )
+})
 
 test('should change clear icon when using clear-icon prop', async () => {
   const wrapper = mount(Field, {
     props: {
       clearable: true,
       clearIcon: 'cross',
-      modelValue: 'test',
-    },
-  });
+      modelValue: 'test'
+    }
+  })
 
-  const input = wrapper.find('input');
-  await input.trigger('focus');
-  expect(wrapper.find('.r-field__clear').html()).toMatchSnapshot();
-});
+  const input = wrapper.find('input')
+  await input.trigger('focus')
+  expect(wrapper.find('.r-field__clear').html()).toMatchSnapshot()
+})
 
 test('should render autofocus attribute to input when using autofocus prop', async () => {
   const wrapper = mount(Field, {
     props: {
-      autofocus: true,
-    },
-  });
+      autofocus: true
+    }
+  })
 
-  const input = wrapper.find('input');
-  expect(input.element.hasAttributes('autofocus')).toBeTruthy();
-});
+  const input = wrapper.find('input')
+  expect(input.element.hasAttributes('autofocus')).toBeTruthy()
+})
 
 test('should render id prop correctly', async () => {
   const wrapper = mount(Field, {
     props: {
       label: 'Label',
-      id: 'my-id',
-    },
-  });
+      id: 'my-id'
+    }
+  })
 
-  expect(wrapper.find('input').attributes('id')).toEqual('my-id');
-  expect(wrapper.find('label').attributes('for')).toEqual('my-id');
-});
+  expect(wrapper.find('input').attributes('id')).toEqual('my-id')
+  expect(wrapper.find('label').attributes('for')).toEqual('my-id')
+})
 
 test('should render error-message slot correctly', async () => {
   const wrapper = mount(Field, {
     props: {
-      errorMessage: 'error',
+      errorMessage: 'error'
     },
     slots: {
-      'error-message': ({ message }) => `Custom ${message}`,
-    },
-  });
+      'error-message': ({ message }) => `Custom ${message}`
+    }
+  })
 
-  expect(wrapper.find('.r-field__error-message').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-field__error-message').html()).toMatchSnapshot()
+})
 
 test('should limit maxlength with emoji correctly', async () => {
   const wrapper = mount(Field, {
     props: {
       maxlength: 3,
-      modelValue: '😀😀😀😀',
-    },
-  });
+      modelValue: '😀😀😀😀'
+    }
+  })
 
-  const input = wrapper.find('input');
-  expect(input.element.value).toEqual('😀😀😀');
-});
+  const input = wrapper.find('input')
+  expect(input.element.value).toEqual('😀😀😀')
+})
 
 test('should render word limit with emoji correctly', () => {
   const wrapper = mount(Field, {
     props: {
       modelValue: '😀😀',
       maxlength: 3,
-      showWordLimit: true,
-    },
-  });
-  expect(wrapper.find('.r-field__word-limit').html()).toMatchSnapshot();
-});
+      showWordLimit: true
+    }
+  })
+  expect(wrapper.find('.r-field__word-limit').html()).toMatchSnapshot()
+})
 
 test('should render left icon inside label when label-align is top', () => {
   const wrapper = mount(Field, {
     props: {
       label: 'Label',
       labelAlign: 'top',
-      leftIcon: 'success',
-    },
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+      leftIcon: 'success'
+    }
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should render label correctly when dynamically set empty label', async () => {
   const wrapper = mount(Field, {
     props: {
-      label: 'abc',
-    },
-  });
+      label: 'abc'
+    }
+  })
 
-  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot();
+  expect(wrapper.find('.r-field__label').html()).toMatchSnapshot()
 
-  await wrapper.setProps({ label: '' });
-  expect(wrapper.find('.r-field__label').exists()).toBeFalsy();
-});
+  await wrapper.setProps({ label: '' })
+  expect(wrapper.find('.r-field__label').exists()).toBeFalsy()
+})

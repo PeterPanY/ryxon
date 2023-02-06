@@ -55,16 +55,16 @@ popover/mode
 | placement | 弹出位置 | `PopoverPlacement` | `bottom` |
 | theme | 主题风格，可选值为 `dark` | `PopoverTheme` | `light` |
 | trigger | 触发方式，可选值为 `manual` `focus` `hover` | `PopoverTrigger` | `click` |
-| duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number \| string` | `0.3` |
+| duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
 | offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
 | overlay | 是否显示遮罩层 | `boolean` | `false` |
-| overlay-class | 自定义遮罩层类名 | `string \| Array \| object` | - |
+| overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
 | show-arrow | 是否展示小箭头 | `boolean` | `true` |
 | close-on-click-action | 是否在点击选项后关闭 | `boolean` | `true` |
 | close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
 
 ### PopoverAction 数据结构
@@ -77,7 +77,7 @@ popover/mode
 | icon | 文字左侧的图标，支持传入图标或图片链接，等同于 Icon 组件的 `name 属性` | `string` |
 | color | 选项文字颜色 | `string` |
 | disabled | 是否为禁用状态 | `boolean` |
-| className | 为对应选项添加额外的类名 | `string \| Array \| object` |
+| className | 为对应选项添加额外的类名 | `string / Array / object` |
 
 ### Events
 

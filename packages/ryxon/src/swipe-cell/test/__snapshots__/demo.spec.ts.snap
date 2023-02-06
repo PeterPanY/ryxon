@@ -68,7 +68,7 @@ exports[`should render demo and match snapshot 1`] = `
                    style="object-fit: cover;"
               >
               <div class="r-image__loading">
-                <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+                <i class="r-badge__wrapper r-icon r-image__loading-icon">
                 </i>
               </div>
             </div>

@@ -7,7 +7,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -18,7 +18,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -29,7 +29,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -40,7 +40,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -55,7 +55,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -66,7 +66,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -77,7 +77,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -88,7 +88,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -99,7 +99,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -110,7 +110,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -131,7 +131,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: contain;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -147,7 +147,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: contain;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -163,7 +163,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: contain;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -177,7 +177,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -188,7 +188,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -199,7 +199,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -210,7 +210,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -221,7 +221,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -232,7 +232,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -243,7 +243,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -254,7 +254,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-top: 25%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--square r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -271,7 +271,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -282,7 +282,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -293,7 +293,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -304,7 +304,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -315,7 +315,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -326,7 +326,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -337,7 +337,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -348,7 +348,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 25%; padding-right: 10px; margin-top: 10px;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-grid-item__content--surround r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -363,7 +363,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -374,7 +374,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -385,7 +385,7 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 33.333333333333336%;"
     >
       <div class="r-grid-item__content r-grid-item__content--horizontal r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-photo-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Text
@@ -403,7 +403,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-home-o r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           Vue Router
@@ -417,7 +417,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-search r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           URL
@@ -432,8 +432,8 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 50%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-home-o r-grid-item__icon">
-          <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
+          <div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
           </div>
         </i>
         <span class="r-grid-item__text">
@@ -445,8 +445,8 @@ exports[`should render demo and match snapshot 1`] = `
          style="flex-basis: 50%;"
     >
       <div class="r-grid-item__content r-grid-item__content--center r-hairline">
-        <i class="r-badge__wrapper r-icon r-icon-search r-grid-item__icon">
-          <div class="r-badge r-badge--top-right r-badge--fixed">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
+          <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
             99+
           </div>
         </i>

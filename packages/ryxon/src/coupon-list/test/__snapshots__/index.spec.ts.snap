@@ -91,7 +91,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="true"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>
@@ -229,7 +229,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>
@@ -259,7 +259,7 @@ exports[`should be the sames as the last snapshot when render coupon list 1`] = 
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                 </div>

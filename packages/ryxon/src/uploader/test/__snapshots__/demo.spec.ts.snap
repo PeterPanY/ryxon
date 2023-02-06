@@ -5,7 +5,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-uploader">
     <div class="r-uploader__wrapper">
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -25,7 +25,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -34,7 +34,7 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
@@ -45,7 +45,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -54,12 +54,12 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -80,7 +80,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -114,12 +114,12 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
         <div class="r-uploader__mask">
-          <i class="r-badge__wrapper r-icon r-icon-close r-uploader__mask-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__mask-icon">
           </i>
           <div class="r-uploader__mask-message">
             Failed
@@ -130,12 +130,12 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -155,7 +155,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -164,12 +164,12 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -190,7 +190,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -199,12 +199,12 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -223,7 +223,7 @@ exports[`should render demo and match snapshot 1`] = `
                 class="r-button r-button--primary r-button--normal"
         >
           <div class="r-button__content">
-            <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+            <i class="r-badge__wrapper r-icon r-button__icon">
             </i>
             <span class="r-button__text">
               Upload File
@@ -248,7 +248,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
           <div class="r-uploader__preview-cover">
@@ -262,12 +262,12 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -289,7 +289,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -298,14 +298,14 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
       <div class="r-uploader__upload"
            style="width: 60px; height: 60px;"
       >
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -319,7 +319,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-uploader">
     <div class="r-uploader__wrapper">
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -333,7 +333,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-uploader">
     <div class="r-uploader__wrapper r-uploader__wrapper--disabled">
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"
@@ -354,7 +354,7 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: cover;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
@@ -363,7 +363,7 @@ exports[`should render demo and match snapshot 1`] = `
              tabindex="0"
              aria-label="Delete"
         >
-          <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+          <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
           </i>
         </div>
       </div>
@@ -374,13 +374,13 @@ exports[`should render demo and match snapshot 1`] = `
                style="object-fit: contain;"
           >
           <div class="r-image__loading">
-            <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+            <i class="r-badge__wrapper r-icon r-image__loading-icon">
             </i>
           </div>
         </div>
       </div>
       <div class="r-uploader__upload">
-        <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+        <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
         </i>
         <input type="file"
                class="r-uploader__input"

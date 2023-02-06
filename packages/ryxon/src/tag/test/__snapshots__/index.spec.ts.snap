@@ -14,7 +14,7 @@ exports[`should render border-color correctly 1`] = `
                  css="true"
 >
   <span style="color: blue; border-color: red;"
-        class="r-tag r-tag--plain r-tag--default"
+        class="r-tag r-tag--plain r-tag--primary"
   >
   </span>
 </transition-stub>

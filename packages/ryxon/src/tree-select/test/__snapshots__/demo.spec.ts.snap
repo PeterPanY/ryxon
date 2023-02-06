@@ -38,7 +38,7 @@ exports[`should render demo and match snapshot 1`] = `
     <div class="r-tree-select__content">
       <div class="r-ellipsis r-tree-select__item r-tree-select__item--active">
         Delaware
-        <i class="r-badge__wrapper r-icon r-icon-success r-tree-select__selected">
+        <i class="r-badge__wrapper r-icon r-tree-select__selected">
         </i>
       </div>
       <div class="r-ellipsis r-tree-select__item">
@@ -87,12 +87,12 @@ exports[`should render demo and match snapshot 1`] = `
     <div class="r-tree-select__content">
       <div class="r-ellipsis r-tree-select__item r-tree-select__item--active">
         Delaware
-        <i class="r-badge__wrapper r-icon r-icon-success r-tree-select__selected">
+        <i class="r-badge__wrapper r-icon r-tree-select__selected">
         </i>
       </div>
       <div class="r-ellipsis r-tree-select__item r-tree-select__item--active">
         Florida
-        <i class="r-badge__wrapper r-icon r-icon-success r-tree-select__selected">
+        <i class="r-badge__wrapper r-icon r-tree-select__selected">
         </i>
       </div>
       <div class="r-ellipsis r-tree-select__item r-tree-select__item--disabled">
@@ -150,7 +150,7 @@ exports[`should render demo and match snapshot 1`] = `
       >
         <div class="r-badge__wrapper r-sidebar-item__text">
           Group 1
-          <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+          <div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@ exports[`should render demo and match snapshot 1`] = `
       >
         <div class="r-badge__wrapper r-sidebar-item__text">
           Group 2
-          <div class="r-badge r-badge--top-right r-badge--fixed">
+          <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
             5
           </div>
         </div>
@@ -170,7 +170,7 @@ exports[`should render demo and match snapshot 1`] = `
     <div class="r-tree-select__content">
       <div class="r-ellipsis r-tree-select__item r-tree-select__item--active">
         Delaware
-        <i class="r-badge__wrapper r-icon r-icon-success r-tree-select__selected">
+        <i class="r-badge__wrapper r-icon r-tree-select__selected">
         </i>
       </div>
       <div class="r-ellipsis r-tree-select__item">

@@ -6,12 +6,20 @@ exports[`create a forbidClick toast 1`] = `
                  persisted="false"
                  css="true"
 >
-  <div role="dialog"
+  <div style="top: 20px; z-index: 2004;"
+       role="dialog"
        tabindex="0"
-       class="r-popup r-popup--center r-toast r-toast--middle r-toast--success"
-       style="z-index: 2004;"
+       class="r-popup r-popup--center r-toast r-toast--top r-toast--success"
   >
-    <i class="r-badge__wrapper r-icon r-icon-success r-toast__icon">
+    <i class="r-badge__wrapper r-icon r-toast__icon">
+      <svg viewbox="0 0 1024 1024"
+           xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill="currentColor"
+              d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"
+        >
+        </path>
+      </svg>
     </i>
   </div>
 </transition-stub>
@@ -23,10 +31,10 @@ exports[`should render message slot correctly 1`] = `
                  persisted="false"
                  css="true"
 >
-  <div role="dialog"
+  <div style="top: 20px; z-index: 2007;"
+       role="dialog"
        tabindex="0"
-       class="r-popup r-popup--center r-toast r-toast--middle r-toast--text"
-       style="z-index: 2007;"
+       class="r-popup r-popup--center r-toast r-toast--top r-toast--text"
   >
     <div class="r-toast__text">
       Custom Message

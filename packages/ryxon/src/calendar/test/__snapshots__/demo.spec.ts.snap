@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
         Select Single Date
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -23,7 +23,7 @@ exports[`should render demo and match snapshot 1`] = `
         Select Multiple Date
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -35,7 +35,7 @@ exports[`should render demo and match snapshot 1`] = `
         Select Date Range
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -49,7 +49,7 @@ exports[`should render demo and match snapshot 1`] = `
         Select Single Date
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -61,7 +61,7 @@ exports[`should render demo and match snapshot 1`] = `
         Select Date Range
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -75,7 +75,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Color
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -87,7 +87,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Date Range
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -99,7 +99,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Confirm Text
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -111,7 +111,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Day Text
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -123,7 +123,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Position
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -135,7 +135,7 @@ exports[`should render demo and match snapshot 1`] = `
         Max Range
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -147,7 +147,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom First Day Of Week
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>

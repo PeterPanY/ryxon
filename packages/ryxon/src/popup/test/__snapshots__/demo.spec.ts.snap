@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
         Show Popup
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -38,7 +38,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-arrow-up r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           From Top
@@ -52,7 +52,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-arrow-down r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           From Bottom
@@ -66,7 +66,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-arrow-left r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           From Left
@@ -80,7 +80,7 @@ exports[`should render demo and match snapshot 1`] = `
            class="r-grid-item__content r-grid-item__content--center r-grid-item__content--clickable r-hairline"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-grid-item__icon">
+        <i class="r-badge__wrapper r-icon r-grid-item__icon">
         </i>
         <span class="r-grid-item__text">
           From Right
@@ -155,7 +155,7 @@ exports[`should render demo and match snapshot 1`] = `
         Close Icon
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -167,7 +167,7 @@ exports[`should render demo and match snapshot 1`] = `
         Custom Icon
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -179,7 +179,7 @@ exports[`should render demo and match snapshot 1`] = `
         Icon Position
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -235,7 +235,7 @@ exports[`should render demo and match snapshot 1`] = `
         Round Corner (center)
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -261,7 +261,7 @@ exports[`should render demo and match snapshot 1`] = `
         Round Corner (bottom)
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -289,7 +289,7 @@ exports[`should render demo and match snapshot 1`] = `
         Listen To Click Events
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -315,7 +315,7 @@ exports[`should render demo and match snapshot 1`] = `
         Listen To Display Events
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"
@@ -343,7 +343,7 @@ exports[`should render demo and match snapshot 1`] = `
         Get Container
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>

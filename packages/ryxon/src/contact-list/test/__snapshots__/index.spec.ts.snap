@@ -9,7 +9,7 @@ exports[`should render ContactList correctly 1`] = `
          role="button"
          tabindex="0"
     >
-      <i class="r-badge__wrapper r-icon r-icon-edit r-contact-list__edit">
+      <i class="r-badge__wrapper r-icon r-contact-list__edit">
       </i>
       <div class="r-cell__title r-contact-list__item-title">
         jack，12345678
@@ -31,7 +31,7 @@ exports[`should render ContactList correctly 1`] = `
         <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked"
              style="font-size: 16px;"
         >
-          <i class="r-badge__wrapper r-icon r-icon-success">
+          <i class="r-badge__wrapper r-icon">
           </i>
         </div>
       </div>

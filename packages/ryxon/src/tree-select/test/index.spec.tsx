@@ -1,73 +1,73 @@
-import { TreeSelect } from '..';
-import { mount } from '../../../test';
+import { TreeSelect } from '..'
+import { mount } from '../../../test'
 
 const mockItem = {
   text: 'city1',
-  id: 1,
-};
+  id: 1
+}
 
 const mockItem2 = {
   text: 'city2',
-  id: 2,
-};
+  id: 2
+}
 
 const mockItems = [
   {
     text: 'group1',
-    children: [mockItem],
+    children: [mockItem]
   },
   {
     text: 'group2',
-    children: [mockItem],
-  },
-];
+    children: [mockItem]
+  }
+]
 
 test('should render empty TreeSelect correctly', () => {
-  expect(mount(TreeSelect).html()).toMatchSnapshot();
-});
+  expect(mount(TreeSelect).html()).toMatchSnapshot()
+})
 
 test('should emit update:mainActiveIndex event when mainActiveIndex is changed', async () => {
   const wrapper = mount(TreeSelect, {
     props: {
       items: mockItems,
-      mainActiveIndex: 0,
-    },
-  });
+      mainActiveIndex: 0
+    }
+  })
 
-  const navItems = wrapper.findAll('.r-tree-select__nav-item');
-  await navItems[0].trigger('click');
-  expect(wrapper.emitted('update:mainActiveIndex')).toBeFalsy();
+  const navItems = wrapper.findAll('.r-tree-select__nav-item')
+  await navItems[0].trigger('click')
+  expect(wrapper.emitted('update:mainActiveIndex')).toBeFalsy()
 
-  await navItems[1].trigger('click');
-  expect(wrapper.emitted('update:mainActiveIndex')?.[0]).toEqual([1]);
-});
+  await navItems[1].trigger('click')
+  expect(wrapper.emitted('update:mainActiveIndex')?.[0]).toEqual([1])
+})
 
 test('should emit clickNav event when nav item is clicked', async () => {
   const wrapper = mount(TreeSelect, {
     props: {
-      items: mockItems,
-    },
-  });
+      items: mockItems
+    }
+  })
 
-  const navItems = wrapper.findAll('.r-tree-select__nav-item');
-  await navItems[0].trigger('click');
-  expect(wrapper.emitted('clickNav')?.[0]).toEqual([0]);
-  await navItems[0].trigger('click');
-  expect(wrapper.emitted('clickNav')?.[1]).toEqual([0]);
-});
+  const navItems = wrapper.findAll('.r-tree-select__nav-item')
+  await navItems[0].trigger('click')
+  expect(wrapper.emitted('clickNav')?.[0]).toEqual([0])
+  await navItems[0].trigger('click')
+  expect(wrapper.emitted('clickNav')?.[1]).toEqual([0])
+})
 
 test('should emit clickItem event when item is clicked', () => {
   const wrapper = mount(TreeSelect, {
     props: {
-      items: mockItems,
-    },
-  });
+      items: mockItems
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__item');
-  items[0].trigger('click');
-  expect(wrapper.emitted('update:activeId')?.[0]).toEqual([mockItem.id]);
-  expect(wrapper.emitted('clickItem')?.[0]).toEqual([mockItem]);
-});
+  const items = wrapper.findAll('.r-tree-select__item')
+  items[0].trigger('click')
+  expect(wrapper.emitted('update:activeId')?.[0]).toEqual([mockItem.id])
+  expect(wrapper.emitted('clickItem')?.[0]).toEqual([mockItem])
+})
 
 test('should not emit clickNav event when disabled nav item is clicked', () => {
   const wrapper = mount(TreeSelect, {
@@ -76,16 +76,16 @@ test('should not emit clickNav event when disabled nav item is clicked', () => {
         {
           text: 'group1',
           children: [mockItem],
-          disabled: true,
-        },
-      ],
-    },
-  });
+          disabled: true
+        }
+      ]
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__nav-item');
-  items[0].trigger('click');
-  expect(wrapper.emitted('clickNav')).toBeFalsy();
-});
+  const items = wrapper.findAll('.r-tree-select__nav-item')
+  items[0].trigger('click')
+  expect(wrapper.emitted('clickNav')).toBeFalsy()
+})
 
 test('should not emit clickItem event when disabled item is clicked', () => {
   const wrapper = mount(TreeSelect, {
@@ -96,45 +96,45 @@ test('should not emit clickItem event when disabled item is clicked', () => {
           children: [
             {
               ...mockItem,
-              disabled: true,
-            },
-          ],
-        },
-      ],
-    },
-  });
+              disabled: true
+            }
+          ]
+        }
+      ]
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__item');
-  items[0].trigger('click');
-  expect(wrapper.emitted('clickItem')).toBeFalsy();
-});
+  const items = wrapper.findAll('.r-tree-select__item')
+  items[0].trigger('click')
+  expect(wrapper.emitted('clickItem')).toBeFalsy()
+})
 
 test('should render content slot correctly', () => {
   const wrapper = mount(TreeSelect, {
     props: {
       items: [
         {
-          text: 'group1',
-        },
-      ],
+          text: 'group1'
+        }
+      ]
     },
     slots: {
-      content: () => 'Custom Content',
-    },
-  });
+      content: () => 'Custom Content'
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should change height when using height prop', () => {
   const wrapper = mount(TreeSelect, {
     props: {
-      height: '100vh',
-    },
-  });
+      height: '100vh'
+    }
+  })
 
-  expect(wrapper.style.height).toEqual('100vh');
-});
+  expect(wrapper.style.height).toEqual('100vh')
+})
 
 test('should render nav badge correctly', () => {
   const wrapper = mount(TreeSelect, {
@@ -142,14 +142,14 @@ test('should render nav badge correctly', () => {
       items: [
         {
           text: 'group1',
-          badge: 3,
-        },
-      ],
-    },
-  });
+          badge: 3
+        }
+      ]
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should allow to select multiple items when activeId is array', async () => {
   const wrapper = mount({
@@ -160,10 +160,10 @@ test('should allow to select multiple items when activeId is array', async () =>
         items: [
           {
             text: 'group1',
-            children: [mockItem, mockItem2],
-          },
-        ],
-      };
+            children: [mockItem, mockItem2]
+          }
+        ]
+      }
     },
     render() {
       return (
@@ -172,19 +172,19 @@ test('should allow to select multiple items when activeId is array', async () =>
           items={this.items}
           mainActiveIndex={0}
         />
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__item');
-  await items[0].trigger('click');
-  await items[1].trigger('click');
-  expect(wrapper.vm.activeId).toEqual([mockItem.id, mockItem2.id]);
+  const items = wrapper.findAll('.r-tree-select__item')
+  await items[0].trigger('click')
+  await items[1].trigger('click')
+  expect(wrapper.vm.activeId).toEqual([mockItem.id, mockItem2.id])
 
-  await items[0].trigger('click');
-  await items[1].trigger('click');
-  expect(wrapper.vm.activeId).toEqual([]);
-});
+  await items[0].trigger('click')
+  await items[1].trigger('click')
+  expect(wrapper.vm.activeId).toEqual([])
+})
 
 test('should limit the selected item number when using max prop', async () => {
   const wrapper = mount({
@@ -194,10 +194,10 @@ test('should limit the selected item number when using max prop', async () => {
         items: [
           {
             text: 'group1',
-            children: [mockItem, mockItem2],
-          },
-        ],
-      };
+            children: [mockItem, mockItem2]
+          }
+        ]
+      }
     },
     render() {
       return (
@@ -207,15 +207,15 @@ test('should limit the selected item number when using max prop', async () => {
           items={this.items}
           mainActiveIndex={0}
         />
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__item');
-  await items[0].trigger('click');
-  await items[1].trigger('click');
-  expect(wrapper.vm.activeId).toEqual([mockItem.id]);
-});
+  const items = wrapper.findAll('.r-tree-select__item')
+  await items[0].trigger('click')
+  await items[1].trigger('click')
+  expect(wrapper.vm.activeId).toEqual([mockItem.id])
+})
 
 test('should allow to custom nav item className', () => {
   const wrapper = mount(TreeSelect, {
@@ -225,15 +225,15 @@ test('should allow to custom nav item className', () => {
         {
           text: 'group1',
           className: 'my-class',
-          children: [],
-        },
-      ],
-    },
-  });
+          children: []
+        }
+      ]
+    }
+  })
 
-  const items = wrapper.findAll('.r-tree-select__nav-item');
-  expect(items[0].classes()).toContain('my-class');
-});
+  const items = wrapper.findAll('.r-tree-select__nav-item')
+  expect(items[0].classes()).toContain('my-class')
+})
 
 test('should change selected icon when using selected-icon prop', () => {
   const wrapper = mount(TreeSelect, {
@@ -241,9 +241,9 @@ test('should change selected icon when using selected-icon prop', () => {
       items: mockItems,
       activeId: 1,
       mainActiveIndex: 0,
-      selectedIcon: 'foo',
-    },
-  });
+      selectedIcon: 'foo'
+    }
+  })
 
-  expect(wrapper.find('.r-tree-select__item').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-tree-select__item').html()).toMatchSnapshot()
+})

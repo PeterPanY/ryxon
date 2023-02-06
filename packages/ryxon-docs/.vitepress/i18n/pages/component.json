@@ -32,6 +32,10 @@
         {
           "link": "/badge",
           "text": "Badge 徽章"
+        },
+        {
+          "link": "/tag",
+          "text": "Tag 标签"
         }
       ]
     },

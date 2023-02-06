@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should allow to custom close icon with closeIcon prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-cross r-action-sheet__close r-haptics-feedback">
+<i class="r-badge__wrapper r-icon r-action-sheet__close r-haptics-feedback">
 </i>
 `;
 
@@ -43,7 +43,7 @@ exports[`should render default slot correctly 1`] = `
   >
     <div class="r-action-sheet__header">
       Title
-      <i class="r-badge__wrapper r-icon r-icon-cross r-action-sheet__close r-haptics-feedback">
+      <i class="r-badge__wrapper r-icon r-action-sheet__close r-haptics-feedback">
       </i>
     </div>
     <div class="r-action-sheet__content">

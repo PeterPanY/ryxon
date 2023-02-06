@@ -15,7 +15,7 @@ exports[`should render CouponCell correctly 1`] = `
       No coupons
     </span>
   </div>
-  <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+  <i class="r-badge__wrapper r-icon r-cell__right-icon">
   </i>
 </div>
 `;
@@ -35,7 +35,7 @@ exports[`should render CouponCell correctly with zero discount 1`] = `
       -¥ 0.00
     </span>
   </div>
-  <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+  <i class="r-badge__wrapper r-icon r-cell__right-icon">
   </i>
 </div>
 `;
@@ -55,7 +55,7 @@ exports[`should render CouponCell with chosenCoupon correctly 1`] = `
       -¥ 1.50
     </span>
   </div>
-  <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+  <i class="r-badge__wrapper r-icon r-cell__right-icon">
   </i>
 </div>
 `;

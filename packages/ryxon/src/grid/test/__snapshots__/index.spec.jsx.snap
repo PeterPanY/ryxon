@@ -8,7 +8,7 @@ exports[`should render icon-slot correctly 1`] = `
     <div class="r-grid-item__content r-grid-item__content--center r-hairline">
       <div class="r-badge__wrapper">
         Custom Icon
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           1
         </div>
       </div>

@@ -6,12 +6,12 @@ exports[`should render demo and match snapshot 1`] = `
        role="button"
        tabindex="0"
   >
-    <i class="r-badge__wrapper r-icon r-icon-add-square r-cell__left-icon">
+    <i class="r-badge__wrapper r-icon r-cell__left-icon">
     </i>
     <div class="r-cell__title r-contact-card__title">
       Add contact
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -20,7 +20,7 @@ exports[`should render demo and match snapshot 1`] = `
        role="button"
        tabindex="0"
   >
-    <i class="r-badge__wrapper r-icon r-icon-contact r-cell__left-icon">
+    <i class="r-badge__wrapper r-icon r-cell__left-icon">
     </i>
     <div class="r-cell__title r-contact-card__title">
       <div>
@@ -30,13 +30,13 @@ exports[`should render demo and match snapshot 1`] = `
         Phone：13000000000
       </div>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
 <div>
   <div class="r-cell r-cell--center r-cell--borderless r-contact-card r-contact-card--edit">
-    <i class="r-badge__wrapper r-icon r-icon-contact r-cell__left-icon">
+    <i class="r-badge__wrapper r-icon r-cell__left-icon">
     </i>
     <div class="r-cell__title r-contact-card__title">
       <div>

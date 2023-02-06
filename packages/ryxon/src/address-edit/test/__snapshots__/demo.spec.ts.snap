@@ -64,7 +64,7 @@ exports[`should render demo and match snapshot 1`] = `
             >
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
       <div class="r-cell r-field r-address-edit-detail">

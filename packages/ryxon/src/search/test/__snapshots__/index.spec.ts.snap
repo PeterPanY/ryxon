@@ -19,7 +19,7 @@ exports[`should render label slot correctly 1`] = `
 
 exports[`should render left icon when using left-icon prop 1`] = `
 <div class="r-field__left-icon">
-  <i class="r-badge__wrapper r-icon r-icon-setting-o">
+  <i class="r-badge__wrapper r-icon">
   </i>
 </div>
 `;
@@ -30,7 +30,7 @@ exports[`should render left slot correctly 1`] = `
   <div class="r-search__content r-search__content--square">
     <div class="r-cell r-cell--borderless r-field r-search__field">
       <div class="r-field__left-icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-cell__value r-field__value">
@@ -48,7 +48,7 @@ exports[`should render left slot correctly 1`] = `
 
 exports[`should render right icon when using right-icon prop 1`] = `
 <div class="r-field__right-icon">
-  <i class="r-badge__wrapper r-icon r-icon-setting-o">
+  <i class="r-badge__wrapper r-icon">
   </i>
 </div>
 `;

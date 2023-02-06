@@ -7,7 +7,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-chat-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon1
     </div>
@@ -15,7 +15,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-cart-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon2
     </div>
@@ -23,7 +23,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-shop-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon3
     </div>
@@ -44,8 +44,8 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-chat-o r-action-bar-icon__icon">
-        <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
         </div>
       </div>
       Icon1
@@ -54,8 +54,8 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-cart-o r-action-bar-icon__icon">
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           5
         </div>
       </div>
@@ -65,8 +65,8 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-shop-o r-action-bar-icon__icon">
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           12
         </div>
       </div>
@@ -98,7 +98,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-chat-o r-action-bar-icon__icon"
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon"
            style="color: rgb(238, 10, 36);"
       >
       </div>
@@ -108,7 +108,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-cart-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon2
     </div>
@@ -116,7 +116,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-star r-action-bar-icon__icon"
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon"
            style="color: rgb(255, 80, 0);"
       >
       </div>
@@ -148,7 +148,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-chat-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon1
     </div>
@@ -156,7 +156,7 @@ exports[`should render demo and match snapshot 1`] = `
          class="r-action-bar-icon"
          tabindex="0"
     >
-      <div class="r-badge__wrapper r-icon r-icon-cart-o r-action-bar-icon__icon">
+      <div class="r-badge__wrapper r-icon r-action-bar-icon__icon">
       </div>
       Icon2
     </div>

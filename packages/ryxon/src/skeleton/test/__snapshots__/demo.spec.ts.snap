@@ -77,7 +77,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-skeleton r-skeleton--animate">
     <div style="display: flex; width: 100%;">
       <div class="r-skeleton-image r-skeleton-image--square">
-        <i class="r-badge__wrapper r-icon r-icon-photo r-skeleton-image__icon">
+        <i class="r-badge__wrapper r-icon r-skeleton-image__icon">
         </i>
       </div>
       <div style="flex: 1; margin-left: 16px;">

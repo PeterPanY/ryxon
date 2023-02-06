@@ -15,7 +15,7 @@ exports[`should render gutter when using gutter prop 1`] = `
        aria-posinset="1"
        aria-checked="false"
   >
-    <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+    <i class="r-badge__wrapper r-icon r-rate__icon">
     </i>
   </div>
   <div role="radio"
@@ -26,7 +26,7 @@ exports[`should render gutter when using gutter prop 1`] = `
        aria-posinset="2"
        aria-checked="false"
   >
-    <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+    <i class="r-badge__wrapper r-icon r-rate__icon">
     </i>
   </div>
   <div role="radio"
@@ -37,7 +37,7 @@ exports[`should render gutter when using gutter prop 1`] = `
        aria-posinset="3"
        aria-checked="false"
   >
-    <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+    <i class="r-badge__wrapper r-icon r-rate__icon">
     </i>
   </div>
   <div role="radio"
@@ -48,7 +48,7 @@ exports[`should render gutter when using gutter prop 1`] = `
        aria-posinset="4"
        aria-checked="false"
   >
-    <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+    <i class="r-badge__wrapper r-icon r-rate__icon">
     </i>
   </div>
   <div role="radio"
@@ -58,7 +58,7 @@ exports[`should render gutter when using gutter prop 1`] = `
        aria-posinset="5"
        aria-checked="false"
   >
-    <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+    <i class="r-badge__wrapper r-icon r-rate__icon">
     </i>
   </div>
 </div>

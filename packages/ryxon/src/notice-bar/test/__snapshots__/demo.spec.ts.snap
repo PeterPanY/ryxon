@@ -5,7 +5,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div role="alert"
        class="r-notice-bar"
   >
-    <i class="r-badge__wrapper r-icon r-icon-volume-o r-notice-bar__left-icon">
+    <i class="r-badge__wrapper r-icon r-notice-bar__left-icon">
     </i>
     <div role="marquee"
          class="r-notice-bar__wrap"
@@ -74,7 +74,7 @@ exports[`should render demo and match snapshot 1`] = `
         Short Content
       </div>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-cross r-notice-bar__right-icon">
+    <i class="r-badge__wrapper r-icon r-notice-bar__right-icon">
     </i>
   </div>
   <div role="alert"
@@ -89,7 +89,7 @@ exports[`should render demo and match snapshot 1`] = `
         Short Content
       </div>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-notice-bar__right-icon">
+    <i class="r-badge__wrapper r-icon r-notice-bar__right-icon">
     </i>
   </div>
 </div>
@@ -98,7 +98,7 @@ exports[`should render demo and match snapshot 1`] = `
        class="r-notice-bar"
        style="color: rgb(25, 137, 250); background: rgb(236, 249, 255);"
   >
-    <i class="r-badge__wrapper r-icon r-icon-info-o r-notice-bar__left-icon">
+    <i class="r-badge__wrapper r-icon r-notice-bar__left-icon">
     </i>
     <div role="marquee"
          class="r-notice-bar__wrap"
@@ -115,7 +115,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div role="alert"
        class="r-notice-bar"
   >
-    <i class="r-badge__wrapper r-icon r-icon-volume-o r-notice-bar__left-icon">
+    <i class="r-badge__wrapper r-icon r-notice-bar__left-icon">
     </i>
     <div role="marquee"
          class="r-notice-bar__wrap"

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should change close icon when using close-icon prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-success r-cascader__close-icon r-haptics-feedback">
+<i class="r-badge__wrapper r-icon r-cascader__close-icon r-haptics-feedback">
 </i>
 `;
 
@@ -29,7 +29,7 @@ exports[`should render options-top、options-bottom slots correctly 1`] = `
       <span>
         Zhejiang
       </span>
-      <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+      <i class="r-badge__wrapper r-icon r-cascader__selected-icon">
       </i>
     </li>
     <li role="menuitemradio"
@@ -61,7 +61,7 @@ exports[`should select correct option when value changed 1`] = `
   <span>
     Wenzhou
   </span>
-  <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+  <i class="r-badge__wrapper r-icon r-cascader__selected-icon">
   </i>
 </li>
 `;
@@ -71,7 +71,7 @@ exports[`should update tabs when previous tab is clicked 1`] = `
   <div class="r-cascader__header">
     <h2 class="r-cascader__title">
     </h2>
-    <i class="r-badge__wrapper r-icon r-icon-cross r-cascader__close-icon r-haptics-feedback">
+    <i class="r-badge__wrapper r-icon r-cascader__close-icon r-haptics-feedback">
     </i>
   </div>
   <div class="r-tabs r-tabs--line r-cascader__tabs">
@@ -140,7 +140,7 @@ exports[`should update tabs when previous tab is clicked 1`] = `
                   <span>
                     Jiangsu
                   </span>
-                  <i class="r-badge__wrapper r-icon r-icon-success r-cascader__selected-icon">
+                  <i class="r-badge__wrapper r-icon r-cascader__selected-icon">
                   </i>
                 </li>
               </ul>

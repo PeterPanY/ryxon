@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
         Alert
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -23,7 +23,7 @@ exports[`should render demo and match snapshot 1`] = `
         Alert without title
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -35,7 +35,7 @@ exports[`should render demo and match snapshot 1`] = `
         Confirm dialog
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -49,7 +49,7 @@ exports[`should render demo and match snapshot 1`] = `
         Alert
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -61,7 +61,7 @@ exports[`should render demo and match snapshot 1`] = `
         Alert without title
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -75,7 +75,7 @@ exports[`should render demo and match snapshot 1`] = `
         Before Close
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -89,7 +89,7 @@ exports[`should render demo and match snapshot 1`] = `
         Use Dialog Component
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <transition-stub name="r-fade"

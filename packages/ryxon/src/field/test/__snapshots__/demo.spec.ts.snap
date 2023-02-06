@@ -175,7 +175,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-cell-group r-cell-group--inset">
     <div class="r-cell r-field">
       <div class="r-field__left-icon">
-        <i class="r-badge__wrapper r-icon r-icon-smile-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-cell__title r-field__label">
@@ -194,7 +194,7 @@ exports[`should render demo and match snapshot 1`] = `
                  aria-labelledby="r-field-label"
           >
           <div class="r-field__right-icon">
-            <i class="r-badge__wrapper r-icon r-icon-warning-o">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>
@@ -202,7 +202,7 @@ exports[`should render demo and match snapshot 1`] = `
     </div>
     <div class="r-cell r-field">
       <div class="r-field__left-icon">
-        <i class="r-badge__wrapper r-icon r-icon-music-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-cell__title r-field__label">

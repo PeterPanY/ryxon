@@ -14,7 +14,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-nav-bar r-hairline--bottom">
     <div class="r-nav-bar__content">
       <div class="r-nav-bar__left r-haptics-feedback">
-        <i class="r-badge__wrapper r-icon r-icon-arrow-left r-nav-bar__arrow">
+        <i class="r-badge__wrapper r-icon r-nav-bar__arrow">
         </i>
         <span class="r-nav-bar__text">
           Back
@@ -30,7 +30,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-nav-bar r-hairline--bottom">
     <div class="r-nav-bar__content">
       <div class="r-nav-bar__left r-haptics-feedback">
-        <i class="r-badge__wrapper r-icon r-icon-arrow-left r-nav-bar__arrow">
+        <i class="r-badge__wrapper r-icon r-nav-bar__arrow">
         </i>
         <span class="r-nav-bar__text">
           Back
@@ -51,7 +51,7 @@ exports[`should render demo and match snapshot 1`] = `
   <div class="r-nav-bar r-hairline--bottom">
     <div class="r-nav-bar__content">
       <div class="r-nav-bar__left r-haptics-feedback">
-        <i class="r-badge__wrapper r-icon r-icon-arrow-left r-nav-bar__arrow">
+        <i class="r-badge__wrapper r-icon r-nav-bar__arrow">
         </i>
         <span class="r-nav-bar__text">
           Back
@@ -61,7 +61,7 @@ exports[`should render demo and match snapshot 1`] = `
         Title
       </div>
       <div class="r-nav-bar__right r-haptics-feedback">
-        <i class="r-badge__wrapper r-icon r-icon-search"
+        <i class="r-badge__wrapper r-icon"
            style="font-size: 18px;"
         >
         </i>

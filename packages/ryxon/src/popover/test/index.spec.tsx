@@ -1,192 +1,192 @@
-import { Popover } from '..';
-import { later, mount, trigger } from '../../../test';
+import { Popover } from '..'
+import { later, mount, trigger } from '../../../test'
 
 const baseActions = [
   { text: 'Option 1' },
   { text: 'Option 2' },
-  { text: 'Option 3' },
-];
+  { text: 'Option 3' }
+]
 
 test('should toggle popover when trigger is "click" and the reference element is clicked', async () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
-      trigger: 'manual',
+      trigger: 'manual'
     },
     slots: {
-      reference: () => <div class="reference"></div>,
-    },
-  });
+      reference: () => <div class="reference"></div>
+    }
+  })
 
-  await wrapper.find('.reference').trigger('click');
-  expect(wrapper.emitted('update:show')).toBeFalsy();
+  await wrapper.find('.reference').trigger('click')
+  expect(wrapper.emitted('update:show')).toBeFalsy()
 
-  await wrapper.setProps({ trigger: 'click' });
-  await wrapper.find('.reference').trigger('click');
-  expect(wrapper.emitted('update:show')![0]).toEqual([false]);
-});
+  await wrapper.setProps({ trigger: 'click' })
+  await wrapper.find('.reference').trigger('click')
+  expect(wrapper.emitted('update:show')![0]).toEqual([false])
+})
 
 test('should emit select event when clicking the action', async () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      actions: baseActions,
-    },
-  });
+      actions: baseActions
+    }
+  })
 
-  await later();
-  await wrapper.find('.r-popover__action').trigger('click');
-  expect(wrapper.emitted('select')![0]).toEqual([baseActions[0], 0]);
-});
+  await later()
+  await wrapper.find('.r-popover__action').trigger('click')
+  expect(wrapper.emitted('select')![0]).toEqual([baseActions[0], 0])
+})
 
 test('should not emit select event when the action is disabled', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      actions: [{ text: 'Option', disabled: true }],
-    },
-  });
+      actions: [{ text: 'Option', disabled: true }]
+    }
+  })
 
-  wrapper.find('.r-popover__action').trigger('click');
-  expect(wrapper.emitted('select')).toBeFalsy();
-});
+  wrapper.find('.r-popover__action').trigger('click')
+  expect(wrapper.emitted('select')).toBeFalsy()
+})
 
 test('should close popover when clicking the action', async () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      actions: baseActions,
-    },
-  });
+      actions: baseActions
+    }
+  })
 
-  await wrapper.find('.r-popover__action').trigger('click');
-  expect(wrapper.emitted('update:show')![0]).toEqual([false]);
+  await wrapper.find('.r-popover__action').trigger('click')
+  expect(wrapper.emitted('update:show')![0]).toEqual([false])
 
-  await wrapper.setProps({ closeOnClickAction: false });
-  await wrapper.find('.r-popover__action').trigger('click');
-  expect(wrapper.emitted('update:show')).toHaveLength(1);
-});
+  await wrapper.setProps({ closeOnClickAction: false })
+  await wrapper.find('.r-popover__action').trigger('click')
+  expect(wrapper.emitted('update:show')).toHaveLength(1)
+})
 
 test('should allow to custom the className of action', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      actions: [{ text: 'Option', className: 'foo' }],
-    },
-  });
+      actions: [{ text: 'Option', className: 'foo' }]
+    }
+  })
 
-  expect(wrapper.find('.r-popover__action').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-popover__action').html()).toMatchSnapshot()
+})
 
 test('should allow to custom the color of action test', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      actions: [{ text: 'Option', color: 'red' }],
-    },
-  });
+      actions: [{ text: 'Option', color: 'red' }]
+    }
+  })
 
-  expect(wrapper.find('.r-popover__action').style.color).toEqual('red');
-});
+  expect(wrapper.find('.r-popover__action').style.color).toEqual('red')
+})
 
 test('should locate to reference element when showed', async () => {
-  const root = document.createElement('div');
+  const root = document.createElement('div')
   const wrapper = mount(Popover, {
     props: {
-      teleport: root,
-    },
-  });
+      teleport: root
+    }
+  })
 
-  expect(root.innerHTML).toMatchSnapshot();
+  expect(root.innerHTML).toMatchSnapshot()
 
-  await wrapper.setProps({ show: true });
-  await later();
-  expect(root.innerHTML).toMatchSnapshot();
+  await wrapper.setProps({ show: true })
+  await later()
+  expect(root.innerHTML).toMatchSnapshot()
 
-  await wrapper.setProps({ show: false });
-  expect(root.innerHTML).toMatchSnapshot();
-});
+  await wrapper.setProps({ show: false })
+  expect(root.innerHTML).toMatchSnapshot()
+})
 
 test('should watch placement prop and update location', async () => {
-  const root = document.createElement('div');
+  const root = document.createElement('div')
   const wrapper = mount(Popover, {
     props: {
       show: true,
-      teleport: root,
-    },
-  });
+      teleport: root
+    }
+  })
 
   await wrapper.setProps({
-    placement: 'top',
-  });
+    placement: 'top'
+  })
 
-  await later();
-  expect(root.innerHTML).toMatchSnapshot();
-});
+  await later()
+  expect(root.innerHTML).toMatchSnapshot()
+})
 
 test('should close popover when touch outside content', async () => {
-  const root = document.createElement('div');
+  const root = document.createElement('div')
   const wrapper = mount(Popover, {
     props: {
       show: true,
-      teleport: root,
-    },
-  });
+      teleport: root
+    }
+  })
 
-  const popover = root.querySelector('.r-popover');
-  await trigger(popover!, 'touchstart');
-  expect(wrapper.emitted('update:show')).toBeFalsy();
+  const popover = root.querySelector('.r-popover')
+  await trigger(popover!, 'touchstart')
+  expect(wrapper.emitted('update:show')).toBeFalsy()
 
-  document.body.appendChild(root);
-  await trigger(document.body, 'touchstart');
-  expect(wrapper.emitted('update:show')![0]).toEqual([false]);
-});
+  document.body.appendChild(root)
+  await trigger(document.body, 'touchstart')
+  expect(wrapper.emitted('update:show')![0]).toEqual([false])
+})
 
 test('should emit clickOverlay event when overlay is clicked', () => {
-  const onClickOverlay = jest.fn();
+  const onClickOverlay = jest.fn()
   const wrapper = mount(Popover, {
     props: {
       show: true,
       overlay: true,
       teleport: null,
-      onClickOverlay,
-    },
-  });
+      onClickOverlay
+    }
+  })
 
-  wrapper.find('.r-overlay').trigger('click');
-  expect(onClickOverlay).toHaveBeenCalledTimes(1);
-});
+  wrapper.find('.r-overlay').trigger('click')
+  expect(onClickOverlay).toHaveBeenCalledTimes(1)
+})
 
 test('should not close Popover when overlay is clicked and close-on-click-overlay is false', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       overlay: true,
-      closeOnClickOverlay: false,
-    },
-  });
+      closeOnClickOverlay: false
+    }
+  })
 
-  const overlay = document.querySelector('.r-overlay')!;
-  trigger(overlay, 'touchstart');
-  expect(wrapper.emitted('update:show')).toBeFalsy();
-});
+  const overlay = document.querySelector('.r-overlay')!
+  trigger(overlay, 'touchstart')
+  expect(wrapper.emitted('update:show')).toBeFalsy()
+})
 
 test('should not close Popover when outside is clicked and close-on-click-outside is false', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
-      closeOnClickOutside: false,
-    },
-  });
+      closeOnClickOutside: false
+    }
+  })
 
-  trigger(document.body, 'touchstart');
-  expect(wrapper.emitted('update:show')).toBeFalsy();
-});
+  trigger(document.body, 'touchstart')
+  expect(wrapper.emitted('update:show')).toBeFalsy()
+})
 
 test('should change icon class prefix when using icon-prefix prop', () => {
   const wrapper = mount(Popover, {
@@ -194,36 +194,36 @@ test('should change icon class prefix when using icon-prefix prop', () => {
       show: true,
       teleport: null,
       iconPrefix: 'my-icon',
-      actions: [{ icon: 'success', text: 'foo' }],
-    },
-  });
+      actions: [{ icon: 'success', text: 'foo' }]
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should allow to hide arrow', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       teleport: null,
-      showArrow: false,
-    },
-  });
+      showArrow: false
+    }
+  })
 
-  expect(wrapper.find('.r-popover__arrow').exists()).toBeFalsy();
-});
+  expect(wrapper.find('.r-popover__arrow').exists()).toBeFalsy()
+})
 
 test('should render action slot correctly', () => {
   const wrapper = mount(Popover, {
     props: {
       show: true,
       actions: [{ text: 'Text' }],
-      teleport: null,
+      teleport: null
     },
     slots: {
-      action: ({ action, index }) => `name: ${action.text}, index: ${index}`,
-    },
-  });
+      action: ({ action, index }) => `name: ${action.text}, index: ${index}`
+    }
+  })
 
-  expect(wrapper.find('.r-popover__action').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-popover__action').html()).toMatchSnapshot()
+})

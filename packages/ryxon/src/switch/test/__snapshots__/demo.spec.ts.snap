@@ -77,7 +77,7 @@ exports[`should render demo and match snapshot 1`] = `
   >
     <div class="r-switch__node">
       <div class="icon-wrapper">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
     </div>

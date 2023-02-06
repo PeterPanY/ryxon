@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should apply icon-prefix prop to error-icon 1`] = `
-<i class="r-badge__wrapper my-icon my-icon-error r-image__error-icon">
+<i class="r-badge__wrapper my-icon r-image__error-icon">
 </i>
 `;
 
 exports[`should apply icon-prefix prop to loading-icon 1`] = `
-<i class="r-badge__wrapper my-icon my-icon-success r-image__loading-icon">
+<i class="r-badge__wrapper my-icon r-image__loading-icon">
 </i>
 `;
 

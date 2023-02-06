@@ -32,7 +32,7 @@ exports[`should change icon class prefix when using icon-prefix prop 1`] = `
            class="r-popover__action r-popover__action--with-icon"
            tabindex="0"
       >
-        <i class="r-badge__wrapper my-icon my-icon-success r-popover__action-icon">
+        <i class="r-badge__wrapper my-icon r-popover__action-icon">
         </i>
         <div class="r-popover__action-text r-hairline--bottom">
           foo

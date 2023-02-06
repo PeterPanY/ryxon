@@ -59,7 +59,7 @@ exports[`should render demo and match snapshot 1`] = `
         >
           <div class="r-badge__wrapper r-sidebar-item__text">
             Title
-            <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+            <div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ exports[`should render demo and match snapshot 1`] = `
         >
           <div class="r-badge__wrapper r-sidebar-item__text">
             Title
-            <div class="r-badge r-badge--top-right r-badge--fixed">
+            <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
               5
             </div>
           </div>

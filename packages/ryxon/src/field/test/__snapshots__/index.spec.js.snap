@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should change clear icon when using clear-icon prop 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-cross r-field__clear">
+<i class="r-badge__wrapper r-icon r-field__clear">
 </i>
 `;
 
@@ -61,7 +61,7 @@ exports[`should render left icon inside label when label-align is top 1`] = `
 <div class="r-cell r-field r-field--label-top">
   <div class="r-cell__title r-field__label r-field__label--top">
     <div class="r-field__left-icon">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <label id="r-field-label"

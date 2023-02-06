@@ -10,7 +10,7 @@ exports[`should adjust label position when using label-position prop 1`] = `
     Label
   </span>
   <div class="r-checkbox__icon r-checkbox__icon--round">
-    <i class="r-badge__wrapper r-icon r-icon-success">
+    <i class="r-badge__wrapper r-icon">
     </i>
   </div>
 </div>

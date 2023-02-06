@@ -198,7 +198,7 @@ exports[`should render demo and match snapshot 1`] = `
                    aria-checked="false"
               >
                 <div class="r-checkbox__icon r-checkbox__icon--square">
-                  <i class="r-badge__wrapper r-icon r-icon-success">
+                  <i class="r-badge__wrapper r-icon">
                   </i>
                 </div>
               </div>
@@ -224,7 +224,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--square">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                   <span class="r-checkbox__label">
@@ -237,7 +237,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-checked="false"
                 >
                   <div class="r-checkbox__icon r-checkbox__icon--square">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                   <span class="r-checkbox__label">
@@ -269,7 +269,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-checked="true"
                 >
                   <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                   <span class="r-radio__label">
@@ -282,7 +282,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-checked="false"
                 >
                   <div class="r-radio__icon r-radio__icon--round">
-                    <i class="r-badge__wrapper r-icon r-icon-success">
+                    <i class="r-badge__wrapper r-icon">
                     </i>
                   </div>
                   <span class="r-radio__label">
@@ -354,7 +354,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-posinset="1"
                      aria-checked="true"
                 >
-                  <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+                  <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
                   </i>
                 </div>
                 <div role="radio"
@@ -364,7 +364,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-posinset="2"
                      aria-checked="true"
                 >
-                  <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+                  <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
                   </i>
                 </div>
                 <div role="radio"
@@ -374,7 +374,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-posinset="3"
                      aria-checked="true"
                 >
-                  <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+                  <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
                   </i>
                 </div>
                 <div role="radio"
@@ -384,7 +384,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-posinset="4"
                      aria-checked="false"
                 >
-                  <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+                  <i class="r-badge__wrapper r-icon r-rate__icon">
                   </i>
                 </div>
                 <div role="radio"
@@ -394,7 +394,7 @@ exports[`should render demo and match snapshot 1`] = `
                      aria-posinset="5"
                      aria-checked="false"
                 >
-                  <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+                  <i class="r-badge__wrapper r-icon r-rate__icon">
                   </i>
                 </div>
               </div>
@@ -454,7 +454,7 @@ exports[`should render demo and match snapshot 1`] = `
                            style="object-fit: cover;"
                       >
                       <div class="r-image__loading">
-                        <i class="r-badge__wrapper r-icon r-icon-photo r-image__loading-icon">
+                        <i class="r-badge__wrapper r-icon r-image__loading-icon">
                         </i>
                       </div>
                     </div>
@@ -463,12 +463,12 @@ exports[`should render demo and match snapshot 1`] = `
                          tabindex="0"
                          aria-label="Delete"
                     >
-                      <i class="r-badge__wrapper r-icon r-icon-cross r-uploader__preview-delete-icon">
+                      <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
                       </i>
                     </div>
                   </div>
                   <div class="r-uploader__upload">
-                    <i class="r-badge__wrapper r-icon r-icon-photograph r-uploader__upload-icon">
+                    <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
                     </i>
                     <input type="file"
                            class="r-uploader__input"
@@ -504,7 +504,7 @@ exports[`should render demo and match snapshot 1`] = `
             >
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
       <div class="r-cell r-cell--clickable r-field"
@@ -530,7 +530,7 @@ exports[`should render demo and match snapshot 1`] = `
             >
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
       <div class="r-cell r-cell--clickable r-field"
@@ -556,7 +556,7 @@ exports[`should render demo and match snapshot 1`] = `
             >
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
       <div class="r-cell r-cell--clickable r-field"
@@ -582,7 +582,7 @@ exports[`should render demo and match snapshot 1`] = `
             >
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+        <i class="r-badge__wrapper r-icon r-cell__right-icon">
         </i>
       </div>
     </div>

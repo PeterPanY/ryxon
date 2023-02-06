@@ -189,7 +189,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -202,7 +202,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -215,7 +215,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -228,7 +228,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">

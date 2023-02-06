@@ -1,6 +1,6 @@
-import { mount } from '../../../test';
-import { Grid } from '..';
-import { GridItem } from '../../grid-item';
+import { mount } from '../../../test'
+import { Grid } from '..'
+import { GridItem } from '../../grid-item'
 
 test('should render square grid with gutter correctly', () => {
   const wrapper = mount({
@@ -11,12 +11,12 @@ test('should render square grid with gutter correctly', () => {
           <GridItem />
           <GridItem />
         </Grid>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should change icon size when using icon-size prop', () => {
   const wrapper = mount({
@@ -25,12 +25,12 @@ test('should change icon size when using icon-size prop', () => {
         <Grid icon-size="10">
           <GridItem icon="success" />
         </Grid>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  expect(wrapper.find('.r-grid-item__icon').style.fontSize).toEqual('10px');
-});
+  expect(wrapper.find('.r-grid-item__icon').style.fontSize).toEqual('10px')
+})
 
 test('should change icon color when using icon-color prop', () => {
   const wrapper = mount({
@@ -39,11 +39,11 @@ test('should change icon color when using icon-color prop', () => {
         <Grid>
           <GridItem icon="success" icon-color="red" />
         </Grid>
-      );
-    },
-  });
-  expect(wrapper.find('.r-grid-item__icon').style.color).toEqual('red');
-});
+      )
+    }
+  })
+  expect(wrapper.find('.r-grid-item__icon').style.color).toEqual('red')
+})
 
 test('should render icon-slot correctly', () => {
   const wrapper = mount({
@@ -52,12 +52,12 @@ test('should render icon-slot correctly', () => {
         <Grid>
           <GridItem badge="1" v-slots={{ icon: () => 'Custom Icon' }} />
         </Grid>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should render ".r-grid-item__content--reverse" class when using reverse prop', () => {
   const wrapper = mount({
@@ -66,14 +66,14 @@ test('should render ".r-grid-item__content--reverse" class when using reverse pr
         <Grid reverse>
           <GridItem />
         </Grid>
-      );
-    },
-  });
+      )
+    }
+  })
 
   expect(wrapper.find('.r-grid-item__content').classes()).toContain(
     'r-grid-item__content--reverse'
-  );
-});
+  )
+})
 
 test('should render badge-props prop correctly', async () => {
   const wrapper = mount({
@@ -82,10 +82,10 @@ test('should render badge-props prop correctly', async () => {
         <Grid>
           <GridItem icon="foo" badge={1} badgeProps={{ color: 'blue' }} />
         </Grid>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const badge = wrapper.find('.r-badge');
-  expect(badge.style.backgroundColor).toEqual('blue');
-});
+  const badge = wrapper.find('.r-badge')
+  expect(badge.style.backgroundColor).toEqual('blue')
+})

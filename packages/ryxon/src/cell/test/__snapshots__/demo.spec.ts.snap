@@ -94,7 +94,7 @@ exports[`should render demo and match snapshot 1`] = `
 </div>
 <div>
   <div class="r-cell">
-    <i class="r-badge__wrapper r-icon r-icon-location-o r-cell__left-icon">
+    <i class="r-badge__wrapper r-icon r-cell__left-icon">
     </i>
     <div class="r-cell__title">
       <span>
@@ -118,7 +118,7 @@ exports[`should render demo and match snapshot 1`] = `
         Cell title
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -135,7 +135,7 @@ exports[`should render demo and match snapshot 1`] = `
         Content
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -152,7 +152,7 @@ exports[`should render demo and match snapshot 1`] = `
         Content
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow-down r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -166,7 +166,7 @@ exports[`should render demo and match snapshot 1`] = `
         URL
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell r-cell--clickable"
@@ -178,7 +178,7 @@ exports[`should render demo and match snapshot 1`] = `
         Vue Router
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
 </div>
@@ -241,18 +241,18 @@ exports[`should render demo and match snapshot 1`] = `
         Content
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+    <i class="r-badge__wrapper r-icon r-cell__right-icon">
     </i>
   </div>
   <div class="r-cell">
-    <i class="r-badge__wrapper r-icon r-icon-shop-o r-cell__left-icon">
+    <i class="r-badge__wrapper r-icon r-cell__left-icon">
     </i>
     <div class="r-cell__title">
       <span>
         Cell title
       </span>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-search search-icon">
+    <i class="r-badge__wrapper r-icon search-icon">
     </i>
   </div>
 </div>

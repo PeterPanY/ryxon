@@ -263,7 +263,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-busy="true"
   >
     <span class="r-loading__spinner r-loading__spinner--circular">
-      <i class="r-badge__wrapper r-icon r-icon-star-o"
+      <i class="r-badge__wrapper r-icon"
          style="font-size: 30px;"
       >
       </i>

@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="true"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -24,7 +24,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -37,7 +37,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -50,7 +50,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -69,7 +69,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="true"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -82,7 +82,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -95,7 +95,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -108,7 +108,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -127,7 +127,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="true"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -140,9 +140,9 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
-        <div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
         </div>
       </div>
       <div class="r-tabbar-item__text">
@@ -155,9 +155,9 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           5
         </div>
       </div>
@@ -171,9 +171,9 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           20
         </div>
       </div>
@@ -194,7 +194,7 @@ exports[`should render demo and match snapshot 1`] = `
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
         <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png">
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           3
         </div>
       </div>
@@ -210,7 +210,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -223,7 +223,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -243,7 +243,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="true"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -256,7 +256,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -269,7 +269,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -282,7 +282,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -301,7 +301,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="true"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-home-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -314,7 +314,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-search">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -327,7 +327,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-friends-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">
@@ -340,7 +340,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-selected="false"
     >
       <div class="r-badge__wrapper r-tabbar-item__icon">
-        <i class="r-badge__wrapper r-icon r-icon-setting-o">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <div class="r-tabbar-item__text">

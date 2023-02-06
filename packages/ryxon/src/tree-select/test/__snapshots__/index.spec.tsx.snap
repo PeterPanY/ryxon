@@ -3,7 +3,7 @@
 exports[`should change selected icon when using selected-icon prop 1`] = `
 <div class="r-ellipsis r-tree-select__item r-tree-select__item--active">
   city1
-  <i class="r-badge__wrapper r-icon r-icon-foo r-tree-select__selected">
+  <i class="r-badge__wrapper r-icon r-tree-select__selected">
   </i>
 </div>
 `;
@@ -58,7 +58,7 @@ exports[`should render nav badge correctly 1`] = `
     >
       <div class="r-badge__wrapper r-sidebar-item__text">
         group1
-        <div class="r-badge r-badge--top-right r-badge--fixed">
+        <div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
           3
         </div>
       </div>

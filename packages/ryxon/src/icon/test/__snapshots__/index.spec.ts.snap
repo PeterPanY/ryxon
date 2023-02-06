@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render badge correctly 1`] = `
-<div class="r-badge r-badge--top-right r-badge--fixed">
+<div class="r-badge r-badge--top-right r-badge--danger r-badge--fixed">
   1
 </div>
 `;
 
 exports[`should render default slot correctly 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-success">
+<i class="r-badge__wrapper r-icon">
   Default Slot
 </i>
 `;
 
 exports[`should render dot correctly 1`] = `
-<div class="r-badge r-badge--top-right r-badge--dot r-badge--fixed">
+<div class="r-badge r-badge--top-right r-badge--danger r-badge--dot r-badge--fixed">
 </div>
 `;
 
 exports[`should render icon with builtin icon name correctly 1`] = `
-<i class="r-badge__wrapper r-icon r-icon-success">
+<i class="r-badge__wrapper r-icon">
 </i>
 `;
 

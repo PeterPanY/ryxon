@@ -69,7 +69,7 @@ exports[`should render AddressEdit correctly 1`] = `
           >
         </div>
       </div>
-      <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+      <i class="r-badge__wrapper r-icon r-cell__right-icon">
       </i>
     </div>
     <div class="r-cell r-field r-address-edit-detail">
@@ -170,7 +170,7 @@ exports[`should render AddressEdit with props correctly 1`] = `
           >
         </div>
       </div>
-      <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+      <i class="r-badge__wrapper r-icon r-cell__right-icon">
       </i>
     </div>
     <div class="r-cell r-field r-address-edit-detail">
@@ -273,7 +273,7 @@ exports[`should valid area code and render error message correctly 1`] = `
       >
     </div>
   </div>
-  <i class="r-badge__wrapper r-icon r-icon-arrow r-cell__right-icon">
+  <i class="r-badge__wrapper r-icon r-cell__right-icon">
   </i>
 </div>
 `;

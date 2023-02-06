@@ -11,7 +11,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -24,7 +24,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -43,7 +43,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -56,7 +56,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -74,7 +74,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--disabled">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label r-radio__label--disabled">
@@ -86,7 +86,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--disabled r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label r-radio__label--disabled">
@@ -105,7 +105,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--square r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -118,7 +118,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--square">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -137,7 +137,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success"
+        <i class="r-badge__wrapper r-icon"
            style="border-color: #ee0a24; background-color: rgb(238, 10, 36);"
         >
         </i>
@@ -152,7 +152,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -173,7 +173,7 @@ exports[`should render demo and match snapshot 1`] = `
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked"
            style="font-size: 24px;"
       >
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -188,7 +188,7 @@ exports[`should render demo and match snapshot 1`] = `
       <div class="r-radio__icon r-radio__icon--round"
            style="font-size: 24px;"
       >
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -237,7 +237,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -250,7 +250,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-radio__icon r-radio__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-radio__label">
@@ -279,7 +279,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-checked="true"
         >
           <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked">
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>
@@ -299,7 +299,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-checked="false"
         >
           <div class="r-radio__icon r-radio__icon--round">
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>

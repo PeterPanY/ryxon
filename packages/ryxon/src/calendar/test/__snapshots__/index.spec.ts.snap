@@ -671,7 +671,7 @@ exports[`popup wrapper 2`] = `
         </button>
       </div>
     </div>
-    <i class="r-badge__wrapper r-icon r-icon-cross r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
+    <i class="r-badge__wrapper r-icon r-popup__close-icon r-popup__close-icon--top-right r-haptics-feedback"
        role="button"
        tabindex="0"
     >

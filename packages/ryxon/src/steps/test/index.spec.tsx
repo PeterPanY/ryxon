@@ -1,6 +1,6 @@
-import { mount } from '../../../test';
-import { Step } from '../../step';
-import { Steps } from '..';
+import { mount } from '../../../test'
+import { Step } from '../../step'
+import { Steps } from '..'
 
 test('should render icon slot correctly', () => {
   const wrapper = mount({
@@ -12,14 +12,14 @@ test('should render icon slot correctly', () => {
             A
           </Step>
         </Steps>
-      );
-    },
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+      )
+    }
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should emit clickStep event when step is clicked', () => {
-  const onClickStep = jest.fn();
+  const onClickStep = jest.fn()
   const wrapper = mount({
     setup() {
       return () => (
@@ -28,20 +28,20 @@ test('should emit clickStep event when step is clicked', () => {
           <Step>B</Step>
           <Step>C</Step>
         </Steps>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  wrapper.find('.r-step').trigger('click');
-  expect(onClickStep).toHaveBeenCalledTimes(0);
+  wrapper.find('.r-step').trigger('click')
+  expect(onClickStep).toHaveBeenCalledTimes(0)
 
-  wrapper.find('.r-step__title').trigger('click');
-  expect(onClickStep).toHaveBeenCalledWith(0);
+  wrapper.find('.r-step__title').trigger('click')
+  expect(onClickStep).toHaveBeenCalledWith(0)
 
-  wrapper.findAll('.r-step__circle-container')[2].trigger('click');
-  expect(onClickStep).toHaveBeenCalledTimes(2);
-  expect(onClickStep).toHaveBeenLastCalledWith(2);
-});
+  wrapper.findAll('.r-step__circle-container')[2].trigger('click')
+  expect(onClickStep).toHaveBeenCalledTimes(2)
+  expect(onClickStep).toHaveBeenLastCalledWith(2)
+})
 
 test('should change inactive color when using inactive-color prop', () => {
   const wrapper = mount({
@@ -51,11 +51,11 @@ test('should change inactive color when using inactive-color prop', () => {
           <Step>A</Step>
           <Step>B</Step>
         </Steps>
-      );
-    },
-  });
-  expect(wrapper.html()).toMatchSnapshot();
-});
+      )
+    }
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should change inactive icon when using inactive-icon prop', () => {
   const wrapper = mount({
@@ -65,14 +65,14 @@ test('should change inactive icon when using inactive-icon prop', () => {
           <Step>A</Step>
           <Step>B</Step>
         </Steps>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const steps = wrapper.findAll('.r-step');
-  expect(steps[1].find('.r-icon-foo').exists()).toBeTruthy();
-  expect(steps[1].html()).toMatchSnapshot();
-});
+  const steps = wrapper.findAll('.r-step')
+  expect(steps[1].find('.r-icon-foo').exists()).toBeTruthy()
+  expect(steps[1].html()).toMatchSnapshot()
+})
 
 test('should change finish icon when using finish-icon prop', () => {
   const wrapper = mount({
@@ -82,14 +82,14 @@ test('should change finish icon when using finish-icon prop', () => {
           <Step>A</Step>
           <Step>B</Step>
         </Steps>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const firstStep = wrapper.find('.r-step');
-  expect(firstStep.find('.r-icon-foo').exists()).toBeTruthy();
-  expect(firstStep.html()).toMatchSnapshot();
-});
+  const firstStep = wrapper.find('.r-step')
+  expect(firstStep.find('.r-icon-foo').exists()).toBeTruthy()
+  expect(firstStep.html()).toMatchSnapshot()
+})
 
 test('should render finish icon slot correctly', () => {
   const wrapper = mount({
@@ -99,13 +99,13 @@ test('should render finish icon slot correctly', () => {
           <Step v-slots={{ 'finish-icon': () => `Custom Finish Icon` }}>A</Step>
           <Step>B</Step>
         </Steps>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const firstStep = wrapper.find('.r-step');
-  expect(firstStep.html()).toMatchSnapshot();
-});
+  const firstStep = wrapper.find('.r-step')
+  expect(firstStep.html()).toMatchSnapshot()
+})
 
 test('should render icon-prefix correctly', () => {
   const wrapper = mount({
@@ -115,10 +115,10 @@ test('should render icon-prefix correctly', () => {
           <Step>A</Step>
           <Step>B</Step>
         </Steps>
-      );
-    },
-  });
+      )
+    }
+  })
 
-  const steps = wrapper.findAll('.r-step');
-  expect(steps[1].html()).toMatchSnapshot();
-});
+  const steps = wrapper.findAll('.r-step')
+  expect(steps[1].html()).toMatchSnapshot()
+})

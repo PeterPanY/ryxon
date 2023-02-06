@@ -15,7 +15,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -25,7 +25,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -35,7 +35,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -45,7 +45,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -55,7 +55,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -74,7 +74,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-like r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -84,7 +84,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-like r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -94,7 +94,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-like r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -104,7 +104,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-like-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -114,7 +114,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-like-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -133,7 +133,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full"
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full"
          style="color: rgb(255, 210, 30); font-size: 25px;"
       >
       </i>
@@ -145,7 +145,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full"
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full"
          style="color: rgb(255, 210, 30); font-size: 25px;"
       >
       </i>
@@ -157,7 +157,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full"
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full"
          style="color: rgb(255, 210, 30); font-size: 25px;"
       >
       </i>
@@ -169,7 +169,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon"
+      <i class="r-badge__wrapper r-icon r-rate__icon"
          style="color: rgb(238, 238, 238); font-size: 25px;"
       >
       </i>
@@ -181,7 +181,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon"
+      <i class="r-badge__wrapper r-icon r-rate__icon"
          style="color: rgb(238, 238, 238); font-size: 25px;"
       >
       </i>
@@ -202,7 +202,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -212,7 +212,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -222,9 +222,9 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--half r-rate__icon--full"
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--half r-rate__icon--full"
          style="width: 0.5em;"
       >
       </i>
@@ -236,7 +236,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -246,7 +246,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -265,7 +265,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -275,7 +275,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -285,7 +285,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -295,7 +295,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -305,7 +305,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -315,7 +315,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="6"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -332,7 +332,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--disabled r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--disabled r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -341,7 +341,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--disabled r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--disabled r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -350,7 +350,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--disabled r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--disabled r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -359,7 +359,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon r-rate__icon--disabled">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--disabled">
       </i>
     </div>
     <div role="radio"
@@ -368,7 +368,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon r-rate__icon--disabled">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--disabled">
       </i>
     </div>
   </div>
@@ -387,7 +387,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -397,7 +397,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -407,7 +407,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -417,7 +417,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -427,7 +427,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -446,7 +446,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -456,7 +456,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -466,7 +466,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -476,9 +476,9 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--half r-rate__icon--full"
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--half r-rate__icon--full"
          style="width: 0.3em;"
       >
       </i>
@@ -490,7 +490,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>
@@ -509,7 +509,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="1"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -519,7 +519,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="2"
          aria-checked="true"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star r-rate__icon r-rate__icon--full">
+      <i class="r-badge__wrapper r-icon r-rate__icon r-rate__icon--full">
       </i>
     </div>
     <div role="radio"
@@ -529,7 +529,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="3"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -539,7 +539,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="4"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
     <div role="radio"
@@ -549,7 +549,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-posinset="5"
          aria-checked="false"
     >
-      <i class="r-badge__wrapper r-icon r-icon-star-o r-rate__icon">
+      <i class="r-badge__wrapper r-icon r-rate__icon">
       </i>
     </div>
   </div>

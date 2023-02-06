@@ -62,7 +62,7 @@ exports[`click option 1`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -164,7 +164,7 @@ exports[`close-on-click-outside 1`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -367,7 +367,7 @@ exports[`direction up 2`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -469,7 +469,7 @@ exports[`disable close-on-click-outside 1`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -600,7 +600,7 @@ exports[`render option icon 1`] = `
              role="menuitem"
              tabindex="0"
         >
-          <i class="r-badge__wrapper r-icon r-icon-success r-cell__left-icon">
+          <i class="r-badge__wrapper r-icon r-cell__left-icon">
           </i>
           <div class="r-cell__title">
             <span>
@@ -608,7 +608,7 @@ exports[`render option icon 1`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -616,7 +616,7 @@ exports[`render option icon 1`] = `
              role="menuitem"
              tabindex="-1"
         >
-          <i class="r-badge__wrapper r-icon r-icon-success r-cell__left-icon">
+          <i class="r-badge__wrapper r-icon r-cell__left-icon">
           </i>
           <div class="r-cell__title">
             <span>
@@ -712,7 +712,7 @@ exports[`show dropdown item 1`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -814,7 +814,7 @@ exports[`show dropdown item 2`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -869,7 +869,7 @@ exports[`show dropdown item 2`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -953,7 +953,7 @@ exports[`show dropdown item 3`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>
@@ -1008,7 +1008,7 @@ exports[`show dropdown item 3`] = `
             </span>
           </div>
           <div class="r-cell__value">
-            <i class="r-badge__wrapper r-icon r-icon-success r-dropdown-item__icon">
+            <i class="r-badge__wrapper r-icon r-dropdown-item__icon">
             </i>
           </div>
         </div>

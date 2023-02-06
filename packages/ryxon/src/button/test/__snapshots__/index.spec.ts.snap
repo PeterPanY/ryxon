@@ -5,7 +5,7 @@ exports[`should change icon class prefix when using icon-prefix prop 1`] = `
         class="r-button r-button--default r-button--normal"
 >
   <div class="r-button__content">
-    <i class="r-badge__wrapper my-icon my-icon-success r-button__icon">
+    <i class="r-badge__wrapper my-icon r-button__icon">
     </i>
   </div>
 </button>
@@ -16,7 +16,7 @@ exports[`should render icon in the right side when setting icon-position to righ
         class="r-button r-button--default r-button--normal"
 >
   <div class="r-button__content">
-    <i class="r-badge__wrapper r-icon r-icon-plus r-button__icon">
+    <i class="r-badge__wrapper r-icon r-button__icon">
     </i>
   </div>
 </button>

@@ -10,7 +10,7 @@ exports[`should render demo and match snapshot 1`] = `
            role="button"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-edit r-contact-list__edit">
+        <i class="r-badge__wrapper r-icon r-contact-list__edit">
         </i>
         <div class="r-cell__title r-contact-list__item-title">
           John Snow，13000000000
@@ -32,7 +32,7 @@ exports[`should render demo and match snapshot 1`] = `
           <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked"
                style="font-size: 16px;"
           >
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>
@@ -41,7 +41,7 @@ exports[`should render demo and match snapshot 1`] = `
            role="button"
            tabindex="0"
       >
-        <i class="r-badge__wrapper r-icon r-icon-edit r-contact-list__edit">
+        <i class="r-badge__wrapper r-icon r-contact-list__edit">
         </i>
         <div class="r-cell__title r-contact-list__item-title">
           Ned Stark，1310000000
@@ -54,7 +54,7 @@ exports[`should render demo and match snapshot 1`] = `
           <div class="r-radio__icon r-radio__icon--round"
                style="font-size: 16px;"
           >
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 exports[`should change icon class-prefix when using icon-prefix prop 1`] = `
 <div class="r-config-provider">
-  <i class="r-badge__wrapper foo foo-success">
+  <i class="r-badge__wrapper foo">
   </i>
 </div>
 `;

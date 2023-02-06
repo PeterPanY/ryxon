@@ -8,7 +8,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="true"
   >
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label">
@@ -22,7 +22,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="false"
   >
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--disabled">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label r-checkbox__label--disabled">
@@ -34,7 +34,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="true"
   >
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--disabled r-checkbox__icon--checked">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label r-checkbox__label--disabled">
@@ -49,7 +49,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="true"
   >
     <div class="r-checkbox__icon r-checkbox__icon--square r-checkbox__icon--checked">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label">
@@ -64,7 +64,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="true"
   >
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-      <i class="r-badge__wrapper r-icon r-icon-success"
+      <i class="r-badge__wrapper r-icon"
          style="border-color: #ee0a24; background-color: rgb(238, 10, 36);"
       >
       </i>
@@ -83,7 +83,7 @@ exports[`should render demo and match snapshot 1`] = `
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked"
          style="font-size: 24px;"
     >
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label">
@@ -112,7 +112,7 @@ exports[`should render demo and match snapshot 1`] = `
        aria-checked="true"
   >
     <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-      <i class="r-badge__wrapper r-icon r-icon-success">
+      <i class="r-badge__wrapper r-icon">
       </i>
     </div>
     <span class="r-checkbox__label">
@@ -128,7 +128,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -141,7 +141,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="true"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round r-checkbox__icon--checked">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -158,7 +158,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -171,7 +171,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -188,7 +188,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -201,7 +201,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -214,7 +214,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -231,7 +231,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -244,7 +244,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -257,7 +257,7 @@ exports[`should render demo and match snapshot 1`] = `
          aria-checked="false"
     >
       <div class="r-checkbox__icon r-checkbox__icon--round">
-        <i class="r-badge__wrapper r-icon r-icon-success">
+        <i class="r-badge__wrapper r-icon">
         </i>
       </div>
       <span class="r-checkbox__label">
@@ -304,7 +304,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-checked="false"
         >
           <div class="r-checkbox__icon r-checkbox__icon--round">
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>
@@ -324,7 +324,7 @@ exports[`should render demo and match snapshot 1`] = `
              aria-checked="false"
         >
           <div class="r-checkbox__icon r-checkbox__icon--round">
-            <i class="r-badge__wrapper r-icon r-icon-success">
+            <i class="r-badge__wrapper r-icon">
             </i>
           </div>
         </div>

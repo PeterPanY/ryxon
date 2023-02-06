@@ -17,7 +17,7 @@ exports[`should render demo and match snapshot 1`] = `
               <div class="r-radio__icon r-radio__icon--round r-radio__icon--checked"
                    style="font-size: 18px;"
               >
-                <i class="r-badge__wrapper r-icon r-icon-success">
+                <i class="r-badge__wrapper r-icon">
                 </i>
               </div>
               <span class="r-radio__label">
@@ -39,7 +39,7 @@ exports[`should render demo and match snapshot 1`] = `
               </span>
             </div>
           </div>
-          <i class="r-badge__wrapper r-icon r-icon-edit r-address-item__edit">
+          <i class="r-badge__wrapper r-icon r-address-item__edit">
           </i>
         </div>
       </div>
@@ -54,7 +54,7 @@ exports[`should render demo and match snapshot 1`] = `
               <div class="r-radio__icon r-radio__icon--round"
                    style="font-size: 18px;"
               >
-                <i class="r-badge__wrapper r-icon r-icon-success">
+                <i class="r-badge__wrapper r-icon">
                 </i>
               </div>
               <span class="r-radio__label">
@@ -67,7 +67,7 @@ exports[`should render demo and match snapshot 1`] = `
               </span>
             </div>
           </div>
-          <i class="r-badge__wrapper r-icon r-icon-edit r-address-item__edit">
+          <i class="r-badge__wrapper r-icon r-address-item__edit">
           </i>
         </div>
       </div>
@@ -85,7 +85,7 @@ exports[`should render demo and match snapshot 1`] = `
             Somewhere
           </div>
         </div>
-        <i class="r-badge__wrapper r-icon r-icon-edit r-address-item__edit">
+        <i class="r-badge__wrapper r-icon r-address-item__edit">
         </i>
       </div>
     </div>

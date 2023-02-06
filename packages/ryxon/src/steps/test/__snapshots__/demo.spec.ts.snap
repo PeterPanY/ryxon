@@ -20,7 +20,7 @@ exports[`should render demo and match snapshot 1`] = `
           Step2
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-checked r-step__icon r-step__icon--active">
+          <i class="r-badge__wrapper r-icon r-step__icon r-step__icon--active">
           </i>
         </div>
         <div class="r-step__line">
@@ -68,7 +68,7 @@ exports[`should render demo and match snapshot 1`] = `
           Step1
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-arrow r-step__icon">
+          <i class="r-badge__wrapper r-icon r-step__icon">
           </i>
         </div>
         <div class="r-step__line"
@@ -83,7 +83,7 @@ exports[`should render demo and match snapshot 1`] = `
           Step2
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-success r-step__icon r-step__icon--active"
+          <i class="r-badge__wrapper r-icon r-step__icon r-step__icon--active"
              style="color: rgb(7, 193, 96);"
           >
           </i>
@@ -96,7 +96,7 @@ exports[`should render demo and match snapshot 1`] = `
           Step3
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-arrow r-step__icon">
+          <i class="r-badge__wrapper r-icon r-step__icon">
           </i>
         </div>
         <div class="r-step__line">
@@ -107,7 +107,7 @@ exports[`should render demo and match snapshot 1`] = `
           Step4
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-arrow r-step__icon">
+          <i class="r-badge__wrapper r-icon r-step__icon">
           </i>
         </div>
         <div class="r-step__line">
@@ -129,7 +129,7 @@ exports[`should render demo and match snapshot 1`] = `
           </p>
         </div>
         <div class="r-step__circle-container">
-          <i class="r-badge__wrapper r-icon r-icon-checked r-step__icon r-step__icon--active">
+          <i class="r-badge__wrapper r-icon r-step__icon r-step__icon--active">
           </i>
         </div>
         <div class="r-step__line">
