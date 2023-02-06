@@ -1,23 +1,23 @@
 import { watch, inject, InjectionKey, Ref } from 'vue'
 
-export type CustomFieldInjectionValue = {
+export type CustomInputInjectionValue = {
   customValue: Ref<(() => unknown) | undefined>
   resetValidation: () => void
   validateWithTrigger: (trigger: 'onBlur' | 'onChange' | 'onSubmit') => void
 }
 
-export const CUSTOM_FIELD_INJECTION_KEY: InjectionKey<CustomFieldInjectionValue> =
-  Symbol('r-field')
+export const CUSTOM_INPUT_INJECTION_KEY: InjectionKey<CustomInputInjectionValue> =
+  Symbol('r-input')
 
-export function useCustomFieldValue(customValue: () => unknown) {
-  const field = inject(CUSTOM_FIELD_INJECTION_KEY, null)
+export function useCustomInputValue(customValue: () => unknown) {
+  const customInput = inject(CUSTOM_INPUT_INJECTION_KEY, null)
 
-  if (field && !field.customValue.value) {
-    field.customValue.value = customValue
+  if (customInput && !customInput.customValue.value) {
+    customInput.customValue.value = customValue
 
     watch(customValue, () => {
-      field.resetValidation()
-      field.validateWithTrigger('onChange')
+      customInput.resetValidation()
+      customInput.validateWithTrigger('onChange')
     })
   }
 }
