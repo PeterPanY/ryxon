@@ -1,5 +1,5 @@
 <template>
-  <r-input v-model="value" label="文本" placeholder="请输入用户名" />
+  <r-input v-model="value" label="文本" placeholder="请输入用户名" clearable />
 </template>
 
 <script setup lang="ts">

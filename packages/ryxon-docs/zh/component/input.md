@@ -109,6 +109,7 @@ input/label-align
 | size | 大小，可选值为 `large` | `string` | - |
 | maxlength | 输入的最大字符数 | `number / string` | - |
 | placeholder | 输入框占位提示文字 | `string` | - |
+| input-border | 输入框是否显示边框 | `boolean` | `true` |
 | border | 是否显示内边框 | `boolean` | `true` |
 | disabled | 是否禁用输入框 | `boolean` | `false` |
 | readonly | 是否为只读状态，只读状态下无法输入内容 | `boolean` | `false` |
@@ -137,7 +138,7 @@ input/label-align
 | right-icon | 右侧图标名称或图片链接，等同于 Icon 组件的 `name 属性` | `string` | - |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
 | rules | 表单校验规则，详见 `Form 组件` | `InputRule[]` | - |
-| autocomplete | HTML 原生属性，用于控制自动完成功能，详见 [MDN - autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | `string` | - |
+| autocomplete | HTML 原生属性，用于控制自动完成功能，详见 [MDN - autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | `string` | `off` |
 | enterkeyhint | HTML 原生属性，用于控制回车键样式，此 API 仅在部分浏览器支持，详见 [MDN - enterkeyhint](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint)<br> | `string` | - |
 
 ### Events

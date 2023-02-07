@@ -17,6 +17,8 @@
   --r-input-word-limit-line-height: 16px;
   --r-input-disabled-text-color: var(--r-text-color-3);
   --r-input-required-mark-color: var(--r-red);
+  --r-input-hover-border-color: var(--r-text-color-disabled);
+  --r-input-focus-border-color: var(--r-primary-color);
 }
 
 .r-input {
@@ -68,6 +70,19 @@
   &__body {
     display: flex;
     align-items: center;
+    padding: 0 15px;
+
+    &--border {
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px var(--r-border-color) inset;
+
+      &:hover {
+        box-shadow: 0 0 0 1px var(--r-input-hover-border-color) inset;
+      }
+      &.is-focus {
+        box-shadow: 0 0 0 1px var(--r-input-focus-border-color) inset;
+      }
+    }
   }
 
   &__control {
@@ -83,7 +98,6 @@
     background-color: transparent;
     border: 0;
     resize: none;
-    // https://github.com/PeterPanY/ryxon/pull/9418
     user-select: auto;
 
     &::placeholder {
@@ -94,7 +108,7 @@
       color: var(--r-input-disabled-text-color);
       cursor: not-allowed;
       opacity: 1;
-      // fix disabled color in mobile safari
+      // 修复移动safari中禁用的颜色
       -webkit-text-fill-color: var(--r-input-disabled-text-color);
     }
 
@@ -150,8 +164,6 @@
 
   &__clear,
   &__right-icon {
-    margin-right: calc(var(--r-padding-xs) * -1);
-    padding: 0 var(--r-padding-xs);
     line-height: inherit;
   }
 

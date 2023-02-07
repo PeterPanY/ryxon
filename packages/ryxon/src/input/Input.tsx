@@ -20,6 +20,7 @@ import {
   addUnit,
   toArray,
   FORM_KEY,
+  truthProp,
   numericProp,
   unknownProp,
   resetScroll,
@@ -46,17 +47,15 @@ import {
 import { cellSharedProps } from '../cell/Cell'
 
 // Composables
-import {
-  useParent,
-  useEventListener,
-  CUSTOM_INPUT_INJECTION_KEY
-} from '@ryxon/use'
+import { useParent, CUSTOM_INPUT_INJECTION_KEY } from '@ryxon/use'
 import { useId } from '../composables/use-id'
 import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
 import { Cell } from '../cell'
+
+import { CircleClose } from '@ryxon/icons'
 
 // Types
 import type {
@@ -73,7 +72,7 @@ import type {
   InputFormSharedProps
 } from './types'
 
-const [name, bem] = createNamespace('input')
+const [, bem] = createNamespace('input')
 
 // provide to Search component to inherit
 export const inputSharedProps = {
@@ -85,27 +84,18 @@ export const inputSharedProps = {
   clearable: Boolean,
   maxlength: numericProp,
   formatter: Function as PropType<(value: string) => string>,
-  clearIcon: makeStringProp('clear'),
   modelValue: makeNumericProp(''),
   inputAlign: String as PropType<InputTextAlign>,
   placeholder: String,
-  autocomplete: String,
+  autocomplete: { type: String, default: 'off' },
   errorMessage: String,
   enterkeyhint: String,
   clearTrigger: makeStringProp<InputClearTrigger>('focus'),
   formatTrigger: makeStringProp<InputFormatTrigger>('onChange'),
-  error: {
-    type: Boolean,
-    default: null
-  },
-  disabled: {
-    type: Boolean,
-    default: null
-  },
-  readonly: {
-    type: Boolean,
-    default: null
-  }
+  error: { type: Boolean, default: null },
+  disabled: { type: Boolean, default: null },
+  readonly: { type: Boolean, default: null },
+  inputBorder: truthProp
 }
 
 export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
@@ -118,22 +108,21 @@ export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
   labelAlign: String as PropType<InputTextAlign>,
   showWordLimit: Boolean,
   errorMessageAlign: String as PropType<InputTextAlign>,
-  colon: {
-    type: Boolean,
-    default: null
-  }
+  colon: { type: Boolean, default: null }
 })
 
 export type InputProps = ExtractPropTypes<typeof inputProps>
 
 export default defineComponent({
-  name,
+  name: 'RInput',
   props: inputProps,
   emits: [
     'blur',
     'focus',
     'clear',
     'keypress',
+    'mouseenter',
+    'mouseleave',
     'clickInput',
     'endValidate',
     'startValidate',
@@ -147,6 +136,7 @@ export default defineComponent({
     const state = reactive({
       status: 'unvalidated' as InputValidationStatus,
       focused: false,
+      hovering: false,
       validateMessage: ''
     })
 
@@ -174,7 +164,7 @@ export default defineComponent({
         const hasValue = getModelValue() !== ''
         const trigger =
           props.clearTrigger === 'always' ||
-          (props.clearTrigger === 'focus' && state.focused)
+          (props.clearTrigger === 'focus' && (state.focused || state.hovering))
 
         return hasValue && trigger
       }
@@ -278,8 +268,7 @@ export default defineComponent({
       }
     }
 
-    // native maxlength have incorrect line-break counting
-    // see: https://github.com/PeterPanY/ryxon/issues/5033
+    // 最大长度的换行计数
     const limitValueLength = (value: string) => {
       const { maxlength } = props
       if (isDef(maxlength) && getStringLength(value) > maxlength) {
@@ -287,8 +276,7 @@ export default defineComponent({
         if (modelValue && getStringLength(modelValue) === +maxlength) {
           return modelValue
         }
-        // Remove redundant interpolated values,
-        // make it consistent with the native input maxlength behavior.
+        // 删除冗余插值，使其与本地输入maxlength行为一致。
         const selectionEnd = inputRef.value?.selectionEnd
         if (state.focused && selectionEnd) {
           const valueArr = [...value]
@@ -307,9 +295,7 @@ export default defineComponent({
     ) => {
       const originalValue = value
       value = limitValueLength(value)
-      // When the value length exceeds maxlength,
-      // record the excess length for correcting the cursor position.
-      // https://github.com/youzan/ryxon/issues/11289
+      // 当值长度超过maxlength时，记录用于校正光标位置的多余长度。
       const limitDiffLen =
         getStringLength(originalValue) - getStringLength(value)
 
@@ -328,17 +314,16 @@ export default defineComponent({
         }
         if (inputRef.value && state.focused) {
           const { selectionEnd } = inputRef.value
-          // The value before the cursor of the original value.
+          // 格式化值的长度可能超过maxlength。
           const bcoVal = cutString(originalValue, selectionEnd!)
-          // Record the length change of `bcoVal` after formatting,
-          // which is used to correct the cursor position.
+          // 记录格式化后“bcoVal”的长度变化，其用于校正光标位置。
           formatterDiffLen =
             getStringLength(formatter(bcoVal)) - getStringLength(bcoVal)
         }
       }
 
       if (inputRef.value && inputRef.value.value !== value) {
-        // When the input is focused, correct the cursor position.
+        // 当输入聚焦时，纠正光标位置。
         if (state.focused) {
           let { selectionStart, selectionEnd } = inputRef.value
           inputRef.value.value = value
@@ -370,7 +355,7 @@ export default defineComponent({
     }
 
     const onInput = (event: Event) => {
-      // skip update value when composing
+      // 编写时跳过更新值
       if (!event.target!.composing) {
         updateValue((event.target as HTMLInputElement).value)
       }
@@ -391,7 +376,7 @@ export default defineComponent({
       emit('focus', event)
       nextTick(adjustTextareaSize)
 
-      // readonly not work in legacy mobile safari
+      // readonly在传统移动safari中不起作用
       if (getProp('readonly')) {
         blur()
       }
@@ -448,7 +433,7 @@ export default defineComponent({
           preventDefault(event)
         }
 
-        // trigger blur after click keyboard search button
+        // 单击键盘搜索按钮后触发模糊
         if (props.type === 'search') {
           blur()
         }
@@ -599,15 +584,29 @@ export default defineComponent({
       }
     }
 
+    const handleMouseEnter = (event: Event) => {
+      state.hovering = true
+      emit('mouseenter', event)
+    }
+    const handleMouseLeave = (event: Event) => {
+      state.hovering = false
+      emit('mouseleave', event)
+    }
+
     const renderInputBody = () => [
-      <div class={bem('body')}>
+      <div
+        class={[
+          bem('body', { border: props.inputBorder && !getProp('readonly') }),
+          state.focused ? 'is-focus' : ''
+        ]}
+        onMouseenter={handleMouseEnter}
+        onMouseleave={handleMouseLeave}
+      >
         {renderInput()}
         {showClear.value && (
-          <Icon
-            ref={clearIconRef}
-            name={props.clearIcon}
-            class={bem('clear')}
-          />
+          <Icon ref={clearIconRef} class={bem('clear')} onClick={onClear}>
+            <CircleClose />
+          </Icon>
         )}
         {renderRightIcon()}
         {slots.button && <div class={bem('button')}>{slots.button()}</div>}
@@ -644,11 +643,6 @@ export default defineComponent({
     onMounted(() => {
       updateValue(getModelValue(), props.formatTrigger)
       nextTick(adjustTextareaSize)
-    })
-
-    // useEventListener将被动设置为“false”以消除Chrome的警告
-    useEventListener('click', onClear, {
-      target: computed(() => clearIconRef.value?.$el)
     })
 
     return () => {
