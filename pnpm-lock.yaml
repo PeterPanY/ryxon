@@ -200,7 +200,6 @@ importers:
     specifiers:
       '@ryxon/components': workspace:*
       '@ryxon/icons': workspace:*
-      '@vue/shared': ^3.2.37
       clipboard-copy: ^4.0.1
       fast-glob: ^3.2.11
       markdown-it-container: ^3.0.0
@@ -219,7 +218,6 @@ importers:
     devDependencies:
       '@ryxon/components': link:../ryxon-components
       '@ryxon/icons': link:../ryxon-icons
-      '@vue/shared': 3.2.45
       clipboard-copy: 4.0.1
       fast-glob: 3.2.12
       ryxon: link:../ryxon

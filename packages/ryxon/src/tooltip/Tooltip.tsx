@@ -29,7 +29,6 @@ import {
   truthProp,
   numericProp,
   unknownProp,
-  makeArrayProp,
   makeStringProp,
   definePropType,
   createNamespace,
@@ -45,12 +44,7 @@ import { useExpose } from '../composables/use-expose'
 import { Popup } from '../popup'
 
 // Types
-import {
-  TooltipTheme,
-  TooltipAction,
-  TooltipTrigger,
-  TooltipPlacement
-} from './types'
+import { TooltipTheme, TooltipTrigger, TooltipPlacement } from './types'
 
 const [, bem] = createNamespace('tooltip')
 
@@ -71,8 +65,7 @@ export const tooltipProps = {
   content: { type: String, default: '' }, // 显示的内容
   rawContent: { type: Boolean, default: false }, // content 中的内容是否作为 HTML 字符串处理
   disabled: { type: Boolean }, // Tooltip 组件是否禁用
-  theme: makeStringProp<TooltipTheme>('light'), // Tooltip 主题
-  actions: makeArrayProp<TooltipAction>(),
+  theme: makeStringProp<TooltipTheme>('dark'), // Tooltip 主题
   trigger: makeStringProp<TooltipTrigger>('hover'),
   // 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示
   triggerKeys: {
@@ -108,7 +101,7 @@ export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
 export default defineComponent({
   name: 'RTooltip',
   props: tooltipProps,
-  emits: ['select', 'click', 'update:visible', ...tooltipEmits],
+  emits: [...tooltipEmits],
   setup(props, { emit, slots, attrs }) {
     let popper: Instance | null
 
@@ -345,13 +338,6 @@ export default defineComponent({
 
     // 从 A 组件，切换到 B 组件，A 组件消失时执行；
     onDeactivated(() => open.value && hide())
-
-    // onBeforeUnmount(() => {
-    //   if (popper) {
-    //     popper.destroy()
-    //     popper = null
-    //   }
-    // })
 
     // 属性值发生变化时，更新实例
     watch(

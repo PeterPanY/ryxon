@@ -1,17 +1,10 @@
 :root {
   --r-tooltip-arrow-size: 6px;
   --r-tooltip-radius: var(--r-radius-md);
-  --r-tooltip-action-width: 128px;
-  --r-tooltip-action-height: 44px;
-  --r-tooltip-action-font-size: var(--r-font-size-md);
-  --r-tooltip-action-line-height: var(--r-line-height-md);
-  --r-tooltip-action-icon-size: 20px;
   --r-tooltip-light-text-color: var(--r-text-color);
   --r-tooltip-light-background: var(--r-background-2);
-  --r-tooltip-light-action-disabled-text-color: var(--r-text-color-3);
   --r-tooltip-dark-text-color: var(--r-white);
   --r-tooltip-dark-background: #4a4a4a;
-  --r-tooltip-dark-action-disabled-text-color: var(--r-text-color-2);
 }
 
 .r-tooltip {
@@ -42,44 +35,6 @@
     min-width: 10px;
     word-wrap: break-word;
     visibility: visible;
-  }
-
-  &__action {
-    position: relative;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    width: var(--r-tooltip-action-width);
-    height: var(--r-tooltip-action-height);
-    padding: 0 var(--r-padding-md);
-    font-size: var(--r-tooltip-action-font-size);
-    line-height: var(--r-line-height-md);
-    cursor: pointer;
-
-    &:last-child {
-      .r-tooltip__action-text::after {
-        display: none;
-      }
-    }
-
-    &-text {
-      display: flex;
-      flex: 1;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-
-    &-icon {
-      margin-right: var(--r-padding-xs);
-      font-size: var(--r-tooltip-action-icon-size);
-    }
-
-    &--with-icon {
-      .r-tooltip__action-text {
-        justify-content: flex-start;
-      }
-    }
   }
 
   &[data-popper-placement^='top'] {
@@ -229,21 +184,6 @@
     .r-tooltip__arrow {
       color: var(--r-tooltip-light-background);
     }
-
-    .r-tooltip__action {
-      &:active {
-        background-color: var(--r-active-color);
-      }
-
-      &--disabled {
-        color: var(--r-tooltip-light-action-disabled-text-color);
-        cursor: not-allowed;
-
-        &:active {
-          background-color: transparent;
-        }
-      }
-    }
   }
 
   &--dark {
@@ -255,26 +195,6 @@
 
     .r-tooltip__arrow {
       color: var(--r-tooltip-dark-background);
-    }
-
-    .r-tooltip__action {
-      &:active {
-        background-color: rgba(0, 0, 0, 0.2);
-      }
-
-      &--disabled {
-        color: var(--r-tooltip-dark-action-disabled-text-color);
-
-        &:active {
-          background-color: transparent;
-        }
-      }
-    }
-
-    .r-tooltip__action-text {
-      &::after {
-        border-color: var(--r-gray-7);
-      }
     }
   }
 

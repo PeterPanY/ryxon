@@ -8,7 +8,6 @@ export { tooltipProps } from './Tooltip'
 export type { TooltipProps } from './Tooltip'
 export type {
   TooltipTheme,
-  TooltipAction,
   TooltipTrigger,
   TooltipThemeVars,
   TooltipPlacement
