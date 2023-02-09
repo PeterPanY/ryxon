@@ -55,17 +55,6 @@ export function getRuleMessage(value: unknown, rule: InputRule) {
   return message || ''
 }
 
-export function startComposing({ target }: Event) {
-  target!.composing = true
-}
-
-export function endComposing({ target }: Event) {
-  if (target!.composing) {
-    target!.composing = false
-    target!.dispatchEvent(new Event('input'))
-  }
-}
-
 export function resizeTextarea(
   input: HTMLInputElement,
   autosize: true | InputAutosizeConfig

@@ -1,21 +1,36 @@
 {
-  "hash": "f053e0a6",
-  "browserHash": "08ed0d0a",
+  "hash": "2c2d1663",
+  "browserHash": "770c119d",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "c7ff02cf",
+      "fileHash": "b970466d",
       "needsInterop": false
     },
     "clipboard-copy": {
       "src": "../../../../../node_modules/.pnpm/clipboard-copy@4.0.1/node_modules/clipboard-copy/index.js",
       "file": "clipboard-copy.js",
-      "fileHash": "dd5d46a5",
+      "fileHash": "a769b5d4",
       "needsInterop": true
+    },
+    "@vueuse/core": {
+      "src": "../../../../../node_modules/.pnpm/@vueuse+core@9.10.0_vue@3.2.45/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "cf225fdf",
+      "needsInterop": false
+    },
+    "lodash-unified": {
+      "src": "../../../../../node_modules/.pnpm/lodash-unified@1.0.3_3ib2ivapxullxkx3xftsimdk7u/node_modules/lodash-unified/import.js",
+      "file": "lodash-unified.js",
+      "fileHash": "7105fff0",
+      "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-PEVCE5PM": {
+      "file": "chunk-PEVCE5PM.js"
+    },
     "chunk-RSJERJUL": {
       "file": "chunk-RSJERJUL.js"
     }

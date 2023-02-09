@@ -70,6 +70,12 @@ export default defineComponent({
     'opened',
     'closed',
     'keydown',
+    'mouseenter',
+    'mouseleave',
+    'afterLeave',
+    'afterEnter',
+    'beforeEnter',
+    'beforeLeave',
     'update:show',
     'clickOverlay',
     'clickCloseIcon'
@@ -175,8 +181,19 @@ export default defineComponent({
       }
     }
 
-    const onOpened = () => emit('opened')
-    const onClosed = () => emit('closed')
+    const onMouseenter = (e: Event) => emit('mouseenter', e)
+    const onMouseleave = (e: Event) => emit('mouseleave', e)
+
+    const onClosed = () => {
+      emit('afterLeave')
+      emit('closed')
+    }
+    const onBeforeEnter = () => emit('beforeEnter')
+    const onOpened = () => {
+      emit('afterEnter')
+      emit('opened')
+    }
+    const onBeforeLeave = () => emit('beforeLeave')
     const onKeydown = (event: KeyboardEvent) => emit('keydown', event)
 
     const renderPopup = lazyRender(() => {
@@ -200,8 +217,10 @@ export default defineComponent({
               'r-safe-area-bottom': safeAreaInsetBottom
             }
           ]}
-          onKeydown={onKeydown}
           {...attrs}
+          onKeydown={onKeydown}
+          onMouseenter={onMouseenter}
+          onMouseleave={onMouseleave}
         >
           {slots.default?.()}
           {renderCloseIcon()}
@@ -219,8 +238,10 @@ export default defineComponent({
           v-slots={{ default: renderPopup }}
           name={transition || name}
           appear={transitionAppear}
-          onAfterEnter={onOpened}
           onAfterLeave={onClosed}
+          onBeforeEnter={onBeforeEnter}
+          onAfterEnter={onOpened}
+          onBeforeLeave={onBeforeLeave}
         />
       )
     }

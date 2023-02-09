@@ -4,10 +4,9 @@ import {
   SuccessFilled,
   WarningFilled
 } from '@ryxon/icons'
+import { definePropType } from './props'
 
-import type { PropType, Component } from 'vue'
-
-export const definePropType = <T>(val: any): PropType<T> => val
+import type { Component } from 'vue'
 
 export const iconPropType = definePropType<string | Component>([
   String,

@@ -35,10 +35,8 @@ import {
 import {
   cutString,
   runSyncRule,
-  endComposing,
   mapInputType,
   isEmptyValue,
-  startComposing,
   getRuleMessage,
   resizeTextarea,
   getStringLength,
@@ -113,13 +111,19 @@ export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
 
 export type InputProps = ExtractPropTypes<typeof inputProps>
 
+type TargetElement = HTMLInputElement | HTMLTextAreaElement
+
 export default defineComponent({
   name: 'RInput',
   props: inputProps,
   emits: [
     'blur',
     'focus',
+    'paste',
     'clear',
+    'input',
+    'change',
+    'keydown',
     'keypress',
     'mouseenter',
     'mouseleave',
@@ -128,9 +132,11 @@ export default defineComponent({
     'startValidate',
     'clickLeftIcon',
     'clickRightIcon',
+    'compositionend',
+    'compositionstart',
+    'compositionupdate',
     'update:modelValue'
   ],
-
   setup(props, { emit, slots }) {
     const id = useId()
     const state = reactive({
@@ -355,11 +361,45 @@ export default defineComponent({
     }
 
     const onInput = (event: Event) => {
+      const { value } = event.target as HTMLInputElement
+
       // 编写时跳过更新值
       if (!event.target!.composing) {
-        updateValue((event.target as HTMLInputElement).value)
+        updateValue(value)
+        emit('input', value)
       }
     }
+
+    const onChange = (event: Event) => {
+      emit('change', (event.target as TargetElement).value)
+      const { target } = event
+      if (target!.composing) {
+        target!.composing = false
+        target!.dispatchEvent(new Event('input'))
+      }
+    }
+
+    function startComposing(event: CompositionEvent) {
+      emit('compositionstart', event)
+      const { target } = event
+      target!.composing = true
+    }
+
+    const updateComposing = (event: CompositionEvent) => {
+      emit('compositionupdate', event)
+    }
+
+    const endComposing = (event: CompositionEvent) => {
+      emit('compositionend', event)
+      const { target } = event
+      if (target!.composing) {
+        target!.composing = false
+        target!.dispatchEvent(new Event('input'))
+      }
+    }
+
+    const onKeydown = (event: KeyboardEvent) => emit('keydown', event)
+    const onPaste = () => emit('paste')
 
     const blur = () => inputRef.value?.blur()
     const focus = () => inputRef.value?.focus()
@@ -481,10 +521,13 @@ export default defineComponent({
         onFocus,
         onInput,
         onClick: onClickInput,
-        onChange: endComposing,
+        onChange,
         onKeypress,
         onCompositionend: endComposing,
-        onCompositionstart: startComposing
+        onCompositionstart: startComposing,
+        onCompositionupdate: updateComposing,
+        onKeydown,
+        onPaste
       }
 
       if (props.type === 'textarea') {

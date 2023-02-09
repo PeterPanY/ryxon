@@ -1,6 +1,17 @@
 import { inBrowser, type Numeric } from './basic'
 
-export const isString = (val: unknown): val is string => typeof val === 'string'
+const { hasOwnProperty } = Object.prototype
+// 是不是自己本身所拥有的属性
+export const hasOwn = (val: object, key: string | symbol) =>
+  hasOwnProperty.call(val, key)
+
+// 判断是不是数组
+export const { isArray } = Array
+
+// 判断是不是字符串
+export const isString = (val: unknown) => typeof val === 'string'
+
+export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 
 export const isDef = <T>(val: T): val is NonNullable<T> =>
   val !== undefined && val !== null
@@ -33,3 +44,6 @@ export const isIOS = (): boolean =>
   inBrowser
     ? /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
     : false
+
+export const isKorean = (text: string) =>
+  /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text)

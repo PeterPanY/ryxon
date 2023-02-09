@@ -1,3 +1,4 @@
+export * from './doms'
 export * from './vue'
 export * from './basic'
 export * from './props'
