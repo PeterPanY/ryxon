@@ -50,6 +50,7 @@ export type ConfigProviderThemeVars =
     import('../pull-refresh').PullRefreshThemeVars &
     import('../radio').RadioThemeVars &
     import('../rate').RateThemeVars &
+    import('../scrollbar').ScrollbarThemeVars &
     import('../search').SearchThemeVars &
     import('../share-sheet').ShareSheetThemeVars &
     import('../sidebar').SidebarThemeVars &
@@ -68,5 +69,6 @@ export type ConfigProviderThemeVars =
     import('../tabs').TabsThemeVars &
     import('../tag').TagThemeVars &
     import('../toast').ToastThemeVars &
+    import('../tooltip').TooltipThemeVars &
     import('../tree-select').TreeSelectThemeVars &
     import('../uploader').UploaderThemeVars

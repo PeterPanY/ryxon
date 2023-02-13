@@ -1,0 +1,81 @@
+:root {
+  --r-scrollbar-opacity: 0.3;
+  --r-scrollbar-bg-color: var(--r-text-color-secondary);
+  --r-scrollbar-hover-opacity: 0.5;
+  --r-scrollbar-hover-bg-color: var(--r-text-color-secondary);
+}
+
+.r-scrollbar {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  &__wrap {
+    overflow: auto;
+    height: 100%;
+  }
+  &__wrap--hidden-default {
+    scrollbar-width: none;
+  }
+  &__wrap--hidden-default::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__thumb {
+    position: relative;
+    display: block;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: var(
+      --r-scrollbar-bg-color,
+      var(--r-text-color-secondary)
+    );
+    transition: var(--r-duration-base) background-color;
+    opacity: var(--r-scrollbar-opacity, 0.3);
+
+    &:hover {
+      background-color: var(
+        --r-scrollbar-hover-bg-color,
+        var(--r-text-color-secondary)
+      );
+      opacity: var(--r-scrollbar-hover-opacity, 0.5);
+    }
+  }
+
+  &__bar {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    z-index: 1;
+    border-radius: 4px;
+    &.is-vertical {
+      width: 6px;
+      top: 2px;
+    }
+    &.is-vertical > div {
+      width: 100%;
+    }
+
+    &.is-horizontal {
+      height: 6px;
+      left: 2px;
+    }
+    &.is-horizontal > div {
+      height: 100%;
+    }
+  }
+}
+
+.r-scrollbar-fade-enter-active {
+  transition: opacity 340ms ease-out;
+}
+
+.r-scrollbar-fade-leave-active {
+  transition: opacity 120ms ease-out;
+}
+
+.r-scrollbar-fade-enter-from,
+.r-scrollbar-fade-leave-active {
+  opacity: 0;
+}

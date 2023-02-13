@@ -9,7 +9,7 @@ export const hasOwn = (val: object, key: string | symbol) =>
 export const { isArray } = Array
 
 // 判断是不是字符串
-export const isString = (val: unknown) => typeof val === 'string'
+export const isString = (val: any): val is string => typeof val === 'string'
 
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 
