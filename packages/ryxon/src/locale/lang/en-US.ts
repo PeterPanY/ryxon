@@ -16,46 +16,52 @@ export default {
     title: 'Calendar',
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     monthTitle: (year: number, month: number) => `${year}/${month}`,
-    rangePrompt: (maxRange: number) => `Choose no more than ${maxRange} days`,
+    rangePrompt: (maxRange: number) => `Choose no more than ${maxRange} days`
   },
   rCascader: {
-    select: 'Select',
+    select: 'Select'
   },
   rPagination: {
     prev: 'Previous',
-    next: 'Next',
+    next: 'Next'
   },
   rPullRefresh: {
     pulling: 'Pull to refresh...',
-    loosing: 'Loose to refresh...',
+    loosing: 'Loose to refresh...'
+  },
+  rSelect: {
+    loading: 'Loading',
+    noMatch: 'No matching data',
+    noData: 'No data',
+    placeholder: 'Select'
   },
   rSubmitBar: {
-    label: 'Total:',
+    label: 'Total:'
   },
   rCoupon: {
     unlimited: 'Unlimited',
     discount: (discount: number) => `${discount * 10}% off`,
-    condition: (condition: number) => `At least ${condition}`,
+    condition: (condition: number) => `At least ${condition}`
   },
   rCouponCell: {
     title: 'Coupon',
-    count: (count: number) => `You have ${count} coupons`,
+    count: (count: number) => `You have ${count} coupons`
   },
   rCouponList: {
     exchange: 'Exchange',
     close: 'Close',
     enable: 'Available',
     disabled: 'Unavailable',
-    placeholder: 'Coupon code',
+    placeholder: 'Coupon code'
   },
   rAddressEdit: {
     area: 'Area',
     areaEmpty: 'Please select a receiving area',
     addressEmpty: 'Address can not be empty',
     addressDetail: 'Address',
-    defaultAddress: 'Set as the default address',
+    defaultAddress: 'Set as the default address'
   },
   rAddressList: {
-    add: 'Add new address',
-  },
-};
+    add: 'Add new address'
+  }
+}

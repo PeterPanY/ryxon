@@ -1,5 +1,5 @@
-import { truthProp, unknownProp, Interceptor, numericProp } from '../utils';
-import type { PropType, CSSProperties, TeleportProps } from 'vue';
+import { truthProp, unknownProp, Interceptor, numericProp } from '../utils'
+import type { PropType, CSSProperties, TeleportProps } from 'vue'
 
 export const popupSharedProps = {
   // whether to show popup
@@ -22,14 +22,16 @@ export const popupSharedProps = {
   overlayStyle: Object as PropType<CSSProperties>,
   // overlay custom class name
   overlayClass: unknownProp,
+  popperClass: unknownProp,
+  popperStyle: Object as PropType<CSSProperties>,
   // Initial rendering animation
   transitionAppear: Boolean,
   // whether to close popup when overlay is clicked
-  closeOnClickOverlay: truthProp,
-};
+  closeOnClickOverlay: truthProp
+}
 
-export type PopupSharedPropKeys = Array<keyof typeof popupSharedProps>;
+export type PopupSharedPropKeys = Array<keyof typeof popupSharedProps>
 
 export const popupSharedPropKeys = Object.keys(
   popupSharedProps
-) as PopupSharedPropKeys;
+) as PopupSharedPropKeys

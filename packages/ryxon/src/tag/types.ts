@@ -1,5 +1,3 @@
-export type TagSize = 'large' | 'small'
-
 export type TagType = 'info' | 'primary' | 'success' | 'warning' | 'danger'
 
 export type TagThemeVars = {

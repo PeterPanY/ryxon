@@ -93,7 +93,8 @@ export const inputSharedProps = {
   error: { type: Boolean, default: null },
   disabled: { type: Boolean, default: null },
   readonly: { type: Boolean, default: null },
-  inputBorder: truthProp
+  inputBorder: truthProp,
+  tabindex: { type: [String, Number], default: 0 } // 输入框的 tabindex
 }
 
 export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
@@ -508,6 +509,7 @@ export default defineComponent({
         id: getInputId(),
         ref: inputRef,
         name: props.name,
+        tabindex: props.tabindex,
         rows: props.rows !== undefined ? +props.rows : undefined,
         class: controlClass,
         disabled: getProp('disabled'),
@@ -639,7 +641,7 @@ export default defineComponent({
     const renderInputBody = () => [
       <div
         class={[
-          bem('body', { border: props.inputBorder && !getProp('readonly') }),
+          bem('body', { border: props.inputBorder }),
           state.focused ? 'is-focus' : ''
         ]}
         onMouseenter={handleMouseEnter}

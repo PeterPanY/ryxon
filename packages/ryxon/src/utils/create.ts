@@ -41,6 +41,13 @@ function genBem(name: string, mods?: Mods): string {
   )
 }
 
+export function isBem() {
+  return (name: string, ...args: [boolean | undefined] | []) => {
+    const state = args.length >= 1 ? args[0]! : true
+    return name && state ? `is-${name}` : ''
+  }
+}
+
 /**
  * bem helper
  * b() // 'button'
@@ -71,5 +78,6 @@ export function createNamespace(name: string) {
     prefixedName,
     createBEM(prefixedName),
     createTranslate(prefixedName),
+    isBem()
   ] as const
 }

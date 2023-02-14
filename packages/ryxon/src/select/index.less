@@ -1,0 +1,320 @@
+:root {
+  --r-select-font-size: var(--r-font-size-md);
+  --r-select-input-color: var(--r-text-color-placeholder);
+  --r-select-input-font-size: 14px;
+  --r-select-border-color-hover: var(--r-border-color-hover);
+  --r-select-disabled-border: var(--r-disabled-border-color);
+  --r-select-close-hover-color: var(--r-text-color-secondary);
+  --r-select-multiple-input-color: var(--r-text-color-regular);
+}
+
+.r-select {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  line-height: 32px;
+
+  &:hover:not(.r-select__disabled) .r-input__body--border {
+    box-shadow: 0 0 0 1px var(--r-select-border-color-hover) inset;
+  }
+
+  & .r-input {
+    // 右侧图标样式
+    & .r-select__caret {
+      color: var(--r-select-input-color);
+      font-size: var(--r-select-input-font-size);
+      transition: transform var(--r-duration-base);
+      transform: rotateZ(0);
+      cursor: pointer;
+
+      // 旋转180
+      &.is-reverse {
+        transform: rotateZ(-180deg);
+      }
+
+      &.is-show-close {
+        font-size: var(--r-select-font-size);
+        text-align: center;
+        transform: rotateZ(0);
+        border-radius: var(--r-radius-max);
+        color: var(--r-select-input-color);
+        transition: var(--r-duration-color);
+
+        &:hover {
+          color: var(--r-select-close-hover-color);
+        }
+      }
+
+      &.r-icon {
+        position: relative;
+        height: inherit;
+        z-index: 2;
+      }
+    }
+
+    // 选择器禁用
+    &.r-input--disabled {
+      cursor: not-allowed;
+
+      .r-input__body--border {
+        background-color: var(--r-disabled-bg-color);
+      }
+      .r-input__body--border:hover {
+        box-shadow: 0 0 0 1px var(--r-select-disabled-border) inset;
+      }
+      // input标签
+      .r-input__control {
+        cursor: not-allowed;
+      }
+      // 三角下拉图标
+      .r-select__caret {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  & .r-select__tags-wrapper.has-prefix {
+    margin-left: 6px;
+  }
+
+  &--large {
+    line-height: 40px;
+
+    & .r-select-tags-wrapper.has-prefix {
+      margin-left: 8px;
+    }
+  }
+
+  &--small {
+    line-height: 24px;
+
+    & .r-select-tags-wrapper.has-prefix {
+      margin-left: 8px;
+    }
+  }
+
+  &__popper .r-tooltip__content {
+    padding: 0;
+  }
+
+  &-dropdown {
+    box-sizing: border-box;
+    &__wrap {
+      max-height: 274px;
+    }
+    // option的ul
+    &__list {
+      list-style: none;
+      padding: 6px 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    &__item {
+      // 选项禁用
+      &.is-disabled:hover {
+        background-color: unset;
+      }
+      // &.selected {
+      //   color: var(--r-text-color-disabled);
+      // }
+    }
+
+    .r-select-dropdown__option-item.is-selected::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      border-top: none;
+      border-right: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: var(--r-primary-color);
+      -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+        no-repeat;
+      mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+        no-repeat;
+      mask-size: 100% 100%;
+      -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+        no-repeat;
+      -webkit-mask-size: 100% 100%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+    }
+
+    // 多选下拉框
+    &.is-multiple {
+      .r-select-dropdown__item.selected {
+        color: var(--r-primary-color);
+        background-color: var(--r-bg-color-overlay);
+
+        &.hover {
+          background-color: var(--r-fill-color-light);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          border-top: none;
+          border-right: none;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: var(--r-primary-color);
+          -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+            no-repeat;
+          mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+            no-repeat;
+          mask-size: 100% 100%;
+          -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E")
+            no-repeat;
+          -webkit-mask-size: 100% 100%;
+          transform: translateY(-50%);
+          width: 12px;
+          height: 12px;
+        }
+
+        &.is-disabled::after {
+          background-color: var(--r-text-color-disabled);
+        }
+      }
+    }
+
+    // 数据为空样式
+    &__empty {
+      padding: 10px 0;
+      margin: 0;
+      text-align: center;
+      color: var(--r-text-color-secondary);
+      font-size: var(--r-select-font-size);
+    }
+  }
+
+  // 多选tag标签
+  &__tags {
+    position: absolute;
+    line-height: normal;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: normal;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+
+    > span {
+      display: inline-block;
+    }
+
+    // tag样式
+    .r-tag {
+      box-sizing: border-box;
+      border-color: transparent;
+      margin: 2px 6px 2px 0;
+
+      &--info {
+        background-color: var(--r-fill-color);
+        color: var(--r-text-color-secondary);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+      // tag关闭按钮样式
+      .r-tag__close {
+        background-color: var(--r-text-color-placeholder);
+        right: -2px;
+        top: 0;
+        color: #fff;
+
+        &:hover {
+          background-color: var(--r-text-color-secondary);
+        }
+
+        &::before {
+          display: block;
+          transform: translate(0, 0.5px);
+        }
+      }
+    }
+
+    // tag展示文字样式
+    .r-select__tags-text {
+      display: inline-block;
+      line-height: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // 标签折叠后，tooltip展示
+  &__collapse-tags {
+    white-space: normal;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+
+    .r-select__collapse-tag {
+      line-height: inherit;
+      height: inherit;
+      display: flex;
+    }
+
+    .r-tag {
+      box-sizing: border-box;
+      border-color: transparent;
+      margin: 2px 6px 2px 0;
+
+      &--info {
+        background-color: var(--r-fill-color);
+        color: var(--r-text-color-secondary);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      // tag关闭按钮样式
+      .r-tag__close {
+        background-color: var(--r-text-color-placeholder);
+        right: -2px;
+        top: 0;
+        color: #fff;
+
+        &:hover {
+          background-color: var(--r-text-color-secondary);
+        }
+
+        &::before {
+          display: block;
+          transform: translate(0, 0.5px);
+        }
+      }
+    }
+  }
+
+  // 多选可搜索的input
+  &__input {
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin-left: 15px;
+    color: var(--r-select-multiple-input-color);
+    font-size: var(--r-select-font-size);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 28px;
+    background-color: transparent;
+
+    &.is-small {
+      height: 14px;
+    }
+  }
+}

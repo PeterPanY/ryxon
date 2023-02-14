@@ -54,6 +54,8 @@ const popupProps = [
   'teleport',
   'overlayStyle',
   'overlayClass',
+  'popperClass',
+  'popperStyle',
   'closeOnClickOverlay'
 ] as const
 
@@ -88,6 +90,8 @@ export const tooltipProps = {
   duration: numericProp,
   overlayClass: unknownProp,
   overlayStyle: Object as PropType<CSSProperties>,
+  popperClass: unknownProp,
+  popperStyle: Object as PropType<CSSProperties>,
   closeOnClickOverlay: truthProp,
   closeOnClickOutside: truthProp,
   teleport: {
@@ -140,7 +144,9 @@ export default defineComponent({
 
     // 元素是否聚焦
     const isFocusInsideContent = () => {
-      const popperContent: HTMLElement | undefined = contentRef.value?.popupRef
+      const popperContent: HTMLElement | undefined =
+        contentRef.value?.popupRef.value
+
       return popperContent && popperContent.contains(document.activeElement)
     }
 

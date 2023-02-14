@@ -215,7 +215,8 @@ export default defineComponent({
             {
               'r-safe-area-top': safeAreaInsetTop,
               'r-safe-area-bottom': safeAreaInsetBottom
-            }
+            },
+            props.popperClass
           ]}
           {...attrs}
           onKeydown={onKeydown}

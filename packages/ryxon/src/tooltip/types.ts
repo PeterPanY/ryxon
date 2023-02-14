@@ -1,10 +1,5 @@
 export type TooltipTheme = 'light' | 'dark'
-export type TooltipTrigger =
-  | 'manual'
-  | 'click'
-  | 'focus'
-  | 'hover'
-  | 'contextmenu'
+export type TooltipTrigger = 'click' | 'focus' | 'hover' | 'contextmenu'
 
 export type TooltipPlacement =
   | 'top'

@@ -24,6 +24,7 @@
   // Component Colors
   --r-primary-color: var(--r-blue);
   --r-primary-color-light-3: #79bbff;
+  --r-primary-color-light-9: #ecf5ff;
   --r-success-color: var(--r-green);
   --r-success-color-light-3: #95d475;
   --r-success-color-light-9: #f0f9eb;
@@ -36,13 +37,23 @@
   --r-warning-color: var(--r-orange);
   --r-warning-color-light-3: #eebe77;
   --r-warning-color-light-9: #fdf6ec;
+  --r-bg-color-overlay: #ffffff;
   --r-text-color: var(--r-gray-8);
   --r-text-color-2: var(--r-gray-6);
   --r-text-color-3: var(--r-gray-5);
+  --r-text-color-primary: #303133;
+  --r-text-color-regular: #606266;
+  --r-text-color-secondary: #909399;
+  --r-text-color-placeholder: #a8abb2;
+  --r-border-color-light: #e4e7ed;
+  --r-fill-color: #f0f2f5;
+  --r-fill-color-light: #f5f7fa;
   --r-link-color: #576b95;
   --r-active-color: var(--r-gray-2);
   --r-active-opacity: 0.6;
   --r-disabled-opacity: 0.5;
+  --r-disabled-bg-color: var(--r-fill-color-light);
+  --r-disabled-border-color: var(--r-border-color-light);
   --r-text-color-disabled: #c0c4cc;
   --r-background: var(--r-gray-1);
   --r-background-2: var(--r-white);
@@ -76,11 +87,20 @@
   // Animation
   --r-duration-base: 0.3s;
   --r-duration-fast: 0.2s;
+  --r-duration-function-ease-in-out-bezier: cubic-bezier(
+    0.645,
+    0.045,
+    0.355,
+    1
+  );
+  --r-duration-color: color var(--r-duration-fast)
+    var(--r-transition-function-ease-in-out-bezier);
   --r-ease-out: ease-out;
   --r-ease-in: ease-in;
 
   // Border
   --r-border-color: var(--r-gray-3);
+  --r-border-color-hover: var(--r-text-color-disabled);
   --r-border-width: 1px;
   --r-radius-sm: 2px;
   --r-radius-md: 4px;

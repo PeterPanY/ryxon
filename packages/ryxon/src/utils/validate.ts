@@ -47,3 +47,15 @@ export const isIOS = (): boolean =>
 
 export const isKorean = (text: string) =>
   /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text)
+
+// 对象转字符串
+export const objectToString = Object.prototype.toString
+
+// 对象转字符串
+export const toTypeString = (value: unknown): string =>
+  objectToString.call(value)
+
+// 对象转字符串 截取后几位
+// extract "RawType" from strings like "[object RawType]"
+export const toRawType = (value: unknown): string =>
+  toTypeString(value).slice(8, -1)

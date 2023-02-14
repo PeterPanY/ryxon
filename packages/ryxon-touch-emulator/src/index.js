@@ -116,7 +116,7 @@
   }
 
   /**
-   * only trigger touches when the left mousebutton has been pressed
+   * 仅当按下鼠标左键时触发触摸
    * @param touchType
    * @returns {Function}
    */
@@ -138,9 +138,8 @@
         return
       }
 
-      // The EventTarget on which the touch point started when it was first placed on the surface,
-      // even if the touch point has since moved outside the interactive area of that element.
-      // also, when the target doesnt exist anymore, we update it
+      // 当触摸点首次放置在表面上时，触摸点开始的EventTarget，即使触摸点已经移动到该元素的交互区域之外
+      // 此外，当目标不再存在时，我们会更新它
       if (
         ev.type === 'mousedown' ||
         !eventTarget ||
