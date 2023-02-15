@@ -52,6 +52,7 @@ export type ConfigProviderThemeVars =
     import('../rate').RateThemeVars &
     import('../scrollbar').ScrollbarThemeVars &
     import('../search').SearchThemeVars &
+    import('../select').SelectThemeVars &
     import('../share-sheet').ShareSheetThemeVars &
     import('../sidebar').SidebarThemeVars &
     import('../sidebar-item').SidebarItemThemeVars &

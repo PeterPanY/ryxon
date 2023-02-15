@@ -22,7 +22,7 @@ import type {
 } from '../input/types'
 import type { FormExpose } from './types'
 
-const [name, bem] = createNamespace('form')
+const [, bem] = createNamespace('form')
 
 export const formProps = {
   colon: Boolean,
@@ -48,12 +48,9 @@ export const formProps = {
 export type FormProps = ExtractPropTypes<typeof formProps>
 
 export default defineComponent({
-  name,
-
+  name: 'RForm',
   props: formProps,
-
   emits: ['submit', 'failed'],
-
   setup(props, { emit, slots }) {
     const { children, linkChildren } = useChildren(FORM_KEY)
 
@@ -95,7 +92,17 @@ export default defineComponent({
     const validateAll = (names?: string[]) =>
       new Promise<void>((resolve, reject) => {
         const inputs = getInputsByNames(names)
-        Promise.all(inputs.map((item) => item.validate())).then((errors) => {
+
+        const promiseAll = []
+        for (let index = 0; index < inputs.length; index++) {
+          const element = inputs[index]
+          // 组件中可能桥套input导致validate不存在，过滤
+          if (element.validate) {
+            promiseAll.push(element.validate())
+          }
+        }
+
+        Promise.all(promiseAll).then((errors) => {
           errors = errors.filter(Boolean)
 
           if (errors.length) {
@@ -128,6 +135,8 @@ export default defineComponent({
       if (typeof name === 'string') {
         return validateInput(name)
       }
+
+      // 根据validateFirst来判断校验方法
       return props.validateFirst ? validateSeq(name) : validateAll(name)
     }
 
@@ -161,6 +170,7 @@ export default defineComponent({
       })
     }
 
+    // 获取form的值
     const getValues = () =>
       children.reduce<Record<string, unknown>>((form, input) => {
         if (input.name !== undefined) {
@@ -183,6 +193,7 @@ export default defineComponent({
         })
     }
 
+    // form表单原生提交事件
     const onSubmit = (event: Event) => {
       preventDefault(event)
       submit()

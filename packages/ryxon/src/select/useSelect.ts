@@ -201,6 +201,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     })
   }
 
+  // 获取value的标识的键名
   const getValueKey = (item: any) =>
     isObject(item.value) ? get(item.value, props.valueKey) : item.value
 
@@ -597,7 +598,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     }
 
     if (tooltipRef.value && target) {
-      const menu = tooltipRef.value?.popperRef?.contentRef?.querySelector?.(
+      const menu = tooltipRef.value?.contentRef?.popupRef?.querySelector?.(
         `.${bem('dropdown', 'wrap')}`
       )
       if (menu) {
@@ -658,9 +659,12 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     if (!selectDisabled.value) {
       if (states.menuVisibleOnFocus) {
         states.menuVisibleOnFocus = false
-      } else if (!tooltipRef.value || !tooltipRef.value.isFocusInsideContent()) {
-          states.visible = !states.visible
-        }
+      } else if (
+        !tooltipRef.value ||
+        !tooltipRef.value.isFocusInsideContent()
+      ) {
+        states.visible = !states.visible
+      }
       if (states.visible) {
         ;(input.value || reference.value)?.focus()
       }

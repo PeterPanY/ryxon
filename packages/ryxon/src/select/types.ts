@@ -14,27 +14,12 @@ export type SelectPlacement =
   | 'bottom-start'
   | 'bottom-end'
 
-export type SelectAction = {
-  text: string
-  icon?: string
-  color?: string
-  disabled?: boolean
-  className?: string
-  [key: PropertyKey]: any
-}
-
 export type SelectThemeVars = {
-  SelectArrowSize?: string
-  SelectRadius?: string
-  SelectActionWidth?: string
-  SelectActionHeight?: string
-  SelectActionFontSize?: string
-  SelectActionLineHeight?: number | string
-  SelectActionIconSize?: string
-  SelectLightTextColor?: string
-  SelectLightBackground?: string
-  SelectLightActionDisabledTextColor?: string
-  SelectDarkTextColor?: string
-  SelectDarkBackground?: string
-  SelectDarkActionDisabledTextColor?: string
+  SelectFontSize?: string
+  SelectInputColor?: string
+  SelectInputFontSize?: string
+  SelectBorderColorHover?: string
+  SelectDisabledBorder?: string
+  SelectCloseHoverColor?: string
+  SelectMultipleInputColor?: string
 }

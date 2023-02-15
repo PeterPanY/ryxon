@@ -1,6 +1,8 @@
 import componentLocale from '../i18n/pages/component.json'
 import guideLocale from '../i18n/pages/guide.json'
+import apiLocale from '../i18n/pages/api.json'
 
+// 指南左侧导航
 function getGuideSidebar() {
   const result = {}
   Object.entries(guideLocale).map(([lang, val]) => {
@@ -11,6 +13,7 @@ function getGuideSidebar() {
   return result
 }
 
+// 组件左侧导航
 function getComponentsSideBar() {
   const result = {}
   Object.entries(componentLocale).map(([lang, val]) => {
@@ -21,10 +24,25 @@ function getComponentsSideBar() {
   return result
 }
 
-// return sidebar with language configs.
-// this might create duplicated data but the overhead is ignorable
+// api左侧导航
+function getApiSideBar() {
+  const result = {}
+  Object.entries(apiLocale).map(([lang, val]) => {
+    result[`/${lang}/api/`] = Object.values(val).map((item) =>
+      mapPrefix(item, lang, '/api')
+    )
+  })
+  return result
+}
+
+// 返回带有语言配置的侧边栏。
+// 这可能会创建重复的数据，但开销是可以忽略的
 const getSidebars = () => {
-  return Object.assign(getGuideSidebar(), getComponentsSideBar())
+  return Object.assign(
+    getGuideSidebar(),
+    getComponentsSideBar(),
+    getApiSideBar()
+  )
 }
 
 type Item = {

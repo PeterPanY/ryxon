@@ -6,12 +6,7 @@ export default Select
 
 export { selectProps } from './Select'
 export type { SelectProps } from './Select'
-export type {
-  SelectTheme,
-  SelectAction,
-  SelectThemeVars,
-  SelectPlacement
-} from './types'
+export type { SelectTheme, SelectThemeVars, SelectPlacement } from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {

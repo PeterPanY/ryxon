@@ -9,6 +9,11 @@
       "text": "组件",
       "link": "/component/button",
       "activeMatch": "/component/"
+    },
+    {
+      "text": "API",
+      "link": "/api/use-intro",
+      "activeMatch": "/api/"
     }
   ]
 }
