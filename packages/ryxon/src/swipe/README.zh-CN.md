@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Swipe, SwipeItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Swipe, SwipeItem } from 'ryxon'
 
-const app = createApp();
-app.use(Swipe);
-app.use(SwipeItem);
+const app = createApp()
+app.use(Swipe)
+app.use(SwipeItem)
 ```
 
 ## 代码演示
@@ -59,11 +59,11 @@ export default {
   setup() {
     const images = [
       'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
-    ];
-    return { images };
-  },
-};
+      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
+    ]
+    return { images }
+  }
+}
 ```
 
 ### 监听 change 事件
@@ -80,14 +80,14 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onChange = (index) => showToast('当前 Swipe 索引：' + index);
-    return { onChange };
-  },
-};
+    const onChange = (index) => showToast('当前 Swipe 索引：' + index)
+    return { onChange }
+  }
+}
 ```
 
 ### 纵向滚动
@@ -166,9 +166,11 @@ export default {
 
 ### Swipe Events
 
-| 事件名 | 说明                 | 回调参数            |
-| ------ | -------------------- | ------------------- |
-| change | 每一页轮播结束后触发 | index, 当前页的索引 |
+| 事件名              | 说明                         | 回调参数        |
+| ------------------- | ---------------------------- | --------------- |
+| change              | 每一页轮播结束后触发         | _index: number_ |
+| drag-start `v4.0.9` | 当用户开始拖动轮播组件时触发 | -               |
+| drag-end `v4.0.9`   | 当用户结束拖动轮播组件时触发 | -               |
 
 ### SwipeItem Events
 
@@ -192,18 +194,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SwipeProps, SwipeInstance, SwipeToOptions } from 'ryxon';
+import type { SwipeProps, SwipeInstance, SwipeToOptions } from 'ryxon'
 ```
 
 `SwipeInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { SwipeInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { SwipeInstance } from 'ryxon'
 
-const swipeRef = ref<SwipeInstance>();
+const swipeRef = ref<SwipeInstance>()
 
-swipeRef.value?.next();
+swipeRef.value?.next()
 ```
 
 ### SwipeToOptions 格式
@@ -225,14 +227,14 @@ swipeRef.value?.next();
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-swipe-indicator-size | _6px_ | - |
-| --r-swipe-indicator-margin | _var(--r-padding-sm)_ | - |
-| --r-swipe-indicator-active-opacity | _1_ | - |
-| --r-swipe-indicator-inactive-opacity | _0.3_ | - |
-| --r-swipe-indicator-active-background | _var(--r-primary-color)_ | - |
-| --r-swipe-indicator-inactive-background | _var(--r-border-color)_ | - |
+| 名称                                    | 默认值                   | 描述 |
+| --------------------------------------- | ------------------------ | ---- |
+| --r-swipe-indicator-size                | _6px_                    | -    |
+| --r-swipe-indicator-margin              | _var(--r-padding-sm)_    | -    |
+| --r-swipe-indicator-active-opacity      | _1_                      | -    |
+| --r-swipe-indicator-inactive-opacity    | _0.3_                    | -    |
+| --r-swipe-indicator-active-background   | _var(--r-primary-color)_ | -    |
+| --r-swipe-indicator-inactive-background | _var(--r-border-color)_  | -    |
 
 ## 常见问题
 
@@ -272,5 +274,5 @@ Swipe 组件在挂载时，会获取自身的宽度，并计算出轮播图的�
 ```
 
 ```js
-this.$refs.swipe.resize();
+this.$refs.swipe.resize()
 ```

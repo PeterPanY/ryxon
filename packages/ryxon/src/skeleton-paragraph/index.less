@@ -1,0 +1,20 @@
+:root {
+  --r-skeleton-paragraph-height: 16px;
+  --r-skeleton-paragraph-background: var(--r-active-color);
+  --r-skeleton-paragraph-margin-top: var(--r-padding-sm);
+}
+
+.r-skeleton {
+  &-paragraph {
+    height: var(--r-skeleton-paragraph-height);
+    background: var(--r-skeleton-paragraph-background);
+
+    &--round {
+      border-radius: var(--r-radius-max);
+    }
+
+    &:not(:first-child) {
+      margin-top: var(--r-skeleton-paragraph-margin-top);
+    }
+  }
+}

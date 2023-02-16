@@ -9,12 +9,12 @@ Single selection among multiple options.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { RadioGroup, Radio } from 'ryxon';
+import { createApp } from 'vue'
+import { RadioGroup, Radio } from 'ryxon'
 
-const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+const app = createApp()
+app.use(Radio)
+app.use(RadioGroup)
 ```
 
 ## Usage
@@ -31,14 +31,14 @@ Use `v-model` to bind the name of checked radio.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
-    return { checked };
-  },
-};
+    const checked = ref('1')
+    return { checked }
+  }
+}
 ```
 
 ### Horizontal
@@ -114,20 +114,31 @@ Use icon slot to custom icon
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
+    const checked = ref('1')
     return {
       checked,
       activeIcon:
         'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactiveIcon:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
-  },
-};
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
+  }
+}
+```
+
+### Left Label
+
+Set `label-position` prop to `'left'` to adjust the label position to the left of the Radio.
+
+```html
+<r-radio-group v-model="checked">
+  <r-radio name="1" label-position="left">Radio 1</r-radio>
+  <r-radio name="2" label-position="left">Radio 2</r-radio>
+</r-radio-group>
 ```
 
 ### Disable Label Click
@@ -168,8 +179,8 @@ import type {
   RadioShape,
   RadioGroupProps,
   RadioLabelPosition,
-  RadioGroupDirection,
-} from 'ryxon';
+  RadioGroupDirection
+} from 'ryxon'
 ```
 
 ## API
@@ -221,9 +232,9 @@ import type {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name                             | Default Value              | Description |
-| -------------------------------- | -------------------------- | ----------- |
-| --r-radio-size                 | _20px_                     | -           |
+| Name                           | Default Value            | Description |
+| ------------------------------ | ------------------------ | ----------- |
+| --r-radio-size                 | _20px_                   | -           |
 | --r-radio-border-color         | _var(--r-gray-5)_        | -           |
 | --r-radio-duration             | _var(--r-duration-fast)_ | -           |
 | --r-radio-label-margin         | _var(--r-padding-xs)_    | -           |

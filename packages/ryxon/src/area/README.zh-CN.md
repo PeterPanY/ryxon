@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Area } from 'ryxon';
+import { createApp } from 'vue'
+import { Area } from 'ryxon'
 
-const app = createApp();
-app.use(Area);
+const app = createApp()
+app.use(Area)
 ```
 
 ## 代码演示
@@ -38,23 +38,23 @@ areaList 为对象结构，包含 `province_list`、`city_list`、`county_list` 
 const areaList = {
   province_list: {
     110000: '北京市',
-    120000: '天津市',
+    120000: '天津市'
   },
   city_list: {
     110100: '北京市',
-    120100: '天津市',
+    120100: '天津市'
   },
   county_list: {
     110101: '东城区',
-    110102: '西城区',
+    110102: '西城区'
     // ....
-  },
-};
+  }
+}
 ```
 
-### @ryxon/area-data
+### 中国省市区数据
 
-Ryxon 官方提供了一份默认的中国省市区数据，可以通过 [@ryxon/area-data](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-area-data) 引入：
+Ryxon 提供了一份中国省市区数据，你可以安装 [@ryxon/area-data](https://github.com/vant-ui/vant/tree/main/packages/vant-area-data) npm 包来引入：
 
 ```bash
 # 通过 npm
@@ -68,13 +68,13 @@ pnpm add @ryxon/area-data
 ```
 
 ```ts
-import { areaList } from '@ryxon/area-data';
+import { areaList } from '@ryxon/area-data'
 
 export default {
   setup() {
-    return { areaList };
-  },
-};
+    return { areaList }
+  }
+}
 ```
 
 > Tips: 中国的行政区划每年都会有变动，如果发现省市区数据未及时更新，欢迎提 Pull Request 帮助我们更新。你可以在[「国家统计局 - 全国区划代码」](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/) 和[「民政部 - 行政区划代码」](https://www.mca.gov.cn/article/sj/xzqh/1980/)上查询到最新数据，请根据官方数据进行核实。
@@ -88,14 +88,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref('330302');
-    return { value };
-  },
-};
+    const value = ref('330302')
+    return { value }
+  }
+}
 ```
 
 ### 配置显示列
@@ -170,18 +170,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { AreaProps, AreaList, AreaInstance } from 'ryxon';
+import type { AreaProps, AreaList, AreaInstance } from 'ryxon'
 ```
 
 `AreaInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { AreaInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { AreaInstance } from 'ryxon'
 
-const areaRef = ref<AreaInstance>();
+const areaRef = ref<AreaInstance>()
 
-areaRef.value?.confirm();
+areaRef.value?.confirm()
 ```
 
 ## 常见问题

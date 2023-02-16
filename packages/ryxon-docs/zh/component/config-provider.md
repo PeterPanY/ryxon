@@ -153,7 +153,6 @@ Ryxon 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 --r-text-color: var(--r-gray-8);
 --r-text-color-2: var(--r-gray-6);
 --r-text-color-3: var(--r-gray-5);
---r-link-color: #576b95;
 --r-active-color: var(--r-gray-2);
 --r-active-opacity: 0.6;
 --r-disabled-opacity: 0.5;

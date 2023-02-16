@@ -1,25 +1,24 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 
 import {
   numericProp,
   getSizeStyle,
   makeStringProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
-// Types
-import type { SkeletonImageShape } from './types';
+import { Icon } from '../icon'
 
-import { Icon } from '../icon';
+const [name, bem] = createNamespace('skeleton-image')
 
-const [name, bem] = createNamespace('skeleton-image');
+export type SkeletonImageShape = 'square' | 'round'
 
 export const skeletonImageProps = {
   imageSize: numericProp,
-  imageShape: makeStringProp<SkeletonImageShape>('square'),
-};
+  imageShape: makeStringProp<SkeletonImageShape>('square')
+}
 
-export type SkeletonImageProps = ExtractPropTypes<typeof skeletonImageProps>;
+export type SkeletonImageProps = ExtractPropTypes<typeof skeletonImageProps>
 
 export default defineComponent({
   name,
@@ -34,6 +33,6 @@ export default defineComponent({
       >
         <Icon name={'photo'} class={bem('icon')} />
       </div>
-    );
-  },
-});
+    )
+  }
+})

@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { RadioGroup, Radio } from 'ryxon';
+import { createApp } from 'vue'
+import { RadioGroup, Radio } from 'ryxon'
 
-const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+const app = createApp()
+app.use(Radio)
+app.use(RadioGroup)
 ```
 
 ## 代码演示
@@ -31,14 +31,14 @@ app.use(RadioGroup);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
-    return { checked };
-  },
-};
+    const checked = ref('1')
+    return { checked }
+  }
+}
 ```
 
 ### 水平排列
@@ -124,20 +124,31 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref('1');
+    const checked = ref('1')
     return {
       checked,
       activeIcon:
         'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactiveIcon:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
-  },
-};
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
+  }
+}
+```
+
+### 左侧文本
+
+将 `label-position` 属性设置为 `'left'`，可以将文本位置调整到单选框左侧。
+
+```html
+<r-radio-group v-model="checked">
+  <r-radio name="1" label-position="left">单选框 1</r-radio>
+  <r-radio name="2" label-position="left">单选框 2</r-radio>
+</r-radio-group>
 ```
 
 ### 禁用文本点击
@@ -225,8 +236,8 @@ import type {
   RadioShape,
   RadioGroupProps,
   RadioLabelPosition,
-  RadioGroupDirection,
-} from 'ryxon';
+  RadioGroupDirection
+} from 'ryxon'
 ```
 
 ## 主题定制
@@ -235,9 +246,9 @@ import type {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                             | 默认值                     | 描述 |
-| -------------------------------- | -------------------------- | ---- |
-| --r-radio-size                 | _20px_                     | -    |
+| 名称                           | 默认值                   | 描述 |
+| ------------------------------ | ------------------------ | ---- |
+| --r-radio-size                 | _20px_                   | -    |
 | --r-radio-border-color         | _var(--r-gray-5)_        | -    |
 | --r-radio-duration             | _var(--r-duration-fast)_ | -    |
 | --r-radio-label-margin         | _var(--r-padding-xs)_    | -    |

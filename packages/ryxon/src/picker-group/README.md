@@ -17,11 +17,11 @@ The following components can be placed inside PickerGroup:
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { PickerGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { PickerGroup } from 'ryxon'
 
-const app = createApp();
-app.use(PickerGroup);
+const app = createApp()
+app.use(PickerGroup)
 ```
 
 ## Usage
@@ -49,30 +49,74 @@ Place a `DatePicker` component and a `TimePicker` component in the default slot 
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const currentDate = ref(['2022', '06', '01']);
-    const currentTime = ref(['12', '00']);
+    const currentDate = ref(['2022', '06', '01'])
+    const currentTime = ref(['12', '00'])
     const onConfirm = () => {
-      showToast(
-        `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
-      );
-    };
+      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
+```
+
+### Next Step Button
+
+In some scenarios, in order to ensure that users can select all Pickers in turn, you can set the `next-step-text` prop of PickerGroup. After setting the `next-step-text` prop, if the user has not switched to the last tab, the button in the upper right corner will become "Next Step", and automatically switch to the next Picker after clicking. When the user switches to the last tab, the button in the upper right corner changes to "Confirm".
+
+```html
+<r-picker-group
+  title="Title"
+  :tabs="['Date', 'Time']"
+  next-step-text="Next Step"
+  @confirm="onConfirm"
+  @cancel="onCancel"
+>
+  <r-date-picker
+    v-model="currentDate"
+    :min-date="minDate"
+    :max-date="maxDate"
+  />
+  <r-time-picker v-model="currentTime" />
+</r-picker-group>
+```
+
+```js
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
+
+export default {
+  setup() {
+    const currentDate = ref(['2022', '06', '01'])
+    const currentTime = ref(['12', '00'])
+    const onConfirm = () => {
+      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+    }
+    const onCancel = () => {
+      showToast('cancel')
+    }
+
+    return {
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 5, 1),
+      currentDate,
+      currentTime
+    }
+  }
+}
 ```
 
 ### Select Date Range
@@ -92,29 +136,29 @@ Place two `DatePicker` components in the default slot of `PickerGroup` to select
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const startDate = ref(['2022', '06', '01']);
-    const endDate = ref(['2023', '06', '01']);
+    const startDate = ref(['2022', '06', '01'])
+    const endDate = ref(['2023', '06', '01'])
 
     const onConfirm = () => {
-      showToast(`${startDate.value.join('/')} ${endDate.value.join('/')}`);
-    };
+      showToast(`${startDate.value.join('/')} ${endDate.value.join('/')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       endDate,
-      startDate,
-    };
-  },
-};
+      startDate
+    }
+  }
+}
 ```
 
 ### Select Time Range
@@ -134,38 +178,40 @@ Place two `TimePicker` components in the default slot of `PickerGroup` to select
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const startTime = ref(['12', '00']);
-    const endTime = ref(['12', '00']);
+    const startTime = ref(['12', '00'])
+    const endTime = ref(['12', '00'])
 
     const onConfirm = () => {
-      showToast(`${startTime.value.join(':')} ${endTime.value.join(':')}`);
-    };
+      showToast(`${startTime.value.join(':')} ${endTime.value.join(':')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       endTime,
-      startTime,
-    };
-  },
-};
+      startTime
+    }
+  }
+}
 ```
 
 ## API
 
 ### Props
 
-| Attribute           | Description            | Type     | Default   |
-| ------------------- | ---------------------- | -------- | --------- |
-| title               | Toolbar title          | _string_ | `''`      |
-| confirm-button-text | Text of confirm button | _string_ | `Confirm` |
-| cancel-button-text  | Text of cancel button  | _string_ | `Cancel`  |
+| Attribute               | Description              | Type       | Default   |
+| ----------------------- | ------------------------ | ---------- | --------- |
+| tabs                    | Titles of tabs           | _string[]_ | `[]`      |
+| title                   | Toolbar title            | _string_   | `''`      |
+| next-step-text `v4.0.8` | Text of next step button | _string_   | `''`      |
+| confirm-button-text     | Text of confirm button   | _string_   | `Confirm` |
+| cancel-button-text      | Text of cancel button    | _string_   | `Cancel`  |
 
 ### Slots
 
@@ -181,5 +227,5 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { DatePickerProps, DatePickerColumnType } from 'ryxon';
+import type { DatePickerProps, DatePickerColumnType } from 'ryxon'
 ```

@@ -9,12 +9,12 @@ Used to loop a group of pictures or content.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Swipe, SwipeItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Swipe, SwipeItem } from 'ryxon'
 
-const app = createApp();
-app.use(Swipe);
-app.use(SwipeItem);
+const app = createApp()
+app.use(Swipe)
+app.use(SwipeItem)
 ```
 
 ## Usage
@@ -59,11 +59,11 @@ export default {
   setup() {
     const images = [
       'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
-    ];
-    return { images };
-  },
-};
+      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
+    ]
+    return { images }
+  }
+}
 ```
 
 ### Change Event
@@ -78,14 +78,14 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onChange = (index) => showToast('Current Swipe index:' + index);
-    return { onChange };
-  },
-};
+    const onChange = (index) => showToast('Current Swipe index:' + index)
+    return { onChange }
+  }
+}
 ```
 
 ### Vertical Scrolling
@@ -158,9 +158,11 @@ export default {
 
 ### Swipe Events
 
-| Event  | Description                        | Arguments                     |
-| ------ | ---------------------------------- | ----------------------------- |
-| change | Emitted when current swipe changed | index: index of current swipe |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| change | Emitted when current swipe changed | _index: number_ |
+| drag-start `v4.0.9` | Emitted when user starts dragging the swipe | - |
+| drag-end `v4.0.9` | Emitted when user ends dragging the swipe | - |
 
 ### SwipeItem Events
 
@@ -184,18 +186,18 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Swipe 
 The component exports the following type definitions:
 
 ```ts
-import type { SwipeProps, SwipeInstance, SwipeToOptions } from 'ryxon';
+import type { SwipeProps, SwipeInstance, SwipeToOptions } from 'ryxon'
 ```
 
 `SwipeInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { SwipeInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { SwipeInstance } from 'ryxon'
 
-const swipeRef = ref<SwipeInstance>();
+const swipeRef = ref<SwipeInstance>()
 
-swipeRef.value?.next();
+swipeRef.value?.next()
 ```
 
 ### SwipeToOptions

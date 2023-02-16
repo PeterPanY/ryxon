@@ -9,26 +9,45 @@ Attaching an event when the component is `mounted` and `activated`, then removin
 ### Basic Usage
 
 ```js
-import { ref } from 'vue';
-import { useEventListener } from '@ryxon/use';
+import { ref } from 'vue'
+import { useEventListener } from '@ryxon/use'
 
 export default {
   setup() {
     // attach the resize event to window
     useEventListener('resize', () => {
-      console.log('window resize');
-    });
+      console.log('window resize')
+    })
 
     // attach the click event to the body element
     useEventListener(
       'click',
       () => {
-        console.log('click body');
+        console.log('click body')
       },
       { target: document.body }
-    );
-  },
-};
+    )
+  }
+}
+```
+
+### Remove Event Listener
+
+`useEventListener` will return a `cleanup` function，you can call it to remove the event listener.
+
+```js
+import { ref } from 'vue'
+import { useEventListener } from '@vant/use'
+
+export default {
+  setup() {
+    const cleanup = useEventListener('resize', () => {
+      console.log('window resize')
+    })
+
+    cleanup()
+  }
+}
 ```
 
 ## API
@@ -37,16 +56,16 @@ export default {
 
 ```ts
 type Options = {
-  target?: EventTarget | Ref<EventTarget>;
-  capture?: boolean;
-  passive?: boolean;
-};
+  target?: EventTarget | Ref<EventTarget>
+  capture?: boolean
+  passive?: boolean
+}
 
 function useEventListener(
   type: string,
   listener: EventListener,
   options?: Options
-): void;
+): () => void
 ```
 
 ### Params

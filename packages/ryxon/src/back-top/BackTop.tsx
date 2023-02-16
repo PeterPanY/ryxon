@@ -8,8 +8,8 @@ import {
   defineComponent,
   type PropType,
   type TeleportProps,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -18,30 +18,31 @@ import {
   numericProp,
   getScrollTop,
   createNamespace,
-  makeNumericProp,
-} from '../utils';
-import { throttle } from '../lazyload/vue-lazyload/util';
+  makeNumericProp
+} from '../utils'
+import { throttle } from '../lazyload/vue-lazyload/util'
 
 // Composables
-import { useEventListener, getScrollParent } from '@ryxon/use';
+import { useEventListener, getScrollParent } from '@ryxon/use'
 
 // Components
-import { Icon } from '../icon';
+import { Icon } from '../icon'
 
-const [name, bem] = createNamespace('back-top');
+const [name, bem] = createNamespace('back-top')
 
 export const backTopProps = {
   right: numericProp,
   bottom: numericProp,
   target: [String, Object] as PropType<TeleportProps['to']>,
   offset: makeNumericProp(200),
+  immediate: Boolean,
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body',
-  },
-};
+    default: 'body'
+  }
+}
 
-export type BackTopProps = ExtractPropTypes<typeof backTopProps>;
+export type BackTopProps = ExtractPropTypes<typeof backTopProps>
 
 export default defineComponent({
   name,
@@ -53,64 +54,64 @@ export default defineComponent({
   emits: ['click'],
 
   setup(props, { emit, slots, attrs }) {
-    const show = ref(false);
-    const root = ref<HTMLElement>();
-    const scrollParent = ref<Window | Element>();
+    const show = ref(false)
+    const root = ref<HTMLElement>()
+    const scrollParent = ref<Window | Element>()
 
     const style = computed(() => ({
       right: addUnit(props.right),
-      bottom: addUnit(props.bottom),
-    }));
+      bottom: addUnit(props.bottom)
+    }))
 
     const onClick = (event: MouseEvent) => {
-      emit('click', event);
+      emit('click', event)
       scrollParent.value?.scrollTo({
         top: 0,
-        behavior: 'smooth',
-      });
-    };
+        behavior: props.immediate ? 'auto' : 'smooth'
+      })
+    }
 
     const scroll = () => {
       show.value = scrollParent.value
         ? getScrollTop(scrollParent.value) >= props.offset
-        : false;
-    };
+        : false
+    }
 
     const getTarget = () => {
-      const { target } = props;
+      const { target } = props
 
       if (typeof target === 'string') {
-        const el = document.querySelector(target);
+        const el = document.querySelector(target)
 
         if (el) {
-          return el;
+          return el
         }
 
         if (process.env.NODE_ENV !== 'production') {
           console.error(
             `[Ryxon] BackTop: target element "${target}" was not found, the BackTop component will not be rendered.`
-          );
+          )
         }
       } else {
-        return target as Element;
+        return target as Element
       }
-    };
+    }
 
     const updateTarget = () => {
       if (inBrowser) {
         nextTick(() => {
           scrollParent.value = props.target
             ? getTarget()
-            : getScrollParent(root.value!);
-          scroll();
-        });
+            : getScrollParent(root.value!)
+          scroll()
+        })
       }
-    };
+    }
 
-    useEventListener('scroll', throttle(scroll, 100), { target: scrollParent });
+    useEventListener('scroll', throttle(scroll, 100), { target: scrollParent })
 
-    onMounted(updateTarget);
-    watch(() => props.target, updateTarget);
+    onMounted(updateTarget)
+    watch(() => props.target, updateTarget)
 
     return () => {
       const Content = (
@@ -127,12 +128,12 @@ export default defineComponent({
             <Icon name="back-top" class={bem('icon')} />
           )}
         </div>
-      );
+      )
 
       if (props.teleport) {
-        return <Teleport to={props.teleport}>{Content}</Teleport>;
+        return <Teleport to={props.teleport}>{Content}</Teleport>
       }
-      return Content;
-    };
-  },
-});
+      return Content
+    }
+  }
+})

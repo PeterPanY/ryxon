@@ -9,11 +9,11 @@ Used to select a value within a given range.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Slider } from 'ryxon';
+import { createApp } from 'vue'
+import { Slider } from 'ryxon'
 
-const app = createApp();
-app.use(Slider);
+const app = createApp()
+app.use(Slider)
 ```
 
 ## Usage
@@ -25,19 +25,19 @@ app.use(Slider);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(50);
-    const onChange = (value) => showToast('Current value: ' + value);
+    const value = ref(50)
+    const onChange = (value) => showToast('Current value: ' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### Dual thumb
@@ -49,20 +49,20 @@ Add `range` attribute to open dual thumb mode.
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     // value must be an Array
-    const value = ref([10, 50]);
-    const onChange = (value) => showToast('Current value: ' + value);
+    const value = ref([10, 50])
+    const onChange = (value) => showToast('Current value: ' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### Range
@@ -127,21 +127,21 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(50);
-    const value2 = ref([10, 50]);
-    const onChange = (value) => showToast('Current value: ' + value);
+    const value = ref(50)
+    const value2 = ref([10, 50])
+    const onChange = (value) => showToast('Current value: ' + value)
     return {
       value,
       value2,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -159,7 +159,7 @@ export default {
 | active-color | Active color of bar | _string_ | `#1989fa` |
 | inactive-color | Inactive color of bar | _string_ | `#e5e5e5` |
 | range | Whether to enable dual thumb mode | _boolean_ | `false` |
-| reverse `v3.2.1` | Whether to reverse slider | `false` |
+| reverse `v3.2.1` | Whether to reverse slider | _boolean_ | `false` |
 | disabled | Whether to disable slider | _boolean_ | `false` |
 | readonly `v3.0.5` | Whether to be readonly | _boolean_ | `false` |
 | vertical | Whether to display slider vertically | _boolean_ | `false` |
@@ -186,7 +186,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { SliderProps } from 'ryxon';
+import type { SliderProps } from 'ryxon'
 ```
 
 ## Theming

@@ -9,12 +9,12 @@ A group of options for multiple choices.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Checkbox, CheckboxGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { Checkbox, CheckboxGroup } from 'ryxon'
 
-const app = createApp();
-app.use(Checkbox);
-app.use(CheckboxGroup);
+const app = createApp()
+app.use(Checkbox)
+app.use(CheckboxGroup)
 ```
 
 ## Usage
@@ -26,16 +26,16 @@ app.use(CheckboxGroup);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
+    const checked = ref(true)
     return {
-      checked,
-    };
-  },
-};
+      checked
+    }
+  }
+}
 ```
 
 ### Disabled
@@ -82,20 +82,28 @@ Use icon slot to custom icon.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
+    const checked = ref(true)
     return {
       checked,
       activeIcon:
         'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactiveIcon:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
-  },
-};
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
+  }
+}
+```
+
+### Left Label
+
+Set `label-position` prop to `'left'` to adjust the label position to the left of the Checkbox.
+
+```html
+<r-checkbox v-model="checked" label-position="left">Checkbox</r-checkbox>
 ```
 
 ### Disable Label Click
@@ -116,14 +124,14 @@ When Checkboxes are inside a CheckboxGroup, the checked checkboxes's name is an 
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(['a', 'b']);
-    return { checked };
-  },
-};
+    const checked = ref(['a', 'b'])
+    return { checked }
+  }
+}
 ```
 
 ### Horizontal
@@ -136,14 +144,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref([]);
-    return { checked };
-  },
-};
+    const checked = ref([])
+    return { checked }
+  }
+}
 ```
 
 ### Maximum amount of checked options
@@ -219,28 +227,28 @@ export default {
 ```
 
 ```js
-import { ref, onBeforeUpdate } from 'vue';
+import { ref, onBeforeUpdate } from 'vue'
 
 export default {
   setup() {
-    const checked = ref([]);
-    const checkboxRefs = ref([]);
+    const checked = ref([])
+    const checkboxRefs = ref([])
     const toggle = (index) => {
-      checkboxRefs.value[index].toggle();
-    };
+      checkboxRefs.value[index].toggle()
+    }
 
     onBeforeUpdate(() => {
-      checkboxRefs.value = [];
-    });
+      checkboxRefs.value = []
+    })
 
     return {
       list: ['a', 'b'],
       toggle,
       checked,
-      checkboxRefs,
-    };
-  },
-};
+      checkboxRefs
+    }
+  }
+}
 ```
 
 ## API
@@ -345,21 +353,21 @@ import type {
   CheckboxGroupProps,
   CheckboxGroupInstance,
   CheckboxGroupDirection,
-  CheckboxGroupToggleAllOptions,
-} from 'ryxon';
+  CheckboxGroupToggleAllOptions
+} from 'ryxon'
 ```
 
 `CheckboxInstance` and `CheckboxGroupInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { CheckboxInstance, CheckboxGroupInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CheckboxInstance, CheckboxGroupInstance } from 'ryxon'
 
-const checkboxRef = ref<CheckboxInstance>();
-const checkboxGroupRef = ref<CheckboxGroupInstance>();
+const checkboxRef = ref<CheckboxInstance>()
+const checkboxGroupRef = ref<CheckboxGroupInstance>()
 
-checkboxRef.value?.toggle();
-checkboxGroupRef.value?.toggleAll();
+checkboxRef.value?.toggle()
+checkboxGroupRef.value?.toggleAll()
 ```
 
 ## Theming
@@ -368,14 +376,14 @@ checkboxGroupRef.value?.toggleAll();
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-checkbox-size | _20px_ | - |
-| --r-checkbox-border-color | _var(--r-gray-5)_ | - |
-| --r-checkbox-duration | _var(--r-duration-fast)_ | - |
-| --r-checkbox-label-margin | _var(--r-padding-xs)_ | - |
-| --r-checkbox-label-color | _var(--r-text-color)_ | - |
-| --r-checkbox-checked-icon-color | _var(--r-primary-color)_ | - |
-| --r-checkbox-disabled-icon-color | _var(--r-gray-5)_ | - |
-| --r-checkbox-disabled-label-color | _var(--r-text-color-3)_ | - |
-| --r-checkbox-disabled-background | _var(--r-border-color)_ | - |
+| Name                              | Default Value            | Description |
+| --------------------------------- | ------------------------ | ----------- |
+| --r-checkbox-size                 | _20px_                   | -           |
+| --r-checkbox-border-color         | _var(--r-gray-5)_        | -           |
+| --r-checkbox-duration             | _var(--r-duration-fast)_ | -           |
+| --r-checkbox-label-margin         | _var(--r-padding-xs)_    | -           |
+| --r-checkbox-label-color          | _var(--r-text-color)_    | -           |
+| --r-checkbox-checked-icon-color   | _var(--r-primary-color)_ | -           |
+| --r-checkbox-disabled-icon-color  | _var(--r-gray-5)_        | -           |
+| --r-checkbox-disabled-label-color | _var(--r-text-color-3)_  | -           |
+| --r-checkbox-disabled-background  | _var(--r-border-color)_  | -           |

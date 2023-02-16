@@ -1,4 +1,8 @@
-export const areaList = {
+export const areaList: {
+  province_list: Record<string, string>
+  city_list: Record<string, string>
+  county_list: Record<string, string>
+} = {
   province_list: {
     110000: '北京市',
     120000: '天津市',
@@ -33,7 +37,7 @@ export const areaList = {
     650000: '新疆维吾尔自治区',
     710000: '台湾省',
     810000: '香港特别行政区',
-    820000: '澳门特别行政区',
+    820000: '澳门特别行政区'
   },
   city_list: {
     110100: '北京市',
@@ -404,7 +408,7 @@ export const areaList = {
     810200: '九龙',
     810300: '新界',
     820100: '澳门半岛',
-    820200: '离岛',
+    820200: '离岛'
   },
   county_list: {
     110101: '东城区',
@@ -3883,6 +3887,56 @@ export const areaList = {
     820106: '风顺堂区',
     820202: '嘉模堂区',
     820203: '路氹填海区',
-    820204: '圣方济各堂区',
-  },
-};
+    820204: '圣方济各堂区'
+  }
+}
+
+type CascaderOption = {
+  text: string
+  value: string
+  children?: CascaderOption[]
+}
+
+const makeOption = (
+  text: string,
+  value: string,
+  children?: CascaderOption[]
+): CascaderOption => ({
+  text,
+  value,
+  children
+})
+
+export function useCascaderAreaData() {
+  const {
+    city_list: city,
+    county_list: county,
+    province_list: province
+  } = areaList
+
+  const provinceMap = new Map<string, CascaderOption>()
+  Object.keys(province).forEach((code) => {
+    provinceMap.set(code.slice(0, 2), makeOption(province[code], code, []))
+  })
+
+  const cityMap = new Map<string, CascaderOption>()
+
+  Object.keys(city).forEach((code) => {
+    const option = makeOption(city[code], code, [])
+    cityMap.set(code.slice(0, 4), option)
+
+    const province = provinceMap.get(code.slice(0, 2))
+    if (province) {
+      province.children!.push(option)
+    }
+  })
+
+  Object.keys(county).forEach((code) => {
+    const city = cityMap.get(code.slice(0, 4))
+    if (city) {
+      city.children!.push(makeOption(county[code], code))
+    }
+  })
+
+  return Array.from(provinceMap.values())
+}

@@ -18,6 +18,7 @@ import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
 import {
   pick,
   extend,
+  inBrowser,
   truthProp,
   numericProp,
   unknownProp,
@@ -138,6 +139,10 @@ export default defineComponent({
 
         if (!popper) {
           popper = createPopperInstance()
+          if (inBrowser) {
+            window.addEventListener('animationend', updateLocation)
+            window.addEventListener('transitionend', updateLocation)
+          }
         } else {
           popper.setOptions(getPopoverOptions())
         }
@@ -233,6 +238,10 @@ export default defineComponent({
 
     onBeforeUnmount(() => {
       if (popper) {
+        if (inBrowser) {
+          window.removeEventListener('animationend', updateLocation)
+          window.removeEventListener('transitionend', updateLocation)
+        }
         popper.destroy()
         popper = null
       }

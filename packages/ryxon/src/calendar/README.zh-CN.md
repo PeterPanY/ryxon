@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Calendar } from 'ryxon';
+import { createApp } from 'vue'
+import { Calendar } from 'ryxon'
 
-const app = createApp();
-app.use(Calendar);
+const app = createApp()
+app.use(Calendar)
 ```
 
 ## 代码演示
@@ -28,26 +28,26 @@ app.use(Calendar);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const date = ref('');
-    const show = ref(false);
+    const date = ref('')
+    const show = ref(false)
 
-    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
+    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`
     const onConfirm = (value) => {
-      show.value = false;
-      date.value = formatDate(value);
-    };
+      show.value = false
+      date.value = formatDate(value)
+    }
 
     return {
       date,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### 选择多个日期
@@ -60,25 +60,25 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const text = ref('');
-    const show = ref(false);
+    const text = ref('')
+    const show = ref(false)
 
     const onConfirm = (dates) => {
-      show.value = false;
-      text.value = `选择了 ${dates.length} 个日期`;
-    };
+      show.value = false
+      text.value = `选择了 ${dates.length} 个日期`
+    }
 
     return {
       text,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### 选择日期区间
@@ -91,27 +91,27 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const date = ref('');
-    const show = ref(false);
+    const date = ref('')
+    const show = ref(false)
 
-    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
+    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`
     const onConfirm = (values) => {
-      const [start, end] = values;
-      show.value = false;
-      date.value = `${formatDate(start)} - ${formatDate(end)}`;
-    };
+      const [start, end] = values
+      show.value = false
+      date.value = `${formatDate(start)} - ${formatDate(end)}`
+    }
 
     return {
       date,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 > Tips: 默认情况下，日期区间的起止时间不能为同一天，可以通过设置 allow-same-day 属性来允许选择同一天。
@@ -141,19 +141,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
 
     return {
       show,
       minDate: new Date(2010, 0, 1),
-      maxDate: new Date(2010, 0, 31),
-    };
-  },
-};
+      maxDate: new Date(2010, 0, 31)
+    }
+  }
+}
 ```
 
 ### 自定义按钮文字
@@ -181,33 +181,33 @@ export default {
 export default {
   setup() {
     const formatter = (day) => {
-      const month = day.date.getMonth() + 1;
-      const date = day.date.getDate();
+      const month = day.date.getMonth() + 1
+      const date = day.date.getDate()
 
       if (month === 5) {
         if (date === 1) {
-          day.topInfo = '劳动节';
+          day.topInfo = '劳动节'
         } else if (date === 4) {
-          day.topInfo = '青年节';
+          day.topInfo = '青年节'
         } else if (date === 11) {
-          day.text = '今天';
+          day.text = '今天'
         }
       }
 
       if (day.type === 'start') {
-        day.bottomInfo = '入住';
+        day.bottomInfo = '入住'
       } else if (day.type === 'end') {
-        day.bottomInfo = '离店';
+        day.bottomInfo = '离店'
       }
 
-      return day;
-    };
+      return day
+    }
 
     return {
-      formatter,
-    };
-  },
-};
+      formatter
+    }
+  }
+}
 ```
 
 ### 自定义弹出位置
@@ -341,6 +341,7 @@ export default {
 | --- | --- | --- |
 | title | 自定义标题 | - |
 | subtitle `v3.1.3` | 自定义日历副标题 | _{ text: string, date?: Date }_ |
+| month-title `v4.0.9` | 自定义每个月份的小标题 | _{ text: string, date: Date }_ |
 | footer | 自定义底部区域内容 | - |
 | confirm-text `v3.2.6` | 自定义确认按钮的内容 | _{ disabled: boolean }_ |
 | top-info `v3.0.17` | 自定义日期上方的提示信息 | _day: Day_ |
@@ -366,19 +367,19 @@ import type {
   CalendarProps,
   CalendarDayItem,
   CalendarDayType,
-  CalendarInstance,
-} from 'ryxon';
+  CalendarInstance
+} from 'ryxon'
 ```
 
 `CalendarInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { CalendarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CalendarInstance } from 'ryxon'
 
-const calendarRef = ref<CalendarInstance>();
+const calendarRef = ref<CalendarInstance>()
 
-calendarRef.value?.reset();
+calendarRef.value?.reset()
 ```
 
 ## 主题定制
@@ -423,21 +424,21 @@ calendarRef.value?.reset();
 如果需要在 formatter 中使用异步返回的数据，可以使用计算属性动态创建 formatter 函数，示例如下：
 
 ```js
-const asyncData = ref();
+const asyncData = ref()
 
 const formatter = computed(() => {
   if (!asyncData.value) {
-    return (day) => day;
+    return (day) => day
   }
   return (day) => {
-    day.bottomInfo = asyncData.value;
-    return day;
-  };
-});
+    day.bottomInfo = asyncData.value
+    return day
+  }
+})
 
 setTimeout(() => {
-  asyncData.value = '后端文案';
-}, 3000);
+  asyncData.value = '后端文案'
+}, 3000)
 ```
 
 ### 在 iOS 系统上初始化组件失败？

@@ -20,35 +20,35 @@
 </template>
 
 <script>
-import { config } from 'site-mobile-shared';
-import DemoHomeNav from './DemoHomeNav.vue';
+import { config } from 'site-mobile-shared'
+import DemoHomeNav from './DemoHomeNav.vue'
 
 export default {
   components: {
-    DemoHomeNav,
+    DemoHomeNav
   },
 
   computed: {
     lang() {
-      const { lang } = this.$route.meta;
-      return lang;
+      const { lang } = this.$route.meta
+      return lang
     },
 
     config() {
-      const { locales } = config.site;
+      const { locales } = config.site
 
       if (locales) {
-        return locales[this.lang];
+        return locales[this.lang]
       }
 
-      return config.site;
+      return config.site
     },
 
     smallTitle() {
-      return this.config.title.length >= 8;
-    },
-  },
-};
+      return this.config.title.length >= 8
+    }
+  }
+}
 </script>
 
 <style lang="less">
@@ -93,6 +93,7 @@ export default {
     margin: 0 0 40px;
     color: var(--r-doc-text-color-4);
     font-size: 14px;
+    line-height: 1.6;
   }
 }
 </style>

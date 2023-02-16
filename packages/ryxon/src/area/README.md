@@ -9,11 +9,11 @@ A three-level linkage selection of provinces and cities, usually used in conjunc
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Area } from 'ryxon';
+import { createApp } from 'vue'
+import { Area } from 'ryxon'
 
-const app = createApp();
-app.use(Area);
+const app = createApp()
+app.use(Area)
 ```
 
 ## Usage
@@ -36,23 +36,23 @@ Sample data:
 export default {
   province_list: {
     110000: 'Beijing',
-    330000: 'Zhejiang Province',
+    330000: 'Zhejiang Province'
   },
   city_list: {
     110100: 'Beijing City',
-    330100: 'Hangzhou',
+    330100: 'Hangzhou'
   },
   county_list: {
     110101: 'Dongcheng District',
-    110102: 'Xicheng District',
+    110102: 'Xicheng District'
     // ....
-  },
-};
+  }
+}
 ```
 
-### @ryxon/area-data
+### China Area Data
 
-Ryxon officially provides a default China area data, which can be imported through [@ryxon/area-data](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-area-data):
+Ryxon officially provides a default china area data, which can be imported through [@ryxon/area-data](https://github.com/vant-ui/vant/tree/main/packages/vant-area-data):
 
 ```bash
 # with npm
@@ -66,13 +66,13 @@ pnpm add @ryxon/area-data
 ```
 
 ```ts
-import { areaList } from '@ryxon/area-data';
+import { areaList } from '@ryxon/area-data'
 
 export default {
   setup() {
-    return { areaList };
-  },
-};
+    return { areaList }
+  }
+}
 ```
 
 ### Model Value
@@ -84,14 +84,14 @@ Bind the currently selected area code via `v-model`.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref('330302');
-    return { value };
-  },
-};
+    const value = ref('330302')
+    return { value }
+  }
+}
 ```
 
 ### Columns Number
@@ -166,16 +166,16 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Area i
 The component exports the following type definitions:
 
 ```ts
-import type { AreaProps, AreaList, AreaInstance, AreaColumnOption } from 'ryxon';
+import type { AreaProps, AreaList, AreaInstance, AreaColumnOption } from 'ryxon'
 ```
 
 `AreaInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { AreaInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { AreaInstance } from 'ryxon'
 
-const areaRef = ref<AreaInstance>();
+const areaRef = ref<AreaInstance>()
 
-areaRef.value?.confirm();
+areaRef.value?.confirm()
 ```

@@ -202,13 +202,15 @@ export default {
 ```html
 <r-cascader v-model="code" title="Select Area" :options="options">
   <template #options-top="{ tabIndex }">
-    <div class="current-level">Current level is {{ tabIndex }}</div>
+    <div class="current-level">Current level is {{ tabIndex + 1 }}</div>
   </template>
 </r-cascader>
 
 <style>
   .current-level {
-    padding: 10px 16px 0;
+    font-size: 14px;
+    padding: 16px 16px 0;
+    color: var(--r-gray-6);
   }
 </style>
 ```

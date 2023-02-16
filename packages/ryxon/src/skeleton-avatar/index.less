@@ -1,0 +1,22 @@
+:root {
+  --r-skeleton-avatar-size: 32px;
+  --r-skeleton-avatar-background: var(--r-active-color);
+}
+
+.r-skeleton {
+  &-avatar {
+    flex-shrink: 0;
+    width: var(--r-skeleton-avatar-size);
+    height: var(--r-skeleton-avatar-size);
+    margin-right: var(--r-padding-md);
+    background: var(--r-skeleton-avatar-background);
+
+    &--round {
+      border-radius: var(--r-radius-max);
+    }
+  }
+
+  &-avatar + &__content {
+    padding-top: var(--r-padding-xs);
+  }
+}

@@ -9,11 +9,11 @@ Calendar component for selecting dates or date ranges.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Calendar } from 'ryxon';
+import { createApp } from 'vue'
+import { Calendar } from 'ryxon'
 
-const app = createApp();
-app.use(Calendar);
+const app = createApp()
+app.use(Calendar)
 ```
 
 ## Usage
@@ -28,26 +28,26 @@ The `confirm` event will be emitted after the date selection is completed.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const date = ref('');
-    const show = ref(false);
+    const date = ref('')
+    const show = ref(false)
 
-    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
+    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`
     const onConfirm = (value) => {
-      show.value = false;
-      date.value = formatDate(value);
-    };
+      show.value = false
+      date.value = formatDate(value)
+    }
 
     return {
       date,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### Select Multiple Date
@@ -58,25 +58,25 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const text = ref('');
-    const show = ref(false);
+    const text = ref('')
+    const show = ref(false)
 
     const onConfirm = (dates) => {
-      show.value = false;
-      text.value = `选择了 ${dates.length} 个日期`;
-    };
+      show.value = false
+      text.value = `选择了 ${dates.length} 个日期`
+    }
 
     return {
       text,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### Select Date Range
@@ -89,27 +89,27 @@ You can select a date range after setting `type` to`range`. In range mode, the d
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const date = ref('');
-    const show = ref(false);
+    const date = ref('')
+    const show = ref(false)
 
-    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
+    const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`
     const onConfirm = (values) => {
-      const [start, end] = values;
-      show.value = false;
-      date.value = `${formatDate(start)} - ${formatDate(end)}`;
-    };
+      const [start, end] = values
+      show.value = false
+      date.value = `${formatDate(start)} - ${formatDate(end)}`
+    }
 
     return {
       date,
       show,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### Quick Select
@@ -137,19 +137,19 @@ Use `min-date` and `max-date` to custom date range.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
 
     return {
       show,
       minDate: new Date(2010, 0, 1),
-      maxDate: new Date(2010, 0, 31),
-    };
-  },
-};
+      maxDate: new Date(2010, 0, 31)
+    }
+  }
+}
 ```
 
 ### Custom Confirm Text
@@ -177,33 +177,33 @@ Use `formatter` to custom day text.
 export default {
   setup() {
     const formatter = (day) => {
-      const month = day.date.getMonth() + 1;
-      const date = day.date.getDate();
+      const month = day.date.getMonth() + 1
+      const date = day.date.getDate()
 
       if (month === 5) {
         if (date === 1) {
-          day.topInfo = 'Labor Day';
+          day.topInfo = 'Labor Day'
         } else if (date === 4) {
-          day.topInfo = 'Youth Day';
+          day.topInfo = 'Youth Day'
         } else if (date === 11) {
-          day.text = 'Today';
+          day.text = 'Today'
         }
       }
 
       if (day.type === 'start') {
-        day.bottomInfo = 'In';
+        day.bottomInfo = 'In'
       } else if (day.type === 'end') {
-        day.bottomInfo = 'Out';
+        day.bottomInfo = 'Out'
       }
 
-      return day;
-    };
+      return day
+    }
 
     return {
-      formatter,
-    };
-  },
-};
+      formatter
+    }
+  }
+}
 ```
 
 ### Custom Position
@@ -335,6 +335,7 @@ Following props are supported when the type is multiple
 | --- | --- | --- |
 | title | Custom title | - |
 | subtitle `v3.1.3` | Custom subtitle | _{ text: string, date?: Date }_ |
+| month-title `v4.0.9` | Custom title of every month | _{ text: string, date: Date }_ |
 | footer | Custom footer | - |
 | confirm-text `v3.2.6` | Custom confirm text | _{ disabled: boolean }_ |
 | top-info `v3.0.17` | Custom top info of day | _day: Day_ |
@@ -360,19 +361,19 @@ import type {
   CalendarProps,
   CalendarDayItem,
   CalendarDayType,
-  CalendarInstance,
-} from 'ryxon';
+  CalendarInstance
+} from 'ryxon'
 ```
 
 `CalendarInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { CalendarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CalendarInstance } from 'ryxon'
 
-const calendarRef = ref<CalendarInstance>();
+const calendarRef = ref<CalendarInstance>()
 
-calendarRef.value?.reset();
+calendarRef.value?.reset()
 ```
 
 ## Theming

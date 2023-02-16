@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Checkbox, CheckboxGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { Checkbox, CheckboxGroup } from 'ryxon'
 
-const app = createApp();
-app.use(Checkbox);
-app.use(CheckboxGroup);
+const app = createApp()
+app.use(Checkbox)
+app.use(CheckboxGroup)
 ```
 
 ## 代码演示
@@ -28,14 +28,14 @@ app.use(CheckboxGroup);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
-    return { checked };
-  },
-};
+    const checked = ref(true)
+    return { checked }
+  }
+}
 ```
 
 ### 禁用状态
@@ -90,20 +90,28 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
+    const checked = ref(true)
     return {
       checked,
       activeIcon:
         'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactiveIcon:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
-  },
-};
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
+  }
+}
+```
+
+### 左侧文本
+
+将 `label-position` 属性设置为 `'left'`，可以将文本位置调整到复选框左侧。
+
+```html
+<r-checkbox v-model="checked" label-position="left">复选框</r-checkbox>
 ```
 
 ### 禁用文本点击
@@ -126,14 +134,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(['a', 'b']);
-    return { checked };
-  },
-};
+    const checked = ref(['a', 'b'])
+    return { checked }
+  }
+}
 ```
 
 ### 水平排列
@@ -148,14 +156,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref([]);
-    return { checked };
-  },
-};
+    const checked = ref([])
+    return { checked }
+  }
+}
 ```
 
 ### 限制最大可选数
@@ -236,28 +244,28 @@ export default {
 ```
 
 ```js
-import { ref, onBeforeUpdate } from 'vue';
+import { ref, onBeforeUpdate } from 'vue'
 
 export default {
   setup() {
-    const checked = ref([]);
-    const checkboxRefs = ref([]);
+    const checked = ref([])
+    const checkboxRefs = ref([])
     const toggle = (index) => {
-      checkboxRefs.value[index].toggle();
-    };
+      checkboxRefs.value[index].toggle()
+    }
 
     onBeforeUpdate(() => {
-      checkboxRefs.value = [];
-    });
+      checkboxRefs.value = []
+    })
 
     return {
       list: ['a', 'b'],
       toggle,
       checked,
-      checkboxRefs,
-    };
-  },
-};
+      checkboxRefs
+    }
+  }
+}
 ```
 
 ## API
@@ -362,21 +370,21 @@ import type {
   CheckboxGroupProps,
   CheckboxGroupInstance,
   CheckboxGroupDirection,
-  CheckboxGroupToggleAllOptions,
-} from 'ryxon';
+  CheckboxGroupToggleAllOptions
+} from 'ryxon'
 ```
 
 `CheckboxInstance` 和 `CheckboxGroupInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { CheckboxInstance, CheckboxGroupInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CheckboxInstance, CheckboxGroupInstance } from 'ryxon'
 
-const checkboxRef = ref<CheckboxInstance>();
-const checkboxGroupRef = ref<CheckboxGroupInstance>();
+const checkboxRef = ref<CheckboxInstance>()
+const checkboxGroupRef = ref<CheckboxGroupInstance>()
 
-checkboxRef.value?.toggle();
-checkboxGroupRef.value?.toggleAll();
+checkboxRef.value?.toggle()
+checkboxGroupRef.value?.toggleAll()
 ```
 
 ## 主题定制
@@ -385,9 +393,9 @@ checkboxGroupRef.value?.toggleAll();
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                                | 默认值                     | 描述 |
-| ----------------------------------- | -------------------------- | ---- |
-| --r-checkbox-size                 | _20px_                     | -    |
+| 名称                              | 默认值                   | 描述 |
+| --------------------------------- | ------------------------ | ---- |
+| --r-checkbox-size                 | _20px_                   | -    |
 | --r-checkbox-border-color         | _var(--r-gray-5)_        | -    |
 | --r-checkbox-duration             | _var(--r-duration-fast)_ | -    |
 | --r-checkbox-label-margin         | _var(--r-padding-xs)_    | -    |

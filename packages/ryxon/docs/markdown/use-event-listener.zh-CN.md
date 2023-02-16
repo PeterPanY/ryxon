@@ -9,27 +9,46 @@
 ### 基本用法
 
 ```js
-import { ref } from 'vue';
-import { useEventListener } from '@ryxon/use';
+import { ref } from 'vue'
+import { useEventListener } from '@ryxon/use'
 
 export default {
   setup() {
     // 在 window 上绑定 resize 事件
     // 未指定监听对象时，默认会监听 window 的事件
     useEventListener('resize', () => {
-      console.log('window resize');
-    });
+      console.log('window resize')
+    })
 
     // 在 body 元素上绑定 click 事件
     useEventListener(
       'click',
       () => {
-        console.log('click body');
+        console.log('click body')
       },
       { target: document.body }
-    );
-  },
-};
+    )
+  }
+}
+```
+
+### 取消事件监听
+
+`useEventListener` 会返回一个 `cleanup` 函数，调用该函数可以取消事件监听。
+
+```js
+import { ref } from 'vue'
+import { useEventListener } from '@vant/use'
+
+export default {
+  setup() {
+    const cleanup = useEventListener('resize', () => {
+      console.log('window resize')
+    })
+
+    cleanup()
+  }
+}
 ```
 
 ## API
@@ -38,16 +57,16 @@ export default {
 
 ```ts
 type Options = {
-  target?: EventTarget | Ref<EventTarget>;
-  capture?: boolean;
-  passive?: boolean;
-};
+  target?: EventTarget | Ref<EventTarget>
+  capture?: boolean
+  passive?: boolean
+}
 
 function useEventListener(
   type: string,
   listener: EventListener,
   options?: Options
-): void;
+): () => void
 ```
 
 ### 参数

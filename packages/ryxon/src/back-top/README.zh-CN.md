@@ -9,30 +9,32 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { BackTop } from 'ryxon';
+import { createApp } from 'vue'
+import { BackTop } from 'ryxon'
 
-const app = createApp();
-app.use(BackTop);
+const app = createApp()
+app.use(BackTop)
 ```
 
 ## 代码演示
 
 ### 基础用法
 
-请滚动示例页面来查看右下角的返回顶部按钮。
+请滚动右侧的示例页面，当页面滚动 `200px` 时，右下角会出现返回顶部按钮。
 
 ```html
-<r-cell v-for="item in list" :key="item" :title="item" /> <r-back-top />
+<r-cell v-for="item in list" :key="item" :title="item" />
+
+<r-back-top />
 ```
 
 ```js
 export default {
   setup() {
-    const list = [...Array(50).keys()];
-    return { list };
-  },
-};
+    const list = [...Array(50).keys()]
+    return { list }
+  }
+}
 ```
 
 ### 自定义位置
@@ -47,10 +49,10 @@ export default {
 ```js
 export default {
   setup() {
-    const list = [...Array(50).keys()];
-    return { list };
-  },
-};
+    const list = [...Array(50).keys()]
+    return { list }
+  }
+}
 ```
 
 ### 自定义内容
@@ -73,10 +75,10 @@ export default {
 ```js
 export default {
   setup() {
-    const list = [...Array(50).keys()];
-    return { list };
-  },
-};
+    const list = [...Array(50).keys()]
+    return { list }
+  }
+}
 ```
 
 ### 设置滚动目标
@@ -100,10 +102,18 @@ export default {
 ```js
 export default {
   setup() {
-    const list = [...Array(50).keys()];
-    return { list };
-  },
-};
+    const list = [...Array(50).keys()]
+    return { list }
+  }
+}
+```
+
+### 瞬间滚动
+
+当设置 `immediate` 属性后，页面滚动的过程不再有过渡效果，而是瞬间滚动到顶部。
+
+```html
+<r-back-top immediate />
 ```
 
 ## API
@@ -117,6 +127,13 @@ export default {
 | bottom | 距离页面底部的距离，默认单位为 `px` | _number \| string_ | `40` |
 | offset | 滚动高度达到此参数值时才显示组件 | _number_ | `200` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | _string \| Element_ | `body` |
+| immediate `v4.0.9` | 是否瞬间滚动到顶部 | _boolean_ | `false` |
+
+### Events
+
+| 事件  | 说明           | 回调参数            |
+| ----- | -------------- | ------------------- |
+| click | 点击组件时触发 | _event: MouseEvent_ |
 
 ### Slots
 
@@ -129,7 +146,7 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { BackTopProps, BackTopThemeVars } from 'ryxon';
+import type { BackTopProps, BackTopThemeVars } from 'ryxon'
 ```
 
 ## 主题定制
@@ -138,11 +155,11 @@ import type { BackTopProps, BackTopThemeVars } from 'ryxon';
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                      | 默认值            | 描述 |
-| ------------------------- | ----------------- | ---- |
-| --r-back-top-size       | _40px_            | -    |
-| --r-back-top-icon-size  | _20px_            | -    |
-| --r-back-top-right      | _30px_            | -    |
-| --r-back-top-bottom     | _40px_            | -    |
-| --r-back-top-text-color | _#fff_            | -    |
+| 名称                    | 默认值          | 描述 |
+| ----------------------- | --------------- | ---- |
+| --r-back-top-size       | _40px_          | -    |
+| --r-back-top-icon-size  | _20px_          | -    |
+| --r-back-top-right      | _30px_          | -    |
+| --r-back-top-bottom     | _40px_          | -    |
+| --r-back-top-text-color | _#fff_          | -    |
 | --r-back-top-background | _var(--r-blue)_ | -    |

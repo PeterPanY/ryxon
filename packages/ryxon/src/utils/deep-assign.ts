@@ -1,28 +1,30 @@
-import { isDef, isObject } from './validate';
+import { isDef, isObject } from './validate'
 
-type ObjectIndex = Record<string, unknown>;
+type ObjectIndex = Record<string, unknown>
 
-const { hasOwnProperty } = Object.prototype;
+const { hasOwnProperty } = Object.prototype
 
+// 拷贝键值对
 function assignKey(to: ObjectIndex, from: ObjectIndex, key: string) {
-  const val = from[key];
+  const val = from[key]
 
   if (!isDef(val)) {
-    return;
+    return
   }
 
   if (!hasOwnProperty.call(to, key) || !isObject(val)) {
-    to[key] = val;
+    to[key] = val
   } else {
     // eslint-disable-next-line no-use-before-define
-    to[key] = deepAssign(Object(to[key]), val);
+    to[key] = deepAssign(Object(to[key]), val)
   }
 }
 
+// 深拷贝
 export function deepAssign(to: ObjectIndex, from: ObjectIndex): ObjectIndex {
   Object.keys(from).forEach((key) => {
-    assignKey(to, from, key);
-  });
+    assignKey(to, from, key)
+  })
 
-  return to;
+  return to
 }

@@ -231,7 +231,7 @@ The component provides the following CSS variables, which can be used to customi
 | --r-number-keyboard-title-height | _34px_ | - |
 | --r-number-keyboard-title-font-size | _var(--r-font-size-lg)_ | - |
 | --r-number-keyboard-close-padding | _0 var(--r-padding-md)_ | - |
-| --r-number-keyboard-close-color | _var(--r-link-color)_ | - |
+| --r-number-keyboard-close-color | _var(--r-primary-color)_ | - |
 | --r-number-keyboard-close-font-size | _var(--r-font-size-md)_ | - |
 | --r-number-keyboard-button-text-color | _var(--r-white)_ | - |
 | --r-number-keyboard-button-background | _var(--r-primary-color)_ | - |

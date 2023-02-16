@@ -1,0 +1,26 @@
+:root {
+  --r-skeleton-image-size: 96px;
+  --r-skeleton-image-radius: 24px;
+}
+
+.r-skeleton {
+  &-image {
+    display: flex;
+    width: var(--r-skeleton-image-size);
+    height: var(--r-skeleton-image-size);
+    align-items: center;
+    justify-content: center;
+    background: var(--r-active-color);
+
+    &--round {
+      border-radius: var(--r-skeleton-image-radius);
+    }
+
+    &__icon {
+      width: calc(var(--r-skeleton-image-size) / 2);
+      height: calc(var(--r-skeleton-image-size) / 2);
+      font-size: calc(var(--r-skeleton-image-size) / 2);
+      color: var(--r-gray-5);
+    }
+  }
+}

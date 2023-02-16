@@ -8,39 +8,39 @@
 </template>
 
 <script>
-import { copyToClipboard } from '../../common';
+import { copyToClipboard } from '../../common'
 
 export default {
   name: 'RDocContent',
 
   computed: {
     currentPage() {
-      const { path } = this.$route;
+      const { path } = this.$route
       if (path) {
-        return path.split('/').slice(-1)[0];
+        return path.split('/').slice(-1)[0]
       }
-      return this.$route.name;
-    },
+      return this.$route.name
+    }
   },
 
   watch: {
     $route(to, from) {
       if (from.path !== to.path) {
         setTimeout(() => {
-          this.copyAction();
-        });
+          this.copyAction()
+        })
       }
-    },
+    }
   },
 
   mounted() {
-    this.copyAction();
+    this.copyAction()
   },
 
   methods: {
     onClick({ target }) {
       if (['H2', 'H3', 'H4', 'H5'].includes(target.tagName)) {
-        this.scrollToAnchor(target);
+        this.scrollToAnchor(target)
       }
     },
 
@@ -48,43 +48,43 @@ export default {
       if (target.id) {
         this.$router.push({
           name: this.$route.name,
-          hash: '#' + target.id,
-        });
+          hash: '#' + target.id
+        })
       }
     },
 
     copyAction() {
-      const codeBoxes = document.querySelectorAll('.r-doc-card pre code');
+      const codeBoxes = document.querySelectorAll('.r-doc-card pre code')
 
       if (!codeBoxes || !codeBoxes.length) {
-        return;
+        return
       }
 
       for (let i = 0; i < codeBoxes.length; i++) {
-        const item = codeBoxes[i];
-        let timer = null;
+        const item = codeBoxes[i]
+        let timer = null
 
         item.addEventListener('click', () => {
-          if (timer) return;
-          const content = item.innerText;
-          copyToClipboard(content);
-          item.classList.add('code-copy-success');
+          if (timer) return
+          const content = item.innerText
+          copyToClipboard(content)
+          item.classList.add('code-copy-success')
 
           timer = setTimeout(() => {
-            item.classList.remove('code-copy-success');
-            timer = null;
-          }, 1400);
-        });
+            item.classList.remove('code-copy-success')
+            timer = null
+          }, 1400)
+        })
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="less">
 .r-doc-card {
-  margin-bottom: 24px;
-  padding: 24px;
+  margin-bottom: var(--r-doc-padding);
+  padding: 28px 28px 32px;
   background-color: var(--r-doc-background-2);
   border-radius: var(--r-doc-border-radius);
   overflow: auto;
@@ -185,7 +185,7 @@ export default {
   }
 
   > p {
-    margin-top: 8px;
+    margin-top: 16px;
     color: var(--r-doc-text-color-3);
     font-size: 15px;
     line-height: 26px;
@@ -245,7 +245,7 @@ export default {
       display: inline-block;
       color: var(--r-doc-green);
       font-size: 14px;
-      font-family: 'Source Code Pro', 'Monaco', 'Inconsolata', monospace;
+      font-family: var(--r-doc-code-font-family);
       font-style: normal;
       max-width: 300px;
       -webkit-font-smoothing: auto;
@@ -253,7 +253,7 @@ export default {
   }
 
   > ul {
-    margin: 12px 0;
+    margin: 16px 0 0;
   }
 
   > ul li,
@@ -291,13 +291,12 @@ export default {
   > table code {
     display: inline;
     margin: 0 2px;
-    padding: 2px 5px;
+    padding: 3px 7px;
     font-size: 14px;
-    font-family: inherit;
-    font-weight: 600;
     word-break: keep-all;
-    border-radius: 4px;
-    -webkit-font-smoothing: antialiased;
+    border-radius: 6px;
+    -webkit-font-smoothing: auto;
+    font-family: var(--r-doc-code-font-family);
   }
 
   > blockquote {
@@ -313,7 +312,7 @@ export default {
   > img,
   > p img {
     width: 100%;
-    margin: 16px 0;
+    margin: 16px 0 0;
     border-radius: var(--r-doc-border-radius);
   }
 }
@@ -324,7 +323,7 @@ export default {
   padding: 0 0 75px;
 
   .r-doc-markdown-body {
-    padding: 24px;
+    padding: var(--r-doc-padding);
     overflow: hidden;
 
     h1,
@@ -344,7 +343,7 @@ export default {
     }
 
     h2 {
-      margin: 45px 0 20px;
+      margin: 52px 0 20px;
       font-size: 26px;
     }
   }

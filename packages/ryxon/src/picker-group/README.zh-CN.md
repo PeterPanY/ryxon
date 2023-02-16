@@ -17,11 +17,11 @@ PickerGroup 中可以放置以下组件：
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { PickerGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { PickerGroup } from 'ryxon'
 
-const app = createApp();
-app.use(PickerGroup);
+const app = createApp()
+app.use(PickerGroup)
 ```
 
 ## 代码演示
@@ -49,30 +49,74 @@ app.use(PickerGroup);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const currentDate = ref(['2022', '06', '01']);
-    const currentTime = ref(['12', '00']);
+    const currentDate = ref(['2022', '06', '01'])
+    const currentTime = ref(['12', '00'])
     const onConfirm = () => {
-      showToast(
-        `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
-      );
-    };
+      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
+```
+
+### 下一步按钮
+
+部分场景下，为了保证用户能够依次选择所有的 Picker，你可以设置 PickerGroup 的 `next-step-text` 属性。在设置 `next-step-text` 属性后，如果用户未切换到最后一个标签页，那么右上角的按钮会变成「下一步」，点击后自动切换到下一个 Picker。当用户切换到最后一个标签页时，右上角的按钮会变为「确认」。
+
+```html
+<r-picker-group
+  title="预约日期"
+  :tabs="['选择日期', '选择时间']"
+  next-step-text="下一步"
+  @confirm="onConfirm"
+  @cancel="onCancel"
+>
+  <r-date-picker
+    v-model="currentDate"
+    :min-date="minDate"
+    :max-date="maxDate"
+  />
+  <r-time-picker v-model="currentTime" />
+</r-picker-group>
+```
+
+```js
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
+
+export default {
+  setup() {
+    const currentDate = ref(['2022', '06', '01'])
+    const currentTime = ref(['12', '00'])
+    const onConfirm = () => {
+      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+    }
+    const onCancel = () => {
+      showToast('cancel')
+    }
+
+    return {
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 5, 1),
+      currentDate,
+      currentTime
+    }
+  }
+}
 ```
 
 ### 选择日期范围
@@ -92,29 +136,29 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const startDate = ref(['2022', '06', '01']);
-    const endDate = ref(['2023', '06', '01']);
+    const startDate = ref(['2022', '06', '01'])
+    const endDate = ref(['2023', '06', '01'])
 
     const onConfirm = () => {
-      showToast(`${startDate.value.join('/')} ${endDate.value.join('/')}`);
-    };
+      showToast(`${startDate.value.join('/')} ${endDate.value.join('/')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       endDate,
-      startDate,
-    };
-  },
-};
+      startDate
+    }
+  }
+}
 ```
 
 ### 选择时间范围
@@ -134,38 +178,40 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const startTime = ref(['12', '00']);
-    const endTime = ref(['12', '00']);
+    const startTime = ref(['12', '00'])
+    const endTime = ref(['12', '00'])
 
     const onConfirm = () => {
-      showToast(`${startTime.value.join(':')} ${endTime.value.join(':')}`);
-    };
+      showToast(`${startTime.value.join(':')} ${endTime.value.join(':')}`)
+    }
     const onCancel = () => {
-      showToast('cancel');
-    };
+      showToast('cancel')
+    }
 
     return {
       endTime,
-      startTime,
-    };
-  },
-};
+      startTime
+    }
+  }
+}
 ```
 
 ## API
 
 ### Props
 
-| 参数                | 说明         | 类型     | 默认值 |
-| ------------------- | ------------ | -------- | ------ |
-| title               | 顶部栏标题   | _string_ | `''`   |
-| confirm-button-text | 确认按钮文字 | _string_ | `确认` |
-| cancel-button-text  | 取消按钮文字 | _string_ | `取消` |
+| 参数                    | 说明             | 类型       | 默认值 |
+| ----------------------- | ---------------- | ---------- | ------ |
+| tabs                    | 设置标签页的标题 | _string[]_ | `[]`   |
+| title                   | 顶部栏标题       | _string_   | `''`   |
+| next-step-text `v4.0.8` | 下一步按钮的文字 | _string_   | `''`   |
+| confirm-button-text     | 确认按钮的文字   | _string_   | `确认` |
+| cancel-button-text      | 取消按钮的文字   | _string_   | `取消` |
 
 ### Slots
 
@@ -181,5 +227,5 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { PickerGroupProps } from 'ryxon';
+import type { PickerGroupProps } from 'ryxon'
 ```

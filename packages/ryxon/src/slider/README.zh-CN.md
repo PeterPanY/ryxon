@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Slider } from 'ryxon';
+import { createApp } from 'vue'
+import { Slider } from 'ryxon'
 
-const app = createApp();
-app.use(Slider);
+const app = createApp()
+app.use(Slider)
 ```
 
 ## 代码演示
@@ -25,19 +25,19 @@ app.use(Slider);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(50);
-    const onChange = (value) => showToast('当前值：' + value);
+    const value = ref(50)
+    const onChange = (value) => showToast('当前值：' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### 双滑块
@@ -49,20 +49,20 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     // 双滑块模式时，值必须是数组
-    const value = ref([10, 50]);
-    const onChange = (value) => showToast('当前值：' + value);
+    const value = ref([10, 50])
+    const onChange = (value) => showToast('当前值：' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### 指定选择范围
@@ -129,21 +129,21 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(50);
-    const value2 = ref([10, 50]);
-    const onChange = (value) => showToast('当前值：' + value);
+    const value = ref(50)
+    const value2 = ref([10, 50])
+    const onChange = (value) => showToast('当前值：' + value)
     return {
       value,
       value2,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -161,7 +161,7 @@ export default {
 | active-color | 进度条激活态颜色 | _string_ | `#1989fa` |
 | inactive-color | 进度条非激活态颜色 | _string_ | `#e5e5e5` |
 | range | 是否开启双滑块模式 | _boolean_ | `false` |
-| reverse `v3.2.1` | 是否将进度条反转 | `false` |
+| reverse `v3.2.1` | 是否将进度条反转 | _boolean_ | `false` |
 | disabled | 是否禁用滑块 | _boolean_ | `false` |
 | readonly `v3.0.5` | 是否为只读状态，只读状态下无法修改滑块的值 | _boolean_ | `false` |
 | vertical | 是否垂直展示 | _boolean_ | `false` |
@@ -188,7 +188,7 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SliderProps } from 'ryxon';
+import type { SliderProps } from 'ryxon'
 ```
 
 ## 主题定制
@@ -197,14 +197,14 @@ import type { SliderProps } from 'ryxon';
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                             | 默认值                         | 描述 |
-| -------------------------------- | ------------------------------ | ---- |
-| --r-slider-active-background   | _var(--r-primary-color)_     | -    |
-| --r-slider-inactive-background | _var(--r-gray-3)_            | -    |
-| --r-slider-disabled-opacity    | _var(--r-disabled-opacity)_  | -    |
+| 名称                           | 默认值                         | 描述 |
+| ------------------------------ | ------------------------------ | ---- |
+| --r-slider-active-background   | _var(--r-primary-color)_       | -    |
+| --r-slider-inactive-background | _var(--r-gray-3)_              | -    |
+| --r-slider-disabled-opacity    | _var(--r-disabled-opacity)_    | -    |
 | --r-slider-bar-height          | _2px_                          | -    |
 | --r-slider-button-width        | _24px_                         | -    |
 | --r-slider-button-height       | _24px_                         | -    |
 | --r-slider-button-radius       | _50%_                          | -    |
-| --r-slider-button-background   | _var(--r-white)_             | -    |
+| --r-slider-button-background   | _var(--r-white)_               | -    |
 | --r-slider-button-shadow       | _0 1px 2px rgba(0, 0, 0, 0.5)_ | -    |

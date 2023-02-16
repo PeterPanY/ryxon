@@ -25,20 +25,12 @@
           </li>
 
           <li v-if="darkModeClass" class="r-doc-header__top-nav-item">
-            <a
-              class="r-doc-header__link"
-              target="_blank"
-              @click="toggleTheme"
-            >
+            <a class="r-doc-header__link" target="_blank" @click="toggleTheme">
               <img :src="themeImg" />
             </a>
           </li>
 
-          <li
-            ref="version"
-            v-if="versions"
-            class="r-doc-header__top-nav-item"
-          >
+          <li ref="version" v-if="versions" class="r-doc-header__top-nav-item">
             <span
               class="r-doc-header__cube r-doc-header__version"
               @click="toggleVersionPop"
@@ -71,8 +63,8 @@
 </template>
 
 <script>
-import { packageVersion } from 'site-desktop-shared';
-import { getDefaultTheme, syncThemeToChild } from '../../common/iframe-sync';
+import { packageVersion } from 'site-desktop-shared'
+import { getDefaultTheme, syncThemeToChild } from '../../common/iframe-sync'
 
 export default {
   name: 'RDocHeader',
@@ -82,89 +74,86 @@ export default {
     config: Object,
     versions: Array,
     langConfigs: Array,
-    darkModeClass: String,
+    darkModeClass: String
   },
 
   data() {
     return {
       currentTheme: getDefaultTheme(),
       packageVersion,
-      showVersionPop: false,
-    };
+      showVersionPop: false
+    }
   },
 
   computed: {
     langLink() {
-      return `#${this.$route.path.replace(this.lang, this.anotherLang.lang)}`;
+      return `#${this.$route.path.replace(this.lang, this.anotherLang.lang)}`
     },
 
     langLabel() {
-      return this.anotherLang.label;
+      return this.anotherLang.label
     },
 
     anotherLang() {
-      const items = this.langConfigs.filter((item) => item.lang !== this.lang);
+      const items = this.langConfigs.filter((item) => item.lang !== this.lang)
       if (items.length) {
-        return items[0];
+        return items[0]
       }
 
-      return {};
+      return {}
     },
 
     themeImg() {
       if (this.currentTheme === 'light') {
-        return 'https://b.yzcdn.cn/ryxon/dark-theme.svg';
+        return 'https://b.yzcdn.cn/ryxon/dark-theme.svg'
       }
-      return 'https://b.yzcdn.cn/ryxon/light-theme.svg';
-    },
+      return 'https://b.yzcdn.cn/ryxon/light-theme.svg'
+    }
   },
 
   watch: {
     currentTheme: {
       handler(newVal, oldVal) {
-        window.localStorage.setItem('ryxonTheme', newVal);
-        document.documentElement.classList.remove(`r-doc-theme-${oldVal}`);
-        document.documentElement.classList.add(`r-doc-theme-${newVal}`);
-        syncThemeToChild(newVal);
+        window.localStorage.setItem('ryxonTheme', newVal)
+        document.documentElement.classList.remove(`r-doc-theme-${oldVal}`)
+        document.documentElement.classList.add(`r-doc-theme-${newVal}`)
+        syncThemeToChild(newVal)
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
 
   methods: {
     toggleTheme() {
-      this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+      this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light'
     },
 
     toggleVersionPop() {
-      const val = !this.showVersionPop;
+      const val = !this.showVersionPop
 
-      const action = val ? 'add' : 'remove';
-      document.body[`${action}EventListener`](
-        'click',
-        this.checkHideVersionPop
-      );
+      const action = val ? 'add' : 'remove'
+      document.body[`${action}EventListener`]('click', this.checkHideVersionPop)
 
-      this.showVersionPop = val;
+      this.showVersionPop = val
     },
 
     checkHideVersionPop(event) {
       if (!this.$refs.version.contains(event.target)) {
-        this.showVersionPop = false;
+        this.showVersionPop = false
       }
     },
 
     onSwitchLang(lang) {
-      this.$router.push(this.$route.path.replace(lang.from, lang.to));
+      this.$router.push(this.$route.path.replace(lang.from, lang.to))
     },
 
     onSwitchVersion(version) {
       if (version.link) {
-        location.href = version.link;
+        location.href = version.link
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="less">
@@ -172,6 +161,8 @@ export default {
   width: 100%;
   background-color: var(--r-doc-header-background);
   user-select: none;
+  position: relative;
+  z-index: 2;
 
   &__top {
     display: flex;

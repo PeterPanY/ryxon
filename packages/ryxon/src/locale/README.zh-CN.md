@@ -11,11 +11,11 @@ Ryxon 采用中文作为默认语言，同时支持多语言切换，请按照�
 Ryxon 通过 Locale 组件实现多语言支持，使用 `Locale.use` 方法可以切换当前使用的语言。
 
 ```js
-import { Locale } from 'ryxon';
+import { Locale } from 'ryxon'
 // 引入英文语言包
-import enUS from 'ryxon/es/locale/lang/en-US';
+import enUS from 'ryxon/es/locale/lang/en-US'
 
-Locale.use('en-US', enUS);
+Locale.use('en-US', enUS)
 ```
 
 ### 覆盖语言包
@@ -23,17 +23,17 @@ Locale.use('en-US', enUS);
 通过 `Locale.add` 方法可以实现文案的修改和扩展，示例如下：
 
 ```js
-import { Locale } from 'ryxon';
+import { Locale } from 'ryxon'
 
 const messages = {
   'zh-CN': {
     rPicker: {
-      confirm: '关闭', // 将'确认'修改为'关闭'
-    },
-  },
-};
+      confirm: '关闭' // 将'确认'修改为'关闭'
+    }
+  }
+}
 
-Locale.add(messages);
+Locale.add(messages)
 ```
 
 ### 语言包
@@ -49,6 +49,7 @@ Locale.add(messages);
 | 德语（正式）         | de-DE-formal | -        |
 | 希腊语               | el-GR        | `v3.5.0` |
 | 英语                 | en-US        | -        |
+| 世界语               | eo-EO        | `v4.0.9` |
 | 西班牙语             | es-ES        | -        |
 | 波斯语               | fa-IR        | `v3.5.0` |
 | 法语                 | fr-FR        | -        |
@@ -76,6 +77,26 @@ Locale.add(messages);
 | 繁體中文（台）       | zh-TW        | -        |
 
 > 在 [这里](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon/src/locale/lang) 查看所有的语言包源文件。
+
+### 获取当前语言
+
+你可以通过 `useCurrentLang` 方法来获取当前使用的语言。
+
+- **类型：**
+
+```ts
+function useCurrentLang(): Ref<string>
+```
+
+- **示例：**
+
+```ts
+import { useCurrentLang } from 'ryxon'
+
+const currentLang = useCurrentLang()
+
+console.log(currentLang.value) // --> 'zh-CN'
+```
 
 ## 常见问题
 

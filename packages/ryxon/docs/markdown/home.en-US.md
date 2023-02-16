@@ -2,7 +2,7 @@
   <div class="r-doc-intro">
     <img class="r-doc-intro__logo" style="width: 120px; height: 120px;" src="https://fastly.jsdelivr.net/npm/@ryxon/assets/logo.png">
     <h2 style="margin: 0; font-size: 36px; line-height: 60px;">Ryxon</h2>
-    <p>Lightweight Mobile UI Components built on Vue</p>
+    <p>A lightweight Vue UI library for mobile web apps.</p>
   </div>
 </div>
 
@@ -52,7 +52,6 @@ The current maintenance status of each version of Ryxon is as follows:
 
 ### Community Ecosystem
 
-
 ### Other Links
 
 - [Feedback](https://github.com/PeterPanY/ryxon/issues)
@@ -64,7 +63,6 @@ The current maintenance status of each version of Ryxon is as follows:
 ### Core Team
 
 Core contributors of Ryxon and Ryxon Weapp:
-
 
 ### All Contributors
 

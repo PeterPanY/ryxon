@@ -434,7 +434,7 @@ The component provides the following CSS variables, which can be used to customi
 | --r-picker-title-line-height | _var(--r-line-height-md)_ | - |
 | --r-picker-action-padding | _0 var(--r-padding-md)_ | - |
 | --r-picker-action-font-size | _var(--r-font-size-md)_ | - |
-| --r-picker-confirm-action-color | _var(--r-link-color)_ | - |
+| --r-picker-confirm-action-color | _var(--r-primary-color)_ | - |
 | --r-picker-cancel-action-color | _var(--r-text-color-2)_ | - |
 | --r-picker-option-padding | _0 var(--r-padding-base)_ | - |
 | --r-picker-option-font-size | _var(--r-font-size-lg)_ | - |

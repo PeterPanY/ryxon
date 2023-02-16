@@ -24,6 +24,7 @@ export default {
     defaultLang: 'en-US',
     darkModeClass: 'r-theme-dark',
     lightModeClass: 'r-theme-light',
+    enableVConsole: false,
     versions: [],
     baiduAnalytics: {
       seed: 'af5d41bc4e446e76665dbe3ec18d55c3'

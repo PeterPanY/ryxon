@@ -1,5 +1,5 @@
 <template>
-  <div class="r-doc-nav" :style="style">
+  <div :class="['r-doc-nav', { 'r-doc-nav-fixed': isFixed }]">
     <div
       v-for="(group, index) in navConfig"
       class="r-doc-nav__group"
@@ -22,58 +22,54 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue';
+import NavLink from './NavLink.vue'
 
 export default {
   name: 'RDocNav',
 
   components: {
-    [NavLink.name]: NavLink,
+    [NavLink.name]: NavLink
   },
 
   props: {
     lang: String,
-    navConfig: Array,
+    navConfig: Array
   },
 
   data() {
     return {
       top: 64,
       bottom: 0,
-    };
+      isFixed: false
+    }
   },
 
   computed: {
-    style() {
-      return {
-        top: this.top + 'px',
-        bottom: this.bottom + 'px',
-      };
-    },
-
     base() {
-      return this.lang ? `/${this.lang}/` : '/';
-    },
+      return this.lang ? `/${this.lang}/` : '/'
+    }
   },
 
   created() {
-    window.addEventListener('scroll', this.onScroll);
-    this.onScroll();
+    window.addEventListener('scroll', this.onScroll)
+    this.onScroll()
   },
 
   methods: {
     onScroll() {
-      const { pageYOffset: offset } = window;
-      this.top = Math.max(0, 64 - offset);
-    },
-  },
-};
+      const { pageYOffset: offset } = window
+      this.isFixed = offset > 64
+    }
+  }
+}
 </script>
 
 <style lang="less">
 .r-doc-nav {
-  position: fixed;
+  position: absolute;
   left: 0;
+  top: var(--r-doc-header-top-height);
+  bottom: 0;
   z-index: 1;
   min-width: var(--r-doc-nav-width);
   max-width: var(--r-doc-nav-width);
@@ -84,6 +80,11 @@ export default {
   @media (min-width: var(--r-doc-row-max-width)) {
     left: 50%;
     margin-left: calc((var(--r-doc-row-max-width) / 2 * -1));
+  }
+
+  &.r-doc-nav-fixed {
+    position: fixed;
+    top: 0;
   }
 
   &::-webkit-scrollbar {
