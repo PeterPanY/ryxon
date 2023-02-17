@@ -8,6 +8,16 @@ export const hasOwn = (val: object, key: string | symbol) =>
 // 判断是不是数组
 export const { isArray } = Array
 
+// 判断是不是对象
+export const isObject = (val: unknown): val is Record<any, any> =>
+  val !== null && typeof val === 'object'
+
+// 判断是不是为空
+export const isEmpty = (val: unknown) =>
+  (!val && val !== 0) ||
+  (isArray(val) && val.length === 0) ||
+  (isObject(val) && !Object.keys(val).length)
+
 // 判断是不是字符串
 export const isString = (val: any): val is string => typeof val === 'string'
 
@@ -19,9 +29,6 @@ export const isDef = <T>(val: T): val is NonNullable<T> =>
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const isFunction = (val: unknown): val is Function =>
   typeof val === 'function'
-
-export const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
 
 export const isPromise = <T = any>(val: unknown): val is Promise<T> =>
   isObject(val) && isFunction(val.then) && isFunction(val.catch)

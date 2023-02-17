@@ -79,7 +79,7 @@ const app = createApp()
 app.use(Button)
 ```
 
-ryxon 也支持按需引入、CDN 引入等方式，详细说明见 [快速上手](https://ryxon-contrib.gitee.io/ryxon#/zh-CN/quickstart).
+ryxon 也支持按需引入、CDN 引入等方式，详细说明见 [快速上手](https://ryxon-contrib.gitee.io/ryxon#/zh/quickstart).
 
 ## 在 Cloud IDE 中预览
 
@@ -111,7 +111,7 @@ Ryxon 支持现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue 3 一致�
 ## 链接
 
 - [详细文档](https://ryxon-contrib.gitee.io/ryxon)
-- [更新日志](https://ryxon-contrib.gitee.io/ryxon#/zh-CN/changelog)
+- [更新日志](https://ryxon-contrib.gitee.io/ryxon#/zh/changelog)
 - [码云镜像仓库](https://gitee.com/ryxon-contrib/ryxon)
 - [Discussions 讨论区](https://github.com/PeterPanY/ryxon/discussions)
 

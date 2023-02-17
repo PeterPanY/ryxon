@@ -1,30 +1,30 @@
-import Locale from '../../src/locale';
-import enUS from '../../src/locale/lang/en-US';
-import { camelize, createTranslate } from '../../src/utils';
-import type { App } from 'vue';
-import type { Router } from 'vue-router';
+import Locale from '../../src/locale'
+import enUS from '../../src/locale/lang/en-US'
+import { camelize, createTranslate } from '../../src/utils'
+import type { App } from 'vue'
+import type { Router } from 'vue-router'
 
 declare global {
   interface Window {
-    app: App;
-    vueRouter: Router;
+    app: App
+    vueRouter: Router
   }
 }
 
 export function initDemoLocale() {
   Locale.add({
-    'en-US': enUS,
-  });
+    en: enUS
+  })
 
   // switch lang after routing
   if (window.vueRouter) {
     window.vueRouter.afterEach((to) => {
-      const { lang } = to.meta || {};
+      const { lang } = to.meta || {}
 
       if (lang) {
-        Locale.use(lang as string);
+        Locale.use(lang as string)
       }
-    });
+    })
   }
 
   // add some basic locale messages
@@ -54,9 +54,9 @@ export function initDemoLocale() {
       basicUsage: '基础用法',
       usingUrl: '使用图片 URL',
       advancedUsage: '高级用法',
-      loadingStatus: '加载状态',
+      loadingStatus: '加载状态'
     },
-    'en-US': {
+    en: {
       add: 'Add',
       red: 'Red',
       tab: 'Tab',
@@ -81,28 +81,28 @@ export function initDemoLocale() {
       basicUsage: 'Basic Usage',
       usingUrl: 'Using URL',
       advancedUsage: 'Advanced Usage',
-      loadingStatus: 'Loading',
-    },
-  });
+      loadingStatus: 'Loading'
+    }
+  })
 }
 
-initDemoLocale();
+initDemoLocale()
 
-let demoUid = 0;
+let demoUid = 0
 
 export function useTranslate(i18n: Record<string, any>) {
-  const demoName = `demo-i18n-${demoUid++}`;
+  const demoName = `demo-i18n-${demoUid++}`
 
   if (i18n) {
-    const locales: Record<string, any> = {};
-    const camelizedName = camelize(demoName);
+    const locales: Record<string, any> = {}
+    const camelizedName = camelize(demoName)
 
     Object.keys(i18n).forEach((key) => {
-      locales[key] = { [camelizedName]: i18n[key] };
-    });
+      locales[key] = { [camelizedName]: i18n[key] }
+    })
 
-    Locale.add(locales);
+    Locale.add(locales)
   }
 
-  return createTranslate(demoName);
+  return createTranslate(demoName)
 }

@@ -39,6 +39,10 @@
         {
           "link": "/slider",
           "text": "Slider 滑块"
+        },
+        {
+          "link": "/time-picker",
+          "text": "TimePicker 时间选择"
         }
       ]
     },

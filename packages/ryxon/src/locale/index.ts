@@ -5,9 +5,9 @@ import defaultMessages from './lang/zh-CN'
 type Message = Record<string, any>
 type Messages = Record<string, Message>
 
-const lang = ref('zh-CN')
+const lang = ref('zh-cn')
 const messages = reactive<Messages>({
-  'zh-CN': defaultMessages
+  'zh-cn': defaultMessages
 })
 
 export const Locale = {
