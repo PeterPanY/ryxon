@@ -2,9 +2,10 @@
   <div>22</div>
 </template>
 
-<script setup>
-// eslint-disable-next-line no-undef
-defineOptions({
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'Picker'
 })
 </script>
