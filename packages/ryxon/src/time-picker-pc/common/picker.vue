@@ -15,7 +15,7 @@
     <template #default>
       <RInput
         v-if="!isRangeInput"
-        :id="(id as string | undefined)"
+        :id="id"
         ref="inputRef"
         :model-value="(displayValue as string)"
         :size="pickerSize"
