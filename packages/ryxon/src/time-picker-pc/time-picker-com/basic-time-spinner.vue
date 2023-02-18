@@ -4,7 +4,7 @@
       <r-scrollbar
         v-for="item in spinnerItems"
         :key="item"
-        :ref="(scrollbar: unknown) => setRef(scrollbar as any, item)"
+        :ref="(scrollbar) => setRef(scrollbar, item)"
         :class="bem('wrapper')"
         :wrap-style="{ maxHeight: 'inherit' }"
         :view-class="bem('list')"
@@ -60,7 +60,7 @@
             :class="[
               bem('item'),
               isBem('active', time === timePartials[item]),
-              isBem('disabled', timeList[item][time!]),
+              isBem('disabled', timeList[item][time])
             ]"
           >
             <template v-if="typeof time === 'number'">

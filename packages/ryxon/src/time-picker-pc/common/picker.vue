@@ -17,7 +17,7 @@
         v-if="!isRangeInput"
         :id="id"
         ref="inputRef"
-        :model-value="(displayValue as string)"
+        :model-value="displayValue"
         :size="pickerSize"
         :disabled="pickerDisabled"
         :placeholder="placeholder"
@@ -70,7 +70,7 @@
           pickerSize ? bemRange('editor', pickerSize) : '',
           $attrs.class
         ]"
-        :style="($attrs.style as any)"
+        :style="$attrs.style"
         @click="handleFocusInput"
         @mouseenter="onMouseEnter"
         @mouseleave="onMouseLeave"
