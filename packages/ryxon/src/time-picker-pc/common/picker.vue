@@ -1,5 +1,5 @@
 <template>
-  <RTooltip
+  <r-tooltip
     ref="refPopper"
     :visible="pickerVisible"
     theme="light"
@@ -13,7 +13,7 @@
     @hide="onHide"
   >
     <template #default>
-      <RInput
+      <r-input
         v-if="!isRangeInput"
         :id="id"
         ref="inputRef"
@@ -56,7 +56,7 @@
             <component :is="clearIcon" />
           </r-icon>
         </template>
-      </RInput>
+      </r-input>
       <div
         v-else
         ref="inputRef"
@@ -149,7 +149,7 @@
         @mousedown.stop
       />
     </template>
-  </RTooltip>
+  </r-tooltip>
 </template>
 
 <script lang="ts">
