@@ -132,16 +132,20 @@ export function replaceScriptImportExt(
       if (pathInfo) {
         const relativePath = getImportRelativePath(line)
 
+        // 这样并不准确  后期需要修改 判断后缀
+        if (line.includes(ext) || line.includes('.js')) {
+          return
+        }
+
         if (pathInfo.isIndex) {
-          const newLine = line.includes(ext)
-            ? line
-            : line.replace(relativePath, `${relativePath}/index${ext}`)
+          const newLine = line.replace(
+            relativePath,
+            `${relativePath}/index${ext}`
+          )
 
           updateImport(index, newLine)
         } else {
-          const newLine = line.includes(ext)
-            ? line
-            : line.replace(relativePath, relativePath + ext)
+          const newLine = line.replace(relativePath, relativePath + ext)
 
           updateImport(index, newLine)
         }

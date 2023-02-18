@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ref, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
