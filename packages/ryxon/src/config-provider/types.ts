@@ -69,6 +69,7 @@ export type ConfigProviderThemeVars =
     import('../tabbar-item').TabbarItemThemeVars &
     import('../tabs').TabsThemeVars &
     import('../tag').TagThemeVars &
+    import('../time-picker-pc').TimePickerPcThemeVars &
     import('../toast').ToastThemeVars &
     import('../tooltip').TooltipThemeVars &
     import('../tree-select').TreeSelectThemeVars &

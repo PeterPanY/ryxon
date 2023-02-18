@@ -1,0 +1,527 @@
+:root {
+  --r-date-editor-width: 220px;
+  --r-date-editor-monthrange-width: 300px;
+  --r-date-editor-daterange-width: 350px;
+  --r-date-editor-datetimerange-width: 400px;
+  // --r-input-text-color: var(--r-text-color-regular);
+  // --r-input-border: var(--r-border);
+  // --r-input-hover-border: var(--r-border-color-hover);
+  // --r-input-focus-border: var(--r-primary-color);
+  // --r-input-transparent-border: 0 0 0 1px transparent inset;
+  --r-input-border-color: var(--r-border-color);
+  // --r-input-border-radius: var(--r-radius-md);
+  // --r-input-bg-color: var(--r-fill-color-blank);
+  // --r-input-icon-color: var(--r-text-color-placeholder);
+  // --r-input-placeholder-color: var(--r-text-color-placeholder);
+  --r-input-hover-border-color: var(--r-border-color-hover);
+  // --r-input-clear-hover-color: var(--r-text-color-secondary);
+  --r-input-focus-border-color: var(--r-primary-color);
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.r-date-editor {
+  &.r-input {
+    width: var(--r-date-editor-width);
+    height: 32px;
+    padding: 0;
+  }
+
+  .close-icon {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--r-text-color-secondary);
+    }
+  }
+
+  .clear-icon {
+    cursor: pointer;
+  }
+
+  // 时间范围输入框
+  &.r-range {
+    &__editor {
+      &.r-input__wrapper {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 10px;
+      }
+
+      &.is-active {
+        box-shadow: 0 0 0 1px var(--r-input-focus-border-color) inset;
+        &:hover {
+          box-shadow: 0 0 0 1px var(--r-input-focus-border-color) inset;
+        }
+      }
+
+      &.is-disabled {
+        background-color: var(--r-disabled-bg-color);
+        border-color: var(--r-disabled-border-color);
+        color: var(--r-disabled-text-color);
+        cursor: not-allowed;
+
+        &:focus,
+        &:hover {
+          border-color: var(--r-disabled-border-color);
+        }
+
+        input {
+          background-color: var(--r-disabled-bg-color);
+          color: var(--r-disabled-text-color);
+          cursor: not-allowed;
+
+          &::-moz-placeholder {
+            color: var(--r-text-color-placeholder);
+          }
+          &:-ms-input-placeholder {
+            color: var(--r-text-color-placeholder);
+          }
+          &::placeholder {
+            color: var(--r-text-color-placeholder);
+          }
+
+          .r-range__separator {
+            color: var(--r-disabled-text-color);
+          }
+        }
+      }
+
+      // size===large
+      &--large {
+        line-height: var(--r-component-size-large);
+        &.r-input__wrapper {
+          height: var(--r-component-size-large);
+        }
+
+        .r-range__separator {
+          line-height: 40px;
+          font-size: 14px;
+        }
+
+        .r-range__input {
+          height: 38px;
+          line-height: 38px;
+          font-size: 14px;
+        }
+      }
+      // size===small
+      &--small {
+        line-height: var(--r-component-size-small);
+        &.r-input__wrapper {
+          height: var(--r-component-size-small);
+        }
+
+        .r-range__separator {
+          line-height: 24px;
+          font-size: 12px;
+        }
+
+        .r-range__input {
+          height: 22px;
+          line-height: 22px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  &__monthrange {
+    --r-date-editor-width: var(--r-date-editor-monthrange-width);
+  }
+  &__daterange,
+  &__timerange {
+    --r-date-editor-width: var(--r-date-editor-daterange-width);
+  }
+
+  &__datetimerange {
+    --r-date-editor-width: var(--r-date-editor-datetimerange-width);
+  }
+  // 时间范围下输入框大小
+  &.r-input__wrapper {
+    box-shadow: 0 0 0 1px var(--r-input-border-color) inset;
+    width: var(--r-date-editor-width);
+    height: var(--r-input-height, var(--r-component-size));
+
+    &:hover {
+      box-shadow: 0 0 0 1px var(--r-input-hover-border-color) inset;
+    }
+  }
+  // 时间范围:左侧图标
+  .r-range__icon {
+    height: inherit;
+    font-size: 14px;
+    color: var(--r-text-color-placeholder);
+    float: left;
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+
+  // 时间范围:input
+  .r-range__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 39%;
+    text-align: center;
+    font-size: var(--r-font-size-md);
+    color: var(--r-text-color-regular);
+    background-color: transparent;
+
+    &::-moz-placeholder {
+      color: var(--r-text-color-placeholder);
+    }
+    &:-ms-input-placeholder {
+      color: var(--r-text-color-placeholder);
+    }
+    &::placeholder {
+      color: var(--r-text-color-placeholder);
+    }
+  }
+
+  .r-range__separator {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 5px;
+    margin: 0;
+    font-size: 14px;
+    word-break: keep-all;
+    color: var(--r-text-color-primary);
+  }
+
+  .r-range__close-icon {
+    font-size: 14px;
+    color: var(--r-text-color-placeholder);
+    height: inherit;
+    width: unset;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--r-text-color-secondary);
+    }
+
+    &--hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+}
+
+.r-picker__popper {
+  --r-datepicker-border-color: var(--r-disabled-border-color);
+
+  &.r-popup {
+    background: var(--r-bg-color-overlay);
+    border: 1px solid var(--r-datepicker-border-color);
+    box-shadow: var(--r-box-shadow-light);
+  }
+
+  .r-tooltip__content {
+    padding: 0;
+  }
+
+  // 时间选择面板
+  .r-time-panel {
+    border-radius: 2px;
+    position: relative;
+    width: 180px;
+    left: 0;
+    z-index: 1000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+  }
+
+  .r-time-panel__content {
+    font-size: 0;
+    position: relative;
+    overflow: hidden;
+
+    &::after,
+    &::before {
+      content: '';
+      top: 50%;
+      position: absolute;
+      margin-top: -16px;
+      height: 32px;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      padding-top: 6px;
+      text-align: left;
+    }
+
+    &::after {
+      left: 50%;
+      margin-left: 12%;
+      margin-right: 12%;
+    }
+
+    &::before {
+      padding-left: 50%;
+      margin-right: 12%;
+      margin-left: 12%;
+      border-top: 1px solid var(--r-border-color-light);
+      border-bottom: 1px solid var(--r-border-color-light);
+    }
+
+    &.has-seconds::after {
+      left: 66.6666666667%;
+    }
+    &.has-seconds::before {
+      padding-left: 33.3333333333%;
+    }
+  }
+
+  .r-time-spinner {
+    width: 100%;
+    white-space: nowrap;
+
+    .r-time-spinner__wrapper {
+      max-height: 192px;
+      overflow: auto;
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      position: relative;
+
+      .r-scrollbar__wrap:not(.r-scrollbar__wrap--hidden-default) {
+        padding-bottom: 15px;
+      }
+
+      &.is-arrow {
+        box-sizing: border-box;
+        text-align: center;
+        overflow: hidden;
+
+        .r-time-spinner__list {
+          transform: translateY(-32px);
+        }
+
+        .r-time-spinner__item:hover:not(.is-disabled):not(.is-active) {
+          background: var(--r-fill-color-light);
+          cursor: default;
+        }
+      }
+    }
+
+    .r-time-spinner__list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 80px;
+      }
+    }
+
+    .r-time-spinner__item {
+      height: 32px;
+      line-height: 32px;
+      font-size: 12px;
+      color: var(--r-text-color-regular);
+
+      &:hover:not(.is-disabled):not(.is-active) {
+        background: var(--r-fill-color-light);
+        cursor: pointer;
+      }
+
+      &.is-disabled {
+        color: var(--r-text-color-placeholder);
+        cursor: not-allowed;
+
+        &:not(.is-disabled) {
+          color: var(--r-text-color-primary);
+          font-weight: 700;
+        }
+      }
+    }
+
+    &.has-seconds {
+      .r-time-spinner__wrapper {
+        width: 33.3%;
+      }
+    }
+  }
+
+  .r-time-spinner__arrow {
+    font-size: 12px;
+    color: var(--r-text-color-secondary);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--r-primary-color);
+    }
+
+    &.arrow-up {
+      top: 10px;
+    }
+
+    &.arrow-down {
+      bottom: 10px;
+    }
+  }
+
+  .r-time-panel__footer {
+    border-top: 1px solid var(--r-border-color-light);
+    padding: 4px;
+    height: 36px;
+    line-height: 25px;
+    text-align: right;
+    box-sizing: border-box;
+
+    .r-time-panel__btn {
+      border: none;
+      line-height: 28px;
+      padding: 0 5px;
+      margin: 0 5px;
+      cursor: pointer;
+      background-color: transparent;
+      outline: 0;
+      font-size: 12px;
+      color: var(--r-text-color-primary);
+
+      &.confirm {
+        font-weight: 800;
+        color: var(--r-primary-color);
+      }
+    }
+  }
+
+  .r-picker-panel {
+    color: var(--r-text-color-regular);
+    background: var(--r-bg-color-overlay);
+    border-radius: var(--r-radius-sm);
+    line-height: 30px;
+  }
+
+  // 时间范围选择样式
+  .r-time-range-picker {
+    width: 354px;
+    overflow: visible;
+
+    .r-time-range-picker__content {
+      position: relative;
+      text-align: center;
+      padding: 10px;
+      z-index: 1;
+    }
+
+    .r-time-range-picker__cell {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 4px 7px 7px;
+      width: 50%;
+      display: inline-block;
+    }
+
+    .r-time-range-picker__header {
+      margin-bottom: 5px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .r-time-range-picker__body {
+      border-radius: 2px;
+      border: 1px solid var(--r-datepicker-border-color);
+    }
+  }
+}
+
+.r-zoom-in {
+  &-top {
+    &-enter-active,
+    &-leave-active {
+      opacity: 1;
+      transform: scaleY(1);
+      transition: var(--r-duration-md-fade);
+      transform-origin: center top;
+    }
+    &-enter-active[data-popper-placement^='top'],
+    &-leave-active[data-popper-placement^='top'] {
+      transform-origin: center bottom;
+    }
+    &-enter-from,
+    &-leave-active {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+
+  &-bottom {
+    &-enter-active,
+    &-leave-active {
+      opacity: 1;
+      transform: scaleY(1);
+      transition: var(--r-duration-md-fade);
+      transform-origin: center bottom;
+    }
+
+    &-enter-from,
+    &-leave-active {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+
+  &-center {
+    &-enter-active,
+    &-leave-active {
+      transition: all var(--r-duration-base) cubic-bezier(0.55, 0, 0.1, 1);
+    }
+
+    &-enter-from,
+    &-leave-active {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+  }
+
+  &-left {
+    &-enter-active,
+    &-leave-active {
+      opacity: 1;
+      transform: scale(1, 1);
+      transition: var(--r-duration-md-fade);
+      transform-origin: top left;
+    }
+
+    &-enter-from,
+    &-leave-active {
+      opacity: 0;
+      transform: scale(0.45, 0.45);
+    }
+  }
+}

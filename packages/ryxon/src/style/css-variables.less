@@ -48,10 +48,13 @@
   --r-border-color-light: #e4e7ed;
   --r-fill-color: #f0f2f5;
   --r-fill-color-light: #f5f7fa;
+  --r-fill-color-blank: #ffffff;
+  --r-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
   --r-active-color: var(--r-gray-2);
   --r-active-opacity: 0.6;
   --r-disabled-opacity: 0.5;
   --r-disabled-bg-color: var(--r-fill-color-light);
+  --el-disabled-text-color: var(--r-text-color-placeholder);
   --r-disabled-border-color: var(--r-border-color-light);
   --r-text-color-disabled: #c0c4cc;
   --r-background: var(--r-gray-1);
@@ -92,15 +95,24 @@
     0.355,
     1
   );
+  --r-duration-function-fast-bezier: cubic-bezier(0.23, 1, 0.32, 1);
+  --r-duration-md-fade: transform var(--r-duration-base)
+      var(--r-duration-function-fast-bezier),
+    opacity var(--r-duration-base) var(--r-duration-function-fast-bezier);
   --r-duration-color: color var(--r-duration-fast)
-    var(--r-transition-function-ease-in-out-bezier);
+    var(--r-duration-function-ease-in-out-bezier);
   --r-ease-out: ease-out;
   --r-ease-in: ease-in;
+  --r-component-size-large: 40px;
+  --r-component-size: 32px;
+  --r-component-size-small: 24px;
 
   // Border
+  --r-border-width: 1px;
+  --r-border-style: solid;
   --r-border-color: var(--r-gray-3);
   --r-border-color-hover: var(--r-text-color-disabled);
-  --r-border-width: 1px;
+  --r-border: var(--r-border-width) var(--r-border-style) var(--r-border-color);
   --r-radius-sm: 2px;
   --r-radius-md: 4px;
   --r-radius-lg: 8px;

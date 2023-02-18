@@ -372,7 +372,7 @@ export default defineComponent({
         <Popup
           ref={contentRef}
           show={shouldShow.value}
-          class={bem([props.theme])}
+          class={[bem([props.theme])]}
           position={''}
           transition={props.transition}
           lockScroll={false}

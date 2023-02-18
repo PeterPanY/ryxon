@@ -21,6 +21,9 @@ export const isEmpty = (val: unknown) =>
 // 判断是不是字符串
 export const isString = (val: any): val is string => typeof val === 'string'
 
+// 判断是不是undefined
+export const isUndefined = (val: any): val is undefined => val === undefined
+
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 
 export const isDef = <T>(val: T): val is NonNullable<T> =>

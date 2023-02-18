@@ -3,6 +3,7 @@ import _Scrollbar, { ScrollbarProps } from './Scrollbar'
 
 export const Scrollbar = withInstall(_Scrollbar)
 export default Scrollbar
+
 export { scrollbarProps } from './Scrollbar'
 export type { ScrollbarProps }
 export type { ScrollbarThemeVars } from './types'

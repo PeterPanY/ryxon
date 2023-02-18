@@ -6,6 +6,7 @@ export default TimePickerPc
 
 export { timePickerPcProps } from './TimePicker'
 export type { TimePickerPcProps }
+export type { TimePickerPcThemeVars } from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
