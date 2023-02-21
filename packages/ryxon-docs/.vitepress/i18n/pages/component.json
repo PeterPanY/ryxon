@@ -41,6 +41,10 @@
           "text": "Slider 滑块"
         },
         {
+          "link": "/date-picker",
+          "text": "DatePicker 日期选择"
+        },
+        {
           "link": "/time-picker",
           "text": "TimePicker 时间选择"
         }

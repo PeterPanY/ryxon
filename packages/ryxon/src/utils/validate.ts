@@ -18,6 +18,12 @@ export const isEmpty = (val: unknown) =>
   (isArray(val) && val.length === 0) ||
   (isObject(val) && !Object.keys(val).length)
 
+// 判断是不是元素
+export const isElement = (e: unknown): e is Element => {
+  if (typeof Element === 'undefined') return false
+  return e instanceof Element
+}
+
 // 判断是不是字符串
 export const isString = (val: any): val is string => typeof val === 'string'
 

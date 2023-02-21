@@ -22,6 +22,7 @@ export type ConfigProviderThemeVars =
     import('../coupon').CouponThemeVars &
     import('../coupon-cell').CouponCellThemeVars &
     import('../coupon-list').CouponListThemeVars &
+    import('../date-picker-pc').DatePickerPcVars &
     import('../dialog').DialogThemeVars &
     import('../divider').DividerThemeVars &
     import('../dropdown-item').DropdownItemThemeVars &

@@ -3,8 +3,11 @@ import {
   toRef,
   unref,
   watch,
+  provide,
+  readonly,
   computed,
   nextTick,
+  InjectionKey,
   onDeactivated,
   defineComponent,
   type PropType,
@@ -45,8 +48,12 @@ import { Popup } from '../popup'
 
 // Types
 import { TooltipTheme, TooltipTrigger, TooltipPlacement } from './types'
+import type { TooltipProvide } from './types'
 
 const [, bem] = createNamespace('tooltip')
+
+export const TOOLTIP_INJECTION_KEY: InjectionKey<TooltipProvide> =
+  Symbol('rTooltip')
 
 const popupProps = [
   'overlay',
@@ -332,6 +339,38 @@ export default defineComponent({
         open.value = false
       }
     }
+
+    provide(TOOLTIP_INJECTION_KEY, {
+      controlled,
+      open: readonly(open),
+      trigger: toRef(props, 'trigger'),
+      onOpen: (event?: Event) => {
+        onOpen(event)
+      },
+      onClose: (event?: Event) => {
+        onClose(event)
+      },
+      onToggle: (event?: Event) => {
+        if (unref(open)) {
+          onClose(event)
+        } else {
+          onOpen(event)
+        }
+      },
+      onShow: () => {
+        emit('show', toggleReason.value)
+      },
+      onHide: () => {
+        emit('hide', toggleReason.value)
+      },
+      onBeforeShow: () => {
+        emit('before-show', toggleReason.value)
+      },
+      onBeforeHide: () => {
+        emit('before-hide', toggleReason.value)
+      },
+      updatePopper
+    })
 
     useExpose({
       contentRef,

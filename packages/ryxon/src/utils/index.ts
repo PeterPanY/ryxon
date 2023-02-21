@@ -1,3 +1,4 @@
+export * from './arrays'
 export * from './doms'
 export * from './vue'
 export * from './basic'
