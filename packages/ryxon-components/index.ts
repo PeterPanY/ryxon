@@ -1,5 +1,6 @@
 export * from '../ryxon/src/badge'
 export * from '../ryxon/src/button'
+export * from '../ryxon/src/button-group'
 export * from '../ryxon/src/cell'
 export * from '../ryxon/src/config-provider'
 export * from '../ryxon/src/date-picker-pc'

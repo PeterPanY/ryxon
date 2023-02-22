@@ -37,6 +37,10 @@
           "text": "Select 选择器"
         },
         {
+          "link": "/checkbox",
+          "text": "Checkbox 多选框"
+        },
+        {
           "link": "/slider",
           "text": "Slider 滑块"
         },

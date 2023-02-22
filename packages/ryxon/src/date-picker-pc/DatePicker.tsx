@@ -19,6 +19,7 @@ import weekYear from 'dayjs/plugin/weekYear.js'
 import dayOfYear from 'dayjs/plugin/dayOfYear.js'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js'
+import { useCustomInputValue } from '@ryxon/use'
 
 // Components
 import CommonPicker from '../time-picker-pc/common/picker.vue'
@@ -86,6 +87,8 @@ export default defineComponent({
       (DEFAULT_FORMATS_DATEPICKER[props.type] || DEFAULT_FORMATS_DATE)
 
     const Component = getPanel(props.type)
+
+    useCustomInputValue(() => props.modelValue)
 
     return () => (
       <CommonPicker

@@ -1,6 +1,7 @@
 import '../../../ryxon/src/style/base.less'
 import '../../../ryxon/src/badge/index.less'
 import '../../../ryxon/src/button/index.less'
+import '../../../ryxon/src/button-group/index.less'
 import '../../../ryxon/src/cell/index.less'
 import '../../../ryxon/src/date-picker-pc/index.less'
 import '../../../ryxon/src/icon/index.less'

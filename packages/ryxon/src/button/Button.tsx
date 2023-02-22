@@ -1,20 +1,25 @@
 import {
+  h,
+  inject,
+  computed,
   defineComponent,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
+  type ExtractPropTypes
 } from 'vue'
 
 // Utils
 import {
   extend,
+  isString,
   numericProp,
+  iconPropType,
   preventDefault,
   makeStringProp,
-  createNamespace,
-  BORDER_SURROUND,
+  createNamespace
 } from '../utils'
 import { useRoute, routeProps } from '../composables/use-route'
+import { buttonGroupContextKey } from '../button-group/ButtonGroup'
 
 // Components
 import { Icon } from '../icon'
@@ -25,31 +30,31 @@ import {
   ButtonSize,
   ButtonType,
   ButtonNativeType,
-  ButtonIconPosition,
+  ButtonIconPosition
 } from './types'
 
-const [, bem] = createNamespace('button')
+const [, bem, , isBem] = createNamespace('button')
 
 export const buttonProps = extend({}, routeProps, {
   type: makeStringProp<ButtonType>('default'), // 类型，可选值为 primary success warning danger
   size: makeStringProp<ButtonSize>('normal'), // 尺寸，可选值为 large small mini
-  text: String, // 按钮文字
+  text: [String, Boolean], // 按钮文字或者文字按钮
   color: String, // 按钮颜色
-  icon: String, // 左侧图标名称或图片链接
+  icon: iconPropType, // 左侧图标名称或图片链接
   iconPrefix: String, // 图标类名前缀
   iconPosition: makeStringProp<ButtonIconPosition>('left'), // 图标展示位置
   tag: makeStringProp<keyof HTMLElementTagNameMap>('button'), // 按钮根节点的 HTML 标签
   nativeType: makeStringProp<ButtonNativeType>('button'), // 原生 button 标签的 type 属性
-  block: Boolean, // 是否为块级元素
   plain: Boolean, // 是否为朴素按钮
-  square: Boolean, // 	是否为方形按钮
   round: Boolean, // 是否为圆形按钮
   disabled: Boolean, // 是否禁用按钮
-  hairline: Boolean, // 是否使用 0.5px 边框
   loading: Boolean, // 是否显示为加载状态
   loadingText: String, // 加载状态提示文字
   loadingType: String as PropType<LoadingType>, // 	加载图标类型
   loadingSize: numericProp, // 加载图标大小
+  circle: Boolean, // 是否为圆形按钮
+  link: Boolean, // 是否为链接按钮
+  bg: Boolean // 是否显示文字按钮背景颜色
 })
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>
@@ -60,6 +65,9 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { emit, slots }) {
     const route = useRoute()
+
+    const buttonGroupContext = inject(buttonGroupContextKey, undefined)
+
     const renderLoadingIcon = () => {
       if (slots.loading) {
         return slots.loading()
@@ -85,20 +93,27 @@ export default defineComponent({
       if (props.icon) {
         return (
           <Icon
-            name={props.icon}
+            name={isString(props.icon) ? props.icon : ''}
             class={bem('icon')}
             classPrefix={props.iconPrefix}
-          />
+          >
+            {props.icon && !isString(props.icon) && h(props.icon)}
+          </Icon>
         )
       }
     }
 
+    // 展示文字
     const renderText = () => {
       let text
       if (props.loading) {
         text = props.loadingText
       } else {
-        text = slots.default ? slots.default() : props.text
+        text = slots.default
+          ? slots.default()
+          : isString(props.text)
+          ? props.text
+          : ''
       }
 
       if (text) {
@@ -109,16 +124,14 @@ export default defineComponent({
     const getStyle = () => {
       const { color, plain } = props
       if (color) {
-        const style: CSSProperties = {
-          color: plain ? color : 'white',
-        }
+        const style: CSSProperties = { color: plain ? color : 'white' }
 
         if (!plain) {
-          // Use background instead of backgroundColor to make linear-gradient work
+          // 使用背景而不是backgroundColor使线性渐变生效
           style.background = color
         }
 
-        // hide border when color is linear-gradient
+        // 当颜色为线性渐变时隐藏边框
         if (color.includes('gradient')) {
           style.border = 0
         } else {
@@ -138,37 +151,39 @@ export default defineComponent({
       }
     }
 
+    const _size = computed(() => props.size || buttonGroupContext?.size || '')
+    const _type = computed(() => props.type || buttonGroupContext?.type || '')
+
     return () => {
       const {
+        bg,
         tag,
-        type,
-        size,
-        block,
+        text,
+        link,
         round,
         plain,
-        square,
+        circle,
         loading,
         disabled,
-        hairline,
         nativeType,
-        iconPosition,
+        iconPosition
       } = props
 
       const classes = [
         bem([
-          type,
-          size,
+          _type.value,
+          _size.value,
           {
+            text: isString(text),
+            link,
             plain,
-            block,
             round,
-            square,
+            circle,
             loading,
-            disabled,
-            hairline,
-          },
+            disabled
+          }
         ]),
-        { [BORDER_SURROUND]: hairline },
+        isBem('has-bg', bg)
       ]
 
       return (
@@ -187,5 +202,5 @@ export default defineComponent({
         </tag>
       )
     }
-  },
+  }
 })

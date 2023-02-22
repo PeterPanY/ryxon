@@ -26,14 +26,19 @@
   </div>
 
   <div>
-    <r-button icon="search" circle />
-    <r-button type="primary" icon="edit" circle />
-    <r-button type="success" icon="check" circle />
-    <r-button type="info" icon="message" circle />
-    <r-button type="warning" icon="star" circle />
-    <r-button type="danger" icon="delete" circle />
+    <r-button :icon="Search" circle />
+    <r-button type="primary" :icon="Edit" circle />
+    <r-button type="success" :icon="Check" circle />
+    <r-button type="info" :icon="Message" circle />
+    <r-button type="warning" :icon="Star" circle />
+    <r-button type="danger" :icon="Delete" circle />
   </div>
 </template>
+
+<script lang="ts" setup>
+import { Check, Delete, Edit, Message, Search, Star } from '@ryxon/icons'
+</script>
+
 <style>
 .mb-4 {
   margin-bottom: 20px;
