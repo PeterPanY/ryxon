@@ -13,6 +13,12 @@
   --r-datepicker-hover-text-color: var(--r-primary-color);
 }
 
+.r-date-picker-pc {
+  .r-tooltip__content {
+    overflow: visible;
+  }
+}
+
 .r-date-picker {
   width: 322px;
 
@@ -94,8 +100,9 @@
     margin-left: 10px;
   }
 
+  // 日期时间选择，托标
   & .r-time-panel {
-    position: absolute;
+    position: absolute !important;
   }
 
   &__prev-btn {
@@ -340,6 +347,13 @@
 
   &__link-btn {
     vertical-align: middle;
+  }
+
+  .r-time-panel {
+    margin: 5px 0;
+    border: solid 1px var(--r-datepicker-border-color);
+    background-color: var(--r-bg-color-overlay);
+    box-shadow: var(--r-box-shadow-light);
   }
 }
 

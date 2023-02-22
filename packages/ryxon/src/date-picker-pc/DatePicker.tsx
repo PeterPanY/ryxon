@@ -90,6 +90,7 @@ export default defineComponent({
     return () => (
       <CommonPicker
         {...props}
+        class="r-date-picker-pc"
         format={format}
         type={props.type}
         ref={commonPicker}
