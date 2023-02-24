@@ -128,6 +128,7 @@ export default {
 | offset | 滚动高度达到此参数值时才显示组件 | _number_ | `200` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | _string \| Element_ | `body` |
 | immediate `v4.0.9` | 是否瞬间滚动到顶部 | _boolean_ | `false` |
+| z-index | 设置组件的 z-index 层级 | _number \| string_ | `100` |
 
 ### Events
 
@@ -161,5 +162,6 @@ import type { BackTopProps, BackTopThemeVars } from 'ryxon'
 | --r-back-top-icon-size  | _20px_          | -    |
 | --r-back-top-right      | _30px_          | -    |
 | --r-back-top-bottom     | _40px_          | -    |
+| --r-back-top-z-index    | _100_           | -    |
 | --r-back-top-text-color | _#fff_          | -    |
 | --r-back-top-background | _var(--r-blue)_ | -    |

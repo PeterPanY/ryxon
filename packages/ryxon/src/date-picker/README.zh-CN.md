@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { DatePicker } from 'ryxon';
+import { createApp } from 'vue'
+import { DatePicker } from 'ryxon'
 
-const app = createApp();
-app.use(DatePicker);
+const app = createApp()
+app.use(DatePicker)
 ```
 
 ## 代码演示
@@ -32,18 +32,18 @@ app.use(DatePicker);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01', '01']);
+    const currentDate = ref(['2021', '01', '01'])
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
-      currentDate,
-    };
-  },
-};
+      currentDate
+    }
+  }
+}
 ```
 
 ### 选项类型
@@ -68,20 +68,20 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### 格式化选项
@@ -100,32 +100,32 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
 
     const formatter = (type, option) => {
       if (type === 'year') {
-        option.text += '年';
+        option.text += '年'
       }
       if (type === 'month') {
-        option.text += '月';
+        option.text += '月'
       }
-      return option;
-    };
+      return option
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       formatter,
       currentDate,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### 过滤选项
@@ -144,28 +144,28 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
     const filter = (type, options) => {
       if (type === 'month') {
-        return options.filter((option) => Number(option.value) % 6 === 0);
+        return options.filter((option) => Number(option.value) % 6 === 0)
       }
-      return options;
-    };
+      return options
+    }
 
     return {
       filter,
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentTime,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ## API
@@ -200,22 +200,22 @@ export default {
 
 ### Slots
 
-| 名称           | 说明                   | 参数                   |
-| -------------- | ---------------------- | ---------------------- |
-| toolbar        | 自定义整个顶部栏的内容 | -                      |
-| title          | 自定义标题内容         | -                      |
-| confirm        | 自定义确认按钮内容     | -                      |
-| cancel         | 自定义取消按钮内容     | -                      |
-| option         | 自定义选项内容         | _option: PickerOption_ |
-| columns-top    | 自定义选项上方内容     | -                      |
-| columns-bottom | 自定义选项下方内容     | -                      |
+| 名称 | 说明 | 参数 |
+| --- | --- | --- |
+| toolbar | 自定义整个顶部栏的内容 | - |
+| title | 自定义标题内容 | - |
+| confirm | 自定义确认按钮内容 | - |
+| cancel | 自定义取消按钮内容 | - |
+| option | 自定义选项内容 | _option: PickerOption, index: number_ |
+| columns-top | 自定义选项上方内容 | - |
+| columns-bottom | 自定义选项下方内容 | - |
 
 ### 类型定义
 
 组件导出以下类型定义：
 
 ```ts
-import type { DatePickerProps, DatePickerColumnType } from 'ryxon';
+import type { DatePickerProps, DatePickerColumnType } from 'ryxon'
 ```
 
 ## 常见问题

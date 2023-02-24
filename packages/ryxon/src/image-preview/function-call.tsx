@@ -1,9 +1,9 @@
-import { extend, inBrowser, ComponentInstance } from '../utils';
-import { mountComponent, usePopupState } from '../utils/mount-component';
-import RImagePreview from './ImagePreview';
-import type { ImagePreviewOptions } from './types';
+import { extend, inBrowser, ComponentInstance } from '../utils'
+import { mountComponent, usePopupState } from '../utils/mount-component'
+import RImagePreview from './ImagePreview'
+import type { ImagePreviewOptions } from './types'
 
-let instance: ComponentInstance;
+let instance: ComponentInstance
 
 const defaultConfig: ImagePreviewOptions = {
   loop: true,
@@ -26,26 +26,22 @@ const defaultConfig: ImagePreviewOptions = {
   swipeDuration: 300,
   showIndicators: false,
   closeOnPopstate: true,
-  closeIconPosition: 'top-right',
-};
+  closeIconPosition: 'top-right'
+}
 
 function initInstance() {
-  ({ instance } = mountComponent({
+  ;({ instance } = mountComponent({
     setup() {
-      const { state, toggle } = usePopupState();
+      const { state, toggle } = usePopupState()
       const onClosed = () => {
-        (state as any).images = [];
-      };
+        ;(state as any).images = []
+      }
 
       return () => (
-        <RImagePreview
-          {...state}
-          onClosed={onClosed}
-          onUpdate:show={toggle}
-        />
-      );
-    },
-  }));
+        <RImagePreview {...state} onClosed={onClosed} onUpdate:show={toggle} />
+      )
+    }
+  }))
 }
 
 export const showImagePreview = (
@@ -54,18 +50,18 @@ export const showImagePreview = (
 ) => {
   /* istanbul ignore if */
   if (!inBrowser) {
-    return;
+    return
   }
 
   if (!instance) {
-    initInstance();
+    initInstance()
   }
 
   options = Array.isArray(options)
     ? { images: options, startPosition }
-    : options;
+    : options
 
-  instance.open(extend({}, defaultConfig, options));
+  instance.open(extend({}, defaultConfig, options))
 
-  return instance;
-};
+  return instance
+}

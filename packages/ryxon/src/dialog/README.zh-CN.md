@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Dialog } from 'ryxon';
+import { createApp } from 'vue'
+import { Dialog } from 'ryxon'
 
-const app = createApp();
-app.use(Dialog);
+const app = createApp()
+app.use(Dialog)
 ```
 
 ### 函数调用
@@ -23,9 +23,9 @@ app.use(Dialog);
 比如使用 `showDialog` 函数，调用后会直接在页面中渲染对应的弹出框。
 
 ```js
-import { showDialog } from 'ryxon';
+import { showDialog } from 'ryxon'
 
-showDialog({ message: '提示' });
+showDialog({ message: '提示' })
 ```
 
 ## 代码演示
@@ -35,20 +35,20 @@ showDialog({ message: '提示' });
 用于提示一些消息，只包含一个确认按钮。
 
 ```js
-import { showDialog } from 'ryxon';
+import { showDialog } from 'ryxon'
 
 showDialog({
   title: '标题',
-  message: '代码是写出来给人看的，附带能在机器上运行。',
+  message: '代码是写出来给人看的，附带能在机器上运行。'
 }).then(() => {
   // on close
-});
+})
 
 showDialog({
-  message: '生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。',
+  message: '生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。'
 }).then(() => {
   // on close
-});
+})
 ```
 
 ### 消息确认
@@ -56,19 +56,19 @@ showDialog({
 用于确认消息，包含取消和确认按钮。
 
 ```js
-import { showConfirmDialog } from 'ryxon';
+import { showConfirmDialog } from 'ryxon'
 
 showConfirmDialog({
   title: '标题',
   message:
-    '如果解决方法是丑陋的，那就肯定还有更好的解决方法，只是还没有发现而已。',
+    '如果解决方法是丑陋的，那就肯定还有更好的解决方法，只是还没有发现而已。'
 })
   .then(() => {
     // on confirm
   })
   .catch(() => {
     // on cancel
-  });
+  })
 ```
 
 ### 圆角按钮风格
@@ -76,22 +76,22 @@ showConfirmDialog({
 将 theme 选项设置为 `round-button` 可以展示圆角按钮风格的弹窗。
 
 ```js
-import { showDialog } from 'ryxon';
+import { showDialog } from 'ryxon'
 
 showDialog({
   title: '标题',
   message: '代码是写出来给人看的，附带能在机器上运行。',
-  theme: 'round-button',
+  theme: 'round-button'
 }).then(() => {
   // on close
-});
+})
 
 showDialog({
   message: '生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。',
-  theme: 'round-button',
+  theme: 'round-button'
 }).then(() => {
   // on close
-});
+})
 ```
 
 ### 异步关闭
@@ -99,26 +99,26 @@ showDialog({
 通过 `beforeClose` 属性可以传入一个回调函数，在弹窗关闭前进行特定操作。
 
 ```js
-import { showConfirmDialog } from 'ryxon';
+import { showConfirmDialog } from 'ryxon'
 
 const beforeClose = (action) =>
   new Promise((resolve) => {
     setTimeout(() => {
       if (action === 'confirm') {
-        resolve(true);
+        resolve(true)
       } else {
         // 拦截取消操作
-        resolve(false);
+        resolve(false)
       }
-    }, 1000);
-  });
+    }, 1000)
+  })
 
 showConfirmDialog({
   title: '标题',
   message:
     '如果解决方法是丑陋的，那就肯定还有更好的解决方法，只是还没有发现而已。',
-  beforeClose,
-});
+  beforeClose
+})
 ```
 
 ### 使用 Dialog 组件
@@ -132,14 +132,14 @@ showConfirmDialog({
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
-    return { show };
-  },
-};
+    const show = ref(false)
+    return { show }
+  }
+}
 ```
 
 ## API
@@ -253,8 +253,8 @@ import type {
   DialogTheme,
   DialogMessage,
   DialogOptions,
-  DialogMessageAlign,
-} from 'ryxon';
+  DialogMessageAlign
+} from 'ryxon'
 ```
 
 ## 主题定制
@@ -263,27 +263,27 @@ import type {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-dialog-width | _320px_ | - |
-| --r-dialog-small-screen-width | _90%_ | - |
-| --r-dialog-font-size | _var(--r-font-size-lg)_ | - |
-| --r-dialog-transition | _var(--r-duration-base)_ | - |
-| --r-dialog-radius | _16px_ | - |
-| --r-dialog-background | _var(--r-background-2)_ | - |
-| --r-dialog-header-font-weight | _var(--r-font-bold)_ | - |
-| --r-dialog-header-line-height | _24px_ | - |
-| --r-dialog-header-padding-top | _26px_ | - |
-| --r-dialog-header-isolated-padding | _var(--r-padding-lg) 0_ | - |
-| --r-dialog-message-padding | _var(--r-padding-lg)_ | - |
-| --r-dialog-message-font-size | _var(--r-font-size-md)_ | - |
-| --r-dialog-message-line-height | _var(--r-line-height-md)_ | - |
-| --r-dialog-message-max-height | _60vh_ | - |
-| --r-dialog-has-title-message-text-color | _var(--r-gray-7)_ | - |
-| --r-dialog-has-title-message-padding-top | _var(--r-padding-xs)_ | - |
-| --r-dialog-button-height | _48px_ | - |
-| --r-dialog-round-button-height | _36px_ | - |
-| --r-dialog-confirm-button-text-color | _var(--r-primary-color)_ | - |
+| 名称                                     | 默认值                    | 描述 |
+| ---------------------------------------- | ------------------------- | ---- |
+| --r-dialog-width                         | _320px_                   | -    |
+| --r-dialog-small-screen-width            | _90%_                     | -    |
+| --r-dialog-font-size                     | _var(--r-font-size-lg)_   | -    |
+| --r-dialog-transition                    | _var(--r-duration-base)_  | -    |
+| --r-dialog-radius                        | _16px_                    | -    |
+| --r-dialog-background                    | _var(--r-background-2)_   | -    |
+| --r-dialog-header-font-weight            | _var(--r-font-bold)_      | -    |
+| --r-dialog-header-line-height            | _24px_                    | -    |
+| --r-dialog-header-padding-top            | _26px_                    | -    |
+| --r-dialog-header-isolated-padding       | _var(--r-padding-lg) 0_   | -    |
+| --r-dialog-message-padding               | _var(--r-padding-lg)_     | -    |
+| --r-dialog-message-font-size             | _var(--r-font-size-md)_   | -    |
+| --r-dialog-message-line-height           | _var(--r-line-height-md)_ | -    |
+| --r-dialog-message-max-height            | _60vh_                    | -    |
+| --r-dialog-has-title-message-text-color  | _var(--r-gray-7)_         | -    |
+| --r-dialog-has-title-message-padding-top | _var(--r-padding-xs)_     | -    |
+| --r-dialog-button-height                 | _48px_                    | -    |
+| --r-dialog-round-button-height           | _36px_                    | -    |
+| --r-dialog-confirm-button-text-color     | _var(--r-primary-color)_  | -    |
 
 ## 常见问题
 
@@ -305,11 +305,13 @@ Ryxon 从 4.0 版本开始不再支持 `babel-plugin-import` 插件，请参考 
 将 `closeOnPopstate` 属性设置为 false 即可。
 
 ```js
-Dialog.alert({
+import { showDialog } from 'ryxon'
+
+showDialog({
   title: '标题',
   message: '弹窗内容',
-  closeOnPopstate: false,
+  closeOnPopstate: false
 }).then(() => {
   // on close
-});
+})
 ```

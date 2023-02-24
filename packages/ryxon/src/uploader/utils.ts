@@ -1,33 +1,33 @@
-import { toArray, createNamespace, isFunction } from '../utils';
+import { toArray, createNamespace, isFunction } from '../utils'
 import type {
   UploaderMaxSize,
   UploaderResultType,
-  UploaderFileListItem,
-} from './types';
+  UploaderFileListItem
+} from './types'
 
-const [name, bem, t] = createNamespace('uploader');
+const [name, bem, t] = createNamespace('uploader')
 
-export { name, bem, t };
+export { name, bem, t }
 
 export function readFileContent(file: File, resultType: UploaderResultType) {
   return new Promise<string | void>((resolve) => {
     if (resultType === 'file') {
-      resolve();
-      return;
+      resolve()
+      return
     }
 
-    const reader = new FileReader();
+    const reader = new FileReader()
 
     reader.onload = (event) => {
-      resolve((event.target as FileReader).result as string);
-    };
+      resolve((event.target as FileReader).result as string)
+    }
 
     if (resultType === 'dataUrl') {
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file)
     } else if (resultType === 'text') {
-      reader.readAsText(file);
+      reader.readAsText(file)
     }
-  });
+  })
 }
 
 export function isOversize(
@@ -37,54 +37,54 @@ export function isOversize(
   return toArray(items).some((item) => {
     if (item.file) {
       if (isFunction(maxSize)) {
-        return maxSize(item.file);
+        return maxSize(item.file)
       }
-      return item.file.size > maxSize;
+      return item.file.size > maxSize
     }
-    return false;
-  });
+    return false
+  })
 }
 
 export function filterFiles(
   items: UploaderFileListItem[],
   maxSize: UploaderMaxSize
 ) {
-  const valid: UploaderFileListItem[] = [];
-  const invalid: UploaderFileListItem[] = [];
+  const valid: UploaderFileListItem[] = []
+  const invalid: UploaderFileListItem[] = []
 
   items.forEach((item) => {
     if (isOversize(item, maxSize)) {
-      invalid.push(item);
+      invalid.push(item)
     } else {
-      valid.push(item);
+      valid.push(item)
     }
-  });
+  })
 
-  return { valid, invalid };
+  return { valid, invalid }
 }
 
-const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i;
+const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i
 
-export const isImageUrl = (url: string): boolean => IMAGE_REGEXP.test(url);
+export const isImageUrl = (url: string): boolean => IMAGE_REGEXP.test(url)
 
 export function isImageFile(item: UploaderFileListItem): boolean {
   // some special urls cannot be recognized
   // user can add `isImage` flag to mark it as an image url
   if (item.isImage) {
-    return true;
+    return true
   }
 
   if (item.file && item.file.type) {
-    return item.file.type.indexOf('image') === 0;
+    return item.file.type.indexOf('image') === 0
   }
 
   if (item.url) {
-    return isImageUrl(item.url);
+    return isImageUrl(item.url)
   }
 
   if (typeof item.content === 'string') {
-    return item.content.indexOf('data:image') === 0;
+    return item.content.indexOf('data:image') === 0
   }
 
-  return false;
+  return false
 }
