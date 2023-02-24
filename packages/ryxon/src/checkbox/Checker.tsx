@@ -1,6 +1,7 @@
 import { ref, computed, defineComponent, type PropType } from 'vue'
 import {
   extend,
+  isArray,
   addUnit,
   truthProp,
   isUndefined,
@@ -16,6 +17,7 @@ import { Check, Minus } from '@ryxon/icons'
 import { CheckboxSize } from './types'
 
 export type CheckerShape = 'square' | 'round'
+export type CheckerCheckShapeShape = 'dot' | 'check'
 export type CheckerLabelPosition = 'left' | 'right'
 export type CheckerType = 'button' | ''
 export type CheckerParent = {
@@ -25,8 +27,8 @@ export type CheckerParent = {
     checkedColor?: string
     max?: Numeric
     min?: Numeric
-    modelValue: unknown[]
-    size: string
+    modelValue?: unknown
+    size?: string
   }
 }
 
@@ -35,6 +37,7 @@ export const checkerProps = {
   shape: makeStringProp<CheckerShape>('round'),
   disabled: Boolean,
   iconSize: numericProp,
+  checkShape: makeStringProp<CheckerCheckShapeShape>('check'),
   modelValue: unknownProp,
   checkedColor: String,
   size: makeStringProp<CheckboxSize>(''),
@@ -71,7 +74,7 @@ export default defineComponent({
       const max = getParentProp('max')
       const min = getParentProp('min')
       const modelValue = getParentProp('modelValue')
-      const value = modelValue ? modelValue.slice() : []
+      const value = isArray(modelValue) ? modelValue.slice() : []
 
       return (
         (!isUndefined(max) && value.length >= max && !props.checked) ||
@@ -109,14 +112,17 @@ export default defineComponent({
 
     // 图标
     const renderIcon = () => {
-      const { bem, shape, checked, indeterminate } = props
+      const { bem, shape, checked, checkShape, indeterminate } = props
       const iconSize = props.iconSize || getParentProp('iconSize')
+
+      const checkShapeClass = slots.icon ? '' : checkShape
 
       return (
         <div
           ref={iconRef}
           class={bem('icon', [
             shape,
+            checkShapeClass,
             { disabled: disabled.value, checked, indeterminate }
           ])}
           style={{ fontSize: addUnit(iconSize) }}

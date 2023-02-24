@@ -201,7 +201,7 @@ checkboxGroupRef.value?.toggleAll()
 
 | 名称                                     | 默认值                   | 描述 |
 | ---------------------------------------- | ------------------------ | ---- |
-| --r-checkbox-size                        | `20px`                   | -    |
+| --r-checkbox-size                        | `14px`                   | -    |
 | --r-checkbox-border-color                | `var(--r-gray-5)`        | -    |
 | --r-checkbox-duration                    | `var(--r-duration-fast)` | -    |
 | --r-checkbox-label-margin                | `var(--r-padding-xs)`    | -    |

@@ -1,24 +1,26 @@
 import {
   watch,
   defineComponent,
-  type PropType,
   type InjectionKey,
   type ExtractPropTypes
 } from 'vue'
-import { unknownProp, numericProp, createNamespace } from '../utils'
+import {
+  unknownProp,
+  numericProp,
+  makeStringProp,
+  createNamespace
+} from '../utils'
 import { useChildren, useCustomInputValue } from '@ryxon/use'
-import type { CheckerDirection } from '../checkbox/Checker'
+import { CheckboxSize } from '../checkbox/types'
 
 const [name, bem] = createNamespace('radio-group')
-
-export type RadioGroupDirection = CheckerDirection
 
 export const radioGroupProps = {
   disabled: Boolean,
   iconSize: numericProp,
-  direction: String as PropType<RadioGroupDirection>,
   modelValue: unknownProp,
-  checkedColor: String
+  checkedColor: String,
+  size: makeStringProp<CheckboxSize>('')
 }
 
 export type RadioGroupProps = ExtractPropTypes<typeof radioGroupProps>
@@ -55,7 +57,7 @@ export default defineComponent({
     useCustomInputValue(() => props.modelValue)
 
     return () => (
-      <div class={bem([props.direction])} role="radiogroup">
+      <div class={bem()} role="radiogroup">
         {slots.default?.()}
       </div>
     )

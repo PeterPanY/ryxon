@@ -37,6 +37,10 @@
           "text": "Select 选择器"
         },
         {
+          "link": "/radio",
+          "text": "Radio 单选框"
+        },
+        {
           "link": "/checkbox",
           "text": "Checkbox 多选框"
         },
