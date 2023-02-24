@@ -1,4 +1,4 @@
-import { watch, computed, defineComponent, type ExtractPropTypes } from 'vue'
+import { computed, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
 import { createNamespace, extend, pick, truthProp } from '../utils'
@@ -14,7 +14,7 @@ import Checker, { checkerProps } from './Checker'
 // Types
 import type { CheckboxExpose } from './types'
 
-const [name, bem] = createNamespace('checkbox')
+const [, bem] = createNamespace('checkbox')
 
 export const checkboxProps = extend({}, checkerProps, {
   bindGroup: truthProp
@@ -23,39 +23,32 @@ export const checkboxProps = extend({}, checkerProps, {
 export type CheckboxProps = ExtractPropTypes<typeof checkboxProps>
 
 export default defineComponent({
-  name,
-
+  name: 'RCheckbox',
   props: checkboxProps,
-
   emits: ['change', 'update:modelValue'],
-
   setup(props, { emit, slots }) {
     const { parent } = useParent(CHECKBOX_GROUP_KEY)
 
+    // 设置复选框组的值
     const setParentValue = (checked: boolean) => {
       const { name } = props
-      const { max, modelValue } = parent!.props
+      const { modelValue } = parent!.props
       const value = modelValue.slice()
 
       if (checked) {
-        const overlimit = max && value.length >= max
-
-        if (!overlimit && !value.includes(name)) {
+        if (!value.includes(name)) {
           value.push(name)
 
-          if (props.bindGroup) {
-            parent!.updateValue(value)
-          }
+          // 更新值
+          if (props.bindGroup) parent!.updateValue(value)
         }
       } else {
         const index = value.indexOf(name)
 
         if (index !== -1) {
           value.splice(index, 1)
-
-          if (props.bindGroup) {
-            parent!.updateValue(value)
-          }
+          // 更新值
+          if (props.bindGroup) parent!.updateValue(value)
         }
       }
     }
@@ -67,18 +60,16 @@ export default defineComponent({
       return !!props.modelValue
     })
 
+    // 选项点击事件
     const toggle = (newValue = !checked.value) => {
+      // 判断是不是与复选框组绑定
       if (parent && props.bindGroup) {
         setParentValue(newValue)
       } else {
         emit('update:modelValue', newValue)
+        emit('change', newValue)
       }
     }
-
-    watch(
-      () => props.modelValue,
-      (value) => emit('change', value)
-    )
 
     useExpose<CheckboxExpose>({ toggle, props, checked })
     useCustomInputValue(() => props.modelValue)
