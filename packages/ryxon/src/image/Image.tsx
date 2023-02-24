@@ -10,26 +10,28 @@ import {
   type Slot,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
   isDef,
   addUnit,
+  isString,
   inBrowser,
   truthProp,
   numericProp,
   makeStringProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
 // Components
-import { Icon } from '../icon';
+import { Icon } from '../icon'
+import { PictureFilled } from '@ryxon/icons'
 
-const [name, bem] = createNamespace('image');
+const [, bem] = createNamespace('image')
 
-export type ImageFit = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
+export type ImageFit = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
 
 export type ImagePosition =
   | 'center'
@@ -37,7 +39,7 @@ export type ImagePosition =
   | 'right'
   | 'bottom'
   | 'left'
-  | string;
+  | string
 
 export const imageProps = {
   src: String,
@@ -55,82 +57,81 @@ export const imageProps = {
   errorIcon: makeStringProp('photo-fail'),
   iconPrefix: String,
   showLoading: truthProp,
-  loadingIcon: makeStringProp('photo'),
-};
+  loadingIcon: makeStringProp('photo')
+}
 
-export type ImageProps = ExtractPropTypes<typeof imageProps>;
+export type ImageProps = ExtractPropTypes<typeof imageProps>
 
 export default defineComponent({
-  name,
-
+  name: 'RImage',
   props: imageProps,
-
   emits: ['load', 'error'],
-
   setup(props, { emit, slots }) {
-    const error = ref(false);
-    const loading = ref(true);
-    const imageRef = ref<HTMLImageElement>();
+    const error = ref(false)
+    const loading = ref(true)
+    const imageRef = ref<HTMLImageElement>()
 
-    const { $Lazyload } = getCurrentInstance()!.proxy!;
+    const { $Lazyload } = getCurrentInstance()!.proxy!
 
     const style = computed(() => {
       const style: CSSProperties = {
         width: addUnit(props.width),
-        height: addUnit(props.height),
-      };
-
-      if (isDef(props.radius)) {
-        style.overflow = 'hidden';
-        style.borderRadius = addUnit(props.radius);
+        height: addUnit(props.height)
       }
 
-      return style;
-    });
+      if (isDef(props.radius)) {
+        style.overflow = 'hidden'
+        style.borderRadius = addUnit(props.radius)
+      }
+
+      return style
+    })
 
     watch(
       () => props.src,
       () => {
-        error.value = false;
-        loading.value = true;
+        error.value = false
+        loading.value = true
       }
-    );
+    )
 
     const onLoad = (event: Event) => {
       if (loading.value) {
-        loading.value = false;
-        emit('load', event);
+        loading.value = false
+        emit('load', event)
       }
-    };
+    }
 
     const triggerLoad = () => {
-      const loadEvent = new Event('load');
+      const loadEvent = new Event('load')
       Object.defineProperty(loadEvent, 'target', {
         value: imageRef.value,
-        enumerable: true,
-      });
-      onLoad(loadEvent);
-    };
+        enumerable: true
+      })
+      onLoad(loadEvent)
+    }
 
     const onError = (event?: Event) => {
-      error.value = true;
-      loading.value = false;
-      emit('error', event);
-    };
+      error.value = true
+      loading.value = false
+      emit('error', event)
+    }
 
     const renderIcon = (name: string, className: unknown, slot?: Slot) => {
       if (slot) {
-        return slot();
+        return slot()
       }
       return (
         <Icon
-          name={name}
+          name={isString(name) ? name : ''}
           size={props.iconSize}
           class={className}
           classPrefix={props.iconPrefix}
-        />
-      );
-    };
+        >
+          <PictureFilled></PictureFilled>
+        </Icon>
+      )
+    }
 
     const renderPlaceholder = () => {
       if (loading.value && props.showLoading) {
@@ -138,20 +139,20 @@ export default defineComponent({
           <div class={bem('loading')}>
             {renderIcon(props.loadingIcon, bem('loading-icon'), slots.loading)}
           </div>
-        );
+        )
       }
       if (error.value && props.showError) {
         return (
           <div class={bem('error')}>
             {renderIcon(props.errorIcon, bem('error-icon'), slots.error)}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderImage = () => {
       if (error.value || !props.src) {
-        return;
+        return
       }
 
       const attrs = {
@@ -159,12 +160,12 @@ export default defineComponent({
         class: bem('img'),
         style: {
           objectFit: props.fit,
-          objectPosition: props.position,
-        },
-      };
+          objectPosition: props.position
+        }
+      }
 
       if (props.lazyLoad) {
-        return <img ref={imageRef} v-lazy={props.src} {...attrs} />;
+        return <img ref={imageRef} v-lazy={props.src} {...attrs} />
       }
 
       return (
@@ -175,38 +176,38 @@ export default defineComponent({
           onError={onError}
           {...attrs}
         />
-      );
-    };
+      )
+    }
 
     const onLazyLoaded = ({ el }: { el: HTMLElement }) => {
       const check = () => {
         if (el === imageRef.value && loading.value) {
-          triggerLoad();
+          triggerLoad()
         }
-      };
+      }
       if (imageRef.value) {
-        check();
+        check()
       } else {
         // LazyLoad may trigger loaded event before Image mounted
         // https://github.com/PeterPanY/ryxon/issues/10046
-        nextTick(check);
+        nextTick(check)
       }
-    };
+    }
 
     const onLazyLoadError = ({ el }: { el: HTMLElement }) => {
       if (el === imageRef.value && !error.value) {
-        onError();
+        onError()
       }
-    };
+    }
 
     if ($Lazyload && inBrowser) {
-      $Lazyload.$on('loaded', onLazyLoaded);
-      $Lazyload.$on('error', onLazyLoadError);
+      $Lazyload.$on('loaded', onLazyLoaded)
+      $Lazyload.$on('error', onLazyLoadError)
 
       onBeforeUnmount(() => {
-        $Lazyload.$off('loaded', onLazyLoaded);
-        $Lazyload.$off('error', onLazyLoadError);
-      });
+        $Lazyload.$off('loaded', onLazyLoaded)
+        $Lazyload.$off('error', onLazyLoadError)
+      })
     }
 
     // In nuxt3, the image may not trigger load event,
@@ -215,10 +216,10 @@ export default defineComponent({
     onMounted(() => {
       nextTick(() => {
         if (imageRef.value?.complete) {
-          triggerLoad();
+          triggerLoad()
         }
-      });
-    });
+      })
+    })
 
     return () => (
       <div
@@ -229,6 +230,6 @@ export default defineComponent({
         {renderPlaceholder()}
         {slots.default?.()}
       </div>
-    );
-  },
-});
+    )
+  }
+})
