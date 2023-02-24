@@ -1,5 +1,14 @@
 {
   "zh": {
+    "directives": {
+      "text": "自定义指令",
+      "children": [
+        {
+          "text": "Lazyload 懒加载",
+          "link": "/lazyload"
+        }
+      ]
+    },
     "intro": {
       "text": "组合式 API",
       "children": [

@@ -3,9 +3,9 @@
  * license at https://github.com/hilongjw/vue-lazyload/blob/master/LICENSE
  */
 
-import { useRect } from '@ryxon/use';
-import { loadImageAsync } from './util';
-import { noop } from '../../utils';
+import { useRect } from '@ryxon/use'
+import { loadImageAsync } from './util'
+import { noop } from '../../utils'
 
 export default class ReactiveListener {
   constructor({
@@ -18,32 +18,32 @@ export default class ReactiveListener {
     options,
     cors,
     elRenderer,
-    imageCache,
+    imageCache
   }) {
-    this.el = el;
-    this.src = src;
-    this.error = error;
-    this.loading = loading;
-    this.bindType = bindType;
-    this.attempt = 0;
-    this.cors = cors;
+    this.el = el
+    this.src = src
+    this.error = error
+    this.loading = loading
+    this.bindType = bindType
+    this.attempt = 0
+    this.cors = cors
 
-    this.naturalHeight = 0;
-    this.naturalWidth = 0;
+    this.naturalHeight = 0
+    this.naturalWidth = 0
 
-    this.options = options;
+    this.options = options
 
-    this.$parent = $parent;
-    this.elRenderer = elRenderer;
-    this.imageCache = imageCache;
+    this.$parent = $parent
+    this.elRenderer = elRenderer
+    this.imageCache = imageCache
     this.performanceData = {
       loadStart: 0,
-      loadEnd: 0,
-    };
+      loadEnd: 0
+    }
 
-    this.filter();
-    this.initState();
-    this.render('loading', false);
+    this.filter()
+    this.initState()
+    this.render('loading', false)
   }
 
   /*
@@ -52,17 +52,17 @@ export default class ReactiveListener {
    */
   initState() {
     if ('dataset' in this.el) {
-      this.el.dataset.src = this.src;
+      this.el.dataset.src = this.src
     } else {
-      this.el.setAttribute('data-src', this.src);
+      this.el.setAttribute('data-src', this.src)
     }
 
     this.state = {
       loading: false,
       error: false,
       loaded: false,
-      rendered: false,
-    };
+      rendered: false
+    }
   }
 
   /*
@@ -70,7 +70,7 @@ export default class ReactiveListener {
    * @return
    */
   record(event) {
-    this.performanceData[event] = Date.now();
+    this.performanceData[event] = Date.now()
   }
 
   /*
@@ -81,14 +81,14 @@ export default class ReactiveListener {
    * @return
    */
   update({ src, loading, error }) {
-    const oldSrc = this.src;
-    this.src = src;
-    this.loading = loading;
-    this.error = error;
-    this.filter();
+    const oldSrc = this.src
+    this.src = src
+    this.loading = loading
+    this.error = error
+    this.filter()
     if (oldSrc !== this.src) {
-      this.attempt = 0;
-      this.initState();
+      this.attempt = 0
+      this.initState()
     }
   }
 
@@ -97,13 +97,13 @@ export default class ReactiveListener {
    * @return {Boolean} el is in view
    */
   checkInView() {
-    const rect = useRect(this.el);
+    const rect = useRect(this.el)
     return (
       rect.top < window.innerHeight * this.options.preLoad &&
       rect.bottom > this.options.preLoadTop &&
       rect.left < window.innerWidth * this.options.preLoad &&
       rect.right > 0
-    );
+    )
   }
 
   /*
@@ -111,8 +111,8 @@ export default class ReactiveListener {
    */
   filter() {
     Object.keys(this.options.filter).forEach((key) => {
-      this.options.filter[key](this, this.options);
-    });
+      this.options.filter[key](this, this.options)
+    })
   }
 
   /*
@@ -121,28 +121,28 @@ export default class ReactiveListener {
    * @return
    */
   renderLoading(cb) {
-    this.state.loading = true;
+    this.state.loading = true
     loadImageAsync(
       {
         src: this.loading,
-        cors: this.cors,
+        cors: this.cors
       },
       () => {
-        this.render('loading', false);
-        this.state.loading = false;
-        cb();
+        this.render('loading', false)
+        this.state.loading = false
+        cb()
       },
       () => {
         // handler `loading image` load failed
-        cb();
-        this.state.loading = false;
+        cb()
+        this.state.loading = false
 
         if (process.env.NODE_ENV !== 'production' && !this.options.silent)
           console.warn(
             `[@ryxon/lazyload] load failed with loading image(${this.loading})`
-          );
+          )
       }
-    );
+    )
   }
 
   /*
@@ -154,50 +154,50 @@ export default class ReactiveListener {
       if (process.env.NODE_ENV !== 'production' && !this.options.silent) {
         console.log(
           `[@ryxon/lazyload] ${this.src} tried too more than ${this.options.attempt} times`
-        );
+        )
       }
 
-      onFinish();
-      return;
+      onFinish()
+      return
     }
-    if (this.state.rendered && this.state.loaded) return;
+    if (this.state.rendered && this.state.loaded) return
     if (this.imageCache.has(this.src)) {
-      this.state.loaded = true;
-      this.render('loaded', true);
-      this.state.rendered = true;
-      return onFinish();
+      this.state.loaded = true
+      this.render('loaded', true)
+      this.state.rendered = true
+      return onFinish()
     }
 
     this.renderLoading(() => {
-      this.attempt++;
+      this.attempt++
 
-      this.options.adapter.beforeLoad?.(this, this.options);
-      this.record('loadStart');
+      this.options.adapter.beforeLoad?.(this, this.options)
+      this.record('loadStart')
 
       loadImageAsync(
         {
           src: this.src,
-          cors: this.cors,
+          cors: this.cors
         },
         (data) => {
-          this.naturalHeight = data.naturalHeight;
-          this.naturalWidth = data.naturalWidth;
-          this.state.loaded = true;
-          this.state.error = false;
-          this.record('loadEnd');
-          this.render('loaded', false);
-          this.state.rendered = true;
-          this.imageCache.add(this.src);
-          onFinish();
+          this.naturalHeight = data.naturalHeight
+          this.naturalWidth = data.naturalWidth
+          this.state.loaded = true
+          this.state.error = false
+          this.record('loadEnd')
+          this.render('loaded', false)
+          this.state.rendered = true
+          this.imageCache.add(this.src)
+          onFinish()
         },
         (err) => {
-          !this.options.silent && console.error(err);
-          this.state.error = true;
-          this.state.loaded = false;
-          this.render('error', false);
+          !this.options.silent && console.error(err)
+          this.state.error = true
+          this.state.loaded = false
+          this.render('error', false)
         }
-      );
-    });
+      )
+    })
   }
 
   /*
@@ -207,7 +207,7 @@ export default class ReactiveListener {
    * @return
    */
   render(state, cache) {
-    this.elRenderer(this, state, cache);
+    this.elRenderer(this, state, cache)
   }
 
   /*
@@ -215,22 +215,22 @@ export default class ReactiveListener {
    * @return {Object} performance data
    */
   performance() {
-    let state = 'loading';
-    let time = 0;
+    let state = 'loading'
+    let time = 0
 
     if (this.state.loaded) {
-      state = 'loaded';
+      state = 'loaded'
       time =
-        (this.performanceData.loadEnd - this.performanceData.loadStart) / 1000;
+        (this.performanceData.loadEnd - this.performanceData.loadStart) / 1000
     }
 
-    if (this.state.error) state = 'error';
+    if (this.state.error) state = 'error'
 
     return {
       src: this.src,
       state,
-      time,
-    };
+      time
+    }
   }
 
   /*
@@ -238,11 +238,11 @@ export default class ReactiveListener {
    * @return
    */
   $destroy() {
-    this.el = null;
-    this.src = null;
-    this.error = null;
-    this.loading = null;
-    this.bindType = null;
-    this.attempt = 0;
+    this.el = null
+    this.src = null
+    this.error = null
+    this.loading = null
+    this.bindType = null
+    this.attempt = 0
   }
 }
