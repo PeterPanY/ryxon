@@ -1,6 +1,6 @@
 {
   "name": "@ryxon/icons",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "ryxon icons",
   "type": "module",
   "keywords": [
@@ -47,7 +47,7 @@
     "build:generate": "tsx build/generate.ts",
     "build:build": "tsx build/build.ts",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
-    "release": "release-it",
+    "release": "pnpm build && release-it",
     "prepare": "pnpm build"
   },
   "peerDependencies": {

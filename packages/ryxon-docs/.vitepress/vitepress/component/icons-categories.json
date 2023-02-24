@@ -184,7 +184,8 @@
         "Iphone",
         "Cellphone",
         "VideoCameraFilled",
-        "PictureFilled",
+        "PhotoFilled",
+        "PhotoFailFilled",
         "Platform",
         "CameraFilled",
         "BellFilled"

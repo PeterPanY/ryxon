@@ -1,4 +1,5 @@
 import {
+  h,
   ref,
   watch,
   computed,
@@ -21,13 +22,13 @@ import {
   inBrowser,
   truthProp,
   numericProp,
-  makeStringProp,
+  iconPropType,
   createNamespace
 } from '../utils'
 
 // Components
 import { Icon } from '../icon'
-import { PictureFilled } from '@ryxon/icons'
+import { PhotoFilled, PhotoFailFilled } from '@ryxon/icons'
 
 const [, bem] = createNamespace('image')
 
@@ -54,10 +55,10 @@ export const imageProps = {
   lazyLoad: Boolean,
   iconSize: numericProp,
   showError: truthProp,
-  errorIcon: makeStringProp('photo-fail'),
+  errorIcon: { type: iconPropType, default: PhotoFailFilled },
   iconPrefix: String,
   showLoading: truthProp,
-  loadingIcon: makeStringProp('photo')
+  loadingIcon: { type: iconPropType, default: PhotoFilled }
 }
 
 export type ImageProps = ExtractPropTypes<typeof imageProps>
@@ -117,7 +118,7 @@ export default defineComponent({
       emit('error', event)
     }
 
-    const renderIcon = (name: string, className: unknown, slot?: Slot) => {
+    const renderIcon = (name: unknown, className: unknown, slot?: Slot) => {
       if (slot) {
         return slot()
       }
@@ -128,7 +129,7 @@ export default defineComponent({
           class={className}
           classPrefix={props.iconPrefix}
         >
-          <PictureFilled></PictureFilled>
+          {name && !isString(name) ? h(name) : ''}
         </Icon>
       )
     }

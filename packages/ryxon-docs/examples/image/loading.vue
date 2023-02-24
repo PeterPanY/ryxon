@@ -6,5 +6,3 @@
     </template>
   </r-image>
 </template>
-
-<style scope></style>
