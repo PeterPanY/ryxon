@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Tab, Tabs } from 'ryxon';
+import { createApp } from 'vue'
+import { Tab, Tabs } from 'ryxon'
 
-const app = createApp();
-app.use(Tab);
-app.use(Tabs);
+const app = createApp()
+app.use(Tab)
+app.use(Tabs)
 ```
 
 ## 代码演示
@@ -33,14 +33,14 @@ app.use(Tabs);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
-    return { active };
-  },
-};
+    const active = ref(0)
+    return { active }
+  }
+}
 ```
 
 ### 通过名称匹配
@@ -56,14 +56,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeName = ref('a');
-    return { activeName };
-  },
-};
+    const activeName = ref('a')
+    return { activeName }
+  }
+}
 ```
 
 ### 标签栏滚动
@@ -72,9 +72,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active">
-  <r-tab v-for="index in 8" :title="'标签 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 8" :title="'标签 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -114,19 +112,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const active = ref(0);
-    const onClickTab = ({ title }) => showToast(title);
+    const active = ref(0)
+    const onClickTab = ({ title }) => showToast(title)
     return {
       active,
-      onClickTab,
-    };
-  },
-};
+      onClickTab
+    }
+  }
+}
 ```
 
 ### 粘性布局
@@ -135,9 +133,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" sticky>
-  <r-tab v-for="index in 4" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 4" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -149,9 +145,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" shrink>
-  <r-tab v-for="index in 4" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 4" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -174,9 +168,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" animated>
-  <r-tab v-for="index in 4" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 4" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -186,9 +178,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" swipeable>
-  <r-tab v-for="index in 4" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 4" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -198,9 +188,7 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" scrollspy sticky>
-  <r-tab v-for="index in 8" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 8" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
@@ -210,36 +198,34 @@ export default {
 
 ```html
 <r-tabs v-model:active="active" :before-change="beforeChange">
-  <r-tab v-for="index in 4" :title="'选项 ' + index">
-    内容 {{ index }}
-  </r-tab>
+  <r-tab v-for="index in 4" :title="'选项 ' + index"> 内容 {{ index }} </r-tab>
 </r-tabs>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
+    const active = ref(0)
     const beforeChange = (index) => {
       // 返回 false 表示阻止此次切换
       if (index === 1) {
-        return false;
+        return false
       }
 
       // 返回 Promise 来执行异步逻辑
       return new Promise((resolve) => {
         // 在 resolve 函数中返回 true 或 false
-        resolve(index !== 3);
-      });
-    };
+        resolve(index !== 3)
+      })
+    }
 
     return {
-      beforeChange,
-    };
-  },
-};
+      beforeChange
+    }
+  }
+}
 ```
 
 > Tips: 通过手势滑动不会触发 before-change 属性。
@@ -312,18 +298,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { TabProps, TabsType, TabsProps, TabsInstance } from 'ryxon';
+import type { TabProps, TabsType, TabsProps, TabsInstance } from 'ryxon'
 ```
 
 `TabsInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { TabsInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { TabsInstance } from 'ryxon'
 
-const tabsRef = ref<TabsInstance>();
+const tabsRef = ref<TabsInstance>()
 
-tabsRef.value?.scrollTo(0);
+tabsRef.value?.scrollTo(0)
 ```
 
 ### Tabs Slots
@@ -345,21 +331,21 @@ tabsRef.value?.scrollTo(0);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                          | 默认值                      | 描述 |
-| ----------------------------- | --------------------------- | ---- |
+| 名称                        | 默认值                    | 描述 |
+| --------------------------- | ------------------------- | ---- |
 | --r-tab-text-color          | _var(--r-gray-7)_         | -    |
 | --r-tab-active-text-color   | _var(--r-text-color)_     | -    |
 | --r-tab-disabled-text-color | _var(--r-text-color-3)_   | -    |
 | --r-tab-font-size           | _var(--r-font-size-md)_   | -    |
 | --r-tab-line-height         | _var(--r-line-height-md)_ | -    |
 | --r-tabs-default-color      | _var(--r-primary-color)_  | -    |
-| --r-tabs-line-height        | _44px_                      | -    |
-| --r-tabs-card-height        | _30px_                      | -    |
+| --r-tabs-line-height        | _44px_                    | -    |
+| --r-tabs-card-height        | _30px_                    | -    |
 | --r-tabs-nav-background     | _var(--r-background-2)_   | -    |
-| --r-tabs-bottom-bar-width   | _40px_                      | -    |
-| --r-tabs-bottom-bar-height  | _3px_                       | -    |
+| --r-tabs-bottom-bar-width   | _40px_                    | -    |
+| --r-tabs-bottom-bar-height  | _3px_                     | -    |
 | --r-tabs-bottom-bar-color   | _var(--r-primary-color)_  | -    |
 
 ## 常见问题
@@ -386,5 +372,5 @@ Tabs 组件在挂载时，会获取自身的宽度，并计算出底部条的位
 ```
 
 ```js
-this.$refs.tabs.resize();
+this.$refs.tabs.resize()
 ```

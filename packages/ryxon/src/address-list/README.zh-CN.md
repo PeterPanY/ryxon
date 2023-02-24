@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { AddressList } from 'ryxon';
+import { createApp } from 'vue'
+import { AddressList } from 'ryxon'
 
-const app = createApp();
-app.use(AddressList);
+const app = createApp()
+app.use(AddressList)
 ```
 
 ## 代码演示
@@ -33,48 +33,48 @@ app.use(AddressList);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const chosenAddressId = ref('1');
+    const chosenAddressId = ref('1')
     const list = [
       {
         id: '1',
         name: '张三',
         tel: '13000000000',
         address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: '李四',
         tel: '1310000000',
-        address: '浙江省杭州市拱墅区莫干山路 50 号',
-      },
-    ];
+        address: '浙江省杭州市拱墅区莫干山路 50 号'
+      }
+    ]
     const disabledList = [
       {
         id: '3',
         name: '王五',
         tel: '1320000000',
-        address: '浙江省杭州市滨江区江南大道 15 号',
-      },
-    ];
+        address: '浙江省杭州市滨江区江南大道 15 号'
+      }
+    ]
 
-    const onAdd = () => showToast('新增地址');
-    const onEdit = (item, index) => showToast('编辑地址:' + index);
+    const onAdd = () => showToast('新增地址')
+    const onEdit = (item, index) => showToast('编辑地址:' + index)
 
     return {
       list,
       onAdd,
       onEdit,
       disabledList,
-      chosenAddressId,
-    };
-  },
-};
+      chosenAddressId
+    }
+  }
+}
 ```
 
 ## API
@@ -126,14 +126,14 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { AddressListProps, AddressListAddress } from 'ryxon';
+import type { AddressListProps, AddressListAddress } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { SubmitBar } from 'ryxon';
+import { createApp } from 'vue'
+import { SubmitBar } from 'ryxon'
 
-const app = createApp();
-app.use(SubmitBar);
+const app = createApp()
+app.use(SubmitBar)
 ```
 
 ## 代码演示
@@ -25,16 +25,16 @@ app.use(SubmitBar);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('点击按钮');
+    const onSubmit = () => showToast('点击按钮')
     return {
-      onSubmit,
-    };
-  },
-};
+      onSubmit
+    }
+  }
+}
 ```
 
 ### 禁用状态
@@ -57,12 +57,7 @@ export default {
 加载状态下不会触发 `submit` 事件。
 
 ```html
-<r-submit-bar
-  loading
-  :price="3050"
-  button-text="提交订单"
-  @submit="onSubmit"
-/>
+<r-submit-bar loading :price="3050" button-text="提交订单" @submit="onSubmit" />
 ```
 
 ### 高级用法
@@ -79,18 +74,18 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('点击按钮');
-    const onClickLink = () => showToast('修改地址');
+    const onSubmit = () => showToast('点击按钮')
+    const onClickLink = () => showToast('修改地址')
     return {
       onSubmit,
-      onClickLink,
-    };
-  },
-};
+      onClickLink
+    }
+  }
+}
 ```
 
 ## API
@@ -135,14 +130,14 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SubmitBarProps, SubmitBarTextAlign } from 'ryxon';
+import type { SubmitBarProps, SubmitBarTextAlign } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

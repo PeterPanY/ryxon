@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Notify } from 'ryxon';
+import { createApp } from 'vue'
+import { Notify } from 'ryxon'
 
-const app = createApp();
-app.use(Notify);
+const app = createApp()
+app.use(Notify)
 ```
 
 ### 函数调用
@@ -23,9 +23,9 @@ app.use(Notify);
 比如使用 `showNotify` 函数，调用后会直接在页面中渲染对应的提示。
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
-showNotify({ message: '提示' });
+showNotify({ message: '提示' })
 ```
 
 ## 代码演示
@@ -33,13 +33,13 @@ showNotify({ message: '提示' });
 ### 基础用法
 
 ```js
-import { showNotify, closeNotify } from 'ryxon';
+import { showNotify, closeNotify } from 'ryxon'
 
 // 3 秒后自动关闭
-showNotify('通知内容');
+showNotify('通知内容')
 
 // 主动关闭
-closeNotify();
+closeNotify()
 ```
 
 ### 通知类型
@@ -47,19 +47,19 @@ closeNotify();
 支持 `primary`、`success`、`warning`、`danger` 四种通知类型，默认为 `danger`。
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
 // 主要通知
-showNotify({ type: 'primary', message: '通知内容' });
+showNotify({ type: 'primary', message: '通知内容' })
 
 // 成功通知
-showNotify({ type: 'success', message: '通知内容' });
+showNotify({ type: 'success', message: '通知内容' })
 
 // 危险通知
-showNotify({ type: 'danger', message: '通知内容' });
+showNotify({ type: 'danger', message: '通知内容' })
 
 // 警告通知
-showNotify({ type: 'warning', message: '通知内容' });
+showNotify({ type: 'warning', message: '通知内容' })
 ```
 
 ### 自定义通知
@@ -67,23 +67,23 @@ showNotify({ type: 'warning', message: '通知内容' });
 自定义消息通知的颜色、位置和展示时长。
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
 showNotify({
   message: '自定义颜色',
   color: '#ad0000',
-  background: '#ffe1e1',
-});
+  background: '#ffe1e1'
+})
 
 showNotify({
   message: '自定义位置',
-  position: 'bottom',
-});
+  position: 'bottom'
+})
 
 showNotify({
   message: '自定义时长',
-  duration: 1000,
-});
+  duration: 1000
+})
 ```
 
 ### 使用 Notify 组件
@@ -99,25 +99,25 @@ showNotify({
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
 
     const showNotify = () => {
-      show.value = true;
+      show.value = true
       setTimeout(() => {
-        show.value = false;
-      }, 2000);
-    };
+        show.value = false
+      }, 2000)
+    }
 
     return {
       show,
-      showNotify,
-    };
-  },
-};
+      showNotify
+    }
+  }
+}
 ```
 
 ## API
@@ -161,15 +161,15 @@ import type {
   NotifyType,
   NotifyProps,
   NotifyOptions,
-  NotifyPosition,
-} from 'ryxon';
+  NotifyPosition
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

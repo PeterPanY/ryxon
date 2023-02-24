@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Step, Steps } from 'ryxon';
+import { createApp } from 'vue'
+import { Step, Steps } from 'ryxon'
 
-const app = createApp();
-app.use(Step);
-app.use(Steps);
+const app = createApp()
+app.use(Step)
+app.use(Steps)
 ```
 
 ## 代码演示
@@ -33,14 +33,14 @@ app.use(Steps);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(1);
-    return { active };
-  },
-};
+    const active = ref(1)
+    return { active }
+  }
+}
 ```
 
 ### 自定义样式
@@ -112,17 +112,17 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { StepsProps, StepsDirection } from 'ryxon';
+import type { StepsProps, StepsDirection } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                  | 默认值                     | 描述 |
-| ------------------------------------- | -------------------------- | ---- |
+| 名称                                | 默认值                   | 描述 |
+| ----------------------------------- | ------------------------ | ---- |
 | --r-step-text-color                 | _var(--r-text-color-2)_  | -    |
 | --r-step-active-color               | _var(--r-primary-color)_ | -    |
 | --r-step-process-text-color         | _var(--r-text-color)_    | -    |
@@ -130,8 +130,8 @@ import type { StepsProps, StepsDirection } from 'ryxon';
 | --r-step-line-color                 | _var(--r-border-color)_  | -    |
 | --r-step-finish-line-color          | _var(--r-primary-color)_ | -    |
 | --r-step-finish-text-color          | _var(--r-text-color)_    | -    |
-| --r-step-icon-size                  | _12px_                     | -    |
-| --r-step-circle-size                | _5px_                      | -    |
+| --r-step-icon-size                  | _12px_                   | -    |
+| --r-step-circle-size                | _5px_                    | -    |
 | --r-step-circle-color               | _var(--r-gray-6)_        | -    |
 | --r-step-horizontal-title-font-size | _var(--r-font-size-sm)_  | -    |
 | --r-steps-background                | _var(--r-background-2)_  | -    |

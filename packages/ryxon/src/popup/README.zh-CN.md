@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Popup } from 'ryxon';
+import { createApp } from 'vue'
+import { Popup } from 'ryxon'
 
-const app = createApp();
-app.use(Popup);
+const app = createApp()
+app.use(Popup)
 ```
 
 ## 代码演示
@@ -28,20 +28,20 @@ app.use(Popup);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     const showPopup = () => {
-      show.value = true;
-    };
+      show.value = true
+    }
     return {
       show,
-      showPopup,
-    };
-  },
-};
+      showPopup
+    }
+  }
+}
 ```
 
 ### 弹出位置
@@ -144,25 +144,25 @@ Popup 支持以下点击事件：
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     const onClickOverlay = () => {
-      showToast('click-overlay');
-    };
+      showToast('click-overlay')
+    }
     const onClickCloseIcon = () => {
-      showToast('click-close-icon');
-    };
+      showToast('click-close-icon')
+    }
     return {
       show,
       onClickOverlay,
-      onClickCloseIcon,
-    };
-  },
-};
+      onClickCloseIcon
+    }
+  }
+}
 ```
 
 ### 监听显示事件
@@ -188,18 +188,18 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     return {
       show,
-      showToast,
-    };
-  },
-};
+      showToast
+    }
+  }
+}
 ```
 
 ### 指定挂载位置
@@ -271,22 +271,22 @@ import type {
   PopupProps,
   PopupPosition,
   PopupInstance,
-  PopupCloseIconPosition,
-} from 'ryxon';
+  PopupCloseIconPosition
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                           | 默认值                               | 描述 |
-| ------------------------------ | ------------------------------------ | ---- |
+| 名称                         | 默认值                             | 描述 |
+| ---------------------------- | ---------------------------------- | ---- |
 | --r-popup-background         | _var(--r-background-2)_            | -    |
 | --r-popup-transition         | _transform var(--r-duration-base)_ | -    |
-| --r-popup-round-radius       | _16px_                               | -    |
-| --r-popup-close-icon-size    | _22px_                               | -    |
+| --r-popup-round-radius       | _16px_                             | -    |
+| --r-popup-close-icon-size    | _22px_                             | -    |
 | --r-popup-close-icon-color   | _var(--r-gray-5)_                  | -    |
-| --r-popup-close-icon-margin  | _16px_                               | -    |
-| --r-popup-close-icon-z-index | _1_                                  | -    |
+| --r-popup-close-icon-margin  | _16px_                             | -    |
+| --r-popup-close-icon-z-index | _1_                                | -    |

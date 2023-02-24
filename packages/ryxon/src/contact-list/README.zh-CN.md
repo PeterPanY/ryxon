@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { ContactList } from 'ryxon';
+import { createApp } from 'vue'
+import { ContactList } from 'ryxon'
 
-const app = createApp();
-app.use(ContactList);
+const app = createApp()
+app.use(ContactList)
 ```
 
 ## 代码演示
@@ -32,39 +32,39 @@ app.use(ContactList);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const chosenContactId = ref('1');
+    const chosenContactId = ref('1')
     const list = ref([
       {
         id: '1',
         name: '张三',
         tel: '13000000000',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: '李四',
-        tel: '1310000000',
-      },
-    ]);
+        tel: '1310000000'
+      }
+    ])
 
-    const onAdd = () => showToast('新增');
-    const onEdit = (contact) => showToast('编辑' + contact.id);
-    const onSelect = (contact) => showToast('选择' + contact.id);
+    const onAdd = () => showToast('新增')
+    const onEdit = (contact) => showToast('编辑' + contact.id)
+    const onSelect = (contact) => showToast('选择' + contact.id)
 
     return {
       list,
       onAdd,
       onEdit,
       onSelect,
-      chosenContactId,
-    };
-  },
-};
+      chosenContactId
+    }
+  }
+}
 ```
 
 ## API
@@ -100,18 +100,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { ContactListItem, ContactListProps } from 'ryxon';
+import type { ContactListItem, ContactListProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                  | 默认值                     | 描述 |
-| ------------------------------------- | -------------------------- | ---- |
-| --r-contact-list-edit-icon-size     | _16px_                     | -    |
-| --r-contact-list-add-button-z-index | _999_                      | -    |
+| 名称                                | 默认值                   | 描述 |
+| ----------------------------------- | ------------------------ | ---- |
+| --r-contact-list-edit-icon-size     | _16px_                   | -    |
+| --r-contact-list-add-button-z-index | _999_                    | -    |
 | --r-contact-list-radio-color        | _var(--r-primary-color)_ | -    |
 | --r-contact-list-item-padding       | _var(--r-padding-md)_    | -    |

@@ -9,11 +9,11 @@ Sticky 组件与 CSS 中 `position: sticky` 属性实现的效果一致，当组
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Sticky } from 'ryxon';
+import { createApp } from 'vue'
+import { Sticky } from 'ryxon'
 
-const app = createApp();
-app.use(Sticky);
+const app = createApp()
+app.use(Sticky)
 ```
 
 ## 代码演示
@@ -53,10 +53,10 @@ app.use(Sticky);
 ```js
 export default {
   setup() {
-    const container = ref(null);
-    return { container };
-  },
-};
+    const container = ref(null)
+    return { container }
+  }
+}
 ```
 
 ### 吸底距离
@@ -93,15 +93,15 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { StickyProps, StickyPosition } from 'ryxon';
+import type { StickyProps, StickyPosition } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                 | 默认值 | 描述 |
-| -------------------- | ------ | ---- |
+| 名称               | 默认值 | 描述 |
+| ------------------ | ------ | ---- |
 | --r-sticky-z-index | _99_   | -    |

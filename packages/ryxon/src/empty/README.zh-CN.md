@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Empty } from 'ryxon';
+import { createApp } from 'vue'
+import { Empty } from 'ryxon'
 
-const app = createApp();
-app.use(Empty);
+const app = createApp()
+app.use(Empty)
 ```
 
 ## 代码演示
@@ -106,22 +106,22 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
 组件导出以下类型定义：
 
 ```ts
-import type { EmptyProps } from 'ryxon';
+import type { EmptyProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                | 默认值                      | 描述 |
-| ----------------------------------- | --------------------------- | ---- |
+| 名称                              | 默认值                    | 描述 |
+| --------------------------------- | ------------------------- | ---- |
 | --r-empty-padding                 | _var(--r-padding-xl) 0_   | -    |
-| --r-empty-image-size              | _160px_                     | -    |
+| --r-empty-image-size              | _160px_                   | -    |
 | --r-empty-description-margin-top  | _var(--r-padding-md)_     | -    |
-| --r-empty-description-padding     | _0 60px_                    | -    |
+| --r-empty-description-padding     | _0 60px_                  | -    |
 | --r-empty-description-color       | _var(--r-text-color-2)_   | -    |
 | --r-empty-description-font-size   | _var(--r-font-size-md)_   | -    |
 | --r-empty-description-line-height | _var(--r-line-height-md)_ | -    |
-| --r-empty-bottom-margin-top       | _24px_                      | -    |
+| --r-empty-bottom-margin-top       | _24px_                    | -    |

@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { PullRefresh } from 'ryxon';
+import { createApp } from 'vue'
+import { PullRefresh } from 'ryxon'
 
-const app = createApp();
-app.use(PullRefresh);
+const app = createApp()
+app.use(PullRefresh)
 ```
 
 ## 代码演示
@@ -29,28 +29,28 @@ app.use(PullRefresh);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const count = ref(0);
-    const loading = ref(false);
+    const count = ref(0)
+    const loading = ref(false)
     const onRefresh = () => {
       setTimeout(() => {
-        showToast('刷新成功');
-        loading.value = false;
-        count.value++;
-      }, 1000);
-    };
+        showToast('刷新成功')
+        loading.value = false
+        count.value++
+      }, 1000)
+    }
 
     return {
       count,
       loading,
-      onRefresh,
-    };
-  },
-};
+      onRefresh
+    }
+  }
+}
 ```
 
 ### 成功提示
@@ -150,21 +150,21 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { PullRefreshProps } from 'ryxon';
+import type { PullRefreshProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                 | 默认值                    | 描述 |
-| ------------------------------------ | ------------------------- | ---- |
-| --r-pull-refresh-head-height       | _50px_                    | -    |
+| 名称                               | 默认值                  | 描述 |
+| ---------------------------------- | ----------------------- | ---- |
+| --r-pull-refresh-head-height       | _50px_                  | -    |
 | --r-pull-refresh-head-font-size    | _var(--r-font-size-md)_ | -    |
 | --r-pull-refresh-head-text-color   | _var(--r-text-color-2)_ | -    |
-| --r-pull-refresh-loading-icon-size | _16px_                    | -    |
+| --r-pull-refresh-loading-icon-size | _16px_                  | -    |
 
 ## 常见问题
 

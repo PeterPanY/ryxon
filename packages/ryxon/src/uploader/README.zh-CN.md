@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Uploader } from 'ryxon';
+import { createApp } from 'vue'
+import { Uploader } from 'ryxon'
 
-const app = createApp();
-app.use(Uploader);
+const app = createApp()
+app.use(Uploader)
 ```
 
 ## 代码演示
@@ -31,14 +31,14 @@ export default {
   setup() {
     const afterRead = (file) => {
       // 此时可以自行将文件上传至服务器
-      console.log(file);
-    };
+      console.log(file)
+    }
 
     return {
-      afterRead,
-    };
-  },
-};
+      afterRead
+    }
+  }
+}
 ```
 
 ### 文件预览
@@ -50,7 +50,7 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -58,14 +58,14 @@ export default {
       { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' },
       // Uploader 根据文件后缀来判断是否为图片文件
       // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      { url: 'https://cloud-image', isImage: true },
-    ]);
+      { url: 'https://cloud-image', isImage: true }
+    ])
 
     return {
-      fileList,
-    };
-  },
-};
+      fileList
+    }
+  }
+}
 ```
 
 ### 上传状态
@@ -77,7 +77,7 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -85,31 +85,31 @@ export default {
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg',
         status: 'uploading',
-        message: '上传中...',
+        message: '上传中...'
       },
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg',
         status: 'failed',
-        message: '上传失败',
-      },
-    ]);
+        message: '上传失败'
+      }
+    ])
 
     const afterRead = (file) => {
-      file.status = 'uploading';
-      file.message = '上传中...';
+      file.status = 'uploading'
+      file.message = '上传中...'
 
       setTimeout(() => {
-        file.status = 'failed';
-        file.message = '上传失败';
-      }, 1000);
-    };
+        file.status = 'failed'
+        file.message = '上传失败'
+      }, 1000)
+    }
 
     return {
       fileList,
-      afterRead,
-    };
-  },
-};
+      afterRead
+    }
+  }
+}
 ```
 
 ### 限制上传数量
@@ -121,17 +121,17 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const fileList = ref([]);
+    const fileList = ref([])
 
     return {
-      fileList,
-    };
-  },
-};
+      fileList
+    }
+  }
+}
 ```
 
 ### 限制上传大小
@@ -143,20 +143,20 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     const onOversize = (file) => {
-      console.log(file);
-      showToast('文件大小不能超过 500kb');
-    };
+      console.log(file)
+      showToast('文件大小不能超过 500kb')
+    }
 
     return {
-      onOversize,
-    };
-  },
-};
+      onOversize
+    }
+  }
+}
 ```
 
 如果需要针对不同类型的文件来作出不同的大小限制，可以在 `max-size` 属性中传入一个函数，在函数中通过 `file.type` 区分文件类型，返回 `true` 表示超出限制，`false` 表示未超出限制。
@@ -169,14 +169,14 @@ export default {
 export default {
   setup() {
     const isOverSize = (file) => {
-      const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1000 * 1024;
-      return file.size >= maxSize;
-    };
+      const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1000 * 1024
+      return file.size >= maxSize
+    }
     return {
-      isOverSize,
-    };
-  },
-};
+      isOverSize
+    }
+  }
+}
 ```
 
 ### 自定义上传样式
@@ -241,39 +241,39 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     // 返回布尔值
     const beforeRead = (file) => {
       if (file.type !== 'image/jpeg') {
-        showToast('请上传 jpg 格式图片');
-        return false;
+        showToast('请上传 jpg 格式图片')
+        return false
       }
-      return true;
-    };
+      return true
+    }
 
     // 返回 Promise
     const asyncBeforeRead = (file) =>
       new Promise((resolve, reject) => {
         if (file.type !== 'image/jpeg') {
-          showToast('请上传 jpg 格式图片');
-          reject();
+          showToast('请上传 jpg 格式图片')
+          reject()
         } else {
           const img = new File(['foo'], 'bar.jpg', {
-            type: 'image/jpeg',
-          });
-          resolve(img);
+            type: 'image/jpeg'
+          })
+          resolve(img)
         }
-      });
+      })
 
     return {
       beforeRead,
-      asyncBeforeRead,
-    };
-  },
-};
+      asyncBeforeRead
+    }
+  }
+}
 ```
 
 ### 禁用文件上传
@@ -293,8 +293,8 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -303,18 +303,18 @@ export default {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/sand.jpeg',
         deletable: true,
         beforeDelete: () => {
-          showToast('删除前置处理');
-        },
+          showToast('删除前置处理')
+        }
       },
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg',
-        imageFit: 'contain',
-      },
-    ]);
+        imageFit: 'contain'
+      }
+    ])
 
-    return { fileList };
-  },
-};
+    return { fileList }
+  }
+}
 ```
 
 ## API
@@ -404,54 +404,54 @@ import type {
   UploaderProps,
   UploaderInstance,
   UploaderResultType,
-  UploaderFileListItem,
-} from 'ryxon';
+  UploaderFileListItem
+} from 'ryxon'
 ```
 
 `UploaderInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { UploaderInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { UploaderInstance } from 'ryxon'
 
-const uploaderRef = ref<UploaderInstance>();
+const uploaderRef = ref<UploaderInstance>()
 
-uploaderRef.value?.chooseFile();
+uploaderRef.value?.chooseFile()
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-uploader-size | _80px_ | - |
-| --r-uploader-icon-size | _24px_ | - |
-| --r-uploader-icon-color | _var(--r-gray-4)_ | - |
-| --r-uploader-text-color | _var(--r-text-color-2)_ | - |
-| --r-uploader-text-font-size | _var(--r-font-size-sm)_ | - |
-| --r-uploader-upload-background | _var(--r-gray-1)_ | - |
-| --r-uploader-upload-active-color | _var(--r-active-color)_ | - |
-| --r-uploader-delete-color | _var(--r-white)_ | - |
-| --r-uploader-delete-icon-size | _14px_ | - |
-| --r-uploader-delete-background | _rgba(0, 0, 0, 0.7)_ | - |
-| --r-uploader-file-background | _var(--r-background)_ | - |
-| --r-uploader-file-icon-size | _20px_ | - |
-| --r-uploader-file-icon-color | _var(--r-gray-7)_ | - |
-| --r-uploader-file-name-padding | _0 var(--r-padding-base)_ | - |
-| --r-uploader-file-name-margin-top | _var(--r-padding-xs)_ | - |
-| --r-uploader-file-name-font-size | _var(--r-font-size-sm)_ | - |
-| --r-uploader-file-name-text-color | _var(--r-gray-7)_ | - |
-| --r-uploader-mask-text-color | _var(--r-white)_ | - |
-| --r-uploader-mask-background | _fade(var(--r-gray-8), 88%)_ | - |
-| --r-uploader-mask-icon-size | _22px_ | - |
-| --r-uploader-mask-message-font-size | _var(--r-font-size-sm)_ | - |
-| --r-uploader-mask-message-line-height | _var(--r-line-height-xs)_ | - |
-| --r-uploader-loading-icon-size | _22px_ | - |
-| --r-uploader-loading-icon-color | _var(--r-white)_ | - |
-| --r-uploader-disabled-opacity | _var(--r-disabled-opacity)_ | - |
+| 名称                                  | 默认值                       | 描述 |
+| ------------------------------------- | ---------------------------- | ---- |
+| --r-uploader-size                     | _80px_                       | -    |
+| --r-uploader-icon-size                | _24px_                       | -    |
+| --r-uploader-icon-color               | _var(--r-gray-4)_            | -    |
+| --r-uploader-text-color               | _var(--r-text-color-2)_      | -    |
+| --r-uploader-text-font-size           | _var(--r-font-size-sm)_      | -    |
+| --r-uploader-upload-background        | _var(--r-gray-1)_            | -    |
+| --r-uploader-upload-active-color      | _var(--r-active-color)_      | -    |
+| --r-uploader-delete-color             | _var(--r-white)_             | -    |
+| --r-uploader-delete-icon-size         | _14px_                       | -    |
+| --r-uploader-delete-background        | _rgba(0, 0, 0, 0.7)_         | -    |
+| --r-uploader-file-background          | _var(--r-background)_        | -    |
+| --r-uploader-file-icon-size           | _20px_                       | -    |
+| --r-uploader-file-icon-color          | _var(--r-gray-7)_            | -    |
+| --r-uploader-file-name-padding        | _0 var(--r-padding-base)_    | -    |
+| --r-uploader-file-name-margin-top     | _var(--r-padding-xs)_        | -    |
+| --r-uploader-file-name-font-size      | _var(--r-font-size-sm)_      | -    |
+| --r-uploader-file-name-text-color     | _var(--r-gray-7)_            | -    |
+| --r-uploader-mask-text-color          | _var(--r-white)_             | -    |
+| --r-uploader-mask-background          | _fade(var(--r-gray-8), 88%)_ | -    |
+| --r-uploader-mask-icon-size           | _22px_                       | -    |
+| --r-uploader-mask-message-font-size   | _var(--r-font-size-sm)_      | -    |
+| --r-uploader-mask-message-line-height | _var(--r-line-height-xs)_    | -    |
+| --r-uploader-loading-icon-size        | _22px_                       | -    |
+| --r-uploader-loading-icon-color       | _var(--r-white)_             | -    |
+| --r-uploader-disabled-opacity         | _var(--r-disabled-opacity)_  | -    |
 
 ## 常见问题
 
@@ -478,7 +478,7 @@ compressorjs 是一个开源的图片处理库，提供了图片压缩、图片�
 ```
 
 ```js
-import Compressor from 'compressorjs';
+import Compressor from 'compressorjs'
 
 export default {
   setup() {
@@ -489,16 +489,16 @@ export default {
         new Compressor(file, {
           success: resolve,
           error(err) {
-            console.log(err.message);
-          },
-        });
-      });
+            console.log(err.message)
+          }
+        })
+      })
 
     return {
-      beforeRead,
-    };
-  },
-};
+      beforeRead
+    }
+  }
+}
 ```
 
 ### 上传图片时出现浏览器刷新或卡顿现象？

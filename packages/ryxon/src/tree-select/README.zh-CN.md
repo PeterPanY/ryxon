@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { TreeSelect } from 'ryxon';
+import { createApp } from 'vue'
+import { TreeSelect } from 'ryxon'
 
-const app = createApp();
-app.use(TreeSelect);
+const app = createApp()
+app.use(TreeSelect)
 ```
 
 ## 代码演示
@@ -31,39 +31,39 @@ app.use(TreeSelect);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeId = ref(1);
-    const activeIndex = ref(0);
+    const activeId = ref(1)
+    const activeIndex = ref(0)
     const items = [
       {
         text: '浙江',
         children: [
           { text: '杭州', id: 1 },
           { text: '温州', id: 2 },
-          { text: '宁波', id: 3, disabled: true },
-        ],
+          { text: '宁波', id: 3, disabled: true }
+        ]
       },
       {
         text: '江苏',
         children: [
           { text: '南京', id: 4 },
           { text: '无锡', id: 5 },
-          { text: '徐州', id: 6 },
-        ],
+          { text: '徐州', id: 6 }
+        ]
       },
-      { text: '福建', disabled: true },
-    ];
+      { text: '福建', disabled: true }
+    ]
 
     return {
       items,
       activeId,
-      activeIndex,
-    };
-  },
-};
+      activeIndex
+    }
+  }
+}
 ```
 
 ### 多选模式
@@ -79,39 +79,39 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeId = ref([1, 2]);
-    const activeIndex = ref(0);
+    const activeId = ref([1, 2])
+    const activeIndex = ref(0)
     const items = [
       {
         text: '浙江',
         children: [
           { text: '杭州', id: 1 },
           { text: '温州', id: 2 },
-          { text: '宁波', id: 3, disabled: true },
-        ],
+          { text: '宁波', id: 3, disabled: true }
+        ]
       },
       {
         text: '江苏',
         children: [
           { text: '南京', id: 4 },
           { text: '无锡', id: 5 },
-          { text: '徐州', id: 6 },
-        ],
+          { text: '徐州', id: 6 }
+        ]
       },
-      { text: '福建', disabled: true },
-    ];
+      { text: '福建', disabled: true }
+    ]
 
     return {
       items,
       activeId,
-      activeIndex,
-    };
-  },
-};
+      activeIndex
+    }
+  }
+}
 ```
 
 ### 自定义内容
@@ -138,17 +138,17 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeIndex = ref(0);
+    const activeIndex = ref(0)
     return {
       activeIndex,
-      items: [{ text: '分组 1' }, { text: '分组 2' }],
-    };
-  },
-};
+      items: [{ text: '分组 1' }, { text: '分组 2' }]
+    }
+  }
+}
 ```
 
 ### 徽标提示
@@ -164,11 +164,11 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeIndex = ref(0);
+    const activeIndex = ref(0)
     return {
       activeIndex,
       items: [
@@ -177,23 +177,23 @@ export default {
           children: [
             { text: '杭州', id: 1 },
             { text: '温州', id: 2 },
-            { text: '宁波', id: 3, disabled: true },
+            { text: '宁波', id: 3, disabled: true }
           ],
-          dot: true,
+          dot: true
         },
         {
           text: '江苏',
           children: [
             { text: '南京', id: 4 },
             { text: '无锡', id: 5 },
-            { text: '徐州', id: 6 },
+            { text: '徐州', id: 6 }
           ],
-          badge: 5,
-        },
-      ],
-    };
-  },
-};
+          badge: 5
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## API
@@ -227,7 +227,7 @@ export default {
 `TreeSelectItem` 整体为一个数组，数组内包含一系列描述分类的对象，每个分类里，`text` 表示当前分类的名称，`children` 表示分类里的可选项。
 
 ```js
-[
+;[
   {
     // 导航名称
     text: '所有城市',
@@ -245,15 +245,15 @@ export default {
         // id，作为匹配选中状态的标识符
         id: 1,
         // 禁用选项
-        disabled: true,
+        disabled: true
       },
       {
         text: '杭州',
-        id: 2,
-      },
-    ],
-  },
-];
+        id: 2
+      }
+    ]
+  }
+]
 ```
 
 ### 类型定义
@@ -261,22 +261,22 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { TreeSelectItem, TreeSelectChild, TreeSelectProps } from 'ryxon';
+import type { TreeSelectItem, TreeSelectChild, TreeSelectProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                  | 默认值                       | 描述 |
-| ------------------------------------- | ---------------------------- | ---- |
+| 名称                                | 默认值                     | 描述 |
+| ----------------------------------- | -------------------------- | ---- |
 | --r-tree-select-font-size           | _var(--r-font-size-md)_    | -    |
 | --r-tree-select-nav-background      | _var(--r-background)_      | -    |
 | --r-tree-select-content-background  | _var(--r-background-2)_    | -    |
 | --r-tree-select-nav-item-padding    | _14px var(--r-padding-sm)_ | -    |
-| --r-tree-select-item-height         | _48px_                       | -    |
+| --r-tree-select-item-height         | _48px_                     | -    |
 | --r-tree-select-item-active-color   | _var(--r-primary-color)_   | -    |
 | --r-tree-select-item-disabled-color | _var(--r-gray-5)_          | -    |
-| --r-tree-select-item-selected-size  | _16px_                       | -    |
+| --r-tree-select-item-selected-size  | _16px_                     | -    |

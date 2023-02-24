@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { CountDown } from 'ryxon';
+import { createApp } from 'vue'
+import { CountDown } from 'ryxon'
 
-const app = createApp();
-app.use(CountDown);
+const app = createApp()
+app.use(CountDown)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(CountDown);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const time = ref(30 * 60 * 60 * 1000);
-    return { time };
-  },
-};
+    const time = ref(30 * 60 * 60 * 1000)
+    return { time }
+  }
+}
 ```
 
 ### 自定义格式
@@ -106,32 +106,32 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const countDown = ref(null);
+    const countDown = ref(null)
 
     const start = () => {
-      countDown.value.start();
-    };
+      countDown.value.start()
+    }
     const pause = () => {
-      countDown.value.pause();
-    };
+      countDown.value.pause()
+    }
     const reset = () => {
-      countDown.value.reset();
-    };
-    const onFinish = () => showToast('倒计时结束');
+      countDown.value.reset()
+    }
+    const onFinish = () => showToast('倒计时结束')
 
     return {
       start,
       pause,
       reset,
       onFinish,
-      countDown,
-    };
-  },
-};
+      countDown
+    }
+  }
+}
 ```
 
 ## API
@@ -199,29 +199,29 @@ export default {
 import type {
   CountDownProps,
   CountDownInstance,
-  CountDownCurrentTime,
-} from 'ryxon';
+  CountDownCurrentTime
+} from 'ryxon'
 ```
 
 `CountDownInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { CountDownInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CountDownInstance } from 'ryxon'
 
-const countDownRef = ref<CountDownInstance>();
+const countDownRef = ref<CountDownInstance>()
 
-countDownRef.value?.start();
+countDownRef.value?.start()
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                         | 默认值                      | 描述 |
-| ---------------------------- | --------------------------- | ---- |
+| 名称                       | 默认值                    | 描述 |
+| -------------------------- | ------------------------- | ---- |
 | --r-count-down-text-color  | _var(--r-text-color)_     | -    |
 | --r-count-down-font-size   | _var(--r-font-size-md)_   | -    |
 | --r-count-down-line-height | _var(--r-line-height-md)_ | -    |

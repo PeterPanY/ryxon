@@ -9,13 +9,13 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { ActionBar, ActionBarIcon, ActionBarButton } from 'ryxon';
+import { createApp } from 'vue'
+import { ActionBar, ActionBarIcon, ActionBarButton } from 'ryxon'
 
-const app = createApp();
-app.use(ActionBar);
-app.use(ActionBarIcon);
-app.use(ActionBarButton);
+const app = createApp()
+app.use(ActionBar)
+app.use(ActionBarIcon)
+app.use(ActionBarButton)
 ```
 
 ## 代码演示
@@ -32,18 +32,18 @@ app.use(ActionBarButton);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onClickIcon = () => showToast('点击图标');
-    const onClickButton = () => showToast('点击按钮');
+    const onClickIcon = () => showToast('点击图标')
+    const onClickButton = () => showToast('点击按钮')
     return {
       onClickIcon,
-      onClickButton,
-    };
-  },
-};
+      onClickButton
+    }
+  }
+}
 ```
 
 ### 徽标提示
@@ -147,28 +147,28 @@ export default {
 import type {
   ActionBarProps,
   ActionBarIconProps,
-  ActionBarButtonProps,
-} from 'ryxon';
+  ActionBarButtonProps
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                  | 默认值                       | 描述 |
-| ------------------------------------- | ---------------------------- | ---- |
+| 名称                                | 默认值                     | 描述 |
+| ----------------------------------- | -------------------------- | ---- |
 | --r-action-bar-background           | _var(--r-background-2)_    | -    |
-| --r-action-bar-height               | _50px_                       | -    |
-| --r-action-bar-icon-width           | _48px_                       | -    |
-| --r-action-bar-icon-height          | _100%_                       | -    |
+| --r-action-bar-height               | _50px_                     | -    |
+| --r-action-bar-icon-width           | _48px_                     | -    |
+| --r-action-bar-icon-height          | _100%_                     | -    |
 | --r-action-bar-icon-color           | _var(--r-text-color)_      | -    |
-| --r-action-bar-icon-size            | _18px_                       | -    |
+| --r-action-bar-icon-size            | _18px_                     | -    |
 | --r-action-bar-icon-font-size       | _var(--r-font-size-xs)_    | -    |
 | --r-action-bar-icon-active-color    | _var(--r-active-color)_    | -    |
 | --r-action-bar-icon-text-color      | _var(--r-text-color)_      | -    |
 | --r-action-bar-icon-background      | _var(--r-background-2)_    | -    |
-| --r-action-bar-button-height        | _40px_                       | -    |
+| --r-action-bar-button-height        | _40px_                     | -    |
 | --r-action-bar-button-warning-color | _var(--r-gradient-orange)_ | -    |
 | --r-action-bar-button-danger-color  | _var(--r-gradient-red)_    | -    |

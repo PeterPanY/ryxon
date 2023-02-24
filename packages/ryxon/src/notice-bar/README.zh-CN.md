@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { NoticeBar } from 'ryxon';
+import { createApp } from 'vue'
+import { NoticeBar } from 'ryxon'
 
-const app = createApp();
-app.use(NoticeBar);
+const app = createApp()
+app.use(NoticeBar)
 ```
 
 ## 代码演示
@@ -142,18 +142,18 @@ app.use(NoticeBar);
 组件导出以下类型定义：
 
 ```ts
-import type { NoticeBarMode, NoticeBarProps, NoticeBarInstance } from 'ryxon';
+import type { NoticeBarMode, NoticeBarProps, NoticeBarInstance } from 'ryxon'
 ```
 
 `NoticeBarInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { NoticeBarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { NoticeBarInstance } from 'ryxon'
 
-const noticeBarRef = ref<NoticeBarInstance>();
+const noticeBarRef = ref<NoticeBarInstance>()
 
-noticeBarRef.value?.reset();
+noticeBarRef.value?.reset()
 ```
 
 ### Slots
@@ -168,7 +168,7 @@ noticeBarRef.value?.reset();
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

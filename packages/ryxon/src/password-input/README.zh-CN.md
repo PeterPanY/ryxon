@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { PasswordInput, NumberKeyboard } from 'ryxon';
+import { createApp } from 'vue'
+import { PasswordInput, NumberKeyboard } from 'ryxon'
 
-const app = createApp();
-app.use(PasswordInput);
-app.use(NumberKeyboard);
+const app = createApp()
+app.use(PasswordInput)
+app.use(NumberKeyboard)
 ```
 
 ## 代码演示
@@ -39,19 +39,19 @@ app.use(NumberKeyboard);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref('123');
-    const showKeyboard = ref(true);
+    const value = ref('123')
+    const showKeyboard = ref(true)
 
     return {
       value,
-      showKeyboard,
-    };
-  },
-};
+      showKeyboard
+    }
+  }
+}
 ```
 
 ### 自定义长度
@@ -113,29 +113,29 @@ export default {
 ```
 
 ```js
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue'
 
 export default {
   setup() {
-    const value = ref('123');
-    const errorInfo = ref('');
-    const showKeyboard = ref(true);
+    const value = ref('123')
+    const errorInfo = ref('')
+    const showKeyboard = ref(true)
 
     watch(value, (newVal) => {
       if (newVal.length === 6 && newVal !== '123456') {
-        errorInfo.value = '密码错误';
+        errorInfo.value = '密码错误'
       } else {
-        errorInfo.value = '';
+        errorInfo.value = ''
       }
-    });
+    })
 
     return {
       value,
       errorInfo,
-      showKeyboard,
-    };
-  },
-};
+      showKeyboard
+    }
+  }
+}
 ```
 
 ## API
@@ -163,29 +163,29 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { PasswordInputProps } from 'ryxon';
+import type { PasswordInputProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                  | 默认值                    | 描述 |
-| ------------------------------------- | ------------------------- | ---- |
-| --r-password-input-height           | _50px_                    | -    |
+| 名称                                | 默认值                  | 描述 |
+| ----------------------------------- | ----------------------- | ---- |
+| --r-password-input-height           | _50px_                  | -    |
 | --r-password-input-margin           | _0 var(--r-padding-md)_ | -    |
-| --r-password-input-font-size        | _20px_                    | -    |
-| --r-password-input-radius           | _6px_                     | -    |
+| --r-password-input-font-size        | _20px_                  | -    |
+| --r-password-input-radius           | _6px_                   | -    |
 | --r-password-input-background       | _var(--r-background-2)_ | -    |
 | --r-password-input-info-color       | _var(--r-text-color-2)_ | -    |
 | --r-password-input-info-font-size   | _var(--r-font-size-md)_ | -    |
 | --r-password-input-error-info-color | _var(--r-danger-color)_ | -    |
-| --r-password-input-dot-size         | _10px_                    | -    |
+| --r-password-input-dot-size         | _10px_                  | -    |
 | --r-password-input-dot-color        | _var(--r-text-color)_   | -    |
 | --r-password-input-text-color       | _var(--r-text-color)_   | -    |
 | --r-password-input-cursor-color     | _var(--r-text-color)_   | -    |
-| --r-password-input-cursor-width     | _1px_                     | -    |
-| --r-password-input-cursor-height    | _40%_                     | -    |
-| --r-password-input-cursor-duration  | _1s_                      | -    |
+| --r-password-input-cursor-width     | _1px_                   | -    |
+| --r-password-input-cursor-height    | _40%_                   | -    |
+| --r-password-input-cursor-duration  | _1s_                    | -    |

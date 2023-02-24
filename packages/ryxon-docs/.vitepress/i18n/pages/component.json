@@ -87,6 +87,10 @@
       "text": "Feedback 反馈组件",
       "children": [
         {
+          "link": "/loading",
+          "text": "Loading 加载"
+        },
+        {
           "link": "/popover",
           "text": "Popover 气泡弹出框"
         },

@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Collapse, CollapseItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Collapse, CollapseItem } from 'ryxon'
 
-const app = createApp();
-app.use(Collapse);
-app.use(CollapseItem);
+const app = createApp()
+app.use(Collapse)
+app.use(CollapseItem)
 ```
 
 ## 代码演示
@@ -38,14 +38,14 @@ app.use(CollapseItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeNames = ref(['1']);
-    return { activeNames };
-  },
-};
+    const activeNames = ref(['1'])
+    return { activeNames }
+  }
+}
 ```
 
 ### 手风琴
@@ -67,14 +67,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeName = ref('1');
-    return { activeName };
-  },
-};
+    const activeName = ref('1')
+    return { activeName }
+  }
+}
 ```
 
 ### 禁用状态
@@ -114,14 +114,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeNames = ref(['1']);
-    return { activeNames };
-  },
-};
+    const activeNames = ref(['1'])
+    return { activeNames }
+  }
+}
 ```
 
 ### 全部展开与全部切换
@@ -258,19 +258,19 @@ import type {
   CollapseProps,
   CollapseItemProps,
   CollapseItemInstance,
-  CollapseToggleAllOptions,
-} from 'ryxon';
+  CollapseToggleAllOptions
+} from 'ryxon'
 ```
 
 `CollapseItemInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { CollapseItemInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CollapseItemInstance } from 'ryxon'
 
-const collapseItemRef = ref<CollapseItemInstance>();
+const collapseItemRef = ref<CollapseItemInstance>()
 
-collapseItemRef.value?.toggle();
+collapseItemRef.value?.toggle()
 ```
 
 ### CollapseItem Slots
@@ -288,7 +288,7 @@ collapseItemRef.value?.toggle();
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |
