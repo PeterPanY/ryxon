@@ -213,7 +213,6 @@ export default defineComponent({
           <Button
             v-show={props.showCloseButton}
             round
-            block
             type="primary"
             class={bem('close')}
             text={props.closeButtonText || t('close')}

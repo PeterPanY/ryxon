@@ -1,33 +1,33 @@
-import { defineComponent, type PropType, type ExtractPropTypes } from 'vue';
+import { defineComponent, type PropType, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { createNamespace, unknownProp, type Numeric } from '../utils';
+import { createNamespace, unknownProp, type Numeric } from '../utils'
 
 // Components
-import { Tag } from '../tag';
-import { Icon } from '../icon';
-import { Cell } from '../cell';
-import { Radio } from '../radio';
-import { Button } from '../button';
-import { RadioGroup } from '../radio-group';
+import { Tag } from '../tag'
+import { Icon } from '../icon'
+import { Cell } from '../cell'
+import { Radio } from '../radio'
+import { Button } from '../button'
+import { RadioGroup } from '../radio-group'
 
-const [name, bem, t] = createNamespace('contact-list');
+const [name, bem, t] = createNamespace('contact-list')
 
 export type ContactListItem = {
-  id?: Numeric;
-  tel: Numeric;
-  name: string;
-  isDefault?: boolean;
-};
+  id?: Numeric
+  tel: Numeric
+  name: string
+  isDefault?: boolean
+}
 
 export const contactListProps = {
   list: Array as PropType<ContactListItem[]>,
   addText: String,
   modelValue: unknownProp,
-  defaultTagText: String,
-};
+  defaultTagText: String
+}
 
-export type ContactListProps = ExtractPropTypes<typeof contactListProps>;
+export type ContactListProps = ExtractPropTypes<typeof contactListProps>
 
 export default defineComponent({
   name,
@@ -39,45 +39,45 @@ export default defineComponent({
   setup(props, { emit }) {
     const renderItem = (item: ContactListItem, index: number) => {
       const onClick = () => {
-        emit('update:modelValue', item.id);
-        emit('select', item, index);
-      };
+        emit('update:modelValue', item.id)
+        emit('select', item, index)
+      }
 
       const renderRightIcon = () => (
         <Radio class={bem('radio')} name={item.id} iconSize={16} />
-      );
+      )
 
       const renderEditIcon = () => (
         <Icon
           name="edit"
           class={bem('edit')}
           onClick={(event) => {
-            event.stopPropagation();
-            emit('edit', item, index);
+            event.stopPropagation()
+            emit('edit', item, index)
           }}
         />
-      );
+      )
 
       const renderContent = () => {
-        const nodes: (JSX.Element | string)[] = [`${item.name}，${item.tel}`];
+        const nodes: (JSX.Element | string)[] = [`${item.name}，${item.tel}`]
 
         if (item.isDefault && props.defaultTagText) {
           nodes.push(
             <Tag type="primary" round class={bem('item-tag')}>
               {props.defaultTagText}
             </Tag>
-          );
+          )
         }
 
-        return nodes;
-      };
+        return nodes
+      }
 
       return (
         <Cell
           v-slots={{
             icon: renderEditIcon,
             title: renderContent,
-            'right-icon': renderRightIcon,
+            'right-icon': renderRightIcon
           }}
           key={item.id}
           isLink
@@ -86,8 +86,8 @@ export default defineComponent({
           titleClass={bem('item-title')}
           onClick={onClick}
         />
-      );
-    };
+      )
+    }
 
     return () => (
       <div class={bem()}>
@@ -97,7 +97,6 @@ export default defineComponent({
         <div class={[bem('bottom'), 'r-safe-area-bottom']}>
           <Button
             round
-            block
             type="primary"
             class={bem('add')}
             text={props.addText || t('addContact')}
@@ -105,6 +104,6 @@ export default defineComponent({
           />
         </div>
       </div>
-    );
-  },
-});
+    )
+  }
+})

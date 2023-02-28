@@ -1,19 +1,19 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
 import {
   truthProp,
   numericProp,
   makeArrayProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
 // Components
-import { Button } from '../button';
-import { RadioGroup } from '../radio-group';
-import AddressListItem, { AddressListAddress } from './AddressListItem';
+import { Button } from '../button'
+import { RadioGroup } from '../radio-group'
+import AddressListItem, { AddressListAddress } from './AddressListItem'
 
-const [name, bem, t] = createNamespace('address-list');
+const [name, bem, t] = createNamespace('address-list')
 
 export const addressListProps = {
   list: makeArrayProp<AddressListAddress>(),
@@ -22,10 +22,10 @@ export const addressListProps = {
   disabledText: String,
   disabledList: makeArrayProp<AddressListAddress>(),
   addButtonText: String,
-  defaultTagText: String,
-};
+  defaultTagText: String
+}
 
-export type AddressListProps = ExtractPropTypes<typeof addressListProps>;
+export type AddressListProps = ExtractPropTypes<typeof addressListProps>
 
 export default defineComponent({
   name,
@@ -39,7 +39,7 @@ export default defineComponent({
     'clickItem',
     'editDisabled',
     'selectDisabled',
-    'update:modelValue',
+    'update:modelValue'
   ],
 
   setup(props, { slots, emit }) {
@@ -48,24 +48,23 @@ export default defineComponent({
       index: number,
       disabled?: boolean
     ) => {
-      const onEdit = () =>
-        emit(disabled ? 'editDisabled' : 'edit', item, index);
+      const onEdit = () => emit(disabled ? 'editDisabled' : 'edit', item, index)
 
-      const onClick = () => emit('clickItem', item, index);
+      const onClick = () => emit('clickItem', item, index)
 
       const onSelect = () => {
-        emit(disabled ? 'selectDisabled' : 'select', item, index);
+        emit(disabled ? 'selectDisabled' : 'select', item, index)
 
         if (!disabled) {
-          emit('update:modelValue', item.id);
+          emit('update:modelValue', item.id)
         }
-      };
+      }
 
       return (
         <AddressListItem
           v-slots={{
             bottom: slots['item-bottom'],
-            tag: slots.tag,
+            tag: slots.tag
           }}
           key={item.id}
           address={item}
@@ -76,34 +75,33 @@ export default defineComponent({
           onClick={onClick}
           onSelect={onSelect}
         />
-      );
-    };
+      )
+    }
 
     const renderList = (list: AddressListAddress[], disabled?: boolean) => {
       if (list) {
-        return list.map((item, index) => renderItem(item, index, disabled));
+        return list.map((item, index) => renderItem(item, index, disabled))
       }
-    };
+    }
 
     const renderBottom = () => (
       <div class={[bem('bottom'), 'r-safe-area-bottom']}>
         <Button
           round
-          block
           type="primary"
           text={props.addButtonText || t('add')}
           class={bem('add')}
           onClick={() => emit('add')}
         />
       </div>
-    );
+    )
 
     return () => {
-      const List = renderList(props.list);
-      const DisabledList = renderList(props.disabledList, true);
+      const List = renderList(props.list)
+      const DisabledList = renderList(props.disabledList, true)
       const DisabledText = props.disabledText && (
         <div class={bem('disabled-text')}>{props.disabledText}</div>
-      );
+      )
 
       return (
         <div class={bem()}>
@@ -114,7 +112,7 @@ export default defineComponent({
           {slots.default?.()}
           {renderBottom()}
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

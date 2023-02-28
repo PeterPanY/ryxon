@@ -68,7 +68,6 @@ export default defineComponent({
     const renderButtons = () => (
       <div class={bem('buttons')}>
         <Button
-          block
           round
           type="primary"
           text={t('save')}
@@ -78,7 +77,6 @@ export default defineComponent({
         />
         {props.isEdit && (
           <Button
-            block
             round
             text={t('delete')}
             class={bem('button')}

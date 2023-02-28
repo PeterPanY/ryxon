@@ -316,7 +316,6 @@ export default defineComponent({
           {renderSetDefaultCell()}
           <div v-show={!hideBottomInputs.value} class={bem('buttons')}>
             <Button
-              block
               round
               type="primary"
               text={props.saveButtonText || t('save')}
@@ -326,7 +325,6 @@ export default defineComponent({
             />
             {props.showDelete && (
               <Button
-                block
                 round
                 class={bem('button')}
                 loading={props.isDeleting}

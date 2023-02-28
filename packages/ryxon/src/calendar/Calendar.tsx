@@ -502,7 +502,6 @@ export default defineComponent({
         return (
           <Button
             round
-            block
             type="primary"
             color={props.color}
             class={bem('confirm')}
