@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { DropdownMenu, DropdownItem } from 'ryxon';
+import { createApp } from 'vue'
+import { DropdownMenu, DropdownItem } from 'ryxon'
 
-const app = createApp();
-app.use(DropdownMenu);
-app.use(DropdownItem);
+const app = createApp()
+app.use(DropdownMenu)
+app.use(DropdownItem)
 ```
 
 ## 代码演示
@@ -29,31 +29,31 @@ app.use(DropdownItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value1 = ref(0);
-    const value2 = ref('a');
+    const value1 = ref(0)
+    const value2 = ref('a')
     const option1 = [
       { text: '全部商品', value: 0 },
       { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ];
+      { text: '活动商品', value: 2 }
+    ]
     const option2 = [
       { text: '默认排序', value: 'a' },
       { text: '好评排序', value: 'b' },
-      { text: '销量排序', value: 'c' },
-    ];
+      { text: '销量排序', value: 'c' }
+    ]
 
     return {
       value1,
       value2,
       option1,
-      option2,
-    };
-  },
-};
+      option2
+    }
+  }
+}
 ```
 
 ### 自定义菜单内容
@@ -75,31 +75,29 @@ export default {
       </template>
     </r-cell>
     <div style="padding: 5px 16px;">
-      <r-button type="primary" block round @click="onConfirm">
-        确认
-      </r-button>
+      <r-button type="primary" block round @click="onConfirm"> 确认 </r-button>
     </div>
   </r-dropdown-item>
 </r-dropdown-menu>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const item = ref(null);
-    const value = ref(0);
-    const switch1 = ref(false);
-    const switch2 = ref(false);
+    const item = ref(null)
+    const value = ref(0)
+    const switch1 = ref(false)
+    const switch2 = ref(false)
     const options = [
       { text: '全部商品', value: 0 },
       { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ];
+      { text: '活动商品', value: 2 }
+    ]
     const onConfirm = () => {
-      item.value.toggle();
-    };
+      item.value.toggle()
+    }
 
     return {
       item,
@@ -107,10 +105,10 @@ export default {
       switch1,
       switch2,
       options,
-      onConfirm,
-    };
-  },
-};
+      onConfirm
+    }
+  }
+}
 ```
 
 ### 自定义选中态颜色
@@ -205,19 +203,19 @@ import type {
   DropdownItemProps,
   DropdownItemOption,
   DropdownItemInstance,
-  DropdownMenuDirection,
-} from 'ryxon';
+  DropdownMenuDirection
+} from 'ryxon'
 ```
 
 `DropdownItemInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { DropdownItemInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { DropdownItemInstance } from 'ryxon'
 
-const dropdownItemRef = ref<DropdownItemInstance>();
+const dropdownItemRef = ref<DropdownItemInstance>()
 
-dropdownItemRef.value?.toggle();
+dropdownItemRef.value?.toggle()
 ```
 
 ### Option 数据结构
@@ -232,7 +230,7 @@ dropdownItemRef.value?.toggle();
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

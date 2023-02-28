@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { ImagePreview } from 'ryxon';
+import { createApp } from 'vue'
+import { ImagePreview } from 'ryxon'
 
-const app = createApp();
-app.use(ImagePreview);
+const app = createApp()
+app.use(ImagePreview)
 ```
 
 ### 函数调用
@@ -23,9 +23,9 @@ app.use(ImagePreview);
 比如使用 `showImagePreview` 函数，调用后会直接在页面中渲染对应的图片预览组件。
 
 ```js
-import { showImagePreview } from 'ryxon';
+import { showImagePreview } from 'ryxon'
 
-showImagePreview(['https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg']);
+showImagePreview(['https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg'])
 ```
 
 ## 代码演示
@@ -35,12 +35,12 @@ showImagePreview(['https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg'])
 在调用 `showImagePreview` 时，直接传入图片数组，即可展示图片预览。
 
 ```js
-import { showImagePreview } from 'ryxon';
+import { showImagePreview } from 'ryxon'
 
 showImagePreview([
   'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-  'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
-]);
+  'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
+])
 ```
 
 ### 指定初始位置
@@ -48,15 +48,15 @@ showImagePreview([
 `showImagePreview` 支持传入配置对象，并通过 `startPosition` 选项指定图片的初始位置（索引值）。
 
 ```js
-import { showImagePreview } from 'ryxon';
+import { showImagePreview } from 'ryxon'
 
 showImagePreview({
   images: [
     'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
+    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
   ],
-  startPosition: 1,
-});
+  startPosition: 1
+})
 ```
 
 ### 展示关闭按钮
@@ -64,15 +64,15 @@ showImagePreview({
 设置 `closeable` 属性后，会在弹出层的右上角显示关闭图标，并且可以通过 `close-icon` 属性自定义图标，使用`close-icon-position` 属性可以自定义图标位置。
 
 ```js
-import { showImagePreview } from 'ryxon';
+import { showImagePreview } from 'ryxon'
 
 showImagePreview({
   images: [
     'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
+    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
   ],
-  closeable: true,
-});
+  closeable: true
+})
 ```
 
 ### 监听关闭事件
@@ -80,17 +80,17 @@ showImagePreview({
 通过 `onClose` 选项监听图片预览的关闭事件。
 
 ```js
-import { showToast, showImagePreview } from 'ryxon';
+import { showToast, showImagePreview } from 'ryxon'
 
 showImagePreview({
   images: [
     'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
+    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
   ],
   onClose() {
-    showToast('关闭');
-  },
-});
+    showToast('关闭')
+  }
+})
 ```
 
 ### 异步关闭
@@ -98,20 +98,20 @@ showImagePreview({
 通过 `beforeClose` 属性可以拦截关闭行为。
 
 ```js
-import { showImagePreview } from 'ryxon';
+import { showImagePreview } from 'ryxon'
 
 const instance = showImagePreview({
   images: [
     'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
+    'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
   ],
-  beforeClose: () => false,
-});
+  beforeClose: () => false
+})
 
 setTimeout(() => {
   // 调用实例上的 close 方法手动关闭图片预览
-  instance.close();
-}, 2000);
+  instance.close()
+}, 2000)
 ```
 
 ### 使用 ImagePreview 组件
@@ -120,33 +120,33 @@ setTimeout(() => {
 
 ```html
 <r-image-preview v-model:show="show" :images="images" @change="onChange">
-  <template v-slot:index>第{{ index + 1  }}页</template>
+  <template v-slot:index>第{{ index + 1 }}页</template>
 </r-image-preview>
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
-    const index = ref(0);
+    const show = ref(false)
+    const index = ref(0)
     const images = [
       'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg',
-      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg',
-    ];
+      'https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg'
+    ]
     const onChange = (newIndex) => {
-      index.value = newIndex;
-    };
+      index.value = newIndex
+    }
 
     return {
       show,
       index,
       images,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### 使用 image 插槽
@@ -164,22 +164,22 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     const images = [
       'https://www.w3school.com.cn/i/movie.ogg',
       'https://www.w3school.com.cn/i/movie.ogg',
-      'https://www.w3school.com.cn/i/movie.ogg',
-    ];
+      'https://www.w3school.com.cn/i/movie.ogg'
+    ]
     return {
       show,
-      images,
-    };
-  },
-};
+      images
+    }
+  }
+}
 ```
 
 ## API
@@ -275,19 +275,19 @@ import type {
   ImagePreviewProps,
   ImagePreviewOptions,
   ImagePreviewInstance,
-  ImagePreviewScaleEventParams,
-} from 'ryxon';
+  ImagePreviewScaleEventParams
+} from 'ryxon'
 ```
 
 `ImagePreviewInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { ImagePreviewInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { ImagePreviewInstance } from 'ryxon'
 
-const imagePreviewRef = ref<ImagePreviewInstance>();
+const imagePreviewRef = ref<ImagePreviewInstance>()
 
-imagePreviewRef.value?.swipeTo(1);
+imagePreviewRef.value?.swipeTo(1)
 ```
 
 ### Slots
@@ -318,19 +318,19 @@ imagePreviewRef.value?.swipeTo(1);
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-image-preview-index-text-color | _var(--r-white)_ | - |
-| --r-image-preview-index-font-size | _var(--r-font-size-md)_ | - |
-| --r-image-preview-index-line-height | _var(--r-line-height-md)_ | - |
-| --r-image-preview-index-text-shadow | _0 1px 1px var(--r-gray-8)_ | - |
-| --r-image-preview-overlay-background | _rgba(0, 0, 0, 0.9)_ | - |
-| --r-image-preview-close-icon-size | _22px_ | - |
-| --r-image-preview-close-icon-color | _var(--r-gray-5)_ | - |
-| --r-image-preview-close-icon-margin | _var(--r-padding-md)_ | - |
-| --r-image-preview-close-icon-z-index | _1_ | - |
+| 名称                                 | 默认值                      | 描述 |
+| ------------------------------------ | --------------------------- | ---- |
+| --r-image-preview-index-text-color   | _var(--r-white)_            | -    |
+| --r-image-preview-index-font-size    | _var(--r-font-size-md)_     | -    |
+| --r-image-preview-index-line-height  | _var(--r-line-height-md)_   | -    |
+| --r-image-preview-index-text-shadow  | _0 1px 1px var(--r-gray-8)_ | -    |
+| --r-image-preview-overlay-background | _rgba(0, 0, 0, 0.9)_        | -    |
+| --r-image-preview-close-icon-size    | _22px_                      | -    |
+| --r-image-preview-close-icon-color   | _var(--r-gray-5)_           | -    |
+| --r-image-preview-close-icon-margin  | _var(--r-padding-md)_       | -    |
+| --r-image-preview-close-icon-z-index | _1_                         | -    |
 
 ## 常见问题
 

@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Switch } from 'ryxon';
+import { createApp } from 'vue'
+import { Switch } from 'ryxon'
 
-const app = createApp();
-app.use(Switch);
+const app = createApp()
+app.use(Switch)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(Switch);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
-    return { checked };
-  },
-};
+    const checked = ref(true)
+    return { checked }
+  }
+}
 ```
 
 ### 禁用状态
@@ -111,27 +111,27 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showConfirmDialog } from 'ryxon';
+import { ref } from 'vue'
+import { showConfirmDialog } from 'ryxon'
 
 export default {
   setup() {
-    const checked = ref(true);
+    const checked = ref(true)
     const onUpdateValue = (newValue) => {
       showConfirmDialog({
         title: '提醒',
-        message: '是否切换开关？',
+        message: '是否切换开关？'
       }).then(() => {
-        checked.value = newValue;
-      });
-    };
+        checked.value = newValue
+      })
+    }
 
     return {
       checked,
-      onUpdateValue,
-    };
-  },
-};
+      onUpdateValue
+    }
+  }
+}
 ```
 
 ### 搭配单元格使用
@@ -178,24 +178,24 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SwitchProps } from 'ryxon';
+import type { SwitchProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                          | 默认值                            | 描述 |
-| ----------------------------- | --------------------------------- | ---- |
+| 名称                        | 默认值                            | 描述 |
+| --------------------------- | --------------------------------- | ---- |
 | --r-switch-size             | _26px_                            | -    |
 | --r-switch-width            | _calc(1.8em + 4px)_               | -    |
 | --r-switch-height           | _calc(1em + 4px)_                 | -    |
 | --r-switch-node-size        | _1em_                             | -    |
-| --r-switch-node-background  | _var(--r-white)_                | -    |
+| --r-switch-node-background  | _var(--r-white)_                  | -    |
 | --r-switch-node-shadow      | _0 3px 1px 0 rgba(0, 0, 0, 0.05)_ | -    |
 | --r-switch-background       | _rgba(120, 120, 128, 0.16)_       | -    |
-| --r-switch-on-background    | _var(--r-primary-color)_        | -    |
-| --r-switch-duration         | _var(--r-duration-base)_        | -    |
-| --r-switch-disabled-opacity | _var(--r-disabled-opacity)_     | -    |
+| --r-switch-on-background    | _var(--r-primary-color)_          | -    |
+| --r-switch-duration         | _var(--r-duration-base)_          | -    |
+| --r-switch-disabled-opacity | _var(--r-disabled-opacity)_       | -    |

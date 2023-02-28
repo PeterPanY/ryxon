@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { List } from 'ryxon';
+import { createApp } from 'vue'
+import { List } from 'ryxon'
 
-const app = createApp();
-app.use(List);
+const app = createApp()
+app.use(List)
 ```
 
 ## 代码演示
@@ -34,40 +34,40 @@ List 组件通过 `loading` 和 `finished` 两个变量控制加载状态，当�
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const list = ref([]);
-    const loading = ref(false);
-    const finished = ref(false);
+    const list = ref([])
+    const loading = ref(false)
+    const finished = ref(false)
 
     const onLoad = () => {
       // 异步更新数据
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       setTimeout(() => {
         for (let i = 0; i < 10; i++) {
-          list.value.push(list.value.length + 1);
+          list.value.push(list.value.length + 1)
         }
 
         // 加载状态结束
-        loading.value = false;
+        loading.value = false
 
         // 数据全部加载完成
         if (list.value.length >= 40) {
-          finished.value = true;
+          finished.value = true
         }
-      }, 1000);
-    };
+      }, 1000)
+    }
 
     return {
       list,
       onLoad,
       loading,
-      finished,
-    };
-  },
-};
+      finished
+    }
+  }
+}
 ```
 
 ### 错误提示
@@ -86,27 +86,27 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const list = ref([]);
-    const error = ref(false);
-    const loading = ref(false);
+    const list = ref([])
+    const error = ref(false)
+    const loading = ref(false)
     const onLoad = () => {
       fetchSomeThing().catch(() => {
-        error.value = true;
-      });
-    };
+        error.value = true
+      })
+    }
 
     return {
       list,
       error,
       onLoad,
-      loading,
-    };
-  },
-};
+      loading
+    }
+  }
+}
 ```
 
 ### 下拉刷新
@@ -127,42 +127,42 @@ List 组件可以与 [PullRefresh](#/zh-CN/pull-refresh) 组件结合使用，�
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const list = ref([]);
-    const loading = ref(false);
-    const finished = ref(false);
-    const refreshing = ref(false);
+    const list = ref([])
+    const loading = ref(false)
+    const finished = ref(false)
+    const refreshing = ref(false)
 
     const onLoad = () => {
       setTimeout(() => {
         if (refreshing.value) {
-          list.value = [];
-          refreshing.value = false;
+          list.value = []
+          refreshing.value = false
         }
 
         for (let i = 0; i < 10; i++) {
-          list.value.push(list.value.length + 1);
+          list.value.push(list.value.length + 1)
         }
-        loading.value = false;
+        loading.value = false
 
         if (list.value.length >= 40) {
-          finished.value = true;
+          finished.value = true
         }
-      }, 1000);
-    };
+      }, 1000)
+    }
 
     const onRefresh = () => {
       // 清空列表数据
-      finished.value = false;
+      finished.value = false
 
       // 重新加载数据
       // 将 loading 设置为 true，表示处于加载状态
-      loading.value = true;
-      onLoad();
-    };
+      loading.value = true
+      onLoad()
+    }
 
     return {
       list,
@@ -170,10 +170,10 @@ export default {
       loading,
       finished,
       onRefresh,
-      refreshing,
-    };
-  },
-};
+      refreshing
+    }
+  }
+}
 ```
 
 ## API
@@ -212,18 +212,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { ListProps, ListInstance, ListDirection } from 'ryxon';
+import type { ListProps, ListInstance, ListDirection } from 'ryxon'
 ```
 
 `ListInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { ListInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { ListInstance } from 'ryxon'
 
-const listRef = ref<ListInstance>();
+const listRef = ref<ListInstance>()
 
-listRef.value?.check();
+listRef.value?.check()
 ```
 
 ### Slots
@@ -239,14 +239,14 @@ listRef.value?.check();
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                         | 默认值                    | 描述 |
-| ---------------------------- | ------------------------- | ---- |
+| 名称                       | 默认值                  | 描述 |
+| -------------------------- | ----------------------- | ---- |
 | --r-list-text-color        | _var(--r-text-color-2)_ | -    |
 | --r-list-text-font-size    | _var(--r-font-size-md)_ | -    |
-| --r-list-text-line-height  | _50px_                    | -    |
-| --r-list-loading-icon-size | _16px_                    | -    |
+| --r-list-text-line-height  | _50px_                  | -    |
+| --r-list-loading-icon-size | _16px_                  | -    |
 
 ## 常见问题
 

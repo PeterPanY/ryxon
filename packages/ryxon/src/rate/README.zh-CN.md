@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Rate } from 'ryxon';
+import { createApp } from 'vue'
+import { Rate } from 'ryxon'
 
-const app = createApp();
-app.use(Rate);
+const app = createApp()
+app.use(Rate)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(Rate);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3);
-    return { value };
-  },
-};
+    const value = ref(3)
+    return { value }
+  }
+}
 ```
 
 ### 自定义图标
@@ -68,14 +68,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(2.5);
-    return { value };
-  },
-};
+    const value = ref(2.5)
+    return { value }
+  }
+}
 ```
 
 ### 自定义数量
@@ -111,14 +111,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3.3);
-    return { value };
-  },
-};
+    const value = ref(3.3)
+    return { value }
+  }
+}
 ```
 
 ### 监听 change 事件
@@ -130,19 +130,19 @@ export default {
 ```
 
 ```javascript
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(3);
-    const onChange = (value) => showToast('当前值：' + value);
+    const value = ref(3)
+    const onChange = (value) => showToast('当前值：' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -177,18 +177,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { RateProps } from 'ryxon';
+import type { RateProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                           | 默认值                    | 描述 |
-| ------------------------------ | ------------------------- | ---- |
-| --r-rate-icon-size           | _20px_                    | -    |
+| 名称                         | 默认值                  | 描述 |
+| ---------------------------- | ----------------------- | ---- |
+| --r-rate-icon-size           | _20px_                  | -    |
 | --r-rate-icon-gutter         | _var(--r-padding-base)_ | -    |
 | --r-rate-icon-void-color     | _var(--r-gray-5)_       | -    |
 | --r-rate-icon-full-color     | _var(--r-danger-color)_ | -    |

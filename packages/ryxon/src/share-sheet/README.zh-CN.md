@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { ShareSheet } from 'ryxon';
+import { createApp } from 'vue'
+import { ShareSheet } from 'ryxon'
 
-const app = createApp();
-app.use(ShareSheet);
+const app = createApp()
+app.use(ShareSheet)
 ```
 
 ## 代码演示
@@ -33,32 +33,32 @@ app.use(ShareSheet);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const showShare = ref(false);
+    const showShare = ref(false)
     const options = [
       { name: '微信', icon: 'wechat' },
       { name: '微博', icon: 'weibo' },
       { name: '复制链接', icon: 'link' },
       { name: '分享海报', icon: 'poster' },
-      { name: '二维码', icon: 'qrcode' },
-    ];
+      { name: '二维码', icon: 'qrcode' }
+    ]
 
     const onSelect = (option) => {
-      showToast(option.name);
-      showShare.value = false;
-    };
+      showToast(option.name)
+      showShare.value = false
+    }
 
     return {
       options,
       onSelect,
-      showShare,
-    };
-  },
-};
+      showShare
+    }
+  }
+}
 ```
 
 ### 展示多行选项
@@ -74,32 +74,32 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const showShare = ref(false);
+    const showShare = ref(false)
     const options = [
       [
         { name: '微信', icon: 'wechat' },
         { name: '朋友圈', icon: 'wechat-moments' },
         { name: '微博', icon: 'weibo' },
-        { name: 'QQ', icon: 'qq' },
+        { name: 'QQ', icon: 'qq' }
       ],
       [
         { name: '复制链接', icon: 'link' },
         { name: '分享海报', icon: 'poster' },
         { name: '二维码', icon: 'qrcode' },
-        { name: '小程序码', icon: 'weapp-qrcode' },
-      ],
-    ];
+        { name: '小程序码', icon: 'weapp-qrcode' }
+      ]
+    ]
 
     return {
       options,
-      showShare,
-    };
-  },
-};
+      showShare
+    }
+  }
+}
 ```
 
 ### 自定义图标
@@ -111,32 +111,32 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const showShare = ref(false);
+    const showShare = ref(false)
     const options = [
       {
         name: '名称',
-        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-fire.png',
+        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-fire.png'
       },
       {
         name: '名称',
-        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-light.png',
+        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-light.png'
       },
       {
         name: '名称',
-        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-water.png',
-      },
-    ];
+        icon: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/custom-icon-water.png'
+      }
+    ]
 
     return {
       options,
-      showShare,
-    };
-  },
-};
+      showShare
+    }
+  }
+}
 ```
 
 ### 展示描述信息
@@ -153,25 +153,25 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const showShare = ref(false);
+    const showShare = ref(false)
     const options = [
       { name: '微信', icon: 'wechat' },
       { name: '微博', icon: 'weibo' },
       { name: '复制链接', icon: 'link', description: '描述信息' },
       { name: '分享海报', icon: 'poster' },
-      { name: '二维码', icon: 'qrcode' },
-    ];
+      { name: '二维码', icon: 'qrcode' }
+    ]
 
     return {
       options,
-      showShare,
-    };
-  },
-};
+      showShare
+    }
+  }
+}
 ```
 
 ## API
@@ -238,15 +238,15 @@ export default {
 import type {
   ShareSheetProps,
   ShareSheetOption,
-  ShareSheetOptions,
-} from 'ryxon';
+  ShareSheetOptions
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

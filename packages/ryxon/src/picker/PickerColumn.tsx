@@ -234,7 +234,11 @@ export default defineComponent({
 
         return (
           <li {...data}>
-            {slots.option ? slots.option(option) : <div {...childData} />}
+            {slots.option ? (
+              slots.option(option, index)
+            ) : (
+              <div {...childData} />
+            )}
           </li>
         )
       })

@@ -1,7 +1,7 @@
-import { defineComponent, type PropType } from 'vue';
+import { defineComponent, type PropType } from 'vue'
 
 // Utils
-import { t, bem, isImageFile } from './utils';
+import { t, bem, isImageFile } from './utils'
 import {
   isDef,
   extend,
@@ -10,16 +10,16 @@ import {
   callInterceptor,
   makeRequiredProp,
   type Numeric,
-  type Interceptor,
-} from '../utils';
+  type Interceptor
+} from '../utils'
 
 // Components
-import { Icon } from '../icon';
-import { Image, ImageFit } from '../image';
-import { Loading } from '../loading';
+import { Icon } from '../icon'
+import { Image, ImageFit } from '../image'
+import { Loading } from '../loading'
 
 // Types
-import type { UploaderFileListItem } from './types';
+import type { UploaderFileListItem } from './types'
 
 export default defineComponent({
   props: {
@@ -32,14 +32,14 @@ export default defineComponent({
     previewSize: [Number, String, Array] as PropType<
       Numeric | [Numeric, Numeric]
     >,
-    beforeDelete: Function as PropType<Interceptor>,
+    beforeDelete: Function as PropType<Interceptor>
   },
 
   emits: ['delete', 'preview'],
 
   setup(props, { emit, slots }) {
     const renderMask = () => {
-      const { status, message } = props.item;
+      const { status, message } = props.item
 
       if (status === 'uploading' || status === 'failed') {
         const MaskIcon =
@@ -47,33 +47,33 @@ export default defineComponent({
             <Icon name="close" class={bem('mask-icon')} />
           ) : (
             <Loading class={bem('loading')} />
-          );
+          )
 
-        const showMessage = isDef(message) && message !== '';
+        const showMessage = isDef(message) && message !== ''
 
         return (
           <div class={bem('mask')}>
             {MaskIcon}
             {showMessage && <div class={bem('mask-message')}>{message}</div>}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const onDelete = (event: MouseEvent) => {
-      const { name, item, index, beforeDelete } = props;
-      event.stopPropagation();
+      const { name, item, index, beforeDelete } = props
+      event.stopPropagation()
       callInterceptor(beforeDelete, {
         args: [item, { name, index }],
-        done: () => emit('delete'),
-      });
-    };
+        done: () => emit('delete')
+      })
+    }
 
-    const onPreview = () => emit('preview');
+    const onPreview = () => emit('preview')
 
     const renderDeleteIcon = () => {
       if (props.deletable && props.item.status !== 'uploading') {
-        const slot = slots['preview-delete'];
+        const slot = slots['preview-delete']
         return (
           <div
             role="button"
@@ -88,23 +88,23 @@ export default defineComponent({
               <Icon name="cross" class={bem('preview-delete-icon')} />
             )}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderCover = () => {
       if (slots['preview-cover']) {
-        const { index, item } = props;
+        const { index, item } = props
         return (
           <div class={bem('preview-cover')}>
             {slots['preview-cover'](extend({ index }, item))}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderPreview = () => {
-      const { item, lazyLoad, imageFit, previewSize } = props;
+      const { item, lazyLoad, imageFit, previewSize } = props
 
       if (isImageFile(item)) {
         return (
@@ -118,7 +118,7 @@ export default defineComponent({
             lazyLoad={lazyLoad}
             onClick={onPreview}
           />
-        );
+        )
       }
 
       return (
@@ -129,8 +129,8 @@ export default defineComponent({
           </div>
           {renderCover()}
         </div>
-      );
-    };
+      )
+    }
 
     return () => (
       <div class={bem('preview')}>
@@ -138,6 +138,6 @@ export default defineComponent({
         {renderMask()}
         {renderDeleteIcon()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

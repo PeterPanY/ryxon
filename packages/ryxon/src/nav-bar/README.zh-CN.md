@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { NavBar } from 'ryxon';
+import { createApp } from 'vue'
+import { NavBar } from 'ryxon'
 
-const app = createApp();
-app.use(NavBar);
+const app = createApp()
+app.use(NavBar)
 ```
 
 ## 代码演示
@@ -31,23 +31,18 @@ app.use(NavBar);
 在导航栏实现返回上级功能。
 
 ```html
-<r-nav-bar
-  title="标题"
-  left-text="返回"
-  left-arrow
-  @click-left="onClickLeft"
-/>
+<r-nav-bar title="标题" left-text="返回" left-arrow @click-left="onClickLeft" />
 ```
 
 ```js
 export default {
   setup() {
-    const onClickLeft = () => history.back();
+    const onClickLeft = () => history.back()
     return {
-      onClickLeft,
-    };
-  },
-};
+      onClickLeft
+    }
+  }
+}
 ```
 
 ### 右侧按钮
@@ -66,18 +61,18 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onClickLeft = () => history.back();
-    const onClickRight = () => showToast('按钮');
+    const onClickLeft = () => history.back()
+    const onClickRight = () => showToast('按钮')
     return {
       onClickLeft,
-      onClickRight,
-    };
-  },
-};
+      onClickRight
+    }
+  }
+}
 ```
 
 ### 使用插槽
@@ -129,22 +124,22 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { NavBarProps } from 'ryxon';
+import type { NavBarProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                           | 默认值                     | 描述 |
-| ------------------------------ | -------------------------- | ---- |
-| --r-nav-bar-height           | _46px_                     | -    |
+| 名称                         | 默认值                   | 描述 |
+| ---------------------------- | ------------------------ | ---- |
+| --r-nav-bar-height           | _46px_                   | -    |
 | --r-nav-bar-background       | _var(--r-background-2)_  | -    |
-| --r-nav-bar-arrow-size       | _16px_                     | -    |
+| --r-nav-bar-arrow-size       | _16px_                   | -    |
 | --r-nav-bar-icon-color       | _var(--r-primary-color)_ | -    |
 | --r-nav-bar-text-color       | _var(--r-primary-color)_ | -    |
 | --r-nav-bar-title-font-size  | _var(--r-font-size-lg)_  | -    |
 | --r-nav-bar-title-text-color | _var(--r-text-color)_    | -    |
-| --r-nav-bar-z-index          | _1_                        | -    |
+| --r-nav-bar-z-index          | _1_                      | -    |

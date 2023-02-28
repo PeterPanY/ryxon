@@ -1,4 +1,4 @@
-import { Lazyload } from './vue-lazyload';
+import { Lazyload } from './vue-lazyload'
 
-export default Lazyload;
-export { Lazyload };
+export default Lazyload
+export { Lazyload }

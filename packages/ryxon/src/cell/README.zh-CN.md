@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Cell, CellGroup } from 'ryxon';
+import { createApp } from 'vue'
+import { Cell, CellGroup } from 'ryxon'
 
-const app = createApp();
-app.use(Cell);
-app.use(CellGroup);
+const app = createApp()
+app.use(Cell)
+app.use(CellGroup)
 ```
 
 ## 代码演示
@@ -207,15 +207,15 @@ import type {
   CellSize,
   CellProps,
   CellGroupProps,
-  CellArrowDirection,
-} from 'ryxon';
+  CellArrowDirection
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

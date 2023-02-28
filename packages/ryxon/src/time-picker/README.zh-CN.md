@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { TimePicker } from 'ryxon';
+import { createApp } from 'vue'
+import { TimePicker } from 'ryxon'
 
-const app = createApp();
-app.use(TimePicker);
+const app = createApp()
+app.use(TimePicker)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(TimePicker);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
-    return { currentTime };
-  },
-};
+    const currentTime = ref(['12', '00'])
+    return { currentTime }
+  }
+}
 ```
 
 ### 选项类型
@@ -57,18 +57,18 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00', '00']);
-    const columnsType = ['hour', 'minute', 'second'];
+    const currentTime = ref(['12', '00', '00'])
+    const columnsType = ['hour', 'minute', 'second']
     return {
       currentTime,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### 时间范围
@@ -85,14 +85,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '35']);
-    return { currentTime };
-  },
-};
+    const currentTime = ref(['12', '35'])
+    return { currentTime }
+  }
+}
 ```
 
 ### 格式化选项
@@ -100,35 +100,31 @@ export default {
 通过传入 `formatter` 函数，可以对选项的文字进行格式化。
 
 ```html
-<r-time-picker
-  v-model="currentTime"
-  title="选择时间"
-  :formatter="formatter"
-/>
+<r-time-picker v-model="currentTime" title="选择时间" :formatter="formatter" />
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
+    const currentTime = ref(['12', '00'])
     const formatter = (type, option) => {
       if (type === 'hour') {
-        option.text += '时';
+        option.text += '时'
       }
       if (type === 'minute') {
-        option.text += '分';
+        option.text += '分'
       }
-      return option;
-    };
+      return option
+    }
 
     return {
       filter,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
 ```
 
 ### 过滤选项
@@ -140,24 +136,24 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
+    const currentTime = ref(['12', '00'])
     const filter = (type, options) => {
       if (type === 'minute') {
-        return options.filter((option) => Number(option) % 10 === 0);
+        return options.filter((option) => Number(option) % 10 === 0)
       }
-      return options;
-    };
+      return options
+    }
 
     return {
       filter,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
 ```
 
 ## API
@@ -196,22 +192,22 @@ export default {
 
 ### Slots
 
-| 名称           | 说明                   | 参数                   |
-| -------------- | ---------------------- | ---------------------- |
-| toolbar        | 自定义整个顶部栏的内容 | -                      |
-| title          | 自定义标题内容         | -                      |
-| confirm        | 自定义确认按钮内容     | -                      |
-| cancel         | 自定义取消按钮内容     | -                      |
-| option         | 自定义选项内容         | _option: PickerOption_ |
-| columns-top    | 自定义选项上方内容     | -                      |
-| columns-bottom | 自定义选项下方内容     | -                      |
+| 名称 | 说明 | 参数 |
+| --- | --- | --- |
+| toolbar | 自定义整个顶部栏的内容 | - |
+| title | 自定义标题内容 | - |
+| confirm | 自定义确认按钮内容 | - |
+| cancel | 自定义取消按钮内容 | - |
+| option | 自定义选项内容 | _option: PickerOption, index: number_ |
+| columns-top | 自定义选项上方内容 | - |
+| columns-bottom | 自定义选项下方内容 | - |
 
 ### 类型定义
 
 组件导出以下类型定义：
 
 ```ts
-import type { TimePickerProps, TimePickerColumnType } from 'ryxon';
+import type { TimePickerProps, TimePickerColumnType } from 'ryxon'
 ```
 
 ## 常见问题

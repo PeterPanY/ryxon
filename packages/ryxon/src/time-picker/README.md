@@ -9,11 +9,11 @@ Used to select time, usually used with the [Popup](#/en-US/popup) component.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { TimePicker } from 'ryxon';
+import { createApp } from 'vue'
+import { TimePicker } from 'ryxon'
 
-const app = createApp();
-app.use(TimePicker);
+const app = createApp()
+app.use(TimePicker)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(TimePicker);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
-    return { currentTime };
-  },
-};
+    const currentTime = ref(['12', '00'])
+    return { currentTime }
+  }
+}
 ```
 
 ### Columns Type
@@ -55,18 +55,18 @@ For example:
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00', '00']);
-    const columnsType = ['hour', 'minute', 'second'];
+    const currentTime = ref(['12', '00', '00'])
+    const columnsType = ['hour', 'minute', 'second']
     return {
       currentTime,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### Time Range
@@ -83,14 +83,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '35']);
-    return { currentTime };
-  },
-};
+    const currentTime = ref(['12', '35'])
+    return { currentTime }
+  }
+}
 ```
 
 ### Options Formatter
@@ -106,27 +106,27 @@ Using `formatter` prop to format option text.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
+    const currentTime = ref(['12', '00'])
     const formatter = (type, option) => {
       if (type === 'hour') {
-        option.text += 'h';
+        option.text += 'h'
       }
       if (type === 'minute') {
-        option.text += 'm';
+        option.text += 'm'
       }
-      return option;
-    };
+      return option
+    }
 
     return {
       filter,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
 ```
 
 ### Options Filter
@@ -138,25 +138,25 @@ Using `filter` prop to filter options.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentTime = ref(['12', '00']);
+    const currentTime = ref(['12', '00'])
 
     const filter = (type, options) => {
       if (type === 'minute') {
-        return options.filter((option) => Number(option) % 10 === 0);
+        return options.filter((option) => Number(option) % 10 === 0)
       }
-      return options;
-    };
+      return options
+    }
 
     return {
       filter,
-      currentTime,
-    };
-  },
-};
+      currentTime
+    }
+  }
+}
 ```
 
 ## API
@@ -195,20 +195,20 @@ export default {
 
 ### Slots
 
-| Name           | Description                  | SlotProps              |
-| -------------- | ---------------------------- | ---------------------- |
-| toolbar        | Custom toolbar content       | -                      |
-| title          | Custom title                 | -                      |
-| confirm        | Custom confirm button text   | -                      |
-| cancel         | Custom cancel button text    | -                      |
-| option         | Custom option content        | _option: PickerOption_ |
-| columns-top    | Custom content above columns | -                      |
-| columns-bottom | Custom content below columns | -                      |
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| toolbar | Custom toolbar content | - |
+| title | Custom title | - |
+| confirm | Custom confirm button text | - |
+| cancel | Custom cancel button text | - |
+| option | Custom option content | _option: PickerOption, index: number_ |
+| columns-top | Custom content above columns | - |
+| columns-bottom | Custom content below columns | - |
 
 ### Types
 
 The component exports the following type definitions:
 
 ```ts
-import type { TimePickerProps, TimePickerColumnType } from 'ryxon';
+import type { TimePickerProps, TimePickerColumnType } from 'ryxon'
 ```

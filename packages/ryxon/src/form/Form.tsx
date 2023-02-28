@@ -173,7 +173,7 @@ export default defineComponent({
     // 获取form的值
     const getValues = () =>
       children.reduce<Record<string, unknown>>((form, input) => {
-        if (input.name !== undefined) {
+        if (input.name !== undefined && input.formValue) {
           form[input.name] = input.formValue.value
         }
         return form

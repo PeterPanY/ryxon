@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { ActionSheet } from 'ryxon';
+import { createApp } from 'vue'
+import { ActionSheet } from 'ryxon'
 
-const app = createApp();
-app.use(ActionSheet);
+const app = createApp()
+app.use(ActionSheet)
 ```
 
 ## 代码演示
@@ -28,31 +28,27 @@ app.use(ActionSheet);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(false);
-    const actions = [
-      { name: '选项一' },
-      { name: '选项二' },
-      { name: '选项三' },
-    ];
+    const show = ref(false)
+    const actions = [{ name: '选项一' }, { name: '选项二' }, { name: '选项三' }]
     const onSelect = (item) => {
       // 默认情况下点击选项时不会自动收起
       // 可以通过 close-on-click-action 属性开启自动收起
-      show.value = false;
-      showToast(item.name);
-    };
+      show.value = false
+      showToast(item.name)
+    }
 
     return {
       show,
       actions,
-      onSelect,
-    };
-  },
-};
+      onSelect
+    }
+  }
+}
 ```
 
 ### 展示取消按钮
@@ -70,26 +66,22 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const show = ref(false);
-    const actions = [
-      { name: '选项一' },
-      { name: '选项二' },
-      { name: '选项三' },
-    ];
-    const onCancel = () => showToast('取消');
+    const show = ref(false)
+    const actions = [{ name: '选项一' }, { name: '选项二' }, { name: '选项三' }]
+    const onCancel = () => showToast('取消')
 
     return {
       show,
       actions,
-      onCancel,
-    };
-  },
-};
+      onCancel
+    }
+  }
+}
 ```
 
 ### 展示描述信息
@@ -107,23 +99,23 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     const actions = [
       { name: '选项一' },
       { name: '选项二' },
-      { name: '选项三', subname: '描述信息' },
-    ];
+      { name: '选项三', subname: '描述信息' }
+    ]
 
     return {
       show,
-      actions,
-    };
-  },
-};
+      actions
+    }
+  }
+}
 ```
 
 ### 选项状态
@@ -140,23 +132,23 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
     const actions = [
       { name: '着色选项', color: '#ee0a24' },
       { name: '禁用选项', disabled: true },
-      { name: '加载选项', loading: true },
-    ];
+      { name: '加载选项', loading: true }
+    ]
 
     return {
       show,
-      actions,
-    };
-  },
-};
+      actions
+    }
+  }
+}
 ```
 
 ### 自定义面板
@@ -243,35 +235,35 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { ActionSheetProps, ActionSheetAction } from 'ryxon';
+import type { ActionSheetProps, ActionSheetAction } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-action-sheet-max-height | _80%_ | - |
-| --r-action-sheet-header-height | _48px_ | - |
-| --r-action-sheet-header-font-size | _var(--r-font-size-lg)_ | - |
-| --r-action-sheet-description-color | _var(--r-text-color-2)_ | - |
-| --r-action-sheet-description-font-size | _var(--r-font-size-md)_ | - |
-| --r-action-sheet-description-line-height | _var(--r-line-height-md)_ | - |
-| --r-action-sheet-item-background | _var(--r-background-2)_ | - |
-| --r-action-sheet-item-font-size | _var(--r-font-size-lg)_ | - |
-| --r-action-sheet-item-line-height | _var(--r-line-height-lg)_ | - |
-| --r-action-sheet-item-text-color | _var(--r-text-color)_ | - |
-| --r-action-sheet-item-disabled-text-color | _var(--r-text-color-3)_ | - |
-| --r-action-sheet-subname-color | _var(--r-text-color-2)_ | - |
-| --r-action-sheet-subname-font-size | _var(--r-font-size-sm)_ | - |
-| --r-action-sheet-subname-line-height | _var(--r-line-height-sm)_ | - |
-| --r-action-sheet-close-icon-size | _22px_ | - |
-| --r-action-sheet-close-icon-color | _var(--r-gray-5)_ | - |
-| --r-action-sheet-close-icon-padding | _0 var(--r-padding-md)_ | - |
-| --r-action-sheet-cancel-text-color | _var(--r-gray-7)_ | - |
-| --r-action-sheet-cancel-padding-top | _var(--r-padding-xs)_ | - |
-| --r-action-sheet-cancel-padding-color | _var(--r-background)_ | - |
-| --r-action-sheet-loading-icon-size | _22px_ | - |
+| 名称                                      | 默认值                    | 描述 |
+| ----------------------------------------- | ------------------------- | ---- |
+| --r-action-sheet-max-height               | _80%_                     | -    |
+| --r-action-sheet-header-height            | _48px_                    | -    |
+| --r-action-sheet-header-font-size         | _var(--r-font-size-lg)_   | -    |
+| --r-action-sheet-description-color        | _var(--r-text-color-2)_   | -    |
+| --r-action-sheet-description-font-size    | _var(--r-font-size-md)_   | -    |
+| --r-action-sheet-description-line-height  | _var(--r-line-height-md)_ | -    |
+| --r-action-sheet-item-background          | _var(--r-background-2)_   | -    |
+| --r-action-sheet-item-font-size           | _var(--r-font-size-lg)_   | -    |
+| --r-action-sheet-item-line-height         | _var(--r-line-height-lg)_ | -    |
+| --r-action-sheet-item-text-color          | _var(--r-text-color)_     | -    |
+| --r-action-sheet-item-disabled-text-color | _var(--r-text-color-3)_   | -    |
+| --r-action-sheet-subname-color            | _var(--r-text-color-2)_   | -    |
+| --r-action-sheet-subname-font-size        | _var(--r-font-size-sm)_   | -    |
+| --r-action-sheet-subname-line-height      | _var(--r-line-height-sm)_ | -    |
+| --r-action-sheet-close-icon-size          | _22px_                    | -    |
+| --r-action-sheet-close-icon-color         | _var(--r-gray-5)_         | -    |
+| --r-action-sheet-close-icon-padding       | _0 var(--r-padding-md)_   | -    |
+| --r-action-sheet-cancel-text-color        | _var(--r-gray-7)_         | -    |
+| --r-action-sheet-cancel-padding-top       | _var(--r-padding-xs)_     | -    |
+| --r-action-sheet-cancel-padding-color     | _var(--r-background)_     | -    |
+| --r-action-sheet-loading-icon-size        | _22px_                    | -    |

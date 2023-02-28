@@ -10,7 +10,7 @@ Ryxon 支持了深色模式，增加五个新组件，改善工具函数 API 并
 
 **Ryxon 支持切换所有组件为深色模式。**
 
-只需要把 [ConfigProvider 组件](https://ryxon-ui.github.io/ryxon/#/zh-CN/config-provider)的 `theme` 属性设置为 `dark`，即可切换为深色模式，将页面上的所有 Ryxon 组件变成深色风格。
+只需要把 [ConfigProvider 组件](https://ryxon-ui.github.io/ryxon//zh/component/config-provider.html)的 `theme` 属性设置为 `dark`，即可切换为深色模式，将页面上的所有 Ryxon 组件变成深色风格。
 
 ```html
 <r-config-provider theme="dark">
@@ -169,7 +169,7 @@ emit('clickInput')
 
 目前 Ryxon 已经支持基于 CSS 变量的主题定制，相较于 Less 定制更加灵活。因此，Ryxon 将不再提供基于 Less 的主题定制。这意味着 Ryxon 的 npm 包中将不再会包含 `.less` 样式源文件，仅会提供编译后的 `.css` 样式文件。
 
-如果你的项目正在使用旧版的 Less 主题定制，请使用 [ConfigProvider 全局配置](#/zh-CN/config-provider) 进行替换。
+如果你的项目正在使用旧版的 Less 主题定制，请使用 [ConfigProvider 全局配置](/zh/component/config-provider.html) 进行替换。
 
 ### Ryxon Cli 5.0
 

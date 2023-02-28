@@ -1,33 +1,38 @@
 import {
   watch,
   defineComponent,
-  type PropType,
   type InjectionKey,
   type ExtractPropTypes
 } from 'vue'
 
 // Utils
-import { numericProp, createNamespace, makeArrayProp } from '../utils'
+import {
+  numericProp,
+  makeArrayProp,
+  makeStringProp,
+  createNamespace
+} from '../utils'
 
 // Composables
 import { useChildren, useCustomInputValue } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 
 // Types
-import type { CheckerDirection } from '../checkbox/Checker'
 import type {
   CheckboxGroupExpose,
   CheckboxGroupProvide,
   CheckboxGroupToggleAllOptions
 } from './types'
+import { CheckboxSize } from '../checkbox/types'
 
 const [name, bem] = createNamespace('checkbox-group')
 
 export const checkboxGroupProps = {
   max: numericProp,
+  min: numericProp,
+  size: makeStringProp<CheckboxSize>(''),
   disabled: Boolean,
   iconSize: numericProp,
-  direction: String as PropType<CheckerDirection>,
   modelValue: makeArrayProp<unknown>(),
   checkedColor: String
 }
@@ -49,6 +54,7 @@ export default defineComponent({
 
     const updateValue = (value: unknown[]) => emit('update:modelValue', value)
 
+    // 切换所有多选框
     const toggleAll = (options: CheckboxGroupToggleAllOptions = {}) => {
       if (typeof options === 'boolean') {
         options = { checked: options }
@@ -82,6 +88,6 @@ export default defineComponent({
       updateValue
     })
 
-    return () => <div class={bem([props.direction])}>{slots.default?.()}</div>
+    return () => <div class={bem()}>{slots.default?.()}</div>
   }
 })

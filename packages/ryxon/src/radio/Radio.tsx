@@ -1,49 +1,50 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { pick, createNamespace } from '../utils';
-import { RADIO_KEY } from '../radio-group/RadioGroup';
+import { pick, extend, makeStringProp, createNamespace } from '../utils'
+import { RADIO_KEY } from '../radio-group/RadioGroup'
 
 // Composables
-import { useParent } from '@ryxon/use';
+import { useParent } from '@ryxon/use'
 
 // Components
 import Checker, {
   checkerProps,
   CheckerShape,
   CheckerLabelPosition,
-} from '../checkbox/Checker';
+  CheckerCheckShapeShape
+} from '../checkbox/Checker'
 
-export const radioProps = checkerProps;
+export const radioProps = extend({}, checkerProps, {
+  checkShape: makeStringProp<CheckerCheckShapeShape>('dot')
+})
 
-export type RadioShape = CheckerShape;
-export type RadioLabelPosition = CheckerLabelPosition;
-export type RadioProps = ExtractPropTypes<typeof radioProps>;
+export type RadioShape = CheckerShape
+export type RadioLabelPosition = CheckerLabelPosition
+export type RadioProps = ExtractPropTypes<typeof radioProps>
 
-const [name, bem] = createNamespace('radio');
+const [, bem] = createNamespace('radio')
 
 export default defineComponent({
-  name,
-
-  props: checkerProps,
-
-  emits: ['update:modelValue'],
-
+  name: 'RRadio',
+  props: radioProps,
+  emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
-    const { parent } = useParent(RADIO_KEY);
+    const { parent } = useParent(RADIO_KEY)
 
     const checked = () => {
-      const value = parent ? parent.props.modelValue : props.modelValue;
-      return value === props.name;
-    };
+      const value = parent ? parent.props.modelValue : props.modelValue
+      return value === props.name
+    }
 
     const toggle = () => {
       if (parent) {
-        parent.updateValue(props.name);
+        parent.updateValue(props.name)
       } else {
-        emit('update:modelValue', props.name);
+        emit('update:modelValue', props.name)
+        emit('change', props.name)
       }
-    };
+    }
 
     return () => (
       <Checker
@@ -55,6 +56,6 @@ export default defineComponent({
         onToggle={toggle}
         {...props}
       />
-    );
-  },
-});
+    )
+  }
+})

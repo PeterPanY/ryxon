@@ -4,6 +4,7 @@ import {
   reactive,
   computed,
   onMounted,
+  Transition,
   onActivated,
   onDeactivated,
   onBeforeUnmount,
@@ -38,6 +39,9 @@ import { useTouch } from '../composables/use-touch'
 import { useExpose } from '../composables/use-expose'
 import { onPopupReopen } from '../composables/on-popup-reopen'
 
+import { Icon } from '../icon'
+import { ArrowLeft, ArrowRight } from '@ryxon/icons'
+
 // Types
 import { SwipeState, SwipeExpose, SwipeProvide, SwipeToOptions } from './types'
 
@@ -55,7 +59,23 @@ export const swipeProps = {
   initialSwipe: makeNumericProp(0),
   indicatorColor: String,
   showIndicators: truthProp,
-  stopPropagation: truthProp
+  stopPropagation: truthProp,
+  trigger: {
+    type: String,
+    values: ['hover', 'click'],
+    default: 'hover'
+  },
+  arrow: {
+    type: String,
+    values: ['always', 'hover', 'never'],
+    default: 'hover'
+  },
+  pauseOnHover: { type: Boolean, default: true },
+  indicatorPosition: {
+    type: String,
+    values: ['', 'none'],
+    default: ''
+  }
 }
 
 export type SwipeProps = ExtractPropTypes<typeof swipeProps>
@@ -64,11 +84,8 @@ export const SWIPE_KEY: InjectionKey<SwipeProvide> = Symbol(name)
 
 export default defineComponent({
   name,
-
   props: swipeProps,
-
   emits: ['change', 'dragStart', 'dragEnd'],
-
   setup(props, { emit, slots }) {
     const root = ref<HTMLElement>()
     const track = ref<HTMLElement>()
@@ -179,7 +196,7 @@ export default defineComponent({
       const targetActive = getTargetActive(pace)
       const targetOffset = getTargetOffset(targetActive, offset)
 
-      // auto move first and last swipe in loop mode
+      // 在循环模式下自动移动第一次和最后一次滑动
       if (props.loop) {
         if (children[0] && targetOffset !== minOffset.value) {
           const outRightBound = targetOffset < minOffset.value
@@ -212,38 +229,34 @@ export default defineComponent({
       }
     }
 
-    // swipe to prev item
+    // 滑动到上一项
     const prev = () => {
       correctPosition()
       touch.reset()
 
       doubleRaf(() => {
         state.swiping = false
-        move({
-          pace: -1,
-          emitChange: true
-        })
+        move({ pace: -1, emitChange: true })
       })
     }
 
-    // swipe to next item
+    // 滑动到下一项
     const next = () => {
       correctPosition()
       touch.reset()
 
       doubleRaf(() => {
         state.swiping = false
-        move({
-          pace: 1,
-          emitChange: true
-        })
+        move({ pace: 1, emitChange: true })
       })
     }
 
     let autoplayTimer: ReturnType<typeof setTimeout>
 
+    // 停止自动轮播
     const stopAutoplay = () => clearTimeout(autoplayTimer)
 
+    // 自动轮播
     const autoplay = () => {
       stopAutoplay()
       if (props.autoplay > 0 && count.value > 1) {
@@ -254,7 +267,7 @@ export default defineComponent({
       }
     }
 
-    // initialize swipe position
+    // 初始化滑动位置
     const initialize = (active = +props.initialSwipe) => {
       if (!root.value) {
         return
@@ -289,7 +302,6 @@ export default defineComponent({
         autoplay()
       }
 
-      // issue: https://github.com/PeterPanY/ryxon/issues/10052
       if (isHidden(root)) {
         nextTick().then(cb)
       } else {
@@ -297,6 +309,7 @@ export default defineComponent({
       }
     }
 
+    // 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘
     const resize = () => initialize(state.active)
 
     let touchStartTime: number
@@ -304,7 +317,7 @@ export default defineComponent({
     const onTouchStart = (event: TouchEvent) => {
       if (
         !props.touchable ||
-        // avoid resetting position on multi-finger touch
+        // 避免在多指触摸时重置位置
         event.touches.length > 1
       )
         return
@@ -366,10 +379,7 @@ export default defineComponent({
           )
         }
 
-        move({
-          pace,
-          emitChange: true
-        })
+        move({ pace, emitChange: true })
       } else if (delta.value) {
         move({ pace: 0 })
       }
@@ -381,6 +391,7 @@ export default defineComponent({
       autoplay()
     }
 
+    // 切换到指定位置
     const swipeTo = (index: number, options: SwipeToOptions = {}) => {
       correctPosition()
       touch.reset()
@@ -401,13 +412,25 @@ export default defineComponent({
           state.swiping = false
         }
 
-        move({
-          pace: targetIndex - state.active,
-          emitChange: true
-        })
+        move({ pace: targetIndex - state.active, emitChange: true })
       })
     }
 
+    // 鼠标点击指示器
+    const handleIndicatorClick = (index: number) => {
+      if (index !== activeIndicator.value) {
+        swipeTo(index)
+      }
+    }
+
+    // 鼠标移入指示器
+    const throttledIndicatorHover = (index: number) => {
+      if (props.trigger === 'hover' && index !== activeIndicator.value) {
+        swipeTo(index)
+      }
+    }
+
+    // 指示器-点
     const renderDot = (_: number, index: number) => {
       const active = index === activeIndicator.value
       const style = active
@@ -416,16 +439,30 @@ export default defineComponent({
           }
         : undefined
 
-      return <i style={style} class={bem('indicator', { active })} />
+      return (
+        <i
+          style={style}
+          class={bem('indicator', { active })}
+          onClick={() => {
+            handleIndicatorClick(index)
+          }}
+          onMouseenter={() => {
+            throttledIndicatorHover(index)
+          }}
+        />
+      )
     }
 
+    // 指示器
     const renderIndicator = () => {
+      // 自定义指示器
       if (slots.indicator) {
         return slots.indicator({
           active: activeIndicator.value,
           total: count.value
         })
       }
+      // 显示指示器并且数量大于1
       if (props.showIndicators && count.value > 1) {
         return (
           <div class={bem('indicators', { vertical: props.vertical })}>
@@ -434,6 +471,54 @@ export default defineComponent({
         )
       }
     }
+
+    // 箭头是否显示
+    const arrowDisplay = computed(
+      () => props.arrow !== 'never' && !props.vertical
+    )
+
+    // 判断是否进入轮播图
+    const hover = ref(false)
+
+    // 箭头
+    const renderArrow = () => (
+      <>
+        {arrowDisplay.value && (
+          <Transition name="swipe-arrow-left">
+            <button
+              v-show={
+                (props.arrow === 'always' || hover.value) &&
+                (props.loop || activeIndicator.value > 0)
+              }
+              type="button"
+              class={[bem('arrow'), bem('arrow-left')]}
+              onClick={prev}
+            >
+              <Icon>
+                <ArrowLeft></ArrowLeft>
+              </Icon>
+            </button>
+          </Transition>
+        )}
+        {arrowDisplay.value && (
+          <Transition name="swipe-arrow-right">
+            <button
+              v-show={
+                (props.arrow === 'always' || hover.value) &&
+                (props.loop || activeIndicator.value < count.value - 1)
+              }
+              type="button"
+              class={[bem('arrow'), bem('arrow-right')]}
+              onClick={next}
+            >
+              <Icon>
+                <ArrowRight></ArrowRight>
+              </Icon>
+            </button>
+          </Transition>
+        )}
+      </>
+    )
 
     useExpose<SwipeExpose>({
       prev,
@@ -472,13 +557,35 @@ export default defineComponent({
     onDeactivated(stopAutoplay)
     onBeforeUnmount(stopAutoplay)
 
-    // useEventListener will set passive to `false` to eliminate the warning of Chrome
+    // useEventListener将被动设置为“false”以消除Chrome的警告
     useEventListener('touchmove', onTouchMove, {
       target: track
     })
 
+    // 鼠标进入轮播图
+    const handleMouseEnter = () => {
+      hover.value = true
+
+      // 判断鼠标悬浮时暂停自动切换
+      if (props.pauseOnHover) {
+        stopAutoplay()
+      }
+    }
+
+    // 鼠标离开轮播图
+    const handleMouseLeave = () => {
+      hover.value = false
+      // 开始轮播
+      autoplay()
+    }
+
     return () => (
-      <div ref={root} class={bem()}>
+      <div
+        ref={root}
+        class={bem()}
+        onMouseenter={handleMouseEnter}
+        onMouseleave={handleMouseLeave}
+      >
         <div
           ref={track}
           style={trackStyle.value}
@@ -489,7 +596,8 @@ export default defineComponent({
         >
           {slots.default?.()}
         </div>
-        {renderIndicator()}
+        {renderArrow()}
+        {props.indicatorPosition !== 'none' && renderIndicator()}
       </div>
     )
   }

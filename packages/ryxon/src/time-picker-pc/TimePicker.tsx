@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 import { extend, type ComponentInstance } from '../utils'
 import { DEFAULT_FORMATS_TIME } from './constants'
+import { useCustomInputValue } from '@ryxon/use'
 
 // Components
 import Picker from './common/picker.vue'
@@ -51,6 +52,8 @@ export default defineComponent({
         commonPicker.value?.handleClose()
       }
     })
+
+    useCustomInputValue(() => props.modelValue)
 
     return () => {
       const format = props.format ?? DEFAULT_FORMATS_TIME

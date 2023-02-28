@@ -36,7 +36,7 @@ time-picker/range
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 | 默认值 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | model-value / v-model | 绑定值，如果它是数组，长度应该是 2 | `Date / number / string / Array` | `-` | `-` |
 | readonly | 完全只读 | `boolean` | `-` | `false` |
 | disabled | 禁用 | `boolean` | `-` | `false` |
@@ -54,8 +54,8 @@ time-picker/range
 | default-value | 可选，选择器打开时默认显示的时间 | `Date / [Date, Date]` | `-` | `-` |
 | id | 等价于原生 input id 属性 | `string / [string, string]` | `-` | `-` |
 | name | 等价于原生 input name 属性 | `string` | `-` | `-` |
-| prefix-icon | 自定义前缀图标 | `string | Component` | `-` | `Clock` |
-| clear-icon | 自定义清除图标 | `string | Component` | `-` | `CircleClose` |
+| prefix-icon | 自定义前缀图标 | `string / Component` | `-` | `Clock` |
+| clear-icon | 自定义清除图标 | `string / Component` | `-` | `CircleClose` |
 | disabled-hours | 禁止选择部分小时选项 | `function` | `-` | `-` |
 | disabled-minutes | 禁止选择部分分钟选项 | `Function(selectedHour)` | `-` | `-` |
 | disabled-seconds | 禁止选择部分秒选项 | `Function(selectedHour, selectedMinute)` | `-` | `-` |
@@ -91,7 +91,7 @@ import type { TimePickerPcThemeVars } from 'ryxon'
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 `ConfigProvider 组件`。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称                                | 默认值                        | 描述 |
 | ----------------------------------- | ----------------------------- | ---- |

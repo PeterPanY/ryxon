@@ -17,12 +17,14 @@ export const config: UserConfig = {
       apiKey: 'your_api_key',
       indexName: 'index_name'
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/PeterPanY/ryxon.git' }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/PeterPanY/ryxon.git' }
+    ],
     nav,
     sidebar
   },
   markdown: {
-    config: md => mdPlugin(md)
+    config: (md) => mdPlugin(md)
   }
 }
 

@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Stepper } from 'ryxon';
+import { createApp } from 'vue'
+import { Stepper } from 'ryxon'
 
-const app = createApp();
-app.use(Stepper);
+const app = createApp()
+app.use(Stepper)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(Stepper);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(1);
-    return { value };
-  },
-};
+    const value = ref(1)
+    return { value }
+  }
+}
 ```
 
 ### 步长设置
@@ -102,31 +102,31 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { closeToast, showLoadingToast } from 'ryxon';
+import { ref } from 'vue'
+import { closeToast, showLoadingToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(1);
+    const value = ref(1)
 
     const beforeChange = (value) => {
-      showLoadingToast({ forbidClick: true });
+      showLoadingToast({ forbidClick: true })
 
       return new Promise((resolve) => {
         setTimeout(() => {
-          closeToast();
+          closeToast()
           // 在 resolve 函数中返回 true 或 false
-          resolve(true);
-        }, 500);
-      });
-    };
+          resolve(true)
+        }, 500)
+      })
+    }
 
     return {
       value,
-      beforeChange,
-    };
-  },
-};
+      beforeChange
+    }
+  }
+}
 ```
 
 ### 圆角风格
@@ -183,26 +183,26 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { StepperTheme, StepperProps } from 'ryxon';
+import type { StepperTheme, StepperProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                     | 默认值                     | 描述 |
-| ---------------------------------------- | -------------------------- | ---- |
+| 名称                                   | 默认值                   | 描述 |
+| -------------------------------------- | ------------------------ | ---- |
 | --r-stepper-background                 | _var(--r-active-color)_  | -    |
 | --r-stepper-button-icon-color          | _var(--r-text-color)_    | -    |
 | --r-stepper-button-disabled-color      | _var(--r-background)_    | -    |
 | --r-stepper-button-disabled-icon-color | _var(--r-gray-5)_        | -    |
 | --r-stepper-button-round-theme-color   | _var(--r-primary-color)_ | -    |
-| --r-stepper-input-width                | _32px_                     | -    |
-| --r-stepper-input-height               | _28px_                     | -    |
+| --r-stepper-input-width                | _32px_                   | -    |
+| --r-stepper-input-height               | _28px_                   | -    |
 | --r-stepper-input-font-size            | _var(--r-font-size-md)_  | -    |
-| --r-stepper-input-line-height          | _normal_                   | -    |
+| --r-stepper-input-line-height          | _normal_                 | -    |
 | --r-stepper-input-text-color           | _var(--r-text-color)_    | -    |
 | --r-stepper-input-disabled-text-color  | _var(--r-text-color-3)_  | -    |
 | --r-stepper-input-disabled-background  | _var(--r-active-color)_  | -    |

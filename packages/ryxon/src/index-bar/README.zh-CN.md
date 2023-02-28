@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { IndexBar, IndexAnchor } from 'ryxon';
+import { createApp } from 'vue'
+import { IndexBar, IndexAnchor } from 'ryxon'
 
-const app = createApp();
-app.use(IndexBar);
-app.use(IndexAnchor);
+const app = createApp()
+app.use(IndexBar)
+app.use(IndexAnchor)
 ```
 
 ## 代码演示
@@ -63,10 +63,10 @@ app.use(IndexAnchor);
 export default {
   setup() {
     return {
-      indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    };
-  },
-};
+      indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  }
+}
 ```
 
 ## API
@@ -108,18 +108,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { IndexBarProps, IndexAnchorProps, IndexBarInstance } from 'ryxon';
+import type { IndexBarProps, IndexAnchorProps, IndexBarInstance } from 'ryxon'
 ```
 
 `IndexBarInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { IndexBarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { IndexBarInstance } from 'ryxon'
 
-const indexBarRef = ref<IndexBarInstance>();
+const indexBarRef = ref<IndexBarInstance>()
 
-indexBarRef.value?.scrollTo('B');
+indexBarRef.value?.scrollTo('B')
 ```
 
 ### IndexAnchor Slots
@@ -132,20 +132,20 @@ indexBarRef.value?.scrollTo('B');
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                 | 默认值                      | 描述 |
-| ------------------------------------ | --------------------------- | ---- |
-| --r-index-bar-sidebar-z-index      | _2_                         | -    |
+| 名称                               | 默认值                    | 描述 |
+| ---------------------------------- | ------------------------- | ---- |
+| --r-index-bar-sidebar-z-index      | _2_                       | -    |
 | --r-index-bar-index-font-size      | _var(--r-font-size-xs)_   | -    |
 | --r-index-bar-index-line-height    | _var(--r-line-height-xs)_ | -    |
 | --r-index-bar-index-active-color   | _var(--r-primary-color)_  | -    |
-| --r-index-anchor-z-index           | _1_                         | -    |
+| --r-index-anchor-z-index           | _1_                       | -    |
 | --r-index-anchor-padding           | _0 var(--r-padding-md)_   | -    |
 | --r-index-anchor-text-color        | _var(--r-text-color)_     | -    |
 | --r-index-anchor-font-weight       | _var(--r-font-bold)_      | -    |
 | --r-index-anchor-font-size         | _var(--r-font-size-md)_   | -    |
-| --r-index-anchor-line-height       | _32px_                      | -    |
-| --r-index-anchor-background        | _transparent_               | -    |
+| --r-index-anchor-line-height       | _32px_                    | -    |
+| --r-index-anchor-background        | _transparent_             | -    |
 | --r-index-anchor-sticky-text-color | _var(--r-primary-color)_  | -    |
 | --r-index-anchor-sticky-background | _var(--r-background-2)_   | -    |

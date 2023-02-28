@@ -383,15 +383,15 @@ export default {
 
 ### Slots
 
-| 名称             | 说明                   | 参数                   |
-| ---------------- | ---------------------- | ---------------------- |
-| toolbar `v3.1.2` | 自定义整个顶部栏的内容 | -                      |
-| title            | 自定义标题内容         | -                      |
-| confirm          | 自定义确认按钮内容     | -                      |
-| cancel           | 自定义取消按钮内容     | -                      |
-| option           | 自定义选项内容         | _option: PickerOption_ |
-| columns-top      | 自定义选项上方内容     | -                      |
-| columns-bottom   | 自定义选项下方内容     | -                      |
+| 名称 | 说明 | 参数 |
+| --- | --- | --- |
+| toolbar `v3.1.2` | 自定义整个顶部栏的内容 | - |
+| title | 自定义标题内容 | - |
+| confirm | 自定义确认按钮内容 | - |
+| cancel | 自定义取消按钮内容 | - |
+| option | 自定义选项内容 | _option: PickerOption, index: number_ |
+| columns-top | 自定义选项上方内容 | - |
+| columns-bottom | 自定义选项下方内容 | - |
 
 ### PickerOption 数据结构
 
@@ -445,7 +445,7 @@ pickerRef.value?.confirm()
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称                               | 默认值                     | 描述 |
 | ---------------------------------- | -------------------------- | ---- |

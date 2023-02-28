@@ -9,11 +9,11 @@ Used to select date, usually used with the [Popup](#/en-US/popup) component.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { DatePicker } from 'ryxon';
+import { createApp } from 'vue'
+import { DatePicker } from 'ryxon'
 
-const app = createApp();
-app.use(DatePicker);
+const app = createApp()
+app.use(DatePicker)
 ```
 
 ## Usage
@@ -30,18 +30,18 @@ app.use(DatePicker);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01', '01']);
+    const currentDate = ref(['2021', '01', '01'])
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
-      currentDate,
-    };
-  },
-};
+      currentDate
+    }
+  }
+}
 ```
 
 ### Columns Type
@@ -66,20 +66,20 @@ For example:
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### Options Formatter
@@ -96,32 +96,32 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
 
     const formatter = (type, option) => {
       if (type === 'year') {
-        option.text += ' Year';
+        option.text += ' Year'
       }
       if (type === 'month') {
-        option.text += '月Month';
+        option.text += '月Month'
       }
-      return option;
-    };
+      return option
+    }
 
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       formatter,
       currentDate,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ### Options Filter
@@ -138,28 +138,28 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentDate = ref(['2021', '01']);
-    const columnsType = ['year', 'month'];
+    const currentDate = ref(['2021', '01'])
+    const columnsType = ['year', 'month']
     const filter = (type, options) => {
       if (type === 'month') {
-        return options.filter((option) => Number(option.value) % 6 === 0);
+        return options.filter((option) => Number(option.value) % 6 === 0)
       }
-      return options;
-    };
+      return options
+    }
 
     return {
       filter,
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentTime,
-      columnsType,
-    };
-  },
-};
+      columnsType
+    }
+  }
+}
 ```
 
 ## API
@@ -194,20 +194,20 @@ export default {
 
 ### Slots
 
-| Name           | Description                  | SlotProps              |
-| -------------- | ---------------------------- | ---------------------- |
-| toolbar        | Custom toolbar content       | -                      |
-| title          | Custom title                 | -                      |
-| confirm        | Custom confirm button text   | -                      |
-| cancel         | Custom cancel button text    | -                      |
-| option         | Custom option content        | _option: PickerOption_ |
-| columns-top    | Custom content above columns | -                      |
-| columns-bottom | Custom content below columns | -                      |
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| toolbar | Custom toolbar content | - |
+| title | Custom title | - |
+| confirm | Custom confirm button text | - |
+| cancel | Custom cancel button text | - |
+| option | Custom option content | _option: PickerOption, index: number_ |
+| columns-top | Custom content above columns | - |
+| columns-bottom | Custom content below columns | - |
 
 ### Types
 
 The component exports the following type definitions:
 
 ```ts
-import type { DatePickerProps, DatePickerColumnType } from 'ryxon';
+import type { DatePickerProps, DatePickerColumnType } from 'ryxon'
 ```

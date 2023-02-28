@@ -4,12 +4,12 @@
       "text": "Basic 基础组件",
       "children": [
         {
-          "link": "/config-provider",
-          "text": "Config Provider 全局配置"
-        },
-        {
           "link": "/button",
           "text": "Button 按钮"
+        },
+        {
+          "link": "/config-provider",
+          "text": "Config Provider 全局配置"
         },
         {
           "link": "/icon",
@@ -25,12 +25,36 @@
       "text": "Form 表单组件",
       "children": [
         {
+          "link": "/checkbox",
+          "text": "Checkbox 多选框"
+        },
+        {
+          "link": "/date-picker",
+          "text": "DatePicker 日期选择"
+        },
+        {
+          "link": "/date-time-picker",
+          "text": "DateTimePicker 日期时间"
+        },
+        {
           "link": "/form",
           "text": "Form 表单"
         },
         {
+          "link": "/image",
+          "text": "Image 图片"
+        },
+        {
+          "link": "/image-preview",
+          "text": "ImagePreview 图片预览"
+        },
+        {
           "link": "/input",
           "text": "Input 输入框"
+        },
+        {
+          "link": "/radio",
+          "text": "Radio 单选框"
         },
         {
           "link": "/select",
@@ -39,14 +63,6 @@
         {
           "link": "/slider",
           "text": "Slider 滑块"
-        },
-        {
-          "link": "/date-time-picker",
-          "text": "DateTimePicker 日期时间"
-        },
-        {
-          "link": "/date-picker",
-          "text": "DatePicker 日期选择"
         },
         {
           "link": "/time-picker",
@@ -62,6 +78,10 @@
           "text": "Badge 徽章"
         },
         {
+          "link": "/swipe",
+          "text": "Swipe 轮播"
+        },
+        {
           "link": "/tag",
           "text": "Tag 标签"
         }
@@ -71,12 +91,16 @@
       "text": "Feedback 反馈组件",
       "children": [
         {
-          "link": "/toast",
-          "text": "Toast 消息提示"
+          "link": "/loading",
+          "text": "Loading 加载"
         },
         {
           "link": "/popover",
           "text": "Popover 气泡弹出框"
+        },
+        {
+          "link": "/toast",
+          "text": "Toast 消息提示"
         },
         {
           "link": "/tooltip",

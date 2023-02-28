@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Circle } from 'ryxon';
+import { createApp } from 'vue'
+import { Circle } from 'ryxon'
 
-const app = createApp();
-app.use(Circle);
+const app = createApp()
+app.use(Circle)
 ```
 
 ## 代码演示
@@ -32,19 +32,19 @@ app.use(Circle);
 ```
 
 ```js
-import { ref, computed } from 'vue';
+import { ref, computed } from 'vue'
 
 export default {
   setup() {
-    const currentRate = ref(0);
-    const text = computed(() => currentRate.value.toFixed(0) + '%');
+    const currentRate = ref(0)
+    const text = computed(() => currentRate.value.toFixed(0) + '%')
 
     return {
       text,
-      currentRate,
-    };
-  },
-};
+      currentRate
+    }
+  }
+}
 ```
 
 ### 宽度定制
@@ -87,22 +87,22 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentRate = ref(0);
+    const currentRate = ref(0)
     const gradientColor = {
       '0%': '#3fecff',
-      '100%': '#6149f6',
-    };
+      '100%': '#6149f6'
+    }
 
     return {
       currentRate,
-      gradientColor,
-    };
-  },
-};
+      gradientColor
+    }
+  }
+}
 ```
 
 ### 逆时针方向
@@ -186,18 +186,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { CircleProps, CircleStartPosition } from 'ryxon';
+import type { CircleProps, CircleStartPosition } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                          | 默认值                      | 描述 |
-| ----------------------------- | --------------------------- | ---- |
-| --r-circle-size             | _100px_                     | -    |
+| 名称                        | 默认值                    | 描述 |
+| --------------------------- | ------------------------- | ---- |
+| --r-circle-size             | _100px_                   | -    |
 | --r-circle-color            | _var(--r-primary-color)_  | -    |
 | --r-circle-layer-color      | _var(--r-white)_          | -    |
 | --r-circle-text-color       | _var(--r-text-color)_     | -    |

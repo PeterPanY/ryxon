@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Search } from 'ryxon';
+import { createApp } from 'vue'
+import { Search } from 'ryxon'
 
-const app = createApp();
-app.use(Search);
+const app = createApp()
+app.use(Search)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(Search);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref('');
-    return { value };
-  },
-};
+    const value = ref('')
+    return { value }
+  }
+}
 ```
 
 ### 事件监听
@@ -54,21 +54,21 @@ Search 组件提供了 `search` 和 `cancel` 事件，`search` 事件在点击�
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref('');
-    const onSearch = (val) => showToast(val);
-    const onCancel = () => showToast('取消');
+    const value = ref('')
+    const onSearch = (val) => showToast(val)
+    const onCancel = () => showToast('取消')
     return {
       value,
       onSearch,
-      onCancel,
-    };
-  },
-};
+      onCancel
+    }
+  }
+}
 ```
 
 > Tips: 在 r-search 外层增加 form 标签，且 action 不为空，即可在 iOS 输入法中显示搜索按钮。
@@ -78,11 +78,7 @@ export default {
 通过 `input-align` 属性设置搜索框内容的对齐方式，可选值为 `center`、`right`。
 
 ```html
-<r-search
-  v-model="value"
-  placeholder="请输入搜索关键词"
-  input-align="center"
-/>
+<r-search v-model="value" placeholder="请输入搜索关键词" input-align="center" />
 ```
 
 ### 禁用搜索框
@@ -125,21 +121,21 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref('');
-    const onSearch = (val) => showToast(val);
-    const onClickButton = () => showToast(value.value);
+    const value = ref('')
+    const onSearch = (val) => showToast(val)
+    const onClickButton = () => showToast(value.value)
     return {
       value,
       onSearch,
-      onClickButton,
-    };
-  },
-};
+      onClickButton
+    }
+  }
+}
 ```
 
 ## API
@@ -201,18 +197,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SearchProps, SearchShape, SearchInstance } from 'ryxon';
+import type { SearchProps, SearchShape, SearchInstance } from 'ryxon'
 ```
 
 `SearchInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { SearchInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { SearchInstance } from 'ryxon'
 
-const searchRef = ref<SearchInstance>();
+const searchRef = ref<SearchInstance>()
 
-searchRef.value?.focus();
+searchRef.value?.focus()
 ```
 
 ### Slots
@@ -229,15 +225,15 @@ searchRef.value?.focus();
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                            | 默认值                       | 描述 |
-| ------------------------------- | ---------------------------- | ---- |
+| 名称                          | 默认值                     | 描述 |
+| ----------------------------- | -------------------------- | ---- |
 | --r-search-padding            | _10px var(--r-padding-sm)_ | -    |
 | --r-search-background         | _var(--r-background-2)_    | -    |
 | --r-search-content-background | _var(--r-gray-1)_          | -    |
-| --r-search-input-height       | _34px_                       | -    |
-| --r-search-label-padding      | _0 5px_                      | -    |
+| --r-search-input-height       | _34px_                     | -    |
+| --r-search-label-padding      | _0 5px_                    | -    |
 | --r-search-label-color        | _var(--r-text-color)_      | -    |
 | --r-search-label-font-size    | _var(--r-font-size-md)_    | -    |
 | --r-search-left-icon-color    | _var(--r-gray-6)_          | -    |

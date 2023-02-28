@@ -9,21 +9,21 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 import {
   Skeleton,
   SkeletonTitle,
   SkeletonImage,
   SkeletonAvatar,
-  SkeletonParagraph,
-} from 'ryxon';
+  SkeletonParagraph
+} from 'ryxon'
 
-const app = createApp();
-app.use(Skeleton);
-app.use(SkeletonTitle);
-app.use(SkeletonImage);
-app.use(SkeletonAvatar);
-app.use(SkeletonParagraph);
+const app = createApp()
+app.use(Skeleton)
+app.use(SkeletonTitle)
+app.use(SkeletonImage)
+app.use(SkeletonAvatar)
+app.use(SkeletonParagraph)
 ```
 
 ## 代码演示
@@ -55,21 +55,21 @@ app.use(SkeletonParagraph);
 ```
 
 ```js
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
 export default {
   setup() {
-    const loading = ref(true);
+    const loading = ref(true)
 
     onMounted(() => {
-      loading.value = false;
-    });
+      loading.value = false
+    })
 
     return {
-      loading,
-    };
-  },
-};
+      loading
+    }
+  }
+}
 ```
 
 ### 自定义展示内容
@@ -155,24 +155,24 @@ import type {
   SkeletonTitleProps,
   SkeletonImageShape,
   SkeletonAvatarShape,
-  SkeletonParagraphProps,
-} from 'ryxon';
+  SkeletonParagraphProps
+} from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                | 默认值                    | 描述 |
-| ----------------------------------- | ------------------------- | ---- |
-| --r-skeleton-paragraph-height     | _16px_                    | -    |
+| 名称                              | 默认值                  | 描述 |
+| --------------------------------- | ----------------------- | ---- |
+| --r-skeleton-paragraph-height     | _16px_                  | -    |
 | --r-skeleton-paragraph-background | _var(--r-active-color)_ | -    |
 | --r-skeleton-paragraph-margin-top | _var(--r-padding-sm)_   | -    |
-| --r-skeleton-title-width          | _40%_                     | -    |
-| --r-skeleton-avatar-size          | _32px_                    | -    |
+| --r-skeleton-title-width          | _40%_                   | -    |
+| --r-skeleton-avatar-size          | _32px_                  | -    |
 | --r-skeleton-avatar-background    | _var(--r-active-color)_ | -    |
-| --r-skeleton-duration             | _1.2s_                    | -    |
-| --r-skeleton-image-size           | _96px_                    |
-| --r-skeleton-image-radius         | _24px_                    | -    |
+| --r-skeleton-duration             | _1.2s_                  | -    |
+| --r-skeleton-image-size           | _96px_                  |
+| --r-skeleton-image-radius         | _24px_                  | -    |

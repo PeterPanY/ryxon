@@ -4,7 +4,7 @@
 
 #### 1. 主题定制
 
-Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进行统一修改，详见 [ConfigProvider 全局配置](#/zh-CN/config-provider) 组件。
+Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进行统一修改，详见 [ConfigProvider 全局配置](/zh/component/config-provider.html) 组件。
 
 #### 2. 覆盖默认样式
 

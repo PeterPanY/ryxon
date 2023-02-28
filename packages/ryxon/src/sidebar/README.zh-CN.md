@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Sidebar, SidebarItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Sidebar, SidebarItem } from 'ryxon'
 
-const app = createApp();
-app.use(Sidebar);
-app.use(SidebarItem);
+const app = createApp()
+app.use(Sidebar)
+app.use(SidebarItem)
 ```
 
 ## 代码演示
@@ -32,14 +32,14 @@ app.use(SidebarItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
-    return { active };
-  },
-};
+    const active = ref(0)
+    return { active }
+  }
+}
 ```
 
 ### 徽标提示
@@ -79,19 +79,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const active = ref(0);
-    const onChange = (index) => showToast(`标签名 ${index + 1}`);
+    const active = ref(0)
+    const onChange = (index) => showToast(`标签名 ${index + 1}`)
     return {
       active,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -138,18 +138,18 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { SidebarProps, SidebarItemProps } from 'ryxon';
+import type { SidebarProps, SidebarItemProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                 | 默认值                       | 描述 |
-| ------------------------------------ | ---------------------------- | ---- |
-| --r-sidebar-width                  | _80px_                       | -    |
+| 名称                               | 默认值                     | 描述 |
+| ---------------------------------- | -------------------------- | ---- |
+| --r-sidebar-width                  | _80px_                     | -    |
 | --r-sidebar-font-size              | _var(--r-font-size-md)_    | -    |
 | --r-sidebar-line-height            | _var(--r-line-height-md)_  | -    |
 | --r-sidebar-text-color             | _var(--r-text-color)_      | -    |
@@ -159,7 +159,7 @@ import type { SidebarProps, SidebarItemProps } from 'ryxon';
 | --r-sidebar-background             | _var(--r-background)_      | -    |
 | --r-sidebar-selected-font-weight   | _var(--r-font-bold)_       | -    |
 | --r-sidebar-selected-text-color    | _var(--r-text-color)_      | -    |
-| --r-sidebar-selected-border-width  | _4px_                        | -    |
-| --r-sidebar-selected-border-height | _16px_                       | -    |
+| --r-sidebar-selected-border-width  | _4px_                      | -    |
+| --r-sidebar-selected-border-height | _16px_                     | -    |
 | --r-sidebar-selected-border-color  | _var(--r-primary-color)_   | -    |
 | --r-sidebar-selected-background    | _var(--r-background-2)_    | -    |

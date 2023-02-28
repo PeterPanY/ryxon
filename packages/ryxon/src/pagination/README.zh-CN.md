@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Pagination } from 'ryxon';
+import { createApp } from 'vue'
+import { Pagination } from 'ryxon'
 
-const app = createApp();
-app.use(Pagination);
+const app = createApp()
+app.use(Pagination)
 ```
 
 ## 代码演示
@@ -27,14 +27,14 @@ app.use(Pagination);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const currentPage = ref(1);
-    return { currentPage };
-  },
-};
+    const currentPage = ref(1)
+    return { currentPage }
+  }
+}
 ```
 
 ### 简单模式
@@ -109,23 +109,23 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { PaginationMode, PaginationProps } from 'ryxon';
+import type { PaginationMode, PaginationProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-pagination-height | _40px_ | - |
-| --r-pagination-font-size | _var(--r-font-size-md)_ | - |
-| --r-pagination-item-width | _36px_ | - |
-| --r-pagination-item-default-color | _var(--r-primary-color)_ | - |
-| --r-pagination-item-disabled-color | _var(--r-gray-7)_ | - |
-| --r-pagination-item-disabled-background | _var(--r-background)_ | - |
-| --r-pagination-background | _var(--r-background-2)_ | - |
-| --r-pagination-desc-color | _var(--r-gray-7)_ | - |
-| --r-pagination-disabled-opacity | _var(--r-disabled-opacity)_ | - |
+| 名称                                    | 默认值                      | 描述 |
+| --------------------------------------- | --------------------------- | ---- |
+| --r-pagination-height                   | _40px_                      | -    |
+| --r-pagination-font-size                | _var(--r-font-size-md)_     | -    |
+| --r-pagination-item-width               | _36px_                      | -    |
+| --r-pagination-item-default-color       | _var(--r-primary-color)_    | -    |
+| --r-pagination-item-disabled-color      | _var(--r-gray-7)_           | -    |
+| --r-pagination-item-disabled-background | _var(--r-background)_       | -    |
+| --r-pagination-background               | _var(--r-background-2)_     | -    |
+| --r-pagination-desc-color               | _var(--r-gray-7)_           | -    |
+| --r-pagination-disabled-opacity         | _var(--r-disabled-opacity)_ | -    |

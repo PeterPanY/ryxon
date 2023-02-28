@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { AddressEdit } from 'ryxon';
+import { createApp } from 'vue'
+import { AddressEdit } from 'ryxon'
 
-const app = createApp();
-app.use(AddressEdit);
+const app = createApp()
+app.use(AddressEdit)
 ```
 
 ## 代码演示
@@ -35,37 +35,37 @@ app.use(AddressEdit);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const searchResult = ref([]);
+    const searchResult = ref([])
 
-    const onSave = () => showToast('save');
-    const onDelete = () => showToast('delete');
+    const onSave = () => showToast('save')
+    const onDelete = () => showToast('delete')
     const onChangeDetail = (val) => {
       if (val) {
         searchResult.value = [
           {
             name: '黄龙万科中心',
-            address: '杭州市西湖区',
-          },
-        ];
+            address: '杭州市西湖区'
+          }
+        ]
       } else {
-        searchResult.value = [];
+        searchResult.value = []
       }
-    };
+    }
 
     return {
       onSave,
       onDelete,
       areaList,
       searchResult,
-      onChangeDetail,
-    };
-  },
-};
+      onChangeDetail
+    }
+  }
+}
 ```
 
 ## API
@@ -131,19 +131,19 @@ import type {
   AddressEditInfo,
   AddressEditProps,
   AddressEditInstance,
-  AddressEditSearchItem,
-} from 'ryxon';
+  AddressEditSearchItem
+} from 'ryxon'
 ```
 
 `AddressEditInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { AddressEditInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { AddressEditInstance } from 'ryxon'
 
-const addressEditRef = ref<AddressEditInstance>();
+const addressEditRef = ref<AddressEditInstance>()
 
-addressEditRef.value?.setAddressDetail('');
+addressEditRef.value?.setAddressDetail('')
 ```
 
 ### AddressEditInfo 数据格式
@@ -176,7 +176,7 @@ addressEditRef.value?.setAddressDetail('');
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |

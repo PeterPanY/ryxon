@@ -9,12 +9,12 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from 'ryxon'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ## 代码演示
@@ -33,14 +33,14 @@ app.use(TabbarItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
-    return { active };
-  },
-};
+    const active = ref(0)
+    return { active }
+  }
+}
 ```
 
 ### 通过名称匹配
@@ -57,14 +57,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref('home');
-    return { active };
-  },
-};
+    const active = ref('home')
+    return { active }
+  }
+}
 ```
 
 ### 徽标提示
@@ -98,22 +98,22 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
+    const active = ref(0)
     const icon = {
       active: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactive:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
     return {
       icon,
-      active,
-    };
-  },
-};
+      active
+    }
+  }
+}
 ```
 
 ### 自定义颜色
@@ -143,19 +143,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const active = ref(0);
-    const onChange = (index) => showToast(`标签 ${index}`);
+    const active = ref(0)
+    const onChange = (index) => showToast(`标签 ${index}`)
     return {
       icon,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### 路由模式
@@ -219,24 +219,24 @@ export default {
 组件导出以下类型定义：
 
 ```ts
-import type { TabbarProps, TabbarItemProps } from 'ryxon';
+import type { TabbarProps, TabbarItemProps } from 'ryxon'
 ```
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                 | 默认值                     | 描述 |
-| ------------------------------------ | -------------------------- | ---- |
-| --r-tabbar-height                  | _50px_                     | -    |
-| --r-tabbar-z-index                 | _1_                        | -    |
+| 名称                               | 默认值                   | 描述 |
+| ---------------------------------- | ------------------------ | ---- |
+| --r-tabbar-height                  | _50px_                   | -    |
+| --r-tabbar-z-index                 | _1_                      | -    |
 | --r-tabbar-background              | _var(--r-background-2)_  | -    |
 | --r-tabbar-item-font-size          | _var(--r-font-size-sm)_  | -    |
 | --r-tabbar-item-text-color         | _var(--r-text-color)_    | -    |
 | --r-tabbar-item-active-color       | _var(--r-primary-color)_ | -    |
 | --r-tabbar-item-active-background  | _var(--r-background-2)_  | -    |
-| --r-tabbar-item-line-height        | _1_                        | -    |
-| --r-tabbar-item-icon-size          | _22px_                     | -    |
+| --r-tabbar-item-line-height        | _1_                      | -    |
+| --r-tabbar-item-icon-size          | _22px_                   | -    |
 | --r-tabbar-item-icon-margin-bottom | _var(--r-padding-base)_  | -    |
