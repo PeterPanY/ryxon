@@ -1,6 +1,10 @@
 :root {
+  --r-swipe-arrow-size: 36px;
+  --r-swipe-arrow-font-size: 12px;
+  --r-swipe-arrow-background: rgba(31, 45, 61, 0.11);
+  --r-swipe-arrow-hover-background: rgba(31, 45, 61, 0.23);
   --r-swipe-indicator-size: 6px;
-  --r-swipe-indicator-margin: var(--r-padding-sm);
+  --r-swipe-indicator-margin: 0;
   --r-swipe-indicator-active-opacity: 1;
   --r-swipe-indicator-inactive-opacity: 0.3;
   --r-swipe-indicator-active-background: var(--r-primary-color);
@@ -10,9 +14,8 @@
 .r-swipe {
   position: relative;
   overflow: hidden;
-  // https://github.com/PeterPanY/ryxon/issues/9931
   transform: translateZ(0);
-  cursor: grab;
+  // cursor: grab;
   user-select: none;
 
   &__track {
@@ -24,12 +27,48 @@
     }
   }
 
+  &__arrow {
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    height: var(--r-swipe-arrow-size);
+    width: var(--r-swipe-arrow-size);
+    transition: var(--r-duration-base);
+    border-radius: 50%;
+    background-color: var(--r-swipe-arrow-background);
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: var(--r-swipe-arrow-font-size);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &-left {
+      left: 16px;
+    }
+
+    &-right {
+      right: 16px;
+    }
+
+    &:hover {
+      background-color: var(--r-swipe-arrow-hover-background);
+    }
+  }
+
   &__indicators {
     position: absolute;
+    padding: 10px;
     bottom: var(--r-swipe-indicator-margin);
     left: 50%;
     display: flex;
     transform: translateX(-50%);
+    cursor: pointer;
 
     &--vertical {
       top: 50%;
@@ -62,4 +101,16 @@
       opacity: var(--r-swipe-indicator-active-opacity);
     }
   }
+}
+
+.swipe-arrow-left-enter-from,
+.swipe-arrow-left-leave-active {
+  transform: translateY(-50%) translateX(-10px);
+  opacity: 0;
+}
+
+.swipe-arrow-right-enter-from,
+.swipe-arrow-right-leave-active {
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0;
 }

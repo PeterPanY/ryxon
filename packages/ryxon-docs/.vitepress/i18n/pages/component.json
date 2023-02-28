@@ -78,6 +78,10 @@
           "text": "Badge 徽章"
         },
         {
+          "link": "/swipe",
+          "text": "Swipe 轮播"
+        },
+        {
           "link": "/tag",
           "text": "Tag 标签"
         }

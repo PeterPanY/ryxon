@@ -101,6 +101,7 @@ export default defineComponent({
       }
     }
 
+    // 放大缩小
     const emitScale = (args: ImagePreviewScaleEventParams) =>
       emit('scale', args)
 

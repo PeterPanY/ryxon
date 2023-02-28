@@ -8,6 +8,10 @@
           "link": "/design"
         },
         {
+          "text": "进阶用法",
+          "link": "/advanced-usage"
+        },
+        {
           "text": "国际化",
           "link": "/locale"
         }

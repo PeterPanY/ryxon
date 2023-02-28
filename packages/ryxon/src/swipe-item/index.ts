@@ -1,11 +1,11 @@
-import { withInstall } from '../utils';
-import _SwipeItem from './SwipeItem';
+import { withInstall } from '../utils'
+import _SwipeItem from './SwipeItem'
 
-export const SwipeItem = withInstall(_SwipeItem);
-export default SwipeItem;
+export const SwipeItem = withInstall(_SwipeItem)
+export default SwipeItem
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RSwipeItem: typeof SwipeItem;
+    RSwipeItem: typeof SwipeItem
   }
 }

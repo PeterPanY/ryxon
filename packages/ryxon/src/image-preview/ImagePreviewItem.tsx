@@ -46,9 +46,7 @@ export default defineComponent({
     rootHeight: makeRequiredProp(Number),
     disableZoom: Boolean
   },
-
   emits: ['scale', 'close', 'longPress'],
-
   setup(props, { emit, slots }) {
     const state = reactive({
       scale: 1,
