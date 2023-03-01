@@ -43,6 +43,7 @@ importers:
 
   packages/ryxon:
     specifiers:
+      '@ctrl/tinycolor': ^3.6.0
       '@ryxon/area-data': workspace:*
       '@ryxon/cli': workspace:*
       '@ryxon/eslint-config': workspace:*
@@ -64,6 +65,7 @@ importers:
       vue: ^3.2.45
       vue-router: ^4.1.5
     dependencies:
+      '@ctrl/tinycolor': 3.6.0
       '@ryxon/popperjs': link:../ryxon-popperjs
       '@ryxon/use': link:../ryxon-use
       '@types/lodash': 4.14.191
@@ -841,6 +843,11 @@ packages:
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+
+  /@ctrl/tinycolor/3.6.0:
+    resolution: {integrity: sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==}
+    engines: {node: '>=10'}
+    dev: false
 
   /@docsearch/css/1.0.0-alpha.28:
     resolution: {integrity: sha512-1AhRzVdAkrWwhaxTX6/R7SnFHz8yLz1W8I/AldlTrfbNvZs9INk1FZiEFTJdgHaP68nhgQNWSGlQiDiI3y2RYg==}

@@ -48,6 +48,16 @@ export function isBem() {
   }
 }
 
+export function cssVarBlock(name: string, object: Record<string, string>) {
+  const styles: Record<string, string> = {}
+  for (const key in object) {
+    if (object[key]) {
+      styles[`--r-${name}-${key}`] = object[key]
+    }
+  }
+  return styles
+}
+
 /**
  * bem helper
  * b() // 'button'
