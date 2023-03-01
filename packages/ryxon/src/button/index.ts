@@ -11,7 +11,7 @@ export type {
   ButtonSize,
   ButtonThemeVars,
   ButtonNativeType,
-  ButtonIconPosition,
+  ButtonIconPosition
 } from './types'
 
 declare module 'vue' {
