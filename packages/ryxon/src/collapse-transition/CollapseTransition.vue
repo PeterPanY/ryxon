@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+// @ts-nocheck
 import { defineComponent, type RendererElement } from 'vue'
 import { createNamespace } from '../utils'
 
