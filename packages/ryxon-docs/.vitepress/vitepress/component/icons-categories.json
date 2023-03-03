@@ -38,6 +38,7 @@
         "RefreshLeft",
         "Refresh",
         "Bell",
+        "Sound",
         "MuteNotification",
         "User",
         "Check",
@@ -205,8 +206,9 @@
         "AddLocation",
         "MapLocation",
         "Place",
-        "LocationFilled",
-        "Van"
+        "Van",
+        "CompanyFilled",
+        "LocationFilled"
       ]
     },
     {
@@ -303,6 +305,7 @@
         "Wallet",
         "Opportunity",
         "PhoneFilled",
+        "EmailFilled",
         "WalletFilled",
         "GoodsFilled",
         "Flag",
