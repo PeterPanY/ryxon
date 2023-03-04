@@ -11,8 +11,6 @@ import {
   onDeactivated,
   defineComponent,
   type PropType,
-  type CSSProperties,
-  type TeleportProps,
   type ExtractPropTypes
 } from 'vue'
 import { onClickOutside } from '@vueuse/core'
@@ -30,14 +28,13 @@ import {
   extend,
   isBoolean,
   truthProp,
-  numericProp,
-  unknownProp,
   makeStringProp,
   definePropType,
   createNamespace,
   composeEventHandlers,
   type ComponentInstance
 } from '../utils'
+import { popupSharedProps } from '../popup/shared'
 
 // Composables
 import { useClickAway } from '@ryxon/use'
@@ -56,17 +53,19 @@ export const TOOLTIP_INJECTION_KEY: InjectionKey<TooltipProvide> =
   Symbol('rTooltip')
 
 const popupProps = [
-  'overlay',
   'duration',
   'teleport',
+  'lazyRender',
+  'beforeClose',
   'overlayStyle',
   'overlayClass',
   'popperClass',
   'popperStyle',
+  'transitionAppear',
   'closeOnClickOverlay'
 ] as const
 
-export const tooltipProps = {
+export const tooltipProps = extend({}, popupSharedProps, {
   /**
    * 因为模型切换属性是动态生成的,因此typescript无法将类型评估为类型：
    */
@@ -93,19 +92,8 @@ export const tooltipProps = {
   hideAfter: { type: Number, default: 200 }, // 延迟关闭，单位毫秒
   transition: { type: String, default: 'r-tooltip-zoom' }, // 动画名称
   enterable: { type: Boolean, default: true }, // 鼠标是否可进入到 tooltip 中
-  overlay: Boolean,
-  duration: numericProp,
-  overlayClass: unknownProp,
-  overlayStyle: Object as PropType<CSSProperties>,
-  popperClass: unknownProp,
-  popperStyle: Object as PropType<CSSProperties>,
-  closeOnClickOverlay: truthProp,
-  closeOnClickOutside: truthProp,
-  teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body'
-  }
-}
+  closeOnClickOutside: truthProp
+})
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
 
@@ -413,8 +401,9 @@ export default defineComponent({
           show={shouldShow.value}
           class={[bem([props.theme])]}
           position={''}
-          transition={props.transition}
+          overlay={false}
           lockScroll={false}
+          transition={props.transition}
           {...attrs}
           {...pick(props, popupProps)}
           onAfterLeave={onTransitionLeave}

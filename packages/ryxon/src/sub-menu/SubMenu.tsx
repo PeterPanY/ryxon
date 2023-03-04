@@ -345,6 +345,7 @@ export default defineComponent({
               fallbackPlacements: fallbackPlacements.value,
               transition: menuTransitionName.value,
               gpuAcceleration: false,
+              lazyRender: false,
               class: nsMenu('tooltip')
             },
             {

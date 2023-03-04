@@ -88,6 +88,7 @@ export default defineComponent({
     const zIndex = ref<number>()
     const popupRef = ref<HTMLElement>()
 
+    // 判断是否在显示弹层时才渲染节点
     const lazyRender = useLazyRender(() => props.show || !props.lazyRender)
 
     const style = computed(() => {
