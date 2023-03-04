@@ -126,6 +126,11 @@ export default defineComponent({
     const active = computed(() => {
       let isActive = false
 
+      // sub-menu可以点击跳转
+      if (rootMenu.props.isSubSelect && props.index === rootMenu.activeIndex) {
+        return true
+      }
+
       Object.values(items.value).forEach((item) => {
         if (item.active) {
           isActive = true
@@ -178,6 +183,15 @@ export default defineComponent({
     }
 
     const handleClick = () => {
+      // sub-menu可以点击跳转
+      if (rootMenu.props.isSubSelect) {
+        rootMenu.handleMenuItemClick({
+          index: props.index,
+          indexPath: indexPath.value,
+          route: props.route
+        })
+      }
+
       if (
         (rootMenu.props.menuTrigger === 'hover' &&
           rootMenu.props.mode === 'horizontal') ||

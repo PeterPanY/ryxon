@@ -65,7 +65,8 @@ export const menuProps = {
     type: String,
     values: ['dark', 'light'],
     default: 'dark'
-  }
+  },
+  isSubSelect: Boolean
 }
 
 export type MenuProps = ExtractPropTypes<typeof menuProps>
