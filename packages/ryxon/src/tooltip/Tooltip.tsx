@@ -11,6 +11,7 @@ import {
   onDeactivated,
   defineComponent,
   type PropType,
+  type TeleportProps,
   type ExtractPropTypes
 } from 'vue'
 import { onClickOutside } from '@vueuse/core'
@@ -92,7 +93,11 @@ export const tooltipProps = extend({}, popupSharedProps, {
   hideAfter: { type: Number, default: 200 }, // 延迟关闭，单位毫秒
   transition: { type: String, default: 'r-tooltip-zoom' }, // 动画名称
   enterable: { type: Boolean, default: true }, // 鼠标是否可进入到 tooltip 中
-  closeOnClickOutside: truthProp
+  closeOnClickOutside: truthProp,
+  teleport: {
+    type: [String, Object] as PropType<TeleportProps['to']>,
+    default: 'body'
+  }
 })
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
