@@ -1,4 +1,5 @@
 import {
+  h,
   ref,
   watch,
   provide,
@@ -20,6 +21,8 @@ import { popupSharedProps } from './shared'
 import {
   isDef,
   extend,
+  isString,
+  iconPropType,
   makeStringProp,
   callInterceptor,
   createNamespace,
@@ -36,6 +39,7 @@ import { useGlobalZIndex } from '../composables/use-global-z-index'
 
 // Components
 import { Icon } from '../icon'
+import { Close } from '@ryxon/icons'
 import { Overlay } from '../overlay'
 
 // Types
@@ -44,7 +48,7 @@ import type { PopupPosition, PopupCloseIconPosition } from './types'
 export const popupProps = extend({}, popupSharedProps, {
   round: Boolean,
   position: makeStringProp<PopupPosition>('center'),
-  closeIcon: makeStringProp('cross'),
+  closeIcon: iconPropType,
   closeable: Boolean,
   transition: String,
   iconPrefix: String,
@@ -170,14 +174,20 @@ export default defineComponent({
           <Icon
             role="button"
             tabindex={0}
-            name={props.closeIcon}
+            name={isString(props.closeIcon) ? props.closeIcon : ''}
             class={[
               bem('close-icon', props.closeIconPosition),
               HAPTICS_FEEDBACK
             ]}
             classPrefix={props.iconPrefix}
             onClick={onClickCloseIcon}
-          />
+          >
+            {props.closeIcon ? (
+              !isString(props.closeIcon) && h(props.closeIcon)
+            ) : (
+              <Close />
+            )}
+          </Icon>
         )
       }
     }
