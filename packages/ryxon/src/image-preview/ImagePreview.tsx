@@ -72,6 +72,11 @@ export const imagePreviewProps = {
   swipeDuration: makeNumericProp(300),
   startPosition: makeNumericProp(0),
   showIndicators: Boolean,
+  showArrow: {
+    type: String,
+    values: ['always', 'hover', 'never'],
+    default: 'always'
+  },
   closeOnPopstate: truthProp,
   closeIconPosition: makeStringProp<PopupCloseIconPosition>('top-right'),
   teleport: [String, Object] as PropType<TeleportProps['to']>
@@ -161,6 +166,7 @@ export default defineComponent({
         initialSwipe={props.startPosition}
         showIndicators={props.showIndicators}
         indicatorColor="white"
+        arrow={props.showArrow}
         onChange={setActive}
         onDragEnd={onDragEnd}
         onDragStart={onDragStart}
