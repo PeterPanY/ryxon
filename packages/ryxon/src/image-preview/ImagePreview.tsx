@@ -1,4 +1,5 @@
 import {
+  h,
   ref,
   watch,
   nextTick,
@@ -14,6 +15,7 @@ import {
 // Utils
 import {
   pick,
+  isString,
   truthProp,
   unknownProp,
   Interceptor,
@@ -33,6 +35,7 @@ import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
+import { Close } from '@ryxon/icons'
 import { Swipe, SwipeInstance, SwipeToOptions } from '../swipe'
 import { Popup, PopupCloseIconPosition } from '../popup'
 import ImagePreviewItem from './ImagePreviewItem'
@@ -187,13 +190,19 @@ export default defineComponent({
         return (
           <Icon
             role="button"
-            name={props.closeIcon}
+            name={isString(props.closeIcon) ? props.closeIcon : ''}
             class={[
               bem('close-icon', props.closeIconPosition),
               HAPTICS_FEEDBACK
             ]}
             onClick={emitClose}
-          />
+          >
+            {props.closeIcon ? (
+              !isString(props.closeIcon) && h(props.closeIcon)
+            ) : (
+              <Close />
+            )}
+          </Icon>
         )
       }
     }
