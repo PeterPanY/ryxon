@@ -91,6 +91,10 @@
       "text": "导航组件",
       "children": [
         {
+          "link": "/breadcrumb",
+          "text": "Breadcrumb 面包屑"
+        },
+        {
           "link": "/menu",
           "text": "Menu 菜单"
         }

@@ -1,5 +1,6 @@
 import '../../../ryxon/src/style/base.less'
 import '../../../ryxon/src/badge/index.less'
+import '../../../ryxon/src/breadcrumb/index.less'
 import '../../../ryxon/src/button/index.less'
 import '../../../ryxon/src/button-group/index.less'
 import '../../../ryxon/src/cell/index.less'
