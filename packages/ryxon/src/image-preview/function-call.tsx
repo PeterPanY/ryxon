@@ -17,7 +17,7 @@ const defaultConfig: ImagePreviewOptions = {
   className: '',
   showIndex: true,
   closeable: false,
-  closeIcon: 'clear',
+  closeIcon: '',
   transition: undefined,
   beforeClose: undefined,
   overlayStyle: undefined,
