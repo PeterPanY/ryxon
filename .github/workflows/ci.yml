@@ -3,7 +3,7 @@ name: Ryxon
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
