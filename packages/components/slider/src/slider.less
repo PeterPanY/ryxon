@@ -1,0 +1,100 @@
+@slider-height: 32px;
+
+:root {
+  --van-slider-height: @slider-height;
+}
+
+.van-slider {
+  --van-slider-main-bg-color: var(--van-color-primary);
+  --van-slider-runway-bg-color: var(--van-border-color);
+  --van-slider-stop-bg-color: var(--van-color-white);
+  --van-slider-disabled-color: #a8abb2;
+  --van-slider-border-radius: 3px;
+  --van-slider-height: 6px;
+  --van-slider-button-size: 20px;
+  --van-slider-button-wrapper-size: 36px;
+  --van-slider-button-wrapper-offset: -15px;
+
+  width: 100%;
+  height: @slider-height;
+  display: flex;
+  align-items: center;
+
+  &.is-vertical {
+    width: var(--van-slider-height);
+    height: auto;
+
+    .van-slider__runway {
+      width: var(--van-slider-height);
+    }
+  }
+
+  &__runway {
+    flex: 1;
+    height: var(--van-slider-height);
+    background-color: var(--van-slider-runway-bg-color);
+    border-radius: var(--van-slider-border-radius);
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__bar {
+    height: var(--van-slider-height);
+    background-color: var(--van-slider-main-bg-color);
+    border-top-left-radius: var(--van-slider-border-radius);
+    border-bottom-left-radius: var(--van-slider-border-radius);
+    position: absolute;
+  }
+
+  &__button-wrapper {
+    height: var(--van-slider-button-wrapper-size);
+    width: var(--van-slider-button-wrapper-size);
+    position: absolute;
+    z-index: 1;
+    top: var(--van-slider-button-wrapper-offset);
+    transform: translateX(-50%);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    outline: none;
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    width: var(--van-slider-button-size);
+    height: var(--van-slider-button-size);
+    vertical-align: middle;
+    border: solid 3px var(--van-slider-main-bg-color);
+    background-color: var(--van-color-white);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: var(--transition-duration-fast);
+    user-select: none;
+
+    &:hover,
+    &.hover,
+    &.dragging {
+      transform: scale(1.2);
+    }
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+}

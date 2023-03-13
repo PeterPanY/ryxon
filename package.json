@@ -1,31 +1,60 @@
 {
-  "private": true,
+  "name": "ryxon",
+  "version": "1.0.28",
+  "description": "这篇文章会带着你从零搭建一个基于vue3的组件库",
+  "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
-    "dev": "pnpm --dir ./packages/ryxon dev",
-    "lint": "pnpm --dir ./packages/ryxon lint",
-    "test": "pnpm --dir ./packages/ryxon test",
-    "test:watch": "pnpm --dir ./packages/ryxon test:watch",
-    "docs:dev": "pnpm --dir ./packages/ryxon-docs docs:dev",
-    "build": "pnpm --dir ./packages/ryxon build",
-    "build:site": "pnpm --dir ./packages/ryxon-docs docs:build"
+    "play": "pnpm build && pnpm dev --filter ./play",
+    "build": "node ./scripts/build.js",
+    "release": "pnpm build && node ./scripts/release.js",
+    "gen": "node ./scripts/gen.js",
+    "del": "node ./scripts/del.js",
+    "docs:dev": "pnpm docs:dev --filter ./packages/docs",
+    "docs:build": "pnpm docs:build --filter ./packages/docs",
+    "prettier": "prettier --write .",
+    "lint": "eslint --ext .ts packages/*/**.ts",
+    "lint:fix": "eslint --ext .ts packages/*/**.ts --fix"
   },
-  "nano-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "lint-staged": {
+    "packages/temp/**/*.{vue,js,ts,jsx,tsx,md,json}": "prettier --write ."
   },
-  "engines": {
-    "pnpm": ">= 7.0.0"
-  },
-  "packageManager": "pnpm@7.20.0",
   "devDependencies": {
-    "@ryxon/cli": "workspace:*",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@ryxon/components": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
-    "eslint": "^8.31.0",
+    "@ryxon/hooks": "workspace:*",
+    "@ryxon/utils": "workspace:*",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "@vitejs/plugin-vue-jsx": "^2.1.1",
+    "@vue/tsconfig": "^0.1.3",
+    "chalk": "4.1.0",
+    "consola": "^2.15.3",
+    "ejs": "^3.1.8",
+    "enquirer": "^2.3.6",
+    "eslint": "^8.22.0",
+    "execa": "4.0.2",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
     "husky": "^8.0.1",
-    "nano-staged": "^0.8.0",
+    "less": "^4.1.3",
+    "lint-staged": "^13.0.3",
+    "minimist": "^1.2.6",
     "prettier": "^2.7.1",
-    "rimraf": "^3.0.2"
+    "semver": "^7.3.7",
+    "typescript": "^4.7.4",
+    "unplugin-vue-define-options": "^0.10.0",
+    "ryxon": "workspace:*",
+    "vite": "^3.0.8",
+    "vite-plugin-copy": "^0.1.6",
+    "vite-plugin-dts": "^1.4.1",
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.2.1",
+    "escape-html": "^1.0.3"
   }
 }

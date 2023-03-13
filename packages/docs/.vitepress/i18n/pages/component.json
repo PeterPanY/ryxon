@@ -1,0 +1,76 @@
+{
+  "zh": {
+    "basic": {
+      "text": "Basic 基础组件",
+      "children": [
+        {
+          "link": "/button",
+          "text": "Button 按钮"
+        },
+        {
+          "link": "/icon",
+          "text": "Icon 图标"
+        },
+        {
+          "link": "/popper",
+          "text": "Popper"
+        }
+      ]
+    },
+    "form": {
+      "text": "Form 表单组件",
+      "children": [
+        {
+          "link": "/input",
+          "text": "Input 输入框"
+        },
+        {
+          "link": "/checkbox",
+          "text": "Checkbox 多选框"
+        },
+        {
+          "link": "/radio",
+          "text": "Radio 单选框"
+        },
+        {
+          "link": "/switch",
+          "text": "Switch 开关"
+        },
+        {
+          "link": "/select",
+          "text": "Select 选择器"
+        },
+        {
+          "link": "/slider",
+          "text": "Slider 滑块"
+        }
+      ]
+    },
+    "data": {
+      "text": "Data 数据展示",
+      "children": [
+        {
+          "link": "/collapse",
+          "text": "Collapse 折叠面板"
+        }
+      ]
+    },
+    "feedback": {
+      "text": "Feedback 反馈组件",
+      "children": [
+        {
+          "link": "/dialog",
+          "text": "Dialog 对话框"
+        },
+        {
+          "link": "/message",
+          "text": "Message 消息提示"
+        },
+        {
+          "link": "/tooltip",
+          "text": "Tooltip 文字提示"
+        }
+      ]
+    }
+  }
+}

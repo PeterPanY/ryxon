@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
-    "strict": true,
-    "target": "ES2015",
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "target": "es2016",
+    "sourceMap": false,
+    "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "Node",
-    "lib": ["esnext", "dom"]
+    "strict": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["node", "unplugin-vue-define-options"],
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "@ryxon/*": ["packages/*"]
+    }
   }
 }

@@ -1,0 +1,7 @@
+export * from './src/<%= fileName %>'
+import { withInstall } from '@ryxon/utils'
+import <%= name %> from './src/<%= fileName %>.vue'
+
+export const Van<%= name %> = withInstall(<%= name %>)
+
+export default Van<%= name %>
