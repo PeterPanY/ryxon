@@ -31,18 +31,11 @@ jobs:
       - name: Build Site
         run: npm run build:site
 
-      - name: Deploy for Gitee 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
-        with:
-          branch: gh-pages
-          folder: packages/ryxon/site-dist
-          clean: false
-
       - name: Deploy for GitHub 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: master
-          folder: packages/ryxon/site-dist
+          folder: packages/ryxon-docs/.vuepress/dist/
           token: ${{ secrets.RYXON_UI_TOKEN }}
           repository-name: ryxon-ui/ryxon-ui.github.io
           target-folder: ryxon
