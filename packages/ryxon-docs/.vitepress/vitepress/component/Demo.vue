@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ClientOnly>
     <!-- danger here DO NOT USE INLINE SCRIPT TAG -->
     <p text="sm" v-html="decodedDescription" />
     <div class="example">
@@ -32,7 +32,7 @@
         </div>
       </Transition>
     </div>
-  </div>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
