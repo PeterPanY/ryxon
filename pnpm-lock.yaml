@@ -205,13 +205,13 @@ importers:
   packages/ryxon-docs:
     specifiers:
       '@ryxon/components': workspace:*
-      '@ryxon/icons': workspace:*
+      '@ryxon/icons': 1.0.5
       clipboard-copy: ^4.0.1
       fast-glob: ^3.2.11
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
       prismjs: ^1.28.0
-      ryxon: workspace:*
+      ryxon: 1.0.34
       sass: ^1.54.5
       unplugin-vue-define-options: ^0.10.0
       vitepress: ^1.0.0-alpha.9
