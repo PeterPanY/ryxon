@@ -38,5 +38,4 @@ jobs:
           folder: packages/ryxon-docs/.vuepress/dist/
           token: ${{ secrets.RYXON_UI_TOKEN }}
           repository-name: ryxon-ui/ryxon-ui.github.io
-          target-folder: ryxon
           clean: false
