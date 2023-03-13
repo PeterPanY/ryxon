@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast } from '@ryxon/components'
+import { showToast } from 'ryxon'
 
 const value1 = ref('')
 const pattern = /\d{6}/

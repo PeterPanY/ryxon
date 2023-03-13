@@ -29,7 +29,7 @@
 import { ref, markRaw } from 'vue'
 import type { DefineComponent } from 'vue'
 import clipboardCopy from 'clipboard-copy'
-import { showToast } from '@ryxon/components'
+import { showToast } from 'ryxon'
 import * as Icons from '@ryxon/icons'
 import IconCategories from './icons-categories.json'
 

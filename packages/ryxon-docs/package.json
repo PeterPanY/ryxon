@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@ryxon/components": "workspace:*",
     "@ryxon/icons": "1.0.5",
     "clipboard-copy": "^4.0.1",
     "ryxon": "1.0.34",

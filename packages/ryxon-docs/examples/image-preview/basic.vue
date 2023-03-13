@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { showImagePreview } from '@ryxon/components'
+import { showImagePreview } from 'ryxon'
 
 const handleClick = () => {
   showImagePreview({

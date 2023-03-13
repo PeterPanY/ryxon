@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts" setup>
-import { showToast } from '@ryxon/components'
+import { showToast } from 'ryxon'
 // import 'ryxon/es/toast/style'
 
 const open1 = () => {

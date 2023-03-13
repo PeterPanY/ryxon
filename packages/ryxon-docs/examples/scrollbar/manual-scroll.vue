@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { type RScrollbar } from '@ryxon/components'
+import { type RScrollbar } from 'ryxon'
 
 const max = ref(0)
 const value = ref(0)
