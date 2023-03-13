@@ -13,9 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "@ryxon/components": "workspace:*",
-    "@ryxon/icons": "workspace:*",
+    "@ryxon/icons": "1.0.5",
     "clipboard-copy": "^4.0.1",
-    "ryxon": "workspace:*",
+    "ryxon": "1.0.34",
     "fast-glob": "^3.2.11",
     "sass": "^1.54.5",
     "vitepress": "^1.0.0-alpha.9",
