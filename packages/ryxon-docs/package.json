@@ -15,9 +15,10 @@
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
     "clipboard-copy": "^4.0.1",
-    "ryxon": "workspace:*",
+    "escape-html": "^1.0.3",
     "fast-glob": "^3.2.11",
     "markdown-it": "^13.0.1",
+    "ryxon": "workspace:*",
     "sass": "^1.54.5",
     "vitepress": "^1.0.0-alpha.9",
     "vitepress-theme-demoblock": "^1.4.2"

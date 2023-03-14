@@ -208,6 +208,7 @@ importers:
       '@ryxon/icons': workspace:*
       '@types/markdown-it': ^12.2.3
       clipboard-copy: ^4.0.1
+      escape-html: ^1.0.3
       fast-glob: ^3.2.11
       markdown-it: ^13.0.1
       markdown-it-container: ^3.0.0
@@ -228,6 +229,7 @@ importers:
       '@ryxon/components': link:../ryxon-components
       '@ryxon/icons': link:../ryxon-icons
       clipboard-copy: 4.0.1
+      escape-html: 1.0.3
       fast-glob: 3.2.12
       markdown-it: 13.0.1
       ryxon: link:../ryxon
