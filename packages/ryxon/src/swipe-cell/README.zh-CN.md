@@ -9,11 +9,11 @@
 通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
 
 ```js
-import { createApp } from 'vue';
-import { SwipeCell } from 'ryxon';
+import { createApp } from 'vue'
+import { SwipeCell } from 'ryxon'
 
-const app = createApp();
-app.use(SwipeCell);
+const app = createApp()
+app.use(SwipeCell)
 ```
 
 ## 代码演示
@@ -83,7 +83,7 @@ app.use(SwipeCell);
 ```
 
 ```js
-import { showConfirmDialog } from 'ryxon';
+import { showConfirmDialog } from 'ryxon'
 
 export default {
   setup() {
@@ -93,19 +93,19 @@ export default {
         case 'left':
         case 'cell':
         case 'outside':
-          return true;
+          return true
         case 'right':
           return new Promise((resolve) => {
             showConfirmDialog({
-              title: '确定删除吗？',
-            }).then(resolve);
-          });
+              title: '确定删除吗？'
+            }).then(resolve)
+          })
       }
-    };
+    }
 
-    return { beforeClose };
-  },
-};
+    return { beforeClose }
+  }
+}
 ```
 
 ## API
@@ -148,7 +148,7 @@ beforeClose 的第一个参数为对象，对象中包含以下属性：
 
 ### 方法
 
-通过 ref 可以获取到 SwipeCell 实例并调用实例方法，详见[组件实例方法](#/zh-CN/advanced-usage#zu-jian-shi-li-fang-fa)。
+通过 ref 可以获取到 SwipeCell 实例并调用实例方法，详见[组件实例方法](/zh/guide/advanced-usage.html#组件实例方法)。
 
 | 方法名 | 说明             | 参数                      | 返回值 |
 | ------ | ---------------- | ------------------------- | ------ |
@@ -164,19 +164,19 @@ import type {
   SwipeCellSide,
   SwipeCellProps,
   SwipeCellPosition,
-  SwipeCellInstance,
-} from 'ryxon';
+  SwipeCellInstance
+} from 'ryxon'
 ```
 
 `SwipeCellInstance` 是组件实例的类型，用法如下：
 
 ```ts
-import { ref } from 'vue';
-import type { SwipeCellInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { SwipeCellInstance } from 'ryxon'
 
-const swipeCellRef = ref<SwipeCellInstance>();
+const swipeCellRef = ref<SwipeCellInstance>()
 
-swipeCellRef.value?.close();
+swipeCellRef.value?.close()
 ```
 
 ## 常见问题

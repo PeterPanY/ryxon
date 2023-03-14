@@ -78,7 +78,7 @@ menu/collapse
 | open | sub-menu 展开的回调 | index: 打开的 sub-menu 的 index, indexPath: 打开的 sub-menu 的 index path |
 | close | sub-menu 收起的回调 | index: 收起的 sub-menu 的 index, indexPath: 收起的 sub-menu 的 index path |
 
-## SubMenu Attributes
+### SubMenu Attributes
 
 | 属性名 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
@@ -94,14 +94,14 @@ menu/collapse
 | collapse-close-icon | 父菜单收起且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效 | `string \| Component` | — | — |
 | collapse-open-icon | 父菜单收起且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效 | `string \| Component` | — | — |
 
-## SubMenu Slots
+### SubMenu Slots
 
 | 名称    | 说明           | 子标签                                |
 | ------- | -------------- | ------------------------------------- |
 | default | 自定义默认内容 | SubMenu / Menu-Item / Menu-Item-Group |
 | title   | 自定义标题内容 | —                                     |
 
-## Menu-Item Attributes
+### Menu-Item Attributes
 
 | 属性名   | 说明                | 类型        | 可选值 | 默认值 |
 | -------- | ------------------- | ----------- | ------ | ------ |
@@ -109,26 +109,26 @@ menu/collapse
 | route    | Vue Router 路径对象 | object      | —      | —      |
 | disabled | 是否禁用            | boolean     | —      | false  |
 
-## Menu-Item Events
+### Menu-Item Events
 
 | 事件名 | 说明                 | 回调参数         |
 | ------ | -------------------- | ---------------- |
 | click  | 菜单点击时的回调函数 | r-menu-item 实例 |
 
-## Menu-Item Slots
+### Menu-Item Slots
 
 | 名称    | 说明           |
 | ------- | -------------- |
 | default | 自定义默认内容 |
 | title   | 自定义标题内容 |
 
-## Menu-Item-Group Attributes
+### Menu-Item-Group Attributes
 
 | 属性名 | 说明   | 类型     | 可选值 | 默认值 |
 | ------ | ------ | -------- | ------ | ------ |
 | title  | 组标题 | `string` | —      | —      |
 
-## Menu-Item-Group Slots
+### Menu-Item-Group Slots
 
 | 名称    | 说明             | 子标签    |
 | ------- | ---------------- | --------- |

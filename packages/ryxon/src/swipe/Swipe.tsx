@@ -58,7 +58,6 @@ export const swipeProps = {
   lazyRender: Boolean,
   initialSwipe: makeNumericProp(0),
   indicatorColor: String,
-  showIndicators: truthProp,
   stopPropagation: truthProp,
   trigger: {
     type: String,
@@ -463,7 +462,7 @@ export default defineComponent({
         })
       }
       // 显示指示器并且数量大于1
-      if (props.showIndicators && count.value > 1) {
+      if (count.value > 1) {
         return (
           <div class={bem('indicators', { vertical: props.vertical })}>
             {Array(count.value).fill('').map(renderDot)}

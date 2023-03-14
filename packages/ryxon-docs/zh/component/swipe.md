@@ -69,7 +69,6 @@ swipe/indicator
 | lazy-render | 是否延迟渲染未展示的轮播 | `boolean` | `false` |
 | initial-swipe | 初始位置索引值 | `number \| string` | `0` |
 | indicator-color | 指示器颜色 | `string` | `#1989fa` |
-| show-indicators | 是否显示指示器 | `boolean` | `true` |
 | stop-propagation | 是否阻止滑动事件冒泡 | `boolean` | `true` |
 | trigger | 指示器的触发方式，可选`click` | `string` | `hover` |
 | arrow | 切换箭头的显示时机，可选`always/never` | `string` | `hover` |
@@ -92,7 +91,7 @@ swipe/indicator
 
 ### Swipe 方法
 
-通过 ref 可以获取到 Swipe 实例并调用实例方法，详见[组件实例方法](#/zh-CN/advanced-usage#zu-jian-shi-li-fang-fa)。
+通过 ref 可以获取到 Swipe 实例并调用实例方法，详见[组件实例方法](/zh/guide/advanced-usage.html#组件实例方法)。
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
