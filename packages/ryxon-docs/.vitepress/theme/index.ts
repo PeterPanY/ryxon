@@ -1,5 +1,4 @@
 import * as Ryxon from '@ryxon/components'
-import { Lazyload } from 'ryxon'
 import { define } from '../utils/types'
 import type { Theme as ThemeType } from 'vitepress'
 
@@ -12,7 +11,7 @@ export default define<ThemeType>({
   ...Theme,
   enhanceApp: ({ app }) => {
     // 全局注册懒加载
-    app.use(Lazyload, {
+    app.use(Ryxon.Lazyload, {
       lazyComponent: true
     })
 
