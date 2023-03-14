@@ -206,8 +206,10 @@ importers:
     specifiers:
       '@ryxon/components': workspace:*
       '@ryxon/icons': workspace:*
+      '@types/markdown-it': ^12.2.3
       clipboard-copy: ^4.0.1
       fast-glob: ^3.2.11
+      markdown-it: ^13.0.1
       markdown-it-container: ^3.0.0
       prism-theme-vars: ^0.2.4
       prismjs: ^1.28.0
@@ -217,6 +219,7 @@ importers:
       vitepress: ^1.0.0-alpha.9
       vitepress-theme-demoblock: ^1.4.2
     dependencies:
+      '@types/markdown-it': 12.2.3
       markdown-it-container: 3.0.0
       prism-theme-vars: 0.2.4
       prismjs: 1.29.0
@@ -226,6 +229,7 @@ importers:
       '@ryxon/icons': link:../ryxon-icons
       clipboard-copy: 4.0.1
       fast-glob: 3.2.12
+      markdown-it: 13.0.1
       ryxon: link:../ryxon
       sass: 1.57.1
       vitepress: 1.0.0-alpha.36_sass@1.57.1
@@ -4967,6 +4971,11 @@ packages:
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
 
+  /entities/3.0.1:
+    resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==}
+    engines: {node: '>=0.12'}
+    dev: true
+
   /entities/4.4.0:
     resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
     engines: {node: '>=0.12'}
@@ -7645,6 +7654,12 @@ packages:
     dependencies:
       uc.micro: 1.0.6
 
+  /linkify-it/4.0.1:
+    resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
+    dependencies:
+      uc.micro: 1.0.6
+    dev: true
+
   /load-json-file/4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
@@ -7868,6 +7883,17 @@ packages:
       linkify-it: 3.0.3
       mdurl: 1.0.1
       uc.micro: 1.0.6
+
+  /markdown-it/13.0.1:
+    resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+      entities: 3.0.1
+      linkify-it: 4.0.1
+      mdurl: 1.0.1
+      uc.micro: 1.0.6
+    dev: true
 
   /matchit/1.1.0:
     resolution: {integrity: sha512-+nGYoOlfHmxe5BW5tE0EMJppXEwdSf8uBA1GTZC7Q77kbT35+VKLYJMzVNWCHSsga1ps1tPYFtFyvxvKzWVmMA==}

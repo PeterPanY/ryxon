@@ -17,11 +17,13 @@
     "clipboard-copy": "^4.0.1",
     "ryxon": "workspace:*",
     "fast-glob": "^3.2.11",
+    "markdown-it": "^13.0.1",
     "sass": "^1.54.5",
     "vitepress": "^1.0.0-alpha.9",
     "vitepress-theme-demoblock": "^1.4.2"
   },
   "dependencies": {
+    "@types/markdown-it": "^12.2.3",
     "markdown-it-container": "^3.0.0",
     "prism-theme-vars": "^0.2.4",
     "prismjs": "^1.28.0",
