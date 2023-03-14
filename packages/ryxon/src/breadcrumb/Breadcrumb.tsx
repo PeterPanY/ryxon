@@ -12,13 +12,8 @@ const [, bem] = createNamespace('breadcrumb')
 const [, bemItem] = createNamespace('breadcrumb-item')
 
 export const breadcrumbProps = {
-  separator: {
-    type: String,
-    default: '/'
-  },
-  separatorIcon: {
-    type: iconPropType
-  }
+  separator: { type: String, default: '/' },
+  separatorIcon: { type: iconPropType }
 }
 
 export type BreadcrumbProps = ExtractPropTypes<typeof breadcrumbProps>
