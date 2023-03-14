@@ -25,9 +25,11 @@
   },
   "dependencies": {
     "@types/markdown-it": "^12.2.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "markdown-it-container": "^3.0.0",
     "prism-theme-vars": "^0.2.4",
     "prismjs": "^1.28.0",
-    "unplugin-vue-define-options": "^0.10.0"
+    "unplugin-vue-define-options": "^0.10.0",
+    "vite": "^4.0.3"
   }
 }
