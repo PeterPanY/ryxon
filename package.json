@@ -8,7 +8,7 @@
     "test:watch": "pnpm --dir ./packages/ryxon test:watch",
     "docs:dev": "pnpm --dir ./packages/ryxon-docs docs:dev",
     "build": "pnpm --dir ./packages/ryxon build",
-    "build:site": "pnpm --dir ./packages/ryxon build:site"
+    "docs:build": "pnpm --dir ./packages/ryxon-docs docs:build"
   },
   "nano-staged": {
     "*.md": "prettier --write",
