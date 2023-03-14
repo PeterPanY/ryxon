@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as t}from"./app.06b8508a.js";const l=JSON.parse('{"title":"进阶用法","description":"","frontmatter":{"title":"进阶用法","lang":"zh"},"headers":[],"relativePath":"zh/guide/advanced-usage.md"}'),n={name:"zh/guide/advanced-usage.md"};function s(c,r,d,o,i,p){return a(),t("div")}const m=e(n,[["render",s]]);export{l as __pageData,m as default};
