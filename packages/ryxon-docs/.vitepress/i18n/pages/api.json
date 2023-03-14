@@ -2,24 +2,13 @@
   "zh": {
     "directives": {
       "text": "自定义指令",
-      "children": [
-        {
-          "text": "Lazyload 懒加载",
-          "link": "/lazyload"
-        }
-      ]
+      "children": [{ "text": "Lazyload 懒加载", "link": "/lazyload" }]
     },
     "intro": {
       "text": "组合式 API",
       "children": [
-        {
-          "text": "介绍",
-          "link": "/use-intro"
-        },
-        {
-          "text": "useCustomInputValue",
-          "link": "/use-custom-input-value"
-        }
+        { "text": "介绍", "link": "/use-intro" },
+        { "text": "useCustomInputValue", "link": "/use-custom-input-value" }
       ]
     }
   }

@@ -1,34 +1,11 @@
+---
+title: 常见问题
+lang: zh
+---
+
 # 常见问题
 
-### 如何自定义 Ryxon 组件的样式？
-
-#### 1. 主题定制
-
-Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进行统一修改，详见 [ConfigProvider 全局配置](/zh/component/config-provider.html) 组件。
-
-#### 2. 覆盖默认样式
-
-如果主题定制不能满足你的需求，也可以通过**自定义样式类**来覆盖默认样式，参考下面的示例：
-
-```html
-<template>
-  <r-button class="my-button">按钮</r-button>
-</template>
-
-<style>
-  /** 覆盖 Button 最外层元素的样式 */
-  .my-button {
-    width: 200px;
-  }
-
-  /** 覆盖 Button 内部子元素的样式 */
-  .my-button .r-button__text {
-    color: red;
-  }
-</style>
-```
-
-### 在 HTML 中无法正确渲染组件？
+## 在 HTML 中无法正确渲染组件？
 
 在 HTML 中使用 Ryxon 组件时，你可能会碰到部分示例代码无法正确渲染的情况，比如下面的用法：
 
@@ -50,7 +27,7 @@ Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进
 
 在单文件组件、字符串模板和 JSX 中可以使用自闭合的自定义元素，因此不会出现这个问题。
 
-### 在 iOS 上点击组件时，无法触发点击反馈效果？
+## 在 iOS 上点击组件时，无法触发点击反馈效果？
 
 这是因为 iOS Safari 默认不会触发 `:active` 伪类，解决方法是在 `body` 标签上添加一个空的 `ontouchstart` 属性：
 
@@ -62,22 +39,12 @@ Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进
 
 参考链接：[stackoverflow - :active pseudo-class doesn't work in mobile safari](https://stackoverflow.com/questions/3885018/active-pseudo-class-doesnt-work-in-mobile-safari/33681490#33681490)
 
-### 为什么没有 Select 组件？
-
-Select 是桌面端常用的组件，但它的交互形式不适合移动端。
-
-在移动端，我们推荐使用 [Picker 选择器组件](#/zh-CN/picker) 作为代替。
-
-### 是否支持在 uni-app 中使用？
+## 是否支持在 uni-app 中使用？
 
 Ryxon 所有组件都是基于 Vue 框架实现的，没有针对 uni-app 进行适配，因此不保证各个组件在 uni-app 下的可用性。
 
 如果你在 uni-app 中使用 Ryxon 遇到问题，建议向 uni-app 进行反馈。
 
-### 部分组件无法在桌面端进行操作？
+## 如何进行移动端响应式适配？
 
-参见[桌面端适配](#/zh-CN/advanced-usage#zhuo-mian-duan-gua-pei)。
-
-### 如何进行移动端响应式适配？
-
-参见[浏览器适配](#/zh-CN/advanced-usage#liu-lan-qi-gua-pei)。
+参见[浏览器适配](/zh/guide/advanced-usage.html#viewport-布局)。

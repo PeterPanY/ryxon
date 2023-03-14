@@ -59,22 +59,22 @@ swipe/indicator
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| loop | 是否开启循环播放 | `boolean` | `true` |
+| width | 滑块宽度，单位为 `px` | `number \| string` | `auto` |
+| height | 滑块高度，单位为 `px` | `number \| string` | `auto` |
+| vertical | 是否为纵向滚动 | `boolean` | `false` |
+| autoplay | 自动轮播间隔，单位为 ms | `number \| string` | - |
+| duration | 动画时长，单位为 ms | `number \| string` | `500` |
+| touchable | 是否可以通过手势滑动 | `boolean` | `true` |
+| lazy-render | 是否延迟渲染未展示的轮播 | `boolean` | `false` |
+| initial-swipe | 初始位置索引值 | `number \| string` | `0` |
+| indicator-color | 指示器颜色 | `string` | `#1989fa` |
+| show-indicators | 是否显示指示器 | `boolean` | `true` |
+| stop-propagation | 是否阻止滑动事件冒泡 | `boolean` | `true` |
 | trigger | 指示器的触发方式，可选`click` | `string` | `hover` |
 | arrow | 切换箭头的显示时机，可选`always/never` | `string` | `hover` |
 | pause-on-hover | 鼠标悬浮时暂停自动切换 | `boolean` | `true` |
 | indicator-position | 指示器的位置，可选`none` | `string` | `-` |
-| autoplay | 自动轮播间隔，单位为 ms | `number \| string` | - |
-| duration | 动画时长，单位为 ms | `number \| string` | `500` |
-| initial-swipe | 初始位置索引值 | `number \| string` | `0` |
-| width | 滑块宽度，单位为 `px` | `number \| string` | `auto` |
-| height | 滑块高度，单位为 `px` | `number \| string` | `auto` |
-| loop | 是否开启循环播放 | `boolean` | `true` |
-| show-indicators | 是否显示指示器 | `boolean` | `true` |
-| vertical | 是否为纵向滚动 | `boolean` | `false` |
-| touchable | 是否可以通过手势滑动 | `boolean` | `true` |
-| stop-propagation | 是否阻止滑动事件冒泡 | `boolean` | `true` |
-| lazy-render | 是否延迟渲染未展示的轮播 | `boolean` | `false` |
-| indicator-color | 指示器颜色 | `string` | `#1989fa` |
 
 ### Swipe Events
 
