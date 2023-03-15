@@ -1,13 +1,15 @@
 :root {
-  --r-pagination-height: 40px;
+  --r-pagination-height: 32px;
   --r-pagination-font-size: var(--r-font-size-md);
-  --r-pagination-item-width: 36px;
+  --r-pagination-item-width: 32px;
   --r-pagination-item-default-color: var(--r-primary-color);
   --r-pagination-item-disabled-color: var(--r-gray-7);
   --r-pagination-item-disabled-background: var(--r-background);
-  --r-pagination-background: var(--r-background-2);
+  --r-pagination-background: var(--r-fill-color);
   --r-pagination-desc-color: var(--r-gray-7);
   --r-pagination-disabled-opacity: var(--r-disabled-opacity);
+  --r-pagination-button-color: var(--r-text-color-primary);
+  --r-pagination-hover-color: var(--r-primary-color);
 }
 
 .r-pagination {
@@ -24,15 +26,21 @@
     justify-content: center;
   }
 
+  &__surround {
+    background: var(--r-pagination-background);
+  }
+
   &__item {
-    flex: 1;
+    white-space: nowrap;
     box-sizing: border-box;
     min-width: var(--r-pagination-item-width);
     height: var(--r-pagination-height);
-    color: var(--r-pagination-item-default-color);
-    background: var(--r-pagination-background);
+    color: var(--r-pagination-button-color);
+
     cursor: pointer;
     user-select: none;
+    margin: 0 4px;
+    border-radius: 4px;
 
     button {
       flex: 1;
@@ -41,23 +49,30 @@
       padding: 0;
       background: transparent;
 
+      * {
+        pointer-events: none;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:hover {
+        color: var(--r-pagination-hover-color);
+      }
+
       &[disabled] {
         cursor: not-allowed;
       }
     }
 
-    &:active {
-      color: var(--r-white);
-      background-color: var(--r-pagination-item-default-color);
-    }
-
-    &:not(:last-child)::after {
-      border-right-width: 0;
-    }
-
     &--active {
       color: var(--r-white);
       background-color: var(--r-pagination-item-default-color);
+
+      & button:hover {
+        color: var(--r-white);
+      }
     }
 
     &--page {
@@ -66,18 +81,51 @@
 
     &--prev,
     &--next {
-      padding: 0 var(--r-padding-base);
+      padding: 0 var(--r-padding-xs);
       cursor: pointer;
-    }
-
-    &--border::after {
-      border-width: var(--r-border-width);
     }
 
     &--disabled {
       color: var(--r-pagination-item-disabled-color);
       background-color: var(--r-pagination-item-disabled-background);
       opacity: var(--r-pagination-disabled-opacity);
+
+      button:hover {
+        color: var(--r-pagination-item-disabled-color);
+      }
+    }
+
+    &--sizes {
+      width: 105px;
+      .r-input {
+        padding: 10px 0 0;
+      }
+    }
+    &--total {
+      font-weight: 400;
+      color: var(--r-text-color-regular);
+    }
+
+    &--jump {
+      .r-pagination__goto {
+        margin-right: 8px;
+      }
+
+      .r-pagination__classifier {
+        margin-left: 8px;
+      }
+
+      .r-input {
+        padding: 0;
+        width: 56px;
+
+        .r-input__body {
+          padding: 0 10px;
+        }
+        .r-input__control {
+          text-align: center;
+        }
+      }
     }
   }
 

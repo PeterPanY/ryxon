@@ -194,7 +194,6 @@ export default defineComponent({
 
     const renderClose = () => {
       if (props.closeable) {
-        console.log(props.closeIcon)
         return (
           <Icon
             role="button"

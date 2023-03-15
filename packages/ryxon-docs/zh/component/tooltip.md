@@ -96,28 +96,33 @@ tooltip/controlled
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | visible / v-model:visible | Tooltip 组件可见性 | `boolean` | `false` |
-| theme | 主题风格，可选值为 `light` | `TooltipTheme` | `dark` |
 | content | 显示的内容，也可被 `slot#content` 覆盖 | `string` | `-` |
 | raw-content | `content` 中的内容是否作为 HTML 字符串处理 | `boolean` | `false` |
-| placement | 弹出位置 | `TooltipPlacement` | `bottom` |
 | disabled | Tooltip 组件是否禁用 | `boolean` | `false` |
-| offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
-| transition | 动画名称 | `string ` | `r-tooltip-zoom` |
-| show-after | 在触发后多久显示内容，单位毫秒 | `number ` | `0` |
-| show-arrow | 是否展示小箭头 | `boolean` | `true` |
-| hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
-| enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
+| theme | 主题风格，可选值为 `light` | `TooltipTheme` | `dark` |
 | trigger | 触发方式，可选值为 `click、focus、contextmenu ` | `TooltipTrigger` | `hover` |
 | trigger-keys | 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示 | `Array` | `['Enter','Space']` |
-| overlay | 是否显示遮罩层 | `boolean` | `false` |
+| show-arrow | 是否展示小箭头 | `boolean` | `true` |
+| placement | 弹出位置 | `TooltipPlacement` | `bottom` |
+| offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
+| show-after | 在触发后多久显示内容，单位毫秒 | `number ` | `0` |
+| hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
+| transition | 动画名称 | `string ` | `r-tooltip-zoom` |
+| enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
+| z-index | 将弹窗的 z-index 层级设置为一个固定值 | `number \| string` | `2000+` |
 | duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
+| lazy-render | 是否在显示弹层时才渲染节点 | `boolean` | `true` |
+| before-close | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise | `(action: string) => boolean | Promise<boolean>` | `-` |
 | overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
+| popper-class | 自定义弹窗样式 | `string / Array / object` | - |
+| popper-style | 自定义弹窗样式 | `object` | - |
+| transition-appear | 是否在初始渲染时启用过渡动画 | `boolean` | `false` |
 | close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 
 ### Slots
 

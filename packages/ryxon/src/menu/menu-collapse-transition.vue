@@ -33,8 +33,6 @@ export default defineComponent({
           ;(el as any).dataset = {}
         }
 
-        console.log(bem('collapse'))
-
         if (hasClass(el, bem('collapse'))) {
           removeClass(el, bem('collapse'))
           el.dataset.oldOverflow = el.style.overflow

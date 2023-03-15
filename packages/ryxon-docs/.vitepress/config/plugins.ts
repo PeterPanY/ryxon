@@ -4,7 +4,7 @@ import type Token from 'markdown-it/lib/token'
 import type Renderer from 'markdown-it/lib/renderer'
 import path from 'path'
 import fs from 'fs'
-
+import tooltip from '../plugins/tooltip'
 import { highlight } from '../utils/highlight'
 
 const localMd = MarkdownIt()
@@ -22,6 +22,7 @@ interface ContainerOpts {
 }
 
 export const mdPlugin = (md: MarkdownIt) => {
+  md.use(tooltip)
   md.use(mdContainer, 'div', {
     validate(params) {
       return !!params.trim().match(/^demo\s*(.*)$/)

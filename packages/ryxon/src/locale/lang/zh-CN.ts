@@ -27,6 +27,10 @@ export default {
     cancel: '取消',
     clear: '清空',
     confirm: '确定',
+    dateTablePrompt: '使用方向键并输入以选择月份的日期',
+    monthTablePrompt: '使用方向键并输入以选择月份',
+    yearTablePrompt: '使用方向键并输入以选择年份',
+    selectedDate: '所选日期',
     selectDate: '选择日期',
     selectTime: '选择时间',
     startDate: '开始日期',
@@ -50,7 +54,7 @@ export default {
     month10: '10 月',
     month11: '11 月',
     month12: '12 月',
-    // week: '周次',
+    week: '周次',
     weeks: {
       sun: '日',
       mon: '一',
@@ -59,6 +63,15 @@ export default {
       thu: '四',
       fri: '五',
       sat: '六'
+    },
+    weeksFull: {
+      sun: '星期日',
+      mon: '星期一',
+      tue: '星期二',
+      wed: '星期三',
+      thu: '星期四',
+      fri: '星期五',
+      sat: '星期六'
     },
     months: {
       jan: '一月',
@@ -77,7 +90,11 @@ export default {
   },
   rPagination: {
     prev: '上一页',
-    next: '下一页'
+    next: '下一页',
+    goto: '前往',
+    pagesize: '条/页',
+    total: (total: number) => `共 ${total} 条`,
+    pageClassifier: '页'
   },
   rPullRefresh: {
     pulling: '下拉即可刷新...',

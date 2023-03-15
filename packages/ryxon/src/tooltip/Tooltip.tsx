@@ -83,7 +83,6 @@ export const tooltipProps = extend({}, popupSharedProps, {
   },
   showArrow: truthProp,
   placement: makeStringProp<TooltipPlacement>('bottom'), // Tooltip 组件出现的位置
-  iconPrefix: String,
   // 出现位置的偏移量
   offset: {
     type: Array as unknown as PropType<[number, number]>,

@@ -394,6 +394,7 @@ export default defineComponent({
                 >
                   {props.collapseTagsTooltip ? (
                     <Tooltip
+                      lazyRender={false}
                       disabled={dropMenuVisible.value}
                       theme={props.theme}
                       placement="bottom"
@@ -576,6 +577,7 @@ export default defineComponent({
         <Tooltip
           ref={tooltipRef}
           visible={dropMenuVisible.value}
+          lazyRender={false}
           theme={props.theme}
           trigger="click"
           placement={props.placement}

@@ -1,14 +1,14 @@
-import { withInstall } from '../utils';
-import _Pagination from './Pagination';
+import { withInstall } from '../utils'
+import _Pagination from './Pagination'
 
-export const Pagination = withInstall(_Pagination);
-export default Pagination;
-export { paginationProps } from './Pagination';
-export type { PaginationMode, PaginationProps } from './Pagination';
-export type { PaginationThemeVars } from './types';
+export const Pagination = withInstall(_Pagination)
+export default Pagination
+export { paginationProps } from './Pagination'
+export type { PaginationMode, PaginationProps } from './Pagination'
+export type { PaginationThemeVars } from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RPagination: typeof Pagination;
+    RPagination: typeof Pagination
   }
 }

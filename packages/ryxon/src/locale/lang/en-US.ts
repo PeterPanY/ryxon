@@ -91,7 +91,11 @@ export default {
   },
   rPagination: {
     prev: 'Previous',
-    next: 'Next'
+    next: 'Next',
+    goto: 'Go to',
+    pagesize: '/page',
+    total: (total: number) => `Total ${total}`,
+    pageClassifier: ''
   },
   rPullRefresh: {
     pulling: 'Pull to refresh...',
