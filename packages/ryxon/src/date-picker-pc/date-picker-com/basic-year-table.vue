@@ -34,7 +34,7 @@
 // @ts-nocheck
 import { ref, watch, computed, nextTick, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { castArray, hasClass, createNamespace } from '../../utils'
+import { newCastArray, hasClass, createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { basicYearTableProps } from '../props/basic-year-table'
 import { rangeArr } from '../../time-picker-pc'
@@ -71,7 +71,8 @@ export default defineComponent({
         : false
 
       kls.current =
-        castArray(props.parsedValue).findIndex((d) => d!.year() === year) >= 0
+        newCastArray(props.parsedValue).findIndex((d) => d!.year() === year) >=
+        0
 
       kls.today = today.year() === year
 
@@ -82,7 +83,7 @@ export default defineComponent({
       (year === startYear.value &&
         props.date.year() < startYear.value &&
         props.date.year() > startYear.value + 9) ||
-      castArray(props.date).findIndex((date) => date.year() === year) >= 0
+      newCastArray(props.date).findIndex((date) => date.year() === year) >= 0
 
     const handleYearTableClick = (event: MouseEvent | KeyboardEvent) => {
       const clickTarget = event.target as HTMLDivElement
