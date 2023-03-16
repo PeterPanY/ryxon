@@ -49,7 +49,7 @@
 import { ref, unref, watch, computed, nextTick, defineComponent } from 'vue'
 import dayjs from 'dayjs'
 import { flatten } from 'lodash-unified'
-import { castArray, createNamespace } from '../../utils'
+import { newCastArray, createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { buildPickerTable } from '../utils'
 import { basicDateTableProps } from '../props/basic-date-table'
@@ -104,7 +104,7 @@ export default defineComponent({
 
     const selectedDate = computed(() =>
       props.selectionMode === 'dates'
-        ? (castArray(props.parsedValue) as Dayjs[])
+        ? (newCastArray(props.parsedValue) as Dayjs[])
         : ([] as Dayjs[])
     )
 
@@ -432,10 +432,10 @@ export default defineComponent({
         })
       } else if (props.selectionMode === 'dates') {
         const newValue = cell.selected
-          ? castArray(props.parsedValue).filter(
+          ? newCastArray(props.parsedValue).filter(
               (d) => d?.valueOf() !== newDate.valueOf()
             )
-          : castArray(props.parsedValue).concat([newDate])
+          : newCastArray(props.parsedValue).concat([newDate])
         emit('pick', newValue)
       }
     }

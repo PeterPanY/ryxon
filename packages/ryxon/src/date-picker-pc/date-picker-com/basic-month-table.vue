@@ -34,7 +34,7 @@
 // @ts-nocheck
 import { ref, watch, computed, nextTick, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { castArray, hasClass, createNamespace } from '../../utils'
+import { newCastArray, hasClass, createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { basicMonthTableProps } from '../props/basic-month-table'
 import { rangeArr } from '../../time-picker-pc'
@@ -165,7 +165,7 @@ export default defineComponent({
         ? datesInMonth(year, month, lang.value).every(props.disabledDate)
         : false
       style.current =
-        castArray(props.parsedValue).findIndex(
+        newCastArray(props.parsedValue).findIndex(
           (date) =>
             dayjs.isDayjs(date) &&
             date.year() === year &&
@@ -191,7 +191,7 @@ export default defineComponent({
       const year = props.date.year()
       const month = cell.text
       return (
-        castArray(props.date).findIndex(
+        newCastArray(props.date).findIndex(
           (date) => date.year() === year && date.month() === month
         ) >= 0
       )
