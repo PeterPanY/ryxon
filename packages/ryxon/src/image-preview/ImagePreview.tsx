@@ -71,7 +71,11 @@ export const imagePreviewProps = {
   overlayStyle: Object as PropType<CSSProperties>,
   swipeDuration: makeNumericProp(300),
   startPosition: makeNumericProp(0),
-  showIndicators: Boolean,
+  indicatorPosition: {
+    type: String,
+    values: ['', 'none'],
+    default: ''
+  },
   showArrow: {
     type: String,
     values: ['always', 'hover', 'never'],
@@ -164,7 +168,7 @@ export default defineComponent({
         class={bem('swipe')}
         duration={props.swipeDuration}
         initialSwipe={props.startPosition}
-        showIndicators={props.showIndicators}
+        indicatorPosition={props.indicatorPosition}
         indicatorColor="white"
         arrow={props.showArrow}
         onChange={setActive}

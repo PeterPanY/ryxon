@@ -89,7 +89,7 @@ app.use(NoticeBar)
     class="notice-swipe"
     :autoplay="3000"
     :touchable="false"
-    :show-indicators="false"
+    indicator-position="none"
   >
     <r-swipe-item>明月直入，无心可猜。</r-swipe-item>
     <r-swipe-item>仙人抚我顶，结发受长生。</r-swipe-item>

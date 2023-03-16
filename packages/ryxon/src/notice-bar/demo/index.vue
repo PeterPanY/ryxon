@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RNoticeBar from '..';
-import RSwipe from '../../swipe';
-import RSwipeItem from '../../swipe-item';
-import { useTranslate } from '../../../docs/site';
+import RNoticeBar from '..'
+import RSwipe from '../../swipe'
+import RSwipeItem from '../../swipe-item'
+import { useTranslate } from '../../../docs/site'
 
 const t = useTranslate({
   'zh-CN': {
@@ -17,7 +17,7 @@ const t = useTranslate({
     wrapable: '多行展示',
     scrollable: '滚动播放',
     customStyle: '自定义样式',
-    verticalScroll: '垂直滚动',
+    verticalScroll: '垂直滚动'
   },
   'en-US': {
     mode: 'Mode',
@@ -30,9 +30,9 @@ const t = useTranslate({
     wrapable: 'Wrapable',
     customStyle: 'Custom Style',
     scrollable: 'Scrollable',
-    verticalScroll: 'Vertical Scroll',
-  },
-});
+    verticalScroll: 'Vertical Scroll'
+  }
+})
 </script>
 
 <template>
@@ -70,7 +70,7 @@ const t = useTranslate({
         class="notice-swipe"
         :autoplay="3000"
         :touchable="false"
-        :show-indicators="false"
+        indicator-position="none"
       >
         <r-swipe-item>{{ t('poetry1') }}</r-swipe-item>
         <r-swipe-item>{{ t('poetry2') }}</r-swipe-item>

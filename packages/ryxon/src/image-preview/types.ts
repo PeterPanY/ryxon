@@ -20,7 +20,7 @@ export type ImagePreviewOptions = {
   overlayClass?: unknown
   swipeDuration?: number
   startPosition?: number
-  showIndicators?: boolean
+  indicatorPosition?: string
   closeOnPopstate?: boolean
   closeIconPosition?: PopupCloseIconPosition
   onClose?(): void

@@ -9,11 +9,11 @@ Used to display a group of message notifications in a continuons loop.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { NoticeBar } from 'ryxon';
+import { createApp } from 'vue'
+import { NoticeBar } from 'ryxon'
 
-const app = createApp();
-app.use(NoticeBar);
+const app = createApp()
+app.use(NoticeBar)
 ```
 
 ## Usage
@@ -73,7 +73,7 @@ app.use(NoticeBar);
     class="notice-swipe"
     :autoplay="3000"
     :touchable="false"
-    :show-indicators="false"
+    indicator-position="none"
   >
     <r-swipe-item>Content 1</r-swipe-item>
     <r-swipe-item>Content 2</r-swipe-item>
@@ -126,18 +126,18 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Notice
 The component exports the following type definitions:
 
 ```ts
-import type { NoticeBarMode, NoticeBarProps, NoticeBarInstance } from 'ryxon';
+import type { NoticeBarMode, NoticeBarProps, NoticeBarInstance } from 'ryxon'
 ```
 
 `NoticeBarInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { NoticeBarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { NoticeBarInstance } from 'ryxon'
 
-const noticeBarRef = ref<NoticeBarInstance>();
+const noticeBarRef = ref<NoticeBarInstance>()
 
-noticeBarRef.value?.reset();
+noticeBarRef.value?.reset()
 ```
 
 ### Slots

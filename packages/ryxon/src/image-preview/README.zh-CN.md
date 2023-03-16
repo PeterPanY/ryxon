@@ -202,7 +202,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | startPosition | 图片预览起始位置索引 | _number \| string_ | `0` |
 | swipeDuration | 动画时长，单位为 `ms` | _number \| string_ | `300` |
 | showIndex | 是否显示页码 | _boolean_ | `true` |
-| showIndicators | 是否显示轮播指示器 | _boolean_ | `false` |
+| indicatorPosition | 指示器的位置，可选`none` | _string_ | `none` |
 | loop | 是否开启循环播放 | _boolean_ | `true` |
 | onClose | 关闭时的回调函数 | _Function_ | - |
 | onChange | 切换图片时的回调函数，回调参数为当前索引 | _Function_ | - |
@@ -231,7 +231,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | start-position | 图片预览起始位置索引 | _number \| string_ | `0` |
 | swipe-duration | 动画时长，单位为 ms | _number \| string_ | `300` |
 | show-index | 是否显示页码 | _boolean_ | `true` |
-| show-indicators | 是否显示轮播指示器 | _boolean_ | `false` |
+| indicator-position | 指示器的位置，可选`none` | _string_ | `` |
 | loop | 是否开启循环播放 | _boolean_ | `true` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | _(active: number) => boolean \| Promise\<boolean\>_ | - |
 | close-on-popstate | 是否在页面回退时自动关闭 | _boolean_ | `true` |
