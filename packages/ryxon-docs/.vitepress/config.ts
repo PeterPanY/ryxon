@@ -18,7 +18,7 @@ export const config: UserConfig = {
       indexName: 'index_name'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/PeterPanY/ryxon.git' }
+      { icon: 'github', link: 'https://github.com/PeterPanY/ryxon' }
     ],
     nav,
     sidebar

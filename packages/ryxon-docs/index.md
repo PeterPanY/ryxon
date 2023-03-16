@@ -14,7 +14,7 @@ hero:
       link: zh/component/button
     - theme: alt
       text: View on Githib
-      link: https://github.com/PeterPanY/ryxon.git
+      link: https://github.com/PeterPanY/ryxon
 
 features:
   - icon: ⚡️
