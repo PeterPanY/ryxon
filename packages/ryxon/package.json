@@ -1,5 +1,5 @@
 {
-  "name": "ryxon",
+  "name": "ryxon-ui",
   "version": "1.0.37",
   "description": "Components built on Vue",
   "main": "lib/ryxon.cjs.js",
