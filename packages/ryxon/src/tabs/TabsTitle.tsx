@@ -1,8 +1,10 @@
-import { computed, defineComponent, type CSSProperties } from 'vue';
-import { isDef, truthProp, numericProp, createNamespace } from '../utils';
-import { Badge } from '../badge';
+import { computed, defineComponent, type CSSProperties } from 'vue'
+import { isDef, truthProp, numericProp, createNamespace } from '../utils'
+import { Badge } from '../badge'
+import { Icon } from '../icon'
+import { Close } from '@ryxon/icons'
 
-const [name, bem] = createNamespace('tab');
+const [name, bem, , isBem] = createNamespace('tab')
 
 export default defineComponent({
   name,
@@ -22,43 +24,47 @@ export default defineComponent({
     activeColor: String,
     inactiveColor: String,
     showZeroBadge: truthProp,
+    closable: Boolean,
+    parentClosable: Boolean,
+    parentEditable: Boolean,
+    tabPosition: { type: String, default: 'top' }
   },
-
-  setup(props, { slots }) {
+  emits: ['tabRemove'],
+  setup(props, { slots, emit }) {
     const style = computed(() => {
-      const style: CSSProperties = {};
+      const style: CSSProperties = {}
       const { type, color, disabled, isActive, activeColor, inactiveColor } =
-        props;
+        props
 
-      const isCard = type === 'card';
+      const isCard = type === 'card'
 
       // card theme color
       if (color && isCard) {
-        style.borderColor = color;
+        style.borderColor = color
 
         if (!disabled) {
           if (isActive) {
-            style.backgroundColor = color;
+            style.backgroundColor = color
           } else {
-            style.color = color;
+            style.color = color
           }
         }
       }
 
-      const titleColor = isActive ? activeColor : inactiveColor;
+      const titleColor = isActive ? activeColor : inactiveColor
       if (titleColor) {
-        style.color = titleColor;
+        style.color = titleColor
       }
 
-      return style;
-    });
+      return style
+    })
 
     const renderText = () => {
       const Text = (
         <span class={bem('text', { ellipsis: !props.scrollable })}>
           {slots.title ? slots.title() : props.title}
         </span>
-      );
+      )
 
       if (props.dot || (isDef(props.badge) && props.badge !== '')) {
         return (
@@ -69,11 +75,11 @@ export default defineComponent({
           >
             {Text}
           </Badge>
-        );
+        )
       }
 
-      return Text;
-    };
+      return Text
+    }
 
     return () => (
       <div
@@ -86,9 +92,10 @@ export default defineComponent({
               grow: props.scrollable && !props.shrink,
               shrink: props.shrink,
               active: props.isActive,
-              disabled: props.disabled,
-            },
+              disabled: props.disabled
+            }
           ]),
+          isBem(props.tabPosition)
         ]}
         style={style.value}
         tabindex={props.disabled ? undefined : props.isActive ? 0 : -1}
@@ -97,7 +104,13 @@ export default defineComponent({
         aria-controls={props.controls}
       >
         {renderText()}
+        {!props.disabled &&
+          (props.closable || props.parentClosable || props.parentEditable) && (
+            <Icon class="is-icon-close" onClick={(ev) => emit('tabRemove', ev)}>
+              <Close />
+            </Icon>
+          )}
       </div>
-    );
-  },
-});
+    )
+  }
+})

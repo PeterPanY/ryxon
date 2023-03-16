@@ -7,8 +7,8 @@ import {
   defineComponent,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -16,108 +16,107 @@ import {
   truthProp,
   unknownProp,
   numericProp,
-  createNamespace,
-} from '../utils';
-import { TABS_KEY } from '../tabs/Tabs';
+  createNamespace
+} from '../utils'
+import { TABS_KEY } from '../tabs/Tabs'
 
 // Composables
-import { doubleRaf, useParent } from '@ryxon/use';
-import { useId } from '../composables/use-id';
-import { useExpose } from '../composables/use-expose';
-import { routeProps } from '../composables/use-route';
-import { TAB_STATUS_KEY } from '../composables/use-tab-status';
+import { doubleRaf, useParent } from '@ryxon/use'
+import { useId } from '../composables/use-id'
+import { useExpose } from '../composables/use-expose'
+import { routeProps } from '../composables/use-route'
+import { TAB_STATUS_KEY } from '../composables/use-tab-status'
 
 // Components
-import { SwipeItem } from '../swipe-item';
+import { SwipeItem } from '../swipe-item'
 
-const [name, bem] = createNamespace('tab');
+const [name, bem] = createNamespace('tab')
 
 export const tabProps = extend({}, routeProps, {
-  dot: Boolean,
-  name: numericProp,
-  badge: numericProp,
   title: String,
   disabled: Boolean,
+  dot: Boolean,
+  badge: numericProp,
+  name: numericProp,
   titleClass: unknownProp,
   titleStyle: [String, Object] as PropType<string | CSSProperties>,
-  showZeroBadge: truthProp,
-});
+  closable: Boolean,
+  showZeroBadge: truthProp
+})
 
-export type TabProps = ExtractPropTypes<typeof tabProps>;
+export type TabProps = ExtractPropTypes<typeof tabProps>
 
 export default defineComponent({
   name,
-
   props: tabProps,
-
   setup(props, { slots }) {
-    const id = useId();
-    const inited = ref(false);
-    const { parent, index } = useParent(TABS_KEY);
+    const id = useId()
+    const inited = ref(false)
+    const { parent, index } = useParent(TABS_KEY)
 
     if (!parent) {
       if (process.env.NODE_ENV !== 'production') {
-        console.error('[Ryxon] <Tab> must be a child component of <Tabs>.');
+        console.error('[Ryxon] <Tab> must be a child component of <Tabs>.')
       }
-      return;
+      return
     }
 
-    const getName = () => props.name ?? index.value;
+    const getName = () => props.name ?? index.value
 
     const init = () => {
-      inited.value = true;
+      inited.value = true
 
       if (parent.props.lazyRender) {
         nextTick(() => {
-          parent.onRendered(getName(), props.title);
-        });
+          parent.onRendered(getName(), props.title)
+        })
       }
-    };
+    }
 
     const active = computed(() => {
-      const isActive = getName() === parent.currentName.value;
+      const isActive = getName() === parent.currentName.value
 
       if (isActive && !inited.value) {
-        init();
+        init()
       }
 
-      return isActive;
-    });
+      return isActive
+    })
 
-    const hasInactiveClass = ref(!active.value);
+    const hasInactiveClass = ref(!active.value)
 
     watch(active, (val) => {
       if (val) {
-        hasInactiveClass.value = false;
+        hasInactiveClass.value = false
       } else {
         // mark tab as inactive until the active tab is rendered
         // to avoid incorrect scroll position or other render issue
         // https://github.com/youzan/ryxon/issues/11050
         doubleRaf(() => {
-          hasInactiveClass.value = true;
-        });
+          hasInactiveClass.value = true
+        })
       }
-    });
+    })
 
     watch(
       () => props.title,
       () => {
-        parent.setLine();
-        parent.scrollIntoView();
+        parent.setLine()
+        parent.scrollIntoView()
       }
-    );
+    )
 
-    provide(TAB_STATUS_KEY, active);
+    provide(TAB_STATUS_KEY, active)
 
     return () => {
-      const label = `${parent.id}-${index.value}`;
-      const { animated, swipeable, scrollspy, lazyRender } = parent.props;
+      const label = `${parent.id}-${index.value}`
+      const { animated, swipeable, scrollspy, lazyRender } = parent.props
 
       if (!slots.default && !animated) {
-        return;
+        return
       }
 
-      const show = scrollspy || active.value;
+      const show = scrollspy || active.value
 
       if (animated || swipeable) {
         return (
@@ -131,13 +130,13 @@ export default defineComponent({
           >
             <div class={bem('panel')}>{slots.default?.()}</div>
           </SwipeItem>
-        );
+        )
       }
 
-      const shouldRender = inited.value || scrollspy || !lazyRender;
-      const Content = shouldRender ? slots.default?.() : null;
+      const shouldRender = inited.value || scrollspy || !lazyRender
+      const Content = shouldRender ? slots.default?.() : null
 
-      useExpose({ id });
+      useExpose({ id })
 
       return (
         <div
@@ -150,7 +149,7 @@ export default defineComponent({
         >
           {Content}
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

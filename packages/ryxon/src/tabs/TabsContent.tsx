@@ -1,9 +1,9 @@
-import { ref, watch, onMounted, defineComponent } from 'vue';
-import { numericProp, makeRequiredProp, createNamespace } from '../utils';
-import { Swipe, SwipeInstance } from '../swipe';
-import { useExpose } from '../composables/use-expose';
+import { ref, watch, onMounted, defineComponent } from 'vue'
+import { numericProp, makeRequiredProp, createNamespace } from '../utils'
+import { Swipe, SwipeInstance } from '../swipe'
+import { useExpose } from '../composables/use-expose'
 
-const [name, bem] = createNamespace('tabs');
+const [name, bem] = createNamespace('tabs')
 
 export default defineComponent({
   name,
@@ -15,62 +15,63 @@ export default defineComponent({
     duration: makeRequiredProp(numericProp),
     swipeable: Boolean,
     lazyRender: Boolean,
-    currentIndex: makeRequiredProp(Number),
+    currentIndex: makeRequiredProp(Number)
   },
 
   emits: ['change'],
 
   setup(props, { emit, slots }) {
-    const swipeRef = ref<SwipeInstance>();
+    const swipeRef = ref<SwipeInstance>()
 
-    const onChange = (index: number) => emit('change', index);
+    const onChange = (index: number) => emit('change', index)
 
     const renderChildren = () => {
-      const Content = slots.default?.();
+      const Content = slots.default?.()
 
       if (props.animated || props.swipeable) {
         return (
           <Swipe
             ref={swipeRef}
             loop={false}
+            arrow="never"
             class={bem('track')}
             duration={+props.duration * 1000}
             touchable={props.swipeable}
             lazyRender={props.lazyRender}
-            showIndicators={false}
+            indicator-position="none"
             onChange={onChange}
           >
             {Content}
           </Swipe>
-        );
+        )
       }
 
-      return Content;
-    };
+      return Content
+    }
 
     const swipeToCurrentTab = (index: number) => {
-      const swipe = swipeRef.value;
+      const swipe = swipeRef.value
       if (swipe && swipe.state.active !== index) {
-        swipe.swipeTo(index, { immediate: !props.inited });
+        swipe.swipeTo(index, { immediate: !props.inited })
       }
-    };
+    }
 
-    watch(() => props.currentIndex, swipeToCurrentTab);
+    watch(() => props.currentIndex, swipeToCurrentTab)
 
     onMounted(() => {
-      swipeToCurrentTab(props.currentIndex);
-    });
+      swipeToCurrentTab(props.currentIndex)
+    })
 
-    useExpose({ swipeRef });
+    useExpose({ swipeRef })
 
     return () => (
       <div
         class={bem('content', {
-          animated: props.animated || props.swipeable,
+          animated: props.animated || props.swipeable
         })}
       >
         {renderChildren()}
       </div>
-    );
-  },
-});
+    )
+  }
+})
