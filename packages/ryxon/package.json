@@ -24,7 +24,6 @@
     "test:coverage": "open test/coverage/index.html"
   },
   "publishConfig": {
-    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "repository": {
