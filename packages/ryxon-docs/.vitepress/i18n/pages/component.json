@@ -31,6 +31,7 @@
         { "link": "/badge", "text": "Badge 徽章" },
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/swipe", "text": "Swipe 轮播" },
+        { "link": "/sticky", "text": "Sticky 粘性布局" },
         { "link": "/tag", "text": "Tag 标签" }
       ]
     },
