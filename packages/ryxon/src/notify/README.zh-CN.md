@@ -195,4 +195,4 @@ These dependencies were not found:
 * ryxon/es/show-notify/style in ./src/xxx.js
 ```
 
-Ryxon 从 4.0 版本开始不再支持 `babel-plugin-import` 插件，请参考 [迁移指南](#/zh-CN/migrate-from-v3#yi-chu-babel-plugin-import) 移除该插件。
+Ryxon 从 4.0 版本开始不再支持 `babel-plugin-import` 插件，请参考 [快速开始](/zh/guide/quickstart.html#babel-plugin-import) 移除该插件。

@@ -2,9 +2,12 @@ import {
   h,
   ref,
   watch,
+  markRaw,
   nextTick,
   reactive,
   onMounted,
+  shallowRef,
+  effectScope,
   defineComponent,
   type PropType,
   type CSSProperties,
@@ -29,6 +32,9 @@ import {
   createNamespace,
   HAPTICS_FEEDBACK
 } from '../utils'
+import { useEventListener } from '@vueuse/core'
+import { throttle } from 'lodash-unified'
+import { EVENT_CODE } from '../constants/aria'
 
 // Composables
 import { useRect } from '@ryxon/use'
@@ -36,13 +42,25 @@ import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
-import { Close } from '@ryxon/icons'
+import {
+  Close,
+  FullScreen,
+  RefreshLeft,
+  RefreshRight,
+  ScaleToOriginal,
+  ZoomIn,
+  ZoomOut
+} from '@ryxon/icons'
 import { Swipe, SwipeInstance, SwipeToOptions } from '../swipe'
 import { Popup, PopupCloseIconPosition } from '../popup'
 import ImagePreviewItem from './ImagePreviewItem'
 
 // Types
-import { ImagePreviewScaleEventParams } from './types'
+import {
+  ImageViewerMode,
+  ImageViewerAction,
+  ImagePreviewScaleEventParams
+} from './types'
 
 const [name, bem] = createNamespace('image-preview')
 
@@ -74,7 +92,7 @@ export const imagePreviewProps = {
   indicatorPosition: {
     type: String,
     values: ['', 'none'],
-    default: ''
+    default: 'none'
   },
   showArrow: {
     type: String,
@@ -83,20 +101,35 @@ export const imagePreviewProps = {
   },
   closeOnPopstate: truthProp,
   closeIconPosition: makeStringProp<PopupCloseIconPosition>('top-right'),
-  teleport: [String, Object] as PropType<TeleportProps['to']>
+  teleport: [String, Object] as PropType<TeleportProps['to']>,
+  showTool: { type: Boolean, default: true },
+  zoomRate: { type: Number, default: 0.2 },
+  closeOnPressEscape: { type: Boolean, default: true }
 }
 
 export type ImagePreviewProps = ExtractPropTypes<typeof imagePreviewProps>
 
 export default defineComponent({
   name,
-
   props: imagePreviewProps,
-
   emits: ['scale', 'close', 'closed', 'change', 'longPress', 'update:show'],
-
   setup(props, { emit, slots }) {
     const swipeRef = ref<SwipeInstance>()
+
+    const scopeEventListener = effectScope()
+
+    const modes: Record<'CONTAIN' | 'ORIGINAL', ImageViewerMode> = {
+      CONTAIN: {
+        name: 'contain',
+        icon: markRaw(FullScreen)
+      },
+      ORIGINAL: {
+        name: 'original',
+        icon: markRaw(ScaleToOriginal)
+      }
+    }
+
+    const mode = shallowRef<ImageViewerMode>(modes.CONTAIN)
 
     const state = reactive({
       active: 0,
@@ -114,18 +147,15 @@ export default defineComponent({
       }
     }
 
-    // 放大缩小
-    const emitScale = (args: ImagePreviewScaleEventParams) =>
+    const currentScale = ref(1)
+
+    // 放大缩小方法
+    const emitScale = (args: ImagePreviewScaleEventParams) => {
+      currentScale.value = args.scale
       emit('scale', args)
+    }
 
     const updateShow = (show: boolean) => emit('update:show', show)
-
-    const emitClose = () => {
-      callInterceptor(props.beforeClose, {
-        args: [state.active],
-        done: () => updateShow(false)
-      })
-    }
 
     const setActive = (active: number) => {
       if (active !== state.active) {
@@ -134,6 +164,7 @@ export default defineComponent({
       }
     }
 
+    // 页码内容
     const renderIndex = () => {
       if (props.showIndex) {
         return (
@@ -146,16 +177,129 @@ export default defineComponent({
       }
     }
 
+    // 覆盖在图片预览上方的内容
     const renderCover = () => {
       if (slots.cover) {
         return <div class={bem('cover')}>{slots.cover()}</div>
       }
     }
 
+    const boxRefs: Array<any> = []
+
+    const setBoxRef = (el: any) => {
+      if (el) boxRefs.push(el)
+    }
+
+    const handleActions = (action: ImageViewerAction) => {
+      switch (action) {
+        case 'zoomOut':
+          boxRefs[state.active]?.setScale(currentScale.value - props.zoomRate)
+          break
+        case 'zoomIn':
+          boxRefs[state.active]?.setScale(currentScale.value + props.zoomRate)
+          break
+        case 'clockwise':
+          boxRefs[state.active]?.setDeg('clockwise')
+          break
+        case 'anticlockwise':
+          boxRefs[state.active]?.setDeg('anticlockwise')
+          break
+      }
+    }
+
+    // 图标切换
+    const toggleMode = () => {
+      //  将对象中key 变成数组
+      boxRefs[state.active]?.resetScale()
+    }
+
+    function unregisterEventListener() {
+      scopeEventListener.stop()
+    }
+
+    function hide() {
+      callInterceptor(props.beforeClose, {
+        args: [state.active],
+        done: () => updateShow(false)
+      })
+      unregisterEventListener()
+    }
+
+    function registerEventListener() {
+      const keydownHandler = throttle((e: KeyboardEvent) => {
+        switch (e.code) {
+          // ESC
+          case EVENT_CODE.esc:
+            props.closeOnPressEscape && hide()
+            break
+          // SPACE
+          case EVENT_CODE.space:
+            toggleMode()
+            break
+          // LEFT_ARROW
+          case EVENT_CODE.left:
+            swipeRef.value?.prev()
+            break
+          // UP_ARROW
+          case EVENT_CODE.up:
+            handleActions('zoomIn')
+            break
+          // RIGHT_ARROW
+          case EVENT_CODE.right:
+            swipeRef.value?.next()
+            break
+          // DOWN_ARROW
+          case EVENT_CODE.down:
+            handleActions('zoomOut')
+            break
+        }
+      })
+      const mousewheelHandler = throttle((e: WheelEvent) => {
+        const delta = e.deltaY || e.deltaX
+        handleActions(delta < 0 ? 'zoomIn' : 'zoomOut')
+      })
+
+      scopeEventListener.run(() => {
+        useEventListener(document, 'keydown', keydownHandler)
+        useEventListener(document, 'wheel', mousewheelHandler)
+      })
+    }
+
+    // 操作栏
+    const renderTool = () => {
+      if (props.showTool) {
+        return (
+          <div class={bem('actions')}>
+            {slots.tool ? (
+              slots.tool()
+            ) : (
+              <div class={bem('actions-inner')}>
+                <Icon onClick={() => handleActions('zoomOut')}>
+                  <ZoomOut />
+                </Icon>
+                <Icon onClick={() => handleActions('zoomIn')}>
+                  <ZoomIn />
+                </Icon>
+                <Icon onClick={toggleMode}>{h(mode.value.icon)}</Icon>
+                <Icon onClick={() => handleActions('anticlockwise')}>
+                  <RefreshLeft />
+                </Icon>
+                <Icon onClick={() => handleActions('clockwise')}>
+                  <RefreshRight />
+                </Icon>
+              </div>
+            )}
+          </div>
+        )
+      }
+    }
+
+    // 开始拖动轮播组件时触发
     const onDragStart = () => {
       state.disableZoom = true
     }
 
+    // 结束拖动轮播组件时触发
     const onDragEnd = () => {
       state.disableZoom = false
     }
@@ -177,6 +321,7 @@ export default defineComponent({
       >
         {props.images.map((image, index) => (
           <ImagePreviewItem
+            ref={setBoxRef}
             v-slots={{
               image: slots.image
             }}
@@ -189,7 +334,7 @@ export default defineComponent({
             rootHeight={state.rootHeight}
             disableZoom={state.disableZoom}
             onScale={emitScale}
-            onClose={emitClose}
+            onClose={hide}
             onLongPress={() => emit('longPress', { index })}
           />
         ))}
@@ -206,7 +351,7 @@ export default defineComponent({
               bem('close-icon', props.closeIconPosition),
               HAPTICS_FEEDBACK
             ]}
-            onClick={emitClose}
+            onClick={hide}
           >
             {props.closeIcon ? (
               !isString(props.closeIcon) && h(props.closeIcon)
@@ -218,6 +363,7 @@ export default defineComponent({
       }
     }
 
+    // 关闭且动画结束后触发
     const onClosed = () => emit('closed')
 
     const swipeTo = (index: number, options?: SwipeToOptions) =>
@@ -225,7 +371,11 @@ export default defineComponent({
 
     useExpose({ swipeTo })
 
-    onMounted(resize)
+    onMounted(() => {
+      registerEventListener()
+
+      resize()
+    })
 
     watch([windowWidth, windowHeight], resize)
 
@@ -265,6 +415,7 @@ export default defineComponent({
         {renderImages()}
         {renderIndex()}
         {renderCover()}
+        {renderTool()}
       </Popup>
     )
   }

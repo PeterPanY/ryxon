@@ -21,6 +21,7 @@ import {
 // Composables
 import { useTouch } from '../composables/use-touch'
 import { useEventListener } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Image } from '../image'
@@ -50,6 +51,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const state = reactive({
       scale: 1,
+      deg: 0,
       moveX: 0,
       moveY: 0,
       moving: false,
@@ -68,17 +70,33 @@ export default defineComponent({
       return state.imageRatio > rootRatio
     })
 
+    // 图片渲染样式
     const imageStyle = computed(() => {
-      const { scale, moveX, moveY, moving, zooming } = state
+      const { scale, deg, moveX, moveY, moving, zooming } = state
+
+      let offsetX = moveX / scale
+      let offsetY = moveY / scale
+
       const style: CSSProperties = {
         transitionDuration: zooming || moving ? '0s' : '.3s'
       }
 
-      if (scale !== 1) {
-        const offsetX = moveX / scale
-        const offsetY = moveY / scale
-        style.transform = `scale(${scale}, ${scale}) translate(${offsetX}px, ${offsetY}px)`
+      switch (deg % 360) {
+        case 90:
+        case -270:
+          ;[offsetX, offsetY] = [offsetY, -offsetX]
+          break
+        case 180:
+        case -180:
+          ;[offsetX, offsetY] = [-offsetX, -offsetY]
+          break
+        case 270:
+        case -90:
+          ;[offsetX, offsetY] = [-offsetY, offsetX]
+          break
       }
+
+      style.transform = `scale(${scale}, ${scale})  rotate(${deg}deg) translate(${offsetX}px, ${offsetY}px)`
 
       return style
     })
@@ -109,7 +127,9 @@ export default defineComponent({
       return 0
     })
 
+    // 设置缩放大小
     const setScale = (scale: number) => {
+      // 不超过最大最小的值
       scale = clamp(scale, +props.minZoom, +props.maxZoom + 1)
 
       if (scale !== state.scale) {
@@ -121,8 +141,20 @@ export default defineComponent({
       }
     }
 
+    const setDeg = (type: string) => {
+      if (type === 'clockwise') {
+        state.deg += 90
+      }
+
+      if (type === 'anticlockwise') {
+        state.deg -= 90
+      }
+    }
+
+    //  重置图片
     const resetScale = () => {
       setScale(1)
+      state.deg = 0
       state.moveX = 0
       state.moveY = 0
     }
@@ -306,6 +338,8 @@ export default defineComponent({
     useEventListener('touchmove', onTouchMove, {
       target: computed(() => swipeItem.value?.$el)
     })
+
+    useExpose({ setScale, setDeg, resetScale })
 
     return () => {
       const imageSlots = {

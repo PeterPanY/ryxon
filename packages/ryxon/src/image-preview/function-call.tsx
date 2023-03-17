@@ -24,9 +24,13 @@ const defaultConfig: ImagePreviewOptions = {
   overlayClass: undefined,
   startPosition: 0,
   swipeDuration: 300,
-  indicatorPosition: '',
+  indicatorPosition: 'none',
+  showArrow: 'always',
   closeOnPopstate: true,
-  closeIconPosition: 'top-right'
+  closeIconPosition: 'top-right',
+  showTool: true,
+  zoomRate: 0.2,
+  closeOnPressEscape: true
 }
 
 function initInstance() {

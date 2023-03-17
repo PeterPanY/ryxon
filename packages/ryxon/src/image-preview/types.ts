@@ -1,4 +1,9 @@
-import type { CSSProperties, TeleportProps, ComponentPublicInstance } from 'vue'
+import type {
+  Component,
+  CSSProperties,
+  TeleportProps,
+  ComponentPublicInstance
+} from 'vue'
 import type { Interceptor } from '../utils'
 import type { SwipeToOptions } from '../swipe'
 import type { PopupCloseIconPosition } from '../popup'
@@ -21,8 +26,12 @@ export type ImagePreviewOptions = {
   swipeDuration?: number
   startPosition?: number
   indicatorPosition?: string
+  showArrow?: string
   closeOnPopstate?: boolean
   closeIconPosition?: PopupCloseIconPosition
+  showTool?: boolean
+  zoomRate?: number
+  closeOnPressEscape?: boolean
   onClose?(): void
   onScale?(args: { scale: number; index: number }): void
   onChange?(index: number): void
@@ -31,6 +40,17 @@ export type ImagePreviewOptions = {
 export type ImagePreviewScaleEventParams = {
   scale: number
   index: number
+}
+
+export type ImageViewerAction =
+  | 'zoomIn'
+  | 'zoomOut'
+  | 'clockwise'
+  | 'anticlockwise'
+
+export type ImageViewerMode = {
+  name: string
+  icon: Component
 }
 
 export type ImagePreviewExpose = {
