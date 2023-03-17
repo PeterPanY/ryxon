@@ -4,6 +4,7 @@
       "text": "Basic 基础组件",
       "children": [
         { "link": "/button", "text": "Button 按钮" },
+        { "link": "/cell", "text": "Cell 单元格" },
         { "link": "/config-provider", "text": "Config Provider 全局配置" },
         { "link": "/icon", "text": "Icon 图标" },
         { "link": "/scrollbar", "text": "Scrollbar 滚动条" }

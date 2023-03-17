@@ -1,4 +1,5 @@
 import {
+  h,
   defineComponent,
   type PropType,
   type CSSProperties,
@@ -9,9 +10,11 @@ import {
 import {
   isDef,
   extend,
+  isString,
   truthProp,
   unknownProp,
   numericProp,
+  iconPropType,
   makeStringProp,
   createNamespace
 } from '../utils'
@@ -21,6 +24,7 @@ import { useRoute, routeProps } from '../composables/use-route'
 
 // Components
 import { Icon } from '../icon'
+import { ArrowLeft, ArrowUp, ArrowRight, ArrowDown } from '@ryxon/icons'
 
 const [name, bem] = createNamespace('cell')
 
@@ -30,7 +34,7 @@ export type CellArrowDirection = 'up' | 'down' | 'left' | 'right'
 
 export const cellSharedProps = {
   tag: makeStringProp<keyof HTMLElementTagNameMap>('div'),
-  icon: String,
+  icon: iconPropType,
   size: String as PropType<CellSize>,
   title: numericProp,
   value: numericProp,
@@ -119,10 +123,12 @@ export default defineComponent({
       if (props.icon) {
         return (
           <Icon
-            name={props.icon}
+            name={isString(props.icon) ? props.icon : ''}
             class={bem('left-icon')}
             classPrefix={props.iconPrefix}
-          />
+          >
+            {!isString(props.icon) && h(props.icon)}
+          </Icon>
         )
       }
     }
@@ -133,11 +139,19 @@ export default defineComponent({
       }
 
       if (props.isLink) {
-        const name =
-          props.arrowDirection && props.arrowDirection !== 'right'
-            ? `arrow-${props.arrowDirection}`
-            : 'arrow'
-        return <Icon name={name} class={bem('right-icon')} />
+        const linkComp = {
+          left: ArrowLeft,
+          up: ArrowUp,
+          right: ArrowRight,
+          down: ArrowDown
+        }
+
+        const comp = props.arrowDirection || 'right'
+        return (
+          <Icon name={name} class={bem('right-icon')}>
+            {comp && h(linkComp[comp])}
+          </Icon>
+        )
       }
     }
 
