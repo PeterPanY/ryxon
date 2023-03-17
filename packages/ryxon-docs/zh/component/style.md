@@ -1,10 +1,13 @@
-# 内置样式
+---
+title: Style
+lang: zh
+---
 
-### 介绍
+# Style 内置样式
 
 Ryxon 中默认包含了一些常用样式，可以直接通过 className 的方式使用。
 
-### 文字省略
+## 文字省略
 
 当文本内容长度超过容器最大宽度时，自动省略多余的文本。
 
@@ -23,7 +26,7 @@ Ryxon 中默认包含了一些常用样式，可以直接通过 className 的方
 </div>
 ```
 
-### 1px 边框
+## 1px 边框
 
 为元素添加 Retina 屏幕下的 1px 边框（即 hairline），基于伪类 transform 实现。
 
@@ -47,7 +50,23 @@ Ryxon 中默认包含了一些常用样式，可以直接通过 className 的方
 <div class="r-hairline--surround"></div>
 ```
 
-### 安全区
+## 动画
+
+:::demo 可以通过 `transition` 组件使用内置的动画类。
+
+style/transition
+
+:::
+
+## 清除浮动
+
+清除元素在 float 布局下的浮动，
+
+```html
+<div class="r-clearfix"></div>
+```
+
+## 安全区
 
 为元素添加安全区适配。
 
@@ -59,51 +78,10 @@ Ryxon 中默认包含了一些常用样式，可以直接通过 className 的方
 <div class="r-safe-area-bottom"></div>
 ```
 
-### 动画
+## 触碰反馈
 
-可以通过 `transition` 组件使用内置的动画类。
-
-```html
-<!-- 淡入 -->
-<transition name="r-fade">
-  <div v-show="visible">Fade</div>
-</transition>
-
-<!-- 上滑进入 -->
-<transition name="r-slide-up">
-  <div v-show="visible">Slide Up</div>
-</transition>
-
-<!-- 下滑进入 -->
-<transition name="r-slide-down">
-  <div v-show="visible">Slide Down</div>
-</transition>
-
-<!-- 左滑进入 -->
-<transition name="r-slide-left">
-  <div v-show="visible">Slide Left</div>
-</transition>
-
-<!-- 右滑进入 -->
-<transition name="r-slide-right">
-  <div v-show="visible">Slide Right</div>
-</transition>
-```
-
-### 触碰反馈
-
-为元素添加触碰反馈效果，触碰后，元素的透明度会降低。
-
-通常用于按钮等可点击的元素上。
+为元素添加触碰反馈效果，触碰后，元素的透明度会降低。通常用于按钮等可点击的元素上。
 
 ```html
 <div class="r-haptics-feedback"></div>
-```
-
-### 清除浮动
-
-清除元素在 float 布局下的浮动，
-
-```html
-<div class="r-clearfix"></div>
 ```
