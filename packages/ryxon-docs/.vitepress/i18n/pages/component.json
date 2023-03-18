@@ -9,7 +9,8 @@
         { "link": "/icon", "text": "Icon 图标" },
         { "link": "/layout", "text": "Layout 布局" },
         { "link": "/scrollbar", "text": "Scrollbar 滚动条" },
-        { "link": "/style", "text": "Style 内置样式" }
+        { "link": "/style", "text": "Style 内置样式" },
+        { "link": "/space", "text": "Space 间距" }
       ]
     },
     "form": {

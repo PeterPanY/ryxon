@@ -1,15 +1,19 @@
 import {
-  computed,
+  Text,
   Comment,
-  CSSProperties,
-  defineComponent,
-  ExtractPropTypes,
+  isVNode,
   Fragment,
   PropType,
-  Text,
-  type VNode
+  computed,
+  CSSProperties,
+  createTextVNode,
+  defineComponent,
+  ExtractPropTypes,
+  type VNode,
+  type VNodeChild
 } from 'vue'
-import { createNamespace } from '../utils'
+import { extend, isString, createNamespace, definePropType } from '../utils'
+import { isNumber } from '@vueuse/core'
 
 const [name, bem] = createNamespace('space')
 
@@ -29,7 +33,13 @@ export const spaceProps = {
     default: 8
   },
   wrap: Boolean,
-  fill: Boolean
+  fill: Boolean,
+  fillRatio: { type: Number, default: 100 },
+  spacer: {
+    type: definePropType<VNodeChild>([Object, String, Number, Array]),
+    default: null,
+    validator: (val: unknown) => isVNode(val) || isNumber(val) || isString(val)
+  }
 }
 
 export type SpaceProps = ExtractPropTypes<typeof spaceProps>
@@ -80,8 +90,12 @@ export default defineComponent({
         Array.isArray(props.size) ? props.size[1] : props.size
       )}`
 
+      const fillStyle: CSSProperties = props.fill
+        ? { flexGrow: 1, minWidth: `${props.fillRatio}%` }
+        : {}
+
       if (isLast) {
-        return props.wrap ? { marginBottom } : {}
+        return props.wrap ? extend({}, { marginBottom }, fillStyle) : {}
       }
 
       if (props.direction === 'horizontal') {
@@ -91,7 +105,7 @@ export default defineComponent({
         style.marginBottom = marginBottom
       }
 
-      return style
+      return extend({}, style, fillStyle)
     }
 
     return () => {
@@ -108,13 +122,23 @@ export default defineComponent({
           ]}
         >
           {children.map((c, i) => (
-            <div
-              key={`item-${i}`}
-              class={`${name}-item`}
-              style={getMarginStyle(i === children.length - 1)}
-            >
-              {c}
-            </div>
+            <>
+              <div
+                key={`item-${i}`}
+                class={`${name}-item`}
+                style={getMarginStyle(i === children.length - 1)}
+              >
+                {c}
+              </div>
+
+              {props.spacer && i !== children.length - 1 && (
+                <span key={i} style={getMarginStyle(false)}>
+                  {isVNode(props.spacer)
+                    ? props.spacer
+                    : createTextVNode(props.spacer as string, 1)}
+                </span>
+              )}
+            </>
           ))}
         </div>
       )
