@@ -109,6 +109,13 @@ export default {
   rSubmitBar: {
     label: '合计:'
   },
+  rTable: {
+    emptyText: '暂无数据',
+    confirmFilter: '筛选',
+    resetFilter: '重置',
+    clearFilter: '全部',
+    sumText: '合计'
+  },
   rCoupon: {
     unlimited: '无门槛',
     discount: (discount: number) => `${discount}折`,

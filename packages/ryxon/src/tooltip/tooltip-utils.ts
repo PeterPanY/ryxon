@@ -1,9 +1,8 @@
 import { createModelToggleComposable } from '../composables/use-model-toggle'
 import { unref } from 'vue'
+import { Arrayable } from '../utils'
 import type { Ref } from 'vue'
 import type { TooltipTrigger } from './types'
-
-export type Arrayable<T> = T | T[]
 
 export const {
   useModelToggleProps: useTooltipModelToggleProps,

@@ -110,6 +110,13 @@ export default {
   rSubmitBar: {
     label: 'Total:'
   },
+  table: {
+    emptyText: 'No Data',
+    confirmFilter: 'Confirm',
+    resetFilter: 'Reset',
+    clearFilter: 'All',
+    sumText: 'Sum'
+  },
   rCoupon: {
     unlimited: 'Unlimited',
     discount: (discount: number) => `${discount * 10}% off`,

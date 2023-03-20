@@ -36,6 +36,7 @@
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/swipe", "text": "Swipe 轮播" },
         { "link": "/sticky", "text": "Sticky 粘性布局" },
+        { "link": "/table", "text": "Table 表格" },
         { "link": "/tag", "text": "Tag 标签" }
       ]
     },
