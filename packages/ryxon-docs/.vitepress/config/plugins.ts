@@ -4,6 +4,7 @@ import type Token from 'markdown-it/lib/token'
 import type Renderer from 'markdown-it/lib/renderer'
 import path from 'path'
 import fs from 'fs'
+import tableWrapper from '../plugins/table-wrapper'
 import tooltip from '../plugins/tooltip'
 import { highlight } from '../utils/highlight'
 
@@ -22,6 +23,7 @@ interface ContainerOpts {
 }
 
 export const mdPlugin = (md: MarkdownIt) => {
+  md.use(tableWrapper)
   md.use(tooltip)
   md.use(mdContainer, 'div', {
     validate(params) {

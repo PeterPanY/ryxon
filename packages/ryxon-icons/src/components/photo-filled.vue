@@ -10,6 +10,6 @@
 import type { DefineComponent } from 'vue'
 
 export default {
-  name: 'PhotoFilled',
+  name: 'PhotoFilled'
 } as DefineComponent
 </script>
