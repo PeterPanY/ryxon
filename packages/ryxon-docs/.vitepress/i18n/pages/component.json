@@ -53,6 +53,7 @@
       "children": [
         { "link": "/loading", "text": "Loading 加载" },
         { "link": "/popover", "text": "Popover 气泡弹出框" },
+        { "link": "/popup", "text": "Popup 弹出层" },
         { "link": "/toast", "text": "Toast 消息提示" },
         { "link": "/tooltip", "text": "Tooltip 文字提示" }
       ]
