@@ -9,12 +9,12 @@ Used for indexed sorting display and quick positioning of lists.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { IndexBar } from 'ryxon';
+import { createApp } from 'vue'
+import { IndexBar } from 'ryxon'
 
-const app = createApp();
-app.use(IndexBar);
-app.use(IndexAnchor);
+const app = createApp()
+app.use(IndexBar)
+app.use(IndexAnchor)
 ```
 
 ## Usage
@@ -59,10 +59,10 @@ app.use(IndexAnchor);
 export default {
   setup() {
     return {
-      indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    };
-  },
-};
+      indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  }
+}
 ```
 
 ## API
@@ -76,7 +76,7 @@ export default {
 | sticky | Whether to enable anchor sticky top | _boolean_ | `true` |
 | sticky-offset-top | Anchor offset top when sticky | _number_ | `0` |
 | highlight-color | Index character highlight color | _string_ | `#1989fa` |
-| teleport `v3.0.19` | Specifies a target element where IndexBar will be mounted | _string \| Element_ | - |
+| teleport | Specifies a target element where IndexBar will be mounted | _string \| Element_ | - |
 
 ### IndexAnchor Props
 
@@ -104,18 +104,18 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get IndexB
 The component exports the following type definitions:
 
 ```ts
-import type { IndexBarProps, IndexAnchorProps, IndexBarInstance } from 'ryxon';
+import type { IndexBarProps, IndexAnchorProps, IndexBarInstance } from 'ryxon'
 ```
 
 `IndexBarInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { IndexBarInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { IndexBarInstance } from 'ryxon'
 
-const indexBarRef = ref<IndexBarInstance>();
+const indexBarRef = ref<IndexBarInstance>()
 
-indexBarRef.value?.scrollTo('B');
+indexBarRef.value?.scrollTo('B')
 ```
 
 ### IndexAnchor Slots
@@ -130,18 +130,18 @@ indexBarRef.value?.scrollTo('B');
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-index-bar-sidebar-z-index | _2_ | - |
-| --r-index-bar-index-font-size | _var(--r-font-size-xs)_ | - |
-| --r-index-bar-index-line-height | _var(--r-line-height-xs)_ | - |
-| --r-index-bar-index-active-color | _var(--r-primary-color)_ | - |
-| --r-index-anchor-z-index | _1_ | - |
-| --r-index-anchor-padding | _0 var(--r-padding-md)_ | - |
-| --r-index-anchor-text-color | _var(--r-text-color)_ | - |
-| --r-index-anchor-font-weight | _var(--r-font-bold)_ | - |
-| --r-index-anchor-font-size | _var(--r-font-size-md)_ | - |
-| --r-index-anchor-line-height | _32px_ | - |
-| --r-index-anchor-background | _transparent_ | - |
-| --r-index-anchor-sticky-text-color | _var(--r-primary-color)_ | - |
-| --r-index-anchor-sticky-background | _var(--r-background-2)_ | - |
+| Name                               | Default Value             | Description |
+| ---------------------------------- | ------------------------- | ----------- |
+| --r-index-bar-sidebar-z-index      | _2_                       | -           |
+| --r-index-bar-index-font-size      | _var(--r-font-size-xs)_   | -           |
+| --r-index-bar-index-line-height    | _var(--r-line-height-xs)_ | -           |
+| --r-index-bar-index-active-color   | _var(--r-primary-color)_  | -           |
+| --r-index-anchor-z-index           | _1_                       | -           |
+| --r-index-anchor-padding           | _0 var(--r-padding-md)_   | -           |
+| --r-index-anchor-text-color        | _var(--r-text-color)_     | -           |
+| --r-index-anchor-font-weight       | _var(--r-font-bold)_      | -           |
+| --r-index-anchor-font-size         | _var(--r-font-size-md)_   | -           |
+| --r-index-anchor-line-height       | _32px_                    | -           |
+| --r-index-anchor-background        | _transparent_             | -           |
+| --r-index-anchor-sticky-text-color | _var(--r-primary-color)_  | -           |
+| --r-index-anchor-sticky-background | _var(--r-background-2)_   | -           |

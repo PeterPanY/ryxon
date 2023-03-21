@@ -9,11 +9,11 @@ Used to display the order amount and submit the order.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { SubmitBar } from 'ryxon';
+import { createApp } from 'vue'
+import { SubmitBar } from 'ryxon'
 
-const app = createApp();
-app.use(SubmitBar);
+const app = createApp()
+app.use(SubmitBar)
 ```
 
 ## Usage
@@ -25,16 +25,16 @@ app.use(SubmitBar);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('Submit');
+    const onSubmit = () => showToast('Submit')
     return {
-      onSubmit,
-    };
-  },
-};
+      onSubmit
+    }
+  }
+}
 ```
 
 ### Disabled
@@ -72,18 +72,18 @@ Use slot to add custom contents.
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('Submit');
-    const onClickLink = () => showToast('Click Link');
+    const onSubmit = () => showToast('Submit')
+    const onClickLink = () => showToast('Click Link')
     return {
       onSubmit,
-      onClickLink,
-    };
-  },
-};
+      onClickLink
+    }
+  }
+}
 ```
 
 ## API
@@ -106,7 +106,7 @@ export default {
 | disabled | Whether to disable button | _boolean_ | `false` |
 | loading | Whether to show loading icon | _boolean_ | `false` |
 | safe-area-inset-bottom | Whether to enable bottom safe area adaptation | _boolean_ | `true` |
-| placeholder `v3.5.1` | Whether to generate a placeholder element | _boolean_ | `false` |
+| placeholder | Whether to generate a placeholder element | _boolean_ | `false` |
 
 ### Events
 
@@ -128,7 +128,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { SubmitBarProps, SubmitBarTextAlign } from 'ryxon';
+import type { SubmitBarProps, SubmitBarTextAlign } from 'ryxon'
 ```
 
 ## Theming

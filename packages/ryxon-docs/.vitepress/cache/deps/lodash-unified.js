@@ -1599,11 +1599,11 @@ function arrayLikeKeys(value, inherited) {
     if (
       (inherited || hasOwnProperty7.call(value, key)) &&
       !(
-        skipIndexes &&
-        (key == 'length' ||
-          (isBuff && (key == 'offset' || key == 'parent')) ||
+        skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+        (key == 'length' || // Node.js 0.10 has enumerable non-index properties on buffers.
+          (isBuff && (key == 'offset' || key == 'parent')) || // PhantomJS 2 has enumerable non-index properties on typed arrays.
           (isType &&
-            (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+            (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) || // Skip index properties.
           isIndex_default(key, length))
       )
     ) {
@@ -2451,6 +2451,7 @@ var basePropertyOf_default = basePropertyOf
 
 // ../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_deburrLetter.js
 var deburredLetters = {
+  // Latin-1 Supplement block.
   À: 'A',
   Á: 'A',
   Â: 'A',
@@ -2513,6 +2514,7 @@ var deburredLetters = {
   Þ: 'Th',
   þ: 'th',
   ß: 'ss',
+  // Latin Extended-A block.
   Ā: 'A',
   Ă: 'A',
   Ą: 'A',
@@ -7792,11 +7794,47 @@ var reEvaluate_default = reEvaluate
 
 // ../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/templateSettings.js
 var templateSettings = {
+  /**
+   * Used to detect `data` property values to be HTML-escaped.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   escape: reEscape_default,
+  /**
+   * Used to detect code to be evaluated.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   evaluate: reEvaluate_default,
+  /**
+   * Used to detect `data` property values to inject.
+   *
+   * @memberOf _.templateSettings
+   * @type {RegExp}
+   */
   interpolate: reInterpolate_default,
+  /**
+   * Used to reference the data object in the template text.
+   *
+   * @memberOf _.templateSettings
+   * @type {string}
+   */
   variable: '',
+  /**
+   * Used to import variables into the compiled template.
+   *
+   * @memberOf _.templateSettings
+   * @type {Object}
+   */
   imports: {
+    /**
+     * A reference to the `lodash` function.
+     *
+     * @memberOf _.templateSettings.imports
+     * @type {Function}
+     */
     _: { escape: escape_default }
   }
 }

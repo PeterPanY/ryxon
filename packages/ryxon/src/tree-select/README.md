@@ -9,11 +9,11 @@ Used to select from a set of related data sets.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { TreeSelect } from 'ryxon';
+import { createApp } from 'vue'
+import { TreeSelect } from 'ryxon'
 
-const app = createApp();
-app.use(TreeSelect);
+const app = createApp()
+app.use(TreeSelect)
 ```
 
 ## Usage
@@ -29,39 +29,39 @@ app.use(TreeSelect);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeId = ref(1);
-    const activeIndex = ref(0);
+    const activeId = ref(1)
+    const activeIndex = ref(0)
     const items = [
       {
         text: 'Group 1',
         children: [
           { text: 'Delaware', id: 1 },
           { text: 'Florida', id: 2 },
-          { text: 'Georqia', id: 3, disabled: true },
-        ],
+          { text: 'Georqia', id: 3, disabled: true }
+        ]
       },
       {
         text: 'Group 2',
         children: [
           { text: 'Alabama', id: 4 },
           { text: 'Kansas', id: 5 },
-          { text: 'Louisiana', id: 6 },
-        ],
+          { text: 'Louisiana', id: 6 }
+        ]
       },
-      { text: 'Group 3', disabled: true },
-    ];
+      { text: 'Group 3', disabled: true }
+    ]
 
     return {
       items,
       activeId,
-      activeIndex,
-    };
-  },
-};
+      activeIndex
+    }
+  }
+}
 ```
 
 ### Multiple Mode
@@ -75,39 +75,39 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeId = ref([1, 2]);
-    const activeIndex = ref(0);
+    const activeId = ref([1, 2])
+    const activeIndex = ref(0)
     const items = [
       {
         text: 'Group 1',
         children: [
           { text: 'Delaware', id: 1 },
           { text: 'Florida', id: 2 },
-          { text: 'Georqia', id: 3, disabled: true },
-        ],
+          { text: 'Georqia', id: 3, disabled: true }
+        ]
       },
       {
         text: 'Group 2',
         children: [
           { text: 'Alabama', id: 4 },
           { text: 'Kansas', id: 5 },
-          { text: 'Louisiana', id: 6 },
-        ],
+          { text: 'Louisiana', id: 6 }
+        ]
       },
-      { text: 'Group 3', disabled: true },
-    ];
+      { text: 'Group 3', disabled: true }
+    ]
 
     return {
       items,
       activeId,
-      activeIndex,
-    };
-  },
-};
+      activeIndex
+    }
+  }
+}
 ```
 
 ### Custom Content
@@ -132,17 +132,17 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeIndex = ref(0);
+    const activeIndex = ref(0)
     return {
       activeIndex,
-      items: [{ text: 'Group 1' }, { text: 'Group 2' }],
-    };
-  },
-};
+      items: [{ text: 'Group 1' }, { text: 'Group 2' }]
+    }
+  }
+}
 ```
 
 ### Show Badge
@@ -156,11 +156,11 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeIndex = ref(0);
+    const activeIndex = ref(0)
     return {
       activeIndex,
       items: [
@@ -169,23 +169,23 @@ export default {
           children: [
             { text: 'Delaware', id: 1 },
             { text: 'Florida', id: 2 },
-            { text: 'Georqia', id: 3, disabled: true },
+            { text: 'Georqia', id: 3, disabled: true }
           ],
-          dot: true,
+          dot: true
         },
         {
           text: 'Group 2',
           children: [
             { text: 'Alabama', id: 4 },
             { text: 'Kansas', id: 5 },
-            { text: 'Louisiana', id: 6 },
+            { text: 'Louisiana', id: 6 }
           ],
-          badge: 5,
-        },
-      ],
-    };
-  },
-};
+          badge: 5
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## API
@@ -210,9 +210,10 @@ export default {
 
 ### Slots
 
-| Name    | Description          |
-| ------- | -------------------- |
-| content | Custom right content |
+| Name     | Description                    | SlotProps               |
+| -------- | ------------------------------ | ----------------------- |
+| nav-text | Custom name of the parent node | _item: TreeSelectChild_ |
+| content  | Custom right content           | -                       |
 
 ### Data Structure of TreeSelectItem
 
@@ -221,7 +222,7 @@ export default {
 In every tree object, `text` property defines `id` stands for the unique key while the `children` contains sub-tree objects.
 
 ```js
-[
+;[
   {
     // name of the parent node
     text: 'Group 1',
@@ -239,15 +240,15 @@ In every tree object, `text` property defines `id` stands for the unique key whi
         // id of the leaf node, component highlights leaf node by comparing the activeId with this.
         id: 1,
         // disable options
-        disabled: true,
+        disabled: true
       },
       {
         text: 'Baltimore',
-        id: 2,
-      },
-    ],
-  },
-];
+        id: 2
+      }
+    ]
+  }
+]
 ```
 
 ### Types
@@ -255,7 +256,7 @@ In every tree object, `text` property defines `id` stands for the unique key whi
 The component exports the following type definitions:
 
 ```ts
-import type { TreeSelectItem, TreeSelectChild, TreeSelectProps } from 'ryxon';
+import type { TreeSelectItem, TreeSelectChild, TreeSelectProps } from 'ryxon'
 ```
 
 ## Theming

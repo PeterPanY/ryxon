@@ -77,8 +77,8 @@ export default defineComponent({
       const value = isArray(modelValue) ? modelValue.slice() : []
 
       return (
-        (!isUndefined(max) && value.length >= max && !props.checked) ||
-        (!isUndefined(min) && value.length <= min && props.checked)
+        (!isUndefined(max) && value.length >= +max && !props.checked) ||
+        (!isUndefined(min) && value.length <= +min && props.checked)
       )
     })
 

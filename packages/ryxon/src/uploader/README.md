@@ -9,11 +9,11 @@ Used to upload a local image or file to the server and display a preview image a
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Uploader } from 'ryxon';
+import { createApp } from 'vue'
+import { Uploader } from 'ryxon'
 
-const app = createApp();
-app.use(Uploader);
+const app = createApp()
+app.use(Uploader)
 ```
 
 ## Usage
@@ -28,14 +28,14 @@ app.use(Uploader);
 export default {
   setup() {
     const afterRead = (file) => {
-      console.log(file);
-    };
+      console.log(file)
+    }
 
     return {
-      afterRead,
-    };
-  },
-};
+      afterRead
+    }
+  }
+}
 ```
 
 ### Preview File
@@ -45,20 +45,20 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
     const fileList = ref([
       { url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg' },
-      { url: 'https://cloud-image', isImage: true },
-    ]);
+      { url: 'https://cloud-image', isImage: true }
+    ])
 
     return {
-      fileList,
-    };
-  },
-};
+      fileList
+    }
+  }
+}
 ```
 
 ### Upload Status
@@ -68,7 +68,7 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -76,31 +76,31 @@ export default {
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg',
         status: 'uploading',
-        message: 'Uploading...',
+        message: 'Uploading...'
       },
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg',
         status: 'failed',
-        message: 'Failed',
-      },
-    ]);
+        message: 'Failed'
+      }
+    ])
 
     const afterRead = (file) => {
-      file.status = 'uploading';
-      file.message = 'Uploading...';
+      file.status = 'uploading'
+      file.message = 'Uploading...'
 
       setTimeout(() => {
-        file.status = 'failed';
-        file.message = 'Failed';
-      }, 1000);
-    };
+        file.status = 'failed'
+        file.message = 'Failed'
+      }, 1000)
+    }
 
     return {
       fileList,
-      afterRead,
-    };
-  },
-};
+      afterRead
+    }
+  }
+}
 ```
 
 ### Max Count
@@ -110,17 +110,17 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const fileList = ref([]);
+    const fileList = ref([])
 
     return {
-      fileList,
-    };
-  },
-};
+      fileList
+    }
+  }
+}
 ```
 
 ### Max Size
@@ -130,20 +130,20 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     const onOversize = (file) => {
-      console.log(file);
-      showToast('File size cannot exceed 500kb');
-    };
+      console.log(file)
+      showToast('File size cannot exceed 500kb')
+    }
 
     return {
-      onOversize,
-    };
-  },
-};
+      onOversize
+    }
+  }
+}
 ```
 
 If you need to make different size limits for different types of files, you can pass a function to the `max-size` props.
@@ -156,14 +156,14 @@ If you need to make different size limits for different types of files, you can 
 export default {
   setup() {
     const isOverSize = (file) => {
-      const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1000 * 1024;
-      return file.size >= maxSize;
-    };
+      const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1000 * 1024
+      return file.size >= maxSize
+    }
     return {
-      isOverSize,
-    };
-  },
-};
+      isOverSize
+    }
+  }
+}
 ```
 
 ### Custom Upload Area
@@ -222,39 +222,39 @@ You can set the width and height separately.
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
     // 返回布尔值
     const beforeRead = (file) => {
       if (file.type !== 'image/jpeg') {
-        showToast('Please upload an image in jpg format');
-        return false;
+        showToast('Please upload an image in jpg format')
+        return false
       }
-      return true;
-    };
+      return true
+    }
 
     // 返回 Promise
     const asyncBeforeRead = (file) =>
       new Promise((resolve, reject) => {
         if (file.type !== 'image/jpeg') {
-          showToast('Please upload an image in jpg format');
-          reject();
+          showToast('Please upload an image in jpg format')
+          reject()
         } else {
           const img = new File(['foo'], 'bar.jpg', {
-            type: 'image/jpeg',
-          });
-          resolve(img);
+            type: 'image/jpeg'
+          })
+          resolve(img)
         }
-      });
+      })
 
     return {
       beforeRead,
-      asyncBeforeRead,
-    };
-  },
-};
+      asyncBeforeRead
+    }
+  }
+}
 ```
 
 ### Disable Uploader
@@ -272,8 +272,8 @@ Use `disabled` prop to disable uploader.
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
@@ -282,20 +282,18 @@ export default {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/sand.jpeg',
         deletable: true,
         beforeDelete: () => {
-          showToast(
-            'Customize the events and styles of a single preview image'
-          );
-        },
+          showToast('Customize the events and styles of a single preview image')
+        }
       },
       {
         url: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/tree.jpeg',
-        imageFit: 'contain',
-      },
-    ]);
+        imageFit: 'contain'
+      }
+    ])
 
-    return { fileList };
-  },
-};
+    return { fileList }
+  }
+}
 ```
 
 ## API
@@ -313,7 +311,7 @@ export default {
 | preview-options | Options of full screen image preview, see [ImagePreview](#/en-US/image-preview) | _object_ | - |
 | multiple | Whether to enable multiple selection pictures | _boolean_ | `false` |
 | disabled | Whether to disabled the upload | _boolean_ | `false` |
-| readonly `v3.1.5` | Whether to make upload area readonly | _boolean_ | `false` |
+| readonly | Whether to make upload area readonly | _boolean_ | `false` |
 | deletable | Whether to show delete icon | _boolean_ | `true` |
 | show-upload | Whether to show upload area | _boolean_ | `true` |
 | lazy-load | Whether to enable lazy load, should register [Lazyload](#/en-US/lazyload) component | _boolean_ | `false` |
@@ -321,7 +319,7 @@ export default {
 | after-read | Hook after reading the file | _Function_ | - |
 | before-read | Hook before reading the file, return false to stop reading the file, can return Promise | _Function_ | - |
 | before-delete | Hook before delete the file, return false to stop reading the file, can return Promise | _Function_ | - |
-| max-size `v3.0.17` | Max size of file | _number \| string \| (file: File) => boolean_ | `Infinity` |
+| max-size | Max size of file | _number \| string \| (file: File) => boolean_ | `Infinity` |
 | max-count | Max count of image | _number \| string_ | `Infinity` |
 | result-type | Type of file read result, can be set to `file` `text` | _string_ | `dataUrl` |
 | upload-text | Upload text | _string_ | - |
@@ -335,7 +333,7 @@ export default {
 | Event | Description | Arguments |
 | --- | --- | --- |
 | oversize | Emitted when file size over limit | Same as after-read |
-| click-upload `v3.1.5` | Emitted when click upload area | _event: MouseEvent_ |
+| click-upload | Emitted when click upload area | _event: MouseEvent_ |
 | click-preview | Emitted when preview image is clicked | Same as after-read |
 | close-preview | Emitted when the full screen image preview is closed | - |
 | delete | Emitted when preview file is deleted | Same as after-read |
@@ -345,7 +343,7 @@ export default {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | default | Custom upload area | - |
-| preview-delete `v.3.5.0` | Custom delete icon | `item: FileListItem` |
+| preview-delete | Custom delete icon | `item: FileListItem` |
 | preview-cover | Custom content that covers the image preview | `item: FileListItem` |
 
 ### Parameters of before-read、after-read、before-delete
@@ -381,19 +379,19 @@ import type {
   UploaderProps,
   UploaderInstance,
   UploaderResultType,
-  UploaderFileListItem,
-} from 'ryxon';
+  UploaderFileListItem
+} from 'ryxon'
 ```
 
 `UploaderInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { UploaderInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { UploaderInstance } from 'ryxon'
 
-const uploaderRef = ref<UploaderInstance>();
+const uploaderRef = ref<UploaderInstance>()
 
-uploaderRef.value?.chooseFile();
+uploaderRef.value?.chooseFile()
 ```
 
 ## Theming

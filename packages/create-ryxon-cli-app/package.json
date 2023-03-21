@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "release-it": "^15.4.1",
-    "typescript": "^4.8.2"
+    "typescript": "^5.0.2"
   },
   "dependencies": {
     "consola": "^2.11.3",
@@ -45,7 +45,7 @@
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "release: create-ryxon-cli-app ${version}"
+      "commitMessage": "release: create-ryxon-cli-app v${version}"
     }
   }
 }

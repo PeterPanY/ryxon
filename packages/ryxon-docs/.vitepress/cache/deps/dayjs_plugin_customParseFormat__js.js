@@ -243,7 +243,7 @@ var require_customParseFormat = __commonJS({
                     h3 = r4.seconds,
                     u3 = r4.milliseconds,
                     d3 = r4.zone,
-                    l2 = new Date(),
+                    l2 = /* @__PURE__ */ new Date(),
                     m2 = s3 || (i3 || o2 ? 1 : l2.getDate()),
                     M2 = i3 || l2.getFullYear(),
                     Y = 0
@@ -260,12 +260,14 @@ var require_customParseFormat = __commonJS({
                     ? new Date(Date.UTC(M2, Y, m2, p, v, D, g))
                     : new Date(M2, Y, m2, p, v, D, g)
                 } catch (e5) {
-                  return new Date('')
+                  return /* @__PURE__ */ new Date('')
                 }
               })(t3, a2, r3)),
               this.init(),
               d2 && true !== d2 && (this.$L = this.locale(d2).$L),
-              u2 && t3 != this.format(a2) && (this.$d = new Date('')),
+              u2 &&
+                t3 != this.format(a2) &&
+                (this.$d = /* @__PURE__ */ new Date('')),
               (o = {})
           } else if (a2 instanceof Array)
             for (var l = a2.length, m = 1; m <= l; m += 1) {
@@ -275,7 +277,7 @@ var require_customParseFormat = __commonJS({
                 ;(this.$d = M.$d), (this.$L = M.$L), this.init()
                 break
               }
-              m === l && (this.$d = new Date(''))
+              m === l && (this.$d = /* @__PURE__ */ new Date(''))
             }
           else i2.call(this, e3)
         }

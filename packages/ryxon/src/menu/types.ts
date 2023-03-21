@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import type { MenuProps } from './menu'
+import type { MenuProps } from './Menu'
 
 export interface MenuItemRegistered {
   index: string

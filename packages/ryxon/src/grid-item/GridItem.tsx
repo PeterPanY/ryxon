@@ -3,28 +3,22 @@ import {
   defineComponent,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
-import {
-  BORDER,
-  extend,
-  addUnit,
-  numericProp,
-  createNamespace,
-} from '../utils';
-import { GRID_KEY } from '../grid/Grid';
+import { BORDER, extend, addUnit, numericProp, createNamespace } from '../utils'
+import { GRID_KEY } from '../grid/Grid'
 
 // Composables
-import { useParent } from '@ryxon/use';
-import { useRoute, routeProps } from '../composables/use-route';
+import { useParent } from '@ryxon/use'
+import { useRoute, routeProps } from '../composables/use-route'
 
 // Components
-import { Icon } from '../icon';
-import { Badge, type BadgeProps } from '../badge';
+import { Icon } from '../icon'
+import { Badge, type BadgeProps } from '../badge'
 
-const [name, bem] = createNamespace('grid-item');
+const [name, bem] = createNamespace('grid-item')
 
 export const gridItemProps = extend({}, routeProps, {
   dot: Boolean,
@@ -33,10 +27,10 @@ export const gridItemProps = extend({}, routeProps, {
   badge: numericProp,
   iconColor: String,
   iconPrefix: String,
-  badgeProps: Object as PropType<Partial<BadgeProps>>,
-});
+  badgeProps: Object as PropType<Partial<BadgeProps>>
+})
 
-export type GridItemProps = ExtractPropTypes<typeof gridItemProps>;
+export type GridItemProps = ExtractPropTypes<typeof gridItemProps>
 
 export default defineComponent({
   name,
@@ -44,49 +38,49 @@ export default defineComponent({
   props: gridItemProps,
 
   setup(props, { slots }) {
-    const { parent, index } = useParent(GRID_KEY);
-    const route = useRoute();
+    const { parent, index } = useParent(GRID_KEY)
+    const route = useRoute()
 
     if (!parent) {
       if (process.env.NODE_ENV !== 'production') {
-        console.error('[Ryxon] <GridItem> must be a child component of <Grid>.');
+        console.error('[Ryxon] <GridItem> must be a child component of <Grid>.')
       }
-      return;
+      return
     }
 
     const rootStyle = computed(() => {
-      const { square, gutter, columnNum } = parent.props;
-      const percent = `${100 / +columnNum}%`;
+      const { square, gutter, columnNum } = parent.props
+      const percent = `${100 / +columnNum}%`
       const style: CSSProperties = {
-        flexBasis: percent,
-      };
+        flexBasis: percent
+      }
 
       if (square) {
-        style.paddingTop = percent;
+        style.paddingTop = percent
       } else if (gutter) {
-        const gutterValue = addUnit(gutter);
-        style.paddingRight = gutterValue;
+        const gutterValue = addUnit(gutter)
+        style.paddingRight = gutterValue
 
-        if (index.value >= columnNum) {
-          style.marginTop = gutterValue;
+        if (index.value >= +columnNum) {
+          style.marginTop = gutterValue
         }
       }
 
-      return style;
-    });
+      return style
+    })
 
     const contentStyle = computed(() => {
-      const { square, gutter } = parent.props;
+      const { square, gutter } = parent.props
 
       if (square && gutter) {
-        const gutterValue = addUnit(gutter);
+        const gutterValue = addUnit(gutter)
         return {
           right: gutterValue,
           bottom: gutterValue,
-          height: 'auto',
-        };
+          height: 'auto'
+        }
       }
-    });
+    })
 
     const renderIcon = () => {
       if (slots.icon) {
@@ -97,7 +91,7 @@ export default defineComponent({
             content={props.badge}
             {...props.badgeProps}
           />
-        );
+        )
       }
 
       if (props.icon) {
@@ -112,29 +106,29 @@ export default defineComponent({
             badgeProps={props.badgeProps}
             classPrefix={props.iconPrefix}
           />
-        );
+        )
       }
-    };
+    }
 
     const renderText = () => {
       if (slots.text) {
-        return slots.text();
+        return slots.text()
       }
       if (props.text) {
-        return <span class={bem('text')}>{props.text}</span>;
+        return <span class={bem('text')}>{props.text}</span>
       }
-    };
+    }
 
     const renderContent = () => {
       if (slots.default) {
-        return slots.default();
+        return slots.default()
       }
-      return [renderIcon(), renderText()];
-    };
+      return [renderIcon(), renderText()]
+    }
 
     return () => {
       const { center, border, square, gutter, reverse, direction, clickable } =
-        parent.props;
+        parent.props
 
       const classes = [
         bem('content', [
@@ -144,11 +138,11 @@ export default defineComponent({
             square,
             reverse,
             clickable,
-            surround: border && gutter,
-          },
+            surround: border && gutter
+          }
         ]),
-        { [BORDER]: border },
-      ];
+        { [BORDER]: border }
+      ]
 
       return (
         <div class={[bem({ square })]} style={rootStyle.value}>
@@ -162,7 +156,7 @@ export default defineComponent({
             {renderContent()}
           </div>
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

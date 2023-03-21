@@ -8,8 +8,8 @@ import {
   type Slot,
   type PropType,
   type TeleportProps,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -21,25 +21,25 @@ import {
   stopPropagation,
   createNamespace,
   HAPTICS_FEEDBACK,
-  type Numeric,
-} from '../utils';
+  type Numeric
+} from '../utils'
 
 // Composables
-import { useClickAway } from '@ryxon/use';
+import { useClickAway } from '@ryxon/use'
 
 // Components
-import NumberKeyboardKey, { KeyType } from './NumberKeyboardKey';
+import NumberKeyboardKey, { KeyType } from './NumberKeyboardKey'
 
-const [name, bem] = createNamespace('number-keyboard');
+const [name, bem] = createNamespace('number-keyboard')
 
-export type NumberKeyboardTheme = 'default' | 'custom';
+export type NumberKeyboardTheme = 'default' | 'custom'
 
 type KeyConfig = {
-  text?: Numeric;
-  type?: KeyType;
-  color?: string;
-  wider?: boolean;
-};
+  text?: Numeric
+  type?: KeyType
+  color?: string
+  wider?: boolean
+}
 
 export const numberKeyboardProps = {
   show: Boolean,
@@ -60,20 +60,20 @@ export const numberKeyboardProps = {
   safeAreaInsetBottom: truthProp,
   extraKey: {
     type: [String, Array] as PropType<string | string[]>,
-    default: '',
-  },
-};
+    default: ''
+  }
+}
 
-export type NumberKeyboardProps = ExtractPropTypes<typeof numberKeyboardProps>;
+export type NumberKeyboardProps = ExtractPropTypes<typeof numberKeyboardProps>
 
 function shuffle(array: unknown[]) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
   }
-  return array;
+  return array
 }
 
 export default defineComponent({
@@ -90,23 +90,23 @@ export default defineComponent({
     'input',
     'close',
     'delete',
-    'update:modelValue',
+    'update:modelValue'
   ],
 
   setup(props, { emit, slots, attrs }) {
-    const root = ref<HTMLElement>();
+    const root = ref<HTMLElement>()
 
     const genBasicKeys = () => {
       const keys: KeyConfig[] = Array(9)
         .fill('')
-        .map((_, i) => ({ text: i + 1 }));
+        .map((_, i) => ({ text: i + 1 }))
 
       if (props.randomKeyOrder) {
-        shuffle(keys);
+        shuffle(keys)
       }
 
-      return keys;
-    };
+      return keys
+    }
 
     const genDefaultKeys = (): KeyConfig[] => [
       ...genBasicKeys(),
@@ -114,80 +114,80 @@ export default defineComponent({
       { text: 0 },
       {
         text: props.showDeleteKey ? props.deleteButtonText : '',
-        type: props.showDeleteKey ? 'delete' : '',
-      },
-    ];
+        type: props.showDeleteKey ? 'delete' : ''
+      }
+    ]
 
     const genCustomKeys = () => {
-      const keys = genBasicKeys();
-      const { extraKey } = props;
-      const extraKeys = Array.isArray(extraKey) ? extraKey : [extraKey];
+      const keys = genBasicKeys()
+      const { extraKey } = props
+      const extraKeys = Array.isArray(extraKey) ? extraKey : [extraKey]
 
       if (extraKeys.length === 1) {
         keys.push(
           { text: 0, wider: true },
           { text: extraKeys[0], type: 'extra' }
-        );
+        )
       } else if (extraKeys.length === 2) {
         keys.push(
           { text: extraKeys[0], type: 'extra' },
           { text: 0 },
           { text: extraKeys[1], type: 'extra' }
-        );
+        )
       }
 
-      return keys;
-    };
+      return keys
+    }
 
     const keys = computed(() =>
       props.theme === 'custom' ? genCustomKeys() : genDefaultKeys()
-    );
+    )
 
     const onBlur = () => {
       if (props.show) {
-        emit('blur');
+        emit('blur')
       }
-    };
+    }
 
     const onClose = () => {
-      emit('close');
+      emit('close')
 
       if (props.blurOnClose) {
-        onBlur();
+        onBlur()
       }
-    };
+    }
 
-    const onAnimationEnd = () => emit(props.show ? 'show' : 'hide');
+    const onAnimationEnd = () => emit(props.show ? 'show' : 'hide')
 
     const onPress = (text: string, type: KeyType) => {
       if (text === '') {
         if (type === 'extra') {
-          onBlur();
+          onBlur()
         }
-        return;
+        return
       }
 
-      const value = props.modelValue;
+      const value = props.modelValue
 
       if (type === 'delete') {
-        emit('delete');
-        emit('update:modelValue', value.slice(0, value.length - 1));
+        emit('delete')
+        emit('update:modelValue', value.slice(0, value.length - 1))
       } else if (type === 'close') {
-        onClose();
-      } else if (value.length < props.maxlength) {
-        emit('input', text);
-        emit('update:modelValue', value + text);
+        onClose()
+      } else if (value.length < +props.maxlength) {
+        emit('input', text)
+        emit('update:modelValue', value + text)
       }
-    };
+    }
 
     const renderTitle = () => {
-      const { title, theme, closeButtonText } = props;
-      const leftSlot = slots['title-left'];
-      const showClose = closeButtonText && theme === 'default';
-      const showTitle = title || showClose || leftSlot;
+      const { title, theme, closeButtonText } = props
+      const leftSlot = slots['title-left']
+      const showClose = closeButtonText && theme === 'default'
+      const showTitle = title || showClose || leftSlot
 
       if (!showTitle) {
-        return;
+        return
       }
 
       return (
@@ -204,18 +204,18 @@ export default defineComponent({
             </button>
           )}
         </div>
-      );
-    };
+      )
+    }
 
     const renderKeys = () =>
       keys.value.map((key) => {
-        const keySlots: Record<string, Slot | undefined> = {};
+        const keySlots: Record<string, Slot | undefined> = {}
 
         if (key.type === 'delete') {
-          keySlots.default = slots.delete;
+          keySlots.default = slots.delete
         }
         if (key.type === 'extra') {
-          keySlots.default = slots['extra-key'];
+          keySlots.default = slots['extra-key']
         }
 
         return (
@@ -228,8 +228,8 @@ export default defineComponent({
             color={key.color}
             onPress={onPress}
           />
-        );
-      });
+        )
+      })
 
     const renderSidebar = () => {
       if (props.theme === 'custom') {
@@ -253,25 +253,25 @@ export default defineComponent({
               onPress={onPress}
             />
           </div>
-        );
+        )
       }
-    };
+    }
 
     watch(
       () => props.show,
       (value) => {
         if (!props.transition) {
-          emit(value ? 'show' : 'hide');
+          emit(value ? 'show' : 'hide')
         }
       }
-    );
+    )
 
     if (props.hideOnClickOutside) {
-      useClickAway(root, onBlur, { eventName: 'touchstart' });
+      useClickAway(root, onBlur, { eventName: 'touchstart' })
     }
 
     return () => {
-      const Title = renderTitle();
+      const Title = renderTitle()
       const Content = (
         <Transition name={props.transition ? 'r-slide-up' : ''}>
           <div
@@ -280,7 +280,7 @@ export default defineComponent({
             style={getZIndexStyle(props.zIndex)}
             class={bem({
               unfit: !props.safeAreaInsetBottom,
-              'with-title': !!Title,
+              'with-title': !!Title
             })}
             onAnimationend={onAnimationEnd}
             onTouchstartPassive={stopPropagation}
@@ -293,13 +293,13 @@ export default defineComponent({
             </div>
           </div>
         </Transition>
-      );
+      )
 
       if (props.teleport) {
-        return <Teleport to={props.teleport}>{Content}</Teleport>;
+        return <Teleport to={props.teleport}>{Content}</Teleport>
       }
 
-      return Content;
-    };
-  },
-});
+      return Content
+    }
+  }
+})

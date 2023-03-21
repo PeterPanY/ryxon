@@ -136,8 +136,8 @@ var require_dayjs_min = __commonJS({
               ;(this.$d = (function (t3) {
                 var e2 = t3.date,
                   n2 = t3.utc
-                if (null === e2) return new Date(NaN)
-                if (O.u(e2)) return new Date()
+                if (null === e2) return /* @__PURE__ */ new Date(NaN)
+                if (O.u(e2)) return /* @__PURE__ */ new Date()
                 if (e2 instanceof Date) return new Date(e2)
                 if ('string' == typeof e2 && !/Z$/i.test(e2)) {
                   var r2 = e2.match($)

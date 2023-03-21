@@ -1,24 +1,25 @@
-import type { Ref } from 'vue';
-import type { DropdownMenuProps } from './DropdownMenu';
+import type { Ref } from 'vue'
+import type { DropdownMenuProps } from './DropdownMenu'
 
-export type DropdownMenuDirection = 'up' | 'down';
+export type DropdownMenuDirection = 'up' | 'down'
 
 export type DropdownMenuProvide = {
-  id: string;
-  props: DropdownMenuProps;
-  offset: Ref<number>;
-};
+  id: string
+  props: DropdownMenuProps
+  offset: Ref<number>
+  updateOffset: () => void
+}
 
 export type DropdownMenuThemeVars = {
-  dropdownMenuHeight?: string;
-  dropdownMenuBackground?: string;
-  dropdownMenuShadow?: string;
-  dropdownMenuTitleFontSize?: string;
-  dropdownMenuTitleTextColor?: string;
-  dropdownMenuTitleActiveTextColor?: string;
-  dropdownMenuTitleDisabledTextColor?: string;
-  dropdownMenuTitlePadding?: string;
-  dropdownMenuTitleLineHeight?: number | string;
-  dropdownMenuOptionActiveColor?: string;
-  dropdownMenuContentMaxHeight?: string;
-};
+  dropdownMenuHeight?: string
+  dropdownMenuBackground?: string
+  dropdownMenuShadow?: string
+  dropdownMenuTitleFontSize?: string
+  dropdownMenuTitleTextColor?: string
+  dropdownMenuTitleActiveTextColor?: string
+  dropdownMenuTitleDisabledTextColor?: string
+  dropdownMenuTitlePadding?: string
+  dropdownMenuTitleLineHeight?: number | string
+  dropdownMenuOptionActiveColor?: string
+  dropdownMenuContentMaxHeight?: string
+}

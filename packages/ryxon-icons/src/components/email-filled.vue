@@ -14,6 +14,6 @@
 import type { DefineComponent } from 'vue'
 
 export default {
-  name: 'EmailFilled'
+  name: 'EmailFilled',
 } as DefineComponent
 </script>

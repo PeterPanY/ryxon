@@ -278,7 +278,7 @@ export default defineComponent({
     // 最大长度的换行计数
     const limitValueLength = (value: string) => {
       const { maxlength } = props
-      if (isDef(maxlength) && getStringLength(value) > maxlength) {
+      if (isDef(maxlength) && getStringLength(value) > +maxlength) {
         const modelValue = getModelValue()
         if (modelValue && getStringLength(modelValue) === +maxlength) {
           return modelValue
@@ -316,7 +316,7 @@ export default defineComponent({
         const { formatter, maxlength } = props
         value = formatter(value)
         // The length of the formatted value may exceed maxlength.
-        if (isDef(maxlength) && getStringLength(value) > maxlength) {
+        if (isDef(maxlength) && getStringLength(value) > +maxlength) {
           value = cutString(value, +maxlength)
         }
         if (inputRef.value && state.focused) {

@@ -67,11 +67,11 @@
     "@ryxon/cli": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
     "@ryxon/icons": "workspace:*",
-    "@vue/runtime-core": "^3.2.38",
+    "@vue/runtime-core": "^3.2.47",
     "@vue/test-utils": "^2.0.2",
     "type-fest": "^2.14.0",
-    "typescript": "^4.8.2",
-    "vue": "^3.2.45",
+    "typescript": "^5.0.2",
+    "vue": "^3.2.47",
     "vue-router": "^4.1.5"
   },
   "sideEffects": [
@@ -79,5 +79,10 @@
     "lib/**/style/*",
     "*.css"
   ],
+  "release-it": {
+    "git": {
+      "commitMessage": "release: ryxon v${version}"
+    }
+  },
   "web-types": "lib/web-types.json"
 }

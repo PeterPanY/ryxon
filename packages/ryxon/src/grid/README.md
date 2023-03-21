@@ -9,12 +9,12 @@ Used to divide the page into blocks of equal width in the horizontal direction f
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Grid, GridItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Grid, GridItem } from 'ryxon'
 
-const app = createApp();
-app.use(Grid);
-app.use(GridItem);
+const app = createApp()
+app.use(Grid)
+app.use(GridItem)
 ```
 
 ## Usage
@@ -43,19 +43,13 @@ app.use(GridItem);
 ```html
 <r-grid :border="false" :column-num="3">
   <r-grid-item>
-    <r-image
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg"
-    />
+    <r-image src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-1.jpeg" />
   </r-grid-item>
   <r-grid-item>
-    <r-image
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg"
-    />
+    <r-image src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-2.jpeg" />
   </r-grid-item>
   <r-grid-item>
-    <r-image
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-3.jpeg"
-    />
+    <r-image src="https://fastly.jsdelivr.net/npm/@ryxon/assets/apple-3.jpeg" />
   </r-grid-item>
 </r-grid>
 ```
@@ -118,7 +112,7 @@ app.use(GridItem);
 | square | Whether to be square shape | _boolean_ | `false` |
 | clickable | Whether to show click feedback when clicked | _boolean_ | `false` |
 | direction | Content arrangement direction, can be set to `horizontal` | _string_ | `vertical` |
-| reverse `v3.1.0` | Whether to reverse the position of icon and text | _boolean_ | `false` |
+| reverse | Whether to reverse the position of icon and text | _boolean_ | `false` |
 
 ### GridItem Props
 
@@ -130,7 +124,7 @@ app.use(GridItem);
 | icon-color | Icon color | _string_ | - |
 | dot | Whether to show red dot | _boolean_ | `false` |
 | badge | Content of the badge | _number \| string_ | - |
-| badge-props `v3.2.8` | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
+| badge-props | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
 | url | Link URL | _string_ | - |
 | to | Target route of the link, same as to of vue-router | _string \| object_ | - |
 | replace | If true, the navigation will not leave a history record | _boolean_ | `false` |
@@ -154,7 +148,7 @@ app.use(GridItem);
 The component exports the following type definitions:
 
 ```ts
-import type { GridProps, GridDirection, GridItemProps } from 'ryxon';
+import type { GridProps, GridDirection, GridItemProps } from 'ryxon'
 ```
 
 ## Theming

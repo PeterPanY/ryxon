@@ -9,11 +9,11 @@ A modal box pops up on the page, which is often used for message prompts, messag
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Dialog } from 'ryxon';
+import { createApp } from 'vue'
+import { Dialog } from 'ryxon'
 
-const app = createApp();
-app.use(Dialog);
+const app = createApp()
+app.use(Dialog)
 ```
 
 ### Function Call
@@ -23,9 +23,9 @@ Ryxon provides some utility functions that can quickly evoke global `Dialog` com
 For example, calling the `showDialog` function will render a Dialog directly in the page.
 
 ```js
-import { showDialog } from 'ryxon';
+import { showDialog } from 'ryxon'
 
-showDialog({ message: 'Content' });
+showDialog({ message: 'Content' })
 ```
 
 ## Usage
@@ -37,16 +37,16 @@ Used to prompt for some messages, only including one confirm button.
 ```js
 showDialog({
   title: 'Title',
-  message: 'Content',
+  message: 'Content'
 }).then(() => {
   // on close
-});
+})
 
 showDialog({
-  message: 'Content',
+  message: 'Content'
 }).then(() => {
   // on close
-});
+})
 ```
 
 ### Confirm dialog
@@ -56,14 +56,14 @@ Used to confirm some messages, including a confirm button and a cancel button.
 ```js
 showConfirmDialog({
   title: 'Title',
-  message: 'Content',
+  message: 'Content'
 })
   .then(() => {
     // on confirm
   })
   .catch(() => {
     // on cancel
-  });
+  })
 ```
 
 ### Round Button Style
@@ -74,17 +74,17 @@ Use round button style.
 showDialog({
   title: 'Title',
   message: 'Content',
-  theme: 'round-button',
+  theme: 'round-button'
 }).then(() => {
   // on close
-});
+})
 
 showDialog({
   message: 'Content',
-  theme: 'round-button',
+  theme: 'round-button'
 }).then(() => {
   // on close
-});
+})
 ```
 
 ### Async Close
@@ -93,15 +93,15 @@ showDialog({
 const beforeClose = (action) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      resolve(action === 'confirm');
-    }, 1000);
-  });
+      resolve(action === 'confirm')
+    }, 1000)
+  })
 
 showConfirmDialog({
   title: 'Title',
   message: 'Content',
-  beforeClose,
-});
+  beforeClose
+})
 ```
 
 ### Use Dialog Component
@@ -115,14 +115,14 @@ If you need to render Vue components within a Dialog, you can use the Dialog com
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
-    return { show };
-  },
-};
+    const show = ref(false)
+    return { show }
+  }
+}
 ```
 
 ## API
@@ -153,10 +153,10 @@ Ryxon exports following Dialog utility functions:
 | showCancelButton | Whether to show cancel button | _boolean_ | `false` |
 | cancelButtonText | Cancel button text | _string_ | `Cancel` |
 | cancelButtonColor | Cancel button color | _string_ | `black` |
-| cancelButtonDisabled `v3.5.0` | Whether to disable cancel button | _boolean_ | `false` |
+| cancelButtonDisabled | Whether to disable cancel button | _boolean_ | `false` |
 | confirmButtonText | Confirm button text | _string_ | `Confirm` |
 | confirmButtonColor | Confirm button color | _string_ | `#ee0a24` |
-| confirmButtonDisabled `v3.5.0` | Whether to disable confirm button | _boolean_ | `false` |
+| confirmButtonDisabled | Whether to disable confirm button | _boolean_ | `false` |
 | overlay | Whether to show overlay | _boolean_ | `true` |
 | overlayClass | Custom overlay class | _string \| Array \| object_ | - |
 | overlayStyle | Custom overlay style | _object_ | - |
@@ -182,10 +182,10 @@ Ryxon exports following Dialog utility functions:
 | show-cancel-button | Whether to show cancel button | _boolean_ | `false` |
 | cancel-button-text | Cancel button text | _string_ | `Cancel` |
 | cancel-button-color | Cancel button color | _string_ | `black` |
-| cancel-button-disabled `v3.5.0` | Whether to disable cancel button | _boolean_ | `false` |
+| cancel-button-disabled | Whether to disable cancel button | _boolean_ | `false` |
 | confirm-button-text | Confirm button text | _string_ | `Confirm` |
 | confirm-button-color | Confirm button color | _string_ | `#ee0a24` |
-| confirm-button-disabled `v3.5.0` | Whether to disable confirm button | _boolean_ | `false` |
+| confirm-button-disabled | Whether to disable confirm button | _boolean_ | `false` |
 | z-index | Set the z-index to a fixed value | _number \| string_ | `2000+` |
 | overlay | Whether to show overlay | _boolean_ | `true` |
 | overlay-class | Custom overlay class | _string_ | - |
@@ -212,11 +212,11 @@ Ryxon exports following Dialog utility functions:
 
 ### Slots
 
-| Name             | Description    |
-| ---------------- | -------------- |
-| default          | Custom message |
-| title            | Custom title   |
-| footer `v3.0.11` | Custom footer  |
+| Name    | Description    |
+| ------- | -------------- |
+| default | Custom message |
+| title   | Custom title   |
+| footer  | Custom footer  |
 
 ### Types
 
@@ -228,8 +228,8 @@ import type {
   DialogTheme,
   DialogMessage,
   DialogOptions,
-  DialogMessageAlign,
-} from 'ryxon';
+  DialogMessageAlign
+} from 'ryxon'
 ```
 
 ## Theming

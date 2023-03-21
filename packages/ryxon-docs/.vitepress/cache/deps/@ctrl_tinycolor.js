@@ -545,442 +545,447 @@ function isValidCSSUnit(color) {
 }
 
 // ../../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/index.js
-var TinyColor = (function () {
-  function TinyColor2(color, opts) {
-    if (color === void 0) {
-      color = ''
+var TinyColor =
+  /** @class */
+  (function () {
+    function TinyColor2(color, opts) {
+      if (color === void 0) {
+        color = ''
+      }
+      if (opts === void 0) {
+        opts = {}
+      }
+      var _a
+      if (color instanceof TinyColor2) {
+        return color
+      }
+      if (typeof color === 'number') {
+        color = numberInputToObject(color)
+      }
+      this.originalInput = color
+      var rgb = inputToRGB(color)
+      this.originalInput = color
+      this.r = rgb.r
+      this.g = rgb.g
+      this.b = rgb.b
+      this.a = rgb.a
+      this.roundA = Math.round(100 * this.a) / 100
+      this.format =
+        (_a = opts.format) !== null && _a !== void 0 ? _a : rgb.format
+      this.gradientType = opts.gradientType
+      if (this.r < 1) {
+        this.r = Math.round(this.r)
+      }
+      if (this.g < 1) {
+        this.g = Math.round(this.g)
+      }
+      if (this.b < 1) {
+        this.b = Math.round(this.b)
+      }
+      this.isValid = rgb.ok
     }
-    if (opts === void 0) {
-      opts = {}
+    TinyColor2.prototype.isDark = function () {
+      return this.getBrightness() < 128
     }
-    var _a
-    if (color instanceof TinyColor2) {
-      return color
+    TinyColor2.prototype.isLight = function () {
+      return !this.isDark()
     }
-    if (typeof color === 'number') {
-      color = numberInputToObject(color)
+    TinyColor2.prototype.getBrightness = function () {
+      var rgb = this.toRgb()
+      return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3
     }
-    this.originalInput = color
-    var rgb = inputToRGB(color)
-    this.originalInput = color
-    this.r = rgb.r
-    this.g = rgb.g
-    this.b = rgb.b
-    this.a = rgb.a
-    this.roundA = Math.round(100 * this.a) / 100
-    this.format = (_a = opts.format) !== null && _a !== void 0 ? _a : rgb.format
-    this.gradientType = opts.gradientType
-    if (this.r < 1) {
-      this.r = Math.round(this.r)
+    TinyColor2.prototype.getLuminance = function () {
+      var rgb = this.toRgb()
+      var R
+      var G
+      var B
+      var RsRGB = rgb.r / 255
+      var GsRGB = rgb.g / 255
+      var BsRGB = rgb.b / 255
+      if (RsRGB <= 0.03928) {
+        R = RsRGB / 12.92
+      } else {
+        R = Math.pow((RsRGB + 0.055) / 1.055, 2.4)
+      }
+      if (GsRGB <= 0.03928) {
+        G = GsRGB / 12.92
+      } else {
+        G = Math.pow((GsRGB + 0.055) / 1.055, 2.4)
+      }
+      if (BsRGB <= 0.03928) {
+        B = BsRGB / 12.92
+      } else {
+        B = Math.pow((BsRGB + 0.055) / 1.055, 2.4)
+      }
+      return 0.2126 * R + 0.7152 * G + 0.0722 * B
     }
-    if (this.g < 1) {
-      this.g = Math.round(this.g)
+    TinyColor2.prototype.getAlpha = function () {
+      return this.a
     }
-    if (this.b < 1) {
-      this.b = Math.round(this.b)
+    TinyColor2.prototype.setAlpha = function (alpha) {
+      this.a = boundAlpha(alpha)
+      this.roundA = Math.round(100 * this.a) / 100
+      return this
     }
-    this.isValid = rgb.ok
-  }
-  TinyColor2.prototype.isDark = function () {
-    return this.getBrightness() < 128
-  }
-  TinyColor2.prototype.isLight = function () {
-    return !this.isDark()
-  }
-  TinyColor2.prototype.getBrightness = function () {
-    var rgb = this.toRgb()
-    return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3
-  }
-  TinyColor2.prototype.getLuminance = function () {
-    var rgb = this.toRgb()
-    var R
-    var G
-    var B
-    var RsRGB = rgb.r / 255
-    var GsRGB = rgb.g / 255
-    var BsRGB = rgb.b / 255
-    if (RsRGB <= 0.03928) {
-      R = RsRGB / 12.92
-    } else {
-      R = Math.pow((RsRGB + 0.055) / 1.055, 2.4)
+    TinyColor2.prototype.isMonochrome = function () {
+      var s = this.toHsl().s
+      return s === 0
     }
-    if (GsRGB <= 0.03928) {
-      G = GsRGB / 12.92
-    } else {
-      G = Math.pow((GsRGB + 0.055) / 1.055, 2.4)
+    TinyColor2.prototype.toHsv = function () {
+      var hsv = rgbToHsv(this.r, this.g, this.b)
+      return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this.a }
     }
-    if (BsRGB <= 0.03928) {
-      B = BsRGB / 12.92
-    } else {
-      B = Math.pow((BsRGB + 0.055) / 1.055, 2.4)
+    TinyColor2.prototype.toHsvString = function () {
+      var hsv = rgbToHsv(this.r, this.g, this.b)
+      var h = Math.round(hsv.h * 360)
+      var s = Math.round(hsv.s * 100)
+      var v = Math.round(hsv.v * 100)
+      return this.a === 1
+        ? 'hsv('.concat(h, ', ').concat(s, '%, ').concat(v, '%)')
+        : 'hsva('
+            .concat(h, ', ')
+            .concat(s, '%, ')
+            .concat(v, '%, ')
+            .concat(this.roundA, ')')
     }
-    return 0.2126 * R + 0.7152 * G + 0.0722 * B
-  }
-  TinyColor2.prototype.getAlpha = function () {
-    return this.a
-  }
-  TinyColor2.prototype.setAlpha = function (alpha) {
-    this.a = boundAlpha(alpha)
-    this.roundA = Math.round(100 * this.a) / 100
-    return this
-  }
-  TinyColor2.prototype.isMonochrome = function () {
-    var s = this.toHsl().s
-    return s === 0
-  }
-  TinyColor2.prototype.toHsv = function () {
-    var hsv = rgbToHsv(this.r, this.g, this.b)
-    return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this.a }
-  }
-  TinyColor2.prototype.toHsvString = function () {
-    var hsv = rgbToHsv(this.r, this.g, this.b)
-    var h = Math.round(hsv.h * 360)
-    var s = Math.round(hsv.s * 100)
-    var v = Math.round(hsv.v * 100)
-    return this.a === 1
-      ? 'hsv('.concat(h, ', ').concat(s, '%, ').concat(v, '%)')
-      : 'hsva('
-          .concat(h, ', ')
-          .concat(s, '%, ')
-          .concat(v, '%, ')
-          .concat(this.roundA, ')')
-  }
-  TinyColor2.prototype.toHsl = function () {
-    var hsl = rgbToHsl(this.r, this.g, this.b)
-    return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this.a }
-  }
-  TinyColor2.prototype.toHslString = function () {
-    var hsl = rgbToHsl(this.r, this.g, this.b)
-    var h = Math.round(hsl.h * 360)
-    var s = Math.round(hsl.s * 100)
-    var l = Math.round(hsl.l * 100)
-    return this.a === 1
-      ? 'hsl('.concat(h, ', ').concat(s, '%, ').concat(l, '%)')
-      : 'hsla('
-          .concat(h, ', ')
-          .concat(s, '%, ')
-          .concat(l, '%, ')
-          .concat(this.roundA, ')')
-  }
-  TinyColor2.prototype.toHex = function (allow3Char) {
-    if (allow3Char === void 0) {
-      allow3Char = false
+    TinyColor2.prototype.toHsl = function () {
+      var hsl = rgbToHsl(this.r, this.g, this.b)
+      return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this.a }
     }
-    return rgbToHex(this.r, this.g, this.b, allow3Char)
-  }
-  TinyColor2.prototype.toHexString = function (allow3Char) {
-    if (allow3Char === void 0) {
-      allow3Char = false
+    TinyColor2.prototype.toHslString = function () {
+      var hsl = rgbToHsl(this.r, this.g, this.b)
+      var h = Math.round(hsl.h * 360)
+      var s = Math.round(hsl.s * 100)
+      var l = Math.round(hsl.l * 100)
+      return this.a === 1
+        ? 'hsl('.concat(h, ', ').concat(s, '%, ').concat(l, '%)')
+        : 'hsla('
+            .concat(h, ', ')
+            .concat(s, '%, ')
+            .concat(l, '%, ')
+            .concat(this.roundA, ')')
     }
-    return '#' + this.toHex(allow3Char)
-  }
-  TinyColor2.prototype.toHex8 = function (allow4Char) {
-    if (allow4Char === void 0) {
-      allow4Char = false
+    TinyColor2.prototype.toHex = function (allow3Char) {
+      if (allow3Char === void 0) {
+        allow3Char = false
+      }
+      return rgbToHex(this.r, this.g, this.b, allow3Char)
     }
-    return rgbaToHex(this.r, this.g, this.b, this.a, allow4Char)
-  }
-  TinyColor2.prototype.toHex8String = function (allow4Char) {
-    if (allow4Char === void 0) {
-      allow4Char = false
+    TinyColor2.prototype.toHexString = function (allow3Char) {
+      if (allow3Char === void 0) {
+        allow3Char = false
+      }
+      return '#' + this.toHex(allow3Char)
     }
-    return '#' + this.toHex8(allow4Char)
-  }
-  TinyColor2.prototype.toHexShortString = function (allowShortChar) {
-    if (allowShortChar === void 0) {
-      allowShortChar = false
+    TinyColor2.prototype.toHex8 = function (allow4Char) {
+      if (allow4Char === void 0) {
+        allow4Char = false
+      }
+      return rgbaToHex(this.r, this.g, this.b, this.a, allow4Char)
     }
-    return this.a === 1
-      ? this.toHexString(allowShortChar)
-      : this.toHex8String(allowShortChar)
-  }
-  TinyColor2.prototype.toRgb = function () {
-    return {
-      r: Math.round(this.r),
-      g: Math.round(this.g),
-      b: Math.round(this.b),
-      a: this.a
+    TinyColor2.prototype.toHex8String = function (allow4Char) {
+      if (allow4Char === void 0) {
+        allow4Char = false
+      }
+      return '#' + this.toHex8(allow4Char)
     }
-  }
-  TinyColor2.prototype.toRgbString = function () {
-    var r = Math.round(this.r)
-    var g = Math.round(this.g)
-    var b = Math.round(this.b)
-    return this.a === 1
-      ? 'rgb('.concat(r, ', ').concat(g, ', ').concat(b, ')')
-      : 'rgba('
-          .concat(r, ', ')
-          .concat(g, ', ')
-          .concat(b, ', ')
-          .concat(this.roundA, ')')
-  }
-  TinyColor2.prototype.toPercentageRgb = function () {
-    var fmt = function (x) {
-      return ''.concat(Math.round(bound01(x, 255) * 100), '%')
+    TinyColor2.prototype.toHexShortString = function (allowShortChar) {
+      if (allowShortChar === void 0) {
+        allowShortChar = false
+      }
+      return this.a === 1
+        ? this.toHexString(allowShortChar)
+        : this.toHex8String(allowShortChar)
     }
-    return {
-      r: fmt(this.r),
-      g: fmt(this.g),
-      b: fmt(this.b),
-      a: this.a
+    TinyColor2.prototype.toRgb = function () {
+      return {
+        r: Math.round(this.r),
+        g: Math.round(this.g),
+        b: Math.round(this.b),
+        a: this.a
+      }
     }
-  }
-  TinyColor2.prototype.toPercentageRgbString = function () {
-    var rnd = function (x) {
-      return Math.round(bound01(x, 255) * 100)
+    TinyColor2.prototype.toRgbString = function () {
+      var r = Math.round(this.r)
+      var g = Math.round(this.g)
+      var b = Math.round(this.b)
+      return this.a === 1
+        ? 'rgb('.concat(r, ', ').concat(g, ', ').concat(b, ')')
+        : 'rgba('
+            .concat(r, ', ')
+            .concat(g, ', ')
+            .concat(b, ', ')
+            .concat(this.roundA, ')')
     }
-    return this.a === 1
-      ? 'rgb('
-          .concat(rnd(this.r), '%, ')
-          .concat(rnd(this.g), '%, ')
-          .concat(rnd(this.b), '%)')
-      : 'rgba('
-          .concat(rnd(this.r), '%, ')
-          .concat(rnd(this.g), '%, ')
-          .concat(rnd(this.b), '%, ')
-          .concat(this.roundA, ')')
-  }
-  TinyColor2.prototype.toName = function () {
-    if (this.a === 0) {
-      return 'transparent'
+    TinyColor2.prototype.toPercentageRgb = function () {
+      var fmt = function (x) {
+        return ''.concat(Math.round(bound01(x, 255) * 100), '%')
+      }
+      return {
+        r: fmt(this.r),
+        g: fmt(this.g),
+        b: fmt(this.b),
+        a: this.a
+      }
     }
-    if (this.a < 1) {
+    TinyColor2.prototype.toPercentageRgbString = function () {
+      var rnd = function (x) {
+        return Math.round(bound01(x, 255) * 100)
+      }
+      return this.a === 1
+        ? 'rgb('
+            .concat(rnd(this.r), '%, ')
+            .concat(rnd(this.g), '%, ')
+            .concat(rnd(this.b), '%)')
+        : 'rgba('
+            .concat(rnd(this.r), '%, ')
+            .concat(rnd(this.g), '%, ')
+            .concat(rnd(this.b), '%, ')
+            .concat(this.roundA, ')')
+    }
+    TinyColor2.prototype.toName = function () {
+      if (this.a === 0) {
+        return 'transparent'
+      }
+      if (this.a < 1) {
+        return false
+      }
+      var hex = '#' + rgbToHex(this.r, this.g, this.b, false)
+      for (var _i = 0, _a = Object.entries(names); _i < _a.length; _i++) {
+        var _b = _a[_i],
+          key = _b[0],
+          value = _b[1]
+        if (hex === value) {
+          return key
+        }
+      }
       return false
     }
-    var hex = '#' + rgbToHex(this.r, this.g, this.b, false)
-    for (var _i = 0, _a = Object.entries(names); _i < _a.length; _i++) {
-      var _b = _a[_i],
-        key = _b[0],
-        value = _b[1]
-      if (hex === value) {
-        return key
+    TinyColor2.prototype.toString = function (format) {
+      var formatSet = Boolean(format)
+      format = format !== null && format !== void 0 ? format : this.format
+      var formattedString = false
+      var hasAlpha = this.a < 1 && this.a >= 0
+      var needsAlphaFormat =
+        !formatSet &&
+        hasAlpha &&
+        (format.startsWith('hex') || format === 'name')
+      if (needsAlphaFormat) {
+        if (format === 'name' && this.a === 0) {
+          return this.toName()
+        }
+        return this.toRgbString()
       }
-    }
-    return false
-  }
-  TinyColor2.prototype.toString = function (format) {
-    var formatSet = Boolean(format)
-    format = format !== null && format !== void 0 ? format : this.format
-    var formattedString = false
-    var hasAlpha = this.a < 1 && this.a >= 0
-    var needsAlphaFormat =
-      !formatSet && hasAlpha && (format.startsWith('hex') || format === 'name')
-    if (needsAlphaFormat) {
-      if (format === 'name' && this.a === 0) {
-        return this.toName()
+      if (format === 'rgb') {
+        formattedString = this.toRgbString()
       }
-      return this.toRgbString()
+      if (format === 'prgb') {
+        formattedString = this.toPercentageRgbString()
+      }
+      if (format === 'hex' || format === 'hex6') {
+        formattedString = this.toHexString()
+      }
+      if (format === 'hex3') {
+        formattedString = this.toHexString(true)
+      }
+      if (format === 'hex4') {
+        formattedString = this.toHex8String(true)
+      }
+      if (format === 'hex8') {
+        formattedString = this.toHex8String()
+      }
+      if (format === 'name') {
+        formattedString = this.toName()
+      }
+      if (format === 'hsl') {
+        formattedString = this.toHslString()
+      }
+      if (format === 'hsv') {
+        formattedString = this.toHsvString()
+      }
+      return formattedString || this.toHexString()
     }
-    if (format === 'rgb') {
-      formattedString = this.toRgbString()
-    }
-    if (format === 'prgb') {
-      formattedString = this.toPercentageRgbString()
-    }
-    if (format === 'hex' || format === 'hex6') {
-      formattedString = this.toHexString()
-    }
-    if (format === 'hex3') {
-      formattedString = this.toHexString(true)
-    }
-    if (format === 'hex4') {
-      formattedString = this.toHex8String(true)
-    }
-    if (format === 'hex8') {
-      formattedString = this.toHex8String()
-    }
-    if (format === 'name') {
-      formattedString = this.toName()
-    }
-    if (format === 'hsl') {
-      formattedString = this.toHslString()
-    }
-    if (format === 'hsv') {
-      formattedString = this.toHsvString()
-    }
-    return formattedString || this.toHexString()
-  }
-  TinyColor2.prototype.toNumber = function () {
-    return (
-      (Math.round(this.r) << 16) +
-      (Math.round(this.g) << 8) +
-      Math.round(this.b)
-    )
-  }
-  TinyColor2.prototype.clone = function () {
-    return new TinyColor2(this.toString())
-  }
-  TinyColor2.prototype.lighten = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    var hsl = this.toHsl()
-    hsl.l += amount / 100
-    hsl.l = clamp01(hsl.l)
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.brighten = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    var rgb = this.toRgb()
-    rgb.r = Math.max(
-      0,
-      Math.min(255, rgb.r - Math.round(255 * -(amount / 100)))
-    )
-    rgb.g = Math.max(
-      0,
-      Math.min(255, rgb.g - Math.round(255 * -(amount / 100)))
-    )
-    rgb.b = Math.max(
-      0,
-      Math.min(255, rgb.b - Math.round(255 * -(amount / 100)))
-    )
-    return new TinyColor2(rgb)
-  }
-  TinyColor2.prototype.darken = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    var hsl = this.toHsl()
-    hsl.l -= amount / 100
-    hsl.l = clamp01(hsl.l)
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.tint = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    return this.mix('white', amount)
-  }
-  TinyColor2.prototype.shade = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    return this.mix('black', amount)
-  }
-  TinyColor2.prototype.desaturate = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    var hsl = this.toHsl()
-    hsl.s -= amount / 100
-    hsl.s = clamp01(hsl.s)
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.saturate = function (amount) {
-    if (amount === void 0) {
-      amount = 10
-    }
-    var hsl = this.toHsl()
-    hsl.s += amount / 100
-    hsl.s = clamp01(hsl.s)
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.greyscale = function () {
-    return this.desaturate(100)
-  }
-  TinyColor2.prototype.spin = function (amount) {
-    var hsl = this.toHsl()
-    var hue = (hsl.h + amount) % 360
-    hsl.h = hue < 0 ? 360 + hue : hue
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.mix = function (color, amount) {
-    if (amount === void 0) {
-      amount = 50
-    }
-    var rgb1 = this.toRgb()
-    var rgb2 = new TinyColor2(color).toRgb()
-    var p = amount / 100
-    var rgba = {
-      r: (rgb2.r - rgb1.r) * p + rgb1.r,
-      g: (rgb2.g - rgb1.g) * p + rgb1.g,
-      b: (rgb2.b - rgb1.b) * p + rgb1.b,
-      a: (rgb2.a - rgb1.a) * p + rgb1.a
-    }
-    return new TinyColor2(rgba)
-  }
-  TinyColor2.prototype.analogous = function (results, slices) {
-    if (results === void 0) {
-      results = 6
-    }
-    if (slices === void 0) {
-      slices = 30
-    }
-    var hsl = this.toHsl()
-    var part = 360 / slices
-    var ret = [this]
-    for (hsl.h = (hsl.h - ((part * results) >> 1) + 720) % 360; --results; ) {
-      hsl.h = (hsl.h + part) % 360
-      ret.push(new TinyColor2(hsl))
-    }
-    return ret
-  }
-  TinyColor2.prototype.complement = function () {
-    var hsl = this.toHsl()
-    hsl.h = (hsl.h + 180) % 360
-    return new TinyColor2(hsl)
-  }
-  TinyColor2.prototype.monochromatic = function (results) {
-    if (results === void 0) {
-      results = 6
-    }
-    var hsv = this.toHsv()
-    var h = hsv.h
-    var s = hsv.s
-    var v = hsv.v
-    var res = []
-    var modification = 1 / results
-    while (results--) {
-      res.push(new TinyColor2({ h, s, v }))
-      v = (v + modification) % 1
-    }
-    return res
-  }
-  TinyColor2.prototype.splitcomplement = function () {
-    var hsl = this.toHsl()
-    var h = hsl.h
-    return [
-      this,
-      new TinyColor2({ h: (h + 72) % 360, s: hsl.s, l: hsl.l }),
-      new TinyColor2({ h: (h + 216) % 360, s: hsl.s, l: hsl.l })
-    ]
-  }
-  TinyColor2.prototype.onBackground = function (background) {
-    var fg = this.toRgb()
-    var bg = new TinyColor2(background).toRgb()
-    var alpha = fg.a + bg.a * (1 - fg.a)
-    return new TinyColor2({
-      r: (fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha,
-      g: (fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha,
-      b: (fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha,
-      a: alpha
-    })
-  }
-  TinyColor2.prototype.triad = function () {
-    return this.polyad(3)
-  }
-  TinyColor2.prototype.tetrad = function () {
-    return this.polyad(4)
-  }
-  TinyColor2.prototype.polyad = function (n) {
-    var hsl = this.toHsl()
-    var h = hsl.h
-    var result = [this]
-    var increment = 360 / n
-    for (var i = 1; i < n; i++) {
-      result.push(
-        new TinyColor2({ h: (h + i * increment) % 360, s: hsl.s, l: hsl.l })
+    TinyColor2.prototype.toNumber = function () {
+      return (
+        (Math.round(this.r) << 16) +
+        (Math.round(this.g) << 8) +
+        Math.round(this.b)
       )
     }
-    return result
-  }
-  TinyColor2.prototype.equals = function (color) {
-    return this.toRgbString() === new TinyColor2(color).toRgbString()
-  }
-  return TinyColor2
-})()
+    TinyColor2.prototype.clone = function () {
+      return new TinyColor2(this.toString())
+    }
+    TinyColor2.prototype.lighten = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      var hsl = this.toHsl()
+      hsl.l += amount / 100
+      hsl.l = clamp01(hsl.l)
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.brighten = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      var rgb = this.toRgb()
+      rgb.r = Math.max(
+        0,
+        Math.min(255, rgb.r - Math.round(255 * -(amount / 100)))
+      )
+      rgb.g = Math.max(
+        0,
+        Math.min(255, rgb.g - Math.round(255 * -(amount / 100)))
+      )
+      rgb.b = Math.max(
+        0,
+        Math.min(255, rgb.b - Math.round(255 * -(amount / 100)))
+      )
+      return new TinyColor2(rgb)
+    }
+    TinyColor2.prototype.darken = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      var hsl = this.toHsl()
+      hsl.l -= amount / 100
+      hsl.l = clamp01(hsl.l)
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.tint = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      return this.mix('white', amount)
+    }
+    TinyColor2.prototype.shade = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      return this.mix('black', amount)
+    }
+    TinyColor2.prototype.desaturate = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      var hsl = this.toHsl()
+      hsl.s -= amount / 100
+      hsl.s = clamp01(hsl.s)
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.saturate = function (amount) {
+      if (amount === void 0) {
+        amount = 10
+      }
+      var hsl = this.toHsl()
+      hsl.s += amount / 100
+      hsl.s = clamp01(hsl.s)
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.greyscale = function () {
+      return this.desaturate(100)
+    }
+    TinyColor2.prototype.spin = function (amount) {
+      var hsl = this.toHsl()
+      var hue = (hsl.h + amount) % 360
+      hsl.h = hue < 0 ? 360 + hue : hue
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.mix = function (color, amount) {
+      if (amount === void 0) {
+        amount = 50
+      }
+      var rgb1 = this.toRgb()
+      var rgb2 = new TinyColor2(color).toRgb()
+      var p = amount / 100
+      var rgba = {
+        r: (rgb2.r - rgb1.r) * p + rgb1.r,
+        g: (rgb2.g - rgb1.g) * p + rgb1.g,
+        b: (rgb2.b - rgb1.b) * p + rgb1.b,
+        a: (rgb2.a - rgb1.a) * p + rgb1.a
+      }
+      return new TinyColor2(rgba)
+    }
+    TinyColor2.prototype.analogous = function (results, slices) {
+      if (results === void 0) {
+        results = 6
+      }
+      if (slices === void 0) {
+        slices = 30
+      }
+      var hsl = this.toHsl()
+      var part = 360 / slices
+      var ret = [this]
+      for (hsl.h = (hsl.h - ((part * results) >> 1) + 720) % 360; --results; ) {
+        hsl.h = (hsl.h + part) % 360
+        ret.push(new TinyColor2(hsl))
+      }
+      return ret
+    }
+    TinyColor2.prototype.complement = function () {
+      var hsl = this.toHsl()
+      hsl.h = (hsl.h + 180) % 360
+      return new TinyColor2(hsl)
+    }
+    TinyColor2.prototype.monochromatic = function (results) {
+      if (results === void 0) {
+        results = 6
+      }
+      var hsv = this.toHsv()
+      var h = hsv.h
+      var s = hsv.s
+      var v = hsv.v
+      var res = []
+      var modification = 1 / results
+      while (results--) {
+        res.push(new TinyColor2({ h, s, v }))
+        v = (v + modification) % 1
+      }
+      return res
+    }
+    TinyColor2.prototype.splitcomplement = function () {
+      var hsl = this.toHsl()
+      var h = hsl.h
+      return [
+        this,
+        new TinyColor2({ h: (h + 72) % 360, s: hsl.s, l: hsl.l }),
+        new TinyColor2({ h: (h + 216) % 360, s: hsl.s, l: hsl.l })
+      ]
+    }
+    TinyColor2.prototype.onBackground = function (background) {
+      var fg = this.toRgb()
+      var bg = new TinyColor2(background).toRgb()
+      var alpha = fg.a + bg.a * (1 - fg.a)
+      return new TinyColor2({
+        r: (fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha,
+        g: (fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha,
+        b: (fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha,
+        a: alpha
+      })
+    }
+    TinyColor2.prototype.triad = function () {
+      return this.polyad(3)
+    }
+    TinyColor2.prototype.tetrad = function () {
+      return this.polyad(4)
+    }
+    TinyColor2.prototype.polyad = function (n) {
+      var hsl = this.toHsl()
+      var h = hsl.h
+      var result = [this]
+      var increment = 360 / n
+      for (var i = 1; i < n; i++) {
+        result.push(
+          new TinyColor2({ h: (h + i * increment) % 360, s: hsl.s, l: hsl.l })
+        )
+      }
+      return result
+    }
+    TinyColor2.prototype.equals = function (color) {
+      return this.toRgbString() === new TinyColor2(color).toRgbString()
+    }
+    return TinyColor2
+  })()
 function tinycolor(color, opts) {
   if (color === void 0) {
     color = ''

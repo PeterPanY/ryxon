@@ -2,7 +2,7 @@ import { computed } from 'vue'
 import { cssVarBlock } from '../utils'
 import useMenuColor from './use-menu-color'
 
-import type { MenuProps } from './menu'
+import type { MenuProps } from './Menu'
 
 export const useMenuCssVar = (props: MenuProps, level: number) =>
   computed(() =>

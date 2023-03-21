@@ -9,11 +9,11 @@ Used to switch between open and closed states.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Switch } from 'ryxon';
+import { createApp } from 'vue'
+import { Switch } from 'ryxon'
 
-const app = createApp();
-app.use(Switch);
+const app = createApp()
+app.use(Switch)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(Switch);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const checked = ref(true);
-    return { checked };
-  },
-};
+    const checked = ref(true)
+    return { checked }
+  }
+}
 ```
 
 ### Disabled
@@ -99,27 +99,27 @@ Using `node` slot to custom the content of the node.
 ```
 
 ```js
-import { ref } from 'vue';
-import { showConfirmDialog } from 'ryxon';
+import { ref } from 'vue'
+import { showConfirmDialog } from 'ryxon'
 
 export default {
   setup() {
-    const checked = ref(true);
+    const checked = ref(true)
     const onUpdateValue = (newValue) => {
       showConfirmDialog({
         title: 'Confirm',
-        message: 'Are you sure to toggle switch?',
+        message: 'Are you sure to toggle switch?'
       }).then(() => {
-        checked.value = newValue;
-      });
-    };
+        checked.value = newValue
+      })
+    }
 
     return {
       checked,
-      onUpdateValue,
-    };
-  },
-};
+      onUpdateValue
+    }
+  }
+}
 ```
 
 ### Inside a Cell
@@ -156,17 +156,17 @@ export default {
 
 ### Slots
 
-| Name                | Description                     | SlotProps |
-| ------------------- | ------------------------------- | --------- |
-| node `v3.5.0`       | Custom the content of node      | -         |
-| background `v3.5.0` | Custom the background of switch | -         |
+| Name       | Description                     | SlotProps |
+| ---------- | ------------------------------- | --------- |
+| node       | Custom the content of node      | -         |
+| background | Custom the background of switch | -         |
 
 ### Types
 
 The component exports the following type definitions:
 
 ```ts
-import type { SwitchProps } from 'ryxon';
+import type { SwitchProps } from 'ryxon'
 ```
 
 ## Theming

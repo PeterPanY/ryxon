@@ -145,7 +145,7 @@ export default defineComponent({
     // 导航是否可滚动
     const scrollable = computed(
       () =>
-        children.length > props.swipeThreshold ||
+        children.length > +props.swipeThreshold ||
         !props.ellipsis ||
         props.shrink
     )

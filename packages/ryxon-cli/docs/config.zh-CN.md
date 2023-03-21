@@ -35,8 +35,8 @@ export default {
   // 构建配置
   build: {
     site: {
-      publicPath: '/demo-ui/',
-    },
+      publicPath: '/demo-ui/'
+    }
   },
   // 文档站点配置
   site: {
@@ -53,22 +53,22 @@ export default {
         items: [
           {
             path: 'home',
-            title: '介绍',
-          },
-        ],
+            title: '介绍'
+          }
+        ]
       },
       {
         title: '基础组件',
         items: [
           {
             path: 'my-button',
-            title: 'MyButton 按钮',
-          },
-        ],
-      },
-    ],
-  },
-};
+            title: 'MyButton 按钮'
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ### name
@@ -91,10 +91,10 @@ export default {
 module.exports = {
   build: {
     css: {
-      base: 'style/global.scss',
-    },
-  },
-};
+      base: 'style/global.scss'
+    }
+  }
+}
 ```
 
 ### build.css.preprocessor
@@ -108,10 +108,10 @@ CSS 预处理器配置，目前支持 `less` 和 `sass` 两种预处理器，默
 module.exports = {
   build: {
     css: {
-      preprocessor: 'sass',
-    },
-  },
-};
+      preprocessor: 'sass'
+    }
+  }
+}
 ```
 
 ### build.css.removeSourceFile
@@ -125,10 +125,10 @@ module.exports = {
 module.exports = {
   build: {
     css: {
-      removeSourceFile: true,
-    },
-  },
-};
+      removeSourceFile: true
+    }
+  }
+}
 ```
 
 ### build.site.publicPath
@@ -144,10 +144,10 @@ module.exports = {
 module.exports = {
   build: {
     site: {
-      publicPath: '/demo-ui/',
-    },
-  },
-};
+      publicPath: '/demo-ui/'
+    }
+  }
+}
 ```
 
 ### build.srcDir
@@ -158,9 +158,9 @@ module.exports = {
 ```js
 module.exports = {
   build: {
-    srcDir: 'myDir',
-  },
-};
+    srcDir: 'myDir'
+  }
+}
 ```
 
 ### build.namedExport
@@ -185,11 +185,11 @@ ryxon-cli 使用 vite 来构建组件库和文档站点，通过 `configureVite`
 module.exports = {
   build: {
     configureVite(config) {
-      config.server.port = 3000;
-      return config;
-    },
-  },
-};
+      config.server.port = 3000
+      return config
+    }
+  }
+}
 ```
 
 在自定义配置时，可以通过 `process.env.BUILD_TARGET` 对构建目标进行区分：
@@ -198,7 +198,7 @@ module.exports = {
 module.exports = {
   build: {
     configureVite(config) {
-      const { BUILD_TARGET } = process.env;
+      const { BUILD_TARGET } = process.env
 
       if (BUILD_TARGET === 'package') {
         // 修改组件库构建配置
@@ -208,10 +208,10 @@ module.exports = {
         // 修改文档站点构建配置
       }
 
-      return config;
-    },
-  },
-};
+      return config
+    }
+  }
+}
 ```
 
 注意，由于 `ryxon.config.mjs` 文件会被打包到文档网站的代码中，因此 `configureVite` 中不允许引用 vite 插件。
@@ -221,7 +221,7 @@ module.exports = {
 ### build.packageManager
 
 - Type: `'npm' | 'yarn' | 'pnpm'`
-- Default: `undefined`
+- Default: `yarn`
 
 指定使用的包管理器。
 
@@ -236,12 +236,12 @@ module.exports = {
 ```ts
 type BundleOption = {
   // 是否压缩代码（注意 es 产物无法被 vite 压缩）
-  minify?: boolean;
+  minify?: boolean
   // 产物类型，可选值为 'es' | 'cjs' | 'umd' | 'iife'
-  formats: LibraryFormats[];
+  formats: LibraryFormats[]
   // 需要 external 的依赖（Vue 默认会被 external）
-  external?: string[];
-};
+  external?: string[]
+}
 ```
 
 该选项的默认值为：
@@ -250,18 +250,18 @@ type BundleOption = {
 const DEFAULT_OPTIONS: BundleOption[] = [
   {
     minify: false,
-    formats: ['umd'],
+    formats: ['umd']
   },
   {
     minify: true,
-    formats: ['umd'],
+    formats: ['umd']
   },
   {
     minify: false,
     formats: ['es', 'cjs'],
-    external: allDependencies,
-  },
-];
+    external: allDependencies
+  }
+]
 ```
 
 ### site.title
@@ -307,13 +307,13 @@ module.exports = {
             // 导航项文案
             title: '介绍',
             // 是否隐藏当前页右侧的手机模拟器（默认不隐藏）
-            hideSimulator: true,
-          },
-        ],
-      },
-    ],
-  },
-};
+            hideSimulator: true
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ### site.versions
@@ -329,11 +329,11 @@ module.exports = {
     versions: [
       {
         label: 'v1',
-        link: 'https://ryxon-ui.github.io/ryxon/v1/',
-      },
-    ],
-  },
-};
+        link: 'https://ryxon-ui.github.io/ryxon/v1/'
+      }
+    ]
+  }
+}
 ```
 
 ### site.baiduAnalytics
@@ -350,10 +350,10 @@ module.exports = {
       // 打开百度统计 ->『管理』->『代码获取』
       // 找到下面这串 URL: "https://hm.baidu.com/hm.js?xxxxx"
       // 将 `xxxxx` 填写在 seed 中即可
-      seed: 'xxxxx',
-    },
-  },
-};
+      seed: 'xxxxx'
+    }
+  }
+}
 ```
 
 ### site.hideSimulator
@@ -402,9 +402,9 @@ module.exports = {
 ```js
 module.exports = {
   plugins: {
-    autoprefixer: {},
-  },
-};
+    autoprefixer: {}
+  }
+}
 ```
 
 ## browserslist

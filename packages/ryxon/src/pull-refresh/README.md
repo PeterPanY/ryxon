@@ -9,11 +9,11 @@ Used to provide interactive operations for pull-down refresh.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { PullRefresh } from 'ryxon';
+import { createApp } from 'vue'
+import { PullRefresh } from 'ryxon'
 
-const app = createApp();
-app.use(PullRefresh);
+const app = createApp()
+app.use(PullRefresh)
 ```
 
 ## Usage
@@ -29,28 +29,28 @@ The `refresh` event will be Emitted when pull refresh, you should set `v-model` 
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const count = ref(0);
-    const loading = ref(false);
+    const count = ref(0)
+    const loading = ref(false)
     const onRefresh = () => {
       setTimeout(() => {
-        showToast('Refresh Success');
-        loading.value = false;
-        count.value++;
-      }, 1000);
-    };
+        showToast('Refresh Success')
+        loading.value = false
+        count.value++
+      }, 1000)
+    }
 
     return {
       count,
       loading,
-      onRefresh,
-    };
-  },
-};
+      onRefresh
+    }
+  }
+}
 ```
 
 ### Success Tip
@@ -121,7 +121,7 @@ Use slots to custom tips.
 | success-duration | Success text display duration(ms) | _number \| string_ | `500` |
 | animation-duration | Animation duration | _number \| string_ | `300` |
 | head-height | Height of head | _number \| string_ | `50` |
-| pull-distance `v3.0.8` | The distance to trigger the pull refresh | _number \| string_ | same as `head-height` |
+| pull-distance | The distance to trigger the pull refresh | _number \| string_ | same as `head-height` |
 | disabled | Whether to disable pull refresh | _boolean_ | `false` |
 
 ### Events
@@ -129,7 +129,7 @@ Use slots to custom tips.
 | Event | Description | Parameters |
 | --- | --- | --- |
 | refresh | Emitted after pulling refresh | - |
-| change `v3.5.1` | Emitted when draging or status changed | _{ status: string, distance: number }_ |
+| change | Emitted when draging or status changed | _{ status: string, distance: number }_ |
 
 ### Slots
 
@@ -147,7 +147,7 @@ Use slots to custom tips.
 The component exports the following type definitions:
 
 ```ts
-import type { PullRefreshProps } from 'ryxon';
+import type { PullRefreshProps } from 'ryxon'
 ```
 
 ## Theming
@@ -156,9 +156,9 @@ import type { PullRefreshProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-pull-refresh-head-height | _50px_ | - |
-| --r-pull-refresh-head-font-size | _var(--r-font-size-md)_ | - |
-| --r-pull-refresh-head-text-color | _var(--r-text-color-2)_ | - |
-| --r-pull-refresh-loading-icon-size | _16px_ | - |
+| Name                               | Default Value           | Description |
+| ---------------------------------- | ----------------------- | ----------- |
+| --r-pull-refresh-head-height       | _50px_                  | -           |
+| --r-pull-refresh-head-font-size    | _var(--r-font-size-md)_ | -           |
+| --r-pull-refresh-head-text-color   | _var(--r-text-color-2)_ | -           |
+| --r-pull-refresh-loading-icon-size | _16px_                  | -           |

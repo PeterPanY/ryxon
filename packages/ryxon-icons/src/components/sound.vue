@@ -14,6 +14,6 @@
 import type { DefineComponent } from 'vue'
 
 export default {
-  name: 'Sound'
+  name: 'Sound',
 } as DefineComponent
 </script>

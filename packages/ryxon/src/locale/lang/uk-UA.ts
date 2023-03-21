@@ -2,7 +2,7 @@ export default {
   name: "Ім'я",
   tel: 'Телефон',
   save: 'Зберегти',
-  confirm: 'підтвердити',
+  confirm: 'Підтвердити',
   cancel: 'Скасувати',
   delete: 'Видалити',
   loading: 'Завантаження...',
@@ -14,57 +14,48 @@ export default {
     end: 'Кінець',
     start: 'Почати',
     title: 'Календар',
-    weekdays: [
-      'неділя',
-      'понеділок',
-      'вівторок',
-      'середа',
-      'четвер',
-      "п'ятниця",
-      'субота',
-    ],
+    weekdays: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
     monthTitle: (year: number, month: number) => `${year}/${month}`,
-    rangePrompt: (maxRange: number) =>
-      `Виберіть не більше ніж ${maxRange} днів`,
+    rangePrompt: (maxRange: number) => `Оберіть не більше ніж ${maxRange} днів`
   },
   rCascader: {
-    select: 'Вибрати',
+    select: 'Обрати'
   },
   rPagination: {
-    prev: 'Попередній',
-    next: 'Далі',
+    prev: 'Повернутися',
+    next: 'Далі'
   },
   rPullRefresh: {
     pulling: 'Потягніть, щоб оновити...',
-    loosing: 'Погано оновити...',
+    loosing: 'Відпустіть, щоб оновити...'
   },
   rSubmitBar: {
-    label: 'Усього:',
+    label: 'Усього:'
   },
   rCoupon: {
     unlimited: 'Необмежено',
     discount: (discount: number) => `${discount * 10}% off`,
-    condition: (condition: number) => `Принаймні ${condition}`,
+    condition: (condition: number) => `Принаймні ${condition}`
   },
   rCouponCell: {
     title: 'Купон',
-    count: (count: number) => `У вас є ${count} купонів`,
+    count: (count: number) => `У вас є ${count} купонів`
   },
   rCouponList: {
     exchange: 'Обмін',
     close: 'Закрити',
     enable: 'Доступно',
     disabled: 'Недоступно',
-    placeholder: 'Код купона',
+    placeholder: 'Код купону'
   },
   rAddressEdit: {
     area: 'Область',
-    areaEmpty: 'Будь ласка, виберіть зону прийому',
+    areaEmpty: 'Будь ласка, оберіть зону прийому',
     addressEmpty: 'Адреса не може бути порожньою',
     addressDetail: 'Адреса',
-    defaultAddress: 'Встановити як адресу за замовчуванням',
+    defaultAddress: 'Встановити як адресу за замовчуванням'
   },
   rAddressList: {
-    add: 'Додати нову адресу',
-  },
-};
+    add: 'Додати нову адресу'
+  }
+}

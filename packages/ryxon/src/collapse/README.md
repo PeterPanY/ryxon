@@ -9,12 +9,12 @@ Place a group of content in multiple collapsible panels, click the title of the 
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Collapse, CollapseItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Collapse, CollapseItem } from 'ryxon'
 
-const app = createApp();
-app.use(Collapse);
-app.use(CollapseItem);
+const app = createApp()
+app.use(Collapse)
+app.use(CollapseItem)
 ```
 
 ## Usage
@@ -32,14 +32,14 @@ Use `v-model` to control the name of active panels.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeNames = ref(['1']);
-    return { activeNames };
-  },
-};
+    const activeNames = ref(['1'])
+    return { activeNames }
+  }
+}
 ```
 
 ### Accordion
@@ -55,14 +55,14 @@ In accordion mode, only one panel can be expanded at the same time.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeName = ref('1');
-    return { activeName };
-  },
-};
+    const activeName = ref('1')
+    return { activeName }
+  }
+}
 ```
 
 ### Disabled
@@ -98,14 +98,14 @@ Use the `disabled` prop to disable CollapseItem.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const activeNames = ref(['1']);
-    return { activeNames };
-  },
-};
+    const activeNames = ref(['1'])
+    return { activeNames }
+  }
+}
 ```
 
 ### Toggle All
@@ -178,9 +178,9 @@ export default {
 | label | Description below the title | _string_ | - |
 | border | Whether to show inner border | _boolean_ | `true` |
 | disabled | Whether to disabled collapse | _boolean_ | `false` |
-| readonly `v3.0.12` | Whether to be readonly | _boolean_ | `false` |
+| readonly | Whether to be readonly | _boolean_ | `false` |
 | is-link | Whether to show link icon | _boolean_ | `true` |
-| lazy-render `v3.4.5` | Whether to lazy render util opened | _boolean_ | `true` |
+| lazy-render | Whether to lazy render util opened | _boolean_ | `true` |
 | title-class | Title className | _string_ | - |
 | value-class | Value className | _string_ | - |
 | label-class | Label className | _string_ | - |
@@ -191,7 +191,7 @@ Use [ref](https://v3.vuejs.org/guide/component-template-refs.html) to get Collap
 
 | Name | Description | Attribute | Return value |
 | --- | --- | --- | --- |
-| toggleAll `v3.5.3` | Toggle the expanded status of all collapses | _options?: boolean \| object_ | - |
+| toggleAll | Toggle the expanded status of all collapses | _options?: boolean \| object_ | - |
 
 ### toggleAll Usage
 
@@ -236,31 +236,31 @@ import type {
   CollapseProps,
   CollapseItemProps,
   CollapseItemInstance,
-  CollapseToggleAllOptions,
-} from 'ryxon';
+  CollapseToggleAllOptions
+} from 'ryxon'
 ```
 
 `CollapseItemInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { CollapseItemInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CollapseItemInstance } from 'ryxon'
 
-const collapseItemRef = ref<CollapseItemInstance>();
+const collapseItemRef = ref<CollapseItemInstance>()
 
-collapseItemRef.value?.toggle();
+collapseItemRef.value?.toggle()
 ```
 
 ### CollapseItem Slots
 
-| Name           | Description              |
-| -------------- | ------------------------ |
-| default        | Content                  |
-| title          | Custom header title      |
-| value          | Custom header value      |
-| label `v3.1.1` | Custom header label      |
-| icon           | Custom header left icon  |
-| right-icon     | Custom header right icon |
+| Name       | Description              |
+| ---------- | ------------------------ |
+| default    | Content                  |
+| title      | Custom header title      |
+| value      | Custom header value      |
+| label      | Custom header label      |
+| icon       | Custom header left icon  |
+| right-icon | Custom header right icon |
 
 ## Theming
 

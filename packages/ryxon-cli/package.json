@@ -44,7 +44,7 @@
     "@types/less": "^3.0.3",
     "@types/lodash": "^4.14.191",
     "@types/markdown-it": "^12.2.3",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
   },
   "dependencies": {
     "@babel/core": "^7.18.13",
@@ -59,7 +59,7 @@
     "commander": "^10.0.0",
     "consola": "^2.15.3",
     "conventional-changelog": "^3.1.25",
-    "esbuild": "^0.16.10",
+    "esbuild": "^0.17.12",
     "eslint": "^8.31.0",
     "execa": "^6.1.0",
     "fast-glob": "^3.2.11",
@@ -84,15 +84,15 @@
     "release-it": "^15.4.1",
     "terser": "^5.16.1",
     "transliteration": "^2.3.5",
-    "typescript": "^4.8.2",
-    "vite": "^4.0.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.0",
     "vite-plugin-md": "^0.11.9",
     "vue-router": "^4.1.5"
   },
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "release: @ryxon/cli ${version}"
+      "commitMessage": "release: @ryxon/cli v${version}"
     }
   }
 }

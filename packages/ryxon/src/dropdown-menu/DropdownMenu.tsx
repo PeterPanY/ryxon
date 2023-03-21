@@ -4,8 +4,8 @@ import {
   defineComponent,
   type InjectionKey,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -17,23 +17,23 @@ import {
   makeNumericProp,
   createNamespace,
   HAPTICS_FEEDBACK,
-  type ComponentInstance,
-} from '../utils';
+  type ComponentInstance
+} from '../utils'
 
 // Composables
-import { useId } from '../composables/use-id';
+import { useId } from '../composables/use-id'
 import {
   useRect,
   useChildren,
   useClickAway,
   useScrollParent,
-  useEventListener,
-} from '@ryxon/use';
+  useEventListener
+} from '@ryxon/use'
 
 // Types
-import type { DropdownMenuProvide, DropdownMenuDirection } from './types';
+import type { DropdownMenuProvide, DropdownMenuDirection } from './types'
 
-const [name, bem] = createNamespace('dropdown-menu');
+const [name, bem] = createNamespace('dropdown-menu')
 
 export const dropdownMenuProps = {
   overlay: truthProp,
@@ -42,12 +42,12 @@ export const dropdownMenuProps = {
   direction: makeStringProp<DropdownMenuDirection>('down'),
   activeColor: String,
   closeOnClickOutside: truthProp,
-  closeOnClickOverlay: truthProp,
-};
+  closeOnClickOverlay: truthProp
+}
 
-export type DropdownMenuProps = ExtractPropTypes<typeof dropdownMenuProps>;
+export type DropdownMenuProps = ExtractPropTypes<typeof dropdownMenuProps>
 
-export const DROPDOWN_KEY: InjectionKey<DropdownMenuProvide> = Symbol(name);
+export const DROPDOWN_KEY: InjectionKey<DropdownMenuProvide> = Symbol(name)
 
 export default defineComponent({
   name,
@@ -55,65 +55,64 @@ export default defineComponent({
   props: dropdownMenuProps,
 
   setup(props, { slots }) {
-    const id = useId();
-    const root = ref<HTMLElement>();
-    const barRef = ref<HTMLElement>();
-    const offset = ref(0);
+    const id = useId()
+    const root = ref<HTMLElement>()
+    const barRef = ref<HTMLElement>()
+    const offset = ref(0)
 
-    const { children, linkChildren } = useChildren(DROPDOWN_KEY);
-    const scrollParent = useScrollParent(root);
+    const { children, linkChildren } = useChildren(DROPDOWN_KEY)
+    const scrollParent = useScrollParent(root)
 
     const opened = computed(() =>
       children.some((item) => item.state.showWrapper)
-    );
+    )
 
     const barStyle = computed<CSSProperties | undefined>(() => {
       if (opened.value && isDef(props.zIndex)) {
         return {
-          zIndex: +props.zIndex + 1,
-        };
+          zIndex: +props.zIndex + 1
+        }
       }
-    });
+    })
 
     const onClickAway = () => {
       if (props.closeOnClickOutside) {
         children.forEach((item) => {
-          item.toggle(false);
-        });
+          item.toggle(false)
+        })
       }
-    };
+    }
 
     const updateOffset = () => {
       if (barRef.value) {
-        const rect = useRect(barRef);
+        const rect = useRect(barRef)
         if (props.direction === 'down') {
-          offset.value = rect.bottom;
+          offset.value = rect.bottom
         } else {
-          offset.value = windowHeight.value - rect.top;
+          offset.value = windowHeight.value - rect.top
         }
       }
-    };
+    }
 
     const onScroll = () => {
       if (opened.value) {
-        updateOffset();
+        updateOffset()
       }
-    };
+    }
 
     const toggleItem = (active: number) => {
       children.forEach((item, index) => {
         if (index === active) {
-          updateOffset();
-          item.toggle();
+          item.toggle()
         } else if (item.state.showPopup) {
-          item.toggle(false, { immediate: true });
+          item.toggle(false, { immediate: true })
         }
-      });
-    };
+      })
+    }
 
     const renderTitle = (item: ComponentInstance, index: number) => {
-      const { showPopup } = item.state;
-      const { disabled, titleClass } = item;
+      const { showPopup } = item.state
+      const { disabled, titleClass } = item
 
       return (
         <div
@@ -123,7 +122,7 @@ export default defineComponent({
           class={[bem('item', { disabled }), { [HAPTICS_FEEDBACK]: !disabled }]}
           onClick={() => {
             if (!disabled) {
-              toggleItem(index);
+              toggleItem(index)
             }
           }}
         >
@@ -131,24 +130,24 @@ export default defineComponent({
             class={[
               bem('title', {
                 down: showPopup === (props.direction === 'down'),
-                active: showPopup,
+                active: showPopup
               }),
-              titleClass,
+              titleClass
             ]}
             style={{ color: showPopup ? props.activeColor : '' }}
           >
             <div class="r-ellipsis">{item.renderTitle()}</div>
           </span>
         </div>
-      );
-    };
+      )
+    }
 
-    linkChildren({ id, props, offset });
-    useClickAway(root, onClickAway);
+    linkChildren({ id, props, offset, updateOffset })
+    useClickAway(root, onClickAway)
     useEventListener('scroll', onScroll, {
       target: scrollParent,
-      passive: true,
-    });
+      passive: true
+    })
 
     return () => (
       <div ref={root} class={bem()}>
@@ -161,6 +160,6 @@ export default defineComponent({
         </div>
         {slots.default?.()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

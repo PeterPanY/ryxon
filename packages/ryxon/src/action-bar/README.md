@@ -9,13 +9,13 @@ Used to provide convenient interaction for page-related operations.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { ActionBar, ActionBarIcon, ActionBarButton } from 'ryxon';
+import { createApp } from 'vue'
+import { ActionBar, ActionBarIcon, ActionBarButton } from 'ryxon'
 
-const app = createApp();
-app.use(ActionBar);
-app.use(ActionBarIcon);
-app.use(ActionBarButton);
+const app = createApp()
+app.use(ActionBar)
+app.use(ActionBarIcon)
+app.use(ActionBarButton)
 ```
 
 ## Usage
@@ -32,18 +32,18 @@ app.use(ActionBarButton);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const onClickIcon = () => showToast('Click Icon');
-    const onClickButton = () => showToast('Click Button');
+    const onClickIcon = () => showToast('Click Icon')
+    const onClickButton = () => showToast('Click Button')
     return {
       onClickIcon,
-      onClickButton,
-    };
-  },
-};
+      onClickButton
+    }
+  }
+}
 ```
 
 ### Icon Badge
@@ -90,7 +90,7 @@ Use `badge` prop to show badge in icon.
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
 | safe-area-inset-bottom | Whether to enable bottom safe area adaptation | _boolean_ | `true` |
-| placeholder `v3.5.1` | Whether to generate a placeholder element | _boolean_ | `false` |
+| placeholder | Whether to generate a placeholder element | _boolean_ | `false` |
 
 ### ActionBarIcon Props
 
@@ -100,10 +100,10 @@ Use `badge` prop to show badge in icon.
 | icon | Icon | _string_ | - |
 | color | Icon color | _string_ | `#323233` |
 | icon-class | Icon class name | _string \| Array \| object_ | `''` |
-| icon-prefix `v3.0.17` | Icon className prefix | _string_ | `r-icon` |
+| icon-prefix | Icon className prefix | _string_ | `r-icon` |
 | dot | Whether to show red dot | _boolean_ | - |
 | badge | Content of the badge | _number \| string_ | - |
-| badge-props `v3.2.8` | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
+| badge-props | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
 | url | Link URL | _string_ | - |
 | to | Target route of the link, same as to of vue-router | _string \| object_ | - |
 | replace | If true, the navigation will not leave a history record | _boolean_ | `false` |
@@ -143,8 +143,8 @@ The component exports the following type definitions:
 import type {
   ActionBarProps,
   ActionBarIconProps,
-  ActionBarButtonProps,
-} from 'ryxon';
+  ActionBarButtonProps
+} from 'ryxon'
 ```
 
 ## Theming

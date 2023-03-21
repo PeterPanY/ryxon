@@ -1,13 +1,13 @@
-import { computed, defineComponent, type ExtractPropTypes } from 'vue';
+import { computed, defineComponent, type ExtractPropTypes } from 'vue'
 import {
   addUnit,
   truthProp,
   numericProp,
   createNamespace,
-  type Numeric,
-} from '../utils';
+  type Numeric
+} from '../utils'
 
-const [name, bem] = createNamespace('progress');
+const [name, bem] = createNamespace('progress')
 
 export const progressProps = {
   color: String,
@@ -21,11 +21,11 @@ export const progressProps = {
   percentage: {
     type: numericProp,
     default: 0,
-    validator: (value: Numeric) => value >= 0 && value <= 100,
-  },
-};
+    validator: (value: Numeric) => +value >= 0 && +value <= 100
+  }
+}
 
-export type ProgressProps = ExtractPropTypes<typeof progressProps>;
+export type ProgressProps = ExtractPropTypes<typeof progressProps>
 
 export default defineComponent({
   name,
@@ -35,19 +35,19 @@ export default defineComponent({
   setup(props) {
     const background = computed(() =>
       props.inactive ? undefined : props.color
-    );
+    )
 
     const renderPivot = () => {
-      const { textColor, pivotText, pivotColor, percentage } = props;
-      const text = pivotText ?? `${percentage}%`;
+      const { textColor, pivotText, pivotColor, percentage } = props
+      const text = pivotText ?? `${percentage}%`
 
       if (props.showPivot && text) {
         const style = {
           color: textColor,
           left: `${+percentage}%`,
           transform: `translate(-${+percentage}%,-50%)`,
-          background: pivotColor || background.value,
-        };
+          background: pivotColor || background.value
+        }
 
         return (
           <span
@@ -56,20 +56,20 @@ export default defineComponent({
           >
             {text}
           </span>
-        );
+        )
       }
-    };
+    }
 
     return () => {
-      const { trackColor, percentage, strokeWidth } = props;
+      const { trackColor, percentage, strokeWidth } = props
       const rootStyle = {
         background: trackColor,
-        height: addUnit(strokeWidth),
-      };
+        height: addUnit(strokeWidth)
+      }
       const portionStyle = {
         width: `${percentage}%`,
-        background: background.value,
-      };
+        background: background.value
+      }
 
       return (
         <div class={bem()} style={rootStyle}>
@@ -79,7 +79,7 @@ export default defineComponent({
           />
           {renderPivot()}
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

@@ -258,7 +258,7 @@ export default defineComponent({
     // 自动轮播
     const autoplay = () => {
       stopAutoplay()
-      if (props.autoplay > 0 && count.value > 1) {
+      if (+props.autoplay > 0 && count.value > 1) {
         autoplayTimer = setTimeout(() => {
           next()
           autoplay()
@@ -345,7 +345,7 @@ export default defineComponent({
             move({ offset: delta.value })
 
             if (!dragging) {
-              emit('dragStart')
+              emit('dragStart', { index: activeIndicator.value })
               dragging = true
             }
           }
@@ -386,7 +386,7 @@ export default defineComponent({
       dragging = false
       state.swiping = false
 
-      emit('dragEnd')
+      emit('dragEnd', { index: activeIndicator.value })
       autoplay()
     }
 

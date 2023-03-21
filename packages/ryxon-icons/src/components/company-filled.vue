@@ -10,6 +10,6 @@
 import type { DefineComponent } from 'vue'
 
 export default {
-  name: 'CompanyFilled'
+  name: 'CompanyFilled',
 } as DefineComponent
 </script>

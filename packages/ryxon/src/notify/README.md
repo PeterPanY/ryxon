@@ -9,11 +9,11 @@ The display message prompt is at the top of the page, and supports two methods: 
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Notify } from 'ryxon';
+import { createApp } from 'vue'
+import { Notify } from 'ryxon'
 
-const app = createApp();
-app.use(Notify);
+const app = createApp()
+app.use(Notify)
 ```
 
 ### Function Call
@@ -23,9 +23,9 @@ Ryxon provides some utility functions that can quickly evoke global `Notify` com
 For example, calling the `showNotify` function will render a Dialog directly in the page.
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
-showNotify('Notify Message');
+showNotify('Notify Message')
 ```
 
 ## Usage
@@ -33,46 +33,46 @@ showNotify('Notify Message');
 ### Basic Usage
 
 ```js
-import { showNotify, closeNotify } from 'ryxon';
+import { showNotify, closeNotify } from 'ryxon'
 
 // auto close after 3s
-showNotify('Message');
+showNotify('Message')
 
 // manually close
-closeNotify();
+closeNotify()
 ```
 
 ### Notify Type
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
-showNotify({ type: 'primary', message: 'Notify Message' });
-showNotify({ type: 'success', message: 'Notify Message' });
-showNotify({ type: 'danger', message: 'Notify Message' });
-showNotify({ type: 'warning', message: 'Notify Message' });
+showNotify({ type: 'primary', message: 'Notify Message' })
+showNotify({ type: 'success', message: 'Notify Message' })
+showNotify({ type: 'danger', message: 'Notify Message' })
+showNotify({ type: 'warning', message: 'Notify Message' })
 ```
 
 ### Custom Notify
 
 ```js
-import { showNotify } from 'ryxon';
+import { showNotify } from 'ryxon'
 
 showNotify({
   message: 'Custom Color',
   color: '#ad0000',
-  background: '#ffe1e1',
-});
+  background: '#ffe1e1'
+})
 
 showNotify({
   message: 'Custom Position',
-  position: 'bottom',
-});
+  position: 'bottom'
+})
 
 showNotify({
   message: 'Custom Duration',
-  duration: 1000,
-});
+  duration: 1000
+})
 ```
 
 ### Use Notify Component
@@ -86,25 +86,25 @@ showNotify({
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const show = ref(false);
+    const show = ref(false)
 
     const showNotify = () => {
-      show.value = true;
+      show.value = true
       setTimeout(() => {
-        show.value = false;
-      }, 2000);
-    };
+        show.value = false
+      }, 2000)
+    }
 
     return {
       show,
-      showNotify,
-    };
-  },
-};
+      showNotify
+    }
+  }
+}
 ```
 
 ## API
@@ -128,11 +128,11 @@ Ryxon exports following Notify utility functions:
 | message | Message | _string_ | - |
 | duration | Duration(ms), won't disappear if value is 0 | _number \| string_ | `3000` |
 | z-index | Set the z-index to a fixed value | _number \| string_ | `2000+` |
-| position `v3.4.0` | Position, can be set to `bottom` | _NotifyPosition_ | `top` |
+| position | Position, can be set to `bottom` | _NotifyPosition_ | `top` |
 | color | Message color | _string_ | `white` |
 | background | Background color | _string_ | - |
 | className | Custom className | _string \| Array \| object_ | - |
-| lockScroll `v3.0.7` | Whether to lock background scroll | _boolean_ | `false` |
+| lockScroll | Whether to lock background scroll | _boolean_ | `false` |
 | onClick | Callback function after click | _(event: MouseEvent) => void_ | - |
 | onOpened | Callback function after opened | _() => void_ | - |
 | onClose | Callback function after close | _() => void_ | - |
@@ -146,8 +146,8 @@ import type {
   NotifyType,
   NotifyProps,
   NotifyOptions,
-  NotifyPosition,
-} from 'ryxon';
+  NotifyPosition
+} from 'ryxon'
 ```
 
 ## Theming

@@ -9,12 +9,12 @@ Used to show the various parts of the action flow and let the user know where th
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Step, Steps } from 'ryxon';
+import { createApp } from 'vue'
+import { Step, Steps } from 'ryxon'
 
-const app = createApp();
-app.use(Step);
-app.use(Steps);
+const app = createApp()
+app.use(Step)
+app.use(Steps)
 ```
 
 ## Usage
@@ -31,14 +31,14 @@ app.use(Steps);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(1);
-    return { active };
-  },
-};
+    const active = ref(1)
+    return { active }
+  }
+}
 ```
 
 ### Custom Style
@@ -83,17 +83,17 @@ export default {
 | inactive-color | Inactive step color | _string_ | `#969799` |
 | active-icon | Active icon name | _string_ | `checked` |
 | inactive-icon | Inactive icon name | _string_ | - |
-| finish-icon `v3.0.7` | Finish icon name | _string_ | - |
-| icon-prefix `v3.0.15` | Icon className prefix | _string_ | `r-icon` |
+| finish-icon | Finish icon name | _string_ | - |
+| icon-prefix | Icon className prefix | _string_ | `r-icon` |
 
 ### Step Slots
 
-| Name                 | Description          |
-| -------------------- | -------------------- |
-| default              | Step content         |
-| active-icon          | Custom active icon   |
-| inactive-icon        | Custom inactive icon |
-| finish-icon `v3.0.7` | Custom finish icon   |
+| Name          | Description          |
+| ------------- | -------------------- |
+| default       | Step content         |
+| active-icon   | Custom active icon   |
+| inactive-icon | Custom inactive icon |
+| finish-icon   | Custom finish icon   |
 
 ### Steps Events
 
@@ -106,7 +106,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { StepsProps, StepsDirection } from 'ryxon';
+import type { StepsProps, StepsDirection } from 'ryxon'
 ```
 
 ## Theming
@@ -115,17 +115,17 @@ import type { StepsProps, StepsDirection } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-step-text-color | _var(--r-text-color-2)_ | - |
-| --r-step-active-color | _var(--r-primary-color)_ | - |
-| --r-step-process-text-color | _var(--r-text-color)_ | - |
-| --r-step-font-size | _var(--r-font-size-md)_ | - |
-| --r-step-line-color | _var(--r-border-color)_ | - |
-| --r-step-finish-line-color | _var(--r-primary-color)_ | - |
-| --r-step-finish-text-color | _var(--r-text-color)_ | - |
-| --r-step-icon-size | _12px_ | - |
-| --r-step-circle-size | _5px_ | - |
-| --r-step-circle-color | _var(--r-gray-6)_ | - |
-| --r-step-horizontal-title-font-size | _var(--r-font-size-sm)_ | - |
-| --r-steps-background | _var(--r-background-2)_ | - |
+| Name                                | Default Value            | Description |
+| ----------------------------------- | ------------------------ | ----------- |
+| --r-step-text-color                 | _var(--r-text-color-2)_  | -           |
+| --r-step-active-color               | _var(--r-primary-color)_ | -           |
+| --r-step-process-text-color         | _var(--r-text-color)_    | -           |
+| --r-step-font-size                  | _var(--r-font-size-md)_  | -           |
+| --r-step-line-color                 | _var(--r-border-color)_  | -           |
+| --r-step-finish-line-color          | _var(--r-primary-color)_ | -           |
+| --r-step-finish-text-color          | _var(--r-text-color)_    | -           |
+| --r-step-icon-size                  | _12px_                   | -           |
+| --r-step-circle-size                | _5px_                    | -           |
+| --r-step-circle-color               | _var(--r-gray-6)_        | -           |
+| --r-step-horizontal-title-font-size | _var(--r-font-size-sm)_  | -           |
+| --r-steps-background                | _var(--r-background-2)_  | -           |

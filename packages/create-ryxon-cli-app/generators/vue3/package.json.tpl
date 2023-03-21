@@ -31,7 +31,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@ryxon/cli": "^5.0.0",
+    "@ryxon/cli": "^1.0.0",
     "vue": "^3.0.0",
     "sass": "^1.49.7"
   },

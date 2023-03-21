@@ -9,11 +9,11 @@ Display a list of receiving addresses.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { AddressList } from 'ryxon';
+import { createApp } from 'vue'
+import { AddressList } from 'ryxon'
 
-const app = createApp();
-app.use(AddressList);
+const app = createApp()
+app.use(AddressList)
 ```
 
 ## Usage
@@ -33,48 +33,48 @@ app.use(AddressList);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const chosenAddressId = ref('1');
+    const chosenAddressId = ref('1')
     const list = [
       {
         id: '1',
         name: 'John Snow',
         tel: '13000000000',
         address: 'Somewhere',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: 'Ned Stark',
         tel: '1310000000',
-        address: 'Somewhere',
-      },
-    ];
+        address: 'Somewhere'
+      }
+    ]
     const disabledList = [
       {
         id: '3',
         name: 'Tywin',
         tel: '1320000000',
-        address: 'Somewhere',
-      },
-    ];
+        address: 'Somewhere'
+      }
+    ]
 
-    const onAdd = () => showToast('Add');
-    const onEdit = (item, index) => showToast('Edit:' + index);
+    const onAdd = () => showToast('Add')
+    const onEdit = (item, index) => showToast('Edit:' + index)
 
     return {
       list,
       onAdd,
       onEdit,
       disabledList,
-      chosenAddressId,
-    };
-  },
-};
+      chosenAddressId
+    }
+  }
+}
 ```
 
 ## API
@@ -114,19 +114,19 @@ export default {
 
 ### Slots
 
-| Name         | Description                    | SlotProps       |
-| ------------ | ------------------------------ | --------------- |
-| default      | Custom content after list      | -               |
-| top          | Custom content before list     | -               |
-| item-bottom  | Custom content after list item | _item: Address_ |
-| tag `v3.0.9` | Custom tag of list item        | _item: Address_ |
+| Name        | Description                    | SlotProps       |
+| ----------- | ------------------------------ | --------------- |
+| default     | Custom content after list      | -               |
+| top         | Custom content before list     | -               |
+| item-bottom | Custom content after list item | _item: Address_ |
+| tag         | Custom tag of list item        | _item: Address_ |
 
 ### Types
 
 The component exports the following type definitions:
 
 ```ts
-import type { AddressListProps, AddressListAddress } from 'ryxon';
+import type { AddressListProps, AddressListAddress } from 'ryxon'
 ```
 
 ## Theming

@@ -1,4 +1,4 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 import {
   addUnit,
   truthProp,
@@ -7,10 +7,10 @@ import {
   makeStringProp,
   BORDER_SURROUND,
   createNamespace,
-  makeNumericProp,
-} from '../utils';
+  makeNumericProp
+} from '../utils'
 
-const [name, bem] = createNamespace('password-input');
+const [name, bem] = createNamespace('password-input')
 
 export const passwordInputProps = {
   info: String,
@@ -19,10 +19,10 @@ export const passwordInputProps = {
   gutter: numericProp,
   length: makeNumericProp(6),
   focused: Boolean,
-  errorInfo: String,
-};
+  errorInfo: String
+}
 
-export type PasswordInputProps = ExtractPropTypes<typeof passwordInputProps>;
+export type PasswordInputProps = ExtractPropTypes<typeof passwordInputProps>
 
 export default defineComponent({
   name,
@@ -33,29 +33,30 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const onTouchStart = (event: TouchEvent) => {
-      event.stopPropagation();
-      emit('focus', event);
-    };
+      event.stopPropagation()
+      emit('focus', event)
+    }
 
     const renderPoints = () => {
-      const Points: JSX.Element[] = [];
-      const { mask, value, length, gutter, focused } = props;
+      const Points: JSX.Element[] = []
+      const { mask, value, gutter, focused } = props
+      const length = +props.length
 
       for (let i = 0; i < length; i++) {
-        const char = value[i];
-        const showBorder = i !== 0 && !gutter;
-        const showCursor = focused && i === value.length;
+        const char = value[i]
+        const showBorder = i !== 0 && !gutter
+        const showCursor = focused && i === value.length
 
-        let style;
+        let style
         if (i !== 0 && gutter) {
-          style = { marginLeft: addUnit(gutter) };
+          style = { marginLeft: addUnit(gutter) }
         }
 
         Points.push(
           <li
             class={[
               { [BORDER_LEFT]: showBorder },
-              bem('item', { focus: showCursor }),
+              bem('item', { focus: showCursor })
             ]}
             style={style}
           >
@@ -66,14 +67,14 @@ export default defineComponent({
             )}
             {showCursor && <div class={bem('cursor')} />}
           </li>
-        );
+        )
       }
 
-      return Points;
-    };
+      return Points
+    }
 
     return () => {
-      const info = props.errorInfo || props.info;
+      const info = props.errorInfo || props.info
       return (
         <div class={bem()}>
           <ul
@@ -88,7 +89,7 @@ export default defineComponent({
             </div>
           )}
         </div>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

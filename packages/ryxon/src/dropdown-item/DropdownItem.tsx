@@ -5,8 +5,8 @@ import {
   type PropType,
   type TeleportProps,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -14,23 +14,23 @@ import {
   unknownProp,
   getZIndexStyle,
   createNamespace,
-  makeArrayProp,
-} from '../utils';
-import { DROPDOWN_KEY } from '../dropdown-menu/DropdownMenu';
+  makeArrayProp
+} from '../utils'
+import { DROPDOWN_KEY } from '../dropdown-menu/DropdownMenu'
 
 // Composables
-import { useParent } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
+import { useParent } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Components
-import { Cell } from '../cell';
-import { Icon } from '../icon';
-import { Popup } from '../popup';
+import { Cell } from '../cell'
+import { Icon } from '../icon'
+import { Popup } from '../popup'
 
 // Types
-import type { DropdownItemOption } from './types';
+import type { DropdownItemOption } from './types'
 
-const [name, bem] = createNamespace('dropdown-item');
+const [name, bem] = createNamespace('dropdown-item')
 
 export const dropdownItemProps = {
   title: String,
@@ -39,10 +39,10 @@ export const dropdownItemProps = {
   teleport: [String, Object] as PropType<TeleportProps['to']>,
   lazyRender: truthProp,
   modelValue: unknownProp,
-  titleClass: unknownProp,
-};
+  titleClass: unknownProp
+}
 
-export type DropdownItemProps = ExtractPropTypes<typeof dropdownItemProps>;
+export type DropdownItemProps = ExtractPropTypes<typeof dropdownItemProps>
 
 export default defineComponent({
   name,
@@ -57,89 +57,88 @@ export default defineComponent({
     const state = reactive({
       showPopup: false,
       transition: true,
-      showWrapper: false,
-    });
+      showWrapper: false
+    })
 
-    const { parent, index } = useParent(DROPDOWN_KEY);
+    const { parent, index } = useParent(DROPDOWN_KEY)
 
     if (!parent) {
       if (process.env.NODE_ENV !== 'production') {
         console.error(
           '[Ryxon] <DropdownItem> must be a child component of <DropdownMenu>.'
-        );
+        )
       }
-      return;
+      return
     }
 
-    const getEmitter = (name: 'open' | 'close' | 'opened') => () => emit(name);
-    const onOpen = getEmitter('open');
-    const onClose = getEmitter('close');
-    const onOpened = getEmitter('opened');
+    const getEmitter = (name: 'open' | 'close' | 'opened') => () => emit(name)
+    const onOpen = getEmitter('open')
+    const onClose = getEmitter('close')
+    const onOpened = getEmitter('opened')
 
     const onClosed = () => {
-      state.showWrapper = false;
-      emit('closed');
-    };
+      state.showWrapper = false
+      emit('closed')
+    }
 
     const onClickWrapper = (event: MouseEvent) => {
       // prevent being identified as clicking outside and closed when using teleport
       if (props.teleport) {
-        event.stopPropagation();
+        event.stopPropagation()
       }
-    };
+    }
 
     const toggle = (
       show = !state.showPopup,
       options: { immediate?: boolean } = {}
     ) => {
       if (show === state.showPopup) {
-        return;
+        return
       }
 
-      state.showPopup = show;
-      state.transition = !options.immediate;
+      state.showPopup = show
+      state.transition = !options.immediate
 
       if (show) {
-        state.showWrapper = true;
+        parent.updateOffset()
+        state.showWrapper = true
       }
-    };
+    }
 
     const renderTitle = () => {
       if (slots.title) {
-        return slots.title();
+        return slots.title()
       }
 
       if (props.title) {
-        return props.title;
+        return props.title
       }
 
       const match = props.options.find(
         (option) => option.value === props.modelValue
-      );
+      )
 
-      return match ? match.text : '';
-    };
+      return match ? match.text : ''
+    }
 
     const renderOption = (option: DropdownItemOption) => {
-      const { activeColor } = parent.props;
-      const active = option.value === props.modelValue;
+      const { activeColor } = parent.props
+      const active = option.value === props.modelValue
 
       const onClick = () => {
-        state.showPopup = false;
+        state.showPopup = false
 
         if (option.value !== props.modelValue) {
-          emit('update:modelValue', option.value);
-          emit('change', option.value);
+          emit('update:modelValue', option.value)
+          emit('change', option.value)
         }
-      };
+      }
 
       const renderIcon = () => {
         if (active) {
-          return (
-            <Icon class={bem('icon')} color={activeColor} name="success" />
-          );
+          return <Icon class={bem('icon')} color={activeColor} name="success" />
         }
-      };
+      }
 
       return (
         <Cell
@@ -154,20 +153,20 @@ export default defineComponent({
           clickable
           onClick={onClick}
         />
-      );
-    };
+      )
+    }
 
     const renderContent = () => {
-      const { offset } = parent;
+      const { offset } = parent
       const { zIndex, overlay, duration, direction, closeOnClickOverlay } =
-        parent.props;
+        parent.props
 
-      const style: CSSProperties = getZIndexStyle(zIndex);
+      const style: CSSProperties = getZIndexStyle(zIndex)
 
       if (direction === 'down') {
-        style.top = `${offset.value}px`;
+        style.top = `${offset.value}px`
       } else {
-        style.bottom = `${offset.value}px`;
+        style.bottom = `${offset.value}px`
       }
 
       return (
@@ -198,16 +197,16 @@ export default defineComponent({
             {slots.default?.()}
           </Popup>
         </div>
-      );
-    };
+      )
+    }
 
-    useExpose({ state, toggle, renderTitle });
+    useExpose({ state, toggle, renderTitle })
 
     return () => {
       if (props.teleport) {
-        return <Teleport to={props.teleport}>{renderContent()}</Teleport>;
+        return <Teleport to={props.teleport}>{renderContent()}</Teleport>
       }
-      return renderContent();
-    };
-  },
-});
+      return renderContent()
+    }
+  }
+})

@@ -1,0 +1,19 @@
+:root {
+  --r-text-ellipsis-line-height: 1.6;
+  --r-text-ellipsis-action-color: var(--r-blue);
+}
+
+.r-text-ellipsis {
+  line-height: var(--r-text-ellipsis-line-height);
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  &__action {
+    cursor: pointer;
+    color: var(--r-text-ellipsis-action-color);
+
+    &:active {
+      opacity: var(--r-active-opacity);
+    }
+  }
+}

@@ -17,7 +17,7 @@ export type PickerOption = {
   disabled?: boolean
   children?: PickerColumn
   className?: unknown
-  // for custom filed names
+  // for custom input names
   [key: PropertyKey]: any
 }
 

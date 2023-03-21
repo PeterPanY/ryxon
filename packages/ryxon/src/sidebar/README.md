@@ -9,12 +9,12 @@ The vertically displayed navigation bar is used to switch between different cont
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Sidebar, SidebarItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Sidebar, SidebarItem } from 'ryxon'
 
-const app = createApp();
-app.use(Sidebar);
-app.use(SidebarItem);
+const app = createApp()
+app.use(Sidebar)
+app.use(SidebarItem)
 ```
 
 ## Usage
@@ -30,14 +30,14 @@ app.use(SidebarItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
-    return { active };
-  },
-};
+    const active = ref(0)
+    return { active }
+  }
+}
 ```
 
 ### Show Badge
@@ -71,19 +71,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const active = ref(0);
-    const onChange = (index) => showToast(`Title ${index + 1}`);
+    const active = ref(0)
+    const onChange = (index) => showToast(`Title ${index + 1}`)
     return {
       active,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -107,7 +107,7 @@ export default {
 | title | Content | _string_ | `''` |
 | dot | Whether to show red dot | _boolean_ | `false` |
 | badge | Content of the badge | _number \| string_ | `''` |
-| badge-props `v3.2.8` | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
+| badge-props | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
 | disabled | Whether to be disabled | _boolean_ | `false` |
 | url | Link | _string_ | - |
 | to | Target route of the link, same as to of vue-router | _string \| object_ | - |
@@ -130,7 +130,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { SidebarProps, SidebarItemProps } from 'ryxon';
+import type { SidebarProps, SidebarItemProps } from 'ryxon'
 ```
 
 ## Theming

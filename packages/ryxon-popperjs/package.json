@@ -38,14 +38,14 @@
   "license": "MIT",
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
-    "esbuild": "^0.16.10",
+    "esbuild": "^0.17.12",
     "release-it": "^15.4.1",
-    "typescript": "^4.8.2"
+    "typescript": "^5.0.2"
   },
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "release: @ryxon/popperjs ${version}"
+      "commitMessage": "release: @ryxon/popperjs v${version}"
     }
   }
 }

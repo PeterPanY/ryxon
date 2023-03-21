@@ -9,12 +9,12 @@ Used to switch between different pages.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Tabbar, TabbarItem } from 'ryxon';
+import { createApp } from 'vue'
+import { Tabbar, TabbarItem } from 'ryxon'
 
-const app = createApp();
-app.use(Tabbar);
-app.use(TabbarItem);
+const app = createApp()
+app.use(Tabbar)
+app.use(TabbarItem)
 ```
 
 ## Usage
@@ -31,14 +31,14 @@ app.use(TabbarItem);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
-    return { active };
-  },
-};
+    const active = ref(0)
+    return { active }
+  }
+}
 ```
 
 ### Match by name
@@ -53,14 +53,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref('home');
-    return { active };
-  },
-};
+    const active = ref('home')
+    return { active }
+  }
+}
 ```
 
 ### Show Badge
@@ -92,22 +92,22 @@ Use `icon` slot to custom icon.
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const active = ref(0);
+    const active = ref(0)
     const icon = {
       active: 'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-active.png',
       inactive:
-        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png',
-    };
+        'https://fastly.jsdelivr.net/npm/@ryxon/assets/user-inactive.png'
+    }
     return {
       icon,
-      active,
-    };
-  },
-};
+      active
+    }
+  }
+}
 ```
 
 ### Custom Color
@@ -133,19 +133,19 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showToast } from 'ryxon'
 
 export default {
   setup() {
-    const active = ref(0);
-    const onChange = (index) => showToast(`Tab ${index}`);
+    const active = ref(0)
+    const onChange = (index) => showToast(`Tab ${index}`)
     return {
       icon,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ### Route Mode
@@ -191,7 +191,7 @@ export default {
 | icon-prefix | Icon className prefix | _string_ | `r-icon` |
 | dot | Whether to show red dot | _boolean_ | - |
 | badge | Content of the badge | _number \| string_ | `''` |
-| badge-props `v3.2.8` | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
+| badge-props | Props of Badge, see [Badge - props](#/en-US/badge#props) | _BadgeProps_ | - |
 | url | Link | _string_ | - |
 | to | Target route of the link, same as to of vue-router | _string \| object_ | - |
 | replace | If true, the navigation will not leave a history record | _boolean_ | `false` |
@@ -207,7 +207,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { TabbarProps, TabbarItemProps } from 'ryxon';
+import type { TabbarProps, TabbarItemProps } from 'ryxon'
 ```
 
 ## Theming
@@ -216,15 +216,15 @@ import type { TabbarProps, TabbarItemProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-tabbar-height | _50px_ | - |
-| --r-tabbar-z-index | _1_ | - |
-| --r-tabbar-background | _var(--r-background-2)_ | - |
-| --r-tabbar-item-font-size | _var(--r-font-size-sm)_ | - |
-| --r-tabbar-item-text-color | _var(--r-text-color)_ | - |
-| --r-tabbar-item-active-color | _var(--r-primary-color)_ | - |
-| --r-tabbar-item-active-background | _var(--r-background-2)_ | - |
-| --r-tabbar-item-line-height | _1_ | - |
-| --r-tabbar-item-icon-size | _22px_ | - |
-| --r-tabbar-item-icon-margin-bottom | _var(--r-padding-base)_ | - |
+| Name                               | Default Value            | Description |
+| ---------------------------------- | ------------------------ | ----------- |
+| --r-tabbar-height                  | _50px_                   | -           |
+| --r-tabbar-z-index                 | _1_                      | -           |
+| --r-tabbar-background              | _var(--r-background-2)_  | -           |
+| --r-tabbar-item-font-size          | _var(--r-font-size-sm)_  | -           |
+| --r-tabbar-item-text-color         | _var(--r-text-color)_    | -           |
+| --r-tabbar-item-active-color       | _var(--r-primary-color)_ | -           |
+| --r-tabbar-item-active-background  | _var(--r-background-2)_  | -           |
+| --r-tabbar-item-line-height        | _1_                      | -           |
+| --r-tabbar-item-icon-size          | _22px_                   | -           |
+| --r-tabbar-item-icon-margin-bottom | _var(--r-padding-base)_  | -           |
