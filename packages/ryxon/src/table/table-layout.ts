@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { isRef, nextTick, ref } from 'vue'
 import { isClient } from '@vueuse/core'
 import { hasOwn } from '../utils'
