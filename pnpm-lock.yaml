@@ -48,8 +48,8 @@ importers:
       '@ryxon/cli': workspace:*
       '@ryxon/eslint-config': workspace:*
       '@ryxon/icons': workspace:*
-      '@ryxon/popperjs': ^1.0.2
-      '@ryxon/use': ^1.0.3
+      '@ryxon/popperjs': ^1.0.3
+      '@ryxon/use': ^1.0.4
       '@types/jest': ^29.1.1
       '@types/lodash': ^4.14.182
       '@types/lodash-es': ^4.17.6
