@@ -48,8 +48,8 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.6.0",
-    "@ryxon/popperjs": "^1.0.2",
-    "@ryxon/use": "^1.0.3",
+    "@ryxon/popperjs": "^1.0.3",
+    "@ryxon/use": "^1.0.4",
     "@types/lodash": "^4.14.182",
     "@types/lodash-es": "^4.17.6",
     "@vueuse/core": "^9.1.0",
