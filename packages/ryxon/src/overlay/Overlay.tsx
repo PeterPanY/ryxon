@@ -4,8 +4,8 @@ import {
   defineComponent,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -16,14 +16,14 @@ import {
   unknownProp,
   preventDefault,
   createNamespace,
-  getZIndexStyle,
-} from '../utils';
+  getZIndexStyle
+} from '../utils'
 
 // Composables
-import { useEventListener } from '@ryxon/use';
-import { useLazyRender } from '../composables/use-lazy-render';
+import { useEventListener } from '@ryxon/use'
+import { useLazyRender } from '../composables/use-lazy-render'
 
-const [name, bem] = createNamespace('overlay');
+const [name, bem] = createNamespace('overlay')
 
 export const overlayProps = {
   show: Boolean,
@@ -32,10 +32,10 @@ export const overlayProps = {
   className: unknownProp,
   lockScroll: truthProp,
   lazyRender: truthProp,
-  customStyle: Object as PropType<CSSProperties>,
-};
+  customStyle: Object as PropType<CSSProperties>
+}
 
-export type OverlayProps = ExtractPropTypes<typeof overlayProps>;
+export type OverlayProps = ExtractPropTypes<typeof overlayProps>
 
 export default defineComponent({
   name,
@@ -43,23 +43,23 @@ export default defineComponent({
   props: overlayProps,
 
   setup(props, { slots }) {
-    const root = ref<HTMLElement>();
-    const lazyRender = useLazyRender(() => props.show || !props.lazyRender);
+    const root = ref<HTMLElement>()
+    const lazyRender = useLazyRender(() => props.show || !props.lazyRender)
 
     const onTouchMove = (event: TouchEvent) => {
       if (props.lockScroll) {
-        preventDefault(event, true);
+        preventDefault(event, true)
       }
-    };
+    }
 
     const renderOverlay = lazyRender(() => {
       const style: CSSProperties = extend(
         getZIndexStyle(props.zIndex),
         props.customStyle
-      );
+      )
 
       if (isDef(props.duration)) {
-        style.animationDuration = `${props.duration}s`;
+        style.animationDuration = `${props.duration}s`
       }
 
       return (
@@ -71,16 +71,16 @@ export default defineComponent({
         >
           {slots.default?.()}
         </div>
-      );
-    });
+      )
+    })
 
     // useEventListener will set passive to `false` to eliminate the warning of Chrome
     useEventListener('touchmove', onTouchMove, {
-      target: root,
-    });
+      target: root
+    })
 
     return () => (
       <Transition v-slots={{ default: renderOverlay }} name="r-fade" appear />
-    );
-  },
-});
+    )
+  }
+})

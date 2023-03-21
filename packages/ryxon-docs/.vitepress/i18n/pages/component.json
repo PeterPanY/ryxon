@@ -52,6 +52,7 @@
       "text": "Feedback 反馈组件",
       "children": [
         { "link": "/loading", "text": "Loading 加载" },
+        { "link": "/overlay", "text": "Overlay 遮罩层" },
         { "link": "/popover", "text": "Popover 气泡弹出框" },
         { "link": "/popup", "text": "Popup 弹出层" },
         { "link": "/toast", "text": "Toast 消息提示" },
