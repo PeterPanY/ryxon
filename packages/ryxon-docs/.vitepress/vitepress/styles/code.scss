@@ -164,22 +164,6 @@ html.dark {
   }
 }
 
-.content-container .vp-doc {
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.5em;
-    th,
-    td {
-      border-color: var(--border-color);
-    }
-  }
-  h2 {
-    border-top: 0;
-  }
-}
-
 .image-bg {
   position: absolute;
   top: 50%;

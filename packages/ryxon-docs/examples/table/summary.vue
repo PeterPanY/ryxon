@@ -34,12 +34,12 @@ interface Product {
   amount3: number
 }
 
-interface SummaryMethodProps<T = Product> {
+interface TableSummaryMethodProps<T = Product> {
   columns: TableColumnCtx<T>[]
   data: T[]
 }
 
-const getSummaries = (param: SummaryMethodProps) => {
+const getSummaries = (param: TableSummaryMethodProps) => {
   const { columns, data } = param
   const sums: string[] = []
   columns.forEach((column, index) => {
@@ -53,9 +53,8 @@ const getSummaries = (param: SummaryMethodProps) => {
         const value = Number(curr)
         if (!Number.isNaN(value)) {
           return prev + curr
-        } 
-          return prev
-        
+        }
+        return prev
       }, 0)}`
     } else {
       sums[index] = 'N/A'

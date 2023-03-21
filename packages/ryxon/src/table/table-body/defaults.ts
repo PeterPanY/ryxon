@@ -2,8 +2,8 @@
 import type { PropType } from 'vue'
 import type { Store } from '../store'
 import type {
-  ColumnCls,
-  ColumnStyle,
+  TableColumnCls,
+  TableColumnStyle,
   DefaultRow,
   Table
 } from '../table/defaults'
@@ -13,8 +13,8 @@ interface TableBodyProps<T> {
   store: Store<T>
   stripe?: boolean
   context: Table<T>
-  rowClassName: ColumnCls<T>
-  rowStyle: ColumnStyle<T>
+  rowClassName: TableColumnCls<T>
+  rowStyle: TableColumnStyle<T>
   fixed: string
   highlight: boolean
   tooltipEffect?: string

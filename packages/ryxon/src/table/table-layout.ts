@@ -79,11 +79,11 @@ class TableLayout<T> {
   updateScrollY() {
     const height = this.height.value
     /**
-     * When the height is not initialized, it is null.
-     * After the table is initialized, when the height is not configured, the height is 0.
+     * 当高度未初始化时，它为null。
+     * 初始化表后，如果未配置高度，则高度为0。
      */
     if (height === null) return false
-    const { scrollBarRef } = this.table.refs
+    const {scrollBarRef} = this.table.refs
     if (this.table.vnode.el && scrollBarRef) {
       let scrollY = true
       const prevScrollY = this.scrollY.value

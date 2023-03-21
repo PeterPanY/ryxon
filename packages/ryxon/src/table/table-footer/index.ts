@@ -6,15 +6,19 @@ import useStyle from './style-helper'
 import type { Store } from '../store'
 
 import type { PropType } from 'vue'
-import type { DefaultRow, Sort, SummaryMethod } from '../table/defaults'
+import type {
+  DefaultRow,
+  TableSort,
+  TableSummaryMethod
+} from '../table/defaults'
 
 export interface TableFooter<T> {
   fixed: string
   store: Store<T>
-  summaryMethod: SummaryMethod<T>
+  summaryMethod: TableSummaryMethod<T>
   sumText: string
   border: boolean
-  defaultSort: Sort
+  defaultSort: TableSort
 }
 
 export default defineComponent({

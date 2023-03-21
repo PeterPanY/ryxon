@@ -17,7 +17,7 @@ import useEvent from './event-helper'
 import useStyle from './style.helper'
 import useUtils from './utils-helper'
 import type { ComponentInternalInstance, PropType, Ref } from 'vue'
-import type { DefaultRow, Sort } from '../table/defaults'
+import type { DefaultRow, TableSort } from '../table/defaults'
 import type { Store } from '../store'
 
 export interface TableHeader extends ComponentInternalInstance {
@@ -31,7 +31,7 @@ export interface TableHeaderProps<T> {
   fixed: string
   store: Store<T>
   border: boolean
-  defaultSort: Sort
+  defaultSort: TableSort
 }
 
 export default defineComponent({

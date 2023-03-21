@@ -309,6 +309,52 @@ table/table-layout
 | default | 自定义列的内容 作用域参数为 `{ row, column, $index }`  |
 | header  | 自定义表头的内容， 作用域参数为 s `{ column, $index }` |
 
+## 主题定制
+
+### 类型定义
+
+组件导出以下类型定义：
+
+```ts
+import type {
+  TableSummaryMethod,
+  TableProps,
+  TableRefs,
+  TableColumnCls,
+  TableColumnStyle,
+  TableCellCls,
+  TableCellStyle,
+  TableTreeNode,
+  TableRenderRowData,
+  TableSort,
+  TableFilter,
+  TableColumnCtx,
+  TableThemeVars
+} from 'ryxon'
+```
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
+
+| 名称 | 默认值 | 描述 |
+| --- | --- | --- |
+| --r-table-border-color | `var(--r-border-color-lighter)` | - |
+| --r-table-border | `1px solid var(--r-table-border-color)` | - |
+| --r-table-text-color | `var(--r-text-color-regular)` | - |
+| --r-table-header-text-color | `var(--r-text-color-secondary)` | - |
+| --r-table-row-hover-bg-color | `var(--r-fill-color-light)` | - |
+| --r-table-current-row-bg-color | `var(--r-primary-color-light-9)` | - |
+| --r-table-header-bg-color | `var(--r-white)` | - |
+| --r-table-fixed-box-shadow | `var(--r-box-shadow-light)` | - |
+| --r-table-bg-color | `var(--r-fill-color-blank)` | - |
+| --r-table-tr-bg-color | `var(--r-fill-color-blank)` | - |
+| --r-table-expanded-cell-bg-color | `var(--r-fill-color-blank)` | - |
+| --r-table-fixed-left-column | `inset 10px 0 10px -10px rgba(0, 0, 0, 0.15)` | - |
+| --r-table-fixed-right-column | `inset -10px 0 10px -10px rgba(0, 0, 0, 0.15)` | - |
+| --r-table-dark-text-color | `var(--r-white)` | - |
+| --r-table-dark-background | `#4a4a4a` | - |
+
 ## 常见问题
 
 ### 当使用 DOM 模板时，为什么列没有渲染？

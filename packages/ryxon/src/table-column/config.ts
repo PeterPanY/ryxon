@@ -8,7 +8,7 @@ import { getProp } from '../utils'
 import type { VNode } from 'vue'
 import type { TableColumnCtx } from './defaults'
 import type { Store } from './table/store'
-import type { TreeNode } from '../table/table/defaults'
+import type { TableTreeNode } from '../table/table/defaults'
 
 const defaultClassNames = {
   selection: 'table-column--selection',
@@ -173,7 +173,7 @@ export function treeCellPrefix<T>(
     store
   }: {
     row: T
-    treeNode: TreeNode
+    treeNode: TableTreeNode
     store: Store<T>
   },
   createPlacehoder = false

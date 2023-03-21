@@ -6,18 +6,19 @@ export const Table = withInstall(_Table)
 export default Table
 export { tableProps }
 export type {
-  SummaryMethod,
+  TableSummaryMethod,
   TableProps,
   TableRefs,
-  ColumnCls,
-  ColumnStyle,
-  CellCls,
-  CellStyle,
-  TreeNode,
-  RenderRowData,
-  Sort,
-  Filter,
-  TableColumnCtx
+  TableColumnCls,
+  TableColumnStyle,
+  TableCellCls,
+  TableCellStyle,
+  TableTreeNode,
+  TableRenderRowData,
+  TableSort,
+  TableFilter,
+  TableColumnCtx,
+  TableThemeVars
 } from './table/defaults'
 
 declare module 'vue' {

@@ -24,7 +24,7 @@ export type TableOverflowTooltipOptions = Partial<
     | 'popperOptions'
     | 'showAfter'
     | 'showArrow'
-    // | 'transition'
+    | 'transition'
   >
 >
 

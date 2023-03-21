@@ -5,7 +5,7 @@ import useWatcher from './watcher'
 
 import type { Ref } from 'vue'
 import type { TableColumnCtx } from '../../table-column/defaults'
-import type { Filter, Sort, Table } from '../table/defaults'
+import type { TableFilter, TableSort, Table } from '../table/defaults'
 
 interface WatcherPropsData<T> {
   data: Ref<T[]>
@@ -130,7 +130,7 @@ function useStore<T>() {
       }
     },
 
-    sort(states: StoreStates, options: Sort) {
+    sort(states: StoreStates, options: TableSort) {
       const { prop, order, init } = options
       if (prop) {
         const column = unref(states.columns).find(
@@ -144,7 +144,7 @@ function useStore<T>() {
       }
     },
 
-    changeSortCondition(states: StoreStates, options: Sort) {
+    changeSortCondition(states: StoreStates, options: TableSort) {
       const { sortingColumn, sortProp, sortOrder } = states
       const columnValue = unref(sortingColumn)
       const propValue = unref(sortProp)
@@ -167,7 +167,7 @@ function useStore<T>() {
       instance.store.updateTableScrollY()
     },
 
-    filterChange(_states: StoreStates, options: Filter<T>) {
+    filterChange(_states: StoreStates, options: TableFilter<T>) {
       const { column, values, silent } = options
       const newFilters = instance.store.updateFilters(column, values)
       instance.store.execQuery()

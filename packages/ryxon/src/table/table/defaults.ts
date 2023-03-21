@@ -49,7 +49,7 @@ type RenderExpanded<T> = ({
   expanded: boolean
 }: RIS<T>) => VNode
 
-type SummaryMethod<T> = (data: {
+type TableSummaryMethod<T> = (data: {
   columns: TableColumnCtx<T>[]
   data: T[]
 }) => string[]
@@ -65,11 +65,13 @@ interface Table<T> extends ComponentInternalInstance {
   state: TableState
 }
 
-type ColumnCls<T> = string | ((data: { row: T; rowIndex: number }) => string)
-type ColumnStyle<T> =
+type TableColumnCls<T> =
+  | string
+  | ((data: { row: T; rowIndex: number }) => string)
+type TableColumnStyle<T> =
   | CSSProperties
   | ((data: { row: T; rowIndex: number }) => CSSProperties)
-type CellCls<T> =
+type TableCellCls<T> =
   | string
   | ((data: {
       row: T
@@ -77,7 +79,7 @@ type CellCls<T> =
       column: TableColumnCtx<T>
       columnIndex: number
     }) => string)
-type CellStyle<T> =
+type TableCellStyle<T> =
   | CSSProperties
   | ((data: {
       row: T
@@ -100,22 +102,22 @@ interface TableProps<T> {
   showHeader?: boolean
   showSummary?: boolean
   sumText?: string
-  summaryMethod?: SummaryMethod<T>
-  rowClassName?: ColumnCls<T>
-  rowStyle?: ColumnStyle<T>
-  cellClassName?: CellCls<T>
-  cellStyle?: CellStyle<T>
-  headerRowClassName?: ColumnCls<T>
-  headerRowStyle?: ColumnStyle<T>
-  headerCellClassName?: CellCls<T>
-  headerCellStyle?: CellStyle<T>
+  summaryMethod?: TableSummaryMethod<T>
+  rowClassName?: TableColumnCls<T>
+  rowStyle?: TableColumnStyle<T>
+  cellClassName?: TableCellCls<T>
+  cellStyle?: TableCellStyle<T>
+  headerRowClassName?: TableColumnCls<T>
+  headerRowStyle?: TableColumnStyle<T>
+  headerCellClassName?: TableCellCls<T>
+  headerCellStyle?: TableCellStyle<T>
   highlightCurrentRow?: boolean
   currentRowKey?: string | number
   emptyText?: string
   expandRowKeys?: any[]
   defaultExpandAll?: boolean
   // eslint-disable-next-line no-use-before-define
-  defaultSort?: Sort
+  defaultSort?: TableSort
   tooltipEffect?: string
   tooltipOptions?: TableOverflowTooltipOptions
   spanMethod?: (data: {
@@ -138,7 +140,7 @@ interface TableProps<T> {
   }
   lazy?: boolean
   // eslint-disable-next-line no-use-before-define
-  load?: (row: T, treeNode: TreeNode, resolve: (data: T[]) => void) => void
+  load?: (row: T, treeNode: TableTreeNode, resolve: (data: T[]) => void) => void
   className?: string
   style?: CSSProperties
   tableLayout?: Layout
@@ -146,20 +148,20 @@ interface TableProps<T> {
   flexible?: boolean
 }
 
-interface Sort {
+interface TableSort {
   prop: string
   order: 'ascending' | 'descending'
   init?: any
   silent?: any
 }
 
-interface Filter<T> {
+interface TableFilter<T> {
   column: TableColumnCtx<T>
   values: string[]
   silent: any
 }
 
-interface TreeNode {
+interface TableTreeNode {
   expanded?: boolean
   loading?: boolean
   noLazyChildren?: boolean
@@ -168,13 +170,13 @@ interface TreeNode {
   display?: boolean
 }
 
-interface RenderRowData<T> {
+interface TableRenderRowData<T> {
   store: Store<T>
   _self: Table<T>
   column: TableColumnCtx<T>
   row: T
   $index: number
-  treeNode?: TreeNode
+  treeNode?: TableTreeNode
   expanded: boolean
 }
 
@@ -267,18 +269,38 @@ export default {
   },
   flexible: Boolean
 }
+
+type TableThemeVars = {
+  tableBorderColor?: string
+  tableBorder?: string
+  tableTextColor?: string
+  tableHeaderTextColor?: string
+  tableRowHoverBgColor?: string
+  tableCurrentRowBgColor?: string
+  tableHeaderBgColor?: string
+  tableFixedBoxShadow?: string
+  tableBgColor?: string
+  tableTrBgColor?: string
+  tableExpandedCellBgColor?: string
+  tableFixedLeftColumn?: string
+  tableFixedRightColumn?: string
+  tableDarkTextColor?: string
+  tableDarkBackground?: string
+}
+
 export type {
-  SummaryMethod,
+  TableSummaryMethod,
   Table,
   TableProps,
   TableRefs,
-  ColumnCls,
-  ColumnStyle,
-  CellCls,
-  CellStyle,
-  TreeNode,
-  RenderRowData,
-  Sort,
-  Filter,
-  TableColumnCtx
+  TableColumnCls,
+  TableColumnStyle,
+  TableCellCls,
+  TableCellStyle,
+  TableTreeNode,
+  TableRenderRowData,
+  TableSort,
+  TableFilter,
+  TableColumnCtx,
+  TableThemeVars
 }

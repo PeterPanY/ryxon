@@ -269,8 +269,10 @@ export default defineComponent({
       debouncedUpdateLayout
     }
 
+    // 显示摘要行第一列的文本
     const computedSumText = computed(() => props.sumText || t('sumText'))
 
+    // 空数据时显示的文本内容
     const computedEmptyText = computed(() => props.emptyText || t('emptyText'))
 
     return {

@@ -7,7 +7,11 @@ import { TABLE_INJECTION_KEY } from '../tokens'
 import useEvents from './events-helper'
 import useStyles from './styles-helper'
 import type { TableBodyProps } from './defaults'
-import type { RenderRowData, TableProps, TreeNode } from '../table/defaults'
+import type {
+  TableRenderRowData,
+  TableProps,
+  TableTreeNode
+} from '../table/defaults'
 
 function useRender<T>(props: Partial<TableBodyProps<T>>) {
   const parent = inject(TABLE_INJECTION_KEY)
@@ -47,7 +51,7 @@ function useRender<T>(props: Partial<TableBodyProps<T>>) {
   const rowRender = (
     row: T,
     $index: number,
-    treeRowData?: TreeNode,
+    treeRowData?: TableTreeNode,
     expanded = false
   ) => {
     const { tooltipEffect, tooltipOptions, store } = props
@@ -88,7 +92,7 @@ function useRender<T>(props: Partial<TableBodyProps<T>>) {
           colspan,
           cellIndex
         )
-        const data: RenderRowData<T> = {
+        const data: TableRenderRowData<T> = {
           store: props.store,
           _self: props.context || parent,
           column: columnData,
