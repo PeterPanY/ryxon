@@ -96,7 +96,7 @@ tooltip/controlled
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | visible / v-model:visible | Tooltip 组件可见性 | `boolean` | `false` |
 | content | 显示的内容，也可被 `slot#content` 覆盖 | `string` | `-` |
 | raw-content | `content` 中的内容是否作为 HTML 字符串处理 | `boolean` | `false` |
@@ -115,7 +115,7 @@ tooltip/controlled
 | duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 | lazy-render | 是否在显示弹层时才渲染节点 | `boolean` | `true` |
-| before-close | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise | `(action: string) => boolean | Promise<boolean>` | `-` |
+| before-close | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise<boolean>` | `-` |
 | overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
 | popper-class | 自定义弹窗样式 | `string / Array / object` | - |
@@ -123,6 +123,7 @@ tooltip/controlled
 | transition-appear | 是否在初始渲染时启用过渡动画 | `boolean` | `false` |
 | close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
+| persistent | 当 tooltip 组件长时间不触发且 persistent 属性设置为 false 时, popconfirm 将会被删除 | `boolean` | `false` |
 
 ### Slots
 

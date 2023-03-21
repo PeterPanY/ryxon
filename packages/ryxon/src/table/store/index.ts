@@ -40,7 +40,7 @@ function sortColumn<T>(array: TableColumnCtx<T>[]) {
 function useStore<T>() {
   const instance = getCurrentInstance() as Table<T>
   const watcher = useWatcher<T>()
-  const ns = createNamespace('table')
+  const [, bem, , isBem] = createNamespace('table')
   type StoreStates = typeof watcher.states
   const mutations = {
     setData(states: StoreStates, data: T[]) {
@@ -207,7 +207,8 @@ function useStore<T>() {
     nextTick(() => instance.layout.updateScrollY.apply(instance.layout))
   }
   return {
-    ns,
+    bem,
+    isBem,
     // eslint-disable-next-line no-restricted-syntax
     ...watcher,
     mutations,

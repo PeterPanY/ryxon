@@ -120,10 +120,10 @@ export const cellForced = {
       store: Store<T>
       expanded: boolean
     }) {
-      const { ns } = store
-      const classes = [ns.e('expand-icon')]
+      const { bem } = store
+      const classes = [bem('expand-icon')]
       if (expanded) {
-        classes.push(ns.em('expand-icon', 'expanded'))
+        classes.push(bem('expand-icon', 'expanded'))
       }
       const callback = function (e: Event) {
         e.stopPropagation()
@@ -178,12 +178,12 @@ export function treeCellPrefix<T>(
   },
   createPlacehoder = false
 ) {
-  const { ns } = store
+  const { bem, isBem } = store
   if (!treeNode) {
     if (createPlacehoder) {
       return [
         h('span', {
-          class: ns.e('placeholder')
+          class: bem('placeholder')
         })
       ]
     }
@@ -200,15 +200,15 @@ export function treeCellPrefix<T>(
   if (treeNode.indent) {
     ele.push(
       h('span', {
-        class: ns.e('indent'),
+        class: bem('indent'),
         style: { 'padding-left': `${treeNode.indent}px` }
       })
     )
   }
   if (typeof treeNode.expanded === 'boolean' && !treeNode.noLazyChildren) {
     const expandClasses = [
-      ns.e('expand-icon'),
-      treeNode.expanded ? ns.em('expand-icon', 'expanded') : ''
+      bem('expand-icon'),
+      treeNode.expanded ? bem('expand-icon', 'expanded') : ''
     ]
     let icon = ArrowRight
     if (treeNode.loading) {
@@ -226,7 +226,7 @@ export function treeCellPrefix<T>(
           default: () => [
             h(
               Icon,
-              { class: { [ns.is('loading')]: treeNode.loading } },
+              { class: { [isBem('loading')]: treeNode.loading } },
               {
                 default: () => [h(icon)]
               }
@@ -238,7 +238,7 @@ export function treeCellPrefix<T>(
   } else {
     ele.push(
       h('span', {
-        class: ns.e('placeholder')
+        class: bem('placeholder')
       })
     )
   }

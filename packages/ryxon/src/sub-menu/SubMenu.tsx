@@ -173,6 +173,7 @@ export default defineComponent({
     })
 
     // methods
+    //  tooltip.value?.contentRef.value?.popupRef.value
     const doDestroy = () =>
       vPopper.value?.popperRef?.popperInstanceRef?.destroy()
 

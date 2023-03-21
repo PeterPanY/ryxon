@@ -35,7 +35,10 @@ import { useExpose } from '../composables/use-expose'
 import { useLockScroll } from '../composables/use-lock-scroll'
 import { useLazyRender } from '../composables/use-lazy-render'
 import { POPUP_TOGGLE_KEY } from '../composables/on-popup-reopen'
-import { useGlobalZIndex } from '../composables/use-global-z-index'
+import {
+  useGlobalZIndex,
+  setGlobalZIndex
+} from '../composables/use-global-z-index'
 
 // Components
 import { Icon } from '../icon'
@@ -120,6 +123,8 @@ export default defineComponent({
 
         zIndex.value =
           props.zIndex !== undefined ? +props.zIndex : useGlobalZIndex()
+
+        setGlobalZIndex(zIndex.value)
 
         emit('open')
       }

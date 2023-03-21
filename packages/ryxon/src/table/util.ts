@@ -1,11 +1,16 @@
 // @ts-nocheck
+import { createPopper, offsetModifier } from '@ryxon/popperjs'
 import { flatMap, get, merge } from 'lodash-unified'
-import { hasOwn, isArray, isBoolean, isObject } from '../utils'
+import { extend, hasOwn, isArray, isBoolean, isObject } from '../utils'
 import escapeHtml from 'escape-html'
 import { useDelayedToggle } from '../composables/use-delayed-toggle'
 import type { TooltipProps } from '../tooltip'
 import type { TableColumnCtx } from '../table-column/defaults'
 import type { Nullable } from '../utils'
+import {
+  useGlobalZIndex,
+  setGlobalZIndex
+} from '../composables/use-global-z-index'
 
 export type TableOverflowTooltipOptions = Partial<
   Pick<
@@ -409,29 +414,28 @@ export function createTablePopper(
     } as TableOverflowTooltipOptions,
     tooltipOptions
   )
-  // const { nextZIndex } = useZIndex()
+
   const ns = parentNode?.dataset.prefix
   const scrollContainer = parentNode?.querySelector(`.${ns}-scrollbar__wrap`)
   function renderContent(): HTMLDivElement {
-    const isLight = tooltipOptions.effect === 'light'
+    const isLight = tooltipOptions.theme === 'light'
     const content = document.createElement('div')
     content.className = [
-      `${ns}-popper`,
-      isLight ? 'is-light' : 'is-dark',
+      `${ns}-popup ${ns}-table-popup`,
+      isLight ? '' : 'is-dark',
       tooltipOptions.popperClass || ''
     ].join(' ')
     popperContent = escapeHtml(popperContent)
     content.innerHTML = popperContent
-    // content.style.zIndex = String(nextZIndex())
+
+    const index = useGlobalZIndex()
+    content.style.zIndex = index
+    setGlobalZIndex(index)
     // Avoid side effects caused by append to body
     parentNode?.appendChild(content)
     return content
   }
-  function renderArrow(): HTMLDivElement {
-    const arrow = document.createElement('div')
-    arrow.className = `${ns}-popper__arrow`
-    return arrow
-  }
+
   function showPopper() {
     // eslint-disable-next-line no-use-before-define
     popperInstance && popperInstance.update()
@@ -468,28 +472,27 @@ export function createTablePopper(
   const content = renderContent()
   content.onmouseenter = onOpen
   content.onmouseleave = onClose
-  const modifiers = []
-  if (tooltipOptions.offset) {
-    modifiers.push({
-      name: 'offset',
+
+  const modifiers = [
+    {
+      name: 'computeStyles',
+      options: {
+        adaptive: false,
+        gpuAcceleration: false
+      }
+    },
+    extend({}, offsetModifier, {
       options: {
         offset: [0, tooltipOptions.offset]
       }
     })
-  }
-  if (tooltipOptions.showArrow) {
-    const arrow = content.appendChild(renderArrow())
-    modifiers.push({
-      name: 'arrow',
-      options: {
-        element: arrow,
-        padding: 10
-      }
-    })
-  }
+  ]
+
   const popperOptions = tooltipOptions.popperOptions || {}
+
   popperInstance = createPopper(trigger, content, {
     placement: tooltipOptions.placement || 'top',
+    showArrow: tooltipOptions.showArrow,
     strategy: 'fixed',
     // eslint-disable-next-line no-restricted-syntax
     ...popperOptions,
@@ -497,6 +500,7 @@ export function createTablePopper(
       ? modifiers.concat(popperOptions.modifiers)
       : modifiers
   })
+
   trigger.addEventListener('mouseenter', onOpen)
   trigger.addEventListener('mouseleave', onClose)
   scrollContainer?.addEventListener('scroll', removePopper)

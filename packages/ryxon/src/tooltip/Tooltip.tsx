@@ -96,7 +96,8 @@ export const tooltipProps = extend({}, popupSharedProps, {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
-  }
+  },
+  persistent: Boolean
 })
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
@@ -385,6 +386,19 @@ export default defineComponent({
     // 监听点击元素外部的事件。
     useClickAway([wrapperRef], onClickAway, { eventName: 'click' })
 
+    const persistentRef = computed(() => {
+      // For testing, we would always want the content to be rendered
+      // to the DOM, so we need to return true here.
+      if (process.env.NODE_ENV === 'test') {
+        return true
+      }
+      return props.persistent
+    })
+
+    const shouldRender = computed(() =>
+      unref(persistentRef) ? true : unref(open)
+    )
+
     return () => (
       <>
         <span
@@ -417,16 +431,20 @@ export default defineComponent({
           onMouseenter={onContentEnter}
           onMouseleave={onContentLeave}
         >
-          {props.showArrow && <div class={bem('arrow')} />}
-          <div role="menu" class={bem('content')}>
-            {slots.content ? (
-              slots.content()
-            ) : props.rawContent ? (
-              <span innerHTML={String(props.content)}></span>
-            ) : (
-              <span>{props.content}</span>
-            )}
-          </div>
+          {shouldRender.value && props.showArrow && (
+            <div class={bem('arrow')} />
+          )}
+          {shouldRender.value && (
+            <div role="menu" class={bem('content')}>
+              {slots.content ? (
+                slots.content()
+              ) : props.rawContent ? (
+                <span innerHTML={String(props.content)}></span>
+              ) : (
+                <span>{props.content}</span>
+              )}
+            </div>
+          )}
         </Popup>
       </>
     )

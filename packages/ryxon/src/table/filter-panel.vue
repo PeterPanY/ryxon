@@ -2,7 +2,7 @@
   <r-tooltip
     ref="tooltip"
     :visible="tooltipVisible"
-    :offset="0"
+    :offset="[0, 0]"
     :placement="placement"
     :show-arrow="false"
     :stop-popper-mouse-event="false"
@@ -23,7 +23,7 @@
               <r-checkbox
                 v-for="filter in filters"
                 :key="filter.value"
-                :label="filter.value"
+                :name="filter.value"
               >
                 {{ filter.text }}
               </r-checkbox>
@@ -37,10 +37,10 @@
             type="button"
             @click="handleConfirm"
           >
-            {{ t('confirmFilter') }}
+            {{ t('rTable.confirmFilter') }}
           </button>
           <button type="button" @click="handleReset">
-            {{ t('resetFilter') }}
+            {{ t('rTable.resetFilter') }}
           </button>
         </div>
       </div>
@@ -55,7 +55,7 @@
           ]"
           @click="handleSelect(null)"
         >
-          {{ t('clearFilter') }}
+          {{ t('rTable.clearFilter') }}
         </li>
         <li
           v-for="filter in filters"
@@ -70,7 +70,7 @@
     </template>
     <template #default>
       <span
-        v-click-outside:[popperPaneRef]="hideFilterPanel"
+        v-click-outside:[popperRef]="hideFilterPanel"
         :class="[`r-table__column-filter-trigger`, `r-none-outline`]"
         @click="showFilterPanel"
       >
@@ -222,7 +222,9 @@ export default defineComponent({
       }
     )
 
-    const popperPaneRef = computed(() => tooltip.value?.popperRef?.contentRef)
+    const popperRef = computed(
+      () => tooltip.value?.contentRef.value?.popupRef.value
+    )
 
     return {
       tooltipVisible,
@@ -239,7 +241,7 @@ export default defineComponent({
       isBem,
       showFilterPanel,
       hideFilterPanel,
-      popperPaneRef,
+      popperRef,
       tooltip
     }
   }

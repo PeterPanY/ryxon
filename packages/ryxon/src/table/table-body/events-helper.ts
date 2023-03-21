@@ -41,12 +41,15 @@ function useEvents<T>(props: Partial<TableBodyProps<T>>) {
   const handleContextMenu = (event: Event, row: T) => {
     handleEvent(event, row, 'contextmenu')
   }
+
   const handleMouseEnter = debounce((index: number) => {
     props.store.commit('setHoverRow', index)
   }, 30)
+
   const handleMouseLeave = debounce(() => {
     props.store.commit('setHoverRow', null)
   }, 30)
+
   const handleCellMouseEnter = (
     event: MouseEvent,
     row: T,
