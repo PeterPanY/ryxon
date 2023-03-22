@@ -1,4 +1,5 @@
 :root {
+  --r-text-ellipsis-font-size: 14px;
   --r-text-ellipsis-line-height: 1.6;
   --r-text-ellipsis-action-color: var(--r-blue);
 }
@@ -7,6 +8,19 @@
   line-height: var(--r-text-ellipsis-line-height);
   white-space: pre-wrap;
   word-break: break-word;
+  font-size: var(--r-text-ellipsis-font-size);
+
+  &__dot--right {
+    float: right;
+  }
+
+  &__dot--html {
+    float: right;
+    position: relative;
+    top: calc(
+      var(--r-text-ellipsis-font-size) * var(--r-text-ellipsis-line-height) * -1
+    );
+  }
 
   &__action {
     cursor: pointer;
@@ -14,6 +28,11 @@
 
     &:active {
       opacity: var(--r-active-opacity);
+    }
+
+    .r-icon {
+      position: relative;
+      top: 2px;
     }
   }
 }
