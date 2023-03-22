@@ -2,21 +2,21 @@ import {
   defineComponent,
   type PropType,
   type InjectionKey,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 import {
   createNamespace,
   addUnit,
   truthProp,
   numericProp,
-  makeNumericProp,
-} from '../utils';
-import { BORDER_TOP } from '../utils/constant';
-import { useChildren } from '@ryxon/use';
+  makeNumericProp
+} from '../utils'
+import { BORDER_TOP } from '../utils/constant'
+import { useChildren } from '@ryxon/use'
 
-const [name, bem] = createNamespace('grid');
+const [name, bem] = createNamespace('grid')
 
-export type GridDirection = 'horizontal' | 'vertical';
+export type GridDirection = 'horizontal' | 'vertical'
 
 export const gridProps = {
   square: Boolean,
@@ -27,16 +27,16 @@ export const gridProps = {
   iconSize: numericProp,
   direction: String as PropType<GridDirection>,
   clickable: Boolean,
-  columnNum: makeNumericProp(4),
-};
+  columnNum: makeNumericProp(4)
+}
 
-export type GridProps = ExtractPropTypes<typeof gridProps>;
+export type GridProps = ExtractPropTypes<typeof gridProps>
 
 export type GridProvide = {
-  props: GridProps;
-};
+  props: GridProps
+}
 
-export const GRID_KEY: InjectionKey<GridProvide> = Symbol(name);
+export const GRID_KEY: InjectionKey<GridProvide> = Symbol(name)
 
 export default defineComponent({
   name,
@@ -44,9 +44,9 @@ export default defineComponent({
   props: gridProps,
 
   setup(props, { slots }) {
-    const { linkChildren } = useChildren(GRID_KEY);
+    const { linkChildren } = useChildren(GRID_KEY)
 
-    linkChildren({ props });
+    linkChildren({ props })
 
     return () => (
       <div
@@ -55,6 +55,6 @@ export default defineComponent({
       >
         {slots.default?.()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

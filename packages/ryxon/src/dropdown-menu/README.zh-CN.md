@@ -224,7 +224,7 @@ dropdownItemRef.value?.toggle()
 | --- | --- | --- |
 | text | 文字 | _string_ |
 | value | 标识符 | _number \| string_ |
-| icon | 左侧图标名称或图片链接，等同于 Icon 组件的 [name 属性](#/zh-CN/icon#props) | _string_ |
+| icon | 左侧图标名称或图片链接，等同于 Icon 组件的 [name 属性](/zh/component/icon.html#api) | _string_ |
 
 ## 主题定制
 

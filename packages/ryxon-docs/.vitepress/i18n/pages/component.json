@@ -6,6 +6,7 @@
         { "link": "/button", "text": "Button 按钮" },
         { "link": "/cell", "text": "Cell 单元格" },
         { "link": "/config-provider", "text": "Config Provider 全局配置" },
+        { "link": "/grid", "text": "Grid 宫格" },
         { "link": "/icon", "text": "Icon 图标" },
         { "link": "/layout", "text": "Layout 布局" },
         { "link": "/scrollbar", "text": "Scrollbar 滚动条" },

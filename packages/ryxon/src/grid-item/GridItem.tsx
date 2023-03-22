@@ -1,4 +1,5 @@
 import {
+  h,
   computed,
   defineComponent,
   type PropType,
@@ -7,7 +8,15 @@ import {
 } from 'vue'
 
 // Utils
-import { BORDER, extend, addUnit, numericProp, createNamespace } from '../utils'
+import {
+  BORDER,
+  extend,
+  addUnit,
+  isString,
+  numericProp,
+  iconPropType,
+  createNamespace
+} from '../utils'
 import { GRID_KEY } from '../grid/Grid'
 
 // Composables
@@ -23,7 +32,7 @@ const [name, bem] = createNamespace('grid-item')
 export const gridItemProps = extend({}, routeProps, {
   dot: Boolean,
   text: String,
-  icon: String,
+  icon: iconPropType,
   badge: numericProp,
   iconColor: String,
   iconPrefix: String,
@@ -98,14 +107,16 @@ export default defineComponent({
         return (
           <Icon
             dot={props.dot}
-            name={props.icon}
+            name={isString(props.icon) ? props.icon : ''}
             size={parent.props.iconSize}
             badge={props.badge}
             class={bem('icon')}
             color={props.iconColor}
             badgeProps={props.badgeProps}
             classPrefix={props.iconPrefix}
-          />
+          >
+            {!isString(props.icon) && h(props.icon)}
+          </Icon>
         )
       }
     }
