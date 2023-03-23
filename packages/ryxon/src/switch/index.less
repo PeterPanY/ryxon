@@ -1,6 +1,6 @@
 :root {
   --r-switch-size: 26px;
-  --r-switch-width: calc(1.8em + 4px);
+  --r-switch-width: calc(2em + 4px);
   --r-switch-height: calc(1em + 4px);
   --r-switch-node-size: 1em;
   --r-switch-node-background: var(--r-white);
@@ -71,5 +71,76 @@
 
   &--loading {
     cursor: default;
+  }
+
+  &__text {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__label {
+    transition: var(--r-duration-fast);
+    line-height: var(--r-switch-height);
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    vertical-align: middle;
+    color: var(--r-text-color-primary);
+
+    &.is-active {
+      color: var(--r-switch-on-background);
+    }
+
+    &-left {
+      margin-right: 10px;
+    }
+
+    &-right {
+      margin-left: 10px;
+    }
+
+    * {
+      line-height: 1;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .r-icon {
+      height: inherit;
+
+      svg {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    transition: all var(--r-duration-base);
+    height: var(--r-switch-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 4px 0 calc(var(--r-switch-size) + 2px);
+
+    .is-icon,
+    .is-text {
+      font-size: 12px;
+      color: var(--r-white);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &--on .r-switch__inner {
+    padding: 0 calc(var(--r-switch-size) + 2px) 0 4px;
   }
 }
