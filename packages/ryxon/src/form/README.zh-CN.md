@@ -244,12 +244,12 @@ export default {
 
 ### 表单项类型 - 步进器
 
-在表单中使用 [Stepper 组件](#/zh-CN/stepper)。
+在表单中使用 [InputNumber 组件](#/zh-CN/input-number)。
 
 ```html
-<r-input name="stepper" label="步进器">
+<r-input name="inputNumber" label="步进器">
   <template #input>
-    <r-stepper v-model="value" />
+    <r-input-number v-model="value" />
   </template>
 </r-input>
 ```

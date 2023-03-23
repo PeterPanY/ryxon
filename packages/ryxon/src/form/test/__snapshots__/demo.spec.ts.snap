@@ -299,30 +299,30 @@ exports[`should render demo and match snapshot 1`] = `
           <label id="r-input-label"
                  for="r-input-input"
           >
-            Stepper
+            InputNumber
           </label>
         </div>
         <div class="r-cell__value r-input__value">
           <div class="r-input__body">
             <div class="r-input__control r-input__control--custom">
               <div role="group"
-                   class="r-stepper"
+                   class="r-input-number"
               >
                 <button type="button"
-                        class="r-stepper__minus r-stepper__minus--disabled"
+                        class="r-input-number__minus r-input-number__minus--disabled"
                         aria-disabled="true"
                 >
                 </button>
                 <input type="text"
                        role="spinbutton"
-                       class="r-stepper__input"
+                       class="r-input-number__input"
                        inputmode="decimal"
                        aria-valuemax="Infinity"
                        aria-valuemin="1"
                        aria-valuenow="1"
                 >
                 <button type="button"
-                        class="r-stepper__plus r-haptics-feedback"
+                        class="r-input-number__plus r-haptics-feedback"
                 >
                 </button>
               </div>

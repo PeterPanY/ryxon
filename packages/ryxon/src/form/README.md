@@ -230,12 +230,12 @@ export default {
 }
 ```
 
-### Input Type - Stepper
+### Input Type - InputNumber
 
 ```html
-<r-input name="stepper" label="Stepper">
+<r-input name="inputNumber" label="InputNumber">
   <template #input>
-    <r-stepper v-model="value" />
+    <r-Input-number v-model="value" />
   </template>
 </r-input>
 ```

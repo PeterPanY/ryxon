@@ -5,7 +5,7 @@
       "children": [
         { "link": "/button", "text": "Button 按钮" },
         { "link": "/cell", "text": "Cell 单元格" },
-        { "link": "/config-provider", "text": "Config Provider 全局配置" },
+        { "link": "/config-provider", "text": "ConfigProvider 全局配置" },
         { "link": "/grid", "text": "Grid 宫格" },
         { "link": "/icon", "text": "Icon 图标" },
         { "link": "/layout", "text": "Layout 布局" },
@@ -24,6 +24,7 @@
         { "link": "/image", "text": "Image 图片" },
         { "link": "/image-preview", "text": "ImagePreview 图片预览" },
         { "link": "/input", "text": "Input 输入框" },
+        { "link": "/input-number", "text": "InputNumber 数字输入框" },
         { "link": "/radio", "text": "Radio 单选框" },
         { "link": "/select", "text": "Select 选择器" },
         { "link": "/slider", "text": "Slider 滑块" },

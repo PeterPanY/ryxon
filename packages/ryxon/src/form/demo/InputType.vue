@@ -8,7 +8,7 @@ import RInput from '../../input'
 import RButton from '../../button'
 import RSlider from '../../slider'
 import RSwitch from '../../switch'
-import RStepper from '../../stepper'
+import RInputNumber from '../../input-number'
 import RCheckbox from '../../checkbox'
 import RUpload from '../../upload'
 import RCellGroup from '../../cell-group'
@@ -27,7 +27,7 @@ const t = useTranslate({
     switch: '开关',
     slider: '滑块',
     picker: '选择器',
-    stepper: '步进器',
+    inputNumber: '步进器',
     checkbox: '复选框',
     upload: '文件上传',
     inputType: '表单项类型',
@@ -41,7 +41,7 @@ const t = useTranslate({
     switch: 'Switch',
     slider: 'Slider',
     picker: 'Picker',
-    stepper: 'Stepper',
+    inputNumber: 'InputNumber',
     checkbox: 'Checkbox',
     upload: 'Upload',
     inputType: 'Input Type',
@@ -53,7 +53,7 @@ const t = useTranslate({
 const rate = ref(3)
 const radio = ref('1')
 const slider = ref(50)
-const stepper = ref(1)
+const inputNumber = ref(1)
 const upload = ref([{ url: cdnURL('leaf.jpeg') }])
 const checkbox = ref(false)
 const checkboxGroup = ref([])
@@ -102,9 +102,9 @@ const onSubmit = (values: Record<string, string>) => {
           </template>
         </r-input>
 
-        <r-input name="stepper" :label="t('stepper')">
+        <r-input name="inputNumber" :label="t('inputNumber')">
           <template #input>
-            <r-stepper v-model="stepper" />
+            <r-input-number v-model="inputNumber" />
           </template>
         </r-input>
 

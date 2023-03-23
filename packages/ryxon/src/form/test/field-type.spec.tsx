@@ -7,7 +7,7 @@ import { Input } from '../../input'
 import { Radio } from '../../radio'
 import { Switch } from '../../switch'
 import { Slider } from '../../slider'
-import { Stepper } from '../../stepper'
+import { InputNumber } from '../../input-number'
 import { Checkbox } from '../../checkbox'
 import { RadioGroup } from '../../radio-group'
 import { CheckboxGroup } from '../../checkbox-group'
@@ -115,10 +115,10 @@ test('should allow to use RadioGroup as a form item', async () => {
   expect(onSubmit).toHaveBeenCalledWith({ A: '1' })
 })
 
-test('should allow to use Stepper as a form item', async () => {
+test('should allow to use InputNumber as a form item', async () => {
   const value = ref(0)
   const { form, onSubmit, onFailed } = mountFormWithChild(() => (
-    <Stepper v-model={value.value} min="0" />
+    <InputNumber v-model={value.value} min="0" />
   ))
 
   await submitForm(form)

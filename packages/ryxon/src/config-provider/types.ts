@@ -28,12 +28,13 @@ export type ConfigProviderThemeVars =
     import('../dropdown-item').DropdownItemThemeVars &
     import('../dropdown-menu').DropdownMenuThemeVars &
     import('../empty').EmptyThemeVars &
-    import('../input').InputThemeVars &
     import('../grid-item').GridItemThemeVars &
     import('../image').ImageThemeVars &
     import('../image-preview').ImagePreviewThemeVars &
     import('../index-anchor').IndexAnchorThemeVars &
     import('../index-bar').IndexBarThemeVars &
+    import('../input').InputThemeVars &
+    import('../input-number').InputNumberThemeVars &
     import('../list').ListThemeVars &
     import('../loading').LoadingThemeVars &
     import('../nav-bar').NavBarThemeVars &
@@ -60,7 +61,6 @@ export type ConfigProviderThemeVars =
     import('../skeleton').SkeletonThemeVars &
     import('../slider').SliderThemeVars &
     import('../step').StepThemeVars &
-    import('../stepper').StepperThemeVars &
     import('../steps').StepsThemeVars &
     import('../sticky').StickyThemeVars &
     import('../submit-bar').SubmitBarThemeVars &

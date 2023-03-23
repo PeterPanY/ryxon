@@ -14,6 +14,7 @@ import {
   addUnit,
   addNumber,
   truthProp,
+  isUndefined,
   resetScroll,
   Interceptor,
   numericProp,
@@ -27,25 +28,27 @@ import {
   LONG_PRESS_START_TIME,
   type Numeric
 } from '../utils'
+import { isNil } from 'lodash-unified'
 
 // Composables
 import { useCustomInputValue } from '@ryxon/use'
 
-const [name, bem] = createNamespace('stepper')
+const [name, bem] = createNamespace('input-number')
 
 const LONG_PRESS_INTERVAL = 200
 
 const isEqual = (value1?: Numeric, value2?: Numeric) =>
   String(value1) === String(value2)
 
-export type StepperTheme = 'default' | 'round'
+export type InputNumberTheme = 'default' | 'round'
 
-export const stepperProps = {
+export const inputNumberProps = {
+  modelValue: numericProp,
   min: makeNumericProp(1),
   max: makeNumericProp(Infinity),
   name: makeNumericProp(''),
   step: makeNumericProp(1),
-  theme: String as PropType<StepperTheme>,
+  theme: String as PropType<InputNumberTheme>,
   integer: Boolean,
   disabled: Boolean,
   showPlus: truthProp,
@@ -54,7 +57,6 @@ export const stepperProps = {
   longPress: truthProp,
   autoFixed: truthProp,
   allowEmpty: Boolean,
-  modelValue: numericProp,
   inputWidth: numericProp,
   buttonSize: numericProp,
   placeholder: String,
@@ -63,15 +65,16 @@ export const stepperProps = {
   disableInput: Boolean,
   beforeChange: Function as PropType<Interceptor>,
   defaultValue: makeNumericProp(1),
-  decimalLength: numericProp
+  decimalLength: numericProp,
+  stepStrictly: Boolean
 }
 
-export type StepperProps = ExtractPropTypes<typeof stepperProps>
+export type InputNumberProps = ExtractPropTypes<typeof inputNumberProps>
 
 export default defineComponent({
   name,
 
-  props: stepperProps,
+  props: inputNumberProps,
 
   emits: [
     'plus',
@@ -84,8 +87,49 @@ export default defineComponent({
   ],
 
   setup(props, { emit }) {
+    const getPrecision = (value: number | null | undefined | string) => {
+      if (isNil(value)) return 0
+      const valueString = value.toString()
+      const dotPosition = valueString.indexOf('.')
+      let precision = 0
+      if (dotPosition !== -1) {
+        precision = valueString.length - dotPosition - 1
+      }
+      return precision
+    }
+
+    const numPrecision = computed(() => {
+      const stepPrecision = getPrecision(+props.step)
+      if (!isUndefined(props.decimalLength)) {
+        if (stepPrecision > props.decimalLength) {
+          new Error(
+            'InputNumber: precision should not be less than the decimal places of step'
+          )
+        }
+        return props.decimalLength
+      }
+      return Math.max(getPrecision(props.modelValue), stepPrecision)
+    })
+
+    const toPrecision = (num: number, pre?: number | string) => {
+      if (isUndefined(pre)) pre = +numPrecision.value
+      if (pre === 0) return Math.round(num)
+      let snum = String(num)
+      const pointPos = snum.indexOf('.')
+      if (pointPos === -1) return num.toFixed(+pre)
+      const nums = snum.replace('.', '').split('')
+      const datum = nums[pointPos + +pre]
+      if (!datum) return num
+      const { length } = snum
+      if (snum.charAt(length - 1) === '5') {
+        snum = `${snum.slice(0, Math.max(0, length - 1))}6`
+      }
+      console.log(pre)
+      return Number.parseFloat(Number(snum).toFixed(+pre))
+    }
+
     const format = (value: Numeric, autoFixed = true) => {
-      const { min, max, allowEmpty, decimalLength } = props
+      const { min, max, allowEmpty, decimalLength, stepStrictly, step } = props
 
       if (allowEmpty && value === '') {
         return value
@@ -98,8 +142,11 @@ export default defineComponent({
       // whether to format the value entered by the user
       value = autoFixed ? Math.max(Math.min(+max, value), +min) : value
 
-      // format decimal
-      if (isDef(decimalLength)) {
+      // 是否采用严格模式
+      if (stepStrictly) {
+        value = toPrecision(Math.round(+value / +step) * +step, decimalLength)
+      } else if (isDef(decimalLength)) {
+        // format decimal
         value = value.toFixed(+decimalLength)
       }
 

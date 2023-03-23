@@ -1,0 +1,137 @@
+:root {
+  --r-input-number-background: var(--r-active-color);
+  --r-input-number-button-icon-color: var(--r-text-color);
+  --r-input-number-button-disabled-color: var(--r-background);
+  --r-input-number-button-disabled-icon-color: var(--r-gray-5);
+  --r-input-number-button-round-theme-color: var(--r-primary-color);
+  --r-input-number-input-width: 32px;
+  --r-input-number-input-height: 28px;
+  --r-input-number-input-font-size: var(--r-font-size-md);
+  --r-input-number-input-line-height: normal;
+  --r-input-number-input-text-color: var(--r-text-color);
+  --r-input-number-input-disabled-text-color: var(--r-text-color-3);
+  --r-input-number-input-disabled-background: var(--r-active-color);
+  --r-input-number-radius: var(--r-radius-md);
+}
+
+.r-input-number {
+  display: inline-block;
+  user-select: none;
+
+  &__minus,
+  &__plus {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--r-input-number-input-height);
+    height: var(--r-input-number-input-height);
+    margin: 0;
+    padding: 0;
+    color: var(--r-input-number-button-icon-color);
+    vertical-align: middle;
+    background: var(--r-input-number-background);
+    border: 0;
+
+    &::before {
+      width: 50%;
+      height: 1px;
+    }
+
+    &::after {
+      width: 1px;
+      height: 50%;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: currentColor;
+      transform: translate(-50%, -50%);
+      content: '';
+    }
+
+    &--disabled {
+      color: var(--r-input-number-button-disabled-icon-color);
+      background-color: var(--r-input-number-button-disabled-color);
+      cursor: not-allowed;
+
+      &:hover {
+        color: var(--r-input-number-button-disabled-icon-color) !important;
+      }
+    }
+
+    &:hover {
+      color: var(--r-primary-color);
+    }
+  }
+
+  &__minus {
+    border-radius: var(--r-input-number-radius) 0 0 var(--r-input-number-radius);
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &__plus {
+    border-radius: 0 var(--r-input-number-radius) var(--r-input-number-radius) 0;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: var(--r-input-number-input-width);
+    height: var(--r-input-number-input-height);
+    margin: 0 2px;
+    padding: 0;
+    color: var(--r-input-number-input-text-color);
+    font-size: var(--r-input-number-input-font-size);
+    line-height: var(--r-input-number-input-line-height);
+    text-align: center;
+    vertical-align: middle;
+    background: var(--r-input-number-background);
+    border: 0;
+    border-width: 1px 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+
+    &:disabled {
+      color: var(--r-input-number-input-disabled-text-color);
+      background-color: var(--r-input-number-input-disabled-background);
+      // fix disabled color in iOS
+      -webkit-text-fill-color: var(--r-input-number-input-disabled-text-color);
+      opacity: 1;
+    }
+
+    &:read-only {
+      cursor: default;
+    }
+  }
+
+  &--round {
+    .r-input-number__input {
+      background-color: transparent;
+    }
+
+    .r-input-number__plus,
+    .r-input-number__minus {
+      border-radius: 100%;
+
+      &--disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+    }
+
+    .r-input-number__plus {
+      color: var(--r-white);
+      background: var(--r-input-number-button-round-theme-color);
+    }
+
+    .r-input-number__minus {
+      color: var(--r-input-number-button-round-theme-color);
+      background-color: var(--r-background-2);
+      border: 1px solid var(--r-input-number-button-round-theme-color);
+    }
+  }
+}
