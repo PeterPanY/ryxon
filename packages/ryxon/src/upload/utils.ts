@@ -1,15 +1,18 @@
 import { toArray, createNamespace, isFunction } from '../utils'
 import type {
-  UploaderMaxSize,
-  UploaderResultType,
-  UploaderFileListItem
+  UploadMaxSize,
+  UploadResultType,
+  UploadFileListItem
 } from './types'
 
-const [name, bem, t] = createNamespace('uploader')
+const [name, bem, t] = createNamespace('upload')
 
 export { name, bem, t }
 
-export function readFileContent(file: File, resultType: UploaderResultType) {
+let fileId = 1
+export const genFileId = () => Date.now() + fileId++
+
+export function readFileContent(file: File, resultType: UploadResultType) {
   return new Promise<string | void>((resolve) => {
     if (resultType === 'file') {
       resolve()
@@ -31,8 +34,8 @@ export function readFileContent(file: File, resultType: UploaderResultType) {
 }
 
 export function isOversize(
-  items: UploaderFileListItem | UploaderFileListItem[],
-  maxSize: UploaderMaxSize
+  items: UploadFileListItem | UploadFileListItem[],
+  maxSize: UploadMaxSize
 ): boolean {
   return toArray(items).some((item) => {
     if (item.file) {
@@ -46,11 +49,11 @@ export function isOversize(
 }
 
 export function filterFiles(
-  items: UploaderFileListItem[],
-  maxSize: UploaderMaxSize
+  items: UploadFileListItem[],
+  maxSize: UploadMaxSize
 ) {
-  const valid: UploaderFileListItem[] = []
-  const invalid: UploaderFileListItem[] = []
+  const valid: UploadFileListItem[] = []
+  const invalid: UploadFileListItem[] = []
 
   items.forEach((item) => {
     if (isOversize(item, maxSize)) {
@@ -67,7 +70,7 @@ const IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg|avif)/i
 
 export const isImageUrl = (url: string): boolean => IMAGE_REGEXP.test(url)
 
-export function isImageFile(item: UploaderFileListItem): boolean {
+export function isImageFile(item: UploadFileListItem): boolean {
   // some special urls cannot be recognized
   // user can add `isImage` flag to mark it as an image url
   if (item.isImage) {

@@ -27,7 +27,8 @@
         { "link": "/radio", "text": "Radio 单选框" },
         { "link": "/select", "text": "Select 选择器" },
         { "link": "/slider", "text": "Slider 滑块" },
-        { "link": "/time-picker", "text": "TimePicker 时间选择" }
+        { "link": "/time-picker", "text": "TimePicker 时间选择" },
+        { "link": "/upload", "text": "Upload 上传" }
       ]
     },
     "data": {

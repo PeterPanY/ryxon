@@ -439,16 +439,16 @@ exports[`should render demo and match snapshot 1`] = `
           <label id="r-input-label"
                  for="r-input-input"
           >
-            Uploader
+            Upload
           </label>
         </div>
         <div class="r-cell__value r-input__value">
           <div class="r-input__body">
             <div class="r-input__control r-input__control--custom">
-              <div class="r-uploader">
-                <div class="r-uploader__wrapper">
-                  <div class="r-uploader__preview">
-                    <div class="r-image r-uploader__preview-image">
+              <div class="r-upload">
+                <div class="r-upload__wrapper">
+                  <div class="r-upload__preview">
+                    <div class="r-image r-upload__preview-image">
                       <img src="https://fastly.jsdelivr.net/npm/@ryxon/assets/leaf.jpeg"
                            class="r-image__img"
                            style="object-fit: cover;"
@@ -459,19 +459,19 @@ exports[`should render demo and match snapshot 1`] = `
                       </div>
                     </div>
                     <div role="button"
-                         class="r-uploader__preview-delete r-uploader__preview-delete--shadow"
+                         class="r-upload__preview-delete r-upload__preview-delete--shadow"
                          tabindex="0"
                          aria-label="Delete"
                     >
-                      <i class="r-badge__wrapper r-icon r-uploader__preview-delete-icon">
+                      <i class="r-badge__wrapper r-icon r-upload__preview-delete-icon">
                       </i>
                     </div>
                   </div>
-                  <div class="r-uploader__upload">
-                    <i class="r-badge__wrapper r-icon r-uploader__upload-icon">
+                  <div class="r-upload__upload">
+                    <i class="r-badge__wrapper r-icon r-upload__upload-icon">
                     </i>
                     <input type="file"
-                           class="r-uploader__input"
+                           class="r-upload__input"
                            accept="image/*"
                     >
                   </div>

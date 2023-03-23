@@ -11,7 +11,7 @@ import { Stepper } from '../../stepper'
 import { Checkbox } from '../../checkbox'
 import { RadioGroup } from '../../radio-group'
 import { CheckboxGroup } from '../../checkbox-group'
-import { Uploader, UploaderFileListItem } from '../../uploader'
+import { Upload, UploadFileListItem } from '../../upload'
 
 function mountFormWithChild(input: () => JSX.Element) {
   const onSubmit = jest.fn()
@@ -160,10 +160,10 @@ test('should allow to use Slider as a form item', async () => {
   expect(onSubmit).toHaveBeenCalledWith({ A: 50 })
 })
 
-test('should allow to use Uploader as a form item', async () => {
-  const fileList = ref<UploaderFileListItem[]>([])
+test('should allow to use Upload as a form item', async () => {
+  const fileList = ref<UploadFileListItem[]>([])
   const { form, onSubmit, onFailed } = mountFormWithChild(() => (
-    <Uploader v-model={fileList.value} />
+    <Upload v-model={fileList.value} />
   ))
 
   await submitForm(form)

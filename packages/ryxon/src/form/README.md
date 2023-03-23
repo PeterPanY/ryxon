@@ -293,12 +293,12 @@ export default {
 }
 ```
 
-### Input Type - Uploader
+### Input Type - Upload
 
 ```html
-<r-input name="uploader" label="Uploader">
+<r-input name="upload" label="Upload">
   <template #input>
-    <r-uploader v-model="value" />
+    <r-upload v-model="value" />
   </template>
 </r-input>
 ```

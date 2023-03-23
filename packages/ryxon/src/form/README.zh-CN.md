@@ -313,12 +313,12 @@ export default {
 
 ### 表单项类型 - 文件上传
 
-在表单中使用 [Uploader 组件](#/zh-CN/uploader)。
+在表单中使用 [Upload 组件](#/zh-CN/upload)。
 
 ```html
-<r-input name="uploader" label="文件上传">
+<r-input name="upload" label="文件上传">
   <template #input>
-    <r-uploader v-model="value" />
+    <r-upload v-model="value" />
   </template>
 </r-input>
 ```

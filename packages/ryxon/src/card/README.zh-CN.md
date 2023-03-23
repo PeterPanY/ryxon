@@ -85,7 +85,7 @@ app.use(Card)
 | centered | 内容是否垂直居中 | _boolean_ | `false` |
 | currency | 货币符号 | _string_ | `¥` |
 | thumb-link | 点击左侧图片后跳转的链接地址 | _string_ | - |
-| lazy-load | 是否开启图片懒加载，须配合 [Lazyload](#/zh-CN/lazyload) 组件使用 | _boolean_ | `false` |
+| lazy-load | 是否开启图片懒加载，须配合 [Lazyload](/zh/api/lazyload.html) 组件使用 | _boolean_ | `false` |
 
 ### Events
 

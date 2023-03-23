@@ -75,4 +75,4 @@ export type ConfigProviderThemeVars =
     import('../toast').ToastThemeVars &
     import('../tooltip').TooltipThemeVars &
     import('../tree-select').TreeSelectThemeVars &
-    import('../uploader').UploaderThemeVars
+    import('../upload').UploadThemeVars

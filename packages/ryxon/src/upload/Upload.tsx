@@ -1,6 +1,9 @@
+// @ts-nocheck
 import {
+  h,
   ref,
   reactive,
+  shallowRef,
   defineComponent,
   onBeforeUnmount,
   type PropType,
@@ -9,27 +12,35 @@ import {
 
 // Utils
 import {
+  noop,
   pick,
   extend,
+  mutable,
   toArray,
+  isString,
   isPromise,
   truthProp,
   Interceptor,
+  iconPropType,
   getSizeStyle,
   makeArrayProp,
   makeStringProp,
+  definePropType,
   makeNumericProp,
   type Numeric,
   type ComponentInstance
 } from '../utils'
 import {
+  t,
   bem,
   name,
+  genFileId,
   isOversize,
   filterFiles,
   isImageFile,
   readFileContent
 } from './utils'
+import { ajaxUpload } from './ajax'
 
 // Composables
 import { useCustomInputValue } from '@ryxon/use'
@@ -37,21 +48,28 @@ import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
+import { CameraFilled } from '@ryxon/icons'
 import { showImagePreview, type ImagePreviewOptions } from '../image-preview'
-import UploaderPreviewItem from './UploaderPreviewItem'
+import UploadPreviewItem from './UploadPreviewItem'
+import UploadDragger from './upload-dragger.vue'
 
 // Types
 import type { ImageFit } from '../image'
 import type {
-  UploaderExpose,
-  UploaderMaxSize,
-  UploaderAfterRead,
-  UploaderBeforeRead,
-  UploaderResultType,
-  UploaderFileListItem
+  UploadHooks,
+  UploadExpose,
+  UploadMaxSize,
+  UploadRawFile,
+  UploadAfterRead,
+  UploadBeforeRead,
+  UploadResultType,
+  UploadFileListItem,
+  UploadRequestHandler,
+  UploadRequestOptions
 } from './types'
 
-export const uploaderProps = {
+export const uploadProps = {
+  modelValue: makeArrayProp<UploadFileListItem>(),
   name: makeNumericProp(''),
   accept: makeStringProp('image/*'),
   capture: String,
@@ -61,14 +79,15 @@ export const uploaderProps = {
   lazyLoad: Boolean,
   maxCount: makeNumericProp(Infinity),
   imageFit: makeStringProp<ImageFit>('cover'),
-  resultType: makeStringProp<UploaderResultType>('dataUrl'),
-  uploadIcon: makeStringProp('photograph'),
+  resultType: makeStringProp<UploadResultType>('dataUrl'),
+  uploadIcon: { type: iconPropType, default: CameraFilled },
   uploadText: String,
+  uploadingText: { type: String, default: t('uploading') },
+  failedText: { type: String, default: t('failed') },
   deletable: truthProp,
-  afterRead: Function as PropType<UploaderAfterRead>,
+  afterRead: Function as PropType<UploadAfterRead>,
   showUpload: truthProp,
-  modelValue: makeArrayProp<UploaderFileListItem>(),
-  beforeRead: Function as PropType<UploaderBeforeRead>,
+  beforeRead: Function as PropType<UploadBeforeRead>,
   beforeDelete: Function as PropType<Interceptor>,
   previewSize: [Number, String, Array] as PropType<
     Numeric | [Numeric, Numeric]
@@ -77,17 +96,48 @@ export const uploaderProps = {
   previewOptions: Object as PropType<Partial<ImagePreviewOptions>>,
   previewFullImage: truthProp,
   maxSize: {
-    type: [Number, String, Function] as PropType<UploaderMaxSize>,
+    type: [Number, String, Function] as PropType<UploadMaxSize>,
     default: Infinity
+  },
+  drag: { type: Boolean, default: false },
+  autoUpload: { type: Boolean, default: true },
+  action: { type: String, default: '#' },
+  httpRequest: {
+    type: definePropType<UploadRequestHandler>(Function),
+    default: ajaxUpload
+  },
+  headers: { type: definePropType<Headers | Record<string, any>>(Object) },
+  method: { type: String, default: 'post' },
+  data: { type: Object, default: () => mutable({} as const) },
+  withCredentials: Boolean,
+  beforeUpload: {
+    type: definePropType<UploadHooks['beforeUpload']>(Function),
+    default: noop
+  },
+  onRemove: {
+    type: definePropType<UploadHooks['onRemove']>(Function),
+    default: noop
+  },
+  onProgress: {
+    type: definePropType<UploadHooks['onProgress']>(Function),
+    default: noop
+  },
+  onSuccess: {
+    type: definePropType<UploadHooks['onSuccess']>(Function),
+    default: noop
+  },
+  onError: {
+    type: definePropType<UploadHooks['onError']>(Function),
+    default: noop
   }
 }
 
-export type UploaderProps = ExtractPropTypes<typeof uploaderProps>
+export type UploadProps = ExtractPropTypes<typeof uploadProps>
 
 export default defineComponent({
   name,
 
-  props: uploaderProps,
+  props: uploadProps,
 
   emits: [
     'delete',
@@ -113,9 +163,115 @@ export default defineComponent({
       }
     }
 
-    const onAfterRead = (
-      items: UploaderFileListItem | UploaderFileListItem[]
-    ) => {
+    const requests = shallowRef<
+      Record<string, XMLHttpRequest | Promise<unknown>>
+    >({})
+
+    // 上传文件
+    const doUpload = (rawFile: UploadRawFile) => {
+      const {
+        headers,
+        data,
+        method,
+        withCredentials,
+        name: filename,
+        action,
+        onProgress,
+        onSuccess,
+        onError,
+        httpRequest
+      } = props
+
+      const { uid } = rawFile
+
+      rawFile.status = 'uploading'
+
+      const options: UploadRequestOptions = {
+        headers: headers || {},
+        withCredentials,
+        file: rawFile.file,
+        data,
+        method,
+        filename,
+        action,
+        onProgress: (evt) => {
+          onProgress(evt, rawFile)
+        },
+        onSuccess: (res) => {
+          rawFile.status = 'done'
+          onSuccess(res, rawFile)
+          delete requests.value[uid]
+        },
+        onError: (err) => {
+          rawFile.status = 'failed'
+          onError(err, rawFile)
+          delete requests.value[uid]
+        }
+      }
+
+      const request = httpRequest(options)
+
+      requests.value[uid] = request
+
+      if (request instanceof Promise) {
+        request.then(options.onSuccess, options.onError)
+      }
+    }
+
+    // 删除文件
+    const deleteFile = (item: UploadFileListItem, index: number) => {
+      const fileList = props.modelValue.slice(0)
+      fileList.splice(index, 1)
+
+      emit('update:modelValue', fileList)
+      emit('delete', item, getDetail(index))
+    }
+
+    // 文件上传前处理
+    const upload = async (rawFile: UploadRawFile) => {
+      inputRef.value!.value = ''
+
+      if (!props.beforeUpload) {
+        return doUpload(rawFile)
+      }
+
+      let hookResult: Exclude<
+        ReturnType<UploadHooks['beforeUpload']>,
+        Promise<any>
+      >
+
+      try {
+        hookResult = await props.beforeUpload(rawFile)
+      } catch {
+        hookResult = false
+      }
+
+      if (hookResult === false) {
+        const index = props.modelValue.findIndex(
+          (item) => item.uid === rawFile.uid
+        )
+
+        deleteFile(rawFile, index)
+        props.onRemove(rawFile)
+        return
+      }
+
+      const file = rawFile
+
+      if (hookResult instanceof Blob) {
+        if (hookResult instanceof File) {
+          file.file = hookResult
+        } else {
+          file.file = new File([hookResult], rawFile.name, {
+            type: rawFile.type
+          })
+        }
+      }
+
+      doUpload(Object.assign(file, { uid: rawFile.uid }))
+    }
+
+    const onAfterRead = (items: UploadFileListItem | UploadFileListItem[]) => {
       resetInput()
 
       if (isOversize(items, props.maxSize)) {
@@ -138,6 +294,16 @@ export default defineComponent({
       if (props.afterRead) {
         props.afterRead(items, getDetail())
       }
+
+      // 判断是否开启自动上传
+      if (props.autoUpload) {
+        for (const file of toArray(items)) {
+          const rawFile = file
+          rawFile.uid = genFileId()
+
+          upload(rawFile)
+        }
+      }
     }
 
     const readFile = (files: File | File[]) => {
@@ -154,10 +320,10 @@ export default defineComponent({
           files.map((file) => readFileContent(file, resultType))
         ).then((contents) => {
           const fileList = (files as File[]).map((file, index) => {
-            const result: UploaderFileListItem = {
+            const result: UploadFileListItem = {
               file,
-              status: '',
-              message: ''
+              status: 'ready',
+              uid: genFileId()
             }
 
             if (contents[index]) {
@@ -171,10 +337,10 @@ export default defineComponent({
         })
       } else {
         readFileContent(files, resultType).then((content) => {
-          const result: UploaderFileListItem = {
+          const result: UploadFileListItem = {
             file: files as File,
-            status: '',
-            message: ''
+            status: 'ready',
+            uid: genFileId()
           }
 
           if (content) {
@@ -225,7 +391,7 @@ export default defineComponent({
 
     const onClosePreview = () => emit('closePreview')
 
-    const previewImage = (item: UploaderFileListItem) => {
+    const previewImage = (item: UploadFileListItem) => {
       if (props.previewFullImage) {
         const imageFiles = props.modelValue.filter(isImageFile)
         const images = imageFiles
@@ -243,7 +409,8 @@ export default defineComponent({
             {
               images,
               startPosition: imageFiles.indexOf(item),
-              onClose: onClosePreview
+              onClose: onClosePreview,
+              closeable: true
             },
             props.previewOptions
           )
@@ -257,15 +424,7 @@ export default defineComponent({
       }
     }
 
-    const deleteFile = (item: UploaderFileListItem, index: number) => {
-      const fileList = props.modelValue.slice(0)
-      fileList.splice(index, 1)
-
-      emit('update:modelValue', fileList)
-      emit('delete', item, getDetail(index))
-    }
-
-    const renderPreviewItem = (item: UploaderFileListItem, index: number) => {
+    const renderPreviewItem = (item: UploadFileListItem, index: number) => {
       const needPickData = [
         'imageFit',
         'deletable',
@@ -279,10 +438,12 @@ export default defineComponent({
       )
 
       return (
-        <UploaderPreviewItem
+        <UploadPreviewItem
           v-slots={pick(slots, ['preview-cover', 'preview-delete'])}
           item={item}
           index={index}
+          uploadingText={props.uploadingText}
+          failedText={props.failedText}
           onClick={() => emit('clickPreview', item, getDetail(index))}
           onDelete={() => deleteFile(item, index)}
           onPreview={() => previewImage(item)}
@@ -298,7 +459,16 @@ export default defineComponent({
       }
     }
 
-    const onClickUpload = (event: MouseEvent) => emit('clickUpload', event)
+    const chooseFile = () => {
+      if (inputRef.value && !props.disabled) {
+        inputRef.value.click()
+      }
+    }
+
+    const onClickUpload = (event: MouseEvent) => {
+      chooseFile()
+      emit('clickUpload', event)
+    }
 
     const renderUpload = () => {
       if (props.modelValue.length >= +props.maxCount) {
@@ -318,13 +488,31 @@ export default defineComponent({
         />
       )
 
-      if (slots.default) {
+      if (slots.default || props.drag) {
+        const uploadFiles = (files: File[]) => {
+          readFile(files)
+        }
+
         return (
           <div class={bem('input-wrapper')} onClick={onClickUpload}>
-            {slots.default()}
+            {props.drag ? (
+              <UploadDragger
+                disabled={props.disabled}
+                accept={props.accept}
+                onFile={uploadFiles}
+              >
+                {slots.default?.()}
+              </UploadDragger>
+            ) : (
+              slots.default?.()
+            )}
             {Input}
           </div>
         )
+      }
+
+      if (props.drag) {
+        return
       }
 
       return (
@@ -334,7 +522,12 @@ export default defineComponent({
           style={getSizeStyle(props.previewSize)}
           onClick={onClickUpload}
         >
-          <Icon name={props.uploadIcon} class={bem('upload-icon')} />
+          <Icon
+            name={isString(props.uploadIcon) ? props.uploadIcon : ''}
+            class={bem('upload-icon')}
+          >
+            {!isString(props.uploadIcon) && h(props.uploadIcon)}
+          </Icon>
           {props.uploadText && (
             <span class={bem('upload-text')}>{props.uploadText}</span>
           )}
@@ -343,17 +536,19 @@ export default defineComponent({
       )
     }
 
-    const chooseFile = () => {
-      if (inputRef.value && !props.disabled) {
-        inputRef.value.click()
-      }
-    }
-
     onBeforeUnmount(() => {
       urls.forEach((url) => URL.revokeObjectURL(url))
     })
 
-    useExpose<UploaderExpose>({
+    // 手动上传
+    const submit = () => {
+      props.modelValue
+        .filter(({ status }) => status === 'ready')
+        .forEach((item) => upload(item))
+    }
+
+    useExpose<UploadExpose>({
+      submit,
       chooseFile,
       closeImagePreview
     })

@@ -116,6 +116,10 @@ export default {
     clearFilter: '全部',
     sumText: '合计'
   },
+  rUpload: {
+    uploading: '上传中...',
+    failed: '上传失败'
+  },
   rCoupon: {
     unlimited: '无门槛',
     discount: (discount: number) => `${discount}折`,

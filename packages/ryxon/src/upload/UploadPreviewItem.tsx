@@ -1,9 +1,8 @@
-import { defineComponent, type PropType } from 'vue'
+import { ref, defineComponent, type PropType } from 'vue'
 
 // Utils
 import { t, bem, isImageFile } from './utils'
 import {
-  isDef,
   extend,
   numericProp,
   getSizeStyle,
@@ -15,16 +14,17 @@ import {
 
 // Components
 import { Icon } from '../icon'
+import { Check, CircleClose, Close, Document } from '@ryxon/icons'
 import { Image, ImageFit } from '../image'
 import { Loading } from '../loading'
 
 // Types
-import type { UploaderFileListItem } from './types'
+import type { UploadFileListItem } from './types'
 
 export default defineComponent({
   props: {
     name: numericProp,
-    item: makeRequiredProp<PropType<UploaderFileListItem>>(Object),
+    item: makeRequiredProp<PropType<UploadFileListItem>>(Object),
     index: Number,
     imageFit: String as PropType<ImageFit>,
     lazyLoad: Boolean,
@@ -32,29 +32,34 @@ export default defineComponent({
     previewSize: [Number, String, Array] as PropType<
       Numeric | [Numeric, Numeric]
     >,
-    beforeDelete: Function as PropType<Interceptor>
+    beforeDelete: Function as PropType<Interceptor>,
+    uploadingText: String,
+    failedText: String
   },
 
   emits: ['delete', 'preview'],
 
   setup(props, { emit, slots }) {
     const renderMask = () => {
-      const { status, message } = props.item
+      const { status } = props.item
 
       if (status === 'uploading' || status === 'failed') {
         const MaskIcon =
           status === 'failed' ? (
-            <Icon name="close" class={bem('mask-icon')} />
+            <Icon class={bem('mask-icon')}>
+              <CircleClose></CircleClose>
+            </Icon>
           ) : (
             <Loading class={bem('loading')} />
           )
 
-        const showMessage = isDef(message) && message !== ''
+        const message =
+          status === 'uploading' ? props.uploadingText : props.failedText
 
         return (
           <div class={bem('mask')}>
             {MaskIcon}
-            {showMessage && <div class={bem('mask-message')}>{message}</div>}
+            {message && <div class={bem('mask-message')}>{message}</div>}
           </div>
         )
       }
@@ -71,21 +76,43 @@ export default defineComponent({
 
     const onPreview = () => emit('preview')
 
+    const isDone = ref(true)
+
+    const handleMouseenter = () => {
+      console.log('object')
+      isDone.value = false
+    }
+    const handleMouseleave = () => {
+      isDone.value = true
+    }
+
     const renderDeleteIcon = () => {
       if (props.deletable && props.item.status !== 'uploading') {
         const slot = slots['preview-delete']
+
         return (
           <div
             role="button"
-            class={bem('preview-delete', { shadow: !slot })}
+            class={bem('preview-delete', {
+              shadow: !slot,
+              done: props.item.status === 'done' && isDone.value
+            })}
             tabindex={0}
             aria-label={t('delete')}
             onClick={onDelete}
+            onMouseenter={handleMouseenter}
+            onMouseleave={handleMouseleave}
           >
             {slot ? (
               slot()
             ) : (
-              <Icon name="cross" class={bem('preview-delete-icon')} />
+              <Icon class={bem('preview-delete-icon')}>
+                {props.item.status === 'done' && isDone.value ? (
+                  <Check></Check>
+                ) : (
+                  <Close></Close>
+                )}
+              </Icon>
             )}
           </div>
         )
@@ -123,7 +150,9 @@ export default defineComponent({
 
       return (
         <div class={bem('file')} style={getSizeStyle(props.previewSize)}>
-          <Icon class={bem('file-icon')} name="description" />
+          <Icon class={bem('file-icon')}>
+            <Document></Document>
+          </Icon>
           <div class={[bem('file-name'), 'r-ellipsis']}>
             {item.file ? item.file.name : item.url}
           </div>

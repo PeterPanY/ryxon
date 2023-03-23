@@ -10,7 +10,7 @@ import RSlider from '../../slider'
 import RSwitch from '../../switch'
 import RStepper from '../../stepper'
 import RCheckbox from '../../checkbox'
-import RUploader from '../../uploader'
+import RUpload from '../../upload'
 import RCellGroup from '../../cell-group'
 import RRadioGroup from '../../radio-group'
 import RCheckboxGroup from '../../checkbox-group'
@@ -29,7 +29,7 @@ const t = useTranslate({
     picker: '选择器',
     stepper: '步进器',
     checkbox: '复选框',
-    uploader: '文件上传',
+    upload: '文件上传',
     inputType: '表单项类型',
     checkboxGroup: '复选框组',
     requireCheckbox: '请勾选复选框'
@@ -43,7 +43,7 @@ const t = useTranslate({
     picker: 'Picker',
     stepper: 'Stepper',
     checkbox: 'Checkbox',
-    uploader: 'Uploader',
+    upload: 'Upload',
     inputType: 'Input Type',
     checkboxGroup: 'Checkbox Group',
     requireCheckbox: 'Checkbox is required'
@@ -54,7 +54,7 @@ const rate = ref(3)
 const radio = ref('1')
 const slider = ref(50)
 const stepper = ref(1)
-const uploader = ref([{ url: cdnURL('leaf.jpeg') }])
+const upload = ref([{ url: cdnURL('leaf.jpeg') }])
 const checkbox = ref(false)
 const checkboxGroup = ref([])
 const switchChecked = ref(false)
@@ -120,9 +120,9 @@ const onSubmit = (values: Record<string, string>) => {
           </template>
         </r-input>
 
-        <r-input name="uploader" :label="t('uploader')">
+        <r-input name="upload" :label="t('upload')">
           <template #input>
-            <r-uploader v-model="uploader" max-count="2" />
+            <r-upload v-model="upload" max-count="2" />
           </template>
         </r-input>
 

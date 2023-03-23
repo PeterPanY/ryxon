@@ -1,10 +1,11 @@
 import { isObject } from './validate'
 import type { ComponentPublicInstance } from 'vue'
 
+// 空函数
 export function noop() {}
-
+// 对象合并
 export const extend = Object.assign
-
+// 判断是不是浏览器
 export const inBrowser = typeof window !== 'undefined'
 
 export type Numeric = number | string

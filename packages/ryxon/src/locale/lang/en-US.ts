@@ -117,6 +117,10 @@ export default {
     clearFilter: 'All',
     sumText: 'Sum'
   },
+  rUpload: {
+    uploading: 'Uploading...',
+    failed: 'Failed'
+  },
   rCoupon: {
     unlimited: 'Unlimited',
     discount: (discount: number) => `${discount * 10}% off`,

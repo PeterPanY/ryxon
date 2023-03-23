@@ -1,0 +1,240 @@
+:root {
+  --r-upload-size: 80px;
+  --r-upload-icon-size: 24px;
+  --r-upload-icon-color: var(--r-gray-4);
+  --r-upload-text-color: var(--r-text-color-2);
+  --r-upload-text-font-size: var(--r-font-size-sm);
+  --r-upload-upload-background: var(--r-gray-1);
+  --r-upload-upload-active-color: var(--r-active-color);
+  --r-upload-delete-color: var(--r-white);
+  --r-upload-delete-icon-size: 14px;
+  --r-upload-delete-background: rgba(0, 0, 0, 0.7);
+  --r-upload-file-background: var(--r-background);
+  --r-upload-file-icon-size: 20px;
+  --r-upload-file-icon-color: var(--r-gray-7);
+  --r-upload-file-name-padding: 0 var(--r-padding-base);
+  --r-upload-file-name-margin-top: var(--r-padding-xs);
+  --r-upload-file-name-font-size: var(--r-font-size-sm);
+  --r-upload-file-name-text-color: var(--r-gray-7);
+  --r-upload-mask-text-color: var(--r-white);
+  --r-upload-mask-background: rgba(50, 50, 51, 0.88);
+  --r-upload-mask-icon-size: 22px;
+  --r-upload-mask-message-font-size: var(--r-font-size-sm);
+  --r-upload-mask-message-line-height: var(--r-line-height-xs);
+  --r-upload-loading-icon-size: 22px;
+  --r-upload-loading-icon-color: var(--r-white);
+  --r-upload-disabled-opacity: var(--r-disabled-opacity);
+  --r-upload-dragger-padding-horizontal: 40px;
+  --r-upload-dragger-padding-vertical: 10px;
+}
+
+.r-upload {
+  position: relative;
+  display: inline-block;
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--disabled {
+      .r-upload__upload {
+        opacity: var(--r-upload-disabled-opacity);
+        cursor: not-allowed;
+      }
+
+      .r-upload__dragger {
+        opacity: var(--r-upload-disabled-opacity);
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: var(--r-border-color);
+        }
+      }
+    }
+  }
+
+  &__input {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; // to clip file-upload-button
+    cursor: pointer;
+    opacity: 0;
+
+    &-wrapper {
+      position: relative;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__upload {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--r-upload-size);
+    height: var(--r-upload-size);
+    margin: 0 var(--r-padding-xs) var(--r-padding-xs) 0;
+    background: var(--r-upload-upload-background);
+
+    &:active {
+      background-color: var(--r-upload-upload-active-color);
+    }
+
+    &--readonly:active {
+      background-color: var(--r-upload-upload-background);
+    }
+
+    &-icon {
+      color: var(--r-upload-icon-color);
+      font-size: var(--r-upload-icon-size);
+    }
+
+    &-text {
+      margin-top: var(--r-padding-xs);
+      color: var(--r-upload-text-color);
+      font-size: var(--r-upload-text-font-size);
+    }
+  }
+
+  &__preview {
+    position: relative;
+    margin: 0 var(--r-padding-xs) var(--r-padding-xs) 0;
+    cursor: pointer;
+
+    &-image {
+      display: block;
+      width: var(--r-upload-size);
+      height: var(--r-upload-size);
+      overflow: hidden;
+    }
+
+    &-delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &--shadow {
+        width: var(--r-upload-delete-icon-size);
+        height: var(--r-upload-delete-icon-size);
+        background: var(--r-upload-delete-background);
+        border-radius: 0 0 0 12px;
+      }
+
+      &--done {
+        background: var(--r-success-color);
+      }
+
+      &-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--r-upload-delete-color);
+        font-size: var(--r-upload-delete-icon-size);
+        transform: scale(0.7) translate(10%, -10%);
+      }
+    }
+
+    &-cover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--r-upload-mask-text-color);
+    background: var(--r-upload-mask-background);
+
+    &-icon {
+      font-size: var(--r-upload-mask-icon-size);
+    }
+
+    &-message {
+      margin-top: 6px;
+      padding: 0 var(--r-padding-base);
+      font-size: var(--r-upload-mask-message-font-size);
+      line-height: var(--r-upload-mask-message-line-height);
+    }
+  }
+
+  &__loading {
+    width: var(--r-upload-loading-icon-size);
+    height: var(--r-upload-loading-icon-size);
+    color: var(--r-upload-loading-icon-color);
+  }
+
+  &__file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: var(--r-upload-size);
+    height: var(--r-upload-size);
+    background: var(--r-upload-file-background);
+
+    &-icon {
+      color: var(--r-upload-file-icon-color);
+      font-size: var(--r-upload-file-icon-size);
+    }
+
+    &-name {
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: var(--r-upload-file-name-margin-top);
+      padding: var(--r-upload-file-name-padding);
+      color: var(--r-upload-file-name-text-color);
+      font-size: var(--r-upload-file-name-font-size);
+      text-align: center;
+    }
+  }
+
+  &:focus .r-upload__dragger {
+    border-color: var(--r-primary-color);
+  }
+
+  // 拖拽上传
+  &__dragger {
+    padding: var(--r-upload-dragger-padding-horizontal)
+      var(--r-upload-dragger-padding-vertical);
+    background-color: var(--r-fill-color-blank);
+    border: 1px dashed var(--r-border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      border-color: var(--r-primary-color);
+    }
+
+    &.is-dragover {
+      padding: calc(var(--r-upload-dragger-padding-horizontal) - 1px)
+        calc(var(--r-upload-dragger-padding-vertical) - 1px);
+      background-color: var(--r-primary-color-light-9);
+      border: 2px dashed var(--r-primary-color);
+    }
+  }
+}
