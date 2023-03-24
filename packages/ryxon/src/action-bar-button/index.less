@@ -1,7 +1,5 @@
 :root {
   --r-action-bar-button-height: 40px;
-  --r-action-bar-button-warning-color: var(--r-gradient-orange);
-  --r-action-bar-button-danger-color: var(--r-gradient-red);
 }
 
 .r-button.r-action-bar-button {
@@ -9,10 +7,9 @@
   height: var(--r-action-bar-button-height);
   font-weight: var(--r-font-bold);
   font-size: var(--r-font-size-md);
-  border: none;
   border-radius: 0;
 
-  &.r-button + .r-button {
+  & + .r-button {
     margin: 0;
   }
 
@@ -26,14 +23,6 @@
     margin-right: 5px;
     border-top-right-radius: var(--r-radius-max);
     border-bottom-right-radius: var(--r-radius-max);
-  }
-
-  &--warning {
-    background: var(--r-action-bar-button-warning-color);
-  }
-
-  &--danger {
-    background: var(--r-action-bar-button-danger-color);
   }
 
   @media (max-width: 321px) {

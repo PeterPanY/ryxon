@@ -1,16 +1,21 @@
-import type { CSSProperties, TeleportProps } from 'vue'
+import type { CSSProperties, TeleportProps, Component } from 'vue'
 import type { Interceptor, Numeric } from '../utils'
 
-export type DialogTheme = 'default' | 'round-button' | 'right-button'
+export type DialogTheme = 'default' | 'space-button'
+export type DialogPositon = 'center' | 'top'
 export type DialogAction = 'confirm' | 'cancel'
 export type DialogMessage = string | (() => JSX.Element)
 export type DialogMessageAlign = 'left' | 'center' | 'right' | 'justify'
+export type DialogType = '' | 'success' | 'warning' | 'info' | 'danger'
 
 export type DialogOptions = {
   title?: string
   width?: Numeric
   theme?: DialogTheme
+  position?: DialogPositon
   message?: DialogMessage
+  type?: DialogType
+  icon?: string | Component
   overlay?: boolean
   teleport?: TeleportProps['to']
   className?: unknown
@@ -31,6 +36,7 @@ export type DialogOptions = {
   confirmButtonColor?: string
   confirmButtonDisabled?: boolean
   closeOnClickOverlay?: boolean
+  showClose?: boolean
 }
 
 export type DialogThemeVars = {

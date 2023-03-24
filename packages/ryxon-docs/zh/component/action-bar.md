@@ -101,18 +101,16 @@ import type {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                                | 默认值                     | 描述 |
-| ----------------------------------- | -------------------------- | ---- |
-| --r-action-bar-background           | `var(--r-background-2)`    | -    |
-| --r-action-bar-height               | `50px`                     | -    |
-| --r-action-bar-icon-width           | `48px`                     | -    |
-| --r-action-bar-icon-height          | `100%`                     | -    |
-| --r-action-bar-icon-color           | `var(--r-text-color)`      | -    |
-| --r-action-bar-icon-size            | `18px`                     | -    |
-| --r-action-bar-icon-font-size       | `var(--r-font-size-xs)`    | -    |
-| --r-action-bar-icon-active-color    | `var(--r-active-color)`    | -    |
-| --r-action-bar-icon-text-color      | `var(--r-text-color)`      | -    |
-| --r-action-bar-icon-background      | `var(--r-background-2)`    | -    |
-| --r-action-bar-button-height        | `40px`                     | -    |
-| --r-action-bar-button-warning-color | `var(--r-gradient-orange)` | -    |
-| --r-action-bar-button-danger-color  | `var(--r-gradient-red)`    | -    |
+| 名称                             | 默认值                  | 描述 |
+| -------------------------------- | ----------------------- | ---- |
+| --r-action-bar-background        | `var(--r-background-2)` | -    |
+| --r-action-bar-height            | `50px`                  | -    |
+| --r-action-bar-icon-width        | `48px`                  | -    |
+| --r-action-bar-icon-height       | `100%`                  | -    |
+| --r-action-bar-icon-color        | `var(--r-text-color)`   | -    |
+| --r-action-bar-icon-size         | `18px`                  | -    |
+| --r-action-bar-icon-font-size    | `var(--r-font-size-xs)` | -    |
+| --r-action-bar-icon-active-color | `var(--r-active-color)` | -    |
+| --r-action-bar-icon-text-color   | `var(--r-text-color)`   | -    |
+| --r-action-bar-icon-background   | `var(--r-background-2)` | -    |
+| --r-action-bar-button-height     | `40px`                  | -    |

@@ -3,13 +3,14 @@
 </template>
 
 <script setup lang="ts">
-import { showConfirmDialog } from '@ryxon/components'
+import { showDialog } from '@ryxon/components'
 
 const handleClick = () => {
-  showConfirmDialog({
+  showDialog({
     title: '标题',
     message: 'This is a message',
-    theme: 'space-button'
+    type: 'warning',
+    messageAlign: 'left'
   })
 }
 </script>

@@ -27,7 +27,39 @@ dialog/function-confirm
 
 :::
 
-## 圆角按钮风格
+## 消息类型
+
+:::demo `type` 字段表明消息类型，可以为 `success`，`danger`，`info` 和 `warning`，无效的设置将会被忽略。
+
+dialog/type
+
+:::
+
+## 使用 VNode
+
+:::demo `message` 可以是 `VNode`。
+
+dialog/node
+
+:::
+
+## 使用 HTML 片段
+
+:::demo 将 `allowHtml` 属性设置为 `true`，message 属性就会被当作 HTML 片段处理。
+
+dialog/html
+
+:::
+
+## 自定义图标
+
+:::demo 图标可以使用任意 Vue 组件或 [渲染函数 (JSX)](https://vuejs.org/guide/extras/render-function.html)来自定义。
+
+dialog/icon
+
+:::
+
+## 间隔按钮风格
 
 :::demo 将 theme 选项设置为 `round-button` 可以展示圆角按钮风格的弹窗。
 
@@ -72,28 +104,33 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 标题 | `string` | - |
-| width | 弹窗宽度，默认单位为 `px` | `number \| string` | `320px` |
-| message | 文本内容，支持通过 `\n` 换行 | `string \| () => JSX.ELement` | - |
-| messageAlign | 内容对齐方式，可选值为 `left` `right` | `string` | `center` |
 | theme | 样式风格，可选值为 `round-button` | `string` | `default` |
+| width | 弹窗宽度，默认单位为 `px` | `number \| string` | `320px` |
+| position | 弹窗位置，可以`top`，使用`top`,`--r-dialog-margin-top`将失效 | `string` | `center` |
+| message | 文本内容，支持通过 `\n` 换行 | `string \| () => JSX.ELement` | - |
+| type | 弹窗类型，用于图标显示，可选`success / info / warning / danger` | `string` | - |
+| icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
+| allowHtml | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
 | className | 自定义类名 | `string \| Array \| object` | - |
+| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
+| messageAlign | 内容对齐方式，可选值为 `left` `right` | `string` | `center` |
+| closeOnPopstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | showConfirmButton | 是否展示确认按钮 | `boolean` | `true` |
-| showCancelButton | 是否展示取消按钮 | `boolean` | `false` |
 | confirmButtonText | 确认按钮文案 | `string` | `确认` |
 | confirmButtonColor | 确认按钮颜色 | `string` | `#ee0a24` |
 | confirmButtonDisabled | 是否禁用确认按钮 | `boolean` | `false` |
+| showCancelButton | 是否展示取消按钮 | `boolean` | `false` |
 | cancelButtonText | 取消按钮文案 | `string` | `取消` |
 | cancelButtonColor | 取消按钮颜色 | `string` | `black` |
 | cancelButtonDisabled | 是否禁用取消按钮 | `boolean` | `false` |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
+| showClose | 是否显示右上角关闭按钮 | `boolean` | `true` |
+| callback | 关闭后的回调 | `function` | - |
 | overlay | 是否展示遮罩层 | `boolean` | `true` |
 | overlayClass | 自定义遮罩层类名 | `string \| Array \| object` | - |
 | overlayStyle | 自定义遮罩层样式 | `object` | - |
-| closeOnPopstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
 | lockScroll | 是否锁定背景滚动 | `boolean` | `true` |
-| allowHtml | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
 
 ### Props
@@ -104,29 +141,34 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | --- | --- | --- | --- |
 | v-model:show | 是否显示弹窗 | `boolean` | - |
 | title | 标题 | `string` | - |
-| width | 弹窗宽度，默认单位为 `px` | `number \| string` | `320px` |
-| message | 文本内容，支持通过 `\n` 换行 | `string \| () => JSX.Element` | - |
-| message-align | 内容水平对齐方式，可选值为 `left` `right` `justify` | `string` | `center` |
 | theme | 样式风格，可选值为 `round-button` | `string` | `default` |
+| width | 弹窗宽度，默认单位为 `px` | `number \| string` | `320px` |
+| position | 弹窗位置，可以`top`，使用`top`,`--r-dialog-margin-top`将失效 | `string` | `center` |
+| message | 文本内容，支持通过 `\n` 换行 | `string \| () => JSX.Element` | - |
+| type | 弹窗类型，用于图标显示，可选`success / info / warning / danger` | `string` | - |
+| icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
+| allow-html | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
+| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
+| message-align | 内容水平对齐方式，可选值为 `left` `right` `justify` | `string` | `center` |
+| close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | show-confirm-button | 是否展示确认按钮 | `boolean` | `true` |
-| show-cancel-button | 是否展示取消按钮 | `boolean` | `false` |
 | confirm-button-text | 确认按钮文案 | `string` | `确认` |
 | confirm-button-color | 确认按钮颜色 | `string` | `#ee0a24` |
 | confirm-button-disabled | 是否禁用确认按钮 | `boolean` | `false` |
+| show-cancel-button | 是否展示取消按钮 | `boolean` | `false` |
 | cancel-button-text | 取消按钮文案 | `string` | `取消` |
 | cancel-button-color | 取消按钮颜色 | `string` | `black` |
 | cancel-button-disabled | 是否禁用取消按钮 | `boolean` | `false` |
+| close-on-click-overlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
+| show-close | 是否显示右上角关闭按钮 | `boolean` | `true` |
+| callback | 关闭后的回调 | `function` | - |
 | z-index | 将弹窗的 z-index 层级设置为一个固定值 | `number \| string` | `2000+` |
 | overlay | 是否展示遮罩层 | `boolean` | `true` |
 | overlay-class | 自定义遮罩层类名 | `string` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
-| close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
-| close-on-click-overlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
 | lazy-render | 是否在显示弹层时才渲染节点 | `boolean` | `true` |
 | lock-scroll | 是否锁定背景滚动 | `boolean` | `true` |
-| allow-html | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
 
 ### Events

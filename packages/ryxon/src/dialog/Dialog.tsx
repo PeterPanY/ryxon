@@ -1,5 +1,7 @@
 import {
+  h,
   ref,
+  computed,
   reactive,
   withKeys,
   defineComponent,
@@ -13,15 +15,18 @@ import {
   pick,
   extend,
   addUnit,
+  isString,
   truthProp,
   isFunction,
   BORDER_TOP,
   BORDER_LEFT,
   unknownProp,
   numericProp,
+  iconPropType,
   makeStringProp,
   callInterceptor,
   createNamespace,
+  TypeComponentsMap,
   type ComponentInstance
 } from '../utils'
 import { popupSharedProps, popupSharedPropKeys } from '../popup/shared'
@@ -31,11 +36,15 @@ import { Popup } from '../popup'
 import { Button } from '../button'
 import { ActionBar } from '../action-bar'
 import { ActionBarButton } from '../action-bar-button'
+import { Icon } from '../icon'
+import { Close } from '@ryxon/icons'
 
 // Types
 import type {
+  DialogType,
   DialogTheme,
   DialogAction,
+  DialogPositon,
   DialogMessage,
   DialogMessageAlign
 } from './types'
@@ -46,22 +55,26 @@ export const dialogProps = extend({}, popupSharedProps, {
   title: String,
   theme: String as PropType<DialogTheme>,
   width: numericProp,
+  position: makeStringProp<DialogPositon>('center'),
   message: [String, Function] as PropType<DialogMessage>,
+  type: makeStringProp<DialogType>(''),
+  icon: iconPropType,
   callback: Function as PropType<(action?: DialogAction) => void>,
   allowHtml: Boolean,
   className: unknownProp,
   transition: makeStringProp('r-dialog-bounce'),
   messageAlign: String as PropType<DialogMessageAlign>,
   closeOnPopstate: truthProp,
+  showConfirmButton: truthProp,
+  confirmButtonText: String,
+  confirmButtonColor: String,
+  confirmButtonDisabled: Boolean,
   showCancelButton: Boolean,
   cancelButtonText: String,
   cancelButtonColor: String,
   cancelButtonDisabled: Boolean,
-  confirmButtonText: String,
-  confirmButtonColor: String,
-  confirmButtonDisabled: Boolean,
-  showConfirmButton: truthProp,
-  closeOnClickOverlay: Boolean
+  closeOnClickOverlay: Boolean,
+  showClose: truthProp
 })
 
 export type DialogProps = ExtractPropTypes<typeof dialogProps>
@@ -91,7 +104,7 @@ export default defineComponent({
     }
 
     const getActionHandler = (action: DialogAction) => () => {
-      // should not trigger close event when hidden
+      // 隐藏时不应触发关闭事件
       if (!props.show) {
         return
       }
@@ -145,10 +158,47 @@ export default defineComponent({
             })}
           >
             {title}
+            {props.showClose && (
+              <Icon class={bem('close')} onClick={onCancel}>
+                <Close></Close>
+              </Icon>
+            )}
           </div>
         )
       }
     }
+
+    const iconComponent = computed(() => {
+      // props.icon || props.type ? TypeComponentsMap[props.type] : '' || ''
+      const { icon, type } = props
+      if (icon) {
+        return icon
+      }
+      if (
+        type === 'success' ||
+        type === 'warning' ||
+        type === 'info' ||
+        type === 'danger'
+      ) {
+        return TypeComponentsMap[type]
+      }
+      return ''
+    })
+
+    const typeClass = computed(() => {
+      const { type } = props
+      if (
+        type === 'success' ||
+        type === 'warning' ||
+        type === 'info' ||
+        type === 'danger'
+      ) {
+        return {
+          [bem(`icon`, type) as string]: type && TypeComponentsMap[type]
+        }
+      }
+      return ''
+    })
 
     const renderMessage = (hasTitle: boolean) => {
       const { message, allowHtml, messageAlign } = props
@@ -160,10 +210,34 @@ export default defineComponent({
       const content = isFunction(message) ? message() : message
 
       if (allowHtml && typeof content === 'string') {
-        return <div class={classNames} innerHTML={content} />
+        return (
+          <>
+            {iconComponent.value && (
+              <Icon
+                name={isString(iconComponent.value) ? iconComponent.value : ''}
+                class={[bem('status'), typeClass.value]}
+              >
+                {!isString(iconComponent.value) && h(iconComponent.value)}
+              </Icon>
+            )}
+            <div class={classNames} innerHTML={content} />
+          </>
+        )
       }
 
-      return <div class={classNames}>{content}</div>
+      return (
+        <>
+          {iconComponent.value && (
+            <Icon
+              name={isString(iconComponent.value) ? iconComponent.value : ''}
+              class={[bem('status'), typeClass.value]}
+            >
+              {!isString(iconComponent.value) && h(iconComponent.value)}
+            </Icon>
+          )}
+          <div class={classNames}>{content}</div>
+        </>
+      )
     }
 
     const renderContent = () => {
@@ -178,7 +252,11 @@ export default defineComponent({
           <div
             // 添加key值以强制重新渲染
             key={allowHtml ? 1 : 0}
-            class={bem('content', { isolated: !hasTitle })}
+            class={bem('content', {
+              isolated: !hasTitle,
+              type: iconComponent.value,
+              [props.messageAlign as string]: props.messageAlign
+            })}
           >
             {renderMessage(hasTitle)}
           </div>
@@ -186,7 +264,7 @@ export default defineComponent({
       }
     }
 
-    // 按钮
+    // 默认按钮
     const renderButtons = () => (
       <div class={[BORDER_TOP, bem('footer')]}>
         {props.showCancelButton && (
@@ -218,6 +296,7 @@ export default defineComponent({
       </div>
     )
 
+    // 原型底部按钮
     const renderRoundButtons = () => (
       <ActionBar class={bem('footer')}>
         {props.showCancelButton && (
@@ -244,11 +323,12 @@ export default defineComponent({
       </ActionBar>
     )
 
+    // 底部按钮
     const renderFooter = () => {
       if (slots.footer) {
         return slots.footer()
       }
-      return props.theme === 'round-button'
+      return props.theme === 'space-button'
         ? renderRoundButtons()
         : renderButtons()
     }
@@ -259,17 +339,18 @@ export default defineComponent({
         <Popup
           ref={root}
           role="dialog"
-          class={[bem([theme]), className]}
-          style={{ width: addUnit(width) }}
+          class={[bem([theme]), className, bem(props.position)]}
           tabindex={0}
           aria-labelledby={title || message}
           onKeydown={onKeydown}
           onUpdate:show={updateShow}
           {...pick(props, popupInheritKeys)}
         >
-          {renderTitle()}
-          {renderContent()}
-          {renderFooter()}
+          <div class={bem('body')} style={{ width: addUnit(width) }}>
+            {renderTitle()}
+            {renderContent()}
+            {renderFooter()}
+          </div>
         </Popup>
       )
     }
