@@ -176,8 +176,7 @@ export default defineComponent({
         const hasTitle = !!(title || slots.title)
         return (
           <div
-            // add key to force re-render
-            // see: https://github.com/PeterPanY/ryxon/issues/7963
+            // 添加key值以强制重新渲染
             key={allowHtml ? 1 : 0}
             class={bem('content', { isolated: !hasTitle })}
           >
@@ -187,13 +186,14 @@ export default defineComponent({
       }
     }
 
+    // 按钮
     const renderButtons = () => (
       <div class={[BORDER_TOP, bem('footer')]}>
         {props.showCancelButton && (
           <Button
             size="large"
             text={props.cancelButtonText || t('cancel')}
-            class={bem('cancel')}
+            class={[bem('cancel'), bem('default')]}
             style={{ color: props.cancelButtonColor }}
             loading={loading.cancel}
             disabled={props.cancelButtonDisabled}
@@ -204,7 +204,11 @@ export default defineComponent({
           <Button
             size="large"
             text={props.confirmButtonText || t('confirm')}
-            class={[bem('confirm'), { [BORDER_LEFT]: props.showCancelButton }]}
+            class={[
+              bem('confirm'),
+              { [BORDER_LEFT]: props.showCancelButton },
+              bem('default')
+            ]}
             style={{ color: props.confirmButtonColor }}
             loading={loading.confirm}
             disabled={props.confirmButtonDisabled}
@@ -218,7 +222,6 @@ export default defineComponent({
       <ActionBar class={bem('footer')}>
         {props.showCancelButton && (
           <ActionBarButton
-            type="warning"
             text={props.cancelButtonText || t('cancel')}
             class={bem('cancel')}
             color={props.cancelButtonColor}
@@ -229,7 +232,7 @@ export default defineComponent({
         )}
         {props.showConfirmButton && (
           <ActionBarButton
-            type="danger"
+            type="primary"
             text={props.confirmButtonText || t('confirm')}
             class={bem('confirm')}
             color={props.confirmButtonColor}

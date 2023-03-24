@@ -56,6 +56,7 @@
     "feedback": {
       "text": "Feedback 反馈组件",
       "children": [
+        { "link": "/dialog", "text": "Dialog 对话框" },
         { "link": "/loading", "text": "Loading 加载" },
         { "link": "/overlay", "text": "Overlay 遮罩层" },
         { "link": "/popover", "text": "Popover 气泡弹出框" },
