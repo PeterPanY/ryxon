@@ -185,7 +185,7 @@ export default {
 | inactive-color | 未选中标签的颜色 | _string_ | `#7d7e80` |
 | route | 是否开启路由模式 | _boolean_ | `false` |
 | placeholder | 固定在底部时，是否在标签位置生成一个等高的占位元素 | _boolean_ | `false` |
-| safe-area-inset-bottom | 是否开启[底部安全区适配](#/zh-CN/advanced-usage#di-bu-an-quan-qu-gua-pei)，设置 fixed 时默认开启 | _boolean_ | `false` |
+| safe-area-inset-bottom | 是否开启[底部安全区适配](/zh/guide/advanced-usage.html#底部安全区适配)，设置 fixed 时默认开启 | _boolean_ | `false` |
 | before-change | 切换标签前的回调函数，返回 `false` 可阻止切换，支持返回 Promise | _(name: number \| string) => boolean \| Promise\<boolean\>_ | - |
 
 ### Tabbar Events

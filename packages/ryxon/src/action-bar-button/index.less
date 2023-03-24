@@ -4,13 +4,17 @@
   --r-action-bar-button-danger-color: var(--r-gradient-red);
 }
 
-.r-action-bar-button {
+.r-button.r-action-bar-button {
   flex: 1;
   height: var(--r-action-bar-button-height);
   font-weight: var(--r-font-bold);
   font-size: var(--r-font-size-md);
   border: none;
   border-radius: 0;
+
+  &.r-button + .r-button {
+    margin: 0;
+  }
 
   &--first {
     margin-left: 5px;

@@ -1,3 +1,6 @@
+export * from '../ryxon/src/action-bar'
+export * from '../ryxon/src/action-bar-button'
+export * from '../ryxon/src/action-bar-icon'
 export * from '../ryxon/src/badge'
 export * from '../ryxon/src/breadcrumb'
 export * from '../ryxon/src/breadcrumb-item'

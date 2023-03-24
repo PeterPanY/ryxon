@@ -1,29 +1,36 @@
-import { defineComponent, type PropType, type ExtractPropTypes } from 'vue';
-import { extend, createNamespace, unknownProp, numericProp } from '../utils';
-import { ACTION_BAR_KEY } from '../action-bar/ActionBar';
+import { h, defineComponent, type PropType, type ExtractPropTypes } from 'vue'
+import {
+  extend,
+  isString,
+  unknownProp,
+  numericProp,
+  iconPropType,
+  createNamespace
+} from '../utils'
+import { ACTION_BAR_KEY } from '../action-bar/ActionBar'
 
 // Composables
-import { useParent } from '@ryxon/use';
-import { useRoute, routeProps } from '../composables/use-route';
+import { useParent } from '@ryxon/use'
+import { useRoute, routeProps } from '../composables/use-route'
 
 // Components
-import { Icon } from '../icon';
-import { Badge, type BadgeProps } from '../badge';
+import { Icon } from '../icon'
+import { Badge, type BadgeProps } from '../badge'
 
-const [name, bem] = createNamespace('action-bar-icon');
+const [name, bem] = createNamespace('action-bar-icon')
 
 export const actionBarIconProps = extend({}, routeProps, {
   dot: Boolean,
   text: String,
-  icon: String,
+  icon: iconPropType,
   color: String,
   badge: numericProp,
   iconClass: unknownProp,
   badgeProps: Object as PropType<Partial<BadgeProps>>,
-  iconPrefix: String,
-});
+  iconPrefix: String
+})
 
-export type ActionBarIconProps = ExtractPropTypes<typeof actionBarIconProps>;
+export type ActionBarIconProps = ExtractPropTypes<typeof actionBarIconProps>
 
 export default defineComponent({
   name,
@@ -31,13 +38,13 @@ export default defineComponent({
   props: actionBarIconProps,
 
   setup(props, { slots }) {
-    const route = useRoute();
+    const route = useRoute()
 
-    useParent(ACTION_BAR_KEY);
+    useParent(ACTION_BAR_KEY)
 
     const renderIcon = () => {
       const { dot, badge, icon, color, iconClass, badgeProps, iconPrefix } =
-        props;
+        props
 
       if (slots.icon) {
         return (
@@ -48,28 +55,30 @@ export default defineComponent({
             content={badge}
             {...badgeProps}
           />
-        );
+        )
       }
 
       return (
         <Icon
           tag="div"
           dot={dot}
-          name={icon}
+          name={isString(icon) ? icon : ''}
           badge={badge}
           color={color}
           class={[bem('icon'), iconClass]}
           badgeProps={badgeProps}
           classPrefix={iconPrefix}
-        />
-      );
-    };
+        >
+          {icon && !isString(icon) && h(icon)}
+        </Icon>
+      )
+    }
 
     return () => (
       <div role="button" class={bem()} tabindex={0} onClick={route}>
         {renderIcon()}
         {slots.default ? slots.default() : props.text}
       </div>
-    );
-  },
-});
+    )
+  }
+})
