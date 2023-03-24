@@ -101,7 +101,7 @@ export default defineComponent({
     const numPrecision = computed(() => {
       const stepPrecision = getPrecision(+props.step)
       if (!isUndefined(props.decimalLength)) {
-        if (stepPrecision > props.decimalLength) {
+        if (stepPrecision > +props.decimalLength) {
           new Error(
             'InputNumber: precision should not be less than the decimal places of step'
           )
