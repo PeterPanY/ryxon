@@ -92,7 +92,7 @@ select/allow-create
 ### Select 属性
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | model-value / v-model | 选中项绑定值 | `array / string / number / boolean / object` | `-` | `-` |
 | multiple | 是否多选 | `boolean` | `true/false` | `false` |
 | disabled | 是否禁用 | `boolean` | `true/false` | `false` |
@@ -122,9 +122,9 @@ select/allow-create
 | teleport | 该下拉菜单使用 teleport 插入元素 | `string` | `-` | `body` |
 | persistent | 当下拉选择器未被激活并且 persistent 设置为 false，选择器会被删除。 | `boolean` | `true / false` | `true` |
 | automatic-dropdown | 对于不可过滤的 Select 组件，此属性决定是否在输入框获得焦点后自动弹出选项菜单 | `boolean` | `true / false` | `false` |
-| clear-icon | 自定义清除图标 | `string | Component` | `-` | `CircleClose` |
+| clear-icon | 自定义清除图标 | `string \| Component` | `-` | `CircleClose` |
 | fit-input-width | 下拉框的宽度是否与输入框相同 | `boolean` | `true / false` | `false` |
-| suffix-icon | 自定义后缀图标组件 | `string | Component` | `-` | `ArrowDown` |
+| suffix-icon | 自定义后缀图标组件 | `string \| Component` | `-` | `ArrowDown` |
 | tag-type | 标签类型 | `string` | `success/info/warning/danger` | `info` |
 | validate-event | 是否触发表单验证 | `boolean` | `true / false` | `true` |
 | placement | 下拉框出现的位置 | `string` | `top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end` | `bottom` |
@@ -196,12 +196,13 @@ import type { SelectTheme, SelectThemeVars, SelectPlacement } from 'ryxon'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                            | 默认值                            | 描述 |
-| ------------------------------- | --------------------------------- | ---- |
-| --r-select-font-size            | `var(--r-font-size-md)`           | -    |
-| --r-select-input-color          | `var(--r-text-color-placeholder)` | -    |
-| --r-select-input-font-size      | `14px`                            | -    |
-| --r-select-border-color-hover   | `var(--r-border-color-hover)`     | -    |
-| --r-select-disabled-border      | `var(--r-disabled-border-color)`  | -    |
-| --r-select-close-hover-color    | `var(--r-text-color-secondary)`   | -    |
-| --r-select-multiple-input-color | `var(--r-text-color-regular)`     | -    |
+| 名称 | 默认值 | 描述 |
+| --- | --- | --- |
+| --r-select-height | `24px` | select 高度 |
+| --r-select-font-size | `var(--r-font-size-md)` | - |
+| --r-select-input-color | `var(--r-text-color-placeholder)` | - |
+| --r-select-input-font-size | `14px` | - |
+| --r-select-border-color-hover | `var(--r-border-color-hover)` | - |
+| --r-select-disabled-border | `var(--r-disabled-border-color)` | - |
+| --r-select-close-hover-color | `var(--r-text-color-secondary)` | - |
+| --r-select-multiple-input-color | `var(--r-text-color-regular)` | - |

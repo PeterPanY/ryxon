@@ -26,6 +26,11 @@
         </r-checkbox-group>
       </template>
     </r-input>
+    <r-input name="inputNumber" label="步进器">
+      <template #input>
+        <r-input-number v-model="inputNumber" />
+      </template>
+    </r-input>
     <r-input name="slider" label="滑块">
       <template #input>
         <r-slider v-model="slider" />
@@ -82,6 +87,7 @@ const switchChecked = ref(false)
 const radio = ref('1')
 const checked = ref(false)
 const groupChecked = ref([])
+const inputNumber = ref(1)
 const slider = ref(50)
 const datePicker = ref()
 const upload = ref([

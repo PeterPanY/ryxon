@@ -641,7 +641,10 @@ export default defineComponent({
     const renderInputBody = () => [
       <div
         class={[
-          bem('body', { border: props.inputBorder }),
+          bem('body', {
+            border: !slots.input && props.inputBorder,
+            input: !slots.input
+          }),
           state.focused ? 'is-focus' : ''
         ]}
         onMouseenter={handleMouseEnter}

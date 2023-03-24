@@ -28,10 +28,17 @@
 }
 
 .r-date-editor {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--r-border-color) inset;
+  padding: 0 0 0 10px;
+
   &.r-input {
     width: var(--r-date-editor-width);
-    height: 32px;
-    padding: 0;
+  }
+
+  .r-input__body--border {
+    padding-left: 5px;
+    box-shadow: none;
   }
 
   .close-icon {
