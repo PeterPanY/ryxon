@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { showToast } from 'ryxon'
+import { showToast } from '@ryxon/components'
 
 const isOverSize = (file: File) => {
   const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1024 * 1024

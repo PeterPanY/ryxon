@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { PopoverPlacement } from 'ryxon'
+import type { PopoverPlacement } from '@ryxon/components'
 
 const currentPlacement = ref<PopoverPlacement>('top')
 const showPopover = ref(false)

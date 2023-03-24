@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showToast } from '@ryxon/components'
 
 const fileList = ref([
   {
