@@ -61,12 +61,12 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const onClickLeft = () => history.back()
-    const onClickRight = () => showToast('按钮')
+    const onClickRight = () => showMessage('按钮')
     return {
       onClickLeft,
       onClickRight

@@ -50,6 +50,7 @@ export type DialogThemeVars = {
   dialogHeaderLineHeight?: number | string
   dialogHeaderPaddingTop?: string
   dialogHeaderIsolatedPadding?: string
+  dialogHeaderBackground?: string
   dialogMessagePadding?: string
   dialogMessageFontSize?: string
   dialogMessageLineHeight?: number | string
@@ -57,6 +58,11 @@ export type DialogThemeVars = {
   dialogHasTitleMessageTextColor?: string
   dialogHasTitleMessagePaddingTop?: string
   dialogButtonHeight?: string
-  dialogRoundButtonHeight?: string
+  dialogButtonSpace?: string
+  dialogButtonRadius?: string
+  dialogSpaceButtonHeight?: string
   dialogConfirmButtonTextColor?: string
+  dialogPaddingPrimary?: string
+  dialogMarginTop?: string
+  dialogCloseFontSize?: string
 }

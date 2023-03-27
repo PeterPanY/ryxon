@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
 const value1 = ref(false)
 const value2 = ref(false)
@@ -24,7 +24,7 @@ const beforeChange1 = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       loading1.value = false
-      showToast('Switch success')
+      showMessage('Switch success')
       return resolve(true)
     }, 1000)
   })
@@ -35,7 +35,7 @@ const beforeChange2 = () => {
   return new Promise((_, reject) => {
     setTimeout(() => {
       loading2.value = false
-      showToast('Switch failed')
+      showMessage('Switch failed')
       return reject(new Error('Error'))
     }, 1000)
   })

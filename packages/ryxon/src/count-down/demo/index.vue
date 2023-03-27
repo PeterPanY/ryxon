@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import RGrid from '../../grid';
-import RGridItem from '../../grid-item';
-import RCountDown, { type CountDownInstance } from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RGrid from '../../grid'
+import RGridItem from '../../grid-item'
+import RCountDown, { type CountDownInstance } from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -16,7 +16,7 @@ const t = useTranslate({
     customStyle: '自定义样式',
     customFormat: '自定义格式',
     manualControl: '手动控制',
-    formatWithDay: 'DD 天 HH 时 mm 分 ss 秒',
+    formatWithDay: 'DD 天 HH 时 mm 分 ss 秒'
   },
   'en-US': {
     reset: 'Reset',
@@ -27,23 +27,23 @@ const t = useTranslate({
     customStyle: 'Custom Style',
     customFormat: 'Custom Format',
     manualControl: 'Manual Control',
-    formatWithDay: 'DD Day, HH:mm:ss',
-  },
-});
+    formatWithDay: 'DD Day, HH:mm:ss'
+  }
+})
 
-const time = ref(30 * 60 * 60 * 1000);
-const countDown = ref<CountDownInstance>();
+const time = ref(30 * 60 * 60 * 1000)
+const countDown = ref<CountDownInstance>()
 
 const start = () => {
-  countDown.value?.start();
-};
+  countDown.value?.start()
+}
 const pause = () => {
-  countDown.value?.pause();
-};
+  countDown.value?.pause()
+}
 const reset = () => {
-  countDown.value?.reset();
-};
-const onFinish = () => showToast(t('finished'));
+  countDown.value?.reset()
+}
+const onFinish = () => showMessage(t('finished'))
 </script>
 
 <template>

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import RNavBar from '..';
-import RIcon from '../../icon';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RNavBar from '..'
+import RIcon from '../../icon'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
     useSlot: '使用插槽',
     showBack: '返回上级',
-    rightButton: '右侧按钮',
+    rightButton: '右侧按钮'
   },
   'en-US': {
     useSlot: 'Use Slot',
     showBack: 'Back',
-    rightButton: 'Right Button',
-  },
-});
+    rightButton: 'Right Button'
+  }
+})
 
-const onClickLeft = () => showToast(t('back'));
-const onClickRight = () => showToast(t('button'));
+const onClickLeft = () => showMessage(t('back'))
+const onClickRight = () => showMessage(t('button'))
 </script>
 
 <template>

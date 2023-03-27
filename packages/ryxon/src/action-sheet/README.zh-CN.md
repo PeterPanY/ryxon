@@ -29,7 +29,7 @@ app.use(ActionSheet)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -39,7 +39,7 @@ export default {
       // 默认情况下点击选项时不会自动收起
       // 可以通过 close-on-click-action 属性开启自动收起
       show.value = false
-      showToast(item.name)
+      showMessage(item.name)
     }
 
     return {
@@ -67,13 +67,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const show = ref(false)
     const actions = [{ name: '选项一' }, { name: '选项二' }, { name: '选项三' }]
-    const onCancel = () => showToast('取消')
+    const onCancel = () => showMessage('取消')
 
     return {
       show,

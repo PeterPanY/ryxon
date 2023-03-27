@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
 const isOverSize = (file: File) => {
   const maxSize = file.type === 'image/jpeg' ? 500 * 1024 : 1024 * 1024
@@ -11,7 +11,7 @@ const isOverSize = (file: File) => {
 }
 
 const onOversize = (file: { file: { type: string } }) => {
-  showToast(
+  showMessage(
     `${file.file.type}类型文件大小不能超过 ${
       file.file.type === 'image/jpeg' ? '500kb' : '1M'
     }`

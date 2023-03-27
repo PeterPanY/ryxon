@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
 const value1 = ref('')
 const pattern = /\d{6}/
@@ -63,13 +63,13 @@ const value4 = ref('')
 // 校验函数可以返回 Promise，实现异步校验
 const asyncValidator = (val) =>
   new Promise((resolve) => {
-    const toast = showToast({
+    const message = showMessage({
       type: 'loading',
       message: '验证中...',
       duration: 0
     })
     setTimeout(() => {
-      toast.close()
+      message.close()
       resolve(val === '1234')
     }, 1000)
   })

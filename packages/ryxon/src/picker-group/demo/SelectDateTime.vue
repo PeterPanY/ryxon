@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import RPickerGroup from '..';
-import RTimePicker from '../../time-picker';
-import RDatePicker from '../../date-picker';
-import { showToast } from '../../toast';
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import RPickerGroup from '..'
+import RTimePicker from '../../time-picker'
+import RDatePicker from '../../date-picker'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
     date: '选择日期',
     time: '选择时间',
-    title: '预约日期',
+    title: '预约日期'
   },
   'en-US': {
     date: 'Date',
     time: 'Time',
-    title: 'Title',
-  },
-});
+    title: 'Title'
+  }
+})
 
-const currentTime = ref(['12', '00']);
-const currentDate = ref(['2022', '06', '01']);
-const minDate = new Date(2020, 0, 1);
-const maxDate = new Date(2025, 5, 1);
+const currentTime = ref(['12', '00'])
+const currentDate = ref(['2022', '06', '01'])
+const minDate = new Date(2020, 0, 1)
+const maxDate = new Date(2025, 5, 1)
 
 const onConfirm = () => {
-  showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`);
-};
+  showMessage(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+}
 const onCancel = () => {
-  showToast('cancel');
-};
+  showMessage('cancel')
+}
 </script>
 
 <template>

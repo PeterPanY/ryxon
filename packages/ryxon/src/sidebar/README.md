@@ -72,12 +72,12 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const active = ref(0)
-    const onChange = (index) => showToast(`Title ${index + 1}`)
+    const onChange = (index) => showMessage(`Title ${index + 1}`)
     return {
       active,
       onChange

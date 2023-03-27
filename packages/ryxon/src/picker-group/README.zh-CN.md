@@ -50,17 +50,19 @@ app.use(PickerGroup)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const currentDate = ref(['2022', '06', '01'])
     const currentTime = ref(['12', '00'])
     const onConfirm = () => {
-      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+      showMessage(
+        `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
+      )
     }
     const onCancel = () => {
-      showToast('cancel')
+      showMessage('cancel')
     }
 
     return {
@@ -96,17 +98,19 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const currentDate = ref(['2022', '06', '01'])
     const currentTime = ref(['12', '00'])
     const onConfirm = () => {
-      showToast(`${currentDate.value.join('/')} ${currentTime.value.join(':')}`)
+      showMessage(
+        `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
+      )
     }
     const onCancel = () => {
-      showToast('cancel')
+      showMessage('cancel')
     }
 
     return {
@@ -137,7 +141,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -145,10 +149,10 @@ export default {
     const endDate = ref(['2023', '06', '01'])
 
     const onConfirm = () => {
-      showToast(`${startDate.value.join('/')} ${endDate.value.join('/')}`)
+      showMessage(`${startDate.value.join('/')} ${endDate.value.join('/')}`)
     }
     const onCancel = () => {
-      showToast('cancel')
+      showMessage('cancel')
     }
 
     return {
@@ -179,7 +183,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -187,10 +191,10 @@ export default {
     const endTime = ref(['12', '00'])
 
     const onConfirm = () => {
-      showToast(`${startTime.value.join(':')} ${endTime.value.join(':')}`)
+      showMessage(`${startTime.value.join(':')} ${endTime.value.join(':')}`)
     }
     const onCancel = () => {
-      showToast('cancel')
+      showMessage('cancel')
     }
 
     return {

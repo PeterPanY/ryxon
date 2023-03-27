@@ -40,3 +40,20 @@ export interface SubMenuProvider {
   mouseInChild: Ref<boolean>
   level: number
 }
+
+export type MenuThemeVars = {
+  menuActiveColor?: string
+  menuTextColor?: string
+  menuHoverTextColor?: string
+  menuBgColor?: string
+  menuHoverBgColor?: string
+  menuItemHeight?: string
+  menuSubItemHeight?: string
+  menuHorizontalSubItemHeight?: string
+  menuItemFontSize?: string
+  menuItemHoverFill?: string
+  menuBorderColor?: string
+  menuBaseLevelPadding?: string
+  menuLevelPadding?: string
+  menuIconWidth?: string
+}

@@ -36,14 +36,14 @@ app.use(AddressEdit)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const searchResult = ref([])
 
-    const onSave = () => showToast('save')
-    const onDelete = () => showToast('delete')
+    const onSave = () => showMessage('save')
+    const onDelete = () => showMessage('delete')
     const onChangeDetail = (val) => {
       if (val) {
         searchResult.value = [

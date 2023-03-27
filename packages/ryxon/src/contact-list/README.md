@@ -9,11 +9,11 @@ Used to display the contact list.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { ContactList } from 'ryxon';
+import { createApp } from 'vue'
+import { ContactList } from 'ryxon'
 
-const app = createApp();
-app.use(ContactList);
+const app = createApp()
+app.use(ContactList)
 ```
 
 ## Usage
@@ -32,39 +32,39 @@ app.use(ContactList);
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const chosenContactId = ref('1');
+    const chosenContactId = ref('1')
     const list = ref([
       {
         id: '1',
         name: 'John Snow',
         tel: '13000000000',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: 'Ned Stark',
-        tel: '1310000000',
-      },
-    ]);
+        tel: '1310000000'
+      }
+    ])
 
-    const onAdd = () => showToast('Add');
-    const onEdit = (contact) => showToast('Edit' + contact.id);
-    const onSelect = (contact) => showToast('Select' + contact.id);
+    const onAdd = () => showMessage('Add')
+    const onEdit = (contact) => showMessage('Edit' + contact.id)
+    const onSelect = (contact) => showMessage('Select' + contact.id)
 
     return {
       list,
       onAdd,
       onEdit,
       onSelect,
-      chosenContactId,
-    };
-  },
-};
+      chosenContactId
+    }
+  }
+}
 ```
 
 ## API
@@ -100,7 +100,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { ContactListItem, ContactListProps } from 'ryxon';
+import type { ContactListItem, ContactListProps } from 'ryxon'
 ```
 
 ## Theming
@@ -109,9 +109,9 @@ import type { ContactListItem, ContactListProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-contact-list-edit-icon-size | _16px_ | - |
-| --r-contact-list-add-button-z-index | _999_ | - |
-| --r-contact-list-radio-color | _var(--r-primary-color)_ | - |
-| --r-contact-list-item-padding | _var(--r-padding-md)_ | - |
+| Name                                | Default Value            | Description |
+| ----------------------------------- | ------------------------ | ----------- |
+| --r-contact-list-edit-icon-size     | _16px_                   | -           |
+| --r-contact-list-add-button-z-index | _999_                    | -           |
+| --r-contact-list-radio-color        | _var(--r-primary-color)_ | -           |
+| --r-contact-list-item-padding       | _var(--r-padding-md)_    | -           |

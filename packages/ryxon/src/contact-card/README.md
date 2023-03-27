@@ -9,11 +9,11 @@ Display contact information in the form of cards.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { ContactCard } from 'ryxon';
+import { createApp } from 'vue'
+import { ContactCard } from 'ryxon'
 
-const app = createApp();
-app.use(ContactCard);
+const app = createApp()
+app.use(ContactCard)
 ```
 
 ## Usage
@@ -25,16 +25,16 @@ app.use(ContactCard);
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onAdd = () => showToast('add');
+    const onAdd = () => showMessage('add')
     return {
-      onAdd,
-    };
-  },
-};
+      onAdd
+    }
+  }
+}
 ```
 
 ### Edit Contact
@@ -44,22 +44,22 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const tel = ref('13000000000');
-    const name = ref('John Snow');
-    const onEdit = () => showToast('edit');
+    const tel = ref('13000000000')
+    const name = ref('John Snow')
+    const onEdit = () => showMessage('edit')
 
     return {
       tel,
       name,
-      onEdit,
-    };
-  },
-};
+      onEdit
+    }
+  }
+}
 ```
 
 ### Uneditable
@@ -96,7 +96,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { ContactCardType, ContactCardProps } from 'ryxon';
+import type { ContactCardType, ContactCardProps } from 'ryxon'
 ```
 
 ## Theming
@@ -105,9 +105,9 @@ import type { ContactCardType, ContactCardProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name | Default Value | Description |
-| --- | --- | --- |
-| --r-contact-card-padding | _var(--r-padding-md)_ | - |
-| --r-contact-card-add-icon-size | _40px_ | - |
-| --r-contact-card-add-icon-color | _var(--r-primary-color)_ | - |
-| --r-contact-card-title-line-height | _var(--r-line-height-md)_ | - |
+| Name                               | Default Value             | Description |
+| ---------------------------------- | ------------------------- | ----------- |
+| --r-contact-card-padding           | _var(--r-padding-md)_     | -           |
+| --r-contact-card-add-icon-size     | _40px_                    | -           |
+| --r-contact-card-add-icon-color    | _var(--r-primary-color)_  | -           |
+| --r-contact-card-title-line-height | _var(--r-line-height-md)_ | -           |

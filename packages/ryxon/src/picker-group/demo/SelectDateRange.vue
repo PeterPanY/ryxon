@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import RPickerGroup from '..';
-import RDatePicker from '../../date-picker';
-import { showToast } from '../../toast';
+import { ref, computed } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import RPickerGroup from '..'
+import RDatePicker from '../../date-picker'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
     startDate: '开始日期',
     endDate: '结束日期',
-    title: '预约日期',
+    title: '预约日期'
   },
   'en-US': {
     startDate: 'Start Date',
     endDate: 'End Date',
-    title: 'Title',
-  },
-});
+    title: 'Title'
+  }
+})
 
-const startDate = ref(['2022', '06', '01']);
-const endDate = ref(['2023', '06', '01']);
-const minDate = new Date(2020, 0, 1);
-const maxDate = new Date(2025, 5, 1);
+const startDate = ref(['2022', '06', '01'])
+const endDate = ref(['2023', '06', '01'])
+const minDate = new Date(2020, 0, 1)
+const maxDate = new Date(2025, 5, 1)
 const endMinDate = computed(
   () =>
     new Date(
@@ -29,14 +29,14 @@ const endMinDate = computed(
       Number(startDate.value[1]) - 1,
       Number(startDate.value[2])
     )
-);
+)
 
 const onConfirm = () => {
-  showToast(`${startDate.value.join('/')} - ${endDate.value.join('/')}`);
-};
+  showMessage(`${startDate.value.join('/')} - ${endDate.value.join('/')}`)
+}
 const onCancel = () => {
-  showToast('cancel');
-};
+  showMessage('cancel')
+}
 </script>
 
 <template>

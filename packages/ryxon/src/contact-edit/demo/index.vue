@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import RContactEdit, { type ContactEditInfo } from '..';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import { ref } from 'vue'
+import RContactEdit, { type ContactEditInfo } from '..'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
-    defaultLabel: '设为默认联系人',
+    defaultLabel: '设为默认联系人'
   },
   'en-US': {
-    defaultLabel: 'Set as the default contact',
-  },
-});
+    defaultLabel: 'Set as the default contact'
+  }
+})
 
 const editingContact = ref<ContactEditInfo>({
   tel: '',
-  name: '',
-});
+  name: ''
+})
 
-const onSave = () => showToast(t('save'));
-const onDelete = () => showToast(t('delete'));
+const onSave = () => showMessage(t('save'))
+const onDelete = () => showMessage(t('delete'))
 </script>
 
 <template>

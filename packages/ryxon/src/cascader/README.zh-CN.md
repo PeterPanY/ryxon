@@ -184,7 +184,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { closeToast, showLoadingToast } from 'ryxon'
+import { closeAllMessage, showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -204,13 +204,13 @@ export default {
         options.value[0].children.length === 0
       ) {
         // 模拟数据请求
-        showLoadingToast('加载中...')
+        showMessage('加载中...')
         setTimeout(() => {
           options.value[0].children = [
             { text: '杭州市', value: '330100' },
             { text: '宁波市', value: '330200' }
           ]
-          closeToast()
+          closeAllMessage()
         }, 1000)
       }
     }

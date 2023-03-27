@@ -25,11 +25,11 @@ app.use(SubmitBar)
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('Submit')
+    const onSubmit = () => showMessage('Submit')
     return {
       onSubmit
     }
@@ -72,12 +72,12 @@ Use slot to add custom contents.
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('Submit')
-    const onClickLink = () => showToast('Click Link')
+    const onSubmit = () => showMessage('Submit')
+    const onClickLink = () => showMessage('Click Link')
     return {
       onSubmit,
       onClickLink

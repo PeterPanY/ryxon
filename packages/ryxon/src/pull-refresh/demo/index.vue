@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import RTabs from '../../tabs';
-import RTab from '../../tab';
-import RPullRefresh from '..';
-import { computed, onMounted, ref } from 'vue';
-import { cdnURL, useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RTabs from '../../tabs'
+import RTab from '../../tab'
+import RPullRefresh from '..'
+import { computed, onMounted, ref } from 'vue'
+import { cdnURL, useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -12,47 +12,47 @@ const t = useTranslate({
     text: '刷新次数',
     success: '刷新成功',
     successTip: '成功提示',
-    customTips: '自定义提示',
+    customTips: '自定义提示'
   },
   'en-US': {
     try: 'Try it down',
     text: 'Refresh Count',
     success: 'Refresh success',
     successTip: 'Success Tip',
-    customTips: 'Custom Tips',
-  },
-});
+    customTips: 'Custom Tips'
+  }
+})
 
-const count = ref(0);
-const loading = ref(false);
+const count = ref(0)
+const loading = ref(false)
 
 const tips = computed(() => {
   if (count.value) {
-    return `${t('text')}: ${count.value}`;
+    return `${t('text')}: ${count.value}`
   }
-  return t('try');
-});
+  return t('try')
+})
 
 const onRefresh = (isShowToast: boolean) => {
   setTimeout(() => {
     if (isShowToast) {
-      showToast(t('success'));
+      showMessage(t('success'))
     }
-    loading.value = false;
-    count.value++;
-  }, 1000);
-};
+    loading.value = false
+    count.value++
+  }, 1000)
+}
 
 const preloadImage = () => {
   // preload doge image
-  const doge = new Image();
-  const dogeFire = new Image();
+  const doge = new Image()
+  const dogeFire = new Image()
 
-  doge.src = cdnURL('doge.png');
-  dogeFire.src = cdnURL('doge-fire.jpeg');
-};
+  doge.src = cdnURL('doge.png')
+  dogeFire.src = cdnURL('doge-fire.jpeg')
+}
 
-onMounted(preloadImage);
+onMounted(preloadImage)
 </script>
 
 <template>

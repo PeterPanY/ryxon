@@ -30,7 +30,7 @@ app.use(PullRefresh)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -38,7 +38,7 @@ export default {
     const loading = ref(false)
     const onRefresh = () => {
       setTimeout(() => {
-        showToast('刷新成功')
+        showMessage('刷新成功')
         loading.value = false
         count.value++
       }, 1000)

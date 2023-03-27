@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RSlider from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RSlider from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -14,7 +14,7 @@ const t = useTranslate({
     title5: '指定步长',
     vertical: '垂直方向',
     customStyle: '自定义样式',
-    customButton: '自定义按钮',
+    customButton: '自定义按钮'
   },
   'en-US': {
     text: 'Current value: ',
@@ -25,21 +25,21 @@ const t = useTranslate({
     title5: 'Step size',
     vertical: 'Vertical',
     customStyle: 'Custom Style',
-    customButton: 'Custom Button',
-  },
-});
+    customButton: 'Custom Button'
+  }
+})
 
-const value1 = ref(50);
-const value2 = ref<[number, number]>([20, 60]);
-const value3 = ref(0);
-const value4 = ref(50);
-const value5 = ref(50);
-const value6 = ref(50);
-const value7 = ref(50);
-const value8 = ref(50);
-const value9 = ref<[number, number]>([20, 60]);
+const value1 = ref(50)
+const value2 = ref<[number, number]>([20, 60])
+const value3 = ref(0)
+const value4 = ref(50)
+const value5 = ref(50)
+const value6 = ref(50)
+const value7 = ref(50)
+const value8 = ref(50)
+const value9 = ref<[number, number]>([20, 60])
 
-const onChange = (value: string) => showToast(t('text') + value);
+const onChange = (value: string) => showMessage(t('text') + value)
 </script>
 
 <template>

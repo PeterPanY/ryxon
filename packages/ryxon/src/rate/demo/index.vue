@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RRate from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RRate from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -14,7 +14,7 @@ const t = useTranslate({
     readonly: '只读状态',
     readonlyHalfStar: '只读状态小数显示',
     changeEvent: '监听 change 事件',
-    toastContent: (value: number) => `当前值：${value}`,
+    toastContent: (value: number) => `当前值：${value}`
   },
   'en-US': {
     halfStar: 'Half Star',
@@ -25,20 +25,20 @@ const t = useTranslate({
     readonly: 'Readonly',
     readonlyHalfStar: 'Readonly Half Star',
     changeEvent: 'Change Event',
-    toastContent: (value: number) => `current value：${value}`,
-  },
-});
+    toastContent: (value: number) => `current value：${value}`
+  }
+})
 
-const value1 = ref(3);
-const value2 = ref(3);
-const value3 = ref(3);
-const value4 = ref(2.5);
-const value5 = ref(4);
-const value6 = ref(3);
-const value7 = ref(3.3);
-const value8 = ref(2);
+const value1 = ref(3)
+const value2 = ref(3)
+const value3 = ref(3)
+const value4 = ref(2.5)
+const value5 = ref(4)
+const value6 = ref(3)
+const value7 = ref(3.3)
+const value8 = ref(2)
 
-const onChange = (value: number) => showToast(t('toastContent', value));
+const onChange = (value: number) => showMessage(t('toastContent', value))
 </script>
 
 <template>

@@ -169,7 +169,6 @@ export default defineComponent({
     }
 
     const iconComponent = computed(() => {
-      // props.icon || props.type ? TypeComponentsMap[props.type] : '' || ''
       const { icon, type } = props
       if (icon) {
         return icon

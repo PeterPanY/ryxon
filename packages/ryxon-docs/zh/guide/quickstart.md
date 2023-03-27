@@ -170,12 +170,12 @@ module.exports = {
 
 ### 4. 引入函数组件的样式
 
-Ryxon 中有个别组件是以函数的形式提供的，包括 `Toast`，`Dialog`，`Notify` 和 `ImagePreview` 组件。在使用函数组件时，`unplugin-vue-components` 无法自动引入对应的样式，因此需要手动引入样式。
+Ryxon 中有个别组件是以函数的形式提供的，包括 `showMessage`，`Dialog`，`Notify` 和 `ImagePreview` 组件。在使用函数组件时，`unplugin-vue-components` 无法自动引入对应的样式，因此需要手动引入样式。
 
 ```js
-// Toast
-import { showToast } from 'ryxon'
-import 'ryxon/es/toast/style'
+// showMessage
+import { showMessage } from 'ryxon'
+import 'ryxon/es/message/style'
 
 // Dialog
 import { showDialog } from 'ryxon'
@@ -267,8 +267,8 @@ Ryxon 不支持 `babel-plugin-import`。
 移除 `babel-plugin-import` 有以下收益：
 
 - 不再强依赖 babel，项目可以使用 esbuild、swc 等更高效的编译工具，大幅度提升编译效率。
-- 不再受到 `babel-plugin-import` 的 import 写法限制，可以从 ryxon 中导入除了组件以外的其他内容，比如 Ryxon 中新增的 `showToast` 等方法：
+- 不再受到 `babel-plugin-import` 的 import 写法限制，可以从 ryxon 中导入除了组件以外的其他内容，比如 Ryxon 中新增的 `showMessage` 等方法：
 
 ```ts
-import { showToast, showDialog } from 'ryxon'
+import { showMessage, showDialog } from 'ryxon'
 ```

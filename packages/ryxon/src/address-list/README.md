@@ -34,7 +34,7 @@ app.use(AddressList)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -63,8 +63,8 @@ export default {
       }
     ]
 
-    const onAdd = () => showToast('Add')
-    const onEdit = (item, index) => showToast('Edit:' + index)
+    const onAdd = () => showMessage('Add')
+    const onEdit = (item, index) => showMessage('Edit:' + index)
 
     return {
       list,

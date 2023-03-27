@@ -31,10 +31,10 @@ Ryxon 文档也已支持切换为深色模式。
 
 - 不再强依赖 Babel 编译，项目可以使用 SWC、esbuild 等现代编译工具，进而提升编译效率。
 
-- 不再受到 `babel-plugin-import` 的 import 限制，可以从 Ryxon 中导入除组件以外的内容，比如 Ryxon 中新增的 `showToast` 方法，或是 `buttonProps` 对象：
+- 不再受到 `babel-plugin-import` 的 import 限制，可以从 Ryxon 中导入除组件以外的内容，比如 Ryxon 中新增的 `showMessage` 方法，或是 `buttonProps` 对象：
 
 ```ts
-import { showToast, buttonProps } from 'ryxon'
+import { showMessage, buttonProps } from 'ryxon'
 ```
 
 在包体积方面，移除 `babel-plugin-import` 对项目的 JS 体积不会有影响，因为 Ryxon 默认支持通过 Tree Shaking 来移除不需要的 JS 代码，而 CSS 代码可以通过 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件实现按需引入，详细用法请参考 [「快速开始」](/zh/guide/quickstart.html#按需引入)。

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RSearch from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RSearch from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -12,7 +12,7 @@ const t = useTranslate({
     background: '自定义背景色',
     placeholder: '请输入搜索关键词',
     customButton: '自定义按钮',
-    listenToEvents: '事件监听',
+    listenToEvents: '事件监听'
   },
   'en-US': {
     label: 'Address',
@@ -21,20 +21,20 @@ const t = useTranslate({
     background: 'Custom Background Color',
     placeholder: 'Placeholder',
     customButton: 'Custom Action Button',
-    listenToEvents: 'Listen to Events',
-  },
-});
+    listenToEvents: 'Listen to Events'
+  }
+})
 
-const value1 = ref('');
-const value2 = ref('');
-const value3 = ref('');
-const value4 = ref('');
-const value5 = ref('');
-const value6 = ref('');
+const value1 = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
 
-const onSearch = (val: string) => showToast(val);
-const onCancel = () => showToast(t('cancel'));
-const onClickButton = () => showToast(value6.value);
+const onSearch = (val: string) => showMessage(val)
+const onCancel = () => showMessage(t('cancel'))
+const onClickButton = () => showMessage(value6.value)
 </script>
 
 <template>

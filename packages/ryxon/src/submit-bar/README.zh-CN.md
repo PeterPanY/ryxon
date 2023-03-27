@@ -25,11 +25,11 @@ app.use(SubmitBar)
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('点击按钮')
+    const onSubmit = () => showMessage('点击按钮')
     return {
       onSubmit
     }
@@ -74,12 +74,12 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onSubmit = () => showToast('点击按钮')
-    const onClickLink = () => showToast('修改地址')
+    const onSubmit = () => showMessage('点击按钮')
+    const onClickLink = () => showMessage('修改地址')
     return {
       onSubmit,
       onClickLink

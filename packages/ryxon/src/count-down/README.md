@@ -9,11 +9,11 @@ Used to display the countdown value in real time, and precision supports millise
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { CountDown } from 'ryxon';
+import { createApp } from 'vue'
+import { CountDown } from 'ryxon'
 
-const app = createApp();
-app.use(CountDown);
+const app = createApp()
+app.use(CountDown)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(CountDown);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const time = ref(30 * 60 * 60 * 1000);
-    return { time };
-  },
-};
+    const time = ref(30 * 60 * 60 * 1000)
+    return { time }
+  }
+}
 ```
 
 ### Custom Format
@@ -96,32 +96,32 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const countDown = ref(null);
+    const countDown = ref(null)
 
     const start = () => {
-      countDown.value.start();
-    };
+      countDown.value.start()
+    }
     const pause = () => {
-      countDown.value.pause();
-    };
+      countDown.value.pause()
+    }
     const reset = () => {
-      countDown.value.reset();
-    };
-    const onFinish = () => showToast('Finished');
+      countDown.value.reset()
+    }
+    const onFinish = () => showMessage('Finished')
 
     return {
       start,
       pause,
       reset,
       onFinish,
-      countDown,
-    };
-  },
-};
+      countDown
+    }
+  }
+}
 ```
 
 ## API
@@ -189,19 +189,19 @@ The component exports the following type definitions:
 import type {
   CountDownProps,
   CountDownInstance,
-  CountDownCurrentTime,
-} from 'ryxon';
+  CountDownCurrentTime
+} from 'ryxon'
 ```
 
 `CountDownInstance` is the type of component instance:
 
 ```ts
-import { ref } from 'vue';
-import type { CountDownInstance } from 'ryxon';
+import { ref } from 'vue'
+import type { CountDownInstance } from 'ryxon'
 
-const countDownRef = ref<CountDownInstance>();
+const countDownRef = ref<CountDownInstance>()
 
-countDownRef.value?.start();
+countDownRef.value?.start()
 ```
 
 ## Theming
@@ -210,8 +210,8 @@ countDownRef.value?.start();
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name                         | Default Value               | Description |
-| ---------------------------- | --------------------------- | ----------- |
+| Name                       | Default Value             | Description |
+| -------------------------- | ------------------------- | ----------- |
 | --r-count-down-text-color  | _var(--r-text-color)_     | -           |
 | --r-count-down-font-size   | _var(--r-font-size-md)_   | -           |
 | --r-count-down-line-height | _var(--r-line-height-md)_ | -           |

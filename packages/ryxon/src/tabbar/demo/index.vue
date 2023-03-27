@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RTabbar from '..';
-import RTabbarItem from '../../tabbar-item';
-import { ref } from 'vue';
-import { cdnURL, useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RTabbar from '..'
+import RTabbarItem from '../../tabbar-item'
+import { ref } from 'vue'
+import { cdnURL, useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -11,32 +11,32 @@ const t = useTranslate({
     customIcon: '自定义图标',
     customColor: '自定义颜色',
     matchByName: '通过名称匹配',
-    switchEvent: '监听切换事件',
+    switchEvent: '监听切换事件'
   },
   'en-US': {
     badge: 'Show Badge',
     customIcon: 'Custom Icon',
     customColor: 'Custom Color',
     matchByName: 'Match by name',
-    switchEvent: 'Change Event',
-  },
-});
+    switchEvent: 'Change Event'
+  }
+})
 
-const active = ref(0);
-const active2 = ref(0);
-const active3 = ref(0);
-const active4 = ref(0);
-const active5 = ref(0);
-const activeName = ref('home');
+const active = ref(0)
+const active2 = ref(0)
+const active3 = ref(0)
+const active4 = ref(0)
+const active5 = ref(0)
+const activeName = ref('home')
 
 const icon = {
   active: cdnURL('user-active.png'),
-  inactive: cdnURL('user-inactive.png'),
-};
+  inactive: cdnURL('user-inactive.png')
+}
 
 const onChange = (index: number) => {
-  showToast(`${t('tab')} ${index + 1}`);
-};
+  showMessage(`${t('tab')} ${index + 1}`)
+}
 </script>
 
 <template>

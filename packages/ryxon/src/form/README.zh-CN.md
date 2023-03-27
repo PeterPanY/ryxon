@@ -113,7 +113,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { closeToast, showLoadingToast } from 'ryxon'
+import { closeAllMessage, showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -132,10 +132,10 @@ export default {
     // 校验函数可以返回 Promise，实现异步校验
     const asyncValidator = (val) =>
       new Promise((resolve) => {
-        showLoadingToast('验证中...')
+        showMessage('验证中...')
 
         setTimeout(() => {
-          closeToast()
+          closeAllMessage()
           resolve(val === '1234')
         }, 1000)
       })

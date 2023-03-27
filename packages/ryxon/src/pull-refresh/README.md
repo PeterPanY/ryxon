@@ -30,7 +30,7 @@ The `refresh` event will be Emitted when pull refresh, you should set `v-model` 
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -38,7 +38,7 @@ export default {
     const loading = ref(false)
     const onRefresh = () => {
       setTimeout(() => {
-        showToast('Refresh Success')
+        showMessage('Refresh Success')
         loading.value = false
         count.value++
       }, 1000)

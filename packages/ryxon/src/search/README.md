@@ -53,13 +53,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref('')
-    const onSearch = (val) => showToast(val)
-    const onCancel = () => showToast('Cancel')
+    const onSearch = (val) => showMessage(val)
+    const onCancel = () => showMessage('Cancel')
     return {
       value,
       onSearch,
@@ -114,13 +114,13 @@ Use `action` slot to custom right button, `cancel` event will no longer be Emitt
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref('')
-    const onSearch = (val) => showToast(val)
-    const onClickButton = () => showToast(value.value)
+    const onSearch = (val) => showMessage(val)
+    const onClickButton = () => showMessage(value.value)
     return {
       value,
       onSearch,

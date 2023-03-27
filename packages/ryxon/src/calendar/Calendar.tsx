@@ -41,7 +41,7 @@ import { useExpose } from '../composables/use-expose'
 // Components
 import { Popup, PopupPosition } from '../popup'
 import { Button } from '../button'
-import { showToast } from '../toast'
+import { showMessage } from '../message'
 import CalendarMonth from './CalendarMonth'
 import CalendarHeader from './CalendarHeader'
 
@@ -335,7 +335,7 @@ export default defineComponent({
 
       if (maxRange && calcDateNum(date) > +maxRange) {
         if (showRangePrompt) {
-          showToast(rangePrompt || t('rangePrompt', maxRange))
+          showMessage(rangePrompt || t('rangePrompt', maxRange))
         }
         emit('overRange')
         return false
@@ -452,7 +452,7 @@ export default defineComponent({
           const [unselectedDate] = dates.splice(selectedIndex, 1)
           emit('unselect', cloneDate(unselectedDate))
         } else if (props.maxRange && dates.length >= +props.maxRange) {
-          showToast(props.rangePrompt || t('rangePrompt', props.maxRange))
+          showMessage(props.rangePrompt || t('rangePrompt', props.maxRange))
         } else {
           select([...dates, date])
         }

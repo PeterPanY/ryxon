@@ -9,7 +9,7 @@ import {
   disabledColumns,
   customKeyColumns
 } from './data'
-import { showToast } from '../../toast'
+import { showMessage } from '../../message'
 import { useTranslate } from '../../../docs/site'
 
 const t = useTranslate({
@@ -55,14 +55,14 @@ const customInputName = {
 const selectedValues = ref(['Wenzhou'])
 
 const onChange1 = ({ selectedValues }: PickerChangeEventParams) => {
-  showToast(t('toastContent', selectedValues.join(',')))
+  showMessage(t('toastContent', selectedValues.join(',')))
 }
 
 const onConfirm = ({ selectedValues }: PickerConfirmEventParams) => {
-  showToast(t('toastContent', selectedValues.join(',')))
+  showMessage(t('toastContent', selectedValues.join(',')))
 }
 
-const onCancel = () => showToast(t('cancel'))
+const onCancel = () => showMessage(t('cancel'))
 </script>
 
 <template>

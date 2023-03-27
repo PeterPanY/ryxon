@@ -1,32 +1,32 @@
 <script setup lang="ts">
-import RGrid from '../../grid';
-import RGridItem from '../../grid-item';
-import RSidebar from '..';
-import RSidebarItem from '../../sidebar-item';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RGrid from '../../grid'
+import RGridItem from '../../grid-item'
+import RSidebar from '..'
+import RSidebarItem from '../../sidebar-item'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
     title: '标签名',
     disabled: '禁用选项',
     showBadge: '徽标提示',
-    changeEvent: '监听切换事件',
+    changeEvent: '监听切换事件'
   },
   'en-US': {
     disabled: 'Disabled',
     showBadge: 'Show Badge',
-    changeEvent: 'Change Event',
-  },
-});
+    changeEvent: 'Change Event'
+  }
+})
 
-const active1 = ref(0);
-const active2 = ref(0);
-const active3 = ref(0);
-const active4 = ref(0);
+const active1 = ref(0)
+const active2 = ref(0)
+const active3 = ref(0)
+const active4 = ref(0)
 
-const onChange = (index: number) => showToast(`${t('title')} ${index + 1}`);
+const onChange = (index: number) => showMessage(`${t('title')} ${index + 1}`)
 </script>
 
 <template>

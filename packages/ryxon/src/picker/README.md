@@ -31,7 +31,7 @@ app.use(Picker)
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -43,12 +43,12 @@ export default {
       { text: 'Maine', value: 'Maine' }
     ]
     const onConfirm = ({ selectedValues }) => {
-      showToast(`Value: ${selectedValues.join(',')}`)
+      showMessage(`Value: ${selectedValues.join(',')}`)
     }
     const onChange = ({ selectedValues }) => {
-      showToast(`Value: ${selectedValues.join(',')}`)
+      showMessage(`Value: ${selectedValues.join(',')}`)
     }
-    const onCancel = () => showToast('Cancel')
+    const onCancel = () => showMessage('Cancel')
 
     return {
       columns,
@@ -120,7 +120,7 @@ Using `v-model` to bind selected values.
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {

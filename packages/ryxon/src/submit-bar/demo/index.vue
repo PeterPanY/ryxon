@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RSubmitBar from '..';
-import RCheckbox from '../../checkbox';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RSubmitBar from '..'
+import RCheckbox from '../../checkbox'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -13,7 +13,7 @@ const t = useTranslate({
     check: '全选',
     submit: '提交订单',
     clickLink: '修改地址',
-    clickButton: '点击按钮',
+    clickButton: '点击按钮'
   },
   'en-US': {
     tip1: 'Some tips',
@@ -22,23 +22,19 @@ const t = useTranslate({
     check: 'Label',
     submit: 'Submit',
     clickLink: 'Click Link',
-    clickButton: 'Submit',
-  },
-});
+    clickButton: 'Submit'
+  }
+})
 
-const checked = ref(true);
+const checked = ref(true)
 
-const onSubmit = () => showToast(t('clickButton'));
-const onClickLink = () => showToast(t('clickLink'));
+const onSubmit = () => showMessage(t('clickButton'))
+const onClickLink = () => showMessage(t('clickLink'))
 </script>
 
 <template>
   <demo-block :title="t('basicUsage')">
-    <r-submit-bar
-      :price="3050"
-      :button-text="t('submit')"
-      @submit="onSubmit"
-    />
+    <r-submit-bar :price="3050" :button-text="t('submit')" @submit="onSubmit" />
   </demo-block>
 
   <demo-block :title="t('disabled')">

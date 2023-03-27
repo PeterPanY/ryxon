@@ -55,13 +55,13 @@ Search 组件提供了 `search` 和 `cancel` 事件，`search` 事件在点击�
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref('')
-    const onSearch = (val) => showToast(val)
-    const onCancel = () => showToast('取消')
+    const onSearch = (val) => showMessage(val)
+    const onCancel = () => showMessage('取消')
     return {
       value,
       onSearch,
@@ -122,13 +122,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref('')
-    const onSearch = (val) => showToast(val)
-    const onClickButton = () => showToast(value.value)
+    const onSearch = (val) => showMessage(val)
+    const onClickButton = () => showMessage(value.value)
     return {
       value,
       onSearch,

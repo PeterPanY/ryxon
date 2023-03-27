@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RContactList from '..';
-import { ref } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RContactList from '..'
+import { ref } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -13,16 +13,16 @@ const t = useTranslate({
         id: '1',
         name: '张三',
         tel: '13000000000',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: '李四',
-        tel: '1310000000',
-      },
+        tel: '1310000000'
+      }
     ],
     select: '选择',
-    defaultTagText: '默认',
+    defaultTagText: '默认'
   },
   'en-US': {
     add: 'Add',
@@ -32,30 +32,30 @@ const t = useTranslate({
         id: '1',
         name: 'John Snow',
         tel: '13000000000',
-        isDefault: true,
+        isDefault: true
       },
       {
         id: '2',
         name: 'Ned Stark',
-        tel: '1310000000',
-      },
+        tel: '1310000000'
+      }
     ],
     select: 'Select',
-    defaultTagText: 'default',
-  },
-});
+    defaultTagText: 'default'
+  }
+})
 
-const chosenContactId = ref('1');
+const chosenContactId = ref('1')
 
 const onAdd = () => {
-  showToast(t('add'));
-};
+  showMessage(t('add'))
+}
 const onEdit = (contact: { id: string }) => {
-  showToast(t('edit') + contact.id);
-};
+  showMessage(t('edit') + contact.id)
+}
 const onSelect = (contact: { id: string }) => {
-  showToast(t('select') + contact.id);
-};
+  showMessage(t('select') + contact.id)
+}
 </script>
 
 <template>

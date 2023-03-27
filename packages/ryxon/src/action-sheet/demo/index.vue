@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RCell from '../../cell';
-import RActionSheet, { ActionSheetAction } from '..';
-import { ref, computed } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RCell from '../../cell'
+import RActionSheet, { ActionSheetAction } from '..'
+import { ref, computed } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -18,7 +18,7 @@ const t = useTranslate({
     optionStatus: '选项状态',
     coloredOption: '着色选项',
     disabledOption: '禁用选项',
-    showDescription: '展示描述信息',
+    showDescription: '展示描述信息'
   },
   'en-US': {
     option1: 'Option 1',
@@ -32,39 +32,39 @@ const t = useTranslate({
     optionStatus: 'Option Status',
     coloredOption: 'Colored Option',
     disabledOption: 'Disabled Option',
-    showDescription: 'Show Description',
-  },
-});
-const showBasic = ref(false);
-const showCancel = ref(false);
-const showTitle = ref(false);
-const showStatus = ref(false);
-const showDescription = ref(false);
+    showDescription: 'Show Description'
+  }
+})
+const showBasic = ref(false)
+const showCancel = ref(false)
+const showTitle = ref(false)
+const showStatus = ref(false)
+const showDescription = ref(false)
 
 const simpleActions = computed<ActionSheetAction[]>(() => [
   { name: t('option1') },
   { name: t('option2') },
-  { name: t('option3') },
-]);
+  { name: t('option3') }
+])
 
 const statusActions = computed<ActionSheetAction[]>(() => [
   { name: t('coloredOption'), color: '#ee0a24' },
   { name: t('disabledOption'), disabled: true },
-  { loading: true },
-]);
+  { loading: true }
+])
 
 const actionsWithDescription = computed<ActionSheetAction[]>(() => [
   { name: t('option1') },
   { name: t('option2') },
-  { name: t('option3'), subname: t('subname') },
-]);
+  { name: t('option3'), subname: t('subname') }
+])
 
 const onSelect = (item: ActionSheetAction) => {
-  showBasic.value = false;
-  showToast(item.name);
-};
+  showBasic.value = false
+  showMessage(item.name)
+}
 
-const onCancel = () => showToast(t('cancel'));
+const onCancel = () => showMessage(t('cancel'))
 </script>
 
 <template>

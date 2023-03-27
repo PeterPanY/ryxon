@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RAddressEdit from '..';
-import { ref } from 'vue';
-import { areaList } from '@ryxon/area-data';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RAddressEdit from '..'
+import { ref } from 'vue'
+import { areaList } from '@ryxon/area-data'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -11,41 +11,41 @@ const t = useTranslate({
     searchResult: [
       {
         name: '黄龙万科中心',
-        address: '杭州市西湖区',
+        address: '杭州市西湖区'
       },
       {
-        name: '黄龙万科中心G座',
+        name: '黄龙万科中心G座'
       },
       {
         name: '黄龙万科中心H座',
-        address: '杭州市西湖区',
-      },
-    ],
+        address: '杭州市西湖区'
+      }
+    ]
   },
   'en-US': {
     areaColumnsPlaceholder: ['Choose', 'Choose', 'Choose'],
     searchResult: [
       {
         name: 'Name1',
-        address: 'Address',
+        address: 'Address'
       },
       {
-        name: 'Name2',
+        name: 'Name2'
       },
       {
         name: 'Name3',
-        address: 'Address',
-      },
-    ],
-  },
-});
-const searchResult = ref([]);
+        address: 'Address'
+      }
+    ]
+  }
+})
+const searchResult = ref([])
 
-const onSave = () => showToast(t('save'));
-const onDelete = () => showToast(t('delete'));
+const onSave = () => showMessage(t('save'))
+const onDelete = () => showMessage(t('delete'))
 const onChangeDetail = (val: string) => {
-  searchResult.value = val ? t('searchResult') : [];
-};
+  searchResult.value = val ? t('searchResult') : []
+}
 </script>
 
 <template>

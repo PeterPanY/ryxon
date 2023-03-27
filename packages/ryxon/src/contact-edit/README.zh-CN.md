@@ -33,7 +33,7 @@ app.use(ContactEdit)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -41,8 +41,8 @@ export default {
       tel: '',
       name: ''
     })
-    const onSave = (contactInfo) => showToast('保存')
-    const onDelete = (contactInfo) => showToast('删除')
+    const onSave = (contactInfo) => showMessage('保存')
+    const onDelete = (contactInfo) => showMessage('删除')
     return {
       onSave,
       onDelete,

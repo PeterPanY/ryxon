@@ -32,7 +32,7 @@ app.use(ShareSheet)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -46,7 +46,7 @@ export default {
     ]
 
     const onSelect = (option) => {
-      showToast(option.name)
+      showMessage(option.name)
       showShare.value = false
     }
 

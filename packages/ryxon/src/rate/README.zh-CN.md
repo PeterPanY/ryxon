@@ -131,12 +131,12 @@ export default {
 
 ```javascript
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref(3)
-    const onChange = (value) => showToast('当前值：' + value)
+    const onChange = (value) => showMessage('当前值：' + value)
     return {
       value,
       onChange

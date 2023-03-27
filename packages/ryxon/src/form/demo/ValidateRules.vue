@@ -6,7 +6,7 @@ import RCellGroup from '../../cell-group'
 import { ref } from 'vue'
 import { useTranslate } from '../../../docs/site'
 import { InputValidateError } from '../../input/types'
-import { closeToast, showLoadingToast } from '../../toast'
+import { closeAllMessage, showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -47,10 +47,10 @@ const validatorMessage = (val: string) => t('invalid', val)
 
 const asyncValidator = (val: string) =>
   new Promise<boolean>((resolve) => {
-    showLoadingToast(t('validating'))
+    showMessage(t('validating'))
 
     setTimeout(() => {
-      closeToast()
+      closeAllMessage()
       resolve(val === '1234')
     }, 1000)
   })

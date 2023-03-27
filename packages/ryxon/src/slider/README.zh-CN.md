@@ -26,12 +26,12 @@ app.use(Slider)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref(50)
-    const onChange = (value) => showToast('当前值：' + value)
+    const onChange = (value) => showMessage('当前值：' + value)
     return {
       value,
       onChange
@@ -50,13 +50,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     // 双滑块模式时，值必须是数组
     const value = ref([10, 50])
-    const onChange = (value) => showToast('当前值：' + value)
+    const onChange = (value) => showMessage('当前值：' + value)
     return {
       value,
       onChange
@@ -130,13 +130,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const value = ref(50)
     const value2 = ref([10, 50])
-    const onChange = (value) => showToast('当前值：' + value)
+    const onChange = (value) => showMessage('当前值：' + value)
     return {
       value,
       value2,

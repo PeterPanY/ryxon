@@ -4,16 +4,13 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
 const value = ref(1)
 
 const beforeChange = () => {
-  const toast = showToast({
-    type: 'loading',
-    overlay: true,
-    position: 'middle',
-    forbidClick: true
+  const toast = showMessage({
+    message: 'loading'
   })
 
   return new Promise((resolve) => {

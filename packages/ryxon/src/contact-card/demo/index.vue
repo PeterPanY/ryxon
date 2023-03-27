@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RContactCard from '..';
-import { computed } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RContactCard from '..'
+import { computed } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -10,24 +10,24 @@ const t = useTranslate({
     edit: '编辑',
     name: '张三',
     addContact: '添加联系人',
-    editContact: '编辑联系人',
+    editContact: '编辑联系人'
   },
   'en-US': {
     add: 'Add',
     edit: 'Edit',
     name: 'John Snow',
     addContact: 'Add Contact',
-    editContact: 'Edit Contact',
-  },
-});
+    editContact: 'Edit Contact'
+  }
+})
 
 const currentContact = computed(() => ({
   name: t('name'),
-  tel: '13000000000',
-}));
+  tel: '13000000000'
+}))
 
-const onAdd = () => showToast(t('add'));
-const onEdit = () => showToast(t('edit'));
+const onAdd = () => showMessage(t('add'))
+const onEdit = () => showMessage(t('edit'))
 </script>
 
 <template>

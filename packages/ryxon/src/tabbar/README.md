@@ -134,12 +134,12 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const active = ref(0)
-    const onChange = (index) => showToast(`Tab ${index}`)
+    const onChange = (index) => showMessage(`Tab ${index}`)
     return {
       icon,
       onChange

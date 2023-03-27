@@ -37,6 +37,8 @@ export type ConfigProviderThemeVars =
     import('../input-number').InputNumberThemeVars &
     import('../list').ListThemeVars &
     import('../loading').LoadingThemeVars &
+    import('../menu').MenuThemeVars &
+    import('../message').MessageThemeVars &
     import('../nav-bar').NavBarThemeVars &
     import('../notice-bar').NoticeBarThemeVars &
     import('../notify').NotifyThemeVars &
@@ -72,7 +74,6 @@ export type ConfigProviderThemeVars =
     import('../tabs').TabsThemeVars &
     import('../tag').TagThemeVars &
     import('../time-picker-pc').TimePickerPcThemeVars &
-    import('../toast').ToastThemeVars &
     import('../tooltip').TooltipThemeVars &
     import('../tree-select').TreeSelectThemeVars &
     import('../upload').UploadThemeVars

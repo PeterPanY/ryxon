@@ -29,7 +29,7 @@ Use `actions` prop to set options of action-sheet.
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -41,7 +41,7 @@ export default {
     ]
     const onSelect = (item) => {
       show.value = false
-      showToast(item.name)
+      showMessage(item.name)
     }
 
     return {
@@ -67,7 +67,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -77,7 +77,7 @@ export default {
       { name: 'Option 2' },
       { name: 'Option 3' }
     ]
-    const onCancel = () => showToast('cancel')
+    const onCancel = () => showMessage('cancel')
 
     return {
       show,

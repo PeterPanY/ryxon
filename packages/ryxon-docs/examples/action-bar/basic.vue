@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
 import { ChatDotRound, ShoppingCart, Shop } from '@ryxon/icons'
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
-const onClickIcon = () => showToast('点击图标')
-const onClickButton = () => showToast('点击按钮')
+const onClickIcon = () => showMessage('点击图标')
+const onClickButton = () => showMessage('点击按钮')
 </script>
 
 <style lang="scss" scoped>

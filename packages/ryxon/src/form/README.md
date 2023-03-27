@@ -109,7 +109,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { closeToast, showLoadingToast } from 'ryxon'
+import { closeAllMessage, showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -125,10 +125,10 @@ export default {
 
     const asyncValidator = (val) =>
       new Promise((resolve) => {
-        showLoadingToast('Validating...')
+        showMessage('Validating...')
 
         setTimeout(() => {
-          closeToast()
+          closeAllMessage()
           resolve(val === '1234')
         }, 1000)
       })

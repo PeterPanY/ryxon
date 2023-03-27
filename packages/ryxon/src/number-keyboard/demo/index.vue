@@ -4,7 +4,7 @@ import RInput from '../../input'
 import RNumberKeyboard from '..'
 import { ref } from 'vue'
 import { useTranslate } from '../../../docs/site'
-import { showToast } from '../../toast'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -44,8 +44,8 @@ const t = useTranslate({
 const value = ref('')
 const keyboard = ref('default')
 
-const onInput = (value: string) => showToast(`${t('input')}: ${value}`)
-const onDelete = () => showToast(t('delete'))
+const onInput = (value: string) => showMessage(`${t('input')}: ${value}`)
+const onDelete = () => showMessage(t('delete'))
 const isTest = process.env.NODE_ENV === 'test'
 </script>
 

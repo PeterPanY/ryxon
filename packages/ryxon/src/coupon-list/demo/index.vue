@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import RCouponCell from '../../coupon-cell';
-import RPopup from '../../popup';
-import RCouponList from '..';
-import { ref, computed } from 'vue';
-import { useTranslate } from '../../../docs/site';
-import { CouponInfo } from '../../coupon';
-import { showToast } from '../../toast';
+import RCouponCell from '../../coupon-cell'
+import RPopup from '../../popup'
+import RCouponList from '..'
+import { ref, computed } from 'vue'
+import { useTranslate } from '../../../docs/site'
+import { CouponInfo } from '../../coupon'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
     coupon: {
       name: '优惠券名称',
       reason: '优惠券不可用原因',
-      description: '描述信息',
+      description: '描述信息'
     },
-    exchange: '兑换成功',
+    exchange: '兑换成功'
   },
   'en-US': {
     coupon: {
       name: 'Coupon name',
       reason: 'Coupon unavailable reason',
-      description: 'Description',
+      description: 'Description'
     },
-    exchange: 'Success',
-  },
-});
+    exchange: 'Success'
+  }
+})
 
 const getRandomId = (max = 999999) =>
-  String(Math.floor(Math.random() * max) + 1);
+  String(Math.floor(Math.random() * max) + 1)
 
-const showList = ref(false);
-const chosenCoupon = ref(-1);
-const exchangedCoupons = ref<CouponInfo[]>([]);
+const showList = ref(false)
+const chosenCoupon = ref(-1)
+const exchangedCoupons = ref<CouponInfo[]>([])
 
 const coupon = computed(() => ({
   id: 1,
@@ -43,54 +43,54 @@ const coupon = computed(() => ({
   startAt: 1489104000,
   endAt: 1514592000,
   valueDesc: '1.5',
-  unitDesc: '元',
-}));
+  unitDesc: '元'
+}))
 
 const discountCoupon = computed(() => ({
   ...coupon.value,
   id: 2,
   value: 12,
   valueDesc: '8.8',
-  unitDesc: '折',
-}));
+  unitDesc: '折'
+}))
 
 const disabledCoupon = computed(() => ({
   ...coupon.value,
   id: 3,
-  reason: t('coupon.reason'),
-}));
+  reason: t('coupon.reason')
+}))
 
 const disabledDiscountCoupon = computed(() => ({
   ...discountCoupon.value,
   valueDesc: '1',
   unitDesc: '折',
   id: 4,
-  reason: t('coupon.reason'),
-}));
+  reason: t('coupon.reason')
+}))
 
 const coupons = computed(() => [
   coupon.value,
   discountCoupon.value,
-  ...exchangedCoupons.value,
-]);
+  ...exchangedCoupons.value
+])
 
 const disabledCoupons = computed(() => [
   disabledCoupon.value,
-  disabledDiscountCoupon.value,
-]);
+  disabledDiscountCoupon.value
+])
 
 const onChange = (index: number) => {
-  showList.value = false;
-  chosenCoupon.value = index;
-};
+  showList.value = false
+  chosenCoupon.value = index
+}
 
 const onExchange = () => {
-  showToast(t('exchange'));
+  showMessage(t('exchange'))
   exchangedCoupons.value.push({
     ...coupon.value,
-    id: getRandomId(),
-  });
-};
+    id: getRandomId()
+  })
+}
 </script>
 
 <template>

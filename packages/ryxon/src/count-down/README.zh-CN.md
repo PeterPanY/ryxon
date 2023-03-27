@@ -106,7 +106,7 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
@@ -121,7 +121,7 @@ export default {
     const reset = () => {
       countDown.value.reset()
     }
-    const onFinish = () => showToast('倒计时结束')
+    const onFinish = () => showMessage('倒计时结束')
 
     return {
       start,

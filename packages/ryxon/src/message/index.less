@@ -1,0 +1,147 @@
+:root {
+  --r-message-bg-color: var(--r-info-color-light-9);
+  --r-message-border-color: var(--r-border-color-lighter);
+  --r-message-padding: 15px 19px;
+  --r-message-close-size: 16px;
+  --r-message-close-icon-color: var(--r-text-color-placeholder);
+  --r-message-close-hover-color: var(--r-text-color-secondary);
+}
+
+.r-message {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  border-radius: var(--r-radius-md);
+  border-width: var(--r-border-width);
+  border-style: var(--r-border-style);
+  border-color: var(--r-message-border-color);
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background-color: var(--r-message-bg-color);
+  transition: opacity var(--r-duration-base), transform 0.4s, top 0.4s;
+  padding: var(--r-message-padding);
+  display: flex;
+  align-items: center;
+
+  &.is-center {
+    justify-content: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &__content {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+
+    &:focus {
+      outline-width: 0;
+    }
+  }
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &__success {
+    --r-message-bg-color: var(--r-success-color-light-9);
+    --r-message-border-color: var(--r-success-color-light-8);
+    --r-message-text-color: var(--r-success-color);
+
+    .r-message__content {
+      color: var(--r-message-text-color);
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__icon--success {
+    color: var(--r-message-text-color);
+  }
+
+  &__info {
+    --r-message-bg-color: var(--r-info-color-light-9);
+    --r-message-border-color: var(--r-info-color-light-8);
+    --r-message-text-color: var(--r-info-color);
+
+    .r-message__content {
+      color: var(--r-message-text-color);
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__icon--info {
+    color: var(--r-message-text-color);
+  }
+
+  &__warning {
+    --r-message-bg-color: var(--r-warning-color-light-9);
+    --r-message-border-color: var(--r-warning-color-light-8);
+    --r-message-text-color: var(--r-warning-color);
+
+    .r-message__content {
+      color: var(--r-message-text-color);
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__icon--warning {
+    color: var(--r-message-text-color);
+  }
+
+  &__danger {
+    --r-message-bg-color: var(--r-danger-color-light-9);
+    --r-message-border-color: var(--r-danger-color-light-8);
+    --r-message-text-color: var(--r-danger-color);
+
+    .r-message__content {
+      color: var(--r-message-text-color);
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__icon--danger {
+    color: var(--r-message-text-color);
+  }
+
+  // 关闭按钮样式
+  &.is-closable .r-message__content {
+    padding-right: 31px;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--r-message-close-icon-color);
+    font-size: var(--r-message-close-size);
+
+    &:focus {
+      outline-width: 0;
+    }
+
+    &:hover {
+      color: var(--r-message-close-hover-color);
+    }
+  }
+
+  .r-message__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    transform: none;
+  }
+
+  &__fade-enter-from,
+  &__fade-leave-to {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}

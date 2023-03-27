@@ -9,11 +9,11 @@ The rate component is used for rating things.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { Rate } from 'ryxon';
+import { createApp } from 'vue'
+import { Rate } from 'ryxon'
 
-const app = createApp();
-app.use(Rate);
+const app = createApp()
+app.use(Rate)
 ```
 
 ## Usage
@@ -25,14 +25,14 @@ app.use(Rate);
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3);
-    return { value };
-  },
-};
+    const value = ref(3)
+    return { value }
+  }
+}
 ```
 
 ### Custom Icon
@@ -60,14 +60,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(2.5);
-    return { value };
-  },
-};
+    const value = ref(2.5)
+    return { value }
+  }
+}
 ```
 
 ### Custom Count
@@ -95,14 +95,14 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const value = ref(3.3);
-    return { value };
-  },
-};
+    const value = ref(3.3)
+    return { value }
+  }
+}
 ```
 
 ### Change Event
@@ -112,19 +112,19 @@ export default {
 ```
 
 ```javascript
-import { ref } from 'vue';
-import { showToast } from 'ryxon';
+import { ref } from 'vue'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const value = ref(3);
-    const onChange = (value) => showToast('current value:' + value);
+    const value = ref(3)
+    const onChange = (value) => showMessage('current value:' + value)
     return {
       value,
-      onChange,
-    };
-  },
-};
+      onChange
+    }
+  }
+}
 ```
 
 ## API
@@ -159,7 +159,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { RateProps } from 'ryxon';
+import type { RateProps } from 'ryxon'
 ```
 
 ## Theming
@@ -168,9 +168,9 @@ import type { RateProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name                           | Default Value             | Description |
-| ------------------------------ | ------------------------- | ----------- |
-| --r-rate-icon-size           | _20px_                    | -           |
+| Name                         | Default Value           | Description |
+| ---------------------------- | ----------------------- | ----------- |
+| --r-rate-icon-size           | _20px_                  | -           |
 | --r-rate-icon-gutter         | _var(--r-padding-base)_ | -           |
 | --r-rate-icon-void-color     | _var(--r-gray-5)_       | -           |
 | --r-rate-icon-full-color     | _var(--r-danger-color)_ | -           |

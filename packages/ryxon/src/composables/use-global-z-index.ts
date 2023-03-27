@@ -11,7 +11,7 @@
  *   - Popup
  *   - Popover
  *   - ShareSheet
- *   - Toast
+ *   - Message
  */
 let globalZIndex = 2000
 

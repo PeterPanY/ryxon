@@ -32,13 +32,13 @@ app.use(NumberKeyboard)
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const show = ref(true)
-    const onInput = (value) => showToast(value)
-    const onDelete = () => showToast('delete')
+    const onInput = (value) => showMessage(value)
+    const onDelete = () => showMessage('delete')
 
     return {
       show,

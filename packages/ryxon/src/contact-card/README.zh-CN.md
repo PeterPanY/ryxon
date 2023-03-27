@@ -25,11 +25,11 @@ app.use(ContactCard)
 ```
 
 ```js
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onAdd = () => showToast('新增')
+    const onAdd = () => showMessage('新增')
     return {
       onAdd
     }
@@ -45,13 +45,13 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { showToast } from 'ryxon'
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
     const tel = ref('13000000000')
     const name = ref('张三')
-    const onEdit = () => showToast('edit')
+    const onEdit = () => showMessage('edit')
     return {
       tel,
       name,

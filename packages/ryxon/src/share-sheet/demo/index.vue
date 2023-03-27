@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RCell from '../../cell';
-import RShareSheet, { ShareSheetOption, ShareSheetOptions } from '..';
-import { ref, computed } from 'vue';
-import { cdnURL, useTranslate } from '../../../docs/site';
-import { showToast } from '../../toast';
+import RCell from '../../cell'
+import RShareSheet, { ShareSheetOption, ShareSheetOptions } from '..'
+import { ref, computed } from 'vue'
+import { cdnURL, useTranslate } from '../../../docs/site'
+import { showMessage } from '../../message'
 
 const t = useTranslate({
   'zh-CN': {
@@ -21,7 +21,7 @@ const t = useTranslate({
     customIcon: '自定义图标',
     description: '描述信息',
     weappQrcode: '小程序码',
-    wechatMoments: '朋友圈',
+    wechatMoments: '朋友圈'
   },
   'en-US': {
     qq: 'QQ',
@@ -38,52 +38,52 @@ const t = useTranslate({
     customIcon: 'Custom Icon',
     description: 'Description',
     weappQrcode: 'Weapp Qrcode',
-    wechatMoments: 'WeChat Moments',
-  },
-});
+    wechatMoments: 'WeChat Moments'
+  }
+})
 
-const showBasic = ref(false);
-const showWithDesc = ref(false);
-const showMultiLine = ref(false);
-const showCustomIcon = ref(false);
+const showBasic = ref(false)
+const showWithDesc = ref(false)
+const showMultiLine = ref(false)
+const showCustomIcon = ref(false)
 
 const options = computed(() => [
   { name: t('wechat'), icon: 'wechat' },
   { name: t('weibo'), icon: 'weibo' },
   { name: t('link'), icon: 'link' },
   { name: t('poster'), icon: 'poster' },
-  { name: t('qrcode'), icon: 'qrcode' },
-]);
+  { name: t('qrcode'), icon: 'qrcode' }
+])
 
 const multiLineOptions = computed(() => [
   [
     { name: t('wechat'), icon: 'wechat' },
     { name: t('wechatMoments'), icon: 'wechat-moments' },
     { name: t('weibo'), icon: 'weibo' },
-    { name: t('qq'), icon: 'qq' },
+    { name: t('qq'), icon: 'qq' }
   ],
   [
     { name: t('link'), icon: 'link' },
     { name: t('poster'), icon: 'poster' },
     { name: t('qrcode'), icon: 'qrcode' },
-    { name: t('weappQrcode'), icon: 'weapp-qrcode' },
-  ],
-]);
+    { name: t('weappQrcode'), icon: 'weapp-qrcode' }
+  ]
+])
 
 const customIconOptions = computed(() => [
   {
     name: t('name'),
-    icon: cdnURL('custom-icon-fire.png'),
+    icon: cdnURL('custom-icon-fire.png')
   },
   {
     name: t('name'),
-    icon: cdnURL('custom-icon-light.png'),
+    icon: cdnURL('custom-icon-light.png')
   },
   {
     name: t('name'),
-    icon: cdnURL('custom-icon-water.png'),
-  },
-]);
+    icon: cdnURL('custom-icon-water.png')
+  }
+])
 
 const optionsWithDesc = computed<ShareSheetOptions>(() => [
   { name: t('wechat'), icon: 'wechat' },
@@ -91,19 +91,19 @@ const optionsWithDesc = computed<ShareSheetOptions>(() => [
   {
     name: t('link'),
     icon: 'link',
-    description: t('description'),
+    description: t('description')
   },
   { name: t('poster'), icon: 'poster' },
-  { name: t('qrcode'), icon: 'qrcode' },
-]);
+  { name: t('qrcode'), icon: 'qrcode' }
+])
 
 const onSelect = (option: ShareSheetOption) => {
-  showToast(option.name);
-  showBasic.value = false;
-  showWithDesc.value = false;
-  showMultiLine.value = false;
-  showCustomIcon.value = false;
-};
+  showMessage(option.name)
+  showBasic.value = false
+  showWithDesc.value = false
+  showMultiLine.value = false
+  showCustomIcon.value = false
+}
 </script>
 
 <template>

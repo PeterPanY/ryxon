@@ -4,14 +4,14 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast } from '@ryxon/components'
+import { showMessage } from '@ryxon/components'
 
 const fileList = ref([
   {
     url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
     deletable: true,
     beforeDelete: () => {
-      showToast('删除前置处理')
+      showMessage('删除前置处理')
     }
   },
   {

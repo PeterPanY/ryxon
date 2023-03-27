@@ -69,8 +69,8 @@ $ pnpm install ryxon
   // 可以通过下面的方式手动注册
   app.use(ryxon.Lazyload)
 
-  // 调用工具函数，弹出一个 Toast
-  ryxon.showToast('提示')
+  // 调用工具函数，弹出一个 Message
+  ryxon.showMessage('提示')
 
   app.mount('#app')
 </script>
@@ -99,8 +99,8 @@ $ pnpm install ryxon
   // 可以通过下面的方式手动注册
   app.use(ryxon.Lazyload)
 
-  // 调用工具函数，弹出一个 Toast
-  ryxon.showToast('提示')
+  // 调用工具函数，弹出一个 Message
+  ryxon.showMessage('提示')
 
   app.mount('#app')
 </script>

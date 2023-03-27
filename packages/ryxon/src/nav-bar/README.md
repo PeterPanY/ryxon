@@ -9,11 +9,11 @@ Provide navigation function for the page, often used at the top of the page.
 Register component globally via `app.use`, refer to [Component Registration](#/en-US/advanced-usage#zu-jian-zhu-ce) for more registration ways.
 
 ```js
-import { createApp } from 'vue';
-import { NavBar } from 'ryxon';
+import { createApp } from 'vue'
+import { NavBar } from 'ryxon'
 
-const app = createApp();
-app.use(NavBar);
+const app = createApp()
+app.use(NavBar)
 ```
 
 ## Usage
@@ -38,12 +38,12 @@ app.use(NavBar);
 ```js
 export default {
   setup() {
-    const onClickLeft = () => history.back();
+    const onClickLeft = () => history.back()
     return {
-      onClickLeft,
-    };
-  },
-};
+      onClickLeft
+    }
+  }
+}
 ```
 
 ### Right Button
@@ -60,18 +60,18 @@ export default {
 ```
 
 ```js
-import { showToast } from 'ryxon';
+import { showMessage } from 'ryxon'
 
 export default {
   setup() {
-    const onClickLeft = () => history.back();
-    const onClickRight = () => showToast('Button');
+    const onClickLeft = () => history.back()
+    const onClickRight = () => showMessage('Button')
     return {
       onClickLeft,
-      onClickRight,
-    };
-  },
-};
+      onClickRight
+    }
+  }
+}
 ```
 
 ### Use Slot
@@ -121,7 +121,7 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { NavBarProps } from 'ryxon';
+import type { NavBarProps } from 'ryxon'
 ```
 
 ## Theming
@@ -130,13 +130,13 @@ import type { NavBarProps } from 'ryxon';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
 
-| Name                           | Default Value              | Description |
-| ------------------------------ | -------------------------- | ----------- |
-| --r-nav-bar-height           | _46px_                     | -           |
+| Name                         | Default Value            | Description |
+| ---------------------------- | ------------------------ | ----------- |
+| --r-nav-bar-height           | _46px_                   | -           |
 | --r-nav-bar-background       | _var(--r-background-2)_  | -           |
-| --r-nav-bar-arrow-size       | _16px_                     | -           |
+| --r-nav-bar-arrow-size       | _16px_                   | -           |
 | --r-nav-bar-icon-color       | _var(--r-primary-color)_ | -           |
 | --r-nav-bar-text-color       | _var(--r-primary-color)_ | -           |
 | --r-nav-bar-title-font-size  | _var(--r-font-size-lg)_  | -           |
 | --r-nav-bar-title-text-color | _var(--r-text-color)_    | -           |
-| --r-nav-bar-z-index          | _1_                        | -           |
+| --r-nav-bar-z-index          | _1_                      | -           |
