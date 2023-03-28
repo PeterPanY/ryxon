@@ -29,6 +29,7 @@ import { useEventListener, getScrollParent } from '@ryxon/use'
 
 // Components
 import { Icon } from '../icon'
+import { CaretTop } from '@ryxon/icons'
 
 const [name, bem] = createNamespace('back-top')
 
@@ -130,7 +131,9 @@ export default defineComponent({
           {slots.default ? (
             slots.default()
           ) : (
-            <Icon name="back-top" class={bem('icon')} />
+            <Icon class={bem('icon')}>
+              <CaretTop></CaretTop>
+            </Icon>
           )}
         </div>
       )

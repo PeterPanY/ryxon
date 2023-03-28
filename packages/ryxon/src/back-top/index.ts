@@ -1,15 +1,15 @@
-import { withInstall } from '../utils';
-import _BackTop from './BackTop';
+import { withInstall } from '../utils'
+import _BackTop from './BackTop'
 
-export const BackTop = withInstall(_BackTop);
-export default BackTop;
-export { backTopProps } from './BackTop';
+export const BackTop = withInstall(_BackTop)
+export default BackTop
+export { backTopProps } from './BackTop'
 
-export type { BackTopProps } from './BackTop';
-export type { BackTopThemeVars } from './types';
+export type { BackTopProps } from './BackTop'
+export type { BackTopThemeVars } from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RBackTop: typeof BackTop;
+    RBackTop: typeof BackTop
   }
 }
