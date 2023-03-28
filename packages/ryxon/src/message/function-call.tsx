@@ -1,4 +1,4 @@
-import { createVNode, render, isVNode } from 'vue'
+import { render, isVNode, createVNode } from 'vue'
 import { isClient, isNumber } from '@vueuse/core'
 import { instances } from './instance'
 import { extend, isElement, isString, isFunction } from '../utils'
@@ -20,6 +20,7 @@ import type {
 let seed = 1
 
 const messageDefaults = {
+  show: false,
   customClass: '',
   center: false,
   dangerouslyUseHTMLString: false,
@@ -94,6 +95,10 @@ const createMessage = (
       // 由于元素已销毁，因此GC也应该收集VNode
       // 我们不想造成任何内存泄漏，因为我们已经返回vm作为对用户的引用, 以便我们手动将其设置为false。
       render(null, container)
+    },
+    'onUpdate:show': (val: boolean) => {
+      // eslint-disable-next-line no-use-before-define
+      instance.props.show = val
     }
   })
   const vnode = createVNode(
@@ -117,10 +122,11 @@ const createMessage = (
   const vm = vnode.component!
 
   const handler: MessageHandler = {
+    props: (vnode.component as any).props,
     // 与其直接调用onClose函数，不如设置该值，以便我们可以拥有完整的生命周期
     // 对于out组件，这样就不会跳过所有关闭步骤。
     close: () => {
-      vm.exposed!.visible.value = false
+      vm.exposed!.updateShow(false)
     }
   }
 
@@ -131,6 +137,8 @@ const createMessage = (
     handler,
     props: (vnode.component as any).props
   }
+
+  instance.props.show = true
 
   return instance
 }

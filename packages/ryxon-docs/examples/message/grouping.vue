@@ -9,8 +9,7 @@ const open = () => {
   showMessage({
     message: 'this is a message.',
     grouping: true,
-    type: 'success',
-    duration: 0
+    type: 'success'
   })
 }
 </script>

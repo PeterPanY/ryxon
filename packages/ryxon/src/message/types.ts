@@ -1,9 +1,9 @@
-import { type Mutable } from '../utils'
+import type { Mutable } from '../utils'
 import type { AppContext } from 'vue'
 import type MessageConstructor from './Message'
 import type { MessageProps } from './Message'
 
-export const messageTypes = ['success', 'info', 'warning', 'danger'] as const
+export const messageTypes = ['success', 'info', 'warning', 'danger']
 
 export type messageType = typeof messageTypes[number]
 
@@ -31,6 +31,7 @@ export type MessageParamsWithType =
   | MessageOptions['message']
 
 export interface MessageHandler {
+  props: Mutable<MessageProps>
   close: () => void
 }
 

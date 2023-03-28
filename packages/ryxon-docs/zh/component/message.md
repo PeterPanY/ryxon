@@ -53,6 +53,14 @@ message 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任
 
 :::
 
+## 动态更新消息
+
+:::demo 执行 Message 方法时会返回对应的 Message 实例，通过修改实例上的 `message` 属性可以实现动态更新提示的效果。
+
+message/dynamic
+
+:::
+
 ## 分组消息合并
 
 :::demo 设置 `grouping` 为 `true`，内容相同的 `message` 将被合并。
@@ -82,6 +90,12 @@ showMessage({}, appContext)
 
 ## 使用 Message 组件
 
+:::demo 如果需要在 Message 内嵌入组件或其他自定义内容，可以直接使用 Message 组件，并使用 `message` 插槽进行定制。重复点击无效，组件隐藏无自动销毁
+
+message/comp
+
+:::
+
 ## API
 
 ### 方法
@@ -97,30 +111,64 @@ Ryxon 中导出了以下 Message 相关的辅助函数：
 | showDangerMessage  | 展示错误消息 | `Options \| string` | Message 实例 |
 | closeAllMessage    | 关闭实例     | `type`              | Message 实例 |
 
-### Options
+### MessageOptions
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `message` | 消息文字 | `string \| VNode \| (() => VNode)` | — |
-| `type` | 消息类型 | `'success' \| 'warning' \| 'info' \| 'danger'` | `'info'` |
-| `icon` | 自定义图标，该属性会覆盖 `type` 的图标。 | `string \| Component` | — |
-| `dangerouslyUseHTMLString` | 是否将 `message` 属性作为 HTML 片段处理 | `boolean` | `false` |
-| `custom-class` | 自定义类名 | `string` | — |
-| `duration` | 显示时间，单位为毫秒。 设为 0 则不会自动关闭 | `number` | `3000` |
-| `show-close` | 是否显示关闭按钮 | `boolean` | `false` |
-| `center` | 文字是否居中 | `boolean` | `false` |
-| `on-close` | 关闭时的回调函数, 参数为被关闭的 message 实例 | `function` | — |
-| `offset` | Message 距离窗口顶部的偏移量 | `number` | `20` |
-| `appendTo` | 设置组件的根元素 | `string \| HTMLElement` | `document.body` |
-| `grouping` | 合并内容相同的消息，不支持 VNode 类型的消息 | `boolean` | `false` |
+| message | 消息文字 | `string \| VNode \| (() => VNode)` | — |
+| type | 消息类型 | `'success' \| 'warning' \| 'info' \| 'danger'` | `'info'` |
+| icon | 自定义图标，该属性会覆盖 `type` 的图标。 | `string \| Component` | — |
+| dangerouslyUseHTMLString | 是否将 `message` 属性作为 HTML 片段处理 | `boolean` | `false` |
+| customClass | 自定义类名 | `string` | — |
+| duration | 显示时间，单位为毫秒。 设为 0 则不会自动关闭 | `number` | `3000` |
+| showClose | 是否显示关闭按钮 | `boolean` | `false` |
+| center | 文字是否居中 | `boolean` | `false` |
+| onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | `function` | — |
+| offset | Message 距离窗口顶部的偏移量 | `number` | `20` |
+| appendTo | 设置组件的根元素 | `string \| HTMLElement` | `body` |
+| grouping | 合并内容相同的消息，不支持 VNode 类型的消息 | `boolean` | `false` |
 
-### Methods
+### MessageMethods
 
 调用 `Message` 会返回当前 Message 的实例。 如果需要手动关闭实例，可以调用它的 close 方法。
 
 | Method  | Description       |
 | ------- | ----------------- |
 | `close` | close the Message |
+
+### Props
+
+通过组件调用 `Message` 时，支持以下 Props：
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| v-model:show | 是否显示弹窗 | `boolean` | `false` |
+| message | 消息文字 | `string \| VNode \| (() => VNode)` | — |
+| type | 消息类型 | `'success' \| 'warning' \| 'info' \| 'danger'` | `'info'` |
+| icon | 自定义图标，该属性会覆盖 `type` 的图标。 | `string \| Component` | — |
+| custom-class | 自定义类名 | `string` | — |
+| duration | 显示时间，单位为毫秒。 设为 0 则不会自动关闭 | `number` | `3000` |
+| show-close | 是否显示关闭按钮 | `boolean` | `false` |
+| center | 文字是否居中 | `boolean` | `false` |
+| on-close | 关闭时的回调函数, 参数为被关闭的 message 实例 | `function` | — |
+| offset | Message 距离窗口顶部的偏移量 | `number` | `20` |
+| appendTo | 设置组件的根元素 | `string \| HTMLElement` | `body` |
+
+### Events
+
+通过组件调用 `Message` 时，支持以下事件：
+
+| 事件名  | 说明           | 回调参数 |
+| ------- | -------------- | -------- |
+| destroy | 在离开过渡完成 | -        |
+
+### Slots
+
+通过组件调用 `Message` 时，支持以下插槽：
+
+| 名称    | 说明       |
+| ------- | ---------- |
+| default | 自定义内容 |
 
 ### 类型定义
 

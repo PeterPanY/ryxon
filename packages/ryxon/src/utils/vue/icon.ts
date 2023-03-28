@@ -14,9 +14,23 @@ export const iconPropType = definePropType<string | Component>([
   Function
 ])
 
+// 图标
 export const TypeComponentsMap = {
   success: SuccessFilled,
   warning: WarningFilled,
   danger: CircleCloseFilled,
   info: InfoFilled
+}
+
+// 解析图标
+export const typeComp = (type: string) => {
+  if (
+    type === 'success' ||
+    type === 'warning' ||
+    type === 'info' ||
+    type === 'danger'
+  ) {
+    return TypeComponentsMap[type]
+  }
+  return ''
 }

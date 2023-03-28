@@ -3,7 +3,6 @@ import {
   ref,
   watch,
   computed,
-  onMounted,
   Transition,
   defineComponent,
   type VNode,
@@ -12,11 +11,11 @@ import {
 } from 'vue'
 
 import {
+  typeComp,
   isString,
   iconPropType,
   definePropType,
-  createNamespace,
-  TypeComponentsMap
+  createNamespace
 } from '../utils'
 import { useEventListener, useResizeObserver, useTimeoutFn } from '@vueuse/core'
 import {
@@ -24,7 +23,7 @@ import {
   setGlobalZIndex
 } from '../composables/use-global-z-index'
 import { getLastOffset } from './instance'
-import { messageEmits, messageTypes } from './types'
+import { messageTypes } from './types'
 import { EVENT_CODE } from '../constants/aria'
 import { Icon } from '../icon'
 import { Badge } from '../badge'
@@ -33,6 +32,7 @@ import { Close } from '@ryxon/icons'
 const [name, bem, , isBem] = createNamespace('message')
 
 export const messageProps = {
+  show: Boolean,
   customClass: { type: String, default: '' },
   center: { type: Boolean, default: false },
   dangerouslyUseHTMLString: {
@@ -52,7 +52,7 @@ export const messageProps = {
   },
   onClose: { type: definePropType<() => void>(Function), required: false },
   showClose: { type: Boolean, default: false },
-  type: { type: String, values: messageTypes, default: 'info' },
+  type: { type: String, values: messageTypes, default: '' },
   offset: { type: Number, default: 16 },
   zIndex: { type: Number, default: undefined },
   grouping: { type: Boolean, default: false },
@@ -64,10 +64,13 @@ export type MessageProps = ExtractPropTypes<typeof messageProps>
 export default defineComponent({
   name,
   props: messageProps,
-  emits: messageEmits,
+  emits: ['destroy', 'update:show'],
   setup(props, { emit, slots, expose }) {
-    const visible = ref(false)
-    const messageRef = ref<HTMLDivElement>()
+    const updateShow = (value: boolean) => {
+      if (props.show !== value) {
+        emit('update:show', value)
+      }
+    }
 
     const height = ref(0)
     const lastOffset = computed(() => getLastOffset(props.id))
@@ -77,7 +80,7 @@ export default defineComponent({
     let stopTimer: (() => void) | undefined
 
     function close() {
-      visible.value = false
+      updateShow(false)
     }
 
     // 开始持续时间
@@ -92,17 +95,16 @@ export default defineComponent({
       stopTimer?.()
     }
 
-    onMounted(() => {
-      startTimer()
-      visible.value = true
-    })
-
-    function keydown({ code }: KeyboardEvent) {
-      if (code === EVENT_CODE.esc) {
-        // press esc to close the message
-        close()
+    watch(
+      () => props.show,
+      (val) => {
+        clearTimer()
+        if (val) startTimer()
+      },
+      {
+        immediate: true
       }
-    }
+    )
 
     const nextZIndex = useGlobalZIndex()
     setGlobalZIndex(nextZIndex)
@@ -116,23 +118,12 @@ export default defineComponent({
     const badgeType = computed(() => props.type || 'info')
 
     // 判断是否使用了类型图标
-    const isType = computed(() => {
-      const { type } = props
-      if (
-        type === 'success' ||
-        type === 'warning' ||
-        type === 'info' ||
-        type === 'danger'
-      ) {
-        return TypeComponentsMap[type]
-      }
-      return ''
-    })
+    const typeCompIcon = computed(() => typeComp(props.type))
 
     // 图标样式
     const typeClass = computed(() => {
       const { type } = props
-      return { [bem('icon', type) as string]: type && isType.value }
+      return { [bem('icon', type) as string]: type && typeCompIcon.value }
     })
 
     // icon使用的图标
@@ -140,15 +131,25 @@ export default defineComponent({
       const { icon } = props
       if (icon) return icon
 
-      return isType.value
+      return typeCompIcon.value
     })
 
+    // 监听按键事件
+    function keydown({ code }: KeyboardEvent) {
+      if (code === EVENT_CODE.esc) {
+        // press esc to close the message
+        close()
+      }
+    }
     useEventListener(document, 'keydown', keydown)
 
+    // 监听页面变化
+    const messageRef = ref<HTMLDivElement>()
     useResizeObserver(messageRef, () => {
       height.value = messageRef.value!.getBoundingClientRect().height
     })
 
+    // 监听重复数量
     watch(
       () => props.repeatNum,
       () => {
@@ -157,7 +158,7 @@ export default defineComponent({
       }
     )
 
-    expose({ visible, bottom, close })
+    expose({ bottom, close, updateShow })
 
     return () => (
       <Transition
@@ -169,7 +170,7 @@ export default defineComponent({
       >
         <div
           ref={messageRef}
-          v-show={visible.value}
+          v-show={props.show}
           id={props.id}
           class={[
             bem(),
