@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, isVNode, createVNode } from 'vue'
 import { isClient, isNumber } from '@vueuse/core'
 import { instances } from './instance'

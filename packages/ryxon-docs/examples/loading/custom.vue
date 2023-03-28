@@ -1,7 +1,7 @@
 <template>
   <r-loading vertical>
     <template #icon>
-      <r-icon name="Star" size="30">
+      <r-icon size="30">
         <Star></Star>
       </r-icon>
     </template>

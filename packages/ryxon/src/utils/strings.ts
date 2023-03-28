@@ -1,15 +1,21 @@
-const cacheStringFunction = (fn: { (str: any): any; (arg0: string): any }) => {
-  const cache = Object.create(null)
-  return (str: string) => {
+const cacheStringFunction = <T extends (str: string) => string>(fn: T): T => {
+  const cache: Record<string, string> = Object.create(null)
+  return ((str: string) => {
     const hit = cache[str]
     // eslint-disable-next-line no-return-assign
     return hit || (cache[str] = fn(str))
-  }
+  }) as T
 }
 
 // 首字母转大写
 export const toCapitalize = cacheStringFunction(
-  (str) => str.charAt(0).toUpperCase() + str.slice(1)
+  (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+)
+
+const hyphenateRE = /\B([A-Z])/g
+
+export const hyphenate = cacheStringFunction((str: string) =>
+  str.replace(hyphenateRE, '-$1').toLowerCase()
 )
 
 /**

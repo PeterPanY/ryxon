@@ -29,6 +29,8 @@ export default define<ThemeType>({
       lazyComponent: true
     })
 
+    app.directive('loading', Ryxon.loadingDirective)
+
     Object.keys(Ryxon).forEach((key) => {
       // key.startsWith('R')
       if (Ryxon[key].name) {
