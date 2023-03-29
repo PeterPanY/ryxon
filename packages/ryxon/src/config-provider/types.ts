@@ -75,5 +75,6 @@ export type ConfigProviderThemeVars =
     import('../tag').TagThemeVars &
     import('../time-picker-pc').TimePickerPcThemeVars &
     import('../tooltip').TooltipThemeVars &
+    import('../tree').TreeThemeVars &
     import('../tree-select').TreeSelectThemeVars &
     import('../upload').UploadThemeVars

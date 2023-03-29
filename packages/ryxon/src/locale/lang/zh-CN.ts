@@ -116,6 +116,9 @@ export default {
     clearFilter: '全部',
     sumText: '合计'
   },
+  rTree: {
+    emptyText: '暂无数据'
+  },
   rUpload: {
     uploading: '上传中...',
     failed: '上传失败'

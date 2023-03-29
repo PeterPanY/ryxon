@@ -117,6 +117,9 @@ export default {
     clearFilter: 'All',
     sumText: 'Sum'
   },
+  rTree: {
+    emptyText: 'No Data'
+  },
   rUpload: {
     uploading: 'Uploading...',
     failed: 'Failed'

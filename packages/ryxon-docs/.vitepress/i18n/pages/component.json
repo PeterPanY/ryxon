@@ -42,7 +42,8 @@
         { "link": "/sticky", "text": "Sticky 粘性布局" },
         { "link": "/table", "text": "Table 表格" },
         { "link": "/tag", "text": "Tag 标签" },
-        { "link": "/text-ellipsis", "text": "TextEllipsis 文本省略" }
+        { "link": "/text-ellipsis", "text": "TextEllipsis 文本省略" },
+        { "link": "/tree", "text": "Tree 树形控件" }
       ]
     },
     "navigation": {

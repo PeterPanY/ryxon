@@ -1,0 +1,135 @@
+:root {
+  --r-tree-node-hover-bg-color: var(--r-fill-color-light);
+  --r-tree-text-color: var(--r-text-color-regular);
+  --r-tree-expand-icon-color: var(--r-text-color-placeholder);
+}
+
+@import '../icon/index.less';
+@import '../checkbox/index.less';
+@import '../collapse-transition/index.less';
+
+.r-tree {
+  position: relative;
+  cursor: default;
+  background: var(--r-fill-color-blank);
+  color: var(--r-tree-text-color);
+  font-size: var(--r-font-size-md);
+
+  &__node {
+    white-space: nowrap;
+    outline: 0;
+
+    &:focus > .r-tree__node-content {
+      background-color: var(--r-tree-node-hover-bg-color);
+    }
+
+    > .r-tree__node-children {
+      overflow: hidden;
+      background-color: transparent;
+    }
+
+    &.is-expanded > .r-tree__node-children {
+      display: block;
+    }
+
+    &.is-drop-inner > .r-tree__node-content .r-tree__node-label {
+      background-color: var(--r-primary-color);
+      color: #fff;
+    }
+  }
+
+  &__node-content {
+    display: flex;
+    align-items: center;
+    height: 26px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--r-tree-node-hover-bg-color);
+    }
+
+    > .r-tree__node-expand-icon {
+      padding: 6px;
+      box-sizing: content-box;
+    }
+
+    > .r-checkbox {
+      margin-right: 8px;
+
+      > .r-checkbox__label {
+        display: none;
+      }
+    }
+  }
+
+  &__node-expand-icon {
+    cursor: pointer;
+    color: var(--r-tree-expand-icon-color);
+    font-size: 12px;
+    transform: rotate(0);
+    transition: transform var(--r-duration-base) ease-in-out;
+
+    &.expanded {
+      transform: rotate(90deg);
+    }
+
+    &.is-leaf {
+      color: transparent;
+      cursor: default;
+    }
+
+    &.is-hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__node-loading-icon {
+    margin-right: 8px;
+    font-size: var(--r-font-size-md);
+    color: var(--r-tree-expand-icon-color);
+  }
+
+  &__highlight-current .r-tree__node.is-current > .r-tree__node-content {
+    background-color: var(--r-primary-color-light-9);
+  }
+
+  &.is-dragging {
+    .r-tree__node-content {
+      cursor: move;
+    }
+
+    .r-tree__node-content * {
+      pointer-events: none;
+    }
+
+    &.is-drop-not-allow .r-tree__node-content {
+      cursor: not-allowed;
+    }
+  }
+
+  // 暂无数据展示
+  &__empty-block {
+    position: relative;
+    min-height: 60px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+    .r-tree__empty-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--r-text-color-secondary);
+      font-size: var(--r-font-size-md);
+    }
+  }
+
+  &__drop-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--r-primary-color);
+  }
+}
