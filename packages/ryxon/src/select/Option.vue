@@ -30,7 +30,7 @@ import {
 } from 'vue'
 import { createNamespace } from '../utils'
 import { useOption } from './useOption'
-import { optionProps } from './option'
+import { optionProps } from './option-props'
 import type { SelectOptionProxy } from './token'
 
 export default defineComponent({

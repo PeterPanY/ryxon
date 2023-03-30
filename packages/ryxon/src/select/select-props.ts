@@ -22,7 +22,7 @@ export const selectProps = {
   valueKey: { type: String, default: 'value' }, // 作为 value 唯一标识的键名，绑定值为对象类型时必填
   size: {
     type: String as PropType<ComponentSize>,
-    default: 'default',
+    default: 'small',
     validator: isValidComponentSize
   },
   clearable: Boolean, // 是否可以清空选项

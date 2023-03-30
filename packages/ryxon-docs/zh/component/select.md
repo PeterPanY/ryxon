@@ -97,7 +97,7 @@ select/allow-create
 | multiple | 是否多选 | `boolean` | `true/false` | `false` |
 | disabled | 是否禁用 | `boolean` | `true/false` | `false` |
 | value-key | 作为 value 唯一标识的键名，绑定值为对象类型时必填 | `string` | `-` | `value` |
-| size | 输入框尺寸 | `string` | `large/default/small` | `default` |
+| size | 输入框尺寸 | `string` | `large/default/small` | `small` |
 | clearable | 是否可以清空选项 | `boolean` | `true / false` | `false` |
 | collapse-tags | 多选时是否将选中值按文字的形式展示 | `boolean` | `true / false` | `false` |
 | collapse-tags-tooltip | 当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，`collapse-tags`属性必须设定为 true | `boolean` | `true / false` | `false` |

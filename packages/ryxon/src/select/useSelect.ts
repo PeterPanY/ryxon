@@ -10,7 +10,7 @@ import {
   triggerRef,
   type ComponentPublicInstance
 } from 'vue'
-import { SelectProps } from './Select'
+import { SelectProps } from './select-props'
 import { useParent } from '@ryxon/use'
 import { get, isEqual, debounce as lodashDebounce } from 'lodash-unified'
 import { isNumber, isClient } from '@vueuse/core'

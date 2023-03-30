@@ -13,14 +13,14 @@
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  height: var(--r-select-height);
+  line-height: var(--r-select-height);
 
   // 清除select中使用input导致的变形
   > .r-tooltip__wrapper > .select-trigger > .r-cell {
     padding: 0;
 
     > .r-cell__value > .r-input__body--input {
-      height: var(--r-select-height);
+      line-height: var(--r-select-height);
     }
   }
 
@@ -320,7 +320,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    height: 28px;
+    height: 22px;
     background-color: transparent;
 
     &.is-small {

@@ -76,7 +76,7 @@ tree-select-pc/lazy
 | 属性 | 方法 | 事件 | 插槽 |
 | --- | --- | --- | --- |
 | [tree](/zh/component/tree.html#props) | [tree](/zh/component/tree.html#方法) | [tree](/zh/component/tree.html#events) | [tree](/zh/component/tree.html#slots) |
-| [select](/zh/component/select.html#select-属性) | [select](/zh/component/select.html#select-方法) | [select](/zh/component/select.html#select-事件) | [select](zh/component/select.html#select-插槽) |
+| [select](/zh/component/select.html#select-属性) | [select](/zh/component/select.html#select-方法) | [select](/zh/component/select.html#select-事件) | [select](/zh/component/select.html#select-插槽) |
 
 ### Props 特有
 
