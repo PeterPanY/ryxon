@@ -1,36 +1,45 @@
+<template>
+  <li
+    v-show="visible"
+    :class="[
+      bem('item'),
+      isBem('disabled', isDisabled.value),
+      {
+        selected: itemSelected,
+        hover
+      }
+    ]"
+    @mouseenter="hoverItem"
+    @click.stop="selectOptionClick"
+  >
+    <slot>
+      <span>{{ currentLabel }}</span>
+    </slot>
+  </li>
+</template>
+
+<script lang="ts">
 // @ts-nocheck
 import {
   toRefs,
-  reactive,
   nextTick,
+  reactive,
   onBeforeUnmount,
   defineComponent,
-  getCurrentInstance,
-  type ExtractPropTypes
+  getCurrentInstance
 } from 'vue'
-
 import { createNamespace } from '../utils'
 import { useOption } from './useOption'
+import { optionProps } from './option'
 import type { SelectOptionProxy } from './token'
-
-const [, bem, , isBem] = createNamespace('select-dropdown')
-
-// 传值
-export const optionProps = {
-  value: { required: true, type: [String, Number, Boolean, Object] },
-  label: [String, Number],
-  created: Boolean,
-  disabled: { type: Boolean, default: false }
-}
-
-// 传参数据类型
-export type OptionProps = ExtractPropTypes<typeof optionProps>
 
 export default defineComponent({
   name: 'ROption',
   componentName: 'ROption',
   props: optionProps,
-  setup(props, { slots }) {
+  setup(props) {
+    const [, bem, , isBem] = createNamespace('select-dropdown')
+
     const states = reactive({
       index: -1,
       groupDisabled: false,
@@ -42,11 +51,9 @@ export default defineComponent({
     const { currentLabel, itemSelected, isDisabled, select, hoverItem } =
       useOption(props, states)
 
-    const { visible } = toRefs(states)
+    const { visible, hover } = toRefs(states)
 
     const vm = getCurrentInstance()?.proxy
-    vm.currentLabel = currentLabel.value
-    vm.isDisabled = isDisabled.value
 
     select.onOptionCreate(vm as unknown as SelectOptionProxy)
 
@@ -66,29 +73,25 @@ export default defineComponent({
       select.onOptionDestroy(key, vm)
     })
 
-    // 选中或者取消选项
     function selectOptionClick() {
       if (props.disabled !== true && states.groupDisabled !== true) {
         select.handleOptionSelect(vm, true)
       }
     }
 
-    return () => (
-      <li
-        v-show={visible.value}
-        class={[
-          bem('item'),
-          isBem('disabled', isDisabled.value),
-          {
-            selected: itemSelected.value,
-            hover: select.optionsArray.indexOf(vm) === select.hoverIndex
-          }
-        ]}
-        onMouseenter={hoverItem}
-        onClick={selectOptionClick}
-      >
-        {slots.default ? slots.default() : <span>{currentLabel.value}</span>}
-      </li>
-    )
+    return {
+      bem,
+      isBem,
+      currentLabel,
+      itemSelected,
+      isDisabled,
+      select,
+      hoverItem,
+      visible,
+      hover,
+      selectOptionClick,
+      states
+    }
   }
 })
+</script>

@@ -79,13 +79,13 @@ select/remote-search
 
 :::
 
-<!-- ## 创建新的选项
+## 创建新的选项
 
 :::demo 通过使用 `allow-create` 属性，用户可以通过输入框创建新项目。 为了使 `allow-create` 正常工作， `filterable` 的值必须为 `true。` 本例还使用了 `default-first-option` 属性， 在该属性为 `true` 的情况下，按下回车就可以选中当前选项列表中的第一个选项，无需使用鼠标或键盘方向键进行定位。
 
 select/allow-create
 
-::: -->
+:::
 
 ## API
 
