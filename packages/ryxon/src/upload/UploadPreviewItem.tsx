@@ -79,7 +79,6 @@ export default defineComponent({
     const isDone = ref(true)
 
     const handleMouseenter = () => {
-      console.log('object')
       isDone.value = false
     }
     const handleMouseleave = () => {

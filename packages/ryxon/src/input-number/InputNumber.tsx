@@ -124,7 +124,6 @@ export default defineComponent({
       if (snum.charAt(length - 1) === '5') {
         snum = `${snum.slice(0, Math.max(0, length - 1))}6`
       }
-      console.log(pre)
       return Number.parseFloat(Number(snum).toFixed(+pre))
     }
 

@@ -134,6 +134,7 @@ export default defineComponent({
   setup(props, ctx) {
     const [, bem, , isBem] = createNamespace('tree')
 
+    const { broadcastExpanded } = useNodeExpandEventBroadcast(props)
     const tree = inject<RootTreeType>('RootTree')
     const expanded = ref(false)
     const childNodeRendered = ref(false)
@@ -205,8 +206,7 @@ export default defineComponent({
       getNodeKeyUtil(tree.props.nodeKey, node.data)
 
     const getNodeClass = (node: Node) => {
-      const nodeClassFunc = props.props.props.class
-
+      const nodeClassFunc = props.props.class
       if (!nodeClassFunc) {
         return {}
       }
@@ -235,9 +235,11 @@ export default defineComponent({
       }
     }
 
-    const handleCheckChange = (value) => {
-      props.node.setChecked(value, !tree.props.checkStrictly)
-
+    const handleCheckChange = (value, ev) => {
+      props.node.setChecked(
+        ev ? ev.target.checked : value,
+        !tree.props.checkStrictly
+      )
       nextTick(() => {
         const store = tree.store.value
         tree.ctx.emit('check', props.node.data, {
@@ -281,6 +283,15 @@ export default defineComponent({
       )
     }
 
+    const handleChildNodeExpand = (
+      nodeData: TreeNodeData,
+      node: Node,
+      instance: ComponentInternalInstance
+    ) => {
+      broadcastExpanded(node)
+      tree.ctx.emit('node-expand', nodeData, node, instance)
+    }
+
     const handleDragStart = (event: DragEvent) => {
       if (!tree.props.draggable) return
       dragEvents.treeNodeDragStart({ event, treeNode: props })
@@ -289,7 +300,6 @@ export default defineComponent({
     const handleDragOver = (event: DragEvent) => {
       event.preventDefault()
       if (!tree.props.draggable) return
-      console.log(node$.value)
       dragEvents.treeNodeDragOver({
         event,
         treeNode: { $el: node$.value, node: props.node }
@@ -305,16 +315,6 @@ export default defineComponent({
       event.preventDefault()
     }
 
-    const { broadcastExpanded } = useNodeExpandEventBroadcast(props)
-    const handleChildNodeExpand = (
-      nodeData: TreeNodeData,
-      node: Node,
-      instance: ComponentInternalInstance
-    ) => {
-      broadcastExpanded(node)
-      tree.ctx.emit('node-expand', nodeData, node, instance)
-    }
-
     return {
       bem,
       isBem,
@@ -326,16 +326,16 @@ export default defineComponent({
       oldIndeterminate,
       getNodeKey,
       getNodeClass,
+      handleSelectChange,
       handleClick,
       handleContextMenu,
+      handleExpandIconClick,
+      handleCheckChange,
+      handleChildNodeExpand,
       handleDragStart,
       handleDragOver,
-      handleDragEnd,
       handleDrop,
-      handleExpandIconClick,
-      handleChildNodeExpand,
-      handleCheckChange,
-      handleSelectChange,
+      handleDragEnd,
       CaretRight
     }
   }

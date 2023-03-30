@@ -347,6 +347,7 @@ export default defineComponent({
               transition: menuTransitionName.value,
               gpuAcceleration: false,
               lazyRender: false,
+              persistent: true,
               class: nsMenu('tooltip')
             },
             {

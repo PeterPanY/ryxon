@@ -7,7 +7,8 @@ import {
   nextTick,
   reactive,
   shallowRef,
-  triggerRef
+  triggerRef,
+  type ComponentPublicInstance
 } from 'vue'
 import { SelectProps } from './Select'
 import { useParent } from '@ryxon/use'
@@ -22,13 +23,13 @@ import {
   isFunction,
   scrollIntoView,
   createNamespace,
-  getComponentSize,
-  type ComponentInstance
+  getComponentSize
 } from '../utils'
+import { Tooltip } from '../tooltip'
 
 import type { QueryChangeCtx, SelectOptionProxy } from './token'
 
-const [, bem, t] = createNamespace('select')
+const [, bem, t, isBem] = createNamespace('select')
 
 export function useSelectStates(props: SelectProps) {
   return reactive({
@@ -49,7 +50,7 @@ export function useSelectStates(props: SelectProps) {
     previousQuery: null,
     inputHovering: false,
     cachedPlaceHolder: '',
-    currentPlaceholder: t('rSelect.placeholder'),
+    currentPlaceholder: t('placeholder'),
     menuVisibleOnFocus: false,
     isOnComposition: false,
     isSilentBlur: false,
@@ -62,11 +63,15 @@ export function useSelectStates(props: SelectProps) {
 type States = ReturnType<typeof useSelectStates>
 
 export const useSelect = (props: SelectProps, states: States, ctx: any) => {
-  const reference = ref<ComponentInstance>()
+  const reference = ref<ComponentPublicInstance<{
+    focus: () => void
+    blur: () => void
+    input: HTMLInputElement
+  }> | null>(null)
   const input = ref<HTMLInputElement | null>(null)
-  const tooltipRef = ref<ComponentInstance>()
+  const tooltipRef = ref<InstanceType<typeof Tooltip> | null>(null)
   const tags = ref<HTMLElement | null>(null)
-  const selectWrapper = ref<HTMLElement>()
+  const selectWrapper = ref<HTMLElement | null>(null)
   const scrollbar = ref<{ handleScroll: () => void } | null>(null)
   const hoverOption = ref(-1)
   const queryChange = shallowRef<QueryChangeCtx>({ query: '' })
@@ -106,9 +111,10 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
 
   // 右侧下三角是否旋转180°
   const iconReverse = computed(() =>
-    iconComponent.value && states.visible && props.suffixTransition
-      ? 'is-reverse'
-      : ''
+    isBem(
+      'reverse',
+      iconComponent.value && states.visible && props.suffixTransition
+    )
   )
 
   const debounce = computed(() => (props.remote ? 300 : 0))
@@ -116,9 +122,8 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
   // 无数据时候的文本
   const emptyText = computed(() => {
     if (props.loading) {
-      return props.loadingText || t('rSelect.loading')
+      return props.loadingText || t('loading')
     }
-
     if (props.remote && states.query === '' && states.options.size === 0)
       return false
     if (
@@ -127,10 +132,10 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
       states.options.size > 0 &&
       states.filteredOptionsCount === 0
     ) {
-      return props.noMatchText || t('rSelect.noMatch')
+      return props.noMatchText || t('noMatch')
     }
     if (states.options.size === 0) {
-      return props.noDataText || t('rSelect.noData')
+      return props.noDataText || t('noData')
     }
 
     return null
@@ -139,8 +144,8 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
   const optionsArray = computed(() => Array.from(states.options.values()))
 
   // 缓存选项数组
-  const cachedOptionsArray = computed(
-    () => Array.from(states.cachedOptions.values()) // 将类数组对象转换成一个真正的数组
+  const cachedOptionsArray = computed(() =>
+    Array.from(states.cachedOptions.values())
   )
 
   const showNewOption = computed(() => {
@@ -179,8 +184,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
       ) as HTMLInputElement
       const _tags = tags.value
 
-      // selectSize.value || form?.size
-      const sizeInMap = getComponentSize()
+      const sizeInMap = getComponentSize(selectSize.value)
       // it's an inner input so reduce it by 2px.
       input.style.height = `${
         (states.selected.length === 0
@@ -236,9 +240,9 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
 
   watch(
     () => props.placeholder,
-    (val: any) => {
-      states.currentPlaceholder = val
-      states.cachedPlaceHolder = val
+    (val) => {
+      // eslint-disable-next-line no-multi-assign
+      states.cachedPlaceHolder = states.currentPlaceholder = val
     }
   )
 
@@ -504,7 +508,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
   )
 
   watch(
-    // 修复`Array.protocol.push/splice/..`无法触发非深度观察程序
+    // fix `Array.prototype.push/splice/..` cannot trigger non-deep watcher
     // https://github.com/vuejs/vue-next/issues/2116
     () => states.options.entries(),
     () => {
@@ -652,7 +656,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     }
   }
 
-  const toggleMenu = (e?: Event) => {
+  const toggleMenu = (e?: PointerEvent) => {
     if (e && !states.mouseEnter) {
       return
     }
@@ -808,7 +812,7 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
   )
 
   // 键盘上下键选择选项操作
-  const navigateOptions = (direction: string) => {
+  const navigateOptions = (direction) => {
     if (!states.visible) {
       states.visible = true
       return
@@ -837,36 +841,6 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
         navigateOptions(direction)
       }
       nextTick(() => scrollToOption(hoverOption.value))
-    }
-  }
-
-  const handleKeydown = (event: KeyboardEvent) => {
-    switch (event.key) {
-      case ' ':
-        if (props.filterable) break
-        else {
-          event.preventDefault()
-        }
-      // eslint-disable-next-line no-fallthrough
-      case 'Enter':
-        event.preventDefault()
-        selectOption()
-        break
-      case 'ArrowUp':
-        event.preventDefault()
-        navigateOptions('prev')
-        break
-      case 'ArrowDown':
-        event.preventDefault()
-        navigateOptions('next')
-
-        break
-      case 'Escape':
-        handleKeydownEscape(event)
-        break
-      case 'Tab':
-        states.visible = false
-        break
     }
   }
 
@@ -926,7 +900,6 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     handleFocus,
     blur,
     handleBlur,
-    handleKeydown,
     handleClearClick,
     handleClose,
     handleKeydownEscape,

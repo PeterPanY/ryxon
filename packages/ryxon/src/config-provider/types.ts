@@ -77,4 +77,5 @@ export type ConfigProviderThemeVars =
     import('../tooltip').TooltipThemeVars &
     import('../tree').TreeThemeVars &
     import('../tree-select').TreeSelectThemeVars &
+    import('../tree-select-pc').TreeSelectPcThemeVars &
     import('../upload').UploadThemeVars

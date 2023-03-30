@@ -14,6 +14,7 @@
       :teleport="teleport"
       :popper-class="[bem('popper'), popperClass]"
       :lazy-render="false"
+      :persistent="true"
       :theme="theme"
       trigger="click"
       @show="handleMenuEnter"
@@ -275,7 +276,7 @@ import {
 import { Tooltip } from '../tooltip'
 import { Input } from '../input'
 import { Icon } from '../icon'
-import RSelectMenu from './SelectDropdown'
+import RSelectMenu from './SelectDropdown.vue'
 import { Scrollbar } from '../scrollbar'
 import { Option } from '../option'
 import { Tag } from '../tag'

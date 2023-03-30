@@ -12,6 +12,7 @@ export type { DragEvents as TreeDragEvents } from './model/useDragNode'
 export type {
   TreeKey,
   TreeData,
+  TreeNodeData,
   TreeFilterValue,
   TreeNodeDropType,
   TreeAllowDropType,

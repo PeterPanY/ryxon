@@ -499,7 +499,6 @@ export default defineComponent({
     const scrollPrev = () => {
       if (!navRef.value || (scrollableTool.value && scrollableTool.value.prev))
         return
-      console.log('object')
 
       const nav = navRef.value
       const containerSize = nav[`offset${capitalize(sizeName.value)}`]

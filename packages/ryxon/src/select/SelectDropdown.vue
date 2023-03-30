@@ -1,14 +1,24 @@
-import { ref, inject, computed, onMounted, defineComponent } from 'vue'
+<template>
+  <div
+    :class="[bem('dropdown'), isBem('multiple', isMultiple), popperClass]"
+    :style="{ [isFitInputWidth ? 'width' : 'minWidth']: minWidth }"
+  >
+    <slot />
+  </div>
+</template>
 
-import { createNamespace } from '../utils'
+<script lang="ts">
+import { ref, inject, computed, onMounted, defineComponent } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
+import { createNamespace } from '../utils'
 import { selectKey } from './token'
 
-const [, bem] = createNamespace('select-dropdown')
+const [, bem, , isBem] = createNamespace('select-dropdown')
 
 export default defineComponent({
   name: 'RSelectDropdown',
-  setup(_, { slots }) {
+  componentName: 'RSelectDropdown',
+  setup() {
     const select = inject(selectKey)!
 
     const popperClass = computed(() => select.props.popperClass)
@@ -27,19 +37,16 @@ export default defineComponent({
       useResizeObserver(select.selectWrapper, updateMinWidth)
     })
 
-    return () => (
-      <div
-        class={[
-          bem(),
-          isMultiple.value ? 'is-multiple' : '',
-          popperClass.value
-        ]}
-        style={{
-          [isFitInputWidth.value ? 'width' : 'minWidth']: minWidth.value
-        }}
-      >
-        {slots.default?.()}
-      </div>
-    )
+    return {
+      bem,
+      isBem,
+      minWidth,
+      popperClass,
+      isMultiple,
+      isFitInputWidth
+    }
   }
 })
+</script>
+
+<style scoped></style>

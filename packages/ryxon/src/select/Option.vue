@@ -3,7 +3,7 @@
     v-show="visible"
     :class="[
       bem('item'),
-      isBem('disabled', isDisabled.value),
+      isBem('disabled', isDisabled),
       {
         selected: itemSelected,
         hover
