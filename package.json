@@ -6,6 +6,7 @@
     "lint": "pnpm --dir ./packages/ryxon lint",
     "test": "pnpm --dir ./packages/ryxon test",
     "test:watch": "pnpm --dir ./packages/ryxon test:watch",
+    "test:update": "pnpm --dir ./packages/ryxon test:update",
     "docs:dev": "pnpm --dir ./packages/ryxon-docs docs:dev",
     "build": "pnpm --dir ./packages/ryxon build",
     "docs:build": "pnpm --dir ./packages/ryxon-docs docs:build"

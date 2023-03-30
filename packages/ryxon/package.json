@@ -20,6 +20,7 @@
     "build:site": "ryxon-cli build-site",
     "release": "cp ../../README.md ./ && ryxon-cli release && rm ./README.md",
     "release:site": "pnpm build:site && npx gh-pages -d site-dist --add",
+    "test:update": "ryxon-cli test --updateSnapshot",
     "test:watch": "ryxon-cli test --watch",
     "test:coverage": "open test/coverage/index.html"
   },

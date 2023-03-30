@@ -55,41 +55,10 @@ import 'dayjs/locale/zh-cn'
 
 目前支持的语言:
 
-| 语言                 | 文件名       | dayjs |
-| -------------------- | ------------ | ----- |
-| 保加利亚语           | bg-BG        | bg    |
-| 孟加拉语（孟加拉国） | bn-BD        | bn-bd |
-| 丹麦语               | da-DK        | da    |
-| 德语                 | de-DE        | de    |
-| 德语（正式）         | de-DE-formal | de-ch |
-| 希腊语               | el-GR        | el    |
-| 英语                 | en-US        | en    |
-| 世界语               | eo-EO        | eo    |
-| 西班牙语             | es-ES        | es    |
-| 波斯语               | fa-IR        | fa    |
-| 法语                 | fr-FR        | fr    |
-| 希伯来语             | he-IL        | he    |
-| 印地语               | hi-IN        | hi    |
-| 印度尼西亚语         | id-ID        | id    |
-| 冰岛语               | is-IS        | is    |
-| 意大利语             | it-IT        | it    |
-| 日语                 | ja-JP        | ja    |
-| 韩语/朝鲜语          | ko-KR        | ko    |
-| 老挝语               | la-LA        | lo    |
-| 蒙古语               | mm-MN        | mn    |
-| 挪威语               | nb-NO        | nb    |
-| 荷兰语               | nl-NL        | nl    |
-| 葡萄牙语（巴西）     | pt-BR        | pt-br |
-| 罗马尼亚语           | ro-RO        | ro    |
-| 俄罗斯语             | ru-RU        | ru    |
-| 瑞典语               | sv-SE        | sv    |
-| 土耳其语             | tr-TR        | tr    |
-| 泰语                 | th-TH        | th    |
-| 乌克兰语             | uk-UA        | uk    |
-| 越南语               | vi-VN        | vi    |
-| 简体中文             | zh-CN        | zh-cn |
-| 繁體中文（港）       | zh-HK        | zh-hk |
-| 繁體中文（台）       | zh-TW        | zh-tw |
+| 语言     | 文件名 | dayjs |
+| -------- | ------ | ----- |
+| 英语     | en-US  | en    |
+| 简体中文 | zh-CN  | zh-cn |
 
 ## 获取当前语言
 
