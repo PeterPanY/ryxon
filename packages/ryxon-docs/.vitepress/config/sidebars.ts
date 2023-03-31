@@ -68,4 +68,3 @@ function mapPrefix(item: Item, lang: string, prefix = '') {
 }
 
 export const sidebar = getSidebars()
-console.log(JSON.stringify(sidebar), 'sidebar')

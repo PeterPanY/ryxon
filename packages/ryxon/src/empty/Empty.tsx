@@ -1,21 +1,21 @@
-import { defineComponent, type PropType, type ExtractPropTypes } from 'vue';
-import { useId } from '../composables/use-id';
+import { defineComponent, type PropType, type ExtractPropTypes } from 'vue'
+import { useId } from '../composables/use-id'
 import {
   Numeric,
   getSizeStyle,
   makeStringProp,
-  createNamespace,
-} from '../utils';
+  createNamespace
+} from '../utils'
 
-const [name, bem] = createNamespace('empty');
+const [name, bem] = createNamespace('empty')
 
 export const emptyProps = {
   image: makeStringProp('default'),
   imageSize: [Number, String, Array] as PropType<Numeric | [Numeric, Numeric]>,
-  description: String,
-};
+  description: String
+}
 
-export type EmptyProps = ExtractPropTypes<typeof emptyProps>;
+export type EmptyProps = ExtractPropTypes<typeof emptyProps>
 
 export default defineComponent({
   name,
@@ -26,31 +26,31 @@ export default defineComponent({
     const renderDescription = () => {
       const description = slots.description
         ? slots.description()
-        : props.description;
+        : props.description
 
       if (description) {
-        return <p class={bem('description')}>{description}</p>;
+        return <p class={bem('description')}>{description}</p>
       }
-    };
+    }
 
     const renderBottom = () => {
       if (slots.default) {
-        return <div class={bem('bottom')}>{slots.default()}</div>;
+        return <div class={bem('bottom')}>{slots.default()}</div>
       }
-    };
+    }
 
-    const baseId = useId();
-    const getId = (num: number | string) => `${baseId}-${num}`;
-    const getUrlById = (num: number | string) => `url(#${getId(num)})`;
+    const baseId = useId()
+    const getId = (num: number | string) => `${baseId}-${num}`
+    const getUrlById = (num: number | string) => `url(#${getId(num)})`
 
     const renderStop = (color: string, offset: number, opacity?: number) => (
       <stop stop-color={color} offset={`${offset}%`} stop-opacity={opacity} />
-    );
+    )
 
     const renderStops = (fromColor: string, toColor: string) => [
       renderStop(fromColor, 0),
-      renderStop(toColor, 100),
-    ];
+      renderStop(toColor, 100)
+    ]
 
     const renderShadow = (id: string) => [
       <defs>
@@ -74,8 +74,8 @@ export default defineComponent({
         cy="140"
         rx="46"
         ry="8"
-      />,
-    ];
+      />
+    ]
 
     const renderBuilding = () => [
       <defs>
@@ -87,8 +87,8 @@ export default defineComponent({
       <g opacity=".8">
         <path d="M36 131V53H16v20H2v58h34z" fill={getUrlById('a')} />
         <path d="M123 15h22v14h9v77h-31V15z" fill={getUrlById('a')} />
-      </g>,
-    ];
+      </g>
+    ]
 
     const renderCloud = () => [
       <defs>
@@ -106,8 +106,8 @@ export default defineComponent({
           d="M19 23c2 0 3 1 4 3 2 0 4 2 4 4a4 4 0 0 1-4 3v1h-7v-1l-1 1c-2 0-3-2-3-4 0-1 1-3 3-3 0-2 2-4 4-4Z"
           fill={getUrlById('b')}
         />
-      </g>,
-    ];
+      </g>
+    ]
 
     const renderNetwork = () => (
       <svg viewBox="0 0 160 160">
@@ -162,7 +162,7 @@ export default defineComponent({
           </g>
         </g>
       </svg>
-    );
+    )
 
     const renderMaterial = () => (
       <svg viewBox="0 0 160 160">
@@ -202,7 +202,7 @@ export default defineComponent({
           <rect fill="#F7F8FA" x="29" y="72" width="30" height="6" rx="1" />
         </g>
       </svg>
-    );
+    )
 
     const renderError = () => (
       <svg viewBox="0 0 160 160">
@@ -219,7 +219,7 @@ export default defineComponent({
           fill={getUrlById(8)}
         />
       </svg>
-    );
+    )
 
     const renderSearch = () => (
       <svg viewBox="0 0 160 160">
@@ -275,22 +275,22 @@ export default defineComponent({
           />
         </g>
       </svg>
-    );
+    )
 
     const renderImage = () => {
       if (slots.image) {
-        return slots.image();
+        return slots.image()
       }
 
       const PRESET_IMAGES: Record<string, () => JSX.Element> = {
         error: renderError,
         search: renderSearch,
         network: renderNetwork,
-        default: renderMaterial,
-      };
+        default: renderMaterial
+      }
 
-      return PRESET_IMAGES[props.image]?.() || <img src={props.image} />;
-    };
+      return PRESET_IMAGES[props.image]?.() || <img src={props.image} />
+    }
 
     return () => (
       <div class={bem()}>
@@ -300,6 +300,6 @@ export default defineComponent({
         {renderDescription()}
         {renderBottom()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

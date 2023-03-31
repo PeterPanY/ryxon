@@ -14,7 +14,7 @@ defineProps({
     </code>
     <ClientOnly>
       <RTooltip v-if="details" theme="light" trigger="click">
-        <RButton text :icon="Warning" class="p-2 text-4" />
+        <RButton text :icon="Warning" class="typing-button p-2 text-4" />
         <template #content>
           <slot>
             <div class="m-1">
@@ -33,3 +33,15 @@ defineProps({
     </ClientOnly>
   </span>
 </template>
+
+<style lang="scss" scoped>
+.typing-button {
+  padding: 0px;
+  height: 24px;
+  margin-left: 2px;
+
+  :deep(.r-button__icon.r-icon) {
+    top: 0;
+  }
+}
+</style>
