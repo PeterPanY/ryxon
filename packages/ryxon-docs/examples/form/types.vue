@@ -48,6 +48,16 @@
         </r-select>
       </template>
     </r-input>
+    <r-input name="treeSelect" label="树形选择">
+      <template #input>
+        <r-tree-select-pc
+          v-model="treeSelect"
+          :data="data"
+          :render-after-expand="false"
+        />
+      </template>
+    </r-input>
+
     <r-input name="datePicker" label="时间选择">
       <template #input>
         <r-date-picker-pc
@@ -81,6 +91,53 @@ const options = [
   { value: 'value3', label: 'label3' },
   { value: 'value4', label: 'label4' },
   { value: 'value5', label: 'label5' }
+]
+
+const treeSelect = ref()
+const data = [
+  {
+    value: '1',
+    label: 'Level one 1',
+    children: [
+      {
+        value: '1-1',
+        label: 'Level two 1-1',
+        children: [{ value: '1-1-1', label: 'Level three 1-1-1' }]
+      }
+    ]
+  },
+  {
+    value: '2',
+    label: 'Level one 2',
+    children: [
+      {
+        value: '2-1',
+        label: 'Level two 2-1',
+        children: [{ value: '2-1-1', label: 'Level three 2-1-1' }]
+      },
+      {
+        value: '2-2',
+        label: 'Level two 2-2',
+        children: [{ value: '2-2-1', label: 'Level three 2-2-1' }]
+      }
+    ]
+  },
+  {
+    value: '3',
+    label: 'Level one 3',
+    children: [
+      {
+        value: '3-1',
+        label: 'Level two 3-1',
+        children: [{ value: '3-1-1', label: 'Level three 3-1-1' }]
+      },
+      {
+        value: '3-2',
+        label: 'Level two 3-2',
+        children: [{ value: '3-2-1', label: 'Level three 3-2-1' }]
+      }
+    ]
+  }
 ]
 
 const switchChecked = ref(false)

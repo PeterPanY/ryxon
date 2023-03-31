@@ -2,13 +2,14 @@
   "zh": {
     "directives": {
       "text": "自定义指令",
-      "children": [{ "text": "Lazyload 懒加载", "link": "/lazyload" }]
+      "children": [{ "link": "/lazyload", "text": "Lazyload 懒加载" }]
     },
     "intro": {
       "text": "组合式 API",
       "children": [
-        { "text": "介绍", "link": "/use-intro" },
-        { "text": "useCustomInputValue", "link": "/use-custom-input-value" }
+        { "link": "/use-intro", "text": "介绍" },
+        { "link": "/use-count-down", "text": "useCountDown" },
+        { "link": "/use-custom-input-value", "text": "useCustomInputValue" }
       ]
     }
   }

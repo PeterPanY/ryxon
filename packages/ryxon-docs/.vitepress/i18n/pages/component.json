@@ -37,6 +37,7 @@
       "text": "Data 数据展示",
       "children": [
         { "link": "/badge", "text": "Badge 徽章" },
+        { "link": "/count-down", "text": "CountDown 倒计时" },
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/swipe", "text": "Swipe 轮播" },
         { "link": "/sticky", "text": "Sticky 粘性布局" },

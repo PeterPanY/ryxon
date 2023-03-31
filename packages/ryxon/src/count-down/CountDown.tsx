@@ -1,28 +1,28 @@
-import { watch, computed, defineComponent, type ExtractPropTypes } from 'vue';
+import { watch, computed, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
 import {
   truthProp,
   makeStringProp,
   makeNumericProp,
-  createNamespace,
-} from '../utils';
-import { parseFormat } from './utils';
+  createNamespace
+} from '../utils'
+import { parseFormat } from './utils'
 
 // Composables
-import { useCountDown } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
+import { useCountDown } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
-const [name, bem] = createNamespace('count-down');
+const [name, bem] = createNamespace('count-down')
 
 export const countDownProps = {
   time: makeNumericProp(0),
   format: makeStringProp('HH:mm:ss'),
   autoStart: truthProp,
-  millisecond: Boolean,
-};
+  millisecond: Boolean
+}
 
-export type CountDownProps = ExtractPropTypes<typeof countDownProps>;
+export type CountDownProps = ExtractPropTypes<typeof countDownProps>
 
 export default defineComponent({
   name,
@@ -36,31 +36,31 @@ export default defineComponent({
       time: +props.time,
       millisecond: props.millisecond,
       onChange: (current) => emit('change', current),
-      onFinish: () => emit('finish'),
-    });
+      onFinish: () => emit('finish')
+    })
 
-    const timeText = computed(() => parseFormat(props.format, current.value));
+    const timeText = computed(() => parseFormat(props.format, current.value))
 
     const resetTime = () => {
-      reset(+props.time);
+      reset(+props.time)
 
       if (props.autoStart) {
-        start();
+        start()
       }
-    };
+    }
 
-    watch(() => props.time, resetTime, { immediate: true });
+    watch(() => props.time, resetTime, { immediate: true })
 
     useExpose({
       start,
       pause,
-      reset: resetTime,
-    });
+      reset: resetTime
+    })
 
     return () => (
       <div role="timer" class={bem()}>
         {slots.default ? slots.default(current.value) : timeText.value}
       </div>
-    );
-  },
-});
+    )
+  }
+})

@@ -5,6 +5,8 @@ lang: zh
 
 # useCustomInputValue
 
+用于自定义 Form 组件中的表单项。
+
 ## 基本用法
 
 如果需要自定义表单项，可以在 Input 组件的 `input` 插槽中插入你的自定义组件，并在自定义组件内部调用 `useCustomInputValue` 方法。
