@@ -5,6 +5,7 @@ export type ConfigProviderThemeVars =
     import('../action-sheet').ActionSheetThemeVars &
     import('../address-edit').AddressEditThemeVars &
     import('../address-list').AddressListThemeVars &
+    import('../avatar').AvatarThemeVars &
     import('../badge').BadgeThemeVars &
     import('../button').ButtonThemeVars &
     import('../calendar').CalendarThemeVars &

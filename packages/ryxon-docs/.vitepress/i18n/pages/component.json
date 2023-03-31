@@ -36,6 +36,7 @@
     "data": {
       "text": "Data 数据展示",
       "children": [
+        { "link": "/avatar", "text": "Avatar 头像" },
         { "link": "/badge", "text": "Badge 徽章" },
         { "link": "/count-down", "text": "CountDown 倒计时" },
         { "link": "/pagination", "text": "Pagination 分页" },
