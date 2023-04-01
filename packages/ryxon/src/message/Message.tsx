@@ -19,10 +19,7 @@ import {
   createNamespace
 } from '../utils'
 import { useEventListener, useResizeObserver, useTimeoutFn } from '@vueuse/core'
-import {
-  useGlobalZIndex,
-  setGlobalZIndex
-} from '../composables/use-global-z-index'
+import { useGlobalZIndex } from '../composables/use-global-z-index'
 import { getLastOffset } from './instance'
 import { messageTypes } from './types'
 import { EVENT_CODE } from '../constants/aria'
@@ -108,7 +105,6 @@ export default defineComponent({
     )
 
     const nextZIndex = useGlobalZIndex()
-    setGlobalZIndex(nextZIndex)
 
     // 文本样式
     const customStyle = computed<CSSProperties>(() => ({

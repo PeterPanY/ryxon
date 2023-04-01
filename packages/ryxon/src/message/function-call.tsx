@@ -189,42 +189,35 @@ message._context = null
 // 消息
 export const showMessage = message as Message
 
+function typeConstructor(options, appContext: AppContext | null, type) {
+  const normalized = normalizeOptions(options)
+  return message(extend({}, normalized, { type }), appContext)
+}
+
 // 成功消息
 export const showSuccessMessage = (
   // eslint-disable-next-line default-param-last
   options = {},
   appContext: AppContext | null
-) => {
-  const normalized = normalizeOptions(options)
-  return message(extend({}, normalized, { type: 'success' }), appContext)
-}
+) => typeConstructor(options, appContext, 'success')
 
 // 通知消息
 export const showInfoMessage = (
   // eslint-disable-next-line default-param-last
   options = {},
   appContext: AppContext | null
-) => {
-  const normalized = normalizeOptions(options)
-  return message(extend({}, normalized, { type: 'info' }), appContext)
-}
+) => typeConstructor(options, appContext, 'info')
 
 // 警告消息
 export const showWarningMessage = (
   // eslint-disable-next-line default-param-last
   options = {},
   appContext: AppContext | null
-) => {
-  const normalized = normalizeOptions(options)
-  return message(extend({}, normalized, { type: 'warning' }), appContext)
-}
+) => typeConstructor(options, appContext, 'warning')
 
 // 错误消息
 export const showDangerMessage = (
   // eslint-disable-next-line default-param-last
   options = {},
   appContext: AppContext | null
-) => {
-  const normalized = normalizeOptions(options)
-  return message(extend({}, normalized, { type: 'danger' }), appContext)
-}
+) => typeConstructor(options, appContext, 'danger')

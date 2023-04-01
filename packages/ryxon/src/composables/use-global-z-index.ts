@@ -7,7 +7,7 @@
  *   - Dialog
  *   - DropdownItem
  *   - ImagePreview
- *   - Notify
+ *   - Notification
  *   - Popup
  *   - Popover
  *   - ShareSheet

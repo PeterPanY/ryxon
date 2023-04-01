@@ -1,21 +1,25 @@
-import { withInstall } from '../utils';
-import _Notify from './Notify';
+import { withInstall } from '../utils'
+import _Notify from './Notify'
 
-export const Notify = withInstall(_Notify);
-export default Notify;
-export { notifyProps } from './Notify';
+export const Notify = withInstall(_Notify)
+export default Notify
+
+export { notifyProps } from './Notify'
+
+export type { NotifyProps } from './Notify'
+export type { NotifyThemeVars } from './types'
+
 export {
   showNotify,
-  closeNotify,
-  setNotifyDefaultOptions,
-  resetNotifyDefaultOptions,
-} from './function-call';
-
-export type { NotifyProps } from './Notify';
-export type { NotifyType, NotifyOptions, NotifyThemeVars } from './types';
+  showSuccessNotify,
+  showInfoNotify,
+  showWarningNotify,
+  showDangerNotify,
+  closeNotifyAll
+} from './function-call'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RNotify: typeof Notify;
+    RNotify: typeof Notify
   }
 }
