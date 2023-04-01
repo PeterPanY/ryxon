@@ -1,17 +1,27 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
-import { truthProp, makeStringProp, createNamespace } from '../utils';
+import {
+  computed,
+  defineComponent,
+  type CSSProperties,
+  type ExtractPropTypes
+} from 'vue'
+import { cssVarBlock, makeStringProp, createNamespace } from '../utils'
 
-const [name, bem] = createNamespace('divider');
+const [name, bem] = createNamespace('divider')
 
-export type DividerContentPosition = 'left' | 'center' | 'right';
+export type DividerContentPosition = 'left' | 'center' | 'right'
 
 export const dividerProps = {
-  dashed: Boolean,
-  hairline: truthProp,
-  contentPosition: makeStringProp<DividerContentPosition>('center'),
-};
+  borderStyle: String,
+  hairline: Boolean,
+  direction: {
+    type: String,
+    values: ['horizontal', 'vertical'],
+    default: 'horizontal'
+  },
+  contentPosition: makeStringProp<DividerContentPosition>('center')
+}
 
-export type DividerProps = ExtractPropTypes<typeof dividerProps>;
+export type DividerProps = ExtractPropTypes<typeof dividerProps>
 
 export default defineComponent({
   name,
@@ -19,17 +29,27 @@ export default defineComponent({
   props: dividerProps,
 
   setup(props, { slots }) {
+    const dividerStyle = computed(
+      () =>
+        cssVarBlock('divider', {
+          'border-style': props.borderStyle || ''
+        }) as CSSProperties
+    )
+
     return () => (
       <div
         role="separator"
-        class={bem({
-          dashed: props.dashed,
-          hairline: props.hairline,
-          [`content-${props.contentPosition}`]: !!slots.default,
-        })}
+        class={[
+          bem({
+            hairline: props.hairline,
+            [`content-${props.contentPosition}`]: !!slots.default
+          }),
+          bem(props.direction)
+        ]}
+        style={dividerStyle.value}
       >
-        {slots.default?.()}
+        {slots.default && props.direction !== 'vertical' && slots.default()}
       </div>
-    );
-  },
-});
+    )
+  }
+})

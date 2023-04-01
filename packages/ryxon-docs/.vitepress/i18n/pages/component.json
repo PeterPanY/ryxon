@@ -37,6 +37,7 @@
         { "link": "/avatar", "text": "Avatar 头像" },
         { "link": "/badge", "text": "Badge 徽章" },
         { "link": "/count-down", "text": "CountDown 倒计时" },
+        { "link": "/divider", "text": "Divider 分割线" },
         { "link": "/empty", "text": "Empty 空状态" },
         { "link": "/image", "text": "Image 图片" },
         { "link": "/image-preview", "text": "ImagePreview 图片预览" },

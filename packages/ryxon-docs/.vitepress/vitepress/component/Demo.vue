@@ -8,7 +8,7 @@
         <component :is="formatPathDemos[path]" v-if="formatPathDemos[path]" />
       </div>
 
-      <div class="r-divider"></div>
+      <div class="example-divider"></div>
 
       <div class="op-btns">
         <span class="op-btn" @click="toggleSourceVisible()">查看源代码</span>
@@ -123,7 +123,7 @@ function toggleSourceVisible() {
   }
 }
 
-.r-divider {
+.example-divider {
   display: block;
   height: 1px;
   width: 100%;
