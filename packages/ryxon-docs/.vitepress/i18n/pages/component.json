@@ -57,6 +57,7 @@
         { "link": "/action-bar", "text": "ActionBar 动作栏" },
         { "link": "/back-top", "text": "BackTop 回到顶部" },
         { "link": "/breadcrumb", "text": "Breadcrumb 面包屑" },
+        { "link": "/dropdown", "text": "Dropdown 下拉菜单" },
         { "link": "/menu", "text": "Menu 菜单" },
         { "link": "/tabs", "text": "Tabs 标签页" }
       ]

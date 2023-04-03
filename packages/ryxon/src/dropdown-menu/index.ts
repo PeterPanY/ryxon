@@ -1,14 +1,14 @@
-import { withInstall } from '../utils';
-import _DropdownMenu, { DropdownMenuProps } from './DropdownMenu';
+import { withInstall } from '../utils'
+import _DropdownMenu from './DropdownMenu'
 
-export const DropdownMenu = withInstall(_DropdownMenu);
-export default DropdownMenu;
-export { dropdownMenuProps } from './DropdownMenu';
-export type { DropdownMenuProps };
-export type { DropdownMenuDirection, DropdownMenuThemeVars } from './types';
+export const DropdownMenu = withInstall(_DropdownMenu)
+export default DropdownMenu
+
+export { dropdownMenuProps } from './DropdownMenu'
+export type { DropdownMenuProps } from './DropdownMenu'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RDropdownMenu: typeof DropdownMenu;
+    RDropdownMenu: typeof DropdownMenu
   }
 }

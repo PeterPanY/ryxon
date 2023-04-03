@@ -370,6 +370,7 @@ export default defineComponent({
       isFocusInsideContent,
       updatePopper, //  更新组件实例
       onOpen,
+      onToggle,
       onClose,
       hide
     })

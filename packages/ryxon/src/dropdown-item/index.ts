@@ -1,18 +1,14 @@
-import { withInstall } from '../utils';
-import _DropdownItem, { DropdownItemProps } from './DropdownItem';
+import { withInstall } from '../utils'
+import _DropdownItem from './DropdownItem'
 
-export const DropdownItem = withInstall(_DropdownItem);
-export default DropdownItem;
-export { dropdownItemProps } from './DropdownItem';
-export type { DropdownItemProps };
-export type {
-  DropdownItemOption,
-  DropdownItemInstance,
-  DropdownItemThemeVars,
-} from './types';
+export const DropdownItem = withInstall(_DropdownItem)
+export default DropdownItem
+
+export { dropdownItemProps } from './props'
+export type { DropdownItemProps } from './props'
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RDropdownItem: typeof DropdownItem;
+    RDropdownItem: typeof DropdownItem
   }
 }

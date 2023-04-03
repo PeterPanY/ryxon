@@ -1,53 +1,38 @@
+// @ts-nocheck
 import {
-  ref,
+  inject,
+  unref,
   computed,
   defineComponent,
-  type InjectionKey,
-  type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
-
-// Utils
 import {
-  isDef,
-  truthProp,
-  numericProp,
-  windowHeight,
-  makeStringProp,
-  makeNumericProp,
+  composeRefs,
+  definePropType,
   createNamespace,
-  HAPTICS_FEEDBACK,
-  type ComponentInstance
+  composeEventHandlers
 } from '../utils'
-
-// Composables
-import { useId } from '../composables/use-id'
+import { useDropdown } from '../dropdown/use-dropdown'
+import { EVENT_CODE } from '../constants'
 import {
-  useRect,
-  useChildren,
-  useClickAway,
-  useScrollParent,
-  useEventListener
-} from '@ryxon/use'
-
-// Types
-import type { DropdownMenuProvide, DropdownMenuDirection } from './types'
+  LAST_KEYS,
+  FIRST_LAST_KEYS,
+  DROPDOWN_INJECTION_KEY,
+  DROPDOWN_COLLECTION_INJECTION_KEY
+} from '../dropdown/types'
+import {
+  ROVING_FOCUS_COLLECTION_INJECTION_KEY,
+  ROVING_FOCUS_GROUP_INJECTION_KEY,
+  focusFirst
+} from '../roving-focus-group'
 
 const [name, bem] = createNamespace('dropdown-menu')
 
 export const dropdownMenuProps = {
-  overlay: truthProp,
-  zIndex: numericProp,
-  duration: makeNumericProp(0.2),
-  direction: makeStringProp<DropdownMenuDirection>('down'),
-  activeColor: String,
-  closeOnClickOutside: truthProp,
-  closeOnClickOverlay: truthProp
+  onKeydown: { type: definePropType<(e: KeyboardEvent) => void>(Function) }
 }
 
 export type DropdownMenuProps = ExtractPropTypes<typeof dropdownMenuProps>
-
-export const DROPDOWN_KEY: InjectionKey<DropdownMenuProvide> = Symbol(name)
 
 export default defineComponent({
   name,
@@ -55,111 +40,96 @@ export default defineComponent({
   props: dropdownMenuProps,
 
   setup(props, { slots }) {
-    const id = useId()
-    const root = ref<HTMLElement>()
-    const barRef = ref<HTMLElement>()
-    const offset = ref(0)
+    const { _rDropdownSize } = useDropdown()
+    const size = _rDropdownSize.value
 
-    const { children, linkChildren } = useChildren(DROPDOWN_KEY)
-    const scrollParent = useScrollParent(root)
+    const { contentRef, role, triggerId } = inject(
+      DROPDOWN_INJECTION_KEY,
+      undefined
+    )!
 
-    const opened = computed(() =>
-      children.some((item) => item.state.showWrapper)
+    const { collectionRef: dropdownCollectionRef, getItems } = inject(
+      DROPDOWN_COLLECTION_INJECTION_KEY,
+      undefined
+    )!
+
+    const {
+      rovingFocusGroupRef,
+      rovingFocusGroupRootStyle,
+      tabIndex,
+      onBlur,
+      onFocus,
+      onMousedown
+    } = inject(ROVING_FOCUS_GROUP_INJECTION_KEY, undefined)!
+
+    const { collectionRef: rovingFocusGroupCollectionRef } = inject(
+      ROVING_FOCUS_COLLECTION_INJECTION_KEY,
+      undefined
+    )!
+
+    const dropdownListWrapperRef = composeRefs(
+      contentRef,
+      dropdownCollectionRef,
+      //   focusTrapRef,
+      rovingFocusGroupRef,
+      rovingFocusGroupCollectionRef
     )
 
-    const barStyle = computed<CSSProperties | undefined>(() => {
-      if (opened.value && isDef(props.zIndex)) {
-        return {
-          zIndex: +props.zIndex + 1
+    const dropdownKls = computed(() => [bem(), bem(`${size?.value}`)])
+
+    const composedKeydown = composeEventHandlers(
+      (e: KeyboardEvent) => {
+        props.onKeydown?.(e)
+      },
+      (e) => {
+        const { currentTarget, code, target } = e
+        const isKeydownContained = (currentTarget as Node).contains(
+          target as Node
+        )
+
+        if (isKeydownContained) {
+          // TODO: implement typeahead search
         }
-      }
-    })
 
-    const onClickAway = () => {
-      if (props.closeOnClickOutside) {
-        children.forEach((item) => {
-          item.toggle(false)
-        })
-      }
-    }
-
-    const updateOffset = () => {
-      if (barRef.value) {
-        const rect = useRect(barRef)
-        if (props.direction === 'down') {
-          offset.value = rect.bottom
-        } else {
-          offset.value = windowHeight.value - rect.top
+        if (EVENT_CODE.tab === code) {
+          e.stopImmediatePropagation()
         }
-      }
-    }
 
-    const onScroll = () => {
-      if (opened.value) {
-        updateOffset()
-      }
-    }
+        e.preventDefault()
 
-    const toggleItem = (active: number) => {
-      children.forEach((item, index) => {
-        if (index === active) {
-          item.toggle()
-        } else if (item.state.showPopup) {
-          item.toggle(false, { immediate: true })
+        if (target !== unref(contentRef)) return
+        if (!FIRST_LAST_KEYS.includes(code)) return
+        const items = getItems<{ disabled: boolean }>().filter(
+          (item) => !item.disabled
+        )
+        const targets = items.map((item) => item.ref!)
+        if (LAST_KEYS.includes(code)) {
+          targets.reverse()
         }
-      })
+        focusFirst(targets)
+      }
+    )
+
+    const handleKeydown = (e: KeyboardEvent) => {
+      composedKeydown(e)
+      // onKeydown(e)
     }
-
-    const renderTitle = (item: ComponentInstance, index: number) => {
-      const { showPopup } = item.state
-      const { disabled, titleClass } = item
-
-      return (
-        <div
-          id={`${id}-${index}`}
-          role="button"
-          tabindex={disabled ? undefined : 0}
-          class={[bem('item', { disabled }), { [HAPTICS_FEEDBACK]: !disabled }]}
-          onClick={() => {
-            if (!disabled) {
-              toggleItem(index)
-            }
-          }}
-        >
-          <span
-            class={[
-              bem('title', {
-                down: showPopup === (props.direction === 'down'),
-                active: showPopup
-              }),
-              titleClass
-            ]}
-            style={{ color: showPopup ? props.activeColor : '' }}
-          >
-            <div class="r-ellipsis">{item.renderTitle()}</div>
-          </span>
-        </div>
-      )
-    }
-
-    linkChildren({ id, props, offset, updateOffset })
-    useClickAway(root, onClickAway)
-    useEventListener('scroll', onScroll, {
-      target: scrollParent,
-      passive: true
-    })
 
     return () => (
-      <div ref={root} class={bem()}>
-        <div
-          ref={barRef}
-          style={barStyle.value}
-          class={bem('bar', { opened: opened.value })}
-        >
-          {children.map(renderTitle)}
-        </div>
+      <ul
+        ref={dropdownListWrapperRef}
+        class={dropdownKls.value}
+        style={rovingFocusGroupRootStyle.value}
+        tabindex={tabIndex.value}
+        role={role.value}
+        aria-labelledby={triggerId.value}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onKeydown={handleKeydown}
+        onMousedown={onMousedown}
+      >
         {slots.default?.()}
-      </div>
+      </ul>
     )
   }
 })

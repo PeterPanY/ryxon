@@ -26,8 +26,7 @@ export type ConfigProviderThemeVars =
     import('../date-picker-pc').DatePickerPcVars &
     import('../dialog').DialogThemeVars &
     import('../divider').DividerThemeVars &
-    import('../dropdown-item').DropdownItemThemeVars &
-    import('../dropdown-menu').DropdownMenuThemeVars &
+    import('../dropdown').DropdownThemeVars &
     import('../empty').EmptyThemeVars &
     import('../grid-item').GridItemThemeVars &
     import('../image').ImageThemeVars &
