@@ -74,7 +74,8 @@ export const dialogProps = extend({}, popupSharedProps, {
   cancelButtonColor: String,
   cancelButtonDisabled: Boolean,
   closeOnClickOverlay: Boolean,
-  showClose: truthProp
+  showClose: truthProp,
+  showFooter: truthProp
 })
 
 export type DialogProps = ExtractPropTypes<typeof dialogProps>
@@ -348,7 +349,7 @@ export default defineComponent({
           <div class={bem('body')} style={{ width: addUnit(width) }}>
             {renderTitle()}
             {renderContent()}
-            {renderFooter()}
+            {props.showFooter && renderFooter()}
           </div>
         </Popup>
       )

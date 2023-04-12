@@ -125,6 +125,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | cancelButtonDisabled | 是否禁用取消按钮 | `boolean` | `false` |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
 | showClose | 是否显示右上角关闭按钮 | `boolean` | `true` |
+| showFooter | 是否显示底部按钮 | `boolean` | `true` |
 | callback | 关闭后的回调 | `function` | - |
 | overlay | 是否展示遮罩层 | `boolean` | `true` |
 | overlayClass | 自定义遮罩层类名 | `string \| Array \| object` | - |
@@ -161,6 +162,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | cancel-button-disabled | 是否禁用取消按钮 | `boolean` | `false` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭弹窗 | `boolean` | `false` |
 | show-close | 是否显示右上角关闭按钮 | `boolean` | `true` |
+| show-footer | 是否显示底部按钮 | `boolean` | `true` |
 | callback | 关闭后的回调 | `function` | - |
 | z-index | 将弹窗的 z-index 层级设置为一个固定值 | `number \| string` | `2000+` |
 | overlay | 是否展示遮罩层 | `boolean` | `true` |
