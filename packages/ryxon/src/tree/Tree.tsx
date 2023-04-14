@@ -302,6 +302,7 @@ export default defineComponent({
     }
 
     useExpose({
+      store,
       filter,
       updateKeyChildren,
       getCheckedNodes,
