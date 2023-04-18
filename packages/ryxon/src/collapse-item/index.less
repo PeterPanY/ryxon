@@ -2,8 +2,7 @@
 
 :root {
   --r-collapse-item-duration: var(--r-duration-base);
-  --r-collapse-item-content-padding: var(--r-padding-sm)
-    var(--r-padding-md);
+  --r-collapse-item-content-padding: var(--r-padding-sm) var(--r-padding-md);
   --r-collapse-item-content-font-size: var(--r-font-size-md);
   --r-collapse-item-content-line-height: 1.5;
   --r-collapse-item-content-text-color: var(--r-text-color-2);
@@ -21,10 +20,9 @@
   }
 
   &__title {
-    .r-cell__right-icon::before {
-      // using translateZ to fix safari rendering issues
-      // see: https://github.com/PeterPanY/ryxon/issues/8608
-      transform: rotate(90deg) translateZ(0);
+    .r-cell__right-icon {
+      // 使用translateZ修复safari渲染问题
+      transform: rotate(0deg) translateZ(0);
       transition: transform var(--r-collapse-item-duration);
     }
 
@@ -34,8 +32,8 @@
     }
 
     &--expanded {
-      .r-cell__right-icon::before {
-        transform: rotate(-90deg);
+      .r-cell__right-icon {
+        transform: rotate(90deg);
       }
 
       &::after {

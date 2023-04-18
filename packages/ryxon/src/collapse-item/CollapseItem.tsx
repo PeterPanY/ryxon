@@ -4,41 +4,35 @@ import {
   computed,
   nextTick,
   defineComponent,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
-import { cellSharedProps } from '../cell/Cell';
-import {
-  pick,
-  extend,
-  truthProp,
-  numericProp,
-  createNamespace,
-} from '../utils';
-import { COLLAPSE_KEY } from '../collapse/Collapse';
+import { cellSharedProps } from '../cell/Cell'
+import { pick, extend, truthProp, numericProp, createNamespace } from '../utils'
+import { COLLAPSE_KEY } from '../collapse/Collapse'
 
 // Composables
-import { raf, doubleRaf, useParent } from '@ryxon/use';
-import { useExpose } from '../composables/use-expose';
-import { useLazyRender } from '../composables/use-lazy-render';
+import { raf, doubleRaf, useParent } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
+import { useLazyRender } from '../composables/use-lazy-render'
 
 // Components
-import { Cell } from '../cell';
+import { Cell } from '../cell'
 
-const [name, bem] = createNamespace('collapse-item');
+const [name, bem] = createNamespace('collapse-item')
 
-const CELL_SLOTS = ['icon', 'title', 'value', 'label', 'right-icon'] as const;
+const CELL_SLOTS = ['icon', 'title', 'value', 'label', 'right-icon'] as const
 
 export const collapseItemProps = extend({}, cellSharedProps, {
   name: numericProp,
   isLink: truthProp,
   disabled: Boolean,
   readonly: Boolean,
-  lazyRender: truthProp,
-});
+  lazyRender: truthProp
+})
 
-export type CollapseItemProps = ExtractPropTypes<typeof collapseItemProps>;
+export type CollapseItemProps = ExtractPropTypes<typeof collapseItemProps>
 
 export default defineComponent({
   name,
@@ -46,90 +40,90 @@ export default defineComponent({
   props: collapseItemProps,
 
   setup(props, { slots }) {
-    const wrapperRef = ref<HTMLElement>();
-    const contentRef = ref<HTMLElement>();
-    const { parent, index } = useParent(COLLAPSE_KEY);
+    const wrapperRef = ref<HTMLElement>()
+    const contentRef = ref<HTMLElement>()
+    const { parent, index } = useParent(COLLAPSE_KEY)
 
     if (!parent) {
       if (process.env.NODE_ENV !== 'production') {
         console.error(
           '[Ryxon] <CollapseItem> must be a child component of <Collapse>.'
-        );
+        )
       }
-      return;
+      return
     }
 
-    const name = computed(() => props.name ?? index.value);
-    const expanded = computed(() => parent.isExpanded(name.value));
+    const name = computed(() => props.name ?? index.value)
+    const expanded = computed(() => parent.isExpanded(name.value))
 
-    const show = ref(expanded.value);
-    const lazyRender = useLazyRender(() => show.value || !props.lazyRender);
+    const show = ref(expanded.value)
+    const lazyRender = useLazyRender(() => show.value || !props.lazyRender)
 
     const onTransitionEnd = () => {
       if (!expanded.value) {
-        show.value = false;
+        show.value = false
       } else if (wrapperRef.value) {
-        wrapperRef.value.style.height = '';
+        wrapperRef.value.style.height = ''
       }
-    };
+    }
 
     watch(expanded, (value, oldValue) => {
       if (oldValue === null) {
-        return;
+        return
       }
 
       if (value) {
-        show.value = true;
+        show.value = true
       }
 
       // Use raf: flick when opened in safari
       // Use nextTick: closing animation failed when set `user-select: none`
-      const tick = value ? nextTick : raf;
+      const tick = value ? nextTick : raf
 
       tick(() => {
         if (!contentRef.value || !wrapperRef.value) {
-          return;
+          return
         }
 
-        const { offsetHeight } = contentRef.value;
+        const { offsetHeight } = contentRef.value
         if (offsetHeight) {
-          const contentHeight = `${offsetHeight}px`;
-          wrapperRef.value.style.height = value ? '0' : contentHeight;
+          const contentHeight = `${offsetHeight}px`
+          wrapperRef.value.style.height = value ? '0' : contentHeight
 
           // use double raf to ensure animation can start
           doubleRaf(() => {
             if (wrapperRef.value) {
-              wrapperRef.value.style.height = value ? contentHeight : '0';
+              wrapperRef.value.style.height = value ? contentHeight : '0'
             }
-          });
+          })
         } else {
-          onTransitionEnd();
+          onTransitionEnd()
         }
-      });
-    });
+      })
+    })
 
     const toggle = (newValue = !expanded.value) => {
-      parent.toggle(name.value, newValue);
-    };
+      parent.toggle(name.value, newValue)
+    }
 
     const onClickTitle = () => {
       if (!props.disabled && !props.readonly) {
-        toggle();
+        toggle()
       }
-    };
+    }
 
     const renderTitle = () => {
-      const { border, disabled, readonly } = props;
+      const { border, disabled, readonly } = props
       const attrs = pick(
         props,
         Object.keys(cellSharedProps) as Array<keyof typeof cellSharedProps>
-      );
+      )
 
       if (readonly) {
-        attrs.isLink = false;
+        attrs.isLink = false
       }
       if (disabled || readonly) {
-        attrs.clickable = false;
+        attrs.clickable = false
       }
 
       return (
@@ -139,14 +133,14 @@ export default defineComponent({
           class={bem('title', {
             disabled,
             expanded: expanded.value,
-            borderless: !border,
+            borderless: !border
           })}
           aria-expanded={String(expanded.value)}
           onClick={onClickTitle}
           {...attrs}
         />
-      );
-    };
+      )
+    }
 
     const renderContent = lazyRender(() => (
       <div
@@ -159,15 +153,15 @@ export default defineComponent({
           {slots.default?.()}
         </div>
       </div>
-    ));
+    ))
 
-    useExpose({ toggle, expanded, itemName: name });
+    useExpose({ toggle, expanded, itemName: name })
 
     return () => (
       <div class={[bem({ border: index.value && props.border })]}>
         {renderTitle()}
         {renderContent()}
       </div>
-    );
-  },
-});
+    )
+  }
+})
