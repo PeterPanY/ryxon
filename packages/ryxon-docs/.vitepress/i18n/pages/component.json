@@ -36,6 +36,7 @@
       "children": [
         { "link": "/avatar", "text": "Avatar 头像" },
         { "link": "/badge", "text": "Badge 徽章" },
+        { "link": "/card", "text": "Card 卡片" },
         { "link": "/collapse", "text": "Collapse 折叠面板" },
         { "link": "/count-down", "text": "CountDown 倒计时" },
         { "link": "/divider", "text": "Divider 分割线" },
