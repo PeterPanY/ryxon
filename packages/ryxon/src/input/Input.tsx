@@ -70,7 +70,7 @@ import type {
   InputFormSharedProps
 } from './types'
 
-const [, bem] = createNamespace('input')
+const [, bem, , isBem] = createNamespace('input')
 
 // provide to Search component to inherit
 export const inputSharedProps = {
@@ -598,14 +598,18 @@ export default defineComponent({
       }
     }
 
+    const isError = ref(false)
+
     const renderMessage = () => {
       if (form && form.props.showErrorMessage === false) {
+        isError.value = false
         return
       }
 
       const message = props.errorMessage || state.validateMessage
 
       if (message) {
+        isError.value = true
         const slot = slots['error-message']
         const errorMessageAlign = getProp('errorMessageAlign')
         return (
@@ -614,6 +618,7 @@ export default defineComponent({
           </div>
         )
       }
+      isError.value = false
     }
 
     const renderLabel = () => {
@@ -727,11 +732,14 @@ export default defineComponent({
             extra: slots.extra
           }}
           size={props.size}
-          class={bem({
-            error: showError.value,
-            disabled,
-            [`label-${labelAlign}`]: labelAlign
-          })}
+          class={[
+            bem({
+              error: showError.value,
+              disabled,
+              [`label-${labelAlign}`]: labelAlign
+            }),
+            isBem('error', isError.value)
+          ]}
           center={props.center}
           border={props.border}
           isLink={props.isLink}
