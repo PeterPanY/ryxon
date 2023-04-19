@@ -94,10 +94,6 @@
 
 - update share icon
 
-## 1.2.0
-
-- fix medal、medal-o typo
-
 ## 1.1.14
 
 - add down、wap-home-o icon
