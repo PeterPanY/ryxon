@@ -106,6 +106,11 @@ export default {
     noData: '无数据',
     placeholder: '请选择'
   },
+  rSlider: {
+    defaultLabel: (min: number, max: number) => `滑杆介于 ${min} 至 ${max}`,
+    defaultRangeStartLabel: '选择起始值',
+    defaultRangeEndLabel: '选择结束值'
+  },
   rSubmitBar: {
     label: '合计:'
   },

@@ -87,6 +87,7 @@ export function unitToPx(value: Numeric): number {
 
 const camelizeRE = /-(\w)/g
 
+// 连字符转小驼峰
 export const camelize = (str: string): string =>
   str.replace(camelizeRE, (_, c) => c.toUpperCase())
 

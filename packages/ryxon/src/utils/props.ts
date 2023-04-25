@@ -2,6 +2,7 @@
  * prop type 助手
  * 帮助我们编写更少的代码并减少捆绑包的大小
  */
+import { componentSizes } from './vue/size'
 import type { PropType } from 'vue'
 
 export const unknownProp = null as unknown as PropType<unknown>
@@ -37,3 +38,9 @@ export const makeStringProp = <T>(defaultVal: T) => ({
   type: String as unknown as PropType<T>,
   default: defaultVal
 })
+
+export const useSizeProp = {
+  type: String,
+  values: componentSizes,
+  required: false
+}

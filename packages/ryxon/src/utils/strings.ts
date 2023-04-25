@@ -14,6 +14,7 @@ export const toCapitalize = cacheStringFunction(
 
 const hyphenateRE = /\B([A-Z])/g
 
+// 小驼峰转连字符
 export const hyphenate = cacheStringFunction((str: string) =>
   str.replace(hyphenateRE, '-$1').toLowerCase()
 )

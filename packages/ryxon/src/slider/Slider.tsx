@@ -1,52 +1,79 @@
+// @ts-nocheck
 import {
-  ref,
+  toRefs,
+  provide,
+  reactive,
   computed,
   defineComponent,
   type PropType,
-  type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
 
 // Utils
 import {
-  clamp,
-  addUnit,
-  addNumber,
-  numericProp,
-  isSameValue,
-  getSizeStyle,
-  preventDefault,
-  stopPropagation,
+  makeStringProp,
+  definePropType,
   createNamespace,
   makeNumericProp
 } from '../utils'
+import { sliderEmits, sliderContextKey } from './types'
+import SliderButton from './button.vue'
+import SliderMarker from './marker'
+import { TooltipPlacement } from '../tooltip'
+import { InputNumber } from '../input-number'
 
 // Composables
-import { useRect, useCustomInputValue, useEventListener } from '@ryxon/use'
-import { useTouch } from '../composables/use-touch'
+import { useExpose } from '../composables/use-expose'
+import {
+  useLifecycle,
+  useSlide,
+  useStops,
+  useMarks,
+  useWatch
+} from './composables'
+import { useCustomInputValue } from '@ryxon/use'
+import type { SliderInitData } from './types'
+import type { SliderMarkerProps } from './marker'
 
-const [name, bem] = createNamespace('slider')
+const [name, bem, t, isBem] = createNamespace('slider')
 
 type NumberRange = [number, number]
 
 type SliderValue = number | NumberRange
 
+type SliderMarks = Record<number, string | SliderMarkerProps['mark']>
+
 export const sliderProps = {
-  min: makeNumericProp(0),
-  max: makeNumericProp(100),
-  step: makeNumericProp(1),
-  range: Boolean,
-  reverse: Boolean,
-  disabled: Boolean,
-  readonly: Boolean,
-  vertical: Boolean,
-  barHeight: numericProp,
-  buttonSize: numericProp,
-  activeColor: String,
-  inactiveColor: String,
   modelValue: {
     type: [Number, Array] as PropType<SliderValue>,
     default: 0
+  },
+  min: { type: Number, default: 0 },
+  max: { type: Number, default: 100 },
+  step: { type: Number, default: 1 },
+  showStops: Boolean,
+  showTooltip: { type: Boolean, default: true },
+  showInput: Boolean,
+  inputButtonSize: makeNumericProp(32),
+  formatTooltip: {
+    type: definePropType<(val: number) => number | string>(Function),
+    default: undefined
+  },
+  disabled: Boolean,
+  range: Boolean,
+  vertical: Boolean,
+  height: String,
+  label: { type: String, default: undefined },
+  rangeStartLabel: { type: String, default: undefined },
+  rangeEndLabel: { type: String, default: undefined },
+  formatValueText: {
+    type: definePropType<(val: number) => string>(Function),
+    default: undefined
+  },
+  tooltipClass: { type: String, default: undefined },
+  placement: makeStringProp<TooltipPlacement>('top'),
+  marks: {
+    type: definePropType<SliderMarks>(Object)
   }
 }
 
@@ -54,293 +81,214 @@ export type SliderProps = ExtractPropTypes<typeof sliderProps>
 
 export default defineComponent({
   name,
-
   props: sliderProps,
-
-  emits: ['change', 'dragEnd', 'dragStart', 'update:modelValue'],
-
+  emits: sliderEmits,
   setup(props, { emit, slots }) {
-    let buttonIndex: 0 | 1
-    let current: SliderValue
-    let startValue: SliderValue
-
-    const root = ref<HTMLElement>()
-    const slider = [ref<HTMLElement>(), ref<HTMLElement>()] as const
-    const dragStatus = ref<'start' | 'dragging' | ''>()
-    const touch = useTouch()
-
-    const scope = computed(() => Number(props.max) - Number(props.min))
-
-    const wrapperStyle = computed(() => {
-      const crossAxis = props.vertical ? 'width' : 'height'
-      return {
-        background: props.inactiveColor,
-        [crossAxis]: addUnit(props.barHeight)
-      }
+    const initData = reactive<SliderInitData>({
+      firstValue: 0,
+      secondValue: 0,
+      oldValue: 0,
+      dragging: false,
+      sliderSize: 1
     })
 
-    const isRange = (val: unknown): val is NumberRange =>
-      props.range && Array.isArray(val)
+    const {
+      slider,
+      firstButton,
+      secondButton,
+      sliderDisabled,
+      minValue,
+      maxValue,
+      runwayStyle,
+      barStyle,
+      resetSize,
+      emitChange,
+      onSliderWrapperPrevent,
+      onSliderClick,
+      onSliderDown,
+      setFirstValue,
+      setSecondValue
+    } = useSlide(props, initData, emit)
 
-    // 计算选中条的长度百分比
-    const calcMainAxis = () => {
-      const { modelValue, min } = props
-      if (isRange(modelValue)) {
-        return `${((modelValue[1] - modelValue[0]) * 100) / scope.value}%`
-      }
-      return `${((modelValue - Number(min)) * 100) / scope.value}%`
-    }
+    const { stops, getStopStyle } = useStops(
+      props,
+      initData,
+      minValue,
+      maxValue
+    )
 
-    // 计算选中条的开始位置的偏移量
-    const calcOffset = () => {
-      const { modelValue, min } = props
-      if (isRange(modelValue)) {
-        return `${((modelValue[0] - Number(min)) * 100) / scope.value}%`
-      }
-      return '0%'
-    }
+    const { sliderWrapper } = useLifecycle(props, initData, resetSize)
 
-    const barStyle = computed(() => {
-      const mainAxis = props.vertical ? 'height' : 'width'
-      const style: CSSProperties = {
-        [mainAxis]: calcMainAxis(),
-        background: props.activeColor
-      }
+    const sliderKls = computed(() => [
+      bem(),
+      isBem('vertical', props.vertical),
+      { [bem('with-input') as string]: props.showInput }
+    ])
 
-      if (dragStatus.value) {
-        style.transition = 'none'
-      }
+    const markList = useMarks(props)
 
-      const getPositionKey = () => {
-        if (props.vertical) {
-          return props.reverse ? 'bottom' : 'top'
-        }
-        return props.reverse ? 'right' : 'left'
-      }
+    const { firstValue, secondValue, sliderSize } = toRefs(initData)
 
-      style[getPositionKey()] = calcOffset()
-
-      return style
+    const precision = computed(() => {
+      const precisions = [props.min, props.max, props.step].map((item) => {
+        const decimal = `${item}`.split('.')[1]
+        return decimal ? decimal.length : 0
+      })
+      return Math.max.apply(null, precisions)
     })
 
-    const format = (value: number) => {
-      const min = +props.min
-      const max = +props.max
-      const step = +props.step
-
-      value = clamp(value, min, max)
-      const diff = Math.round((value - min) / step) * step
-      return addNumber(min, diff)
+    const updateDragging = (val: boolean) => {
+      initData.dragging = val
     }
 
-    const handleRangeValue = (value: NumberRange) => {
-      // 设置默认值
-      const left = value[0] ?? Number(props.min)
-      const right = value[1] ?? Number(props.max)
-      // 处理两个滑块重叠之后的情况
-      return left > right ? [right, left] : [left, right]
-    }
+    const groupLabel = computed<string>(
+      () => props.label || t('defaultLabel', props.min, props.max)
+    )
 
-    const updateValue = (value: SliderValue, end?: boolean) => {
-      if (isRange(value)) {
-        value = handleRangeValue(value).map(format) as NumberRange
-      } else {
-        value = format(value)
+    const firstButtonLabel = computed<string>(() => {
+      if (props.range) {
+        return props.rangeStartLabel || t('defaultRangeStartLabel')
       }
+      return groupLabel.value
+    })
 
-      if (!isSameValue(value, props.modelValue)) {
-        emit('update:modelValue', value)
-      }
+    const firstValueText = computed<string>(() =>
+      props.formatValueText
+        ? props.formatValueText(firstValue.value)
+        : `${firstValue.value}`
+    )
 
-      if (end && !isSameValue(value, startValue)) {
-        emit('change', value)
-      }
-    }
+    const secondButtonLabel = computed<string>(
+      () => props.rangeEndLabel || t('defaultRangeEndLabel')
+    )
 
-    const onClick = (event: MouseEvent) => {
-      event.stopPropagation()
+    const secondValueText = computed<string>(() =>
+      props.formatValueText
+        ? props.formatValueText(secondValue.value)
+        : `${secondValue.value}`
+    )
 
-      if (props.disabled || props.readonly) {
-        return
-      }
+    useWatch(props, initData, minValue, maxValue, emit)
 
-      const { min, reverse, vertical, modelValue } = props
-      const rect = useRect(root)
+    provide(sliderContextKey, {
+      // eslint-disable-next-line no-restricted-syntax
+      ...toRefs(props),
+      sliderSize,
+      disabled: sliderDisabled,
+      precision,
+      emitChange,
+      resetSize,
+      updateDragging
+    })
 
-      const getDelta = () => {
-        if (vertical) {
-          if (reverse) {
-            return rect.bottom - event.clientY
-          }
-          return event.clientY - rect.top
-        }
-        if (reverse) {
-          return rect.right - event.clientX
-        }
-        return event.clientX - rect.left
-      }
-
-      const total = vertical ? rect.height : rect.width
-      const value = Number(min) + (getDelta() / total) * scope.value
-
-      if (isRange(modelValue)) {
-        const [left, right] = modelValue
-        const middle = (left + right) / 2
-
-        if (value <= middle) {
-          updateValue([value, right], true)
-        } else {
-          updateValue([left, value], true)
-        }
-      } else {
-        updateValue(value, true)
-      }
-    }
-
-    const onTouchStart = (event: TouchEvent) => {
-      if (props.disabled || props.readonly) {
-        return
-      }
-
-      touch.start(event)
-      current = props.modelValue
-
-      if (isRange(current)) {
-        startValue = current.map(format) as NumberRange
-      } else {
-        startValue = format(current)
-      }
-
-      dragStatus.value = 'start'
-    }
-
-    const onTouchMove = (event: TouchEvent) => {
-      if (props.disabled || props.readonly) {
-        return
-      }
-
-      if (dragStatus.value === 'start') {
-        emit('dragStart', event)
-      }
-
-      preventDefault(event, true)
-      touch.move(event)
-      dragStatus.value = 'dragging'
-
-      const rect = useRect(root)
-      const delta = props.vertical ? touch.deltaY.value : touch.deltaX.value
-      const total = props.vertical ? rect.height : rect.width
-
-      let diff = (delta / total) * scope.value
-      if (props.reverse) {
-        diff = -diff
-      }
-
-      if (isRange(startValue)) {
-        const index = props.reverse ? 1 - buttonIndex : buttonIndex
-        ;(current as NumberRange)[index] = startValue[index] + diff
-      } else {
-        current = startValue + diff
-      }
-      updateValue(current)
-    }
-
-    const onTouchEnd = (event: TouchEvent) => {
-      if (props.disabled || props.readonly) {
-        return
-      }
-
-      if (dragStatus.value === 'dragging') {
-        updateValue(current, true)
-        emit('dragEnd', event)
-      }
-
-      dragStatus.value = ''
-    }
-
-    const getButtonClassName = (index?: 0 | 1) => {
-      if (typeof index === 'number') {
-        const position = ['left', 'right']
-        return bem(`button-wrapper`, position[index])
-      }
-      return bem('button-wrapper', props.reverse ? 'left' : 'right')
-    }
-
-    const renderButtonContent = (value: number, index?: 0 | 1) => {
-      if (typeof index === 'number') {
-        const slot = slots[index === 0 ? 'left-button' : 'right-button']
-        if (slot) {
-          return slot({ value })
-        }
-      }
-
-      if (slots.button) {
-        return slots.button({ value })
-      }
-
-      return (
-        <div class={bem('button')} style={getSizeStyle(props.buttonSize)} />
-      )
-    }
-
-    const renderButton = (index?: 0 | 1) => {
-      const current =
-        typeof index === 'number'
-          ? (props.modelValue as NumberRange)[index]
-          : (props.modelValue as number)
-
-      return (
-        <div
-          ref={slider[index ?? 0]}
-          role="slider"
-          class={getButtonClassName(index)}
-          tabindex={props.disabled ? undefined : 0}
-          aria-valuemin={props.min}
-          aria-valuenow={current}
-          aria-valuemax={props.max}
-          aria-disabled={props.disabled || undefined}
-          aria-readonly={props.readonly || undefined}
-          aria-orientation={props.vertical ? 'vertical' : 'horizontal'}
-          onTouchstartPassive={(event) => {
-            if (typeof index === 'number') {
-              // save index of current button
-              buttonIndex = index
-            }
-            onTouchStart(event)
-          }}
-          onTouchend={onTouchEnd}
-          onTouchcancel={onTouchEnd}
-          onClick={stopPropagation}
-        >
-          {renderButtonContent(current, index)}
-        </div>
-      )
-    }
-
-    // format initial value
-    updateValue(props.modelValue)
     useCustomInputValue(() => props.modelValue)
 
-    slider.forEach((item) => {
-      // useEventListener will set passive to `false` to eliminate the warning of Chrome
-      useEventListener('touchmove', onTouchMove, {
-        target: item
-      })
+    useExpose({
+      onSliderClick
     })
 
     return () => (
       <div
-        ref={root}
-        style={wrapperStyle.value}
-        class={bem({
-          vertical: props.vertical,
-          disabled: props.disabled
-        })}
-        onClick={onClick}
+        id={props.range ? '' : undefined}
+        ref={sliderWrapper}
+        class={sliderKls.value}
+        role={props.range ? 'group' : undefined}
+        onTouchstart={onSliderWrapperPrevent}
+        onTouchmove={onSliderWrapperPrevent}
       >
-        <div class={bem('bar')} style={barStyle.value}>
-          {props.range ? [renderButton(0), renderButton(1)] : renderButton()}
+        <div
+          ref={slider}
+          class={[
+            bem('runway'),
+            { 'show-input': props.showInput && !props.range },
+            isBem('disabled', sliderDisabled.value)
+          ]}
+          style={runwayStyle.value}
+          onMousedown={onSliderDown}
+          onTouchstart={onSliderDown}
+        >
+          <div class={bem('bar')} style={barStyle.value}></div>
+          <SliderButton
+            v-slots={{ default: slots.button }}
+            id={props.range ? '' : undefined}
+            ref={firstButton}
+            model-value={firstValue.value}
+            vertical={props.vertical}
+            tooltip-class={props.tooltipClass}
+            placement={props.placement}
+            role="slider"
+            aria-label={props.range ? firstButtonLabel.value : undefined}
+            aria-valuemin={props.min}
+            aria-valuemax={props.range ? secondValue.value : props.max}
+            aria-valuenow={firstValue.value}
+            aria-valuetext={firstValueText.value}
+            aria-orientation={props.vertical ? 'vertical' : 'horizontal'}
+            aria-disabled={sliderDisabled.value}
+            onUpdate:modelValue={setFirstValue}
+          ></SliderButton>
+          {props.range && (
+            <SliderButton
+              ref={secondButton}
+              model-value={secondValue.value}
+              vertical={props.vertical}
+              tooltip-class={props.tooltipClass}
+              placement={props.placement}
+              role="slider"
+              aria-label={secondButtonLabel.value}
+              aria-valuemin={firstValue.value}
+              aria-valuemax={props.max}
+              aria-valuenow={secondValue.value}
+              aria-valuetext={secondValueText.value}
+              aria-orientation={props.vertical ? 'vertical' : 'horizontal'}
+              aria-disabled={sliderDisabled.value}
+              onUpdate:modelValue={setSecondValue}
+            ></SliderButton>
+          )}
+          {props.showStops &&
+            stops.value.map((item, index) => (
+              <div
+                key={index}
+                class={bem('stop')}
+                style={getStopStyle(item)}
+              ></div>
+            ))}
+
+          {markList.value.length > 0 && (
+            <>
+              <div>
+                {markList.value.map((item, index) => (
+                  <div
+                    key={index}
+                    style={getStopStyle(item.position)}
+                    class={[bem('stop'), bem('marks-stop')]}
+                  ></div>
+                ))}
+              </div>
+              <div class={bem('marks')}>
+                {markList.value.map((item, index) => (
+                  <SliderMarker
+                    key={index}
+                    mark={item.mark}
+                    style={getStopStyle(item.position)}
+                  ></SliderMarker>
+                ))}
+              </div>
+            </>
+          )}
         </div>
+        {props.showInput && !props.range && (
+          <InputNumber
+            model-value={firstValue.value}
+            class={bem('input')}
+            step={props.step}
+            disabled={sliderDisabled.value}
+            min={props.min}
+            max={props.max}
+            buttonSize={props.inputButtonSize}
+            onUpdate:modelValue={setFirstValue}
+            onChange={emitChange}
+          ></InputNumber>
+        )}
       </div>
     )
   }

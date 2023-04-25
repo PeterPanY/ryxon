@@ -107,6 +107,12 @@ export default {
     noData: 'No data',
     placeholder: 'Select'
   },
+  rSlider: {
+    defaultLabel: (min: number, max: number) =>
+      `slider between ${min} and ${max}`,
+    defaultRangeStartLabel: 'pick start value',
+    defaultRangeEndLabel: 'pick end value'
+  },
   rSubmitBar: {
     label: 'Total:'
   },
