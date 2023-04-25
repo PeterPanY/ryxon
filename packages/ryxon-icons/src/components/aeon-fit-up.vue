@@ -1,0 +1,15 @@
+<template>
+  <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="currentColor"
+      d="M635.56 270.83h-360a30 30 0 0 0 0 60h360a30 30 0 0 0 0-60z m71.57-88.33a30 30 0 0 1 30 30v58.32h30a30 30 0 0 1 30 30v9.7a60 60 0 0 1 29.59 45l0.4 7v150a60 60 0 0 1-53 59.6l-7 0.4h-270v30a60 60 0 0 1 60 60v120a60 60 0 0 1-60 60h-60a60 60 0 0 1-60-60v-120a60 60 0 0 1 60-60v-30a60 60 0 0 1 53-59.6l7-0.4h270V391h-30v61.5a30 30 0 0 1-30 30h-480a30 30 0 0 1-30-30v-240a30 30 0 0 1 30-30z"
+    ></path>
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+
+export default {
+  name: 'AeonFitUp'
+} as DefineComponent
+</script>

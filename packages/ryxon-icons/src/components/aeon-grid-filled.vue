@@ -1,0 +1,15 @@
+<template>
+  <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="currentColor"
+      d="M651 282.39a105 105 0 1 1-105 105 105 105 0 0 1 105-105z m-210 0a35 35 0 0 1 35 35v140a35 35 0 0 1-35 35H301a35 35 0 0 1-35-35v-140a35 35 0 0 1 35-35z m280 280a35 35 0 0 1 35 35v140a35 35 0 0 1-35 35H581a35 35 0 0 1-35-35v-140a35 35 0 0 1 35-35z m-280 0a35 35 0 0 1 35 35v140a35 35 0 0 1-35 35H301a35 35 0 0 1-35-35v-140a35 35 0 0 1 35-35z"
+    ></path>
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+
+export default {
+  name: 'AeonGridFilled'
+} as DefineComponent
+</script>

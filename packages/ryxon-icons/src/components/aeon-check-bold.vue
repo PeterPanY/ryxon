@@ -1,0 +1,15 @@
+<template>
+  <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="currentColor"
+      d="M936.88 208.62c28.58 28.58 29.88 74.11 3.9 104.23l-3.9 4.19-500.27 500.28c-28.58 28.58-74.11 29.88-104.23 3.9l-4.19-3.9L86.61 575.74c-29.94-29.94-29.94-78.48 0-108.42 28.58-28.58 74.11-29.88 104.23-3.9l4.19 3.9L382.4 654.65l446.06-446.02c28.58-28.58 74.11-29.88 104.23-3.9l4.19 3.89z"
+    ></path>
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+
+export default {
+  name: 'AeonCheckBold'
+} as DefineComponent
+</script>
