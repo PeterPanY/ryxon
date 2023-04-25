@@ -141,6 +141,8 @@ categories.push({ name: 'Other', icons: Array.from(iconMap.values()) })
 
         .icon-name {
           margin-top: 8px;
+          max-width: 95px;
+          line-height: 1;
         }
       }
     }
