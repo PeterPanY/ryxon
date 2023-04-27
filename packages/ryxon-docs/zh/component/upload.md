@@ -15,6 +15,14 @@ upload/basic
 
 :::
 
+## 文件自动上传
+
+:::demo
+
+upload/auto-upload
+
+:::
+
 ## 文件预览
 
 :::demo 通过 `v-model` 可以绑定已经上传的文件列表，并展示文件列表的预览图。
@@ -134,6 +142,7 @@ upload/image-options
 | http-request | 覆盖默认的 Xhr 行为，允许自行实现上传文件的请求 | `(options: UploadRequestOptions) => XMLHttpRequest \| Promise<unknown>` | `-` |
 | headers | 设置上传的请求头部 | `Headers \| Record<string, any>` | - |
 | method | 设置上传请求方法 | `string` | `post` |
+| filename | 上传的文件字段名 | `string` | `file` |
 | data | 上传时附带的额外参数 | `Record<string, any>` | - |
 | with-credentials | 支持发送 cookie 凭证信息 | `boolean` | `false` |
 | before-upload | 上传文件之前的钩子，参数为上传的文件， 若返回 false 或者返回 Promise 且被 reject，则停止上传。 | `(rawFile: UploadRawFile) => Awaitable<void \| undefined \| null \| boolean \| File \| Blob>` | - |

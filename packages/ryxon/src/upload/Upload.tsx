@@ -108,6 +108,7 @@ export const uploadProps = {
   },
   headers: { type: definePropType<Headers | Record<string, any>>(Object) },
   method: { type: String, default: 'post' },
+  filename: { type: String, default: 'file' },
   data: { type: Object, default: () => mutable({} as const) },
   withCredentials: Boolean,
   beforeUpload: {
@@ -174,7 +175,7 @@ export default defineComponent({
         data,
         method,
         withCredentials,
-        name: filename,
+        filename,
         action,
         onProgress,
         onSuccess,
