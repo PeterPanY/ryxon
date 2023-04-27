@@ -333,6 +333,13 @@ export default defineComponent({
         : renderButtons()
     }
 
+    // 由于dialog全屏展开,已经触发不了遮罩层的方法,点击弹窗内容外元素关闭,内容还需阻止冒泡
+    const onClickPopup = () => {
+      if (props.closeOnClickOverlay) {
+        onCancel()
+      }
+    }
+
     return () => {
       const { width, title, theme, message, className } = props
       return (
@@ -344,9 +351,16 @@ export default defineComponent({
           aria-labelledby={title || message}
           onKeydown={onKeydown}
           onUpdate:show={updateShow}
+          onClickPopup={onClickPopup}
           {...pick(props, popupInheritKeys)}
         >
-          <div class={bem('body')} style={{ width: addUnit(width) }}>
+          <div
+            class={bem('body')}
+            style={{ width: addUnit(width) }}
+            onClick={(e) => {
+              e.stopPropagation()
+            }}
+          >
             {renderTitle()}
             {renderContent()}
             {props.showFooter && renderFooter()}

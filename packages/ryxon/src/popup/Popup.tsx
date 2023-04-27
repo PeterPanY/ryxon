@@ -77,6 +77,7 @@ export default defineComponent({
     'opened',
     'closed',
     'keydown',
+    'clickPopup',
     'mouseenter',
     'mouseleave',
     'afterLeave',
@@ -211,6 +212,7 @@ export default defineComponent({
     }
     const onBeforeLeave = () => emit('beforeLeave')
     const onKeydown = (event: KeyboardEvent) => emit('keydown', event)
+    const onClickPopup = () => emit('clickPopup')
 
     const renderPopup = lazyRender(() => {
       const { round, position, safeAreaInsetTop, safeAreaInsetBottom } = props
@@ -238,6 +240,7 @@ export default defineComponent({
           onKeydown={onKeydown}
           onMouseenter={onMouseenter}
           onMouseleave={onMouseleave}
+          onClick={onClickPopup}
         >
           {slots.default?.()}
           {renderCloseIcon()}

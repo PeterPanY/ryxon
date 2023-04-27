@@ -149,6 +149,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | type | 弹窗类型，用于图标显示，可选`success / info / warning / danger` | `string` | - |
 | icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
 | allow-html | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
+| class-name | 自定义类名 | `string \| Array \| object` | - |
 | transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | message-align | 内容水平对齐方式，可选值为 `left` `right` `justify` | `string` | `center` |
 | close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
