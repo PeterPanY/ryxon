@@ -6,7 +6,6 @@
     :placement="placement"
     :show-arrow="false"
     :stop-popper-mouse-event="false"
-    teleported
     theme="light"
     pure
     :popper-class="bem()"

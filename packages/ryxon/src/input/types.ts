@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import type { ComputedRef, ComponentPublicInstance } from 'vue'
+import type { ComponentPublicInstance } from 'vue'
 import type { InputProps } from './Input'
 
 export type InputType =
@@ -79,19 +79,7 @@ export type InputFormSharedProps =
   | 'inputAlign'
   | 'errorMessageAlign'
 
-export type InputExpose = {
-  blur: () => void | undefined
-  focus: () => void | undefined
-  validate: (
-    rules?: InputRule[] | undefined
-  ) => Promise<void | InputValidateError>
-  resetValidation: () => void
-  getValidationStatus: () => InputValidationStatus
-  /** @private */
-  formValue: ComputedRef<unknown>
-}
-
-export type InputInstance = ComponentPublicInstance<InputProps, InputExpose>
+export type InputInstance = ComponentPublicInstance<InputProps>
 
 declare global {
   interface EventTarget {

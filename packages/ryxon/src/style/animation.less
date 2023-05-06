@@ -88,48 +88,59 @@
 
 .r-slide-up {
   &-enter-active {
-    animation: r-slide-up-enter var(--r-duration-base) both
-      var(--r-ease-out);
+    animation: r-slide-up-enter var(--r-duration-base) both var(--r-ease-out);
   }
 
   &-leave-active {
-    animation: r-slide-up-leave var(--r-duration-base) both
-      var(--r-ease-in);
+    animation: r-slide-up-leave var(--r-duration-base) both var(--r-ease-in);
   }
 }
 
 .r-slide-down {
   &-enter-active {
-    animation: r-slide-down-enter var(--r-duration-base) both
-      var(--r-ease-out);
+    animation: r-slide-down-enter var(--r-duration-base) both var(--r-ease-out);
   }
 
   &-leave-active {
-    animation: r-slide-down-leave var(--r-duration-base) both
-      var(--r-ease-in);
+    animation: r-slide-down-leave var(--r-duration-base) both var(--r-ease-in);
   }
 }
 
 .r-slide-left {
   &-enter-active {
-    animation: r-slide-left-enter var(--r-duration-base) both
-      var(--r-ease-out);
+    animation: r-slide-left-enter var(--r-duration-base) both var(--r-ease-out);
   }
 
   &-leave-active {
-    animation: r-slide-left-leave var(--r-duration-base) both
-      var(--r-ease-in);
+    animation: r-slide-left-leave var(--r-duration-base) both var(--r-ease-in);
   }
 }
 
 .r-slide-right {
   &-enter-active {
-    animation: r-slide-right-enter var(--r-duration-base) both
-      var(--r-ease-out);
+    animation: r-slide-right-enter var(--r-duration-base) both var(--r-ease-out);
   }
 
   &-leave-active {
-    animation: r-slide-right-leave var(--r-duration-base) both
-      var(--r-ease-in);
+    animation: r-slide-right-leave var(--r-duration-base) both var(--r-ease-in);
   }
+}
+
+.r-zoom-in-top-enter-active,
+.r-zoom-in-top-leave-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: var(--el-transition-md-fade);
+  transform-origin: center top;
+}
+
+.r-zoom-in-top-enter-active[data-popper-placement^='top'],
+.r-zoom-in-top-leave-active[data-popper-placement^='top'] {
+  transform-origin: center bottom;
+}
+
+.r-zoom-in-top-enter-from,
+.r-zoom-in-top-leave-active {
+  opacity: 0;
+  transform: scaleY(0);
 }

@@ -59,7 +59,6 @@ import { CircleClose } from '@ryxon/icons'
 import type {
   InputRule,
   InputType,
-  InputExpose,
   InputTextAlign,
   InputClearTrigger,
   InputFormatTrigger,
@@ -680,7 +679,8 @@ export default defineComponent({
       renderMessage()
     ]
 
-    useExpose<InputExpose>({
+    useExpose({
+      ref: inputRef,
       blur,
       focus,
       validate,

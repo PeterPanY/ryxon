@@ -17,6 +17,7 @@
     "form": {
       "text": "Form 表单组件",
       "children": [
+        { "link": "/autocomplete", "text": "Autocomplete 自动补全输入框" },
         { "link": "/checkbox", "text": "Checkbox 多选框" },
         { "link": "/date-picker", "text": "DatePicker 日期选择" },
         { "link": "/date-time-picker", "text": "DateTimePicker 日期时间" },
