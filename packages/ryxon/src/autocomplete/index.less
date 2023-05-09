@@ -54,26 +54,30 @@
       }
     }
 
-    &.is-loading li {
-      text-align: center;
-      height: 100px;
-      line-height: 100px;
-      font-size: 20px;
-      color: var(--r-text-color-secondary);
+    &.is-loading {
+      animation: none;
 
-      &::after {
-        display: inline-block;
-        content: '';
-        height: 100%;
-        vertical-align: middle;
-      }
+      li {
+        text-align: center;
+        height: 100px;
+        line-height: 100px;
+        font-size: 20px;
+        color: var(--r-text-color-secondary);
 
-      &:hover {
-        background-color: var(--r-bg-color-overlay);
-      }
+        &::after {
+          display: inline-block;
+          content: '';
+          height: 100%;
+          vertical-align: middle;
+        }
 
-      .r-icon-loading {
-        vertical-align: middle;
+        &:hover {
+          background-color: var(--r-bg-color-overlay);
+        }
+
+        .r-icon-loading {
+          vertical-align: middle;
+        }
       }
     }
   }
