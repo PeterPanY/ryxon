@@ -217,26 +217,28 @@ inputRef.value?.focus()
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                              | 默认值                  | 描述 |
-| --------------------------------- | ----------------------- | ---- |
-| --r-input-label-width             | `6.2em`                 | -    |
-| --r-input-label-color             | `var(--r-text-color)`   | -    |
-| --r-input-label-margin-right      | `var(--r-padding-sm)`   | -    |
-| --r-input-text-color              | `var(--r-text-color)`   | -    |
-| --r-input-error-text-color        | `var(--r-danger-color)` | -    |
-| --r-input-placeholder-text-color  | `var(--r-text-color-3)` | -    |
-| --r-input-icon-size               | `16px`                  | -    |
-| --r-input-clear-icon-size         | `16px`                  | -    |
-| --r-input-clear-icon-color        | `var(--r-gray-5)`       | -    |
-| --r-input-right-icon-color        | `var(--r-gray-6)`       | -    |
-| --r-input-error-message-color     | `var(--r-danger-color)` | -    |
-| --r-input-error-message-font-size | `12px`                  | -    |
-| --r-input-text-area-min-height    | `60px`                  | -    |
-| --r-input-word-limit-color        | `var(--r-gray-7)`       | -    |
-| --r-input-word-limit-font-size    | `var(--r-font-size-sm)` | -    |
-| --r-input-word-limit-line-height  | `16px`                  | -    |
-| --r-input-disabled-text-color     | `var(--r-text-color-3)` | -    |
-| --r-input-required-mark-color     | `var(--r-red)`          | -    |
+| 名称                              | 默认值                         | 描述 |
+| --------------------------------- | ------------------------------ | ---- |
+| --r-input-label-width             | `6.2em`                        | -    |
+| --r-input-label-color             | `var(--r-text-color)`          | -    |
+| --r-input-label-margin-right      | `var(--r-padding-sm)`          | -    |
+| --r-input-text-color              | `var(--r-text-color)`          | -    |
+| --r-input-error-text-color        | `var(--r-danger-color)`        | -    |
+| --r-input-placeholder-text-color  | `var(--r-text-color-3)`        | -    |
+| --r-input-icon-size               | `16px`                         | -    |
+| --r-input-clear-icon-size         | `16px`                         | -    |
+| --r-input-clear-icon-color        | `var(--r-gray-5)`              | -    |
+| --r-input-right-icon-color        | `var(--r-gray-6)`              | -    |
+| --r-input-error-message-color     | `var(--r-danger-color)`        | -    |
+| --r-input-error-message-font-size | `12px`                         | -    |
+| --r-input-text-area-min-height    | `60px`                         | -    |
+| --r-input-word-limit-color        | `var(--r-gray-7)`              | -    |
+| --r-input-word-limit-font-size    | `var(--r-font-size-sm)`        | -    |
+| --r-input-word-limit-line-height  | `16px`                         | -    |
+| --r-input-disabled-text-color     | `var(--r-text-color-3)`        | -    |
+| --r-input-required-mark-color     | `var(--r-red)`                 | -    |
+| --r-input-hover-border-color      | `var(--r-text-color-disabled)` | -    |
+| --r-input-focus-border-color      | `var(--r-primary-color)`       | -    |
 
 ## 常见问题
 
