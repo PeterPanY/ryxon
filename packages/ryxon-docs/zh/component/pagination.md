@@ -71,7 +71,8 @@ pagination/custom
 
 | 名称 | 描述 | 参数 |
 | --- | --- | --- |
-| page | 自定义页码 | `{ number: number, text: string, active: boolean }` |
+| page | `multi`自定义页码 | `{ number: number, text: string, active: boolean }` |
+| pageDesc | `simple`下自定义页码 | - |
 | prev-text | 自定义上一页按钮文字 | - |
 | next-text | 自定义下一页按钮文字 | - |
 
