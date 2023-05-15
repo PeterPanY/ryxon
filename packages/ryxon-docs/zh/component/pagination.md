@@ -56,6 +56,8 @@ pagination/custom
 | items-per-page/ v-model:items-per-page | 每页记录数 | `number \| string` | `10` |
 | show-page-size | 显示的页码个数 | `number \| string` | `5` |
 | force-ellipses | 是否显示省略号 | `boolean` | `false` |
+| show-prev-button | 是否展示上一页按钮 | _boolean_ | `true` |
+| show-next-button | 是否展示下一页按钮 | _boolean_ | `true` |
 | page-sizes | 每页显示个数选择器的选项设置 | ^[array]`number[]` | `[10, 20, 30, 40, 50, 100]` |
 | popperClass | 每页显示个数选择器的下拉框类名 | `string` | - |
 | layout | 组件布局，子组件名用逗号分隔 | ^[string]`string (consists of sizes, prev, pager, next, total, jumper)` | `prev, pager, next` |

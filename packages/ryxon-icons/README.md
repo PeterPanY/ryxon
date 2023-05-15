@@ -15,4 +15,4 @@ pnpm add @ryxon/icons
 
 ## Document
 
-- [Usage in Vue](https://ryxon-ui.github.io/ryxon/#/zh-CN/icon)
+- [Usage in Vue](https://peterpany.github.io/ryxon/zh/component/icon.html)

@@ -83,9 +83,24 @@ export default defineComponent({
     })
 
     // 是否禁用
-    const disabled = computed(
-      () => getParentProp('disabled') || props.disabled || isLimitDisabled.value
-    )
+    const disabled = computed(() => {
+      if (props.parent && props.bindGroup) {
+        const disabled =
+          getParentProp('disabled') || props.disabled || isLimitDisabled.value
+
+        if (props.role === 'checkbox') {
+          const checkedCount = (getParentProp('modelValue') as unknown[]).length
+          const max = getParentProp('max')
+          const overlimit = max && checkedCount >= +max
+
+          return disabled || (overlimit && !props.checked)
+        }
+
+        return disabled
+      }
+
+      return props.disabled
+    })
 
     const iconStyle = computed(() => {
       const checkedColor = props.checkedColor || getParentProp('checkedColor')

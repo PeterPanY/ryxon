@@ -37,7 +37,7 @@ export default {
 
 ```js
 import { ref } from 'vue'
-import { useEventListener } from '@vant/use'
+import { useEventListener } from '@ryxon/use'
 
 export default {
   setup() {

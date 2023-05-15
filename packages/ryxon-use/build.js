@@ -12,7 +12,7 @@ async function bundle(format) {
     outfile,
     // preserve Chinese character
     charset: 'utf8',
-    external: ['vue', 'vant'],
+    external: ['vue', 'ryxon'],
     entryPoints: ['./src/index.ts']
   }
 

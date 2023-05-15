@@ -12,6 +12,7 @@ import {
   clamp,
   mutable,
   isString,
+  truthProp,
   iconPropType,
   definePropType,
   makeStringProp,
@@ -62,6 +63,8 @@ export const paginationProps = {
   showPageSize: makeNumericProp(5),
   itemsPerPage: { type: Number, default: 10 },
   forceEllipses: Boolean,
+  showPrevButton: truthProp,
+  showNextButton: truthProp,
   pageSizes: {
     type: definePropType<number[]>(Array),
     default: () => mutable([10, 20, 30, 40, 50, 100] as const)
@@ -153,7 +156,12 @@ export default defineComponent({
 
     // 上一页按钮
     const renderPrevButton = () => {
-      const { mode, modelValue } = props
+      const { mode, modelValue, showPrevButton } = props
+
+      if (!showPrevButton) {
+        return
+      }
+
       const slot = slots['prev-text']
       const disabled = modelValue === 1
 
@@ -185,9 +193,13 @@ export default defineComponent({
 
     // 下一页按钮
     const renderNextButton = () => {
-      const { mode, modelValue } = props
+      const { mode, modelValue, showNextButton } = props
       const slot = slots['next-text']
       const disabled = modelValue === count.value
+
+      if (!showNextButton) {
+        return
+      }
 
       return (
         <li

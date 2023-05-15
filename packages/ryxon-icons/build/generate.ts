@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { emptyDir, ensureDir } from 'fs-extra'
-import consola from 'consola'
+import { consola } from 'consola'
 import camelcase from 'camelcase'
 import glob from 'fast-glob'
 import { format } from 'prettier'
@@ -27,7 +27,7 @@ const getName = (file: string) => {
   const componentName = camelcase(filename, { pascalCase: true })
   return {
     filename,
-    componentName,
+    componentName
   }
 }
 
@@ -35,7 +35,7 @@ const formatCode = (code: string, parser: BuiltInParserName = 'typescript') =>
   format(code, {
     parser,
     semi: false,
-    singleQuote: true,
+    singleQuote: true
   })
 
 const transformToVueComponent = async (file: string) => {

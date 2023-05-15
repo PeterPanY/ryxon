@@ -1,4 +1,4 @@
-import { defineComponent, type ExtractPropTypes } from 'vue';
+import { defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
 import {
@@ -7,29 +7,31 @@ import {
   truthProp,
   makeArrayProp,
   createNamespace,
-  HAPTICS_FEEDBACK,
-} from '../utils';
-import { popupSharedProps, popupSharedPropKeys } from '../popup/shared';
+  HAPTICS_FEEDBACK
+} from '../utils'
+import { popupSharedProps, popupSharedPropKeys } from '../popup/shared'
 
 // Components
-import { Icon } from '../icon';
-import { Popup } from '../popup';
+import { Icon } from '../icon'
+import { Popup } from '../popup'
 
 export type ShareSheetOption = {
-  name: string;
-  icon: string;
-  className?: string;
-  description?: string;
-};
+  name: string
+  icon: string
+  className?: string
+  description?: string
+}
 
-export type ShareSheetOptions = ShareSheetOption[] | ShareSheetOption[][];
+export type ShareSheetOptions = ShareSheetOption[] | ShareSheetOption[][]
+
+const isImage = (name?: string) => name?.includes('/')
 
 const popupInheritKeys = [
   ...popupSharedPropKeys,
   'round',
   'closeOnPopstate',
-  'safeAreaInsetBottom',
-] as const;
+  'safeAreaInsetBottom'
+] as const
 
 const iconMap: Record<string, string> = {
   qq: 'qq',
@@ -39,10 +41,10 @@ const iconMap: Record<string, string> = {
   poster: 'photo-o',
   wechat: 'wechat',
   'weapp-qrcode': 'miniprogram-o',
-  'wechat-moments': 'wechat-moments',
-};
+  'wechat-moments': 'wechat-moments'
+}
 
-const [name, bem, t] = createNamespace('share-sheet');
+const [name, bem, t] = createNamespace('share-sheet')
 
 export const shareSheetProps = extend({}, popupSharedProps, {
   title: String,
@@ -51,10 +53,10 @@ export const shareSheetProps = extend({}, popupSharedProps, {
   cancelText: String,
   description: String,
   closeOnPopstate: truthProp,
-  safeAreaInsetBottom: truthProp,
-});
+  safeAreaInsetBottom: truthProp
+})
 
-export type ShareSheetProps = ExtractPropTypes<typeof shareSheetProps>;
+export type ShareSheetProps = ExtractPropTypes<typeof shareSheetProps>
 
 export default defineComponent({
   name,
@@ -64,21 +66,21 @@ export default defineComponent({
   emits: ['cancel', 'select', 'update:show'],
 
   setup(props, { emit, slots }) {
-    const updateShow = (value: boolean) => emit('update:show', value);
+    const updateShow = (value: boolean) => emit('update:show', value)
 
     const onCancel = () => {
-      updateShow(false);
-      emit('cancel');
-    };
+      updateShow(false)
+      emit('cancel')
+    }
 
     const onSelect = (option: ShareSheetOption, index: number) =>
-      emit('select', option, index);
+      emit('select', option, index)
 
     const renderHeader = () => {
-      const title = slots.title ? slots.title() : props.title;
+      const title = slots.title ? slots.title() : props.title
       const description = slots.description
         ? slots.description()
-        : props.description;
+        : props.description
 
       if (title || description) {
         return (
@@ -88,23 +90,23 @@ export default defineComponent({
               <span class={bem('description')}>{description}</span>
             )}
           </div>
-        );
+        )
       }
-    };
+    }
 
     const renderIcon = (icon: string) => {
-      if (iconMap[icon]) {
-        return (
-          <div class={bem('icon', [icon])}>
-            <Icon name={iconMap[icon] || icon} />
-          </div>
-        );
+      if (isImage(icon)) {
+        return <img src={icon} class={bem('image-icon')} />
       }
-      return <img src={icon} class={bem('image-icon')} />;
-    };
+      return (
+        <div class={bem('icon', [icon])}>
+          <Icon name={iconMap[icon] || icon} />
+        </div>
+      )
+    }
 
     const renderOption = (option: ShareSheetOption, index: number) => {
-      const { name, icon, className, description } = option;
+      const { name, icon, className, description } = option
       return (
         <div
           role="button"
@@ -118,33 +120,33 @@ export default defineComponent({
             <span class={bem('option-description')}>{description}</span>
           )}
         </div>
-      );
-    };
+      )
+    }
 
     const renderOptions = (options: ShareSheetOption[], border?: boolean) => (
       <div class={bem('options', { border })}>{options.map(renderOption)}</div>
-    );
+    )
 
     const renderRows = () => {
-      const { options } = props;
+      const { options } = props
       if (Array.isArray(options[0])) {
         return (options as ShareSheetOption[][]).map((item, index) =>
           renderOptions(item, index !== 0)
-        );
+        )
       }
-      return renderOptions(options as ShareSheetOption[]);
-    };
+      return renderOptions(options as ShareSheetOption[])
+    }
 
     const renderCancelButton = () => {
-      const cancelText = props.cancelText ?? t('cancel');
+      const cancelText = props.cancelText ?? t('cancel')
       if (slots.cancel || cancelText) {
         return (
           <button type="button" class={bem('cancel')} onClick={onCancel}>
             {slots.cancel ? slots.cancel() : cancelText}
           </button>
-        );
+        )
       }
-    };
+    }
 
     return () => (
       <Popup
@@ -157,6 +159,6 @@ export default defineComponent({
         {renderRows()}
         {renderCancelButton()}
       </Popup>
-    );
-  },
-});
+    )
+  }
+})

@@ -86,9 +86,12 @@
     }
 
     &--disabled {
-      color: var(--r-pagination-item-disabled-color);
-      background-color: var(--r-pagination-item-disabled-background);
-      opacity: var(--r-pagination-disabled-opacity);
+      &,
+      &:active {
+        color: var(--r-pagination-item-disabled-color);
+        background-color: var(--r-pagination-item-disabled-background);
+        opacity: var(--r-pagination-disabled-opacity);
+      }
 
       button:hover {
         color: var(--r-pagination-item-disabled-color);

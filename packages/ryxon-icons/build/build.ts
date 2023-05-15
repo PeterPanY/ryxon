@@ -1,5 +1,5 @@
 import path from 'node:path'
-import consola from 'consola'
+import { consola } from 'consola'
 import chalk from 'chalk'
 import { build } from 'esbuild'
 import GlobalsPlugin from 'esbuild-plugin-globals'
@@ -14,28 +14,28 @@ const buildBundle = () => {
     const options: BuildOptions = {
       entryPoints: [
         path.resolve(pathSrc, 'index.ts'),
-        path.resolve(pathSrc, 'global.ts'),
+        path.resolve(pathSrc, 'global.ts')
       ],
       target: 'es2018',
       platform: 'neutral',
       plugins: [
         vue({
           isProduction: true,
-          sourceMap: false,
-        }),
+          sourceMap: false
+        })
       ],
       bundle: true,
       format,
       minifySyntax: true,
       banner: {
-        js: `/*! Ryxon Icons Vue v${version} */\n`,
+        js: `/*! Ryxon Icons Vue v${version} */\n`
       },
-      outdir: pathOutput,
+      outdir: pathOutput
     }
     if (format === 'iife') {
       options.plugins!.push(
         GlobalsPlugin({
-          vue: 'Vue',
+          vue: 'Vue'
         })
       )
       options.globalName = 'RyxonIconsVue'
@@ -50,19 +50,19 @@ const buildBundle = () => {
       build({
         ...getBuildOptions('esm'),
         entryNames: `[name]${minify ? '.min' : ''}`,
-        minify,
+        minify
       }),
       build({
         ...getBuildOptions('iife'),
         entryNames: `[name].iife${minify ? '.min' : ''}`,
-        minify,
+        minify
       }),
       build({
         ...getBuildOptions('cjs'),
         entryNames: `[name]${minify ? '.min' : ''}`,
         outExtension: { '.js': '.cjs' },
-        minify,
-      }),
+        minify
+      })
     ])
   }
 

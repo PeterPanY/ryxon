@@ -61,6 +61,7 @@ text-ellipsis/icon
 | is-html | 展示的文本是否是 html | `boolean` | `false` |
 | text-type | 操作文案的暂时类型，可选`icon` | `string` | `text` |
 | default-expanded | 默认是否展开文本 | `boolean` | `false` |
+| dots | 省略号的文本内容 | _string_ | `'...'` |
 
 ### Events
 

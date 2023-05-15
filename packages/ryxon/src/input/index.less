@@ -108,16 +108,16 @@
       color: var(--r-input-placeholder-text-color);
     }
 
+    &:read-only {
+      cursor: default;
+    }
+
     &:disabled {
       color: var(--r-input-disabled-text-color);
       cursor: not-allowed;
       opacity: 1;
       // 修复移动safari中禁用的颜色
       -webkit-text-fill-color: var(--r-input-disabled-text-color);
-    }
-
-    &:read-only {
-      cursor: default;
     }
 
     &--center {

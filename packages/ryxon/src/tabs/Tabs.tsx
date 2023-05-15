@@ -618,7 +618,20 @@ export default defineComponent({
       return Header
     }
 
-    watch([() => props.color, windowWidth], setLine)
+    const resize = () => {
+      setLine()
+
+      nextTick(() => {
+        scrollIntoView(true)
+        contentRef.value?.swipeRef.value?.resize()
+      })
+    }
+
+    watch(
+      () => [props.color, props.duration, props.lineWidth, props.lineHeight],
+      setLine
+    )
+    watch(windowWidth, resize)
 
     watch(
       () => props.active,
@@ -655,11 +668,6 @@ export default defineComponent({
 
     const onRendered = (name: Numeric, title?: string) =>
       emit('rendered', name, title)
-
-    const resize = () => {
-      setLine()
-      nextTick(() => contentRef.value?.swipeRef.value?.resize())
-    }
 
     useExpose({
       resize,

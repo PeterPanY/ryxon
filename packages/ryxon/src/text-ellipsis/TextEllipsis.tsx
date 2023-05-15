@@ -27,6 +27,7 @@ const [name, bem] = createNamespace('text-ellipsis')
 
 export const textEllipsisProps = {
   rows: makeNumericProp(1),
+  dots: makeStringProp('...'),
   content: makeStringProp(''),
   expandText: iconPropType || makeStringProp(''),
   collapseText: iconPropType || makeStringProp(''),
@@ -91,8 +92,8 @@ export default defineComponent({
         container: HTMLDivElement,
         maxHeight: number
       ) => {
-        const { content, expandText } = props
-        const dot = '...'
+        const { dots, content, expandText } = props
+
         let left = 0
         let right = content.length
         let res = -1
@@ -100,9 +101,9 @@ export default defineComponent({
         while (left <= right) {
           const mid = Math.floor((left + right) / 2)
           if (props.isHtml) {
-            container.innerHTML = content.slice(0, mid) + dot + expandText
+            container.innerHTML = content.slice(0, mid) + dots + expandText
           } else {
-            container.innerText = content.slice(0, mid) + dot + expandText
+            container.innerText = content.slice(0, mid) + dots + expandText
           }
 
           if (container.offsetHeight <= maxHeight) {
@@ -178,7 +179,7 @@ export default defineComponent({
           html: props.isHtml
         })}
       >
-        {expanded.value ? '' : '...'}
+        {expanded.value ? '' : props.dots}
         <span class={bem('action')} onClick={onClickAction}>
           {expanded.value ? collapseText() : expandText()}
         </span>
