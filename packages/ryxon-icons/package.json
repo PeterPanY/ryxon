@@ -50,9 +50,6 @@
     "release": "release-it",
     "prepare": "pnpm build"
   },
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
