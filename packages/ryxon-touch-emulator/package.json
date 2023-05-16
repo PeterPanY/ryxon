@@ -1,12 +1,13 @@
 {
   "name": "@ryxon/touch-emulator",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "description": "Ryxon touch emulator",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "scripts": {
     "build": "node ./build.js",
-    "prepare": "pnpm build"
+    "prepare": "pnpm build",
+    "release": "release-it"
   },
   "publishConfig": {
     "access": "public",
@@ -19,5 +20,14 @@
   },
   "bugs": "https://github.com/PeterPanY/ryxon/issues",
   "author": "PeterPanY",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "release-it": "^15.4.1"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @ryxon/touch-emulator v${version}"
+    }
+  }
 }

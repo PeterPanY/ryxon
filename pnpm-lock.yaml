@@ -472,7 +472,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
-  packages/ryxon-touch-emulator: {}
+  packages/ryxon-touch-emulator:
+    devDependencies:
+      release-it:
+        specifier: ^15.4.1
+        version: 15.5.0
 
   packages/ryxon-use:
     devDependencies:
