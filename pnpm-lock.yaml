@@ -63,7 +63,7 @@ importers:
         specifier: ^1.0.3
         version: link:../ryxon-popperjs
       '@ryxon/use':
-        specifier: ^1.0.4
+        specifier: ^1.0.5
         version: link:../ryxon-use
       '@types/lodash':
         specifier: ^4.14.182
@@ -492,6 +492,12 @@ importers:
       vue:
         specifier: ^3.2.47
         version: 3.2.47
+
+  packages/ryxon-utils:
+    devDependencies:
+      release-it:
+        specifier: ^15.4.1
+        version: 15.5.0
 
 packages:
 

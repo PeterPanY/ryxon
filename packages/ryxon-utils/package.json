@@ -1,0 +1,29 @@
+{
+  "name": "@ryxon/utils",
+  "version": "1.0.0",
+  "description": "Ryxon Composition utils",
+  "main": "index.ts",
+  "scripts": {
+    "release": "release-it"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterPanY/ryxon.git",
+    "directory": "packages/ryxon-utils"
+  },
+  "author": "PeterPanY",
+  "license": "MIT",
+  "devDependencies": {
+    "release-it": "^15.4.1"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @ryxon/utils v${version}"
+    }
+  }
+}
