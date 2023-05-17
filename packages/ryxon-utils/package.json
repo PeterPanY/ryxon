@@ -2,9 +2,25 @@
   "name": "@ryxon/utils",
   "version": "1.0.1",
   "description": "Ryxon Composition utils",
-  "main": "index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "release": "release-it"
+    "clean": "rimraf ./dist",
+    "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
+    "build:bundle": "node ./build.js",
+    "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
+    "release": "pnpm build && release-it"
   },
   "publishConfig": {
     "access": "public",
@@ -15,13 +31,16 @@
     "url": "https://github.com/PeterPanY/ryxon.git",
     "directory": "packages/ryxon-utils"
   },
+  "bugs": "https://github.com/PeterPanY/ryxon/issues",
   "author": "PeterPanY",
   "license": "MIT",
   "peerDependencies": {
     "vue": "^3.2.0"
   },
   "devDependencies": {
-    "release-it": "^15.4.1"
+    "esbuild": "^0.17.12",
+    "release-it": "^15.4.1",
+    "typescript": "^5.0.4"
   },
   "release-it": {
     "git": {
