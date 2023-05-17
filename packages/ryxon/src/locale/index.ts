@@ -1,5 +1,5 @@
 import { ref, reactive } from 'vue'
-import { deepAssign } from '../utils/deep-assign'
+import { deepAssign } from '@ryxon/utils'
 import defaultMessages from './lang/zh-CN'
 
 type Message = Record<string, any>

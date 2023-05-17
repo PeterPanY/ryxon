@@ -65,6 +65,7 @@
     "@ryxon/cli": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
     "@ryxon/icons": "workspace:*",
+    "@ryxon/utils": "workspace:*",
     "@vue/runtime-core": "^3.2.47",
     "@vue/test-utils": "^2.3.2",
     "type-fest": "^2.14.0",
