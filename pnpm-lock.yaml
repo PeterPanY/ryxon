@@ -497,6 +497,10 @@ importers:
         version: 3.2.47
 
   packages/ryxon-utils:
+    dependencies:
+      vue:
+        specifier: ^3.2.0
+        version: 3.2.47
     devDependencies:
       release-it:
         specifier: ^15.4.1
