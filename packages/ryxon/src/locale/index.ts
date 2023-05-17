@@ -1,5 +1,5 @@
 import { ref, reactive } from 'vue'
-import { deepAssign } from '@ryxon/utils'
+import merge from '../utils/deep-assign'
 import defaultMessages from './lang/zh-CN'
 
 type Message = Record<string, any>
@@ -21,7 +21,7 @@ export const Locale = {
   },
 
   add(newMessages: Message = {}) {
-    deepAssign(messages, newMessages)
+    merge(messages, newMessages)
   }
 }
 

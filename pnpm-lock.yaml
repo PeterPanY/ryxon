@@ -105,9 +105,6 @@ importers:
       '@ryxon/icons':
         specifier: workspace:*
         version: link:../ryxon-icons
-      '@ryxon/utils':
-        specifier: workspace:*
-        version: link:../ryxon-utils
       '@types/jest':
         specifier: ^29.5.1
         version: 29.5.1
