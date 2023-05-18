@@ -186,7 +186,10 @@ export default defineComponent({
       const titles = titleRefs.value
       let totalNumber = 0
       for (let index = 0; index < titles.length; index++) {
-        const sizeNumber = useRect(titles[index].$el)[sizeName.value]
+        // 在动态增减标签页时，存在为null的情况
+        const sizeNumber = titles[index]
+          ? useRect(titles[index].$el)[sizeName.value]
+          : 0
 
         totalNumber += sizeNumber
       }
