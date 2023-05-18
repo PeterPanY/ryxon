@@ -11,6 +11,12 @@
         { "link": "/use-count-down", "text": "useCountDown" },
         { "link": "/use-custom-input-value", "text": "useCustomInputValue" }
       ]
+    },
+    "utils": {
+      "text": "方法",
+      "children": [
+        { "link": "/deepmerge", "text": "深度合并" }
+      ]
     }
   }
 }
