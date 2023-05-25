@@ -21,7 +21,10 @@ export const Locale = {
   },
 
   add(newMessages: Message = {}) {
-    merge(messages, newMessages)
+    const newMergMessage = merge(messages, newMessages)
+    Object.keys(newMergMessage).forEach((lange: string) => {
+      messages[lange] = newMergMessage[lange]
+    })
   }
 }
 

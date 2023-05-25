@@ -42,6 +42,9 @@
     "typescript": "^5.0.4",
     "vue": "^3.2.47"
   },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "release-it": {
     "git": {
       "tag": false,
