@@ -98,8 +98,8 @@ swipe/indicator
 | prev | 切换到上一轮播 | - | - |
 | next | 切换到下一轮播 | - | - |
 | swipeTo | 切换到指定位置 | `index: number, options: SwipeToOptions` | - |
-| autoplay | 开启自动轮播 | - | - |
-| autoplay | 停止自动轮播 | - | - |
+| startAutoplay | 开启自动轮播 | - | - |
+| stopAutoplay | 停止自动轮播 | - | - |
 | resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | - | - |
 
 ### 类型定义

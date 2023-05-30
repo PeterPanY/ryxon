@@ -294,7 +294,7 @@ export default defineComponent({
         state.active = active
         state.swiping = true
         state.offset = getTargetOffset(active)
-        children.forEach((swipe) => {
+        children.forEach((swipe: any) => {
           swipe.setOffset(0)
         })
 
@@ -525,7 +525,7 @@ export default defineComponent({
       state,
       resize,
       swipeTo,
-      autoplay,
+      startAutoplay: autoplay,
       stopAutoplay
     })
 
