@@ -524,7 +524,9 @@ export default defineComponent({
       next,
       state,
       resize,
-      swipeTo
+      swipeTo,
+      autoplay,
+      stopAutoplay
     })
 
     linkChildren({

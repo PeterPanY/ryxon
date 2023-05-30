@@ -19,6 +19,8 @@ export type SwipeExpose = {
   next: () => void
   resize: () => void
   swipeTo: (index: number, options?: SwipeToOptions) => void
+  autoplay: () => void
+  stopAutoplay: () => void
   /** @private */
   state: SwipeState
 }
