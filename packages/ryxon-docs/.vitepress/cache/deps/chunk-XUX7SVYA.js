@@ -1,4 +1,4 @@
-// ../../node_modules/.pnpm/@vue+shared@3.2.47/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+shared@3.3.4/node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
   const map2 = /* @__PURE__ */ Object.create(null)
   const list = str.split(',')
@@ -8,187 +8,6 @@ function makeMap(str, expectsLowerCase) {
   return expectsLowerCase
     ? (val) => !!map2[val.toLowerCase()]
     : (val) => !!map2[val]
-}
-var GLOBALS_WHITE_LISTED =
-  'Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt'
-var isGloballyWhitelisted = makeMap(GLOBALS_WHITE_LISTED)
-function normalizeStyle(value) {
-  if (isArray(value)) {
-    const res = {}
-    for (let i = 0; i < value.length; i++) {
-      const item = value[i]
-      const normalized = isString(item)
-        ? parseStringStyle(item)
-        : normalizeStyle(item)
-      if (normalized) {
-        for (const key in normalized) {
-          res[key] = normalized[key]
-        }
-      }
-    }
-    return res
-  } else if (isString(value)) {
-    return value
-  } else if (isObject(value)) {
-    return value
-  }
-}
-var listDelimiterRE = /;(?![^(]*\))/g
-var propertyDelimiterRE = /:([^]+)/
-var styleCommentRE = /\/\*.*?\*\//gs
-function parseStringStyle(cssText) {
-  const ret = {}
-  cssText
-    .replace(styleCommentRE, '')
-    .split(listDelimiterRE)
-    .forEach((item) => {
-      if (item) {
-        const tmp = item.split(propertyDelimiterRE)
-        tmp.length > 1 && (ret[tmp[0].trim()] = tmp[1].trim())
-      }
-    })
-  return ret
-}
-function normalizeClass(value) {
-  let res = ''
-  if (isString(value)) {
-    res = value
-  } else if (isArray(value)) {
-    for (let i = 0; i < value.length; i++) {
-      const normalized = normalizeClass(value[i])
-      if (normalized) {
-        res += normalized + ' '
-      }
-    }
-  } else if (isObject(value)) {
-    for (const name in value) {
-      if (value[name]) {
-        res += name + ' '
-      }
-    }
-  }
-  return res.trim()
-}
-function normalizeProps(props) {
-  if (!props) return null
-  let { class: klass, style } = props
-  if (klass && !isString(klass)) {
-    props.class = normalizeClass(klass)
-  }
-  if (style) {
-    props.style = normalizeStyle(style)
-  }
-  return props
-}
-var HTML_TAGS =
-  'html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,template,blockquote,iframe,tfoot'
-var SVG_TAGS =
-  'svg,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,text,textPath,title,tspan,unknown,use,view'
-var VOID_TAGS =
-  'area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr'
-var isHTMLTag = makeMap(HTML_TAGS)
-var isSVGTag = makeMap(SVG_TAGS)
-var isVoidTag = makeMap(VOID_TAGS)
-var specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`
-var isSpecialBooleanAttr = makeMap(specialBooleanAttrs)
-var isBooleanAttr = makeMap(
-  specialBooleanAttrs +
-    `,async,autofocus,autoplay,controls,default,defer,disabled,hidden,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected`
-)
-function includeBooleanAttr(value) {
-  return !!value || value === ''
-}
-var isKnownHtmlAttr = makeMap(
-  `accept,accept-charset,accesskey,action,align,allow,alt,async,autocapitalize,autocomplete,autofocus,autoplay,background,bgcolor,border,buffered,capture,challenge,charset,checked,cite,class,code,codebase,color,cols,colspan,content,contenteditable,contextmenu,controls,coords,crossorigin,csp,data,datetime,decoding,default,defer,dir,dirname,disabled,download,draggable,dropzone,enctype,enterkeyhint,for,form,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http-equiv,icon,id,importance,integrity,ismap,itemprop,keytype,kind,label,lang,language,loading,list,loop,low,manifest,max,maxlength,minlength,media,min,multiple,muted,name,novalidate,open,optimum,pattern,ping,placeholder,poster,preload,radiogroup,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,scoped,selected,shape,size,sizes,slot,span,spellcheck,src,srcdoc,srclang,srcset,start,step,style,summary,tabindex,target,title,translate,type,usemap,value,width,wrap`
-)
-var isKnownSvgAttr = makeMap(
-  `xmlns,accent-height,accumulate,additive,alignment-baseline,alphabetic,amplitude,arabic-form,ascent,attributeName,attributeType,azimuth,baseFrequency,baseline-shift,baseProfile,bbox,begin,bias,by,calcMode,cap-height,class,clip,clipPathUnits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,contentScriptType,contentStyleType,crossorigin,cursor,cx,cy,d,decelerate,descent,diffuseConstant,direction,display,divisor,dominant-baseline,dur,dx,dy,edgeMode,elevation,enable-background,end,exponent,fill,fill-opacity,fill-rule,filter,filterRes,filterUnits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,format,from,fr,fx,fy,g1,g2,glyph-name,glyph-orientation-horizontal,glyph-orientation-vertical,glyphRef,gradientTransform,gradientUnits,hanging,height,href,hreflang,horiz-adv-x,horiz-origin-x,id,ideographic,image-rendering,in,in2,intercept,k,k1,k2,k3,k4,kernelMatrix,kernelUnitLength,kerning,keyPoints,keySplines,keyTimes,lang,lengthAdjust,letter-spacing,lighting-color,limitingConeAngle,local,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mask,maskContentUnits,maskUnits,mathematical,max,media,method,min,mode,name,numOctaves,offset,opacity,operator,order,orient,orientation,origin,overflow,overline-position,overline-thickness,panose-1,paint-order,path,pathLength,patternContentUnits,patternTransform,patternUnits,ping,pointer-events,points,pointsAtX,pointsAtY,pointsAtZ,preserveAlpha,preserveAspectRatio,primitiveUnits,r,radius,referrerPolicy,refX,refY,rel,rendering-intent,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,result,rotate,rx,ry,scale,seed,shape-rendering,slope,spacing,specularConstant,specularExponent,speed,spreadMethod,startOffset,stdDeviation,stemh,stemv,stitchTiles,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,string,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,style,surfaceScale,systemLanguage,tabindex,tableValues,target,targetX,targetY,text-anchor,text-decoration,text-rendering,textLength,to,transform,transform-origin,type,u1,u2,underline-position,underline-thickness,unicode,unicode-bidi,unicode-range,units-per-em,v-alphabetic,v-hanging,v-ideographic,v-mathematical,values,vector-effect,version,vert-adv-y,vert-origin-x,vert-origin-y,viewBox,viewTarget,visibility,width,widths,word-spacing,writing-mode,x,x-height,x1,x2,xChannelSelector,xlink:actuate,xlink:arcrole,xlink:href,xlink:role,xlink:show,xlink:title,xlink:type,xml:base,xml:lang,xml:space,y,y1,y2,yChannelSelector,z,zoomAndPan`
-)
-function looseCompareArrays(a, b) {
-  if (a.length !== b.length) return false
-  let equal = true
-  for (let i = 0; equal && i < a.length; i++) {
-    equal = looseEqual(a[i], b[i])
-  }
-  return equal
-}
-function looseEqual(a, b) {
-  if (a === b) return true
-  let aValidType = isDate(a)
-  let bValidType = isDate(b)
-  if (aValidType || bValidType) {
-    return aValidType && bValidType ? a.getTime() === b.getTime() : false
-  }
-  aValidType = isSymbol(a)
-  bValidType = isSymbol(b)
-  if (aValidType || bValidType) {
-    return a === b
-  }
-  aValidType = isArray(a)
-  bValidType = isArray(b)
-  if (aValidType || bValidType) {
-    return aValidType && bValidType ? looseCompareArrays(a, b) : false
-  }
-  aValidType = isObject(a)
-  bValidType = isObject(b)
-  if (aValidType || bValidType) {
-    if (!aValidType || !bValidType) {
-      return false
-    }
-    const aKeysCount = Object.keys(a).length
-    const bKeysCount = Object.keys(b).length
-    if (aKeysCount !== bKeysCount) {
-      return false
-    }
-    for (const key in a) {
-      const aHasKey = a.hasOwnProperty(key)
-      const bHasKey = b.hasOwnProperty(key)
-      if (
-        (aHasKey && !bHasKey) ||
-        (!aHasKey && bHasKey) ||
-        !looseEqual(a[key], b[key])
-      ) {
-        return false
-      }
-    }
-  }
-  return String(a) === String(b)
-}
-function looseIndexOf(arr, val) {
-  return arr.findIndex((item) => looseEqual(item, val))
-}
-var toDisplayString = (val) => {
-  return isString(val)
-    ? val
-    : val == null
-    ? ''
-    : isArray(val) ||
-      (isObject(val) &&
-        (val.toString === objectToString || !isFunction(val.toString)))
-    ? JSON.stringify(val, replacer, 2)
-    : String(val)
-}
-var replacer = (_key, val) => {
-  if (val && val.__v_isRef) {
-    return replacer(_key, val.value)
-  } else if (isMap(val)) {
-    return {
-      [`Map(${val.size})`]: [...val.entries()].reduce(
-        (entries, [key, val2]) => {
-          entries[`${key} =>`] = val2
-          return entries
-        },
-        {}
-      )
-    }
-  } else if (isSet(val)) {
-    return {
-      [`Set(${val.size})`]: [...val.values()]
-    }
-  } else if (isObject(val) && !isArray(val) && !isPlainObject(val)) {
-    return String(val)
-  }
-  return val
 }
 var EMPTY_OBJ = true ? Object.freeze({}) : {}
 var EMPTY_ARR = true ? Object.freeze([]) : []
@@ -294,8 +113,189 @@ var getGlobalThis = () => {
         : {})
   )
 }
+var GLOBALS_WHITE_LISTED =
+  'Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console'
+var isGloballyWhitelisted = makeMap(GLOBALS_WHITE_LISTED)
+function normalizeStyle(value) {
+  if (isArray(value)) {
+    const res = {}
+    for (let i = 0; i < value.length; i++) {
+      const item = value[i]
+      const normalized = isString(item)
+        ? parseStringStyle(item)
+        : normalizeStyle(item)
+      if (normalized) {
+        for (const key in normalized) {
+          res[key] = normalized[key]
+        }
+      }
+    }
+    return res
+  } else if (isString(value)) {
+    return value
+  } else if (isObject(value)) {
+    return value
+  }
+}
+var listDelimiterRE = /;(?![^(]*\))/g
+var propertyDelimiterRE = /:([^]+)/
+var styleCommentRE = /\/\*[^]*?\*\//g
+function parseStringStyle(cssText) {
+  const ret = {}
+  cssText
+    .replace(styleCommentRE, '')
+    .split(listDelimiterRE)
+    .forEach((item) => {
+      if (item) {
+        const tmp = item.split(propertyDelimiterRE)
+        tmp.length > 1 && (ret[tmp[0].trim()] = tmp[1].trim())
+      }
+    })
+  return ret
+}
+function normalizeClass(value) {
+  let res = ''
+  if (isString(value)) {
+    res = value
+  } else if (isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      const normalized = normalizeClass(value[i])
+      if (normalized) {
+        res += normalized + ' '
+      }
+    }
+  } else if (isObject(value)) {
+    for (const name in value) {
+      if (value[name]) {
+        res += name + ' '
+      }
+    }
+  }
+  return res.trim()
+}
+function normalizeProps(props) {
+  if (!props) return null
+  let { class: klass, style } = props
+  if (klass && !isString(klass)) {
+    props.class = normalizeClass(klass)
+  }
+  if (style) {
+    props.style = normalizeStyle(style)
+  }
+  return props
+}
+var HTML_TAGS =
+  'html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,template,blockquote,iframe,tfoot'
+var SVG_TAGS =
+  'svg,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,text,textPath,title,tspan,unknown,use,view'
+var VOID_TAGS =
+  'area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr'
+var isHTMLTag = makeMap(HTML_TAGS)
+var isSVGTag = makeMap(SVG_TAGS)
+var isVoidTag = makeMap(VOID_TAGS)
+var specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`
+var isSpecialBooleanAttr = makeMap(specialBooleanAttrs)
+var isBooleanAttr = makeMap(
+  specialBooleanAttrs +
+    `,async,autofocus,autoplay,controls,default,defer,disabled,hidden,inert,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected`
+)
+function includeBooleanAttr(value) {
+  return !!value || value === ''
+}
+var isKnownHtmlAttr = makeMap(
+  `accept,accept-charset,accesskey,action,align,allow,alt,async,autocapitalize,autocomplete,autofocus,autoplay,background,bgcolor,border,buffered,capture,challenge,charset,checked,cite,class,code,codebase,color,cols,colspan,content,contenteditable,contextmenu,controls,coords,crossorigin,csp,data,datetime,decoding,default,defer,dir,dirname,disabled,download,draggable,dropzone,enctype,enterkeyhint,for,form,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http-equiv,icon,id,importance,inert,integrity,ismap,itemprop,keytype,kind,label,lang,language,loading,list,loop,low,manifest,max,maxlength,minlength,media,min,multiple,muted,name,novalidate,open,optimum,pattern,ping,placeholder,poster,preload,radiogroup,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,scoped,selected,shape,size,sizes,slot,span,spellcheck,src,srcdoc,srclang,srcset,start,step,style,summary,tabindex,target,title,translate,type,usemap,value,width,wrap`
+)
+var isKnownSvgAttr = makeMap(
+  `xmlns,accent-height,accumulate,additive,alignment-baseline,alphabetic,amplitude,arabic-form,ascent,attributeName,attributeType,azimuth,baseFrequency,baseline-shift,baseProfile,bbox,begin,bias,by,calcMode,cap-height,class,clip,clipPathUnits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,contentScriptType,contentStyleType,crossorigin,cursor,cx,cy,d,decelerate,descent,diffuseConstant,direction,display,divisor,dominant-baseline,dur,dx,dy,edgeMode,elevation,enable-background,end,exponent,fill,fill-opacity,fill-rule,filter,filterRes,filterUnits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,format,from,fr,fx,fy,g1,g2,glyph-name,glyph-orientation-horizontal,glyph-orientation-vertical,glyphRef,gradientTransform,gradientUnits,hanging,height,href,hreflang,horiz-adv-x,horiz-origin-x,id,ideographic,image-rendering,in,in2,intercept,k,k1,k2,k3,k4,kernelMatrix,kernelUnitLength,kerning,keyPoints,keySplines,keyTimes,lang,lengthAdjust,letter-spacing,lighting-color,limitingConeAngle,local,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mask,maskContentUnits,maskUnits,mathematical,max,media,method,min,mode,name,numOctaves,offset,opacity,operator,order,orient,orientation,origin,overflow,overline-position,overline-thickness,panose-1,paint-order,path,pathLength,patternContentUnits,patternTransform,patternUnits,ping,pointer-events,points,pointsAtX,pointsAtY,pointsAtZ,preserveAlpha,preserveAspectRatio,primitiveUnits,r,radius,referrerPolicy,refX,refY,rel,rendering-intent,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,result,rotate,rx,ry,scale,seed,shape-rendering,slope,spacing,specularConstant,specularExponent,speed,spreadMethod,startOffset,stdDeviation,stemh,stemv,stitchTiles,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,string,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,style,surfaceScale,systemLanguage,tabindex,tableValues,target,targetX,targetY,text-anchor,text-decoration,text-rendering,textLength,to,transform,transform-origin,type,u1,u2,underline-position,underline-thickness,unicode,unicode-bidi,unicode-range,units-per-em,v-alphabetic,v-hanging,v-ideographic,v-mathematical,values,vector-effect,version,vert-adv-y,vert-origin-x,vert-origin-y,viewBox,viewTarget,visibility,width,widths,word-spacing,writing-mode,x,x-height,x1,x2,xChannelSelector,xlink:actuate,xlink:arcrole,xlink:href,xlink:role,xlink:show,xlink:title,xlink:type,xml:base,xml:lang,xml:space,y,y1,y2,yChannelSelector,z,zoomAndPan`
+)
+function looseCompareArrays(a, b) {
+  if (a.length !== b.length) return false
+  let equal = true
+  for (let i = 0; equal && i < a.length; i++) {
+    equal = looseEqual(a[i], b[i])
+  }
+  return equal
+}
+function looseEqual(a, b) {
+  if (a === b) return true
+  let aValidType = isDate(a)
+  let bValidType = isDate(b)
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? a.getTime() === b.getTime() : false
+  }
+  aValidType = isSymbol(a)
+  bValidType = isSymbol(b)
+  if (aValidType || bValidType) {
+    return a === b
+  }
+  aValidType = isArray(a)
+  bValidType = isArray(b)
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? looseCompareArrays(a, b) : false
+  }
+  aValidType = isObject(a)
+  bValidType = isObject(b)
+  if (aValidType || bValidType) {
+    if (!aValidType || !bValidType) {
+      return false
+    }
+    const aKeysCount = Object.keys(a).length
+    const bKeysCount = Object.keys(b).length
+    if (aKeysCount !== bKeysCount) {
+      return false
+    }
+    for (const key in a) {
+      const aHasKey = a.hasOwnProperty(key)
+      const bHasKey = b.hasOwnProperty(key)
+      if (
+        (aHasKey && !bHasKey) ||
+        (!aHasKey && bHasKey) ||
+        !looseEqual(a[key], b[key])
+      ) {
+        return false
+      }
+    }
+  }
+  return String(a) === String(b)
+}
+function looseIndexOf(arr, val) {
+  return arr.findIndex((item) => looseEqual(item, val))
+}
+var toDisplayString = (val) => {
+  return isString(val)
+    ? val
+    : val == null
+    ? ''
+    : isArray(val) ||
+      (isObject(val) &&
+        (val.toString === objectToString || !isFunction(val.toString)))
+    ? JSON.stringify(val, replacer, 2)
+    : String(val)
+}
+var replacer = (_key, val) => {
+  if (val && val.__v_isRef) {
+    return replacer(_key, val.value)
+  } else if (isMap(val)) {
+    return {
+      [`Map(${val.size})`]: [...val.entries()].reduce(
+        (entries, [key, val2]) => {
+          entries[`${key} =>`] = val2
+          return entries
+        },
+        {}
+      )
+    }
+  } else if (isSet(val)) {
+    return {
+      [`Set(${val.size})`]: [...val.values()]
+    }
+  } else if (isObject(val) && !isArray(val) && !isPlainObject(val)) {
+    return String(val)
+  }
+  return val
+}
 
-// ../../node_modules/.pnpm/@vue+reactivity@3.2.47/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+reactivity@3.3.4/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 function warn(msg, ...args) {
   console.warn(`[Vue warn] ${msg}`, ...args)
 }
@@ -555,7 +555,12 @@ function trackEffects(dep, debuggerEventExtraInfo) {
     activeEffect.deps.push(dep)
     if (activeEffect.onTrack) {
       activeEffect.onTrack(
-        Object.assign({ effect: activeEffect }, debuggerEventExtraInfo)
+        extend(
+          {
+            effect: activeEffect
+          },
+          debuggerEventExtraInfo
+        )
       )
     }
   }
@@ -656,10 +661,8 @@ function triggerEffect(effect2, debuggerEventExtraInfo) {
   }
 }
 function getDepFromReactive(object, key) {
-  var _a2
-  return (_a2 = targetMap.get(object)) === null || _a2 === void 0
-    ? void 0
-    : _a2.get(key)
+  var _a
+  return (_a = targetMap.get(object)) == null ? void 0 : _a.get(key)
 }
 var isNonTrackableKeys = makeMap(`__proto__,__v_isRef,__isVue`)
 var builtInSymbols = new Set(
@@ -845,11 +848,7 @@ var shallowReadonlyHandlers = extend({}, readonlyHandlers, {
 var toShallow = (value) => value
 var getProto = (v) => Reflect.getPrototypeOf(v)
 function get(target, key, isReadonly2 = false, isShallow3 = false) {
-  target =
-    target[
-      '__v_raw'
-      /* ReactiveFlags.RAW */
-    ]
+  target = target['__v_raw']
   const rawTarget = toRaw(target)
   const rawKey = toRaw(key)
   if (!isReadonly2) {
@@ -869,11 +868,7 @@ function get(target, key, isReadonly2 = false, isShallow3 = false) {
   }
 }
 function has(key, isReadonly2 = false) {
-  const target =
-    this[
-      '__v_raw'
-      /* ReactiveFlags.RAW */
-    ]
+  const target = this['__v_raw']
   const rawTarget = toRaw(target)
   const rawKey = toRaw(key)
   if (!isReadonly2) {
@@ -887,11 +882,7 @@ function has(key, isReadonly2 = false) {
     : target.has(key) || target.has(rawKey)
 }
 function size(target, isReadonly2 = false) {
-  target =
-    target[
-      '__v_raw'
-      /* ReactiveFlags.RAW */
-    ]
+  target = target['__v_raw']
   !isReadonly2 && track(toRaw(target), 'iterate', ITERATE_KEY)
   return Reflect.get(target, 'size', target)
 }
@@ -960,11 +951,7 @@ function clear() {
 function createForEach(isReadonly2, isShallow3) {
   return function forEach(callback, thisArg) {
     const observed = this
-    const target =
-      observed[
-        '__v_raw'
-        /* ReactiveFlags.RAW */
-      ]
+    const target = observed['__v_raw']
     const rawTarget = toRaw(target)
     const wrap = isShallow3 ? toShallow : isReadonly2 ? toReadonly : toReactive
     !isReadonly2 && track(rawTarget, 'iterate', ITERATE_KEY)
@@ -975,11 +962,7 @@ function createForEach(isReadonly2, isShallow3) {
 }
 function createIterableMethod(method, isReadonly2, isShallow3) {
   return function (...args) {
-    const target =
-      this[
-        '__v_raw'
-        /* ReactiveFlags.RAW */
-      ]
+    const target = this['__v_raw']
     const rawTarget = toRaw(target)
     const targetIsMap = isMap(rawTarget)
     const isPair =
@@ -1058,22 +1041,10 @@ function createInstrumentations() {
     has(key) {
       return has.call(this, key, true)
     },
-    add: createReadonlyMethod(
-      'add'
-      /* TriggerOpTypes.ADD */
-    ),
-    set: createReadonlyMethod(
-      'set'
-      /* TriggerOpTypes.SET */
-    ),
-    delete: createReadonlyMethod(
-      'delete'
-      /* TriggerOpTypes.DELETE */
-    ),
-    clear: createReadonlyMethod(
-      'clear'
-      /* TriggerOpTypes.CLEAR */
-    ),
+    add: createReadonlyMethod('add'),
+    set: createReadonlyMethod('set'),
+    delete: createReadonlyMethod('delete'),
+    clear: createReadonlyMethod('clear'),
     forEach: createForEach(true, false)
   }
   const shallowReadonlyInstrumentations2 = {
@@ -1086,22 +1057,10 @@ function createInstrumentations() {
     has(key) {
       return has.call(this, key, true)
     },
-    add: createReadonlyMethod(
-      'add'
-      /* TriggerOpTypes.ADD */
-    ),
-    set: createReadonlyMethod(
-      'set'
-      /* TriggerOpTypes.SET */
-    ),
-    delete: createReadonlyMethod(
-      'delete'
-      /* TriggerOpTypes.DELETE */
-    ),
-    clear: createReadonlyMethod(
-      'clear'
-      /* TriggerOpTypes.CLEAR */
-    ),
+    add: createReadonlyMethod('add'),
+    set: createReadonlyMethod('set'),
+    delete: createReadonlyMethod('delete'),
+    clear: createReadonlyMethod('clear'),
     forEach: createForEach(true, true)
   }
   const iteratorMethods = ['keys', 'values', 'entries', Symbol.iterator]
@@ -1203,10 +1162,7 @@ function targetTypeMap(rawType) {
   }
 }
 function getTargetType(value) {
-  return value[
-    '__v_skip'
-    /* ReactiveFlags.SKIP */
-  ] || !Object.isExtensible(value)
+  return value['__v_skip'] || !Object.isExtensible(value)
     ? 0
     : targetTypeMap(toRawType(value))
 }
@@ -1262,19 +1218,7 @@ function createReactiveObject(
     }
     return target
   }
-  if (
-    target[
-      '__v_raw'
-      /* ReactiveFlags.RAW */
-    ] &&
-    !(
-      isReadonly2 &&
-      target[
-        '__v_isReactive'
-        /* ReactiveFlags.IS_REACTIVE */
-      ]
-    )
-  ) {
+  if (target['__v_raw'] && !(isReadonly2 && target['__v_isReactive'])) {
     return target
   }
   const existingProxy = proxyMap.get(target)
@@ -1294,49 +1238,21 @@ function createReactiveObject(
 }
 function isReactive(value) {
   if (isReadonly(value)) {
-    return isReactive(
-      value[
-        '__v_raw'
-        /* ReactiveFlags.RAW */
-      ]
-    )
+    return isReactive(value['__v_raw'])
   }
-  return !!(
-    value &&
-    value[
-      '__v_isReactive'
-      /* ReactiveFlags.IS_REACTIVE */
-    ]
-  )
+  return !!(value && value['__v_isReactive'])
 }
 function isReadonly(value) {
-  return !!(
-    value &&
-    value[
-      '__v_isReadonly'
-      /* ReactiveFlags.IS_READONLY */
-    ]
-  )
+  return !!(value && value['__v_isReadonly'])
 }
 function isShallow(value) {
-  return !!(
-    value &&
-    value[
-      '__v_isShallow'
-      /* ReactiveFlags.IS_SHALLOW */
-    ]
-  )
+  return !!(value && value['__v_isShallow'])
 }
 function isProxy(value) {
   return isReactive(value) || isReadonly(value)
 }
 function toRaw(observed) {
-  const raw =
-    observed &&
-    observed[
-      '__v_raw'
-      /* ReactiveFlags.RAW */
-    ]
+  const raw = observed && observed['__v_raw']
   return raw ? toRaw(raw) : observed
 }
 function markRaw(value) {
@@ -1419,6 +1335,9 @@ function triggerRef(ref2) {
 function unref(ref2) {
   return isRef(ref2) ? ref2.value : ref2
 }
+function toValue(source) {
+  return isFunction(source) ? source() : unref(source)
+}
 var shallowUnwrapHandlers = {
   get: (target, key, receiver) => unref(Reflect.get(target, key, receiver)),
   set: (target, key, value, receiver) => {
@@ -1463,7 +1382,7 @@ function toRefs(object) {
   }
   const ret = isArray(object) ? new Array(object.length) : {}
   for (const key in object) {
-    ret[key] = toRef(object, key)
+    ret[key] = propertyToRef(object, key)
   }
   return ret
 }
@@ -1485,17 +1404,37 @@ var ObjectRefImpl = class {
     return getDepFromReactive(toRaw(this._object), this._key)
   }
 }
-function toRef(object, key, defaultValue) {
-  const val = object[key]
-  return isRef(val) ? val : new ObjectRefImpl(object, key, defaultValue)
+var GetterRefImpl = class {
+  constructor(_getter) {
+    this._getter = _getter
+    this.__v_isRef = true
+    this.__v_isReadonly = true
+  }
+  get value() {
+    return this._getter()
+  }
 }
-var _a$1
+function toRef(source, key, defaultValue) {
+  if (isRef(source)) {
+    return source
+  } else if (isFunction(source)) {
+    return new GetterRefImpl(source)
+  } else if (isObject(source) && arguments.length > 1) {
+    return propertyToRef(source, key, defaultValue)
+  } else {
+    return ref(source)
+  }
+}
+function propertyToRef(source, key, defaultValue) {
+  const val = source[key]
+  return isRef(val) ? val : new ObjectRefImpl(source, key, defaultValue)
+}
 var ComputedRefImpl = class {
   constructor(getter, _setter, isReadonly2, isSSR) {
     this._setter = _setter
     this.dep = void 0
     this.__v_isRef = true
-    this[_a$1] = false
+    this['__v_isReadonly'] = false
     this._dirty = true
     this.effect = new ReactiveEffect(getter, () => {
       if (!this._dirty) {
@@ -1505,10 +1444,7 @@ var ComputedRefImpl = class {
     })
     this.effect.computed = this
     this.effect.active = this._cacheable = !isSSR
-    this[
-      '__v_isReadonly'
-      /* ReactiveFlags.IS_READONLY */
-    ] = isReadonly2
+    this['__v_isReadonly'] = isReadonly2
   }
   get value() {
     const self2 = toRaw(this)
@@ -1523,7 +1459,6 @@ var ComputedRefImpl = class {
     this._setter(newValue)
   }
 }
-_a$1 = '__v_isReadonly'
 function computed(getterOrOptions, debugOptions, isSSR = false) {
   let getter
   let setter
@@ -1546,11 +1481,9 @@ function computed(getterOrOptions, debugOptions, isSSR = false) {
   }
   return cRef
 }
-var _a
 var tick = Promise.resolve()
-_a = '__v_isReadonly'
 
-// ../../node_modules/.pnpm/@vue+runtime-core@3.2.47/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+runtime-core@3.3.4/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 var stack = []
 function pushWarningContext(vnode) {
   stack.push(vnode)
@@ -1682,93 +1615,35 @@ function assertNumber(val, type) {
   }
 }
 var ErrorTypeStrings = {
-  ['sp']:
-    /* LifecycleHooks.SERVER_PREFETCH */
-    'serverPrefetch hook',
-  ['bc']:
-    /* LifecycleHooks.BEFORE_CREATE */
-    'beforeCreate hook',
-  ['c']:
-    /* LifecycleHooks.CREATED */
-    'created hook',
-  ['bm']:
-    /* LifecycleHooks.BEFORE_MOUNT */
-    'beforeMount hook',
-  ['m']:
-    /* LifecycleHooks.MOUNTED */
-    'mounted hook',
-  ['bu']:
-    /* LifecycleHooks.BEFORE_UPDATE */
-    'beforeUpdate hook',
-  ['u']:
-    /* LifecycleHooks.UPDATED */
-    'updated',
-  ['bum']:
-    /* LifecycleHooks.BEFORE_UNMOUNT */
-    'beforeUnmount hook',
-  ['um']:
-    /* LifecycleHooks.UNMOUNTED */
-    'unmounted hook',
-  ['a']:
-    /* LifecycleHooks.ACTIVATED */
-    'activated hook',
-  ['da']:
-    /* LifecycleHooks.DEACTIVATED */
-    'deactivated hook',
-  ['ec']:
-    /* LifecycleHooks.ERROR_CAPTURED */
-    'errorCaptured hook',
-  ['rtc']:
-    /* LifecycleHooks.RENDER_TRACKED */
-    'renderTracked hook',
-  ['rtg']:
-    /* LifecycleHooks.RENDER_TRIGGERED */
-    'renderTriggered hook',
-  [0]:
-    /* ErrorCodes.SETUP_FUNCTION */
-    'setup function',
-  [1]:
-    /* ErrorCodes.RENDER_FUNCTION */
-    'render function',
-  [2]:
-    /* ErrorCodes.WATCH_GETTER */
-    'watcher getter',
-  [3]:
-    /* ErrorCodes.WATCH_CALLBACK */
-    'watcher callback',
-  [4]:
-    /* ErrorCodes.WATCH_CLEANUP */
-    'watcher cleanup function',
-  [5]:
-    /* ErrorCodes.NATIVE_EVENT_HANDLER */
-    'native event handler',
-  [6]:
-    /* ErrorCodes.COMPONENT_EVENT_HANDLER */
-    'component event handler',
-  [7]:
-    /* ErrorCodes.VNODE_HOOK */
-    'vnode hook',
-  [8]:
-    /* ErrorCodes.DIRECTIVE_HOOK */
-    'directive hook',
-  [9]:
-    /* ErrorCodes.TRANSITION_HOOK */
-    'transition hook',
-  [10]:
-    /* ErrorCodes.APP_ERROR_HANDLER */
-    'app errorHandler',
-  [11]:
-    /* ErrorCodes.APP_WARN_HANDLER */
-    'app warnHandler',
-  [12]:
-    /* ErrorCodes.FUNCTION_REF */
-    'ref function',
-  [13]:
-    /* ErrorCodes.ASYNC_COMPONENT_LOADER */
-    'async component loader',
-  [14]:
-    /* ErrorCodes.SCHEDULER */
-    'scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core'
+  ['sp']: 'serverPrefetch hook',
+  ['bc']: 'beforeCreate hook',
+  ['c']: 'created hook',
+  ['bm']: 'beforeMount hook',
+  ['m']: 'mounted hook',
+  ['bu']: 'beforeUpdate hook',
+  ['u']: 'updated',
+  ['bum']: 'beforeUnmount hook',
+  ['um']: 'unmounted hook',
+  ['a']: 'activated hook',
+  ['da']: 'deactivated hook',
+  ['ec']: 'errorCaptured hook',
+  ['rtc']: 'renderTracked hook',
+  ['rtg']: 'renderTriggered hook',
+  [0]: 'setup function',
+  [1]: 'render function',
+  [2]: 'watcher getter',
+  [3]: 'watcher callback',
+  [4]: 'watcher cleanup function',
+  [5]: 'native event handler',
+  [6]: 'component event handler',
+  [7]: 'vnode hook',
+  [8]: 'directive hook',
+  [9]: 'transition hook',
+  [10]: 'app errorHandler',
+  [11]: 'app warnHandler',
+  [12]: 'ref function',
+  [13]: 'async component loader',
+  [14]: 'scheduler flush. This is likely a Vue internals bug. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core'
 }
 function callWithErrorHandling(fn, instance, type, args) {
   let res
@@ -1980,12 +1855,7 @@ function flushJobs(seen) {
         if (check(job)) {
           continue
         }
-        callWithErrorHandling(
-          job,
-          null,
-          14
-          /* ErrorCodes.SCHEDULER */
-        )
+        callWithErrorHandling(job, null, 14)
       }
     }
   } finally {
@@ -2084,6 +1954,8 @@ function reload(id, newComp) {
       }
       hmrDirtyComponents.add(oldComp)
     }
+    instance.appContext.propsCache.delete(instance.type)
+    instance.appContext.emitsCache.delete(instance.type)
     instance.appContext.optionsCache.delete(instance.type)
     if (instance.ceReload) {
       hmrDirtyComponents.add(oldComp)
@@ -2138,7 +2010,7 @@ function emit$1(event, ...args) {
   }
 }
 function setDevtoolsHook(hook, target) {
-  var _a2, _b
+  var _a, _b
   devtools = hook
   if (devtools) {
     devtools.enabled = true
@@ -2150,10 +2022,7 @@ function setDevtoolsHook(hook, target) {
     // (#4815)
     typeof window !== 'undefined' && // some envs mock window but not fully
     window.HTMLElement && // also exclude jsdom
-    !((_b =
-      (_a2 = window.navigator) === null || _a2 === void 0
-        ? void 0
-        : _a2.userAgent) === null || _b === void 0
+    !((_b = (_a = window.navigator) == null ? void 0 : _a.userAgent) == null
       ? void 0
       : _b.includes('jsdom'))
   ) {
@@ -2187,15 +2056,15 @@ function devtoolsUnmountApp(app) {
 }
 var devtoolsComponentAdded = createDevtoolsComponentHook(
   'component:added'
-  /* DevtoolsHooks.COMPONENT_ADDED */
+  /* COMPONENT_ADDED */
 )
 var devtoolsComponentUpdated = createDevtoolsComponentHook(
   'component:updated'
-  /* DevtoolsHooks.COMPONENT_UPDATED */
+  /* COMPONENT_UPDATED */
 )
 var _devtoolsComponentRemoved = createDevtoolsComponentHook(
   'component:removed'
-  /* DevtoolsHooks.COMPONENT_REMOVED */
+  /* COMPONENT_REMOVED */
 )
 var devtoolsComponentRemoved = (component) => {
   if (
@@ -2219,11 +2088,11 @@ function createDevtoolsComponentHook(hook) {
 }
 var devtoolsPerfStart = createDevtoolsPerformanceHook(
   'perf:start'
-  /* DevtoolsHooks.PERFORMANCE_START */
+  /* PERFORMANCE_START */
 )
 var devtoolsPerfEnd = createDevtoolsPerformanceHook(
   'perf:end'
-  /* DevtoolsHooks.PERFORMANCE_END */
+  /* PERFORMANCE_END */
 )
 function createDevtoolsPerformanceHook(hook) {
   return (component, type, time) => {
@@ -2457,13 +2326,13 @@ function renderComponentRoot(instance) {
       )
       fallthroughAttrs = attrs
     } else {
-      const render3 = Component
+      const render22 = Component
       if (attrs === props) {
         markAttrsAccessed()
       }
       result = normalizeVNode(
-        render3.length > 1
-          ? render3(
+        render22.length > 1
+          ? render22(
               props,
               true
                 ? {
@@ -2476,7 +2345,7 @@ function renderComponentRoot(instance) {
                   }
                 : { attrs, slots, emit: emit2 }
             )
-          : render3(
+          : render22(
               props,
               null
               /* we know it doesn't need it */
@@ -2488,12 +2357,7 @@ function renderComponentRoot(instance) {
     }
   } catch (err) {
     blockStack.length = 0
-    handleError(
-      err,
-      instance,
-      1
-      /* ErrorCodes.RENDER_FUNCTION */
-    )
+    handleError(err, instance, 1)
     result = createVNode(Comment)
   }
   let root = result
@@ -2809,7 +2673,7 @@ function mountSuspense(
     )
     setActiveBranch(suspense, vnode.ssFallback)
   } else {
-    suspense.resolve()
+    suspense.resolve(false, true)
   }
 }
 function patchSuspense(
@@ -2979,7 +2843,7 @@ function patchSuspense(
 var hasWarned = false
 function createSuspenseBoundary(
   vnode,
-  parent,
+  parentSuspense,
   parentComponent,
   container,
   hiddenContainer,
@@ -3003,13 +2867,21 @@ function createSuspenseBoundary(
     n: next,
     o: { parentNode, remove: remove2 }
   } = rendererInternals
+  let parentSuspenseId
+  const isSuspensible = isVNodeSuspensible(vnode)
+  if (isSuspensible) {
+    if (parentSuspense == null ? void 0 : parentSuspense.pendingBranch) {
+      parentSuspenseId = parentSuspense.pendingId
+      parentSuspense.deps++
+    }
+  }
   const timeout = vnode.props ? toNumber(vnode.props.timeout) : void 0
   if (true) {
     assertNumber(timeout, `Suspense timeout`)
   }
   const suspense = {
     vnode,
-    parent,
+    parent: parentSuspense,
     parentComponent,
     isSVG,
     container,
@@ -3024,7 +2896,7 @@ function createSuspenseBoundary(
     isHydrating,
     isUnmounted: false,
     effects: [],
-    resolve(resume = false) {
+    resolve(resume = false, sync = false) {
       if (true) {
         if (!resume && !suspense.pendingBranch) {
           throw new Error(
@@ -3056,13 +2928,7 @@ function createSuspenseBoundary(
         if (delayEnter) {
           activeBranch.transition.afterLeave = () => {
             if (pendingId === suspense.pendingId) {
-              move(
-                pendingBranch,
-                container2,
-                anchor2,
-                0
-                /* MoveType.ENTER */
-              )
+              move(pendingBranch, container2, anchor2, 0)
             }
           }
         }
@@ -3072,32 +2938,38 @@ function createSuspenseBoundary(
           unmount(activeBranch, parentComponent2, suspense, true)
         }
         if (!delayEnter) {
-          move(
-            pendingBranch,
-            container2,
-            anchor2,
-            0
-            /* MoveType.ENTER */
-          )
+          move(pendingBranch, container2, anchor2, 0)
         }
       }
       setActiveBranch(suspense, pendingBranch)
       suspense.pendingBranch = null
       suspense.isInFallback = false
-      let parent2 = suspense.parent
+      let parent = suspense.parent
       let hasUnresolvedAncestor = false
-      while (parent2) {
-        if (parent2.pendingBranch) {
-          parent2.effects.push(...effects)
+      while (parent) {
+        if (parent.pendingBranch) {
+          parent.effects.push(...effects)
           hasUnresolvedAncestor = true
           break
         }
-        parent2 = parent2.parent
+        parent = parent.parent
       }
       if (!hasUnresolvedAncestor) {
         queuePostFlushCb(effects)
       }
       suspense.effects = []
+      if (isSuspensible) {
+        if (
+          parentSuspense &&
+          parentSuspense.pendingBranch &&
+          parentSuspenseId === parentSuspense.pendingId
+        ) {
+          parentSuspense.deps--
+          if (parentSuspense.deps === 0 && !sync) {
+            parentSuspense.resolve()
+          }
+        }
+      }
       triggerEvent(vnode2, 'onResolve')
     },
     fallback(fallbackVNode) {
@@ -3165,12 +3037,7 @@ function createSuspenseBoundary(
       const hydratedEl = instance.vnode.el
       instance.asyncDep
         .catch((err) => {
-          handleError(
-            err,
-            instance,
-            0
-            /* ErrorCodes.SETUP_FUNCTION */
-          )
+          handleError(err, instance, 0)
         })
         .then((asyncSetupResult) => {
           if (
@@ -3216,13 +3083,13 @@ function createSuspenseBoundary(
           }
         })
     },
-    unmount(parentSuspense, doRemove) {
+    unmount(parentSuspense2, doRemove) {
       suspense.isUnmounted = true
       if (suspense.activeBranch) {
         unmount(
           suspense.activeBranch,
           parentComponent,
-          parentSuspense,
+          parentSuspense2,
           doRemove
         )
       }
@@ -3230,7 +3097,7 @@ function createSuspenseBoundary(
         unmount(
           suspense.pendingBranch,
           parentComponent,
-          parentSuspense,
+          parentSuspense2,
           doRemove
         )
       }
@@ -3272,7 +3139,7 @@ function hydrateSuspense(
     optimized
   )
   if (suspense.deps === 0) {
-    suspense.resolve()
+    suspense.resolve(false, true)
   }
   return result
 }
@@ -3334,40 +3201,12 @@ function setActiveBranch(suspense, branch) {
     updateHOCHostEl(parentComponent, el)
   }
 }
-function provide(key, value) {
-  if (!currentInstance) {
-    if (true) {
-      warn2(`provide() can only be used inside setup().`)
-    }
-  } else {
-    let provides = currentInstance.provides
-    const parentProvides =
-      currentInstance.parent && currentInstance.parent.provides
-    if (parentProvides === provides) {
-      provides = currentInstance.provides = Object.create(parentProvides)
-    }
-    provides[key] = value
-  }
-}
-function inject(key, defaultValue, treatDefaultAsFactory = false) {
-  const instance = currentInstance || currentRenderingInstance
-  if (instance) {
-    const provides =
-      instance.parent == null
-        ? instance.vnode.appContext && instance.vnode.appContext.provides
-        : instance.parent.provides
-    if (provides && key in provides) {
-      return provides[key]
-    } else if (arguments.length > 1) {
-      return treatDefaultAsFactory && isFunction(defaultValue)
-        ? defaultValue.call(instance.proxy)
-        : defaultValue
-    } else if (true) {
-      warn2(`injection "${String(key)}" not found.`)
-    }
-  } else if (true) {
-    warn2(`inject() can only be used inside setup() or functional components.`)
-  }
+function isVNodeSuspensible(vnode) {
+  var _a
+  return (
+    ((_a = vnode.props) == null ? void 0 : _a.suspensible) != null &&
+    vnode.props.suspensible !== false
+  )
 }
 function watchEffect(effect2, options) {
   return doWatch(effect2, null, options)
@@ -3376,18 +3215,14 @@ function watchPostEffect(effect2, options) {
   return doWatch(
     effect2,
     null,
-    true
-      ? Object.assign(Object.assign({}, options), { flush: 'post' })
-      : { flush: 'post' }
+    true ? extend({}, options, { flush: 'post' }) : { flush: 'post' }
   )
 }
 function watchSyncEffect(effect2, options) {
   return doWatch(
     effect2,
     null,
-    true
-      ? Object.assign(Object.assign({}, options), { flush: 'sync' })
-      : { flush: 'sync' }
+    true ? extend({}, options, { flush: 'sync' }) : { flush: 'sync' }
   )
 }
 var INITIAL_WATCHER_VALUE = {}
@@ -3404,6 +3239,7 @@ function doWatch(
   cb,
   { immediate, deep, flush, onTrack, onTrigger } = EMPTY_OBJ
 ) {
+  var _a
   if (!cb) {
     if (immediate !== void 0) {
       warn2(
@@ -3424,10 +3260,7 @@ function doWatch(
     )
   }
   const instance =
-    getCurrentScope() ===
-    (currentInstance === null || currentInstance === void 0
-      ? void 0
-      : currentInstance.scope)
+    getCurrentScope() === ((_a = currentInstance) == null ? void 0 : _a.scope)
       ? currentInstance
       : null
   let getter
@@ -3449,25 +3282,14 @@ function doWatch(
         } else if (isReactive(s)) {
           return traverse(s)
         } else if (isFunction(s)) {
-          return callWithErrorHandling(
-            s,
-            instance,
-            2
-            /* ErrorCodes.WATCH_GETTER */
-          )
+          return callWithErrorHandling(s, instance, 2)
         } else {
           warnInvalidSource(s)
         }
       })
   } else if (isFunction(source)) {
     if (cb) {
-      getter = () =>
-        callWithErrorHandling(
-          source,
-          instance,
-          2
-          /* ErrorCodes.WATCH_GETTER */
-        )
+      getter = () => callWithErrorHandling(source, instance, 2)
     } else {
       getter = () => {
         if (instance && instance.isUnmounted) {
@@ -3490,12 +3312,7 @@ function doWatch(
   let cleanup
   let onCleanup = (fn) => {
     cleanup = effect2.onStop = () => {
-      callWithErrorHandling(
-        fn,
-        instance,
-        4
-        /* ErrorCodes.WATCH_CLEANUP */
-      )
+      callWithErrorHandling(fn, instance, 4)
     }
   }
   let ssrCleanup
@@ -3627,13 +3444,7 @@ function createPathGetter(ctx, path) {
   }
 }
 function traverse(value, seen) {
-  if (
-    !isObject(value) ||
-    value[
-      '__v_skip'
-      /* ReactiveFlags.SKIP */
-    ]
-  ) {
+  if (!isObject(value) || value['__v_skip']) {
     return value
   }
   seen = seen || /* @__PURE__ */ new Set()
@@ -3658,6 +3469,64 @@ function traverse(value, seen) {
   }
   return value
 }
+function validateDirectiveName(name) {
+  if (isBuiltInDirective(name)) {
+    warn2('Do not use built-in directive ids as custom directive id: ' + name)
+  }
+}
+function withDirectives(vnode, directives) {
+  const internalInstance = currentRenderingInstance
+  if (internalInstance === null) {
+    warn2(`withDirectives can only be used inside render functions.`)
+    return vnode
+  }
+  const instance = getExposeProxy(internalInstance) || internalInstance.proxy
+  const bindings = vnode.dirs || (vnode.dirs = [])
+  for (let i = 0; i < directives.length; i++) {
+    let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i]
+    if (dir) {
+      if (isFunction(dir)) {
+        dir = {
+          mounted: dir,
+          updated: dir
+        }
+      }
+      if (dir.deep) {
+        traverse(value)
+      }
+      bindings.push({
+        dir,
+        instance,
+        value,
+        oldValue: void 0,
+        arg,
+        modifiers
+      })
+    }
+  }
+  return vnode
+}
+function invokeDirectiveHook(vnode, prevVNode, instance, name) {
+  const bindings = vnode.dirs
+  const oldBindings = prevVNode && prevVNode.dirs
+  for (let i = 0; i < bindings.length; i++) {
+    const binding = bindings[i]
+    if (oldBindings) {
+      binding.oldValue = oldBindings[i].value
+    }
+    let hook = binding.dir[name]
+    if (hook) {
+      pauseTracking()
+      callWithAsyncErrorHandling(hook, instance, 8, [
+        vnode.el,
+        binding,
+        vnode,
+        prevVNode
+      ])
+      resetTracking()
+    }
+  }
+}
 function useTransitionState() {
   const state = {
     isMounted: false,
@@ -3674,28 +3543,29 @@ function useTransitionState() {
   return state
 }
 var TransitionHookValidator = [Function, Array]
+var BaseTransitionPropsValidators = {
+  mode: String,
+  appear: Boolean,
+  persisted: Boolean,
+  // enter
+  onBeforeEnter: TransitionHookValidator,
+  onEnter: TransitionHookValidator,
+  onAfterEnter: TransitionHookValidator,
+  onEnterCancelled: TransitionHookValidator,
+  // leave
+  onBeforeLeave: TransitionHookValidator,
+  onLeave: TransitionHookValidator,
+  onAfterLeave: TransitionHookValidator,
+  onLeaveCancelled: TransitionHookValidator,
+  // appear
+  onBeforeAppear: TransitionHookValidator,
+  onAppear: TransitionHookValidator,
+  onAfterAppear: TransitionHookValidator,
+  onAppearCancelled: TransitionHookValidator
+}
 var BaseTransitionImpl = {
   name: `BaseTransition`,
-  props: {
-    mode: String,
-    appear: Boolean,
-    persisted: Boolean,
-    // enter
-    onBeforeEnter: TransitionHookValidator,
-    onEnter: TransitionHookValidator,
-    onAfterEnter: TransitionHookValidator,
-    onEnterCancelled: TransitionHookValidator,
-    // leave
-    onBeforeLeave: TransitionHookValidator,
-    onLeave: TransitionHookValidator,
-    onAfterLeave: TransitionHookValidator,
-    onLeaveCancelled: TransitionHookValidator,
-    // appear
-    onBeforeAppear: TransitionHookValidator,
-    onAppear: TransitionHookValidator,
-    onAfterAppear: TransitionHookValidator,
-    onAppearCancelled: TransitionHookValidator
-  },
+  props: BaseTransitionPropsValidators,
   setup(props, { slots }) {
     const instance = getCurrentInstance()
     const state = useTransitionState()
@@ -3993,8 +3863,12 @@ function getTransitionRawChildren(children, keepComment = false, parentKey) {
   }
   return ret
 }
-function defineComponent(options) {
-  return isFunction(options) ? { setup: options, name: options.name } : options
+function defineComponent(options, extraOptions) {
+  return isFunction(options)
+    ? // #8326: extend call and options.name access are considered side-effects
+      // by Rollup, so we have to wrap it in a pure-annotated IIFE.
+      (() => extend({ name: options.name }, extraOptions, { setup: options }))()
+    : options
 }
 var isAsyncWrapper = (i) => !!i.type.__asyncLoader
 function defineAsyncComponent(source) {
@@ -4440,109 +4314,24 @@ var createHook =
     // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
     (!isInSSRComponentSetup || lifecycle === 'sp') &&
     injectHook(lifecycle, (...args) => hook(...args), target)
-var onBeforeMount = createHook(
-  'bm'
-  /* LifecycleHooks.BEFORE_MOUNT */
-)
-var onMounted = createHook(
-  'm'
-  /* LifecycleHooks.MOUNTED */
-)
-var onBeforeUpdate = createHook(
-  'bu'
-  /* LifecycleHooks.BEFORE_UPDATE */
-)
-var onUpdated = createHook(
-  'u'
-  /* LifecycleHooks.UPDATED */
-)
-var onBeforeUnmount = createHook(
-  'bum'
-  /* LifecycleHooks.BEFORE_UNMOUNT */
-)
-var onUnmounted = createHook(
-  'um'
-  /* LifecycleHooks.UNMOUNTED */
-)
-var onServerPrefetch = createHook(
-  'sp'
-  /* LifecycleHooks.SERVER_PREFETCH */
-)
-var onRenderTriggered = createHook(
-  'rtg'
-  /* LifecycleHooks.RENDER_TRIGGERED */
-)
-var onRenderTracked = createHook(
-  'rtc'
-  /* LifecycleHooks.RENDER_TRACKED */
-)
+var onBeforeMount = createHook('bm')
+var onMounted = createHook('m')
+var onBeforeUpdate = createHook('bu')
+var onUpdated = createHook('u')
+var onBeforeUnmount = createHook('bum')
+var onUnmounted = createHook('um')
+var onServerPrefetch = createHook('sp')
+var onRenderTriggered = createHook('rtg')
+var onRenderTracked = createHook('rtc')
 function onErrorCaptured(hook, target = currentInstance) {
   injectHook('ec', hook, target)
-}
-function validateDirectiveName(name) {
-  if (isBuiltInDirective(name)) {
-    warn2('Do not use built-in directive ids as custom directive id: ' + name)
-  }
-}
-function withDirectives(vnode, directives) {
-  const internalInstance = currentRenderingInstance
-  if (internalInstance === null) {
-    warn2(`withDirectives can only be used inside render functions.`)
-    return vnode
-  }
-  const instance = getExposeProxy(internalInstance) || internalInstance.proxy
-  const bindings = vnode.dirs || (vnode.dirs = [])
-  for (let i = 0; i < directives.length; i++) {
-    let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i]
-    if (dir) {
-      if (isFunction(dir)) {
-        dir = {
-          mounted: dir,
-          updated: dir
-        }
-      }
-      if (dir.deep) {
-        traverse(value)
-      }
-      bindings.push({
-        dir,
-        instance,
-        value,
-        oldValue: void 0,
-        arg,
-        modifiers
-      })
-    }
-  }
-  return vnode
-}
-function invokeDirectiveHook(vnode, prevVNode, instance, name) {
-  const bindings = vnode.dirs
-  const oldBindings = prevVNode && prevVNode.dirs
-  for (let i = 0; i < bindings.length; i++) {
-    const binding = bindings[i]
-    if (oldBindings) {
-      binding.oldValue = oldBindings[i].value
-    }
-    let hook = binding.dir[name]
-    if (hook) {
-      pauseTracking()
-      callWithAsyncErrorHandling(hook, instance, 8, [
-        vnode.el,
-        binding,
-        vnode,
-        prevVNode
-      ])
-      resetTracking()
-    }
-  }
 }
 var COMPONENTS = 'components'
 var DIRECTIVES = 'directives'
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name
 }
-var NULL_DYNAMIC_COMPONENT = Symbol()
+var NULL_DYNAMIC_COMPONENT = Symbol.for('v-ndc')
 function resolveDynamicComponent(component) {
   if (isString(component)) {
     return resolveAsset(COMPONENTS, component, false) || component
@@ -4699,7 +4488,6 @@ function renderSlot(slots, name, props = {}, fallback, noSlotted) {
     },
     validSlotContent || (fallback ? fallback() : []),
     validSlotContent && slots._ === 1 ? 64 : -2
-    /* PatchFlags.BAIL */
   )
   if (!noSlotted && rendered.scopeId) {
     rendered.slotScopeIds = [rendered.scopeId + '-s']
@@ -4810,6 +4598,8 @@ var PublicInstanceProxyHandlers = {
       if (key === '$attrs') {
         track(instance, 'get', key)
         markAttrsAccessed()
+      } else if (key === '$slots') {
+        track(instance, 'get', key)
       }
       return publicGetter(instance)
     } else if (
@@ -4994,6 +4784,160 @@ function exposeSetupStateOnRenderContext(instance) {
     }
   })
 }
+var warnRuntimeUsage = (method) =>
+  warn2(
+    `${method}() is a compiler-hint helper that is only usable inside <script setup> of a single file component. Its arguments should be compiled away and passing it at runtime has no effect.`
+  )
+function defineProps() {
+  if (true) {
+    warnRuntimeUsage(`defineProps`)
+  }
+  return null
+}
+function defineEmits() {
+  if (true) {
+    warnRuntimeUsage(`defineEmits`)
+  }
+  return null
+}
+function defineExpose(exposed) {
+  if (true) {
+    warnRuntimeUsage(`defineExpose`)
+  }
+}
+function defineOptions(options) {
+  if (true) {
+    warnRuntimeUsage(`defineOptions`)
+  }
+}
+function defineSlots() {
+  if (true) {
+    warnRuntimeUsage(`defineSlots`)
+  }
+  return null
+}
+function defineModel() {
+  if (true) {
+    warnRuntimeUsage('defineModel')
+  }
+}
+function withDefaults(props, defaults) {
+  if (true) {
+    warnRuntimeUsage(`withDefaults`)
+  }
+  return null
+}
+function useSlots() {
+  return getContext().slots
+}
+function useAttrs() {
+  return getContext().attrs
+}
+function useModel(props, name, options) {
+  const i = getCurrentInstance()
+  if (!i) {
+    warn2(`useModel() called without active instance.`)
+    return ref()
+  }
+  if (!i.propsOptions[0][name]) {
+    warn2(`useModel() called with prop "${name}" which is not declared.`)
+    return ref()
+  }
+  if (options && options.local) {
+    const proxy = ref(props[name])
+    watch(
+      () => props[name],
+      (v) => (proxy.value = v)
+    )
+    watch(proxy, (value) => {
+      if (value !== props[name]) {
+        i.emit(`update:${name}`, value)
+      }
+    })
+    return proxy
+  } else {
+    return {
+      __v_isRef: true,
+      get value() {
+        return props[name]
+      },
+      set value(value) {
+        i.emit(`update:${name}`, value)
+      }
+    }
+  }
+}
+function getContext() {
+  const i = getCurrentInstance()
+  if (!i) {
+    warn2(`useContext() called without active instance.`)
+  }
+  return i.setupContext || (i.setupContext = createSetupContext(i))
+}
+function normalizePropsOrEmits(props) {
+  return isArray(props)
+    ? props.reduce(
+        (normalized, p2) => ((normalized[p2] = null), normalized),
+        {}
+      )
+    : props
+}
+function mergeDefaults(raw, defaults) {
+  const props = normalizePropsOrEmits(raw)
+  for (const key in defaults) {
+    if (key.startsWith('__skip')) continue
+    let opt = props[key]
+    if (opt) {
+      if (isArray(opt) || isFunction(opt)) {
+        opt = props[key] = { type: opt, default: defaults[key] }
+      } else {
+        opt.default = defaults[key]
+      }
+    } else if (opt === null) {
+      opt = props[key] = { default: defaults[key] }
+    } else if (true) {
+      warn2(`props default key "${key}" has no corresponding declaration.`)
+    }
+    if (opt && defaults[`__skip_${key}`]) {
+      opt.skipFactory = true
+    }
+  }
+  return props
+}
+function mergeModels(a, b) {
+  if (!a || !b) return a || b
+  if (isArray(a) && isArray(b)) return a.concat(b)
+  return extend({}, normalizePropsOrEmits(a), normalizePropsOrEmits(b))
+}
+function createPropsRestProxy(props, excludedKeys) {
+  const ret = {}
+  for (const key in props) {
+    if (!excludedKeys.includes(key)) {
+      Object.defineProperty(ret, key, {
+        enumerable: true,
+        get: () => props[key]
+      })
+    }
+  }
+  return ret
+}
+function withAsyncContext(getAwaitable) {
+  const ctx = getCurrentInstance()
+  if (!ctx) {
+    warn2(
+      `withAsyncContext called without active current instance. This is likely a bug.`
+    )
+  }
+  let awaitable = getAwaitable()
+  unsetCurrentInstance()
+  if (isPromise(awaitable)) {
+    awaitable = awaitable.catch((e) => {
+      setCurrentInstance(ctx)
+      throw e
+    })
+  }
+  return [awaitable, () => setCurrentInstance(ctx)]
+}
 function createDuplicateChecker() {
   const cache = /* @__PURE__ */ Object.create(null)
   return (type, key) => {
@@ -5011,12 +4955,7 @@ function applyOptions(instance) {
   const ctx = instance.ctx
   shouldCacheAccess = false
   if (options.beforeCreate) {
-    callHook(
-      options.beforeCreate,
-      instance,
-      'bc'
-      /* LifecycleHooks.BEFORE_CREATE */
-    )
+    callHook(options.beforeCreate, instance, 'bc')
   }
   const {
     // state
@@ -5061,12 +5000,7 @@ function applyOptions(instance) {
     }
   }
   if (injectOptions) {
-    resolveInjections(
-      injectOptions,
-      ctx,
-      checkDuplicateProperties,
-      instance.appContext.config.unwrapInjectedRef
-    )
+    resolveInjections(injectOptions, ctx, checkDuplicateProperties)
   }
   if (methods) {
     for (const key in methods) {
@@ -5174,12 +5108,7 @@ function applyOptions(instance) {
     })
   }
   if (created) {
-    callHook(
-      created,
-      instance,
-      'c'
-      /* LifecycleHooks.CREATED */
-    )
+    callHook(created, instance, 'c')
   }
   function registerLifecycleHook(register, hook) {
     if (isArray(hook)) {
@@ -5225,8 +5154,7 @@ function applyOptions(instance) {
 function resolveInjections(
   injectOptions,
   ctx,
-  checkDuplicateProperties = NOOP,
-  unwrapRef = false
+  checkDuplicateProperties = NOOP
 ) {
   if (isArray(injectOptions)) {
     injectOptions = normalizeInject(injectOptions)
@@ -5249,21 +5177,12 @@ function resolveInjections(
       injected = inject(opt)
     }
     if (isRef(injected)) {
-      if (unwrapRef) {
-        Object.defineProperty(ctx, key, {
-          enumerable: true,
-          configurable: true,
-          get: () => injected.value,
-          set: (v) => (injected.value = v)
-        })
-      } else {
-        if (true) {
-          warn2(
-            `injected property "${key}" is a ref and will be auto-unwrapped and no longer needs \`.value\` in the next minor release. To opt-in to the new behavior now, set \`app.config.unwrapInjectedRef = true\` (this config is temporary and will not be needed in the future.)`
-          )
-        }
-        ctx[key] = injected
-      }
+      Object.defineProperty(ctx, key, {
+        enumerable: true,
+        configurable: true,
+        get: () => injected.value,
+        set: (v) => (injected.value = v)
+      })
     } else {
       ctx[key] = injected
     }
@@ -5366,8 +5285,8 @@ function mergeOptions(to, from, strats, asMixin = false) {
 }
 var internalOptionMergeStrats = {
   data: mergeDataFn,
-  props: mergeObjectOptions,
-  emits: mergeObjectOptions,
+  props: mergeEmitsOrPropsOptions,
+  emits: mergeEmitsOrPropsOptions,
   // objects
   methods: mergeObjectOptions,
   computed: mergeObjectOptions,
@@ -5426,9 +5345,21 @@ function mergeAsArray(to, from) {
   return to ? [...new Set([].concat(to, from))] : from
 }
 function mergeObjectOptions(to, from) {
-  return to
-    ? extend(extend(/* @__PURE__ */ Object.create(null), to), from)
-    : from
+  return to ? extend(/* @__PURE__ */ Object.create(null), to, from) : from
+}
+function mergeEmitsOrPropsOptions(to, from) {
+  if (to) {
+    if (isArray(to) && isArray(from)) {
+      return [.../* @__PURE__ */ new Set([...to, ...from])]
+    }
+    return extend(
+      /* @__PURE__ */ Object.create(null),
+      normalizePropsOrEmits(to),
+      normalizePropsOrEmits(from != null ? from : {})
+    )
+  } else {
+    return from
+  }
 }
 function mergeWatchOptions(to, from) {
   if (!to) return from
@@ -5438,6 +5369,241 @@ function mergeWatchOptions(to, from) {
     merged[key] = mergeAsArray(to[key], from[key])
   }
   return merged
+}
+function createAppContext() {
+  return {
+    app: null,
+    config: {
+      isNativeTag: NO,
+      performance: false,
+      globalProperties: {},
+      optionMergeStrategies: {},
+      errorHandler: void 0,
+      warnHandler: void 0,
+      compilerOptions: {}
+    },
+    mixins: [],
+    components: {},
+    directives: {},
+    provides: /* @__PURE__ */ Object.create(null),
+    optionsCache: /* @__PURE__ */ new WeakMap(),
+    propsCache: /* @__PURE__ */ new WeakMap(),
+    emitsCache: /* @__PURE__ */ new WeakMap()
+  }
+}
+var uid$1 = 0
+function createAppAPI(render2, hydrate2) {
+  return function createApp2(rootComponent, rootProps = null) {
+    if (!isFunction(rootComponent)) {
+      rootComponent = extend({}, rootComponent)
+    }
+    if (rootProps != null && !isObject(rootProps)) {
+      warn2(`root props passed to app.mount() must be an object.`)
+      rootProps = null
+    }
+    const context = createAppContext()
+    if (true) {
+      Object.defineProperty(context.config, 'unwrapInjectedRef', {
+        get() {
+          return true
+        },
+        set() {
+          warn2(
+            `app.config.unwrapInjectedRef has been deprecated. 3.3 now alawys unwraps injected refs in Options API.`
+          )
+        }
+      })
+    }
+    const installedPlugins = /* @__PURE__ */ new Set()
+    let isMounted = false
+    const app = (context.app = {
+      _uid: uid$1++,
+      _component: rootComponent,
+      _props: rootProps,
+      _container: null,
+      _context: context,
+      _instance: null,
+      version,
+      get config() {
+        return context.config
+      },
+      set config(v) {
+        if (true) {
+          warn2(
+            `app.config cannot be replaced. Modify individual options instead.`
+          )
+        }
+      },
+      use(plugin, ...options) {
+        if (installedPlugins.has(plugin)) {
+          warn2(`Plugin has already been applied to target app.`)
+        } else if (plugin && isFunction(plugin.install)) {
+          installedPlugins.add(plugin)
+          plugin.install(app, ...options)
+        } else if (isFunction(plugin)) {
+          installedPlugins.add(plugin)
+          plugin(app, ...options)
+        } else if (true) {
+          warn2(
+            `A plugin must either be a function or an object with an "install" function.`
+          )
+        }
+        return app
+      },
+      mixin(mixin) {
+        if (__VUE_OPTIONS_API__) {
+          if (!context.mixins.includes(mixin)) {
+            context.mixins.push(mixin)
+          } else if (true) {
+            warn2(
+              'Mixin has already been applied to target app' +
+                (mixin.name ? `: ${mixin.name}` : '')
+            )
+          }
+        } else if (true) {
+          warn2('Mixins are only available in builds supporting Options API')
+        }
+        return app
+      },
+      component(name, component) {
+        if (true) {
+          validateComponentName(name, context.config)
+        }
+        if (!component) {
+          return context.components[name]
+        }
+        if (context.components[name]) {
+          warn2(
+            `Component "${name}" has already been registered in target app.`
+          )
+        }
+        context.components[name] = component
+        return app
+      },
+      directive(name, directive) {
+        if (true) {
+          validateDirectiveName(name)
+        }
+        if (!directive) {
+          return context.directives[name]
+        }
+        if (context.directives[name]) {
+          warn2(
+            `Directive "${name}" has already been registered in target app.`
+          )
+        }
+        context.directives[name] = directive
+        return app
+      },
+      mount(rootContainer, isHydrate, isSVG) {
+        if (!isMounted) {
+          if (rootContainer.__vue_app__) {
+            warn2(
+              `There is already an app instance mounted on the host container.
+ If you want to mount another app on the same host container, you need to unmount the previous app by calling \`app.unmount()\` first.`
+            )
+          }
+          const vnode = createVNode(rootComponent, rootProps)
+          vnode.appContext = context
+          if (true) {
+            context.reload = () => {
+              render2(cloneVNode(vnode), rootContainer, isSVG)
+            }
+          }
+          if (isHydrate && hydrate2) {
+            hydrate2(vnode, rootContainer)
+          } else {
+            render2(vnode, rootContainer, isSVG)
+          }
+          isMounted = true
+          app._container = rootContainer
+          rootContainer.__vue_app__ = app
+          if (true) {
+            app._instance = vnode.component
+            devtoolsInitApp(app, version)
+          }
+          return getExposeProxy(vnode.component) || vnode.component.proxy
+        } else if (true) {
+          warn2(
+            `App has already been mounted.
+If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``
+          )
+        }
+      },
+      unmount() {
+        if (isMounted) {
+          render2(null, app._container)
+          if (true) {
+            app._instance = null
+            devtoolsUnmountApp(app)
+          }
+          delete app._container.__vue_app__
+        } else if (true) {
+          warn2(`Cannot unmount an app that is not mounted.`)
+        }
+      },
+      provide(key, value) {
+        if (key in context.provides) {
+          warn2(
+            `App already provides property with key "${String(
+              key
+            )}". It will be overwritten with the new value.`
+          )
+        }
+        context.provides[key] = value
+        return app
+      },
+      runWithContext(fn) {
+        currentApp = app
+        try {
+          return fn()
+        } finally {
+          currentApp = null
+        }
+      }
+    })
+    return app
+  }
+}
+var currentApp = null
+function provide(key, value) {
+  if (!currentInstance) {
+    if (true) {
+      warn2(`provide() can only be used inside setup().`)
+    }
+  } else {
+    let provides = currentInstance.provides
+    const parentProvides =
+      currentInstance.parent && currentInstance.parent.provides
+    if (parentProvides === provides) {
+      provides = currentInstance.provides = Object.create(parentProvides)
+    }
+    provides[key] = value
+  }
+}
+function inject(key, defaultValue, treatDefaultAsFactory = false) {
+  const instance = currentInstance || currentRenderingInstance
+  if (instance || currentApp) {
+    const provides = instance
+      ? instance.parent == null
+        ? instance.vnode.appContext && instance.vnode.appContext.provides
+        : instance.parent.provides
+      : currentApp._context.provides
+    if (provides && key in provides) {
+      return provides[key]
+    } else if (arguments.length > 1) {
+      return treatDefaultAsFactory && isFunction(defaultValue)
+        ? defaultValue.call(instance && instance.proxy)
+        : defaultValue
+    } else if (true) {
+      warn2(`injection "${String(key)}" not found.`)
+    }
+  } else if (true) {
+    warn2(`inject() can only be used inside setup() or functional components.`)
+  }
+}
+function hasInjectionContext() {
+  return !!(currentInstance || currentRenderingInstance || currentApp)
 }
 function initProps(instance, rawProps, isStateful, isSSR = false) {
   const props = {}
@@ -5618,7 +5784,11 @@ function resolvePropValue(options, props, key, value, instance, isAbsent) {
     const hasDefault = hasOwn(opt, 'default')
     if (hasDefault && value === void 0) {
       const defaultValue = opt.default
-      if (opt.type !== Function && isFunction(defaultValue)) {
+      if (
+        opt.type !== Function &&
+        !opt.skipFactory &&
+        isFunction(defaultValue)
+      ) {
         const { propsDefaults } = instance
         if (key in propsDefaults) {
           value = propsDefaults[key]
@@ -5633,13 +5803,13 @@ function resolvePropValue(options, props, key, value, instance, isAbsent) {
     }
     if (
       opt[0]
-      /* BooleanFlags.shouldCast */
+      /* shouldCast */
     ) {
       if (isAbsent && !hasDefault) {
         value = false
       } else if (
         opt[1] &&
-        /* BooleanFlags.shouldCastTrue */
+        /* shouldCastTrue */
         (value === '' || value === hyphenate(key))
       ) {
         value = true
@@ -5700,16 +5870,14 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
       if (validatePropName(normalizedKey)) {
         const opt = raw[key]
         const prop = (normalized[normalizedKey] =
-          isArray(opt) || isFunction(opt)
-            ? { type: opt }
-            : Object.assign({}, opt))
+          isArray(opt) || isFunction(opt) ? { type: opt } : extend({}, opt))
         if (prop) {
           const booleanIndex = getTypeIndex(Boolean, prop.type)
           const stringIndex = getTypeIndex(String, prop.type)
           prop[0] = booleanIndex > -1
-          /* BooleanFlags.shouldCast */
+          /* shouldCast */
           prop[1] = stringIndex < 0 || booleanIndex < stringIndex
-          /* BooleanFlags.shouldCastTrue */
+          /* shouldCastTrue */
           if (booleanIndex > -1 || hasOwn(prop, 'default')) {
             needCastKeys.push(normalizedKey)
           }
@@ -5761,15 +5929,15 @@ function validateProps(rawProps, props, instance) {
   }
 }
 function validateProp(name, value, prop, isAbsent) {
-  const { type, required, validator } = prop
+  const { type, required, validator, skipCheck } = prop
   if (required && isAbsent) {
     warn2('Missing required prop: "' + name + '"')
     return
   }
-  if (value == null && !prop.required) {
+  if (value == null && !required) {
     return
   }
-  if (type != null && type !== true) {
+  if (type != null && type !== true && !skipCheck) {
     let isValid = false
     const types = isArray(type) ? type : [type]
     const expectedTypes = []
@@ -5921,6 +6089,7 @@ var updateSlots = (instance, children, optimized) => {
     if (type) {
       if (isHmrUpdating) {
         extend(slots, children)
+        trigger(instance, 'set', '$slots')
       } else if (optimized && type === 1) {
         needDeletionCheck = false
       } else {
@@ -5944,177 +6113,6 @@ var updateSlots = (instance, children, optimized) => {
         delete slots[key]
       }
     }
-  }
-}
-function createAppContext() {
-  return {
-    app: null,
-    config: {
-      isNativeTag: NO,
-      performance: false,
-      globalProperties: {},
-      optionMergeStrategies: {},
-      errorHandler: void 0,
-      warnHandler: void 0,
-      compilerOptions: {}
-    },
-    mixins: [],
-    components: {},
-    directives: {},
-    provides: /* @__PURE__ */ Object.create(null),
-    optionsCache: /* @__PURE__ */ new WeakMap(),
-    propsCache: /* @__PURE__ */ new WeakMap(),
-    emitsCache: /* @__PURE__ */ new WeakMap()
-  }
-}
-var uid$1 = 0
-function createAppAPI(render2, hydrate2) {
-  return function createApp2(rootComponent, rootProps = null) {
-    if (!isFunction(rootComponent)) {
-      rootComponent = Object.assign({}, rootComponent)
-    }
-    if (rootProps != null && !isObject(rootProps)) {
-      warn2(`root props passed to app.mount() must be an object.`)
-      rootProps = null
-    }
-    const context = createAppContext()
-    const installedPlugins = /* @__PURE__ */ new Set()
-    let isMounted = false
-    const app = (context.app = {
-      _uid: uid$1++,
-      _component: rootComponent,
-      _props: rootProps,
-      _container: null,
-      _context: context,
-      _instance: null,
-      version,
-      get config() {
-        return context.config
-      },
-      set config(v) {
-        if (true) {
-          warn2(
-            `app.config cannot be replaced. Modify individual options instead.`
-          )
-        }
-      },
-      use(plugin, ...options) {
-        if (installedPlugins.has(plugin)) {
-          warn2(`Plugin has already been applied to target app.`)
-        } else if (plugin && isFunction(plugin.install)) {
-          installedPlugins.add(plugin)
-          plugin.install(app, ...options)
-        } else if (isFunction(plugin)) {
-          installedPlugins.add(plugin)
-          plugin(app, ...options)
-        } else if (true) {
-          warn2(
-            `A plugin must either be a function or an object with an "install" function.`
-          )
-        }
-        return app
-      },
-      mixin(mixin) {
-        if (__VUE_OPTIONS_API__) {
-          if (!context.mixins.includes(mixin)) {
-            context.mixins.push(mixin)
-          } else if (true) {
-            warn2(
-              'Mixin has already been applied to target app' +
-                (mixin.name ? `: ${mixin.name}` : '')
-            )
-          }
-        } else if (true) {
-          warn2('Mixins are only available in builds supporting Options API')
-        }
-        return app
-      },
-      component(name, component) {
-        if (true) {
-          validateComponentName(name, context.config)
-        }
-        if (!component) {
-          return context.components[name]
-        }
-        if (context.components[name]) {
-          warn2(
-            `Component "${name}" has already been registered in target app.`
-          )
-        }
-        context.components[name] = component
-        return app
-      },
-      directive(name, directive) {
-        if (true) {
-          validateDirectiveName(name)
-        }
-        if (!directive) {
-          return context.directives[name]
-        }
-        if (context.directives[name]) {
-          warn2(
-            `Directive "${name}" has already been registered in target app.`
-          )
-        }
-        context.directives[name] = directive
-        return app
-      },
-      mount(rootContainer, isHydrate, isSVG) {
-        if (!isMounted) {
-          if (rootContainer.__vue_app__) {
-            warn2(`There is already an app instance mounted on the host container.
- If you want to mount another app on the same host container, you need to unmount the previous app by calling \`app.unmount()\` first.`)
-          }
-          const vnode = createVNode(rootComponent, rootProps)
-          vnode.appContext = context
-          if (true) {
-            context.reload = () => {
-              render2(cloneVNode(vnode), rootContainer, isSVG)
-            }
-          }
-          if (isHydrate && hydrate2) {
-            hydrate2(vnode, rootContainer)
-          } else {
-            render2(vnode, rootContainer, isSVG)
-          }
-          isMounted = true
-          app._container = rootContainer
-          rootContainer.__vue_app__ = app
-          if (true) {
-            app._instance = vnode.component
-            devtoolsInitApp(app, version)
-          }
-          return getExposeProxy(vnode.component) || vnode.component.proxy
-        } else if (true) {
-          warn2(`App has already been mounted.
-If you want to remount the same app, move your app creation logic into a factory function and create fresh app instances for each mount - e.g. \`const createMyApp = () => createApp(App)\``)
-        }
-      },
-      unmount() {
-        if (isMounted) {
-          render2(null, app._container)
-          if (true) {
-            app._instance = null
-            devtoolsUnmountApp(app)
-          }
-          delete app._container.__vue_app__
-        } else if (true) {
-          warn2(`Cannot unmount an app that is not mounted.`)
-        }
-      },
-      provide(key, value) {
-        if (key in context.provides) {
-          warn2(
-            `App already provides property with key "${String(
-              key
-            )}". It will be overwritten with the new value.`
-          )
-        }
-        context.provides[key] = value
-        return app
-      }
-    })
-    return app
   }
 }
 function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
@@ -6285,9 +6283,11 @@ function createHydrationFunctions(rendererInternals) {
         } else {
           if (node.data !== vnode.children) {
             hasMismatch = true
-            warn2(`Hydration text mismatch:
+            warn2(
+              `Hydration text mismatch:
 - Client: ${JSON.stringify(node.data)}
-- Server: ${JSON.stringify(vnode.children)}`)
+- Server: ${JSON.stringify(vnode.children)}`
+            )
             node.data = vnode.children
           }
           nextNode = nextSibling(node)
@@ -6512,9 +6512,11 @@ function createHydrationFunctions(rendererInternals) {
       } else if (shapeFlag & 8) {
         if (el.textContent !== vnode.children) {
           hasMismatch = true
-          warn2(`Hydration text content mismatch in <${vnode.type}>:
+          warn2(
+            `Hydration text content mismatch in <${vnode.type}>:
 - Client: ${el.textContent}
-- Server: ${vnode.children}`)
+- Server: ${vnode.children}`
+          )
           el.textContent = vnode.children
         }
       }
@@ -6722,11 +6724,13 @@ function initFeatureFlags() {
   }
   if (needWarn.length) {
     const multi = needWarn.length > 1
-    console.warn(`Feature flag${multi ? `s` : ``} ${needWarn.join(', ')} ${
-      multi ? `are` : `is`
-    } not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
+    console.warn(
+      `Feature flag${multi ? `s` : ``} ${needWarn.join(', ')} ${
+        multi ? `are` : `is`
+      } not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
 
-For more details, see https://link.vuejs.org/feature-flags.`)
+For more details, see https://link.vuejs.org/feature-flags.`
+    )
   }
 }
 var queuePostRenderEffect = queueEffectWithSuspense
@@ -7154,7 +7158,7 @@ function baseCreateRenderer(options, createHydrationFns) {
         areChildrenSVG,
         slotScopeIds
       )
-      if (parentComponent && parentComponent.type.__hmrId) {
+      if (true) {
         traverseStaticChildren(n1, n2)
       }
     } else if (!optimized) {
@@ -7381,7 +7385,7 @@ function baseCreateRenderer(options, createHydrationFns) {
           isSVG,
           slotScopeIds
         )
-        if (parentComponent && parentComponent.type.__hmrId) {
+        if (true) {
           traverseStaticChildren(n1, n2)
         } else if (
           // #2080 if the stable fragment has a key, it's a <template v-for> that may
@@ -8042,13 +8046,7 @@ function baseCreateRenderer(options, createHydrationFns) {
           )
         } else if (moved) {
           if (j < 0 || i !== increasingNewIndexSequence[j]) {
-            move(
-              nextChild,
-              container,
-              anchor,
-              2
-              /* MoveType.REORDER */
-            )
+            move(nextChild, container, anchor, 2)
           } else {
             j--
           }
@@ -8090,15 +8088,15 @@ function baseCreateRenderer(options, createHydrationFns) {
         queuePostRenderEffect(() => transition.enter(el), parentSuspense)
       } else {
         const { leave, delayLeave, afterLeave } = transition
-        const remove3 = () => hostInsert(el, container, anchor)
+        const remove22 = () => hostInsert(el, container, anchor)
         const performLeave = () => {
           leave(el, () => {
-            remove3()
+            remove22()
             afterLeave && afterLeave()
           })
         }
         if (delayLeave) {
-          delayLeave(el, remove3, performLeave)
+          delayLeave(el, remove22, performLeave)
         } else {
           performLeave()
         }
@@ -8528,14 +8526,7 @@ var TeleportImpl = {
       }
       if (disabled) {
         if (!wasDisabled) {
-          moveTeleport(
-            n2,
-            container,
-            mainAnchor,
-            internals,
-            1
-            /* TeleportMoveTypes.TOGGLE */
-          )
+          moveTeleport(n2, container, mainAnchor, internals, 1)
         }
       } else {
         if ((n2.props && n2.props.to) !== (n1.props && n1.props.to)) {
@@ -8544,14 +8535,7 @@ var TeleportImpl = {
             querySelector
           ))
           if (nextTarget) {
-            moveTeleport(
-              n2,
-              nextTarget,
-              null,
-              internals,
-              0
-              /* TeleportMoveTypes.TARGET_CHANGE */
-            )
+            moveTeleport(n2, nextTarget, null, internals, 0)
           } else if (true) {
             warn2(
               'Invalid Teleport target on update:',
@@ -8560,14 +8544,7 @@ var TeleportImpl = {
             )
           }
         } else if (wasDisabled) {
-          moveTeleport(
-            n2,
-            target,
-            targetAnchor,
-            internals,
-            1
-            /* TeleportMoveTypes.TOGGLE */
-          )
+          moveTeleport(n2, target, targetAnchor, internals, 1)
         }
       }
     }
@@ -8622,13 +8599,7 @@ function moveTeleport(
   if (!isReorder || isTeleportDisabled(props)) {
     if (shapeFlag & 16) {
       for (let i = 0; i < children.length; i++) {
-        move(
-          children[i],
-          container,
-          parentAnchor,
-          2
-          /* MoveType.REORDER */
-        )
+        move(children[i], container, parentAnchor, 2)
       }
     }
   }
@@ -8703,10 +8674,10 @@ function updateCssVars(vnode) {
     ctx.ut()
   }
 }
-var Fragment = Symbol(true ? 'Fragment' : void 0)
-var Text = Symbol(true ? 'Text' : void 0)
-var Comment = Symbol(true ? 'Comment' : void 0)
-var Static = Symbol(true ? 'Static' : void 0)
+var Fragment = Symbol.for('v-fgt')
+var Text = Symbol.for('v-txt')
+var Comment = Symbol.for('v-cmt')
+var Static = Symbol.for('v-stc')
 var blockStack = []
 var currentBlock = null
 function openBlock(disableTracking = false) {
@@ -8788,6 +8759,9 @@ var createVNodeWithArgsTransform = (...args) => {
 var InternalObjectKey = `__vInternal`
 var normalizeKey = ({ key }) => (key != null ? key : null)
 var normalizeRef = ({ ref: ref2, ref_key, ref_for }) => {
+  if (typeof ref2 === 'number') {
+    ref2 = '' + ref2
+  }
   return ref2 != null
     ? isString(ref2) || isRef(ref2) || isFunction(ref2)
       ? { i: currentRenderingInstance, r: ref2, k: ref_key, f: !!ref_for }
@@ -9136,10 +9110,13 @@ function createComponentInstance(vnode, parent, suspense) {
     parent,
     appContext,
     root: null,
+    // to be immediately set
     next: null,
     subTree: null,
+    // will be set synchronously right after creation
     effect: null,
     update: null,
+    // will be set synchronously right after creation
     scope: new EffectScope(
       true
       /* detached */
@@ -9160,6 +9137,7 @@ function createComponentInstance(vnode, parent, suspense) {
     emitsOptions: normalizeEmitsOptions(type, appContext),
     // emit
     emit: null,
+    // to be set immediately
     emitted: null,
     // props default value
     propsDefaults: EMPTY_OBJ,
@@ -9174,6 +9152,8 @@ function createComponentInstance(vnode, parent, suspense) {
     refs: EMPTY_OBJ,
     setupState: EMPTY_OBJ,
     setupContext: null,
+    attrsProxy: null,
+    slotsProxy: null,
     // suspense related
     suspense,
     suspenseId: suspense ? suspense.pendingId : 0,
@@ -9213,13 +9193,29 @@ function createComponentInstance(vnode, parent, suspense) {
 }
 var currentInstance = null
 var getCurrentInstance = () => currentInstance || currentRenderingInstance
+var internalSetCurrentInstance
+var globalCurrentInstanceSetters
+var settersKey = '__VUE_INSTANCE_SETTERS__'
+{
+  if (!(globalCurrentInstanceSetters = getGlobalThis()[settersKey])) {
+    globalCurrentInstanceSetters = getGlobalThis()[settersKey] = []
+  }
+  globalCurrentInstanceSetters.push((i) => (currentInstance = i))
+  internalSetCurrentInstance = (instance) => {
+    if (globalCurrentInstanceSetters.length > 1) {
+      globalCurrentInstanceSetters.forEach((s) => s(instance))
+    } else {
+      globalCurrentInstanceSetters[0](instance)
+    }
+  }
+}
 var setCurrentInstance = (instance) => {
-  currentInstance = instance
+  internalSetCurrentInstance(instance)
   instance.scope.on()
 }
 var unsetCurrentInstance = () => {
   currentInstance && currentInstance.scope.off()
-  currentInstance = null
+  internalSetCurrentInstance(null)
 }
 var isBuiltInTag = makeMap('slot,component')
 function validateComponentName(name, config) {
@@ -9247,7 +9243,7 @@ function setupComponent(instance, isSSR = false) {
   return setupResult
 }
 function setupStatefulComponent(instance, isSSR) {
-  var _a2
+  var _a
   const Component = instance.type
   if (true) {
     if (Component.name) {
@@ -9296,20 +9292,12 @@ function setupStatefulComponent(instance, isSSR) {
             handleSetupResult(instance, resolvedResult, isSSR)
           })
           .catch((e) => {
-            handleError(
-              e,
-              instance,
-              0
-              /* ErrorCodes.SETUP_FUNCTION */
-            )
+            handleError(e, instance, 0)
           })
       } else {
         instance.asyncDep = setupResult
         if (!instance.suspense) {
-          const name =
-            (_a2 = Component.name) !== null && _a2 !== void 0
-              ? _a2
-              : 'Anonymous'
+          const name = (_a = Component.name) != null ? _a : 'Anonymous'
           warn2(
             `Component <${name}>: setup function returned a promise, but no <Suspense> boundary was found in the parent component tree. A component with async setup() must be nested in a <Suspense> in order to be rendered.`
           )
@@ -9414,31 +9402,45 @@ function finishComponentSetup(instance, isSSR, skipOptions) {
     }
   }
 }
-function createAttrsProxy(instance) {
-  return new Proxy(
-    instance.attrs,
-    true
-      ? {
-          get(target, key) {
-            markAttrsAccessed()
-            track(instance, 'get', '$attrs')
-            return target[key]
-          },
-          set() {
-            warn2(`setupContext.attrs is readonly.`)
-            return false
-          },
-          deleteProperty() {
-            warn2(`setupContext.attrs is readonly.`)
-            return false
+function getAttrsProxy(instance) {
+  return (
+    instance.attrsProxy ||
+    (instance.attrsProxy = new Proxy(
+      instance.attrs,
+      true
+        ? {
+            get(target, key) {
+              markAttrsAccessed()
+              track(instance, 'get', '$attrs')
+              return target[key]
+            },
+            set() {
+              warn2(`setupContext.attrs is readonly.`)
+              return false
+            },
+            deleteProperty() {
+              warn2(`setupContext.attrs is readonly.`)
+              return false
+            }
           }
-        }
-      : {
-          get(target, key) {
-            track(instance, 'get', '$attrs')
-            return target[key]
+        : {
+            get(target, key) {
+              track(instance, 'get', '$attrs')
+              return target[key]
+            }
           }
-        }
+    ))
+  )
+}
+function getSlotsProxy(instance) {
+  return (
+    instance.slotsProxy ||
+    (instance.slotsProxy = new Proxy(instance.slots, {
+      get(target, key) {
+        track(instance, 'get', '$slots')
+        return target[key]
+      }
+    }))
   )
 }
 function createSetupContext(instance) {
@@ -9465,14 +9467,13 @@ function createSetupContext(instance) {
     }
     instance.exposed = exposed || {}
   }
-  let attrs
   if (true) {
     return Object.freeze({
       get attrs() {
-        return attrs || (attrs = createAttrsProxy(instance))
+        return getAttrsProxy(instance)
       },
       get slots() {
-        return shallowReadonly(instance.slots)
+        return getSlotsProxy(instance)
       },
       get emit() {
         return (event, ...args) => instance.emit(event, ...args)
@@ -9482,7 +9483,7 @@ function createSetupContext(instance) {
   } else {
     return {
       get attrs() {
-        return attrs || (attrs = createAttrsProxy(instance))
+        return getAttrsProxy(instance)
       },
       slots: instance.slots,
       emit: instance.emit,
@@ -9546,95 +9547,6 @@ function isClassComponent(value) {
 var computed2 = (getterOrOptions, debugOptions) => {
   return computed(getterOrOptions, debugOptions, isInSSRComponentSetup)
 }
-var warnRuntimeUsage = (method) =>
-  warn2(
-    `${method}() is a compiler-hint helper that is only usable inside <script setup> of a single file component. Its arguments should be compiled away and passing it at runtime has no effect.`
-  )
-function defineProps() {
-  if (true) {
-    warnRuntimeUsage(`defineProps`)
-  }
-  return null
-}
-function defineEmits() {
-  if (true) {
-    warnRuntimeUsage(`defineEmits`)
-  }
-  return null
-}
-function defineExpose(exposed) {
-  if (true) {
-    warnRuntimeUsage(`defineExpose`)
-  }
-}
-function withDefaults(props, defaults) {
-  if (true) {
-    warnRuntimeUsage(`withDefaults`)
-  }
-  return null
-}
-function useSlots() {
-  return getContext().slots
-}
-function useAttrs() {
-  return getContext().attrs
-}
-function getContext() {
-  const i = getCurrentInstance()
-  if (!i) {
-    warn2(`useContext() called without active instance.`)
-  }
-  return i.setupContext || (i.setupContext = createSetupContext(i))
-}
-function mergeDefaults(raw, defaults) {
-  const props = isArray(raw)
-    ? raw.reduce((normalized, p2) => ((normalized[p2] = {}), normalized), {})
-    : raw
-  for (const key in defaults) {
-    const opt = props[key]
-    if (opt) {
-      if (isArray(opt) || isFunction(opt)) {
-        props[key] = { type: opt, default: defaults[key] }
-      } else {
-        opt.default = defaults[key]
-      }
-    } else if (opt === null) {
-      props[key] = { default: defaults[key] }
-    } else if (true) {
-      warn2(`props default key "${key}" has no corresponding declaration.`)
-    }
-  }
-  return props
-}
-function createPropsRestProxy(props, excludedKeys) {
-  const ret = {}
-  for (const key in props) {
-    if (!excludedKeys.includes(key)) {
-      Object.defineProperty(ret, key, {
-        enumerable: true,
-        get: () => props[key]
-      })
-    }
-  }
-  return ret
-}
-function withAsyncContext(getAwaitable) {
-  const ctx = getCurrentInstance()
-  if (!ctx) {
-    warn2(
-      `withAsyncContext called without active current instance. This is likely a bug.`
-    )
-  }
-  let awaitable = getAwaitable()
-  unsetCurrentInstance()
-  if (isPromise(awaitable)) {
-    awaitable = awaitable.catch((e) => {
-      setCurrentInstance(ctx)
-      throw e
-    })
-  }
-  return [awaitable, () => setCurrentInstance(ctx)]
-}
 function h(type, propsOrChildren, children) {
   const l = arguments.length
   if (l === 2) {
@@ -9655,7 +9567,7 @@ function h(type, propsOrChildren, children) {
     return createVNode(type, propsOrChildren, children)
   }
 }
-var ssrContextKey = Symbol(true ? `ssrContext` : ``)
+var ssrContextKey = Symbol.for('v-scx')
 var useSSRContext = () => {
   {
     const ctx = inject(ssrContextKey)
@@ -9668,13 +9580,7 @@ var useSSRContext = () => {
   }
 }
 function isShallow2(value) {
-  return !!(
-    value &&
-    value[
-      '__v_isShallow'
-      /* ReactiveFlags.IS_SHALLOW */
-    ]
-  )
+  return !!(value && value['__v_isShallow'])
 }
 function initCustomFormatter() {
   if (typeof window === 'undefined') {
@@ -9874,7 +9780,7 @@ function isMemoSame(cached, memo) {
   }
   return true
 }
-var version = '3.2.47'
+var version = '3.3.4'
 var _ssrUtils = {
   createComponentInstance,
   setupComponent,
@@ -9887,7 +9793,7 @@ var ssrUtils = _ssrUtils
 var resolveFilter = null
 var compatUtils = null
 
-// ../../node_modules/.pnpm/@vue+runtime-dom@3.2.47/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+runtime-dom@3.3.4/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 var svgNS = 'http://www.w3.org/2000/svg'
 var doc = typeof document !== 'undefined' ? document : null
 var templateContainer = doc && doc.createElement('template')
@@ -10081,19 +9987,16 @@ function patchDOMProp(
     el[key] = value == null ? '' : value
     return
   }
+  const tag = el.tagName
   if (
     key === 'value' &&
-    el.tagName !== 'PROGRESS' && // custom elements may use _value internally
-    !el.tagName.includes('-')
+    tag !== 'PROGRESS' && // custom elements may use _value internally
+    !tag.includes('-')
   ) {
     el._value = value
+    const oldValue = tag === 'OPTION' ? el.getAttribute('value') : el.value
     const newValue = value == null ? '' : value
-    if (
-      el.value !== newValue || // #4956: always set for OPTION elements because its value falls back to
-      // textContent if no value attribute is present. And setting .value for
-      // OPTION has no side effect
-      el.tagName === 'OPTION'
-    ) {
+    if (oldValue !== newValue) {
       el.value = newValue
     }
     if (value == null) {
@@ -10119,7 +10022,7 @@ function patchDOMProp(
   } catch (e) {
     if (!needRemove) {
       warn2(
-        `Failed setting prop "${key}" on <${el.tagName.toLowerCase()}>: value ${value} is invalid.`,
+        `Failed setting prop "${key}" on <${tag.toLowerCase()}>: value ${value} is invalid.`,
         e
       )
     }
@@ -10581,7 +10484,7 @@ var DOMTransitionPropsValidators = {
 }
 var TransitionPropsValidators = (Transition.props = extend(
   {},
-  BaseTransition.props,
+  BaseTransitionPropsValidators,
   DOMTransitionPropsValidators
 ))
 var callHook2 = (hook, args = []) => {
@@ -11396,7 +11299,7 @@ function injectCompilerOptionsCheck(app) {
     const msg = `The \`compilerOptions\` config option is only respected when using a build of Vue.js that includes the runtime compiler (aka "full build"). Since you are using the runtime-only build, \`compilerOptions\` must be passed to \`@vue/compiler-dom\` in the build setup instead.
 - For vue-loader: pass it via vue-loader's \`compilerOptions\` loader option.
 - For vue-cli: see https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader
-- For vite: pass it via @vitejs/plugin-vue options. See https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-dom`
+- For vite: pass it via @vitejs/plugin-vue options. See https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-sfc`
     Object.defineProperty(app.config, 'compilerOptions', {
       get() {
         warn2(msg)
@@ -11438,7 +11341,7 @@ var initDirectivesForSSR = () => {
   }
 }
 
-// ../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js
+// ../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js
 function initDev() {
   {
     initCustomFormatter()
@@ -11457,13 +11360,13 @@ var compile2 = () => {
 }
 
 export {
+  camelize,
+  capitalize,
+  toHandlerKey,
   normalizeStyle,
   normalizeClass,
   normalizeProps,
   toDisplayString,
-  camelize,
-  capitalize,
-  toHandlerKey,
   EffectScope,
   effectScope,
   getCurrentScope,
@@ -11486,6 +11389,7 @@ export {
   shallowRef,
   triggerRef,
   unref,
+  toValue,
   proxyRefs,
   customRef,
   toRefs,
@@ -11504,13 +11408,13 @@ export {
   withScopeId,
   withCtx,
   Suspense,
-  provide,
-  inject,
   watchEffect,
   watchPostEffect,
   watchSyncEffect,
   watch,
+  withDirectives,
   useTransitionState,
+  BaseTransitionPropsValidators,
   BaseTransition,
   resolveTransitionHooks,
   setTransitionHooks,
@@ -11530,7 +11434,6 @@ export {
   onRenderTriggered,
   onRenderTracked,
   onErrorCaptured,
-  withDirectives,
   resolveComponent,
   resolveDynamicComponent,
   resolveDirective,
@@ -11538,6 +11441,23 @@ export {
   createSlots,
   renderSlot,
   toHandlers,
+  defineProps,
+  defineEmits,
+  defineExpose,
+  defineOptions,
+  defineSlots,
+  defineModel,
+  withDefaults,
+  useSlots,
+  useAttrs,
+  useModel,
+  mergeDefaults,
+  mergeModels,
+  createPropsRestProxy,
+  withAsyncContext,
+  provide,
+  inject,
+  hasInjectionContext,
   createRenderer,
   createHydrationRenderer,
   Teleport,
@@ -11563,15 +11483,6 @@ export {
   registerRuntimeCompiler,
   isRuntimeOnly,
   computed2 as computed,
-  defineProps,
-  defineEmits,
-  defineExpose,
-  withDefaults,
-  useSlots,
-  useAttrs,
-  mergeDefaults,
-  createPropsRestProxy,
-  withAsyncContext,
   h,
   ssrContextKey,
   useSSRContext,
@@ -11604,4 +11515,4 @@ export {
   initDirectivesForSSR,
   compile2 as compile
 }
-//# sourceMappingURL=chunk-T7XWV5RE.js.map
+//# sourceMappingURL=chunk-XUX7SVYA.js.map
