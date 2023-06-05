@@ -61,7 +61,7 @@ action-bar/color
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | text | 按钮文字 | `string` | - |
-| type | 按钮类型，可选值为 `primary` `info` `warning` `danger` | `string` | `default` |
+| type | 按钮类型，可选值为 `default` `primary` `success` `warning` `danger` | `string` | `default` |
 | color | 按钮颜色，支持传入 `linear-gradient` 渐变色 | `string` | - |
 | icon | 左侧图标名称或图片链接，等同于 Icon 组件的 [name 属性](/zh/component/icon.html#api) | `string` | - |
 | disabled | 是否禁用按钮 | `boolean` | `false` |

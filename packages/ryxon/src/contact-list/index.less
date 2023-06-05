@@ -1,4 +1,5 @@
 :root {
+  --r-contact-list-padding: var(--r-padding-sm) var(--r-padding-sm) 80px;
   --r-contact-list-edit-icon-size: 16px;
   --r-contact-list-add-button-z-index: 999;
   --r-contact-list-radio-color: var(--r-primary-color);
@@ -8,7 +9,7 @@
 .r-contact-list {
   box-sizing: border-box;
   height: 100%;
-  padding-bottom: 80px;
+  padding: var(--r-contact-list-padding);
 
   &__item {
     padding: var(--r-contact-list-item-padding);
@@ -34,6 +35,7 @@
     height: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    border-radius: var(--r-radius-lg);
   }
 
   &__edit {

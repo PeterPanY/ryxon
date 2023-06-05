@@ -52,6 +52,7 @@ popover/mode
 | --- | --- | --- | --- |
 | v-model:show | 是否展示气泡弹出层 | `boolean` | `false` |
 | actions | 选项列表 | `PopoverAction[]` | `[]` |
+| actions-direction | 选项列表的排列方向，可选值为 `horizontal` | `PopoverActionsDirection` | `vertical` |
 | placement | 弹出位置 | `PopoverPlacement` | `bottom` |
 | theme | 主题风格，可选值为 `dark` | `PopoverTheme` | `light` |
 | trigger | 触发方式，可选值为 `manual` `focus` `hover` | `PopoverTrigger` | `click` |
@@ -107,6 +108,7 @@ import type {
   PopoverProps,
   PopoverTheme,
   PopoverAction,
+  PopoverActionsDirection,
   PopoverTrigger,
   PopoverPlacement
 } from 'ryxon'
@@ -127,6 +129,8 @@ import type {
 | --r-popover-action-font-size | `var(--r-font-size-md)` | - |
 | --r-popover-action-line-height | `var(--r-line-height-md)` | - |
 | --r-popover-action-icon-size | `20px` | - |
+| --r-popover-horizontal-action-height | `34px` | - |
+| --r-popover-horizontal-action-icon-size | `16px` | - |
 | --r-popover-light-text-color | `var(--r-text-color)` | - |
 | --r-popover-light-background | `var(--r-background-2)` | - |
 | --r-popover-light-action-disabled-text-color | `var(--r-text-color-3)` | - |

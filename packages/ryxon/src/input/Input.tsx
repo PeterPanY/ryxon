@@ -633,6 +633,11 @@ export default defineComponent({
           <label
             id={`${id}-label`}
             for={getInputId()}
+            onClick={(event: MouseEvent) => {
+              // 组件在点击label位置时，绑定的click事件会执行两次
+              preventDefault(event)
+              focus()
+            }}
             style={
               labelAlign === 'top' && labelWidth
                 ? { width: addUnit(labelWidth) }

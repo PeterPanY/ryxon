@@ -6,6 +6,8 @@
   --r-popover-action-font-size: var(--r-font-size-md);
   --r-popover-action-line-height: var(--r-line-height-md);
   --r-popover-action-icon-size: 20px;
+  --r-popover-horizontal-action-height: 34px;
+  --r-popover-horizontal-action-icon-size: 16px;
   --r-popover-light-text-color: var(--r-text-color);
   --r-popover-light-background: var(--r-background-2);
   --r-popover-light-action-disabled-text-color: var(--r-text-color-3);
@@ -36,6 +38,27 @@
   &__content {
     overflow: hidden;
     border-radius: var(--r-popover-radius);
+
+    &--horizontal {
+      display: flex;
+      width: max-content;
+
+      .r-popover__action {
+        flex: none;
+        width: auto;
+        height: var(--r-popover-horizontal-action-height);
+        padding: 0 var(--r-padding-sm);
+
+        &:last-child::after {
+          display: none;
+        }
+
+        &-icon {
+          margin-right: var(--r-padding-base);
+          font-size: var(--r-popover-horizontal-action-icon-size);
+        }
+      }
+    }
   }
 
   &__action {

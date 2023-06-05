@@ -225,6 +225,7 @@ export default defineComponent({
             v-slots={slots}
             v-show={!hideBottomInputs.value}
             center
+            border={false}
             title={t('defaultAddress')}
             class={bem('default')}
           />

@@ -206,9 +206,13 @@ export default defineComponent({
       emit('closed')
     }
     const onBeforeEnter = () => emit('beforeEnter')
+    let timer: ReturnType<typeof setTimeout> | null
     const onOpened = () => {
-      emit('afterEnter')
-      emit('opened')
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(() => {
+        emit('afterEnter')
+        emit('opened')
+      })
     }
     const onBeforeLeave = () => emit('beforeLeave')
     const onKeydown = (event: KeyboardEvent) => emit('keydown', event)

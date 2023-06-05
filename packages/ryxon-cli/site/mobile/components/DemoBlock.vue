@@ -1,6 +1,8 @@
 <template>
   <div class="r-doc-demo-block">
-    <h2 v-if="title" class="r-doc-demo-block__title">{{ title }}</h2>
+    <h2 v-if="title" class="van-doc-demo-block__title" :id="slugifyTitle">
+      {{ title }}
+    </h2>
     <div v-if="card" class="r-doc-demo-block__card">
       <slot />
     </div>
@@ -14,9 +16,26 @@ export default {
 
   props: {
     card: Boolean,
-    title: String,
+    title: String
   },
-};
+
+  data() {
+    return {
+      slugify: null
+    }
+  },
+
+  computed: {
+    slugifyTitle() {
+      return this.slugify ? this.slugify(this.title) : ''
+    }
+  },
+
+  async mounted() {
+    const { slugify } = await import('transliteration')
+    this.slugify = slugify
+  }
+}
 </script>
 
 <style lang="less">

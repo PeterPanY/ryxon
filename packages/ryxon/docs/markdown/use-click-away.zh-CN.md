@@ -13,19 +13,19 @@
 ```
 
 ```js
-import { ref } from 'vue';
-import { useClickAway } from '@ryxon/use';
+import { ref } from 'vue'
+import { useClickAway } from '@ryxon/use'
 
 export default {
   setup() {
-    const root = ref();
+    const root = ref()
     useClickAway(root, () => {
-      console.log('click outside!');
-    });
+      console.log('click outside!')
+    })
 
-    return { root };
-  },
-};
+    return { root }
+  }
+}
 ```
 
 ### 自定义事件
@@ -37,23 +37,23 @@ export default {
 ```
 
 ```js
-import { ref } from 'vue';
-import { useClickAway } from '@ryxon/use';
+import { ref } from 'vue'
+import { useClickAway } from '@ryxon/use'
 
 export default {
   setup() {
-    const root = ref();
+    const root = ref()
     useClickAway(
       root,
       () => {
-        console.log('touch outside!');
+        console.log('touch outside!')
       },
       { eventName: 'touchstart' }
-    );
+    )
 
-    return { root };
-  },
-};
+    return { root }
+  }
+}
 ```
 
 ## API
@@ -62,14 +62,17 @@ export default {
 
 ```ts
 type Options = {
-  eventName?: string;
-};
+  eventName?: string
+}
 
 function useClickAway(
-  target: Element | Ref<Element | undefined>,
+  target:
+    | Element
+    | Ref<Element | undefined>
+    | Array<Element | Ref<Element | undefined>>,
   listener: EventListener,
   options?: Options
-): void;
+): void
 ```
 
 ### 参数
