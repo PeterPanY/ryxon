@@ -78,7 +78,7 @@ export default defineComponent({
 
     const currentPlacement = computed(() =>
       mode.value === 'horizontal' && isFirstLevel.value
-        ? 'bottom-start'
+        ? 'bottom'
         : 'right-start'
     )
     const subMenuTitleIcon = computed(() =>
@@ -339,7 +339,6 @@ export default defineComponent({
               pure: true,
               offset: props.popperOffset,
               showArrow: false,
-              persistent: true,
               popperClass: props.popperClass,
               placement: currentPlacement.value,
               teleported: appendToBody.value,
