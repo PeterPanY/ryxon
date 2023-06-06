@@ -1,29 +1,34 @@
 import {
+  h,
   ref,
   defineComponent,
   type CSSProperties,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
+  isString,
   truthProp,
   numericProp,
+  iconPropType,
   BORDER_BOTTOM,
   getZIndexStyle,
   createNamespace,
-  HAPTICS_FEEDBACK,
-} from '../utils';
+  HAPTICS_FEEDBACK
+} from '../utils'
 
 // Composables
-import { usePlaceholder } from '../composables/use-placeholder';
+import { usePlaceholder } from '../composables/use-placeholder'
 
 // Components
-import { Icon } from '../icon';
+import { Icon } from '../icon'
+import { ArrowLeft } from '@ryxon/icons'
 
-const [name, bem] = createNamespace('nav-bar');
+const [name, bem] = createNamespace('nav-bar')
 
 export const navBarProps = {
+  icon: { type: iconPropType, default: ArrowLeft },
   title: String,
   fixed: Boolean,
   zIndex: numericProp,
@@ -33,10 +38,10 @@ export const navBarProps = {
   leftArrow: Boolean,
   placeholder: Boolean,
   safeAreaInsetTop: Boolean,
-  clickable: truthProp,
-};
+  clickable: truthProp
+}
 
-export type NavBarProps = ExtractPropTypes<typeof navBarProps>;
+export type NavBarProps = ExtractPropTypes<typeof navBarProps>
 
 export default defineComponent({
   name,
@@ -46,37 +51,44 @@ export default defineComponent({
   emits: ['clickLeft', 'clickRight'],
 
   setup(props, { emit, slots }) {
-    const navBarRef = ref<HTMLElement>();
-    const renderPlaceholder = usePlaceholder(navBarRef, bem);
+    const navBarRef = ref<HTMLElement>()
+    const renderPlaceholder = usePlaceholder(navBarRef, bem)
 
-    const onClickLeft = (event: MouseEvent) => emit('clickLeft', event);
-    const onClickRight = (event: MouseEvent) => emit('clickRight', event);
+    const onClickLeft = (event: MouseEvent) => emit('clickLeft', event)
+    const onClickRight = (event: MouseEvent) => emit('clickRight', event)
 
     const renderLeft = () => {
       if (slots.left) {
-        return slots.left();
+        return slots.left()
       }
 
       return [
-        props.leftArrow && <Icon class={bem('arrow')} name="arrow-left" />,
-        props.leftText && <span class={bem('text')}>{props.leftText}</span>,
-      ];
-    };
+        props.leftArrow && (
+          <Icon
+            class={bem('arrow')}
+            name={isString(props.icon) ? props.icon : ''}
+          >
+            {props.icon && !isString(props.icon) ? h(props.icon) : ''}
+          </Icon>
+        ),
+        props.leftText && <span class={bem('text')}>{props.leftText}</span>
+      ]
+    }
 
     const renderRight = () => {
       if (slots.right) {
-        return slots.right();
+        return slots.right()
       }
 
-      return <span class={bem('text')}>{props.rightText}</span>;
-    };
+      return <span class={bem('text')}>{props.rightText}</span>
+    }
 
     const renderNavBar = () => {
-      const { title, fixed, border, zIndex } = props;
-      const style: CSSProperties = getZIndexStyle(zIndex);
+      const { title, fixed, border, zIndex } = props
+      const style: CSSProperties = getZIndexStyle(zIndex)
 
-      const hasLeft = props.leftArrow || props.leftText || slots.left;
-      const hasRight = props.rightText || slots.right;
+      const hasLeft = props.leftArrow || props.leftText || slots.left
+      const hasRight = props.rightText || slots.right
 
       return (
         <div
@@ -86,8 +98,8 @@ export default defineComponent({
             bem({ fixed }),
             {
               [BORDER_BOTTOM]: border,
-              'r-safe-area-top': props.safeAreaInsetTop,
-            },
+              'r-safe-area-top': props.safeAreaInsetTop
+            }
           ]}
         >
           <div class={bem('content')}>
@@ -112,14 +124,14 @@ export default defineComponent({
             )}
           </div>
         </div>
-      );
-    };
+      )
+    }
 
     return () => {
       if (props.fixed && props.placeholder) {
-        return renderPlaceholder(renderNavBar);
+        return renderPlaceholder(renderNavBar)
       }
-      return renderNavBar();
-    };
-  },
-});
+      return renderNavBar()
+    }
+  }
+})
