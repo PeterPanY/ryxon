@@ -346,7 +346,7 @@ importers:
         specifier: ^1.54.5
         version: 1.57.1
       vitepress:
-        specifier: ^1.0.0-beta.1
+        specifier: ^1.0.0-alpha.36
         version: 1.0.0-beta.1(@algolia/client-search@4.14.3)(react-dom@16.14.0)(react@16.14.0)(sass@1.57.1)
       vitepress-theme-demoblock:
         specifier: ^1.4.2
@@ -3630,7 +3630,7 @@ packages:
   /@vueuse/shared@9.10.0(vue@3.3.4):
     resolution: {integrity: sha512-vakHJ2ZRklAzqmcVBL38RS7BxdBA4+5poG9NsSyqJxrt9kz0zX3P5CXMy0Hm6LFbZXUgvKdqAS3pUH1zX/5qTQ==}
     dependencies:
-      vue-demi: 0.13.11(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -11282,7 +11282,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.3.4
-    dev: true
 
   /vue-eslint-parser@9.1.0(eslint@8.31.0):
     resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}
