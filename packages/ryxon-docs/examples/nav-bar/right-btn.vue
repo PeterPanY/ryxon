@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { showMessage } from 'ryxon'
+import { showMessage } from '@ryxon/components'
 
 const onClickLeft = () => history.back()
 const onClickRight = () => showMessage('按钮')
