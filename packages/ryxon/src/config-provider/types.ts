@@ -5,6 +5,7 @@ export type ConfigProviderThemeVars =
     import('../action-sheet').ActionSheetThemeVars &
     import('../address-edit').AddressEditThemeVars &
     import('../address-list').AddressListThemeVars &
+    import('../aside').AsideThemeVars &
     import('../avatar').AvatarThemeVars &
     import('../badge').BadgeThemeVars &
     import('../button').ButtonThemeVars &
@@ -28,7 +29,9 @@ export type ConfigProviderThemeVars =
     import('../divider').DividerThemeVars &
     import('../dropdown').DropdownThemeVars &
     import('../empty').EmptyThemeVars &
+    import('../footer').FooterThemeVars &
     import('../grid-item').GridItemThemeVars &
+    import('../header').HeaderThemeVars &
     import('../image').ImageThemeVars &
     import('../image-preview').ImagePreviewThemeVars &
     import('../index-anchor').IndexAnchorThemeVars &
@@ -37,6 +40,7 @@ export type ConfigProviderThemeVars =
     import('../input-number').InputNumberThemeVars &
     import('../list').ListThemeVars &
     import('../loading').LoadingThemeVars &
+    import('../main').MainThemeVars &
     import('../menu').MenuThemeVars &
     import('../message').MessageThemeVars &
     import('../nav-bar').NavBarThemeVars &
