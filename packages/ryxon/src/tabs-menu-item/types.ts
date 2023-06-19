@@ -2,6 +2,14 @@ import type { TabsMenuItemProps } from './TabsMenuItem'
 import type { VNode, ComponentPublicInstance } from 'vue'
 import type { Numeric } from '../utils'
 
+export type TabsMenuItemPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+
 export type TabsMenuItemOption = {
   text: string
   icon?: string

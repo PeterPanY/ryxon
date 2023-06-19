@@ -1,15 +1,35 @@
 <template>
-  <r-tabs-menu>
-    <r-tabs-menu-item v-model="value1" :options="option1" />
-    <r-tabs-menu-item v-model="value2" :options="option2" />
+  <r-tabs-menu @select="handleSelect">
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
+    <r-tabs-menu-item
+      v-model="value1"
+      title="标签2"
+      :options="option1"
+      :lazy-render="false"
+    >
+    </r-tabs-menu-item>
+    <r-tabs-menu-item
+      v-model="value2"
+      :options="option2"
+      :lazy-render="false"
+    />
   </r-tabs-menu>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const value = ref(0)
 const value1 = ref(0)
 const value2 = ref('a')
+const option = [{ text: '全部商品', value: 0 }]
 const option1 = [
   { text: '全部商品', value: 0 },
   { text: '新款商品', value: 1 },
@@ -20,6 +40,10 @@ const option2 = [
   { text: '好评排序', value: 'b' },
   { text: '销量排序', value: 'c' }
 ]
+
+const handleSelect = (index: number) => {
+  console.log(index)
+}
 </script>
 
 <style scoped></style>

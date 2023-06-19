@@ -50,30 +50,17 @@
     font-size: var(--r-tabs-menu-title-font-size);
     line-height: var(--r-tabs-menu-title-line-height);
 
-    &::after {
-      position: absolute;
-      top: 50%;
-      right: -4px;
-      margin-top: -5px;
-      border: 3px solid;
-      border-color: transparent transparent var(--r-gray-4) var(--r-gray-4);
-      transform: rotate(-45deg);
-      opacity: 0.8;
-      content: '';
+    .r-icon {
+      transition: transform var(--r-collapse-item-duration);
     }
 
     &--active {
       color: var(--r-tabs-menu-title-active-text-color);
-
-      &::after {
-        border-color: transparent transparent currentColor currentColor;
-      }
     }
 
     &--down {
-      &::after {
-        margin-top: -1px;
-        transform: rotate(135deg);
+      .r-icon {
+        transform: rotate(180deg);
       }
     }
   }

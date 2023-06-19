@@ -12,3 +12,11 @@ lang: zh
 tabs-menu/basic
 
 :::
+
+## 全屏展示(适用于移动端)
+
+:::demo
+
+tabs-menu/full
+
+:::

@@ -1,21 +1,85 @@
 :root {
   --r-tabs-menu-item-z-index: 10;
+  --r-tabs-menu-item-dropdown-width: 150px;
+  --r-tabs-menu-item-dropdown-arrow-size: 6px;
+  --r-tabs-menu-item-dropdown-background: var(--r-background-2);
+  --r-tabs-menu-item-radius: 8px;
 }
 
 .r-tabs-menu-item {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: var(--r-tabs-menu-item-z-index);
-  overflow: hidden;
+  &.dropdown {
+    .r-tabs-menu-item__content {
+      overflow: visible;
+      width: var(--r-tabs-menu-item-dropdown-width);
 
-  &__icon {
-    display: block;
-    line-height: inherit;
+      &[data-popper-placement='top'] {
+        transform-origin: 50% 100%;
+
+        .r-tabs-menu-item__arrow {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      &[data-popper-placement='bottom'] {
+        transform-origin: 50% 0;
+
+        .r-tabs-menu-item__arrow {
+          left: 50%;
+          transform: translateX(-50%);
+          top: 0;
+          border-top-width: 0;
+          border-bottom-color: currentColor;
+          margin-top: calc(var(--r-tabs-menu-item-dropdown-arrow-size) * -1);
+        }
+      }
+    }
+
+    .r-tabs-menu-item__arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: var(--r-tabs-menu-item-dropdown-arrow-size);
+      color: var(--r-tabs-menu-item-dropdown-background);
+    }
+
+    .r-tabs-menu-item__body {
+      border-radius: var(--r-tabs-menu-item-radius);
+      box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
   }
 
-  &__option {
-    text-align: left;
+  &.full {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: var(--r-tabs-menu-item-z-index);
+    overflow: hidden;
+
+    .r-tabs-menu-item__icon {
+      display: block;
+      line-height: inherit;
+    }
+
+    &.r-tabs-menu-item--up {
+      top: 0;
+    }
+
+    &.r-tabs-menu-item--down {
+      bottom: 0;
+    }
+
+    .r-tabs-menu-item__content {
+      position: absolute;
+      max-height: var(--r-tabs-menu-content-max-height);
+    }
+  }
+
+  .r-tabs-menu-item__option {
+    text-align: center;
 
     &--active {
       color: var(--r-tabs-menu-option-active-color);
@@ -24,18 +88,5 @@
         color: var(--r-tabs-menu-option-active-color);
       }
     }
-  }
-
-  &--up {
-    top: 0;
-  }
-
-  &--down {
-    bottom: 0;
-  }
-
-  &__content {
-    position: absolute;
-    max-height: var(--r-tabs-menu-content-max-height);
   }
 }

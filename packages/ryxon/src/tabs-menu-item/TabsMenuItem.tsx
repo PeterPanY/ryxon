@@ -2,6 +2,7 @@ import {
   ref,
   reactive,
   Teleport,
+  nextTick,
   defineComponent,
   type PropType,
   type TeleportProps,
@@ -10,12 +11,16 @@ import {
 } from 'vue'
 
 // Utils
+import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
 import {
+  extend,
+  inBrowser,
   truthProp,
   unknownProp,
+  makeArrayProp,
+  makeStringProp,
   getZIndexStyle,
   createNamespace,
-  makeArrayProp,
   type ComponentInstance
 } from '../utils'
 import { TABSMENU_KEY } from '../tabs-menu/TabsMenu'
@@ -25,12 +30,13 @@ import { useParent } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 
 // Components
+import { Check } from '@ryxon/icons'
 import { Cell } from '../cell'
 import { Icon } from '../icon'
 import { Popup } from '../popup'
 
 // Types
-import type { TabsMenuItemOption } from './types'
+import type { TabsMenuItemOption, TabsMenuItemPlacement } from './types'
 
 const [name, bem] = createNamespace('tabs-menu-item')
 
@@ -40,9 +46,13 @@ export const tabsMenuItemProps = {
   disabled: Boolean,
   teleport: [String, Object] as PropType<TeleportProps['to']>,
   lazyRender: truthProp,
-  showArrow: truthProp,
   modelValue: unknownProp,
-  titleClass: unknownProp
+  titleClass: unknownProp,
+  placement: makeStringProp<TabsMenuItemPlacement>('bottom'),
+  offset: {
+    type: Array as unknown as PropType<[number, number]>,
+    default: () => [0, 8]
+  }
 }
 
 export type TabsMenuItemProps = ExtractPropTypes<typeof tabsMenuItemProps>
@@ -85,13 +95,66 @@ export default defineComponent({
     }
 
     const onClickWrapper = (event: MouseEvent) => {
-      // prevent being identified as clicking outside and closed when using teleport
+      // 防止在使用传送时被识别为点击外部和关闭
       if (props.teleport) {
         event.stopPropagation()
       }
     }
 
+    let popper: Instance | null
+    const popoverRef = ref<ComponentInstance>()
+
+    const getPopoverOptions = () => ({
+      placement: props.placement,
+      modifiers: [
+        {
+          name: 'computeStyles',
+          options: {
+            adaptive: false,
+            gpuAcceleration: false
+          }
+        },
+        extend({}, offsetModifier, {
+          options: {
+            offset: props.offset
+          }
+        })
+      ]
+    })
+
+    const wrapperRef = ref<HTMLElement>()
+
+    const createPopperInstance = () => {
+      if (wrapperRef.value && popoverRef.value) {
+        return createPopper(
+          wrapperRef.value,
+          popoverRef.value.popupRef.value,
+          getPopoverOptions()
+        )
+      }
+      return null
+    }
+
+    const updateLocation = () => {
+      nextTick(() => {
+        if (!state.showPopup) {
+          return
+        }
+
+        if (!popper) {
+          popper = createPopperInstance()
+          if (inBrowser) {
+            window.addEventListener('animationend', updateLocation)
+            window.addEventListener('transitionend', updateLocation)
+          }
+        } else {
+          popper.setOptions(getPopoverOptions())
+        }
+      })
+    }
+
     const toggle = (
+      wrapper: HTMLElement,
       show = !state.showPopup,
       options: { immediate?: boolean } = {}
     ) => {
@@ -103,11 +166,17 @@ export default defineComponent({
       state.transition = !options.immediate
 
       if (show) {
+        // 不是全屏的时候才调用
+        if (!parent.props.isFull) {
+          wrapperRef.value = wrapper
+          updateLocation()
+        }
         parent.updateOffset()
         state.showWrapper = true
       }
     }
 
+    // 父级调用展示标题名称
     const renderTitle = () => {
       if (slots.title) {
         return slots.title()
@@ -124,6 +193,7 @@ export default defineComponent({
       return match ? match.text : ''
     }
 
+    // 自己调用   展示子集中菜单
     const renderOption = (option: TabsMenuItemOption) => {
       const { activeColor } = parent.props
       const active = option.value === props.modelValue
@@ -139,7 +209,11 @@ export default defineComponent({
 
       const renderIcon = () => {
         if (active) {
-          return <Icon class={bem('icon')} color={activeColor} name="success" />
+          return (
+            <Icon class={bem('icon')} color={activeColor}>
+              <Check></Check>
+            </Icon>
+          )
         }
       }
 
@@ -159,12 +233,18 @@ export default defineComponent({
       )
     }
 
-    const popoverRef = ref<ComponentInstance>()
-
     const renderContent = () => {
       const { offset } = parent
-      const { zIndex, overlay, duration, direction, closeOnClickOverlay } =
-        parent.props
+      const {
+        isFull,
+        zIndex,
+        overlay,
+        duration,
+        direction,
+        showArrow,
+        lockScroll,
+        closeOnClickOverlay
+      } = parent.props
 
       const style: CSSProperties = getZIndexStyle(zIndex)
 
@@ -178,7 +258,7 @@ export default defineComponent({
         <div
           v-show={state.showWrapper}
           style={style}
-          class={bem([direction])}
+          class={[bem([direction]), isFull ? 'full' : 'dropdown']}
           onClick={onClickWrapper}
           {...attrs}
         >
@@ -187,10 +267,12 @@ export default defineComponent({
             ref={popoverRef}
             role="menu"
             class={bem('content')}
-            overlay={overlay}
+            overlay={isFull ? overlay : false}
             position={direction === 'down' ? 'top' : 'bottom'}
+            transition={isFull ? '' : 'r-popover-zoom'}
             duration={state.transition ? duration : 0}
             lazyRender={props.lazyRender}
+            lockScroll={lockScroll}
             overlayStyle={{ position: 'absolute' }}
             aria-labelledby={`${parent.id}-${index.value}`}
             closeOnClickOverlay={closeOnClickOverlay}
@@ -199,8 +281,8 @@ export default defineComponent({
             onOpened={onOpened}
             onClosed={onClosed}
           >
-            {props.showArrow && <div class={bem('arrow')} />}
-            {props.options.map(renderOption)}
+            {showArrow && <div class={bem('arrow')} />}
+            <div class={bem('body')}>{props.options.map(renderOption)}</div>
             {slots.default?.()}
           </Popup>
         </div>
