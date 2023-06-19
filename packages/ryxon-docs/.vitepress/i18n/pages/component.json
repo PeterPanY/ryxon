@@ -64,7 +64,8 @@
         { "link": "/dropdown", "text": "Dropdown 下拉菜单" },
         { "link": "/menu", "text": "Menu 菜单" },
         { "link": "/nav-bar", "text": "NavBar 导航栏" },
-        { "link": "/tabs", "text": "Tabs 标签页" }
+        { "link": "/tabs", "text": "Tabs 标签页" },
+        { "link": "/tabs-menu", "text": "TabsMenu 下拉菜单" }
       ]
     },
     "feedback": {

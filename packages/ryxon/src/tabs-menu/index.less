@@ -1,0 +1,80 @@
+:root {
+  --r-tabs-menu-height: 48px;
+  --r-tabs-menu-background: var(--r-background-2);
+  --r-tabs-menu-shadow: 0 2px 12px rgba(100, 101, 102, 0.12);
+  --r-tabs-menu-title-font-size: 15px;
+  --r-tabs-menu-title-text-color: var(--r-text-color);
+  --r-tabs-menu-title-active-text-color: var(--r-primary-color);
+  --r-tabs-menu-title-disabled-text-color: var(--r-text-color-2);
+  --r-tabs-menu-title-padding: 0 var(--r-padding-xs);
+  --r-tabs-menu-title-line-height: var(--r-line-height-lg);
+  --r-tabs-menu-option-active-color: var(--r-primary-color);
+  --r-tabs-menu-content-max-height: 80%;
+}
+
+.r-tabs-menu {
+  user-select: none;
+
+  &__bar {
+    position: relative;
+    display: flex;
+    height: var(--r-tabs-menu-height);
+    background: var(--r-tabs-menu-background);
+    box-shadow: var(--r-tabs-menu-shadow);
+
+    &--opened {
+      z-index: calc(var(--r-tabs-menu-item-z-index) + 1);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-width: 0; // hack for flex ellipsis
+
+    &--disabled {
+      .r-tabs-menu__title {
+        color: var(--r-tabs-menu-title-disabled-text-color);
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: var(--r-tabs-menu-title-padding);
+    color: var(--r-tabs-menu-title-text-color);
+    font-size: var(--r-tabs-menu-title-font-size);
+    line-height: var(--r-tabs-menu-title-line-height);
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: -4px;
+      margin-top: -5px;
+      border: 3px solid;
+      border-color: transparent transparent var(--r-gray-4) var(--r-gray-4);
+      transform: rotate(-45deg);
+      opacity: 0.8;
+      content: '';
+    }
+
+    &--active {
+      color: var(--r-tabs-menu-title-active-text-color);
+
+      &::after {
+        border-color: transparent transparent currentColor currentColor;
+      }
+    }
+
+    &--down {
+      &::after {
+        margin-top: -1px;
+        transform: rotate(135deg);
+      }
+    }
+  }
+}

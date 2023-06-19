@@ -1,0 +1,41 @@
+:root {
+  --r-tabs-menu-item-z-index: 10;
+}
+
+.r-tabs-menu-item {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: var(--r-tabs-menu-item-z-index);
+  overflow: hidden;
+
+  &__icon {
+    display: block;
+    line-height: inherit;
+  }
+
+  &__option {
+    text-align: left;
+
+    &--active {
+      color: var(--r-tabs-menu-option-active-color);
+
+      .r-tabs-menu-item__icon {
+        color: var(--r-tabs-menu-option-active-color);
+      }
+    }
+  }
+
+  &--up {
+    top: 0;
+  }
+
+  &--down {
+    bottom: 0;
+  }
+
+  &__content {
+    position: absolute;
+    max-height: var(--r-tabs-menu-content-max-height);
+  }
+}
