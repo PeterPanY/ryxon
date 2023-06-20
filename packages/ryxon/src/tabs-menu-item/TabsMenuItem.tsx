@@ -18,7 +18,6 @@ import {
   truthProp,
   unknownProp,
   makeArrayProp,
-  makeStringProp,
   getZIndexStyle,
   createNamespace,
   type ComponentInstance
@@ -48,7 +47,6 @@ export const tabsMenuItemProps = {
   lazyRender: truthProp,
   modelValue: unknownProp,
   titleClass: unknownProp,
-  placement: makeStringProp<TabsMenuItemPlacement>('bottom'),
   offset: {
     type: Array as unknown as PropType<[number, number]>,
     default: () => [0, 8]
@@ -105,7 +103,10 @@ export default defineComponent({
     const popoverRef = ref<ComponentInstance>()
 
     const getPopoverOptions = () => ({
-      placement: props.placement,
+      placement:
+        parent.props.direction === 'down'
+          ? 'bottom'
+          : ('top' as TabsMenuItemPlacement),
       modifiers: [
         {
           name: 'computeStyles',
@@ -167,7 +168,7 @@ export default defineComponent({
 
       if (show) {
         // 不是全屏的时候才调用
-        if (!parent.props.isFull) {
+        if (!parent.props.full) {
           wrapperRef.value = wrapper
           updateLocation()
         }
@@ -199,6 +200,8 @@ export default defineComponent({
       const active = option.value === props.modelValue
 
       const onClick = () => {
+        parent.updateActive(index.value) // 激活父级的展示
+
         state.showPopup = false
 
         if (option.value !== props.modelValue) {
@@ -236,7 +239,7 @@ export default defineComponent({
     const renderContent = () => {
       const { offset } = parent
       const {
-        isFull,
+        full,
         zIndex,
         overlay,
         duration,
@@ -258,7 +261,7 @@ export default defineComponent({
         <div
           v-show={state.showWrapper}
           style={style}
-          class={[bem([direction]), isFull ? 'full' : 'dropdown']}
+          class={[bem([direction]), full ? 'full' : 'dropdown']}
           onClick={onClickWrapper}
           {...attrs}
         >
@@ -267,9 +270,9 @@ export default defineComponent({
             ref={popoverRef}
             role="menu"
             class={bem('content')}
-            overlay={isFull ? overlay : false}
+            overlay={full ? overlay : false}
             position={direction === 'down' ? 'top' : 'bottom'}
-            transition={isFull ? '' : 'r-popover-zoom'}
+            transition={full ? '' : 'r-popover-zoom'}
             duration={state.transition ? duration : 0}
             lazyRender={props.lazyRender}
             lockScroll={lockScroll}

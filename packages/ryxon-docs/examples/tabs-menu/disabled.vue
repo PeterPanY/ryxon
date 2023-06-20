@@ -1,15 +1,23 @@
 <template>
-  <r-tabs-menu full lock-scroll>
-    <r-tabs-menu-item v-model="value1" :options="option1" />
-    <r-tabs-menu-item v-model="value2" :options="option2" />
+  <r-tabs-menu full>
+    <r-tabs-menu-item v-model="value" :options="option" disabled />
+    <r-tabs-menu-item
+      v-model="value1"
+      title="标签2"
+      :options="option1"
+      disabled
+    />
+    <r-tabs-menu-item v-model="value2" :options="option2" disabled />
   </r-tabs-menu>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const value = ref(0)
 const value1 = ref(0)
 const value2 = ref('a')
+const option = [{ text: '全部商品', value: 0 }]
 const option1 = [
   { text: '全部商品', value: 0 },
   { text: '新款商品', value: 1 },

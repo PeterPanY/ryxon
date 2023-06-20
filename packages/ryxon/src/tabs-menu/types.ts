@@ -3,13 +3,14 @@ import type { TabsMenuProps } from './TabsMenu'
 
 export type TabsMenuDirection = 'up' | 'down'
 export type TabsMenuTrigger = 'click' | 'hover'
+export type TabsMenuType = 'line' | 'none'
 
 export type TabsMenuProvide = {
   id: string
   props: TabsMenuProps
   offset: Ref<number>
-  boxRefs: any
   updateOffset: () => void
+  updateActive: (index: number) => void
 }
 
 export type TabsMenuExpose = {
@@ -33,4 +34,7 @@ export type TabsMenuThemeVars = {
   tabsMenuTitleLineHeight?: number | string
   tabsMenuOptionActiveColor?: string
   tabsMenuContentMaxHeight?: string
+  tabsMenuBottomBarWidth?: string
+  tabsMenuBottomBarHeight?: string
+  tabsMenuBottomBarColor?: string
 }

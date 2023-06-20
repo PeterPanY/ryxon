@@ -40,4 +40,8 @@ export type TabsMenuItemInstance = ComponentPublicInstance<
 
 export type TabsMenuItemThemeVars = {
   tabsMenuItemZIndex?: number | string
+  tabsMenuItemDropdownWidth?: string
+  tabsMenuItemDropdownArrowSize?: string
+  tabsMenuItemDropdownBackground?: string
+  tabsMenuItemRadius?: string
 }

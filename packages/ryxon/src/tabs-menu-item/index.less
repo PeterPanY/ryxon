@@ -11,6 +11,8 @@
     .r-tabs-menu-item__content {
       overflow: visible;
       width: var(--r-tabs-menu-item-dropdown-width);
+      max-height: none;
+      height: fit-content;
 
       &[data-popper-placement='top'] {
         transform-origin: 50% 100%;
@@ -18,6 +20,10 @@
         .r-tabs-menu-item__arrow {
           left: 50%;
           transform: translateX(-50%);
+          bottom: 0;
+          border-top-color: currentColor;
+          border-bottom-width: 0;
+          margin-bottom: calc(var(--r-tabs-menu-item-dropdown-arrow-size) * -1);
         }
       }
 
@@ -60,7 +66,7 @@
     overflow: hidden;
 
     .r-tabs-menu-item__icon {
-      display: block;
+      display: inline-block;
       line-height: inherit;
     }
 
@@ -79,7 +85,7 @@
   }
 
   .r-tabs-menu-item__option {
-    text-align: center;
+    text-align: left;
 
     &--active {
       color: var(--r-tabs-menu-option-active-color);

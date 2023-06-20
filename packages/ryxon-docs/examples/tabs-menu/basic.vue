@@ -1,25 +1,8 @@
 <template>
   <r-tabs-menu @select="handleSelect">
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item v-model="value" :options="option" :lazy-render="false" />
-    <r-tabs-menu-item
-      v-model="value1"
-      title="标签2"
-      :options="option1"
-      :lazy-render="false"
-    >
-    </r-tabs-menu-item>
-    <r-tabs-menu-item
-      v-model="value2"
-      :options="option2"
-      :lazy-render="false"
-    />
+    <r-tabs-menu-item v-model="value" :options="option" />
+    <r-tabs-menu-item v-model="value1" title="标签2" :options="option1" />
+    <r-tabs-menu-item v-model="value2" :options="option2" />
   </r-tabs-menu>
 </template>
 
