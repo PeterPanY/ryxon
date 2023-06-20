@@ -22,6 +22,11 @@ export type TabsMenuInstance = ComponentPublicInstance<
   TabsMenuExpose
 >
 
+export type TabsMenuScrollable = {
+  next?: boolean
+  prev?: boolean
+}
+
 export type TabsMenuThemeVars = {
   tabsMenuHeight?: string
   tabsMenuBackground?: string

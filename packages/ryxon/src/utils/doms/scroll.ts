@@ -1,4 +1,25 @@
+import { raf } from '@ryxon/use'
 import { isClient } from '@vueuse/core'
+
+export function scrollLeftTo(
+  scroller: HTMLElement,
+  to: number,
+  duration: number
+) {
+  let count = 0
+  const from = scroller.scrollLeft
+  const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
+
+  function animate() {
+    scroller.scrollLeft += (to - from) / frames
+
+    if (++count < frames) {
+      raf(animate)
+    }
+  }
+
+  animate()
+}
 
 /**
  * 在容器元素中滚动，将**选定的**元素定位在容器顶部
