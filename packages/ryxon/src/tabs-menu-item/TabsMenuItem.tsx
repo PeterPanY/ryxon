@@ -155,7 +155,7 @@ export default defineComponent({
     }
 
     const toggle = (
-      wrapper: HTMLElement,
+      wrapper?: HTMLElement,
       show = !state.showPopup,
       options: { immediate?: boolean } = {}
     ) => {
@@ -169,7 +169,7 @@ export default defineComponent({
       if (show) {
         // 不是全屏的时候才调用
         if (!parent.props.full) {
-          wrapperRef.value = wrapper
+          wrapperRef.value = wrapperRef.value || wrapper
           updateLocation()
         }
         parent.updateOffset()

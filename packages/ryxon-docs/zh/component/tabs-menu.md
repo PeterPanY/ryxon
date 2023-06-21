@@ -59,6 +59,14 @@ tabs-menu/disabled
 
 :::
 
+## 自定义组件
+
+:::demo
+
+tabs-menu/custom
+
+:::
+
 ## API
 
 ### TabsMenu Props
@@ -80,7 +88,7 @@ tabs-menu/disabled
 | full | 下拉菜单是否全屏展示 | `boolean` | `false` |
 | show-arrow | 下拉菜单非全屏模式下，是否显示箭头 | `boolean` | `true` |
 | lock-scroll | 是否锁定屏幕 | `boolean` | `false` |
-| sub-select | 有下拉菜单时，导航菜单是否可以点击 | `boolean` | `false` |
+| sub-select | 有下拉菜单时，导航菜单是否可以点击，当为 true 时，下拉菜单触发形式 trigger 使用 hover | `boolean` | `false` |
 | multiple | 是否是多选 | `boolean` | `false` |
 | type | 样式风格类型，可选值为 none | `string` | `line` |
 | line-width | 底部条宽度，默认单位 px | `number \| string` | `40px` |

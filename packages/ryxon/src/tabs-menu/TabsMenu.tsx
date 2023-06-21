@@ -318,7 +318,11 @@ export default defineComponent({
 
       if (
         newIndex !== props.modelValue &&
-        !(!props.subSelect && children[newIndex].options.length > 1)
+        !(
+          !props.subSelect &&
+          (children[newIndex].options.length > 0 ||
+            children[newIndex].$slots.default)
+        )
       ) {
         activeIndex.value = newIndex
         emit('update:modelValue', newIndex)
@@ -397,7 +401,10 @@ export default defineComponent({
       if (!item.disabled) {
         setCurrentIndex(index)
 
-        if (children[index].options.length !== 1) {
+        if (
+          children[index].options.length > 0 ||
+          children[index].$slots.default
+        ) {
           // 判断父级菜单是否能点击，能点击就不展示子集菜单
           if (props.subSelect) {
             close()
@@ -465,8 +472,8 @@ export default defineComponent({
             style={{ color: showPopup ? props.activeColor : '' }}
           >
             <span>{item.renderTitle()}</span>
-            {item.options.length > 1 && (
-              <Icon>
+            {(item.options.length > 0 || item.$slots.default) && (
+              <Icon class={bem('arrow')}>
                 <ArrowDown />
               </Icon>
             )}
