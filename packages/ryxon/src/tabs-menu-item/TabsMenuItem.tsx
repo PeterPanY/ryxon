@@ -285,8 +285,10 @@ export default defineComponent({
             onClosed={onClosed}
           >
             {showArrow && <div class={bem('arrow')} />}
-            <div class={bem('body')}>{props.options.map(renderOption)}</div>
-            {slots.default?.()}
+            <div class={bem('body')}>
+              {props.options.map(renderOption)}
+              {slots.default?.()}
+            </div>
           </Popup>
         </div>
       )

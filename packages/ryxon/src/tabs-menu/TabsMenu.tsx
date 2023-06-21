@@ -238,21 +238,6 @@ export default defineComponent({
       scrollIntoView(false, 'hand', newOffset)
     }
 
-    // const {
-    //   state,
-    //   titleRefs,
-    //   setTitleRefs,
-    //   scrollIntoView,
-    //   scrollPrev,
-    //   scrollNext,
-    //   scrollableTool
-    // } = useExceedScrollable(
-    //   barRef,
-    //   props.direction === 'down' ? 'bottom' : 'top',
-    //   scrollable,
-    //   props.duration
-    // )
-
     const findAvailableTab = (index: number) => {
       const diff = index < state.currentIndex ? -1 : 1
 
