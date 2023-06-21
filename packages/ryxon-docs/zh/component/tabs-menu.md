@@ -73,7 +73,7 @@ tabs-menu/custom
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 绑定当前选中标签的标识符 | `number` | `0` |
+| v-model | 绑定当前选中标签的标识符 | `number \| string` | `0` |
 | overlay | 是否显示遮罩层，下拉弹窗模式下默认为 false | `boolean` | `true` |
 | z-index | 菜单栏 z-index 层级 | `number \| string` | `10` |
 | ellipsis | 是否省略过长的标题文字 | `boolean` | `true` |
@@ -119,6 +119,7 @@ tabs-menu/custom
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| name | 标签名称，作为匹配的标识符 | `number \| string` | `标签的索引值` |
 | title | 菜单项标题 | `string` | 当前选中项文字 |
 | options | 选项数组 | `Option[]` | `[]` |
 | disabled | 是否禁用菜单 | `boolean` | `false` |
@@ -145,11 +146,11 @@ tabs-menu/custom
 
 ### Option 数据结构
 
-| 键名  | 说明                   | 类型   |
-| ----- | ---------------------- | ------ | ------ |
-| text  | 文字                   | string |
-| value | 标识符                 | number | string |
-| icon  | 左侧图标名称或图片链接 | string |
+| 键名  | 说明                   | 类型             |
+| ----- | ---------------------- | ---------------- |
+| text  | 文字                   | string           |
+| value | 标识符                 | number \| string |
+| icon  | 左侧图标名称或图片链接 | string           |
 
 ### 类型定义
 

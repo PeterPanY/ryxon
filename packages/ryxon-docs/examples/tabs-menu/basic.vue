@@ -1,14 +1,20 @@
 <template>
-  <r-tabs-menu @select="handleSelect">
-    <r-tabs-menu-item title="标签1" />
-    <r-tabs-menu-item v-model="value1" title="标签2" :options="option1" />
-    <r-tabs-menu-item v-model="value2" :options="option2" />
+  <r-tabs-menu v-model="value" @select="handleSelect">
+    <r-tabs-menu-item name="a" title="标签1" />
+    <r-tabs-menu-item
+      name="b"
+      v-model="value1"
+      title="标签2"
+      :options="option1"
+    />
+    <r-tabs-menu-item name="c" v-model="value2" :options="option2" />
   </r-tabs-menu>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const value = ref('b')
 const value1 = ref(0)
 const value2 = ref('a')
 const option1 = [

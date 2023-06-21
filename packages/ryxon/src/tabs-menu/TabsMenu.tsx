@@ -23,7 +23,6 @@ import {
   numericProp,
   windowHeight,
   scrollLeftTo,
-  makeNumberProp,
   makeStringProp,
   makeNumericProp,
   createNamespace,
@@ -62,7 +61,7 @@ import type {
 const [name, bem, , isBem] = createNamespace('tabs-menu')
 
 export const tabsMenuProps = {
-  modelValue: makeNumberProp(0),
+  modelValue: makeNumericProp(0),
   overlay: truthProp,
   zIndex: numericProp,
   ellipsis: truthProp,
@@ -128,7 +127,6 @@ export default defineComponent({
 
     const state = reactive({
       inited: false,
-      position: '',
       lineStyle: {} as CSSProperties,
       currentIndex: -1
     })
@@ -238,6 +236,8 @@ export default defineComponent({
       scrollIntoView(false, 'hand', newOffset)
     }
 
+    const activeIndex = ref(0) // 当前的激活的index
+
     const findAvailableTab = (index: number) => {
       const diff = index < state.currentIndex ? -1 : 1
 
@@ -250,27 +250,29 @@ export default defineComponent({
       }
     }
 
-    const activeIndex = ref(!props.multiple ? props.modelValue : null) // 当前的激活的index
-
     const lineRef = ref<HTMLDivElement>()
 
     // 更新导航栏样式
     const setLine = () => {
       const shouldAnimate = state.inited
 
+      if (props.multiple) {
+        return
+      }
+
       nextTick(() => {
         const titles = titleRefs.value
 
         if (
           !titles ||
-          !titles[activeIndex.value || 0] ||
+          !titles[activeIndex.value] ||
           props.type !== 'line' ||
           isHidden(root.value!)
         ) {
           return
         }
 
-        const title = titles[activeIndex.value || 0]
+        const title = titles[activeIndex.value]
         const { lineWidth, lineHeight } = props
 
         let lineStyle: CSSProperties = {}
@@ -297,10 +299,24 @@ export default defineComponent({
       })
     }
 
+    // 根据index获取name值
+    const getTabName = (tab: ComponentInstance, index: number): Numeric =>
+      tab.name ?? index
+
+    // 获取当前的name值
+    const currentName = computed(() => {
+      const activeTab = children[state.currentIndex]
+
+      if (activeTab) {
+        return getTabName(activeTab, state.currentIndex)
+      }
+    })
+
+    // 点击了下拉菜单  更新父级的选中状态
     const updateActive = (index: number) => {
       if (index !== props.modelValue) {
         activeIndex.value = index
-        emit('update:modelValue', index)
+        emit('update:modelValue', getTabName(children[index], index))
         setLine()
       }
     }
@@ -316,16 +332,24 @@ export default defineComponent({
         return
       }
 
+      const newTab = children[newIndex]
+      const newName = getTabName(newTab, newIndex)
+
+      // subSelect 为true 只要不同就改
+      // newIndex !== props.modelValue
+      // subSelect 为false  没有子集菜单并且值不同时改
+      //  !(children[newIndex].options.length > 0 || children[newIndex].$slots.default) && newIndex !== props.modelValue
       if (
-        newIndex !== props.modelValue &&
+        (props.subSelect && newIndex !== props.modelValue) ||
         !(
           !props.subSelect &&
           (children[newIndex].options.length > 0 ||
-            children[newIndex].$slots.default)
+            children[newIndex].$slots.default) &&
+          newIndex !== props.modelValue
         )
       ) {
         activeIndex.value = newIndex
-        emit('update:modelValue', newIndex)
+        emit('update:modelValue', newName)
       }
 
       if (state.currentIndex !== newIndex) {
@@ -339,19 +363,39 @@ export default defineComponent({
       }
     }
 
+    // 更正活动选项卡的索引
+    const setCurrentIndexByName = (
+      name: Numeric,
+      skipScrollIntoView?: boolean
+    ) => {
+      const matched = children.find(
+        (tab, index) => getTabName(tab, index) === name
+      )
+
+      const index = matched ? children.indexOf(matched) : 0
+
+      // 第一次初始化
+      if (skipScrollIntoView) {
+        activeIndex.value = index
+      }
+
+      setCurrentIndex(index, skipScrollIntoView)
+    }
+
     watch(
       () => props.modelValue,
       (value) => {
-        if (value !== state.currentIndex) {
-          setCurrentIndex(value)
+        if (value !== currentName.value) {
+          setCurrentIndexByName(value)
         }
       }
     )
 
     const init = () => {
-      setCurrentIndex(props.modelValue, true)
+      setCurrentIndexByName(props.modelValue, true)
 
       nextTick(() => {
+        state.inited = true
         scrollIntoView(true)
       })
     }

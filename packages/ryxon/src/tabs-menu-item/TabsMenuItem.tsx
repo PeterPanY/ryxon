@@ -17,6 +17,7 @@ import {
   inBrowser,
   truthProp,
   unknownProp,
+  numericProp,
   makeArrayProp,
   getZIndexStyle,
   createNamespace,
@@ -47,6 +48,7 @@ export const tabsMenuItemProps = {
   lazyRender: truthProp,
   modelValue: unknownProp,
   titleClass: unknownProp,
+  name: numericProp,
   offset: {
     type: Array as unknown as PropType<[number, number]>,
     default: () => [0, 8]
