@@ -48,6 +48,7 @@ export const tabsMenuItemProps = {
   lazyRender: truthProp,
   modelValue: unknownProp,
   titleClass: unknownProp,
+  contentClass: unknownProp,
   name: numericProp,
   offset: {
     type: Array as unknown as PropType<[number, number]>,
@@ -263,7 +264,11 @@ export default defineComponent({
         <div
           v-show={state.showWrapper}
           style={style}
-          class={[bem([direction]), full ? 'full' : 'dropdown']}
+          class={[
+            bem([direction]),
+            full ? 'full' : 'dropdown',
+            props.contentClass
+          ]}
           onClick={onClickWrapper}
           {...attrs}
         >

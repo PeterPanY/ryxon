@@ -126,7 +126,8 @@ tabs-menu/custom
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 to 属性 | `string \| Element` | - |
 | lazyRender | 是否在首次展开时才渲染菜单内容 | `boolean` | `true` |
 | v-model | 当前选中项对应的 value | `number \| string` | - |
-| titleClass | 标题额外类名 | `string \| Array \| object` | - |
+| title-class | 标题额外类名 | `string \| Array \| object` | - |
+| content-class | 自定义弹窗内容额外类名 | `string \| Array \| object` | - |
 | offset | 非全屏模式下，弹窗的偏移量 | `Array` | `[0,8]` |
 
 ### TabsMenuItem Slots
