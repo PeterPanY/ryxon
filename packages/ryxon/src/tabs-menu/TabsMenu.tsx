@@ -387,6 +387,10 @@ export default defineComponent({
       (value) => {
         if (value !== currentName.value) {
           setCurrentIndexByName(value)
+          // 更新当前的index值
+          activeIndex.value = children.findIndex(
+            (tab, index) => getTabName(tab, index) === value
+          )
         }
       }
     )
