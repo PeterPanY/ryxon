@@ -17,6 +17,7 @@ export type ConfigProviderThemeVars =
     import('../checkbox').CheckboxThemeVars &
     import('../circle').CircleThemeVars &
     import('../collapse-item').CollapseItemThemeVars &
+    import('../color-picker').ColorPickerThemeVars &
     import('../contact-card').ContactCardThemeVars &
     import('../contact-edit').ContactEditThemeVars &
     import('../contact-list').ContactListThemeVars &

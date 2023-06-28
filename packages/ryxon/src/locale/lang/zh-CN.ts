@@ -22,6 +22,10 @@ export default {
   rCascader: {
     select: '请选择'
   },
+  rColorPicker: {
+    defaultLabel: '颜色选择器',
+    description: (color: string) => `当前颜色为${color}。按enter键选择新颜色。`
+  },
   rDatepicker: {
     now: '此刻',
     today: '今天',

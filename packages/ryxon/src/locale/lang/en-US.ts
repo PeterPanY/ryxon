@@ -22,6 +22,11 @@ export default {
   rCascader: {
     select: 'Select'
   },
+  rColorPicker: {
+    defaultLabel: 'color picker',
+    description: (color: string) =>
+      `current color is ${color}. press enter to select a new color.`
+  },
   rDatepicker: {
     now: 'Now',
     today: 'Today',
