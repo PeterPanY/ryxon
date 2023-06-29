@@ -100,7 +100,7 @@ import {
   defineComponent
 } from 'vue'
 import { ArrowDown, Close } from '@ryxon/icons'
-import { useParent } from '@ryxon/use'
+import { useParent, useCustomInputValue } from '@ryxon/use'
 import { debounce } from 'lodash-unified'
 import { Input } from '../input'
 import { Button } from '../button'
@@ -274,6 +274,7 @@ export default defineComponent({
         }
       }
     )
+    useCustomInputValue(() => props.modelValue)
 
     watch(
       () => currentColor.value,
