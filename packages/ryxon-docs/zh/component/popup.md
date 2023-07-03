@@ -67,9 +67,9 @@ popup/round
 | close-icon-position | 关闭图标位置，可选值为 `top-left` `bottom-left` `bottom-right` | `string` | `top-right` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 [class-prefix 属性](/zh/component/icon.html#api) | `string` | `r-icon` |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
+| transition | 动画类名，等价于 [transition](https://vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | transition-appear | 是否在初始渲染时启用过渡动画 | `boolean` | `false` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
 | safe-area-inset-top | 是否开启[顶部安全区适配](/zh/guide/advanced-usage.html#底部安全区适配) | `boolean` | `false` |
 | safe-area-inset-bottom | 是否开启[底部安全区适配](/zh/guide/advanced-usage.html#底部安全区适配) | `boolean` | `false` |
 

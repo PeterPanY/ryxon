@@ -206,7 +206,7 @@ export default {
 }
 ```
 
-> 对于组件注册更详细的介绍，请参考 [Vue 官方文档 - 组件注册](https://v3.cn.vuejs.org/guide/component-registration.html#%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C)。
+> 对于组件注册更详细的介绍，请参考 [Vue 官方文档 - 组件注册](https://cn.vuejs.org/guide/components/registration.html)。
 
 ### \<script setup\>
 

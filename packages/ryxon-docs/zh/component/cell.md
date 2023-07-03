@@ -85,7 +85,7 @@ cell/solts
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 [class-prefix 属性](/zh/component/icon.html#api) | `string` | `r-icon` |
 | tag | 根节点对应的 HTML 标签名 | `string` | `div` |
 | url | 点击后跳转的链接地址 | `string` | - |
-| to | 点击后跳转的目标路由对象，等同于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) | `string \| object` | - |
+| to | 点击后跳转的目标路由对象，等同于 Vue Router 的 [to 属性](https://router.vuejs.org/zh/api/interfaces/RouterLinkProps.html#Properties-to) | `string \| object` | - |
 | border | 是否显示内边框 | `boolean` | `true` |
 | replace | 是否在跳转时替换当前页面历史 | `boolean` | `false` |
 | clickable | 是否开启点击反馈 | `boolean` | `null` |

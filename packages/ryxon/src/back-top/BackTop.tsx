@@ -8,7 +8,9 @@ import {
   defineComponent,
   type PropType,
   type TeleportProps,
-  type ExtractPropTypes
+  type ExtractPropTypes,
+  onDeactivated,
+  onActivated
 } from 'vue'
 
 // Utils
@@ -58,6 +60,7 @@ export default defineComponent({
   emits: ['click'],
 
   setup(props, { emit, slots, attrs }) {
+    let shouldReshow = false
     const show = ref(false)
     const root = ref<HTMLElement>()
     const scrollParent = ref<Window | Element>()
@@ -117,6 +120,22 @@ export default defineComponent({
     useEventListener('scroll', throttle(scroll, 100), { target: scrollParent })
 
     onMounted(updateTarget)
+
+    onActivated(() => {
+      if (shouldReshow) {
+        show.value = true
+        shouldReshow = false
+      }
+    })
+
+    onDeactivated(() => {
+      // teleport 后 back-top 应在停用时隐藏
+      if (show.value && props.teleport) {
+        show.value = false
+        shouldReshow = true
+      }
+    })
+
     watch(() => props.target, updateTarget)
 
     return () => {

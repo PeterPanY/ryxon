@@ -123,7 +123,7 @@ date-picker/custom-content
 | disabled-date | 一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值 | `function` | `-` | `-` |
 | shortcuts | 设置快捷选项，需要传入数组对象 | `Array<{ text: string, value: Date / Function }>` | `-` | `-` |
 | cell-class-name | 设置自定义类名 | `Function(Date)` | `-` | `-` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string` | `-` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string` | `-` | `body` |
 
 ### Events
 

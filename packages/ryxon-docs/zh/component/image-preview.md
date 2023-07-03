@@ -59,7 +59,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | showIndex | 是否显示页码 | `boolean` | `true` |
 | className | 自定义类名 | `string \| Array \| object` | - |
 | closeIcon | 关闭图标名称或图片链接 | `string` | `clear` |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
+| transition | 动画类名，等价于 [transition](https://cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
 | overlayClass | 自定义遮罩层类名 | `string \| Array \| object` | - |
 | overlayStyle | 自定义遮罩层样式 | `object` | - |
@@ -69,7 +69,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | showArrow | 切换箭头的显示时机，可选`hover/never` | `string` | `always` |
 | closeOnPopstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | closeIconPosition | 关闭图标位置，可选值为 `top-left`<br>`bottom-left` `bottom-right` | `string` | `top-right` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#telepor) | `string \| Element` | - |
 | showTool | 是否显示操作栏 | `boolean` | `true` |
 | zoomRate | 缩放事件的缩放速度 | `number` | `0.2` |
 | closeOnPressEscape | 是否可以通过按下 ESC 关闭 Image Viewer | `Boolean` | `true` |
@@ -92,7 +92,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | show-index | 是否显示页码 | `boolean` | `true` |
 | class-name | 自定义类名 | `string \| Array \| object` | - |
 | close-icon | 关闭图标名称或图片链接 | `string` | `clear` |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
+| transition | 动画类名，等价于 [transition](https://cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
 | overlay-class | 自定义遮罩层类名 | `string \| Array \| object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
@@ -102,7 +102,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | show-arrow | 切换箭头的显示时机，可选`hover/never` | `string` | `always` |
 | close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | close-icon-position | 关闭图标位置，可选值为 `top-left`<br>`bottom-left` `bottom-right` | `string` | `top-right` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
 | show-tool | 是否显示操作栏 | `boolean` | `true` |
 | zoom-rate | 缩放事件的缩放速度 | `number` | `0.2` |
 | close-on-press-escape | 是否可以通过按下 ESC 关闭 Image Viewer | `Boolean` | `true` |

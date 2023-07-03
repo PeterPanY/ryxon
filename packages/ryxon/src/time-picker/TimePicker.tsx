@@ -4,8 +4,8 @@ import {
   computed,
   defineComponent,
   type PropType,
-  type ExtractPropTypes,
-} from 'vue';
+  type ExtractPropTypes
+} from 'vue'
 
 // Utils
 import {
@@ -13,21 +13,26 @@ import {
   extend,
   createNamespace,
   makeNumericProp,
-  isSameValue,
-} from '../utils';
+  isSameValue
+} from '../utils'
 import {
   genOptions,
   sharedProps,
   pickerInheritKeys,
   formatValueRange,
-} from '../date-picker/utils';
+  type TimeFilter
+} from '../date-picker/utils'
 
 // Components
-import { Picker } from '../picker';
+import { Picker } from '../picker'
 
-const [name] = createNamespace('time-picker');
+const [name] = createNamespace('time-picker')
 
-export type TimePickerColumnType = 'hour' | 'minute' | 'second';
+export type TimePickerColumnType = 'hour' | 'minute' | 'second'
+
+const validateTime = (val: string) =>
+  /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/.test(val)
+const fullColumns: TimePickerColumnType[] = ['hour', 'minute', 'second']
 
 export const timePickerProps = extend({}, sharedProps, {
   minHour: makeNumericProp(0),
@@ -36,13 +41,22 @@ export const timePickerProps = extend({}, sharedProps, {
   maxMinute: makeNumericProp(59),
   minSecond: makeNumericProp(0),
   maxSecond: makeNumericProp(59),
+  minTime: {
+    type: String,
+    validator: validateTime
+  },
+  maxTime: {
+    type: String,
+    validator: validateTime
+  },
   columnsType: {
     type: Array as PropType<TimePickerColumnType[]>,
-    default: () => ['hour', 'minute'],
+    default: () => ['hour', 'minute']
   },
-});
+  filter: Function as PropType<TimeFilter>
+})
 
-export type TimePickerProps = ExtractPropTypes<typeof timePickerProps>;
+export type TimePickerProps = ExtractPropTypes<typeof timePickerProps>
 
 export default defineComponent({
   name,
@@ -52,67 +66,104 @@ export default defineComponent({
   emits: ['confirm', 'cancel', 'change', 'update:modelValue'],
 
   setup(props, { emit, slots }) {
-    const currentValues = ref<string[]>(props.modelValue);
+    const currentValues = ref<string[]>(props.modelValue)
 
-    const columns = computed(() =>
-      props.columnsType.map((type) => {
-        const { filter, formatter } = props;
+    const getValidTime = (time: string) => {
+      const timeLimitArr = time.split(':')
+      return fullColumns.map((col, i) =>
+        props.columnsType.includes(col) ? timeLimitArr[i] : '00'
+      )
+    }
+
+    const columns = computed(() => {
+      let { minHour, maxHour, minMinute, maxMinute, minSecond, maxSecond } =
+        props
+
+      if (props.minTime || props.maxTime) {
+        const fullTime: Record<TimePickerColumnType, string | number> = {
+          hour: 0,
+          minute: 0,
+          second: 0
+        }
+        props.columnsType.forEach((col, i) => {
+          fullTime[col] = currentValues.value[i] ?? 0
+        })
+        const { hour, minute } = fullTime
+        if (props.minTime) {
+          const [minH, minM, minS] = getValidTime(props.minTime)
+          minHour = minH
+          minMinute = +hour <= +minHour ? minM : '00'
+          minSecond = +hour <= +minHour && +minute <= +minMinute ? minS : '00'
+        }
+        if (props.maxTime) {
+          const [maxH, maxM, maxS] = getValidTime(props.maxTime)
+          maxHour = maxH
+          maxMinute = +hour >= +maxHour ? maxM : '59'
+          maxSecond = +hour >= +maxHour && +minute >= +maxMinute ? maxS : '59'
+        }
+      }
+
+      return props.columnsType.map((type) => {
+        const { filter, formatter } = props
         switch (type) {
           case 'hour':
             return genOptions(
-              +props.minHour,
-              +props.maxHour,
+              +minHour,
+              +maxHour,
               type,
               formatter,
-              filter
-            );
+              filter,
+              currentValues.value
+            )
           case 'minute':
             return genOptions(
-              +props.minMinute,
-              +props.maxMinute,
+              +minMinute,
+              +maxMinute,
               type,
               formatter,
-              filter
-            );
+              filter,
+              currentValues.value
+            )
           case 'second':
             return genOptions(
-              +props.minSecond,
-              +props.maxSecond,
+              +minSecond,
+              +maxSecond,
               type,
               formatter,
-              filter
-            );
+              filter,
+              currentValues.value
+            )
           default:
             if (process.env.NODE_ENV !== 'production') {
               throw new Error(
                 `[Ryxon] DatePicker: unsupported columns type: ${type}`
-              );
+              )
             }
-            return [];
+            return []
         }
       })
-    );
+    })
 
     watch(currentValues, (newValues) => {
       if (!isSameValue(newValues, props.modelValue)) {
-        emit('update:modelValue', newValues);
+        emit('update:modelValue', newValues)
       }
-    });
+    })
 
     watch(
       () => props.modelValue,
       (newValues) => {
-        newValues = formatValueRange(newValues, columns.value);
+        newValues = formatValueRange(newValues, columns.value)
         if (!isSameValue(newValues, currentValues.value)) {
-          currentValues.value = newValues;
+          currentValues.value = newValues
         }
       },
       { immediate: true }
-    );
+    )
 
-    const onChange = (...args: unknown[]) => emit('change', ...args);
-    const onCancel = (...args: unknown[]) => emit('cancel', ...args);
-    const onConfirm = (...args: unknown[]) => emit('confirm', ...args);
+    const onChange = (...args: unknown[]) => emit('change', ...args)
+    const onCancel = (...args: unknown[]) => emit('cancel', ...args)
+    const onConfirm = (...args: unknown[]) => emit('confirm', ...args)
 
     return () => (
       <Picker
@@ -124,6 +175,6 @@ export default defineComponent({
         onConfirm={onConfirm}
         {...pick(props, pickerInheritKeys)}
       />
-    );
-  },
-});
+    )
+  }
+})

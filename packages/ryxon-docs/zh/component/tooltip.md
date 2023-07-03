@@ -113,7 +113,7 @@ tooltip/controlled
 | enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
 | z-index | 将弹窗的 z-index 层级设置为一个固定值 | `number \| string` | `2000+` |
 | duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 | lazy-render | 是否在显示弹层时才渲染节点 | `boolean` | `true` |
 | before-close | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise<boolean>` | `-` |
 | overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |

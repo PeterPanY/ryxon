@@ -5,7 +5,8 @@ import {
   truthProp,
   numericProp,
   makeArrayProp,
-  createNamespace
+  createNamespace,
+  makeStringProp
 } from '../utils'
 
 // Components
@@ -22,7 +23,8 @@ export const addressListProps = {
   disabledText: String,
   disabledList: makeArrayProp<AddressListAddress>(),
   addButtonText: String,
-  defaultTagText: String
+  defaultTagText: String,
+  rightIcon: makeStringProp('edit')
 }
 
 export type AddressListProps = ExtractPropTypes<typeof addressListProps>
@@ -71,6 +73,7 @@ export default defineComponent({
           disabled={disabled}
           switchable={props.switchable}
           defaultTagText={props.defaultTagText}
+          rightIcon={props.rightIcon}
           onEdit={onEdit}
           onClick={onClick}
           onSelect={onSelect}

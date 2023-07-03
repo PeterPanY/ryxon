@@ -1,16 +1,16 @@
 module.exports = {
   extends: [
+    'eslint:recommended',
     'plugin:vue/vue3-recommended',
-    'airbnb-base',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
+    'prettier'
   ],
 
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2019,
     sourceType: 'module',
-    extraFileExtensions: ['.vue'],
+    extraFileExtensions: ['.vue']
   },
 
   plugins: ['@typescript-eslint'],
@@ -19,32 +19,11 @@ module.exports = {
     es6: true,
     node: true,
     jest: true,
-    browser: true,
+    browser: true
   },
 
   rules: {
-    'no-new': 'off',
-    'no-shadow': 'off',
-    'no-bitwise': 'off',
-    'func-names': 'off',
-    'no-console': 'off',
-    'no-plusplus': 'off',
-    'default-case': 'off',
-    'prefer-template': 'off',
-    'consistent-return': 'off',
-    'no-param-reassign': 'off',
-    'no-nested-ternary': 'off',
-    'no-underscore-dangle': 'off',
-    'no-unused-expressions': 'off',
-    'no-restricted-globals': 'off',
-    'class-methods-use-this': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
-    // eslint-plugin-import
-    'import/order': 'off',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'import/prefer-default-export': 'off',
-    'import/no-extraneous-dependencies': 'off',
     // eslint-plugin-vue
     'vue/no-v-html': 'off',
     'vue/attributes-order': 'off',
@@ -62,19 +41,19 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off'
   },
 
   overrides: [
     {
       files: ['*.vue'],
-      parser: require.resolve('vue-eslint-parser'),
+      parser: require.resolve('vue-eslint-parser')
     },
     {
       files: ['**/*.md/*.js', '**/*.md/*.ts'],
       rules: {
-        '@typescript-eslint/no-unused-vars': 'off',
-      },
-    },
-  ],
-};
+        '@typescript-eslint/no-unused-vars': 'off'
+      }
+    }
+  ]
+}

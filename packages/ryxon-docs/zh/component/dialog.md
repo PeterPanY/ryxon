@@ -112,7 +112,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
 | allowHtml | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
 | className | 自定义类名 | `string \| Array \| object` | - |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
+| transition | 动画类名，等价于 [transition](https://vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | messageAlign | 内容对齐方式，可选值为 `left` `right` | `string` | `center` |
 | closeOnPopstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | showConfirmButton | 是否展示确认按钮 | `boolean` | `true` |
@@ -132,7 +132,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | overlayStyle | 自定义遮罩层样式 | `object` | - |
 | lockScroll | 是否锁定背景滚动 | `boolean` | `true` |
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
 
 ### Props
 
@@ -150,7 +150,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
 | allow-html | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
 | class-name | 自定义类名 | `string \| Array \| object` | - |
-| transition | 动画类名，等价于 [transition](https://v3.cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
+| transition | 动画类名，等价于 [transition](https://vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | - |
 | message-align | 内容水平对齐方式，可选值为 `left` `right` `justify` | `string` | `center` |
 | close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | show-confirm-button | 是否展示确认按钮 | `boolean` | `true` |
@@ -172,7 +172,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | lazy-render | 是否在显示弹层时才渲染节点 | `boolean` | `true` |
 | lock-scroll | 是否锁定背景滚动 | `boolean` | `true` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
 
 ### Events
 

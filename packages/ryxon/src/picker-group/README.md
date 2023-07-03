@@ -56,11 +56,13 @@ export default {
   setup() {
     const currentDate = ref(['2022', '06', '01'])
     const currentTime = ref(['12', '00'])
+
     const onConfirm = () => {
       showMessage(
         `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
       )
     }
+
     const onCancel = () => {
       showMessage('cancel')
     }
@@ -69,7 +71,9 @@ export default {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      currentTime
+      currentTime,
+      onConfirm,
+      onCancel
     }
   }
 }
@@ -104,11 +108,13 @@ export default {
   setup() {
     const currentDate = ref(['2022', '06', '01'])
     const currentTime = ref(['12', '00'])
+
     const onConfirm = () => {
       showMessage(
         `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
       )
     }
+
     const onCancel = () => {
       showMessage('cancel')
     }
@@ -117,7 +123,9 @@ export default {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       currentDate,
-      currentTime
+      currentTime,
+      onConfirm,
+      onCancel
     }
   }
 }
@@ -151,6 +159,7 @@ export default {
     const onConfirm = () => {
       showMessage(`${startDate.value.join('/')} ${endDate.value.join('/')}`)
     }
+
     const onCancel = () => {
       showMessage('cancel')
     }
@@ -159,7 +168,9 @@ export default {
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 5, 1),
       endDate,
-      startDate
+      startDate,
+      onConfirm,
+      onCancel
     }
   }
 }
@@ -193,13 +204,80 @@ export default {
     const onConfirm = () => {
       showMessage(`${startTime.value.join(':')} ${endTime.value.join(':')}`)
     }
+
     const onCancel = () => {
       showMessage('cancel')
     }
 
     return {
       endTime,
-      startTime
+      startTime,
+      onConfirm,
+      onCancel
+    }
+  }
+}
+```
+
+### Controlled Mode
+
+Supports both uncontrolled and controlled modes:
+
+- When `v-model:active-tab` is not bound, the PickerGroup component completely controls the `tab` switching.
+- When `v-model:active-tab` is bound, PickerGroup supports controlled mode, and the `tab` switching is controlled by both the `v-model:active-tab` value and the component itself.
+
+```html
+<r-button type="primary" @click="setActiveTab">
+  toggle tab, current {{ activeTab }}
+</r-button>
+<r-picker-group
+  v-model:active-tab="activeTab"
+  title="Title"
+  :tabs="['Date', 'Time']"
+  @confirm="onConfirm"
+  @cancel="onCancel"
+>
+  <r-date-picker
+    v-model="currentDate"
+    :min-date="minDate"
+    :max-date="maxDate"
+  />
+  <r-time-picker v-model="currentTime" />
+</r-picker-group>
+```
+
+```js
+import { ref } from 'vue'
+import { showMessage } from 'ryxon'
+
+export default {
+  setup() {
+    const activeTab = ref(0)
+    const currentDate = ref(['2022', '06', '01'])
+    const currentTime = ref(['12', '00'])
+
+    const setActiveTab = () => {
+      activeTab.value = activeTab.value ? 0 : 1
+    }
+
+    const onConfirm = () => {
+      showMessage(
+        `${currentDate.value.join('/')} ${currentTime.value.join(':')}`
+      )
+    }
+    const onCancel = () => {
+      showMessage('cancel')
+    }
+
+    return {
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 5, 1),
+      activeTab,
+      currentDate,
+      currentTime,
+      setActiveTab,
+      onConfirm,
+      onCancel
     }
   }
 }
@@ -209,13 +287,14 @@ export default {
 
 ### Props
 
-| Attribute               | Description              | Type       | Default   |
-| ----------------------- | ------------------------ | ---------- | --------- |
-| tabs                    | Titles of tabs           | _string[]_ | `[]`      |
-| title                   | Toolbar title            | _string_   | `''`      |
-| next-step-text `v4.0.8` | Text of next step button | _string_   | `''`      |
-| confirm-button-text     | Text of confirm button   | _string_   | `Confirm` |
-| cancel-button-text      | Text of cancel button    | _string_   | `Cancel`  |
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| v-model:active-tab `v4.3.2` | Set index of active tab | _number \| string_ | `0` |
+| tabs | Titles of tabs | _string[]_ | `[]` |
+| title | Toolbar title | _string_ | `''` |
+| next-step-text `v4.0.8` | Text of next step button | _string_ | `''` |
+| confirm-button-text | Text of confirm button | _string_ | `Confirm` |
+| cancel-button-text | Text of cancel button | _string_ | `Cancel` |
 
 ### Slots
 
@@ -231,5 +310,15 @@ export default {
 The component exports the following type definitions:
 
 ```ts
-import type { DatePickerProps, DatePickerColumnType } from 'ryxon'
+import type { PickerGroupProps, PickerGroupThemeVars } from 'ryxon'
 ```
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/config-provider).
+
+| Name                        | Default Value      | Description |
+| --------------------------- | ------------------ | ----------- |
+| --r-picker-group-background | _--r-background-2_ | -           |

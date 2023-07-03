@@ -42,7 +42,7 @@ breadcrumb/icon
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| to | 路由跳转目标，同 vue-router 的 to 属性 | `string / RouteLocationRaw` | `-` |
+| to | 路由跳转目标，同 Vue Router 的 [to 属性](https://router.vuejs.org/zh/api/interfaces/RouterLinkProps.html#Properties-to) | `string / RouteLocationRaw` | `-` |
 | url | 点击后跳转的链接地址 | `string` | `-` |
 | replace | 是否在跳转时替换当前页面历史 | `boolean` | `false` |
 

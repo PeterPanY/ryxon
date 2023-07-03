@@ -632,7 +632,7 @@ export default defineComponent({
         return (
           <label
             id={`${id}-label`}
-            for={getInputId()}
+            for={slots.input ? undefined : getInputId()}
             onClick={(event: MouseEvent) => {
               // 组件在点击label位置时，绑定的click事件会执行两次
               preventDefault(event)

@@ -7,7 +7,7 @@ lang: zh
 
 ## 组件插槽
 
-Ryxon 提供了丰富的组件插槽，通过插槽可以对组件的某一部分进行个性化定制。如果你对 Vue 的插槽不太熟悉，可以阅读 Vue 官方文档中的[插槽章节](https://v3.cn.vuejs.org/guide/component-slots.html)。下面是通过插槽来定制 Checkbox 图标的示例：
+Ryxon 提供了丰富的组件插槽，通过插槽可以对组件的某一部分进行个性化定制。如果你对 Vue 的插槽不太熟悉，可以阅读 Vue 官方文档中的[插槽章节](https://cn.vuejs.org/guide/components/slots.html)。下面是通过插槽来定制 Checkbox 图标的示例：
 
 ```html
 <r-checkbox v-model="checked">
@@ -35,7 +35,7 @@ export default {
 
 ## 组件实例方法
 
-Ryxon 中的许多组件提供了实例方法，调用实例方法时，我们需要通过 [ref](https://v3.cn.vuejs.org/guide/component-template-refs.html) 来注册组件引用信息，引用信息将会注册在父组件的`$refs`对象上。注册完成后，我们可以通过`this.$refs.xxx`访问到对应的组件实例，并调用上面的实例方法。
+Ryxon 中的许多组件提供了实例方法，调用实例方法时，我们需要通过 [ref](https://vuejs.org/guide/essentials/template-refs.html) 来注册组件引用信息，引用信息将会注册在父组件的`$refs`对象上。注册完成后，我们可以通过`this.$refs.xxx`访问到对应的组件实例，并调用上面的实例方法。
 
 ```html
 <!-- 通过 ref 属性将组件绑定到 this.$refs.checkbox 上 -->

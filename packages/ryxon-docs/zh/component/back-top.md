@@ -49,7 +49,7 @@ back-top/immediate
 | right | 距离页面右侧的距离，默认单位为 `px` | `number \| string` | `30` |
 | bottom | 距离页面底部的距离，默认单位为 `px` | `number \| string` | `40` |
 | offset | 滚动高度达到此参数值时才显示组件 | `number` | `200` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
 | immediate | 是否瞬间滚动到顶部 | `boolean` | `false` |
 | z-index | 设置组件的 z-index 层级 | `number \| string` | `100` |
 

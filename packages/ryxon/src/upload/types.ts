@@ -9,6 +9,7 @@ export type UploadResultType = 'dataUrl' | 'text' | 'file'
 export type UploadFileListItem = {
   url?: string
   file?: File
+  objectUrl?: string
   content?: string
   isImage?: boolean
   status?: '' | 'uploading' | 'done' | 'failed' | 'ready'

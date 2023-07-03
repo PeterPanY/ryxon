@@ -100,7 +100,7 @@ button/custom
 | circle | 是否为圆形按钮 | `boolean` | `-` | `false` |
 | link | 是否为链接按钮 | `boolean` | `-` | `false` |
 | url | 点击后跳转的链接地址 | `string` | `-` | `-` |
-| to | 点击后跳转的目标路由对象，等同于 vue-router 的 to 属性 | `string / object` | `-` | `-` |
+| to | 点击后跳转的目标路由对象，等同于 Vue Router 的 [to 属性](https://router.vuejs.org/zh/api/interfaces/RouterLinkProps.html#Properties-to) | `string / object` | `-` | `-` |
 | replace | 是否在跳转时替换当前页面历史 | `boolean` | `-` | `false` |
 | disabled | 是否禁用按钮 | `boolean` | `-` | `false` |
 | loading | 是否显示为加载状态 | `boolean` | `-` | `false` |

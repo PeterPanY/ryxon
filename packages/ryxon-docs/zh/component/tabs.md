@@ -174,7 +174,7 @@ tabs/before-change
 | badge | 图标右上角徽标的内容 | `number \| string` | - |
 | name | 标签名称，作为匹配的标识符 | `number \| string` | 标签的索引值 |
 | url | 点击后跳转的链接地址 | `string` | - |
-| to | 点击后跳转的目标路由对象，等同于 vue-router 的 [to 属性](https://router.vuejs.org/zh/api/#to) | `string \| object` | - |
+| to | 点击后跳转的目标路由对象，等同于 Vue Router 的 [to 属性](https://router.vuejs.org/zh/api/interfaces/RouterLinkProps.html#Properties-to) | `string \| object` | - |
 | replace | 是否在跳转时替换当前页面历史 | `boolean` | `false` |
 | title-style | 自定义标题样式 | `string \| Array \| object` | - |
 | title-class | 自定义标题类名 | `string \| Array \| object` | - |

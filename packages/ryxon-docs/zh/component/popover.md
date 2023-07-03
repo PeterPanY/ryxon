@@ -65,7 +65,7 @@ popover/mode
 | close-on-click-action | 是否在点击选项后关闭 | `boolean` | `true` |
 | close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://v3.cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
 
 ### PopoverAction 数据结构

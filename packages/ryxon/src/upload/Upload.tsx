@@ -324,7 +324,8 @@ export default defineComponent({
             const result: UploadFileListItem = {
               file,
               status: 'ready',
-              uid: genFileId()
+              uid: genFileId(),
+              objectUrl: URL.createObjectURL(file)
             }
 
             if (contents[index]) {
@@ -341,7 +342,8 @@ export default defineComponent({
           const result: UploadFileListItem = {
             file: files as File,
             status: 'ready',
-            uid: genFileId()
+            uid: genFileId(),
+            objectUrl: URL.createObjectURL(files as File)
           }
 
           if (content) {
@@ -397,8 +399,8 @@ export default defineComponent({
         const imageFiles = props.modelValue.filter(isImageFile)
         const images = imageFiles
           .map((item) => {
-            if (item.file && !item.url && item.status !== 'failed') {
-              item.url = URL.createObjectURL(item.file)
+            if (item.objectUrl && !item.url && item.status !== 'failed') {
+              item.url = item.objectUrl
               urls.push(item.url)
             }
             return item.url
