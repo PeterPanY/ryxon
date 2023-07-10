@@ -7,21 +7,9 @@ export default {
   confirm: '确认',
   delete: '删除',
   loading: '加载中...',
-  noCoupon: '暂无优惠券',
   nameEmpty: '请填写姓名',
   addContact: '添加联系人',
   telInvalid: '请填写正确的电话',
-  rCalendar: {
-    end: '结束',
-    start: '开始',
-    title: '日期选择',
-    weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-    monthTitle: (year: number, month: number) => `${year}年${month}月`,
-    rangePrompt: (maxRange: number) => `最多选择 ${maxRange} 天`
-  },
-  rCascader: {
-    select: '请选择'
-  },
   rColorPicker: {
     defaultLabel: '颜色选择器',
     description: (color: string) => `当前颜色为${color}。按enter键选择新颜色。`
@@ -132,22 +120,6 @@ export default {
   rUpload: {
     uploading: '上传中...',
     failed: '上传失败'
-  },
-  rCoupon: {
-    unlimited: '无门槛',
-    discount: (discount: number) => `${discount}折`,
-    condition: (condition: number) => `满${condition}元可用`
-  },
-  rCouponCell: {
-    title: '优惠券',
-    count: (count: number) => `${count}张可用`
-  },
-  rCouponList: {
-    exchange: '兑换',
-    close: '不使用',
-    enable: '可用',
-    disabled: '不可用',
-    placeholder: '输入优惠码'
   },
   rAddressEdit: {
     area: '地区',

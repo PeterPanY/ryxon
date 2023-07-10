@@ -3,7 +3,6 @@
 
  * 影响的组件:
  *   - ActionSheet
- *   - Calendar
  *   - Dialog
  *   - DropdownItem
  *   - ImagePreview

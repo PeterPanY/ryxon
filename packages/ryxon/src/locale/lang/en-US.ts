@@ -7,21 +7,9 @@ export default {
   confirm: 'Confirm',
   delete: 'Delete',
   loading: 'Loading...',
-  noCoupon: 'No coupons',
   nameEmpty: 'Please fill in the name',
   addContact: 'Add contact',
   telInvalid: 'Malformed phone number',
-  rCalendar: {
-    end: 'End',
-    start: 'Start',
-    title: 'Calendar',
-    weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
-    rangePrompt: (maxRange: number) => `Choose no more than ${maxRange} days`
-  },
-  rCascader: {
-    select: 'Select'
-  },
   rColorPicker: {
     defaultLabel: 'color picker',
     description: (color: string) =>
@@ -135,22 +123,6 @@ export default {
   rUpload: {
     uploading: 'Uploading...',
     failed: 'Failed'
-  },
-  rCoupon: {
-    unlimited: 'Unlimited',
-    discount: (discount: number) => `${discount * 10}% off`,
-    condition: (condition: number) => `At least ${condition}`
-  },
-  rCouponCell: {
-    title: 'Coupon',
-    count: (count: number) => `You have ${count} coupons`
-  },
-  rCouponList: {
-    exchange: 'Exchange',
-    close: 'Close',
-    enable: 'Available',
-    disabled: 'Unavailable',
-    placeholder: 'Coupon code'
   },
   rAddressEdit: {
     area: 'Area',
