@@ -14,6 +14,7 @@
   "devDependencies": {
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
+    "@ryxon/touch-emulator": "workspace:*",
     "clipboard-copy": "^4.0.1",
     "escape-html": "^1.0.3",
     "fast-glob": "^3.2.11",

@@ -1,114 +1,35 @@
+---
+title: PullRefresh
+lang: zh
+---
+
 # PullRefresh 下拉刷新
 
-### 介绍
+用于提供下拉刷新的交互操作。在 pc 端需要搭配`@ryxon/touch-emulator`插件使用
 
-用于提供下拉刷新的交互操作。
+## 基础用法
 
-### 引入
+:::demo 下拉刷新时会触发 `refresh` 事件，在事件的回调函数中可以进行同步或异步操作，操作完成后将 `v-model` 设置为 `false`，表示加载完成。
 
-通过以下方式来全局注册组件，更多注册方式请参考[组件注册](#/zh-CN/advanced-usage#zu-jian-zhu-ce)。
+pull-refresh/basic
 
-```js
-import { createApp } from 'vue'
-import { PullRefresh } from 'ryxon'
+:::
 
-const app = createApp()
-app.use(PullRefresh)
-```
+## 成功提示
 
-## 代码演示
+:::demo 通过 `success-text` 可以设置刷新成功后的顶部提示文案。
 
-### 基础用法
+pull-refresh/success
 
-下拉刷新时会触发 `refresh` 事件，在事件的回调函数中可以进行同步或异步操作，操作完成后将 `v-model` 设置为 `false`，表示加载完成。
+:::
 
-```html
-<r-pull-refresh v-model="loading" @refresh="onRefresh">
-  <p>刷新次数: {{ count }}</p>
-</r-pull-refresh>
-```
+## 自定义提示
 
-```js
-import { ref } from 'vue'
-import { showMessage } from 'ryxon'
+:::demo 通过插槽可以自定义下拉刷新过程中的提示内容。
 
-export default {
-  setup() {
-    const count = ref(0)
-    const loading = ref(false)
-    const onRefresh = () => {
-      setTimeout(() => {
-        showMessage('刷新成功')
-        loading.value = false
-        count.value++
-      }, 1000)
-    }
+pull-refresh/custom
 
-    return {
-      count,
-      loading,
-      onRefresh
-    }
-  }
-}
-```
-
-### 成功提示
-
-通过 `success-text` 可以设置刷新成功后的顶部提示文案。
-
-```html
-<r-pull-refresh
-  v-model="isLoading"
-  success-text="刷新成功"
-  @refresh="onRefresh"
->
-  <p>刷新次数: {{ count }}</p>
-</r-pull-refresh>
-```
-
-### 自定义提示
-
-通过插槽可以自定义下拉刷新过程中的提示内容。
-
-```html
-<r-pull-refresh v-model="isLoading" :head-height="80" @refresh="onRefresh">
-  <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
-  <template #pulling="props">
-    <img
-      class="doge"
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/doge.png"
-      :style="{ transform: `scale(${props.distance / 80})` }"
-    />
-  </template>
-
-  <!-- 释放提示 -->
-  <template #loosing>
-    <img
-      class="doge"
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/doge.png"
-    />
-  </template>
-
-  <!-- 加载提示 -->
-  <template #loading>
-    <img
-      class="doge"
-      src="https://fastly.jsdelivr.net/npm/@ryxon/assets/doge-fire.jpeg"
-    />
-  </template>
-  <p>刷新次数: {{ count }}</p>
-</r-pull-refresh>
-
-<style>
-  .doge {
-    width: 140px;
-    height: 72px;
-    margin-top: 8px;
-    border-radius: 4px;
-  }
-</style>
-```
+:::
 
 ## API
 
@@ -185,4 +106,4 @@ PullRefresh 的触发条件是「父级滚动元素的滚动条在顶部位置�
 
 ### 在桌面端无法操作组件？
 
-参见[桌面端适配](#/zh-CN/advanced-usage#zhuo-mian-duan-gua-pei)。
+参见[桌面端适配](/zh/guide/advanced-usage.html#桌面端适配)。

@@ -163,7 +163,7 @@ swipeRef.value?.next()
 
 ### 在桌面端无法操作组件？
 
-参见[桌面端适配](#/zh-CN/advanced-usage#zhuo-mian-duan-gua-pei)。
+参见[桌面端适配](/zh/guide/advanced-usage.html#桌面端适配)。
 
 ### Swipe 组件功能太少，无法实现复杂效果？
 

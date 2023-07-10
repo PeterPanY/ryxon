@@ -323,6 +323,9 @@ importers:
       '@ryxon/icons':
         specifier: workspace:*
         version: link:../ryxon-icons
+      '@ryxon/touch-emulator':
+        specifier: workspace:*
+        version: link:../ryxon-touch-emulator
       clipboard-copy:
         specifier: ^4.0.1
         version: 4.0.1

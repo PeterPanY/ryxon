@@ -123,6 +123,21 @@ module.exports = {
 }
 ```
 
+## 桌面端适配
+
+Ryxon 部分组件采用的是移动端设计。如果你需要在桌面端使用 Ryxon，可以 `@ryxon/touch-emulator`，这个库会在桌面端自动将 `mouse` 事件转换成对应的 `touch` 事件，使得组件能够在桌面端使用。
+
+```shell
+# 安装模块
+npm i @ryxon/touch-emulator -S
+
+```
+
+```js
+// 引入模块后自动生效
+import '@ryxon/touch-emulator'
+```
+
 ## 底部安全区适配
 
 iPhone X 等机型底部存在底部指示条，指示条的操作区域与页面底部存在重合，容易导致用户误操作，因此我们需要针对这些机型进行安全区适配。Ryxon 中部分组件提供了 `safe-area-inset-top` 或 `safe-area-inset-bottom` 属性，设置该属性后，即可在对应的机型上开启适配，如下示例：
