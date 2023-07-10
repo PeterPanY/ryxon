@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { Warning } from '@ryxon/icons'
-
-defineProps({
-  type: String,
-  details: String
-})
-</script>
-
 <template>
   <span class="inline-flex items-center">
     <code class="api-typing mr-1">
@@ -33,6 +24,15 @@ defineProps({
     </ClientOnly>
   </span>
 </template>
+
+<script setup lang="ts">
+import { Warning } from '@ryxon/icons'
+
+defineProps({
+  type: String,
+  details: String
+})
+</script>
 
 <style lang="scss" scoped>
 .typing-button {

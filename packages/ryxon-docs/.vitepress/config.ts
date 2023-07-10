@@ -1,8 +1,10 @@
-import type { UserConfig } from 'vitepress'
 import { mdPlugin } from './config/plugins'
 import { sidebar } from './config/sidebars'
 import { nav } from './config/nav'
+import type { UserConfig } from 'vitepress'
+
 const isProd = process.env.NODE_ENV === 'production'
+
 export const config: UserConfig = {
   base: isProd ? '/ryxon/' : '',
   title: 'Ryxon',
