@@ -46,6 +46,7 @@
         { "link": "/empty", "text": "Empty 空状态" },
         { "link": "/image", "text": "Image 图片" },
         { "link": "/image-preview", "text": "ImagePreview 图片预览" },
+        { "link": "/list", "text": "List 无限滚动列表" },
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/skeleton", "text": "Skeleton 骨架屏" },
         { "link": "/swipe", "text": "Swipe 轮播" },

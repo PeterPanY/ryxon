@@ -37,23 +37,23 @@ pull-refresh/custom
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | 是否处于加载中状态 | _boolean_ | - |
-| pulling-text | 下拉过程提示文案 | _string_ | `下拉即可刷新...` |
-| loosing-text | 释放过程提示文案 | _string_ | `释放即可刷新...` |
-| loading-text | 加载过程提示文案 | _string_ | `加载中...` |
-| success-text | 刷新成功提示文案 | _string_ | - |
-| success-duration | 刷新成功提示展示时长(ms) | _number \| string_ | `500` |
-| animation-duration | 动画时长 | _number \| string_ | `300` |
-| head-height | 顶部内容高度 | _number \| string_ | `50` |
-| pull-distance | 触发下拉刷新的距离 | _number \| string_ | 与 `head-height` 一致 |
-| disabled | 是否禁用下拉刷新 | _boolean_ | `false` |
+| v-model | 是否处于加载中状态 | `boolean` | - |
+| pulling-text | 下拉过程提示文案 | `string` | `下拉即可刷新...` |
+| loosing-text | 释放过程提示文案 | `string` | `释放即可刷新...` |
+| loading-text | 加载过程提示文案 | `string` | `加载中...` |
+| success-text | 刷新成功提示文案 | `string` | - |
+| success-duration | 刷新成功提示展示时长(ms) | `number \| string` | `500` |
+| animation-duration | 动画时长 | `number \| string` | `300` |
+| head-height | 顶部内容高度 | `number \| string` | `50` |
+| pull-distance | 触发下拉刷新的距离 | `number \| string` | 与 `head-height` 一致 |
+| disabled | 是否禁用下拉刷新 | `boolean` | `false` |
 
 ### Events
 
 | 事件名  | 说明                   | 回调参数                               |
 | ------- | ---------------------- | -------------------------------------- |
 | refresh | 下拉刷新时触发         | -                                      |
-| change  | 拖动时或状态改变时触发 | _{ status: string, distance: number }_ |
+| change  | 拖动时或状态改变时触发 | `{ status: string, distance: number }` |
 
 ### Slots
 
@@ -61,9 +61,9 @@ pull-refresh/custom
 | ------- | -------------------- | ---------------------- |
 | default | 自定义内容           | -                      |
 | normal  | 非下拉状态时顶部内容 | -                      |
-| pulling | 下拉过程中顶部内容   | _{ distance: number }_ |
-| loosing | 释放过程中顶部内容   | _{ distance: number }_ |
-| loading | 加载过程中顶部内容   | _{ distance: number }_ |
+| pulling | 下拉过程中顶部内容   | `{ distance: number }` |
+| loosing | 释放过程中顶部内容   | `{ distance: number }` |
+| loading | 加载过程中顶部内容   | `{ distance: number }` |
 | success | 刷新成功提示内容     | -                      |
 
 ### 类型定义
@@ -82,10 +82,10 @@ import type { PullRefreshProps } from 'ryxon'
 
 | 名称                               | 默认值                  | 描述 |
 | ---------------------------------- | ----------------------- | ---- |
-| --r-pull-refresh-head-height       | _50px_                  | -    |
-| --r-pull-refresh-head-font-size    | _var(--r-font-size-md)_ | -    |
-| --r-pull-refresh-head-text-color   | _var(--r-text-color-2)_ | -    |
-| --r-pull-refresh-loading-icon-size | _16px_                  | -    |
+| --r-pull-refresh-head-height       | `50px`                  | -    |
+| --r-pull-refresh-head-font-size    | `var(--r-font-size-md)` | -    |
+| --r-pull-refresh-head-text-color   | `var(--r-text-color-2)` | -    |
+| --r-pull-refresh-loading-icon-size | `16px`                  | -    |
 
 ## 常见问题
 
