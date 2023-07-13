@@ -87,6 +87,7 @@ export const inputSharedProps = {
   autocomplete: { type: String, default: 'off' },
   errorMessage: String,
   enterkeyhint: String,
+  clearIcon: { type: iconPropType, default: CircleClose },
   clearTrigger: makeStringProp<InputClearTrigger>('focus'),
   formatTrigger: makeStringProp<InputFormatTrigger>('onChange'),
   error: { type: Boolean, default: null },
@@ -673,8 +674,15 @@ export default defineComponent({
       >
         {renderInput()}
         {showClear.value && (
-          <Icon ref={clearIconRef} class={bem('clear')} onClick={onClear}>
-            <CircleClose />
+          <Icon
+            ref={clearIconRef}
+            name={isString(props.clearIcon) ? props.clearIcon : ''}
+            class={bem('clear')}
+            onClick={onClear}
+          >
+            {props.clearIcon &&
+              !isString(props.clearIcon) &&
+              h(props.clearIcon)}
           </Icon>
         )}
         {renderRightIcon()}
