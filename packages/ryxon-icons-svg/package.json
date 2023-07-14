@@ -1,7 +1,7 @@
 {
   "name": "@ryxon/icons-svg",
-  "version": "2.0.10",
-  "description": "SVG icon for Ryxon Icons collection.",
+  "version": "1.0.0",
+  "description": "Ryxon Icons集合的SVG图标。",
   "keywords": [
     "icon",
     "svg",
@@ -21,6 +21,6 @@
     "optimize": "svgo -f . -o ."
   },
   "devDependencies": {
-    "svgo": "^2.8.0"
+    "svgo": "^3.0.2"
   }
 }

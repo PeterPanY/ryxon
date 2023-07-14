@@ -1,22 +1,18 @@
 import path from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { emptyDir, ensureDir } from 'fs-extra'
-import { consola } from 'consola'
+import consola from 'consola'
 import camelcase from 'camelcase'
 import glob from 'fast-glob'
-import { format } from 'prettier'
+import { type BuiltInParserName, format } from 'prettier'
 import chalk from 'chalk'
-import findWorkspaceDir from '@pnpm/find-workspace-dir'
-import findWorkspacePackages from '@pnpm/find-workspace-packages'
+import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
+import { findWorkspacePackages } from '@pnpm/find-workspace-packages'
 import { pathComponents } from './paths'
 
-import type { BuiltInParserName } from 'prettier'
-
 const getSvgFiles = async () => {
-  const pkgs = await // @ts-expect-error
-  (findWorkspacePackages.default as typeof findWorkspacePackages)(
-    // @ts-expect-error
-    (await findWorkspaceDir.default(process.cwd()))!
+  const pkgs = await findWorkspacePackages(
+    (await findWorkspaceDir(process.cwd()))!
   )
   const pkg = pkgs.find((pkg) => pkg.manifest.name === '@ryxon/icons-svg')!
   return glob('*.svg', { cwd: pkg.dir, absolute: true })
