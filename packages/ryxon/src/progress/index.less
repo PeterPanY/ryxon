@@ -1,0 +1,221 @@
+:root {
+  --r-progress-line-height: 6px;
+  --r-progress-line-background: var(--r-border-color-lighter);
+  --r-progress-line-radius: 100px;
+  --r-progress-text-font-size: 14px;
+  --r-progress-text-color: var(--r-text-color-regular);
+  --r-progress-text-margin-left: 5px;
+  --r-progress-inner-font-size: 12px;
+  --r-progress-inner-margin: 0 5px;
+}
+
+.r-progress {
+  position: relative;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+
+  &__bar {
+    flex-grow: 1;
+    box-sizing: border-box;
+
+    &--outer {
+      height: var(--r-progress-line-height);
+      border-radius: var(--r-progress-line-radius);
+      background-color: var(--r-progress-line-background);
+      overflow: hidden;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    &--innerText {
+      display: inline-block;
+      vertical-align: middle;
+      color: #fff;
+      font-size: var(--r-progress-inner-font-size);
+      margin: var(--r-progress-inner-margin);
+    }
+  }
+
+  &__bar--inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--r-primary-color);
+    text-align: right;
+    border-radius: 100px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: width 0.6s ease;
+
+    &::after {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      vertical-align: middle;
+    }
+
+    &--indeterminate {
+      transform: translateZ(0);
+      -webkit-animation: indeterminate 3s infinite;
+      animation: indeterminate 3s infinite;
+    }
+
+    &--striped {
+      background-image: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.1) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.1) 75%,
+        transparent 75%,
+        transparent
+      );
+      background-size: 1.25em 1.25em;
+    }
+
+    &--striped&--striped-flow {
+      -webkit-animation: striped-flow 3s linear infinite;
+      animation: striped-flow 3s linear infinite;
+    }
+  }
+
+  &--circle,
+  &--dashboard {
+    display: inline-block;
+
+    .r-progress__text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      transform: translate(0, -50%);
+
+      i {
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
+
+  &__text {
+    font-size: var(--r-progress-text-font-size);
+    color: var(--r-progress-text-color);
+    margin-left: var(--r-progress-text-margin-left);
+    min-width: 50px;
+    line-height: 1;
+
+    i {
+      vertical-align: middle;
+      display: block;
+    }
+  }
+
+  &.is-success {
+    .r-progress__bar--inner {
+      background-color: var(--r-success-color);
+    }
+    .r-progress__text {
+      color: var(--r-success-color);
+    }
+  }
+
+  &.is-warning {
+    .r-progress__bar--inner {
+      background-color: var(--r-warning-color);
+    }
+    .r-progress__text {
+      color: var(--r-warning-color);
+    }
+  }
+
+  &.is-danger {
+    .r-progress__bar--inner {
+      background-color: var(--r-danger-color);
+    }
+    .r-progress__text {
+      color: var(--r-danger-color);
+    }
+  }
+
+  &--without-text {
+    .r-progress__text {
+      display: none;
+    }
+
+    .r-progress__bar {
+      padding-right: 0;
+      margin-right: 0;
+      display: block;
+    }
+  }
+
+  &--text-inside .r-progress__bar {
+    padding-right: 0;
+    margin-right: 0;
+  }
+}
+
+@-webkit-keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 32px 0;
+  }
+}
+
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 32px 0;
+  }
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes striped-flow {
+  0% {
+    background-position: -100%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}
+
+@keyframes striped-flow {
+  0% {
+    background-position: -100%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}

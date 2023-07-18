@@ -38,6 +38,7 @@ export type ConfigProviderThemeVars =
     import('../picker-group').PickerGroupThemeVars &
     import('../popover').PopoverThemeVars &
     import('../popup').PopupThemeVars &
+    import('../progress').ProgressThemeVars &
     import('../pull-refresh').PullRefreshThemeVars &
     import('../radio').RadioThemeVars &
     import('../scrollbar').ScrollbarThemeVars &

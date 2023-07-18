@@ -48,6 +48,7 @@
         { "link": "/image-preview", "text": "ImagePreview 图片预览" },
         { "link": "/list", "text": "List 无限滚动列表" },
         { "link": "/pagination", "text": "Pagination 分页" },
+        { "link": "/progress", "text": "Progress 进度条" },
         { "link": "/skeleton", "text": "Skeleton 骨架屏" },
         { "link": "/swipe", "text": "Swipe 轮播" },
         { "link": "/sticky", "text": "Sticky 粘性布局" },
