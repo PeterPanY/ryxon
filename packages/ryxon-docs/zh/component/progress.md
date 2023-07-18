@@ -99,3 +99,28 @@ progress/striped-progress
 | 名称    | 说明                                |
 | ------- | ----------------------------------- |
 | default | 自定义内容，参数为 `{ percentage }` |
+
+### 类型定义
+
+组件导出以下类型定义：
+
+```ts
+import type { ProgressProps } from 'ryxon'
+```
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
+
+| 名称 | 默认值 | 描述 |
+| --- | --- | --- |
+| --r-progress-line-height | `6px` | 直线进度高度 |
+| --r-progress-line-background-color | `var(--r-border-color-lighter)` | 直线进度背景色 |
+| --r-progress-line-radius | `100px` | 直线进度圆角 |
+| --r-progress-text-font-size | `14px` | 进度条文字大小 |
+| --r-progress-text-color | `var(--r-text-color-regular)` | 进度条文字颜色 |
+| --r-progress-text-margin-left | `5px` | - |
+| --r-progress-inner-font-size | `12px` | 进度条内置文字大小 |
+| --r-progress-inner-margin | `0 5px` | - |

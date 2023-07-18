@@ -3,7 +3,7 @@ export type ProgressFn = (percentage: number) => string
 
 export type ProgressThemeVars = {
   progressLineHeight?: string
-  progressLineBackground?: string
+  progressLineBackgroundColor?: string
   progressLineRadius?: string
   progressTextFontSize?: string
   progressTextColor?: string
