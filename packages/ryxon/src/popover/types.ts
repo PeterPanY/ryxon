@@ -1,6 +1,11 @@
 export type PopoverTheme = 'light' | 'dark'
 export type PopoverActionsDirection = 'horizontal' | 'vertical'
-export type PopoverTrigger = 'manual' | 'click' | 'focus' | 'hover'
+export type PopoverTrigger =
+  | 'manual'
+  | 'click'
+  | 'focus'
+  | 'hover'
+  | 'contextmenu'
 
 export type PopoverPlacement =
   | 'top'

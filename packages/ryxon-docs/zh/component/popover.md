@@ -52,10 +52,10 @@ popover/mode
 | --- | --- | --- | --- |
 | v-model:show | 是否展示气泡弹出层 | `boolean` | `false` |
 | actions | 选项列表 | `PopoverAction[]` | `[]` |
-| actions-direction | 选项列表的排列方向，可选值为 `horizontal` | `PopoverActionsDirection` | `vertical` |
+| actions-direction | 选项列表的排列方向 | ^[PopoverActionsDirection]`'vertical' \| 'horizontal'` | `vertical` |
 | placement | 弹出位置 | `PopoverPlacement` | `bottom` |
-| theme | 主题风格，可选值为 `dark` | `PopoverTheme` | `light` |
-| trigger | 触发方式，可选值为 `manual` `focus` `hover` | `PopoverTrigger` | `click` |
+| theme | 主题风格 | ^[PopoverTheme]`'light' \| 'dark'` | `light` |
+| trigger | 触发方式 | ^[PopoverTrigger]`'manual' \| 'click' \| 'focus' \| 'hover' \| 'contextmenu'` | `click` |
 | duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
 | offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
 | overlay | 是否显示遮罩层 | `boolean` | `false` |

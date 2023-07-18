@@ -161,6 +161,14 @@ export default defineComponent({
       if (props.trigger === 'click') show.value = !show.value
     }
 
+    // 右键点击事件
+    const onContextmenuWrapper = (e: Event) => {
+      if (props.trigger === 'contextmenu') {
+        e.preventDefault()
+        show.value = !show.value
+      }
+    }
+
     // 显示
     const onShowWrapper = () => {
       if (props.trigger === 'hover' || props.trigger === 'focus')
@@ -277,6 +285,7 @@ export default defineComponent({
           onMouseleave={onHideWrapper}
           onFocus={onShowWrapper}
           onBlur={onHideWrapper}
+          onContextmenu={onContextmenuWrapper}
         >
           {slots.reference?.()}
         </span>
