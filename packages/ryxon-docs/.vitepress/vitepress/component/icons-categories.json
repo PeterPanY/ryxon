@@ -265,6 +265,7 @@
         "AeonService",
         "AeonSetting",
         "AeonShare",
+        "AeonShareFill",
         "AeonShoppingCart",
         "AeonSortDown",
         "AeonSortFilter",
