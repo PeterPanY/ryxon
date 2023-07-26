@@ -1,10 +1,12 @@
 import type { ComponentPublicInstance } from 'vue'
 import type { ImageFit } from '../image'
-import type { Numeric, Interceptor, Awaitable } from '../utils'
+import type { Numeric, Interceptor } from '../utils'
 import type { UploadProps } from './Upload'
 import type { UploadAjaxError } from './ajax'
 
 export type UploadResultType = 'dataUrl' | 'text' | 'file'
+
+export type UploadStatus = '' | 'uploading' | 'done' | 'failed' | 'ready'
 
 export type UploadFileListItem = {
   url?: string
@@ -12,7 +14,9 @@ export type UploadFileListItem = {
   objectUrl?: string
   content?: string
   isImage?: boolean
-  status?: '' | 'uploading' | 'done' | 'failed' | 'ready'
+  status?: UploadStatus
+  percentage?: number
+  response?: unknown
   message?: string
   imageFit?: ImageFit
   deletable?: boolean
@@ -45,6 +49,7 @@ export type UploadExpose = {
   submit: () => void
   chooseFile: () => void
   closeImagePreview: () => void
+  abort: (file?: UploadFileListItem) => void
 }
 
 export type UploadInstance = ComponentPublicInstance<UploadProps, UploadExpose>
@@ -81,17 +86,30 @@ export type UploadUserFile = Omit<UploadFileListItem, 'status' | 'uid'> &
   Partial<Pick<UploadFileListItem, 'status' | 'uid'>>
 
 export interface UploadHooks {
-  beforeUpload: (
-    rawFile: UploadRawFile
-  ) => Awaitable<void | undefined | null | boolean | File | Blob>
-  onRemove: (uploadFileListItem: UploadFileListItem) => void
+  onRemove: (
+    uploadFileListItem: UploadFileListItem,
+    uploadFileListItems: UploadFileListItems
+  ) => void
+  onChange: (
+    uploadFileListItem: UploadFileListItem,
+    uploadFileListItems: UploadFileListItems
+  ) => void
   onPreview: (uploadFile: UploadFileListItem) => void
-  onSuccess: (response: any, uploadFileListItem: UploadFileListItem) => void
+  onSuccess: (
+    response: any,
+    uploadFileListItem: UploadFileListItem,
+    uploadFileListItems: UploadFileListItems
+  ) => void
   onProgress: (
     evt: UploadProgressEvent,
-    uploadFileListItem: UploadFileListItem
+    uploadFileListItem: UploadFileListItem,
+    uploadFileListItems: UploadFileListItems
   ) => void
-  onError: (error: Error, uploadFileListItem: UploadFileListItem) => void
+  onError: (
+    error: Error,
+    uploadFileListItem: UploadFileListItem,
+    uploadFileListItems: UploadFileListItems
+  ) => void
 }
 
 export type UploadThemeVars = {

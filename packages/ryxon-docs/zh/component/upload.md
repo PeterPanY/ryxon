@@ -127,10 +127,7 @@ upload/image-options
 | uploading-text | 上传中文字提示 | `string` | `上传中...` |
 | failed-text | 上传失败文字提示 | `string` | `上传失败` |
 | deletable | 是否展示删除按钮 | `boolean` | `true` |
-| after-read | 文件读取完成后的回调函数 | `Function` | - |
 | show-upload | 是否展示上传区域 | `boolean` | `true` |
-| before-read | 文件读取前的回调函数，返回 `false` 可终止文件读取，支持返回 `Promise` | `Function` | - |
-| before-delete | 文件删除前的回调函数，返回 `false` 可终止文件读取，支持返回 `Promise` | `Function` | - |
 | preview-size | 预览图和上传区域的尺寸，默认单位为 `px` | `number \| string \| Array` | `80px` |
 | preview-image | 是否在上传完成后展示预览图 | `boolean` | `true` |
 | preview-options | 全屏图片预览的配置项，可选值见 [ImagePreview](/zh/component/image-preview.html#imagepreviewoptions) | `object` | - |
@@ -145,8 +142,11 @@ upload/image-options
 | filename | 上传的文件字段名 | `string` | `file` |
 | data | 上传时附带的额外参数 | `Record<string, any>` | - |
 | with-credentials | 支持发送 cookie 凭证信息 | `boolean` | `false` |
-| before-upload | 上传文件之前的钩子，参数为上传的文件， 若返回 false 或者返回 Promise 且被 reject，则停止上传。 | `(rawFile: UploadRawFile) => Awaitable<void \| undefined \| null \| boolean \| File \| Blob>` | - |
-| on-remove | 上传文件，`beforeUpload`返回`false`，移除文件时的钩子 | `(uploadFile: UploadFile) => void` | - |
+| before-read | 文件读取前的回调函数，返回 `false` 可终止文件读取，支持返回 `Promise` | `(items, detail) => void` | - |
+| after-read | 文件读取完成后的回调函数 | `(items, detail) => void` | - |
+| before-delete | 文件删除前的回调函数，返回 `false` 可终止文件读取，支持返回 `Promise` | `(items, detail) => void` | - |
+| on-remove | 文件列表移除文件时的钩子 | `(uploadFile: UploadFile) => void` | - |
+| on-change | 文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用 | `(uploadFile: UploadFile, uploadFiles: UploadFiles) => void` | - |
 | on-progress | 文件上传时的钩子 | `(evt: UploadProgressEvent, uploadFile: UploadFile) => void` | - |
 | on-success | 文件上传成功时的钩子 | `(response: any, uploadFile: UploadFile) => void` | - |
 | on-error | 文件上传失败时的钩子 | `(error: Error, uploadFile: UploadFile) => void` | - |
@@ -171,15 +171,6 @@ upload/image-options
 | preview-delete | 自定义删除按钮                 | -                    |
 | preview-cover  | 自定义覆盖在预览区域上方的内容 | `item: FileListItem` |
 
-### 回调参数
-
-before-read、after-read、before-delete 执行时会传递以下回调参数：
-
-| 参数名 | 说明                              | 类型     |
-| ------ | --------------------------------- | -------- |
-| file   | file 对象                         | `object` |
-| detail | 额外信息，包含 name 和 index 字段 | `object` |
-
 ### ResultType 可选值
 
 `result-type` 字段表示文件读取结果的类型，上传大文件时，建议使用 file 类型，避免卡顿。
@@ -196,7 +187,8 @@ before-read、after-read、before-delete 执行时会传递以下回调参数：
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| submit | 手动上传文件列表 | - | - |
+| abort | 取消上传请求 | `(file: UploadFile) => void` | - |
+| submit | 手动上传文件列表 | `() => void` | - |
 | closeImagePreview | 关闭全屏的图片预览 | - | - |
 | chooseFile | 主动调起文件选择，由于浏览器安全限制，只有在用户触发操作的上下文中调用才有效 | - | - |
 

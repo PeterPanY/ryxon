@@ -19,6 +19,7 @@ import {
   toArray,
   isString,
   isPromise,
+  entriesOf,
   truthProp,
   Interceptor,
   iconPropType,
@@ -30,6 +31,7 @@ import {
   type Numeric,
   type ComponentInstance
 } from '../utils'
+import { useHandlers } from './use-handlers'
 import {
   t,
   bem,
@@ -85,10 +87,8 @@ export const uploadProps = {
   uploadingText: { type: String, default: t('uploading') },
   failedText: { type: String, default: t('failed') },
   deletable: truthProp,
-  afterRead: Function as PropType<UploadAfterRead>,
+
   showUpload: truthProp,
-  beforeRead: Function as PropType<UploadBeforeRead>,
-  beforeDelete: Function as PropType<Interceptor>,
   previewSize: [Number, String, Array] as PropType<
     Numeric | [Numeric, Numeric]
   >,
@@ -111,12 +111,15 @@ export const uploadProps = {
   filename: { type: String, default: 'file' },
   data: { type: Object, default: () => mutable({} as const) },
   withCredentials: Boolean,
-  beforeUpload: {
-    type: definePropType<UploadHooks['beforeUpload']>(Function),
-    default: noop
-  },
+  beforeRead: Function as PropType<UploadBeforeRead>,
+  afterRead: Function as PropType<UploadAfterRead>,
+  beforeDelete: Function as PropType<Interceptor>,
   onRemove: {
     type: definePropType<UploadHooks['onRemove']>(Function),
+    default: noop
+  },
+  onChange: {
+    type: definePropType<UploadHooks['onChange']>(Function),
     default: noop
   },
   onProgress: {
@@ -149,7 +152,8 @@ export default defineComponent({
     'update:modelValue'
   ],
 
-  setup(props, { emit, slots }) {
+  setup(props, ctx) {
+    const { emit, slots } = ctx
     const inputRef = ref()
     const urls: string[] = []
 
@@ -168,6 +172,24 @@ export default defineComponent({
       Record<string, XMLHttpRequest | Promise<unknown>>
     >({})
 
+    const abort = (file?: UploadFileListItem) => {
+      const _reqs = entriesOf(requests.value).filter(
+        file ? ([uid]) => String(file.uid) === uid : () => true
+      )
+      _reqs.forEach(([uid, req]) => {
+        if (req instanceof XMLHttpRequest) req.abort()
+        delete requests.value[uid]
+      })
+    }
+
+    const {
+      handleStart,
+      handleError,
+      handleRemove,
+      handleSuccess,
+      handleProgress
+    } = useHandlers(props, abort, ctx)
+
     // 上传文件
     const doUpload = (rawFile: UploadRawFile) => {
       const {
@@ -177,9 +199,6 @@ export default defineComponent({
         withCredentials,
         filename,
         action,
-        onProgress,
-        onSuccess,
-        onError,
         httpRequest
       } = props
 
@@ -196,16 +215,17 @@ export default defineComponent({
         filename,
         action,
         onProgress: (evt) => {
-          onProgress(evt, rawFile)
+          console.log(rawFile)
+          handleProgress(evt, rawFile)
         },
         onSuccess: (res) => {
           rawFile.status = 'done'
-          onSuccess(res, rawFile)
+          handleSuccess(res, rawFile)
           delete requests.value[uid]
         },
         onError: (err) => {
           rawFile.status = 'failed'
-          onError(err, rawFile)
+          handleError(err, rawFile)
           delete requests.value[uid]
         }
       }
@@ -219,57 +239,11 @@ export default defineComponent({
       }
     }
 
-    // 删除文件
-    const deleteFile = (item: UploadFileListItem, index: number) => {
-      const fileList = props.modelValue.slice(0)
-      fileList.splice(index, 1)
-
-      emit('update:modelValue', fileList)
-      emit('delete', item, getDetail(index))
-    }
-
     // 文件上传前处理
     const upload = async (rawFile: UploadRawFile) => {
       inputRef.value!.value = ''
 
-      if (!props.beforeUpload) {
-        return doUpload(rawFile)
-      }
-
-      let hookResult: Exclude<
-        ReturnType<UploadHooks['beforeUpload']>,
-        Promise<any>
-      >
-
-      try {
-        hookResult = await props.beforeUpload(rawFile)
-      } catch {
-        hookResult = false
-      }
-
-      if (hookResult === false) {
-        const index = props.modelValue.findIndex(
-          (item) => item.uid === rawFile.uid
-        )
-
-        deleteFile(rawFile, index)
-        props.onRemove(rawFile)
-        return
-      }
-
-      const file = rawFile
-
-      if (hookResult instanceof Blob) {
-        if (hookResult instanceof File) {
-          file.file = hookResult
-        } else {
-          file.file = new File([hookResult], rawFile.name, {
-            type: rawFile.type
-          })
-        }
-      }
-
-      doUpload(Object.assign(file, { uid: rawFile.uid }))
+      doUpload(rawFile)
     }
 
     const onAfterRead = (items: UploadFileListItem | UploadFileListItem[]) => {
@@ -290,20 +264,22 @@ export default defineComponent({
         }
       }
       items = reactive(items)
-      emit('update:modelValue', [...props.modelValue, ...toArray(items)])
 
       if (props.afterRead) {
         props.afterRead(items, getDetail())
       }
 
-      // 判断是否开启自动上传
-      if (props.autoUpload) {
-        for (const file of toArray(items)) {
-          const rawFile = file
-          rawFile.uid = genFileId()
+      let files = toArray(items)
+      if (!props.multiple) {
+        files = files.slice(0, 1)
+      }
 
-          upload(rawFile)
-        }
+      for (const file of files) {
+        const rawFile = file as UploadRawFile
+        rawFile.uid = genFileId()
+        handleStart(rawFile)
+        // 判断是否开启自动上传
+        if (props.autoUpload) upload(rawFile)
       }
     }
 
@@ -324,6 +300,7 @@ export default defineComponent({
             const result: UploadFileListItem = {
               file,
               status: 'ready',
+              percentage: 0,
               uid: genFileId(),
               objectUrl: URL.createObjectURL(file)
             }
@@ -343,6 +320,7 @@ export default defineComponent({
             file: files as File,
             status: 'ready',
             uid: genFileId(),
+            percentage: 0,
             objectUrl: URL.createObjectURL(files as File)
           }
 
@@ -448,7 +426,7 @@ export default defineComponent({
           uploadingText={props.uploadingText}
           failedText={props.failedText}
           onClick={() => emit('clickPreview', item, getDetail(index))}
-          onDelete={() => deleteFile(item, index)}
+          onDelete={() => handleRemove(item, getDetail(index))}
           onPreview={() => previewImage(item)}
           {...pick(props, ['name', 'lazyLoad'])}
           {...previewData}
@@ -551,6 +529,7 @@ export default defineComponent({
     }
 
     useExpose<UploadExpose>({
+      abort,
       submit,
       chooseFile,
       closeImagePreview
