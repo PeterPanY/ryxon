@@ -44,6 +44,7 @@ export type ConfigProviderThemeVars =
     import('../scrollbar').ScrollbarThemeVars &
     import('../select').SelectThemeVars &
     import('../skeleton').SkeletonThemeVars &
+    import('../slide-bar').SlideBarThemeVars &
     import('../slider').SliderThemeVars &
     import('../sticky').StickyThemeVars &
     import('../swipe').SwipeThemeVars &

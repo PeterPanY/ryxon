@@ -50,6 +50,7 @@
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/progress", "text": "Progress 进度条" },
         { "link": "/skeleton", "text": "Skeleton 骨架屏" },
+        { "link": "/slide-bar", "text": "SlideBar 滚动块" },
         { "link": "/swipe", "text": "Swipe 轮播" },
         { "link": "/sticky", "text": "Sticky 粘性布局" },
         { "link": "/table", "text": "Table 表格" },
