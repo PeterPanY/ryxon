@@ -1,20 +1,26 @@
 <template>
   <r-steps :active="active">
-    <r-step :finish-icon="SuccessFilled">买家下单</r-step>
-    <r-step
-      :finish-icon="SuccessFilled"
-      :active-icon="Loading"
-      :inactive-icon="Coin"
-      >商家接单</r-step
-    >
-    <r-step :active-icon="Loading" :inactive-icon="Coin">买家提货</r-step>
-    <r-step :inactive-icon="Coin">交易完成</r-step>
+    <r-step>
+      买家下单
+      <template #finish-icon> 1 </template>
+    </r-step>
+    <r-step>
+      商家接单
+      <template #finish-icon> 2 </template>
+    </r-step>
+    <r-step>
+      买家提货
+      <template #active-icon> 3 </template>
+    </r-step>
+    <r-step>
+      交易完成
+      <template #inactive-icon> 4 </template>
+    </r-step>
   </r-steps>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SuccessFilled, Loading, Coin } from '@ryxon/icons'
 
 const active = ref(2)
 </script>

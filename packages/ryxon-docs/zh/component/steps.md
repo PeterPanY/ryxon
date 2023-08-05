@@ -60,6 +60,19 @@ steps/vertical
 | direction | 步骤条方向，可选值为 `vertical` | `string` | `horizontal` |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 [class-prefix 属性](/zh/component/icon.html#api) | `string` | `r-icon` |
 
+### Steps Events
+
+| 事件名     | 说明                       | 回调参数        |
+| ---------- | -------------------------- | --------------- |
+| click-step | 点击步骤的标题或图标时触发 | `index: number` |
+
+### Steps Slots
+
+| 事件名   | 说明           | 回调参数 |
+| -------- | -------------- | -------- |
+| default  | 默认插槽       | -        |
+| interval | 自定义步骤间隔 | -        |
+
 ### Step Slots
 
 | 名称          | 说明                                                       |
@@ -68,12 +81,6 @@ steps/vertical
 | active-icon   | 自定义激活状态图标                                         |
 | inactive-icon | 自定义未激活状态图标                                       |
 | finish-icon   | 自定义已完成步骤对应的底部图标，优先级高于 `inactive-icon` |
-
-### Steps Events
-
-| 事件名     | 说明                       | 回调参数        |
-| ---------- | -------------------------- | --------------- |
-| click-step | 点击步骤的标题或图标时触发 | `index: number` |
 
 ### 类型定义
 

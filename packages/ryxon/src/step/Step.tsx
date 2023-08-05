@@ -1,7 +1,7 @@
-import { h, defineComponent, type ExtractPropTypes } from 'vue'
+import { h, defineComponent } from 'vue'
 
 // Utils
-import { BORDER, isString, iconPropType, createNamespace } from '../utils'
+import { BORDER, isString, createNamespace } from '../utils'
 import { STEPS_KEY } from '../steps/Steps'
 
 // Composables
@@ -12,17 +12,8 @@ import { Icon } from '../icon'
 
 const [name, bem] = createNamespace('step')
 
-export const stepProps = {
-  activeIcon: iconPropType,
-  finishIcon: iconPropType,
-  inactiveIcon: iconPropType
-}
-
-export type StepProps = ExtractPropTypes<typeof stepProps>
-
 export default defineComponent({
   name,
-  props: stepProps,
   setup(props, { slots }) {
     const { parent, index } = useParent(STEPS_KEY)
 
@@ -50,10 +41,6 @@ export default defineComponent({
     const renderCircle = () => {
       const { iconPrefix, finishIcon, activeIcon, inactiveIcon } = parentProps
 
-      const activeItemIcon = props.activeIcon || activeIcon
-      const inactiveItemIcon = props.inactiveIcon || inactiveIcon
-      const finishItemIcon = props.finishIcon || finishIcon
-
       if (isActive()) {
         if (slots['active-icon']) {
           return slots['active-icon']()
@@ -61,11 +48,11 @@ export default defineComponent({
 
         return (
           <Icon
-            class={[bem('icon', 'active'), activeItemIcon ? '' : bem('circle')]}
-            name={isString(activeItemIcon) ? activeItemIcon : ''}
+            class={[activeIcon ? '' : bem('circle')]}
+            name={isString(activeIcon) ? activeIcon : ''}
             classPrefix={iconPrefix}
           >
-            {activeItemIcon && !isString(activeItemIcon) && h(activeItemIcon)}
+            {activeIcon && !isString(activeIcon) && h(activeIcon)}
           </Icon>
         )
       }
@@ -77,11 +64,11 @@ export default defineComponent({
 
         return (
           <Icon
-            class={[bem('icon', 'finish'), finishItemIcon ? '' : bem('circle')]}
-            name={isString(finishItemIcon) ? finishItemIcon : ''}
+            class={[bem('icon', 'finish'), finishIcon ? '' : bem('circle')]}
+            name={isString(finishIcon) ? finishIcon : ''}
             classPrefix={iconPrefix}
           >
-            {finishItemIcon && !isString(finishItemIcon) && h(finishItemIcon)}
+            {finishIcon && !isString(finishIcon) && h(finishIcon)}
           </Icon>
         )
       }
@@ -90,16 +77,14 @@ export default defineComponent({
         return slots['inactive-icon']()
       }
 
-      if (inactiveItemIcon) {
+      if (inactiveIcon) {
         return (
           <Icon
             class={bem('icon')}
-            name={isString(inactiveItemIcon) ? inactiveItemIcon : ''}
+            name={isString(inactiveIcon) ? inactiveIcon : ''}
             classPrefix={iconPrefix}
           >
-            {inactiveItemIcon &&
-              !isString(inactiveItemIcon) &&
-              h(inactiveItemIcon)}
+            {inactiveIcon && !isString(inactiveIcon) && h(inactiveIcon)}
           </Icon>
         )
       }
@@ -121,10 +106,7 @@ export default defineComponent({
         <div
           class={[BORDER, bem([parentProps.direction, { [status]: status }])]}
         >
-          <div
-            class={bem('title', { active: isActive() })}
-            onClick={onClickStep}
-          >
+          <div class={bem('title')} onClick={onClickStep}>
             {slots.default?.()}
           </div>
           <div class={bem('circle-container')} onClick={onClickStep}>

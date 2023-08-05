@@ -144,6 +144,11 @@
     }
   }
 
+  &--process {
+    color: var(--r-step-active-color);
+    --r-step-circle-color: var(--r-step-active-color);
+  }
+
   &--finish {
     color: var(--r-step-finish-text-color);
 
@@ -156,10 +161,5 @@
   &__icon,
   &__title {
     transition: color var(--r-duration-base);
-
-    &--active {
-      color: var(--r-step-active-color);
-      --r-step-circle-color: var(--r-step-active-color);
-    }
   }
 }
