@@ -2,23 +2,21 @@
   <div class="demo-date-picker">
     <div class="block">
       <span class="demonstration">Default</span>
-      <r-date-picker-pc v-model="value1" type="date" placeholder="Pick a day" />
+      <r-calendar v-model="value1" type="monthrange" />
     </div>
-
     <div class="block">
-      <span class="demonstration">Picker with quick options</span>
-      <r-date-picker-pc
+      <span class="demonstration">With quick options</span>
+      <r-calendar
         v-model="value2"
-        type="date"
-        placeholder="Pick a day"
-        :disabled-date="disabledDate"
+        type="monthrange"
+        unlink-panels
         :shortcuts="shortcuts"
       />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue'
 
 const value1 = ref('')
@@ -26,30 +24,28 @@ const value2 = ref('')
 
 const shortcuts = [
   {
-    text: 'Today',
-    value: new Date()
+    text: 'This month',
+    value: [new Date(), new Date()]
   },
   {
-    text: 'Yesterday',
+    text: 'This year',
     value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24)
-      return date
+      const end = new Date()
+      const start = new Date(new Date().getFullYear(), 0)
+      return [start, end]
     }
   },
   {
-    text: 'A week ago',
+    text: 'Last 6 months',
     value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-      return date
+      const end = new Date()
+      const start = new Date()
+      start.setMonth(start.getMonth() - 6)
+      return [start, end]
     }
   }
 ]
-
-const disabledDate = (time: Date) => time.getTime() > Date.now()
 </script>
-
 <style scoped>
 .demo-date-picker {
   display: flex;
@@ -57,18 +53,15 @@ const disabledDate = (time: Date) => time.getTime() > Date.now()
   padding: 0;
   flex-wrap: wrap;
 }
-
 .demo-date-picker .block {
   padding: 30px 0;
   text-align: center;
   border-right: solid 1px var(--r-border-color);
   flex: 1;
 }
-
 .demo-date-picker .block:last-child {
   border-right: none;
 }
-
 .demo-date-picker .demonstration {
   display: block;
   color: var(--r-text-color-secondary);

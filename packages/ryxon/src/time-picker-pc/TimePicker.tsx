@@ -5,7 +5,7 @@ import { ref, defineComponent, type ExtractPropTypes } from 'vue'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 import { extend, type ComponentInstance } from '../utils'
-import { DEFAULT_FORMATS_TIME } from './constants'
+import { DEFAULT_FORMATS_TIME } from '../calendar/constants'
 import { useCustomInputValue } from '@ryxon/use'
 
 // Components

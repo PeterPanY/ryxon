@@ -1,5 +1,4 @@
-import type { SetupContext } from 'vue'
-
+import { InjectionKey, type SetupContext } from 'vue'
 import type { Dayjs } from 'dayjs'
 
 export type DatePickerPcProvide = {
@@ -38,15 +37,18 @@ export interface DateCell {
   type?: DateCellType
 }
 
-export type DatePickerPcVars = {
-  datepickerTextColor?: string
-  datepickerOffTextColor?: string
-  datepickerHeaderTextColor?: string
-  datepickerIconColor?: string
-  datepickerBorderColor?: string
-  datepickerInnerBorderColor?: string
-  datepickerInrangeBgColor?: string
-  datepickerInrangeHoverBgColor?: string
-  datepickerActiveColor?: string
-  datepickerHoverTextColor?: string
+export const ROOT_PICKER_INJECTION_KEY: InjectionKey<DatePickerPcProvide> =
+  Symbol('r-calendar')
+
+export type CalendarVars = {
+  calendarTextColor?: string
+  calendarOffTextColor?: string
+  calendarHeaderTextColor?: string
+  calendarIconColor?: string
+  calendarBorderColor?: string
+  calendarInnerBorderColor?: string
+  calendarInrangeBgColor?: string
+  calendarInrangeHoverBgColor?: string
+  calendarActiveColor?: string
+  calendarHoverTextColor?: string
 }

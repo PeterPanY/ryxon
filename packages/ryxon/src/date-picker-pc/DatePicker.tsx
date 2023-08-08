@@ -1,15 +1,10 @@
 // @ts-nocheck
-import {
-  ref,
-  provide,
-  InjectionKey,
-  defineComponent,
-  type ExtractPropTypes
-} from 'vue'
+import { ref, provide, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { extend, createNamespace, type ComponentInstance } from '../utils'
-import { getPanel } from './panel-utils'
+import { extend, type ComponentInstance } from '../utils'
+import { getPanel } from '../calendar/panel-utils'
+import { ROOT_PICKER_INJECTION_KEY } from '../calendar/type'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData.js'
 import advancedFormat from 'dayjs/plugin/advancedFormat.js'
@@ -23,17 +18,13 @@ import { useCustomInputValue } from '@ryxon/use'
 
 // Components
 import CommonPicker from '../time-picker-pc/common/picker.vue'
+import { timePickerPcProps } from '../time-picker-pc'
 import {
-  timePickerPcProps,
   DEFAULT_FORMATS_DATE,
   DEFAULT_FORMATS_DATEPICKER
-} from '../time-picker-pc'
+} from '../calendar/constants'
 
-import type { DatePickerPcProvide } from './type'
-
-import { datePickerProps } from './props/date-picker'
-
-const [name, bem] = createNamespace('picker-panel')
+import { datePickerProps } from '../calendar/props/date-picker'
 
 export const datePickerPcProps = extend({}, timePickerPcProps, datePickerProps)
 
@@ -48,18 +39,12 @@ dayjs.extend(dayOfYear)
 dayjs.extend(isSameOrAfter)
 dayjs.extend(isSameOrBefore)
 
-export const ROOT_PICKER_INJECTION_KEY: InjectionKey<DatePickerPcProvide> =
-  Symbol(name)
-
 export default defineComponent({
   name: 'RDatePickerPc',
   props: datePickerPcProps,
   emits: ['update:modelValue'],
   setup(props, { expose, emit, slots }) {
-    provide(ROOT_PICKER_INJECTION_KEY, {
-      slots,
-      pickerNs: bem
-    })
+    provide(ROOT_PICKER_INJECTION_KEY, { slots })
 
     const commonPicker = ref<ComponentInstance>()
     const refProps = {

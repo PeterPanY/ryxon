@@ -63,7 +63,7 @@ export default defineComponent({
     RDatePickerCell
   },
   props: basicDateTableProps,
-  emits: ['changerange', 'pick', 'select'],
+  emits: ['changerange', 'pick', 'select', 'table-rows'],
   setup(props, { emit }) {
     const [, bem, t] = createNamespace('date-table')
     const lang = useCurrentLang()
@@ -284,6 +284,8 @@ export default defineComponent({
 
         setRowMetadata
       })
+
+      emit('table-rows', 'date', rows_)
 
       return rows_
     })

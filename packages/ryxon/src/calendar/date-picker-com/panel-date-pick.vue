@@ -144,6 +144,7 @@
             :disabled-date="disabledDate"
             :cell-class-name="cellClassName"
             @pick="handleDatePick"
+            @table-rows="handleTableRows"
           />
           <year-table
             v-if="currentView === 'year'"
@@ -218,12 +219,14 @@ import TimePickPanel from '../../time-picker-pc/time-picker-com/panel-time-pick.
 import { panelDatePickProps } from '../props/panel-date-pick'
 import type { SetupContext } from 'vue'
 import type { ConfigType, Dayjs } from 'dayjs'
+import 'dayjs/locale/en'
 import type { PanelDatePickProps } from '../props/panel-date-pick'
 import type {
   DateTableEmits,
   DatesPickerEmits,
   WeekPickerEmits
 } from '../props/basic-date-table'
+import type { DateCell } from '../type'
 
 export default defineComponent({
   components: {
@@ -241,14 +244,14 @@ export default defineComponent({
   },
   directives: { ClickOutside },
   props: panelDatePickProps,
-  emits: ['pick', 'set-picker-option', 'panel-change'],
+  emits: ['pick', 'set-picker-option', 'panel-change', 'current-rows'],
   setup(props, ctx) {
     const [, bemPicker, t] = createNamespace('picker-panel')
     const [, bemDate] = createNamespace('date-picker')
     const lang = useCurrentLang()
 
     const pickerBase = inject('EP_PICKER_BASE') as any
-    const popper = inject(TOOLTIP_INJECTION_KEY)
+
     const {
       shortcuts,
       disabledDate,
@@ -354,6 +357,23 @@ export default defineComponent({
         emit((value as WeekPickerEmits).date)
       } else if (selectionMode.value === 'dates') {
         emit(value as DatesPickerEmits, true) // set true to keep panel open
+      }
+    }
+
+    const handleTableRows = (type: string, list: DateCell[][]) => {
+      if (type === 'date') {
+        const flatList = list.flat()
+        const startRow = flatList.find((item) => item.type === 'normal')
+        const endIndex = flatList.findIndex(
+          (item) => item.type === 'next-month'
+        )
+
+        const endRow =
+          endIndex === -1
+            ? flatList[flatList.length - 1]
+            : flatList[endIndex - 1]
+
+        ctx.emit('current-rows', startRow, endRow)
       }
     }
 
@@ -721,12 +741,17 @@ export default defineComponent({
       { immediate: true }
     )
 
-    watch(
-      () => currentView.value,
-      () => {
-        popper?.updatePopper()
-      }
-    )
+    // 判断是不是弹窗
+    if (props.isTooltip) {
+      const popper = inject(TOOLTIP_INJECTION_KEY)
+
+      watch(
+        () => currentView.value,
+        () => {
+          popper?.updatePopper()
+        }
+      )
+    }
 
     watch(
       () => defaultValue.value,
@@ -794,7 +819,8 @@ export default defineComponent({
       handleVisibleDateChange,
       handleTimePickClose,
       handleVisibleTimeChange,
-      handleTimePick
+      handleTimePick,
+      handleTableRows
     }
   }
 })

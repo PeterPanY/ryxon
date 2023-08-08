@@ -150,7 +150,7 @@ date-picker/custom-content
 
 | 插槽名          | 说明                 |
 | --------------- | -------------------- |
-| focus           | 自定义内容           |
+| default         | 自定义内容           |
 | range-separator | 自定义范围分割符内容 |
 
 ### 类型定义
@@ -158,7 +158,7 @@ date-picker/custom-content
 组件导出以下类型定义：
 
 ```ts
-import type { DatePickerPcProps, DatePickerPcVars } from 'ryxon'
+import type { DatePickerPcProps } from 'ryxon'
 ```
 
 ## 主题定制

@@ -1,6 +1,5 @@
-import { getCurrentInstance, inject, ref, unref, watch } from 'vue'
+import { getCurrentInstance, ref, unref, watch } from 'vue'
 import { isArray, createNamespace } from '../../utils'
-import { ROOT_PICKER_INJECTION_KEY } from '../DatePicker'
 import { useCurrentLang } from '../../locale'
 import { getDefaultValue, isValidRange } from '../utils'
 import { useShortcut } from './use-shortcut'
@@ -34,7 +33,7 @@ export const useRangePicker = (
 ) => {
   const { emit } = getCurrentInstance()!
 
-  const { pickerNs } = inject(ROOT_PICKER_INJECTION_KEY)!
+  const [, pickerNs] = createNamespace('picker-panel')
   const [, drpNs, t] = createNamespace('date-range-picker')
   const lang = useCurrentLang()
   const handleShortcutClick = useShortcut(lang)

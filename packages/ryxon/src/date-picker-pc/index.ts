@@ -6,7 +6,6 @@ export default DatePickerPc
 
 export { datePickerPcProps } from './DatePicker'
 export type { DatePickerPcProps }
-export type { DatePickerPcVars } from './type'
 
 declare module 'vue' {
   export interface GlobalComponents {

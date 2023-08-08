@@ -2,23 +2,21 @@
   <div class="demo-date-picker">
     <div class="block">
       <span class="demonstration">Default</span>
-      <r-date-picker-pc v-model="value1" type="date" placeholder="Pick a day" />
+      <r-calendar v-model="value1" type="daterange" />
     </div>
-
     <div class="block">
-      <span class="demonstration">Picker with quick options</span>
-      <r-date-picker-pc
+      <span class="demonstration">With quick options</span>
+      <r-calendar
         v-model="value2"
-        type="date"
-        placeholder="Pick a day"
-        :disabled-date="disabledDate"
+        type="daterange"
+        unlink-panels
         :shortcuts="shortcuts"
       />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue'
 
 const value1 = ref('')
@@ -26,28 +24,33 @@ const value2 = ref('')
 
 const shortcuts = [
   {
-    text: 'Today',
-    value: new Date()
-  },
-  {
-    text: 'Yesterday',
+    text: 'Last week',
     value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24)
-      return date
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+      return [start, end]
     }
   },
   {
-    text: 'A week ago',
+    text: 'Last month',
     value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-      return date
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+      return [start, end]
+    }
+  },
+  {
+    text: 'Last 3 months',
+    value: () => {
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+      return [start, end]
     }
   }
 ]
-
-const disabledDate = (time: Date) => time.getTime() > Date.now()
 </script>
 
 <style scoped>

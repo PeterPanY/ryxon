@@ -1,108 +1,114 @@
 {
   "hash": "35e4c7f8",
-  "browserHash": "c25da057",
+  "browserHash": "fd152894",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-browser.js",
       "file": "vue.js",
-      "fileHash": "1dc95273",
+      "fileHash": "40f52b74",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../../node_modules/.pnpm/@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "b043fb8e",
+      "fileHash": "2529342f",
       "needsInterop": false
     },
     "clipboard-copy": {
       "src": "../../../../../node_modules/.pnpm/clipboard-copy@4.0.1/node_modules/clipboard-copy/index.js",
       "file": "clipboard-copy.js",
-      "fileHash": "b16858fb",
+      "fileHash": "d8ae9a41",
       "needsInterop": true
     },
     "@vueuse/core": {
       "src": "../../../../../node_modules/.pnpm/@vueuse+core@9.10.0_vue@3.3.4/node_modules/@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "3a1388bf",
+      "fileHash": "adca2fac",
       "needsInterop": false
     },
     "lodash-unified": {
       "src": "../../../../../node_modules/.pnpm/lodash-unified@1.0.3_@types+lodash-es@4.17.6_lodash-es@4.17.21_lodash@4.17.21/node_modules/lodash-unified/import.js",
       "file": "lodash-unified.js",
-      "fileHash": "03c11248",
+      "fileHash": "ff38f7a1",
       "needsInterop": false
     },
     "dayjs": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/dayjs.min.js",
       "file": "dayjs.js",
-      "fileHash": "bd9213ae",
+      "fileHash": "bf49d82c",
       "needsInterop": true
     },
     "dayjs/plugin/localeData.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/localeData.js",
       "file": "dayjs_plugin_localeData__js.js",
-      "fileHash": "76e95509",
+      "fileHash": "706b26f0",
       "needsInterop": true
     },
     "dayjs/plugin/advancedFormat.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/advancedFormat.js",
       "file": "dayjs_plugin_advancedFormat__js.js",
-      "fileHash": "f359bc1a",
+      "fileHash": "56f0ab88",
       "needsInterop": true
     },
     "dayjs/plugin/customParseFormat.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/customParseFormat.js",
       "file": "dayjs_plugin_customParseFormat__js.js",
-      "fileHash": "955025f4",
+      "fileHash": "97121a86",
       "needsInterop": true
     },
     "dayjs/plugin/weekOfYear.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/weekOfYear.js",
       "file": "dayjs_plugin_weekOfYear__js.js",
-      "fileHash": "4740915d",
+      "fileHash": "baf4bb35",
       "needsInterop": true
     },
     "dayjs/plugin/weekYear.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/weekYear.js",
       "file": "dayjs_plugin_weekYear__js.js",
-      "fileHash": "6c2d7f45",
+      "fileHash": "862cfd61",
       "needsInterop": true
     },
     "dayjs/plugin/dayOfYear.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/dayOfYear.js",
       "file": "dayjs_plugin_dayOfYear__js.js",
-      "fileHash": "65337701",
+      "fileHash": "f0e15207",
       "needsInterop": true
     },
     "dayjs/plugin/isSameOrAfter.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/isSameOrAfter.js",
       "file": "dayjs_plugin_isSameOrAfter__js.js",
-      "fileHash": "22599ac1",
+      "fileHash": "58017e5b",
       "needsInterop": true
     },
     "dayjs/plugin/isSameOrBefore.js": {
       "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/isSameOrBefore.js",
       "file": "dayjs_plugin_isSameOrBefore__js.js",
-      "fileHash": "eec2b95e",
+      "fileHash": "8aed4733",
       "needsInterop": true
     },
     "escape-html": {
       "src": "../../../../../node_modules/.pnpm/escape-html@1.0.3/node_modules/escape-html/index.js",
       "file": "escape-html.js",
-      "fileHash": "4193d0ea",
+      "fileHash": "a6d70bd2",
       "needsInterop": true
     },
     "normalize-wheel-es": {
       "src": "../../../../../node_modules/.pnpm/normalize-wheel-es@1.2.0/node_modules/normalize-wheel-es/dist/index.mjs",
       "file": "normalize-wheel-es.js",
-      "fileHash": "452e579d",
+      "fileHash": "a1d20064",
       "needsInterop": false
     },
     "@ctrl/tinycolor": {
       "src": "../../../../../node_modules/.pnpm/@ctrl+tinycolor@3.6.0/node_modules/@ctrl/tinycolor/dist/module/public_api.js",
       "file": "@ctrl_tinycolor.js",
-      "fileHash": "2244390d",
+      "fileHash": "b568d758",
       "needsInterop": false
+    },
+    "dayjs/locale/en": {
+      "src": "../../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/locale/en.js",
+      "file": "dayjs_locale_en.js",
+      "fileHash": "c0d3065a",
+      "needsInterop": true
     }
   },
   "chunks": {

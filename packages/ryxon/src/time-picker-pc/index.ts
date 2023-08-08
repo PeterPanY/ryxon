@@ -6,7 +6,6 @@ export default TimePickerPc
 
 export { timePickerPcProps } from './TimePicker'
 export * from './utils'
-export * from './constants'
 export type { TimePickerPcProps }
 export type { TimePickerPcThemeVars } from './types'
 

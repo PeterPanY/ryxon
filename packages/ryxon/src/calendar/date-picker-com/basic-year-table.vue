@@ -1,5 +1,5 @@
 <template>
-  <div
+  <table
     role="grid"
     :aria-label="t('rDatepicker.yearTablePrompt')"
     :class="bem()"
@@ -27,7 +27,7 @@
         </template>
       </tr>
     </tbody>
-  </div>
+  </table>
 </template>
 
 <script lang="ts">

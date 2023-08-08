@@ -6,6 +6,7 @@ export type ConfigProviderThemeVars =
     import('../avatar').AvatarThemeVars &
     import('../badge').BadgeThemeVars &
     import('../button').ButtonThemeVars &
+    import('../calendar').CalendarVars &
     import('../card').CardThemeVars &
     import('../cell').CellThemeVars &
     import('../cell-group').CellGroupThemeVars &
@@ -13,7 +14,6 @@ export type ConfigProviderThemeVars =
     import('../collapse-item').CollapseItemThemeVars &
     import('../color-picker').ColorPickerThemeVars &
     import('../count-down').CountDownThemeVars &
-    import('../date-picker-pc').DatePickerPcVars &
     import('../dialog').DialogThemeVars &
     import('../divider').DividerThemeVars &
     import('../dropdown').DropdownThemeVars &

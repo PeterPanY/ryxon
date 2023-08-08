@@ -3,7 +3,7 @@ import { inject, defineComponent } from 'vue'
 // Utils
 import { createNamespace } from '../../utils'
 import { basicCellProps } from '../props/basic-cell'
-import { ROOT_PICKER_INJECTION_KEY } from '../DatePicker'
+import { ROOT_PICKER_INJECTION_KEY } from '../type'
 
 const [, bem] = createNamespace('date-table-cell')
 
