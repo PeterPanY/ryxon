@@ -160,22 +160,3 @@ date-picker/custom-content
 ```ts
 import type { DatePickerPcProps } from 'ryxon'
 ```
-
-## 主题定制
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
-
-| 名称 | 默认值 | 描述 |
-| --- | --- | --- |
-| --r-datepicker-text-color | `var(--r-text-color-regular)` | - |
-| --r-datepicker-off-text-color | `var(--r-text-color-placeholder)` | - |
-| --r-datepicker-header-text-color | `var(--r-text-color-regular)` | - |
-| --r-datepicker-icon-color | `var(--r-text-color-primary)` | - |
-| --r-datepicker-border-color | `var(--r-disabled-border-color)` | - |
-| --r-datepicker-inner-border-color | `var(--r-border-color-light)` | - |
-| --r-datepicker-inrange-bg-color | `var(--r-border-color-extra-light)` | - |
-| --r-datepicker-inrange-hover-bg-color | `var(--r-border-color-extra-light)` | - |
-| --r-datepicker-active-color | `var(--r-primary-color)` | - |
-| --r-datepicker-hover-text-color | `var(--r-primary-color)` | - |
