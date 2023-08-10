@@ -5,6 +5,7 @@
   --r-slide-bar-active-color: var(--r-primary-color);
   --r-slide-bar-disabled-text-color: var(--r-disabled-text-color);
   --r-slide-bar-hover-color: var(--r-primary-color-light-3);
+  --r-slide-bar-duration: var(--r-duration-fast);
 }
 
 .r-slide-bar {
@@ -51,6 +52,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    transition-duration: var(--r-slide-bar-duration);
 
     &::after {
       display: table;

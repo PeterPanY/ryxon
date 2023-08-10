@@ -63,11 +63,12 @@ import type { SlideBarThemeVars, SlideBarProps } from 'ryxon'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                              | 默认值                           | 描述 |
-| --------------------------------- | -------------------------------- | ---- |
-| --r-slide-bar-icon-font-size      | `20px`                           | -    |
-| --r-slide-bar-icon-hover-color    | `var(--r-primary-color)`         | -    |
-| --r-slide-bar-height              | `60px`                           | -    |
-| --r-slide-bar-active-color        | `var(--r-primary-color)`         | -    |
-| --r-slide-bar-disabled-text-color | `var(--r-disabled-text-color)`   | -    |
-| --r-slide-bar-hover-color         | `var(--r-primary-color-light-3)` | -    |
+| 名称 | 默认值 | 描述 |
+| --- | --- | --- |
+| --r-slide-bar-icon-font-size | `20px` | - |
+| --r-slide-bar-icon-hover-color | `var(--r-primary-color)` | - |
+| --r-slide-bar-height | `60px` | - |
+| --r-slide-bar-active-color | `var(--r-primary-color)` | - |
+| --r-slide-bar-disabled-text-color | `var(--r-disabled-text-color)` | - |
+| --r-slide-bar-hover-color | `var(--r-primary-color-light-3)` | - |
+| --r-slide-bar-duration | `var(--r-duration-fast)` | 过度时间 |

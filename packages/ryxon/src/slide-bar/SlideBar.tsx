@@ -171,7 +171,6 @@ export default defineComponent({
               class={[bem('list')]}
               style={{
                 width: state.blockWrapper + 'px',
-                'transition-duration': '0ms',
                 transform: `translate3d(${state.leftLength}px, 0px, 0px)`
               }}
             >

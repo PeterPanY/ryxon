@@ -5,4 +5,5 @@ export type SlideBarThemeVars = {
   slideBarActiveColor?: string
   slideBarDisabledTextColor?: string
   slideBarHoverColor?: string
+  slideBarDuration?: string
 }
