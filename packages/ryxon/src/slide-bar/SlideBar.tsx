@@ -3,6 +3,7 @@ import {
   ref,
   watch,
   reactive,
+  computed,
   onMounted,
   Transition,
   watchEffect,
@@ -156,14 +157,19 @@ export default defineComponent({
       )
     }
 
+    // 判断是否显示箭头   滚动块列表>  初始时需要显示的块数
+    const isShowIcon = computed(() => props.actions.length > props.initBlocks)
+
     return () => (
       <div ref={wrapper} class={bem()} onMousewheel={mouseEvent}>
-        <Icon
-          class={[bem('left'), state.showLeft ? '' : bem('disabled')]}
-          onClick={leftClick}
-        >
-          <ArrowLeft></ArrowLeft>
-        </Icon>
+        {isShowIcon.value && (
+          <Icon
+            class={[bem('left'), state.showLeft ? '' : bem('disabled')]}
+            onClick={leftClick}
+          >
+            <ArrowLeft></ArrowLeft>
+          </Icon>
+        )}
         <div class={bem('content')}>
           <Transition>
             <props.tag
@@ -178,12 +184,14 @@ export default defineComponent({
             </props.tag>
           </Transition>
         </div>
-        <Icon
-          class={[bem('right'), state.showRight ? bem('disabled') : '']}
-          onClick={rightClick}
-        >
-          <ArrowRight></ArrowRight>
-        </Icon>
+        {isShowIcon.value && (
+          <Icon
+            class={[bem('right'), state.showRight ? bem('disabled') : '']}
+            onClick={rightClick}
+          >
+            <ArrowRight></ArrowRight>
+          </Icon>
+        )}
       </div>
     )
   }
