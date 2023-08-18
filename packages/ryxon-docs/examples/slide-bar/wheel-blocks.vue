@@ -1,10 +1,5 @@
 <template>
-  <r-slide-bar
-    v-model="active"
-    :actions="list"
-    :init-blocks="4"
-    :wheel-blocks="2"
-  >
+  <r-slide-bar :actions="list" :init-blocks="4" :wheel-blocks="2">
     <template #default="{ title }">
       {{ title }}
     </template>
@@ -12,10 +7,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-
 const list = [
   { title: 'a' },
   { title: 'b' },
@@ -28,5 +19,3 @@ const list = [
   { title: 'i' }
 ]
 </script>
-
-<style lang="scss" scoped></style>

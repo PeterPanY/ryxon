@@ -1,7 +1,6 @@
 // @ts-nocheck
 import {
   ref,
-  watch,
   reactive,
   computed,
   onMounted,
@@ -16,7 +15,8 @@ import {
   makeArrayProp,
   makeStringProp,
   makeNumberProp,
-  createNamespace
+  createNamespace,
+  makeNumericProp
 } from '../utils'
 
 import { Icon } from '../icon'
@@ -25,13 +25,14 @@ import { ArrowLeft, ArrowRight } from '@ryxon/icons'
 const [name, bem] = createNamespace('slide-bar')
 
 export const slideBarProps = {
-  modelValue: makeNumberProp(-1),
   initBlocks: makeNumberProp(4),
   wheel: truthProp,
   wheelBlocks: makeNumberProp(1),
   actions: makeArrayProp<unknown>(),
   tag: makeStringProp<keyof HTMLElementTagNameMap>('ul'),
-  subTag: makeStringProp<keyof HTMLElementTagNameMap>('li')
+  subTag: makeStringProp<keyof HTMLElementTagNameMap>('li'),
+  lazyRender: truthProp,
+  duration: makeNumericProp(0.3)
 }
 
 export type SlideBarProps = ExtractPropTypes<typeof slideBarProps>
@@ -39,29 +40,33 @@ export type SlideBarProps = ExtractPropTypes<typeof slideBarProps>
 export default defineComponent({
   name,
   props: slideBarProps,
-  emits: ['click', 'update:modelValue'],
+  emits: ['click'],
   setup(props, { emit, slots }) {
+    // 初始化actions数据
+    const showActions = (showNum: number) => {
+      props.actions.forEach((item: any, index) => {
+        item.show = index < showNum
+      })
+    }
+
+    let initShowNum = props.initBlocks + props.wheelBlocks // 初始化显示的个数
+    showActions(initShowNum)
+
     const state = reactive({
-      leftLength: 0,
-      blockWidth: 0,
-      blockMargin: 0,
-      showLeft: false,
-      showRight: false,
-      blockWrapper: 0,
+      leftLength: 0, // transform偏移
+      blockWidth: 0, // 单元格宽度
+      blockMargin: 0, // 单元格margin-left
+      showLeft: false, // 禁用左箭头
+      showRight: false, // 禁用右箭头
+      blockWrapper: 0, // list大小
       wrapperWidth: 0,
-      currentIndex: -1,
-      offsetWidth: 0
+      offsetWidth: 0,
+      swiping: true // 判断是不是第一次进来
     })
 
-    watch(
-      () => props.modelValue,
-      (value) => {
-        state.currentIndex = value
-      },
-      { immediate: true }
-    )
-
     const changeState = () => {
+      state.swiping = false
+
       const contentWidth = state.blockWrapper
 
       state.showLeft = !(parseInt(String(state.leftLength), 10) >= 0)
@@ -111,6 +116,9 @@ export default defineComponent({
         state.leftLength -
         (state.blockWidth + state.blockMargin) * props.wheelBlocks
 
+      initShowNum += props.wheelBlocks // 显示的总数
+      showActions(initShowNum)
+
       changeState()
     }
 
@@ -137,7 +145,6 @@ export default defineComponent({
 
     const insider = ref(null)
     const blockClick = (item: any, index: number) => {
-      emit('update:modelValue', index)
       emit('click', item, index)
     }
 
@@ -145,20 +152,24 @@ export default defineComponent({
       return (
         <props.subTag
           key={key}
-          class={[state.currentIndex === key ? bem('active') : '']}
           style={{
             width: state.blockWidth + 'px',
             'margin-left': key === 0 ? 0 : state.blockMargin + 'px'
           }}
           onClick={() => blockClick(item, key)}
         >
-          {slots.default?.(item)}
+          {item.show && slots.default?.(item)}
         </props.subTag>
       )
     }
 
     // 判断是否显示箭头   滚动块列表>  初始时需要显示的块数
     const isShowIcon = computed(() => props.actions.length > props.initBlocks)
+    const trackStyle = computed(() => ({
+      transitionDuration: `${state.swiping ? 0 : props.duration}s`,
+      width: state.blockWrapper + 'px',
+      transform: `translate3d(${state.leftLength}px, 0px, 0px)`
+    }))
 
     return () => (
       <div ref={wrapper} class={bem()} onMousewheel={mouseEvent}>
@@ -175,10 +186,7 @@ export default defineComponent({
             <props.tag
               ref={insider}
               class={[bem('list')]}
-              style={{
-                width: state.blockWrapper + 'px',
-                transform: `translate3d(${state.leftLength}px, 0px, 0px)`
-              }}
+              style={trackStyle.value}
             >
               {props.actions?.map(rederSubTag)}
             </props.tag>
