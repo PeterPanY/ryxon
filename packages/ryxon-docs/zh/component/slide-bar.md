@@ -36,13 +36,24 @@ slide-bar/wheel-blocks
 | tag | 设置组件的 Dom 标签 | `String` | `ul` |
 | sub-tag | 设置组件的子级 Dom 标签 | `String` | `li` |
 | lazy-render | 是否开启延迟渲染（首次切换到标签时才触发内容渲染） | `boolean` | `true` |
+| load-prev-next | 允许将延迟加载应用到最接近的块（后一个显示级） | `boolean` | `false` |
 | duration | 动画时间，单位秒，设置为 0 可以禁用动画 | `number` | `0.3` |
+| gutter | 滚动块之间的间距 | `number` | `15` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | click | 滑动块点击事件;data: 点击的滑块数据，index: 点击的滑块索引值 | `Function(data, index)` |
+| arrow-click | 箭头点击或者滚轮事件触发 | `Function(type, [startIndex,endIndex])` |
+
+### 方法
+
+通过 ref 可以获取到 Tabs 实例并调用实例方法，详见[组件实例方法](/zh/guide/advanced-usage.html#组件实例方法)。
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | - | - |
 
 ### 插槽
 
@@ -69,6 +80,5 @@ import type { SlideBarThemeVars, SlideBarProps } from 'ryxon'
 | --r-slide-bar-icon-font-size      | `20px`                           | -    |
 | --r-slide-bar-icon-hover-color    | `var(--r-primary-color)`         | -    |
 | --r-slide-bar-height              | `60px`                           | -    |
-| --r-slide-bar-active-color        | `var(--r-primary-color)`         | -    |
 | --r-slide-bar-disabled-text-color | `var(--r-disabled-text-color)`   | -    |
 | --r-slide-bar-hover-color         | `var(--r-primary-color-light-3)` | -    |
