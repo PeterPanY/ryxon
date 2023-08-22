@@ -52,7 +52,7 @@
     "build:generate": "tsx build/generate.ts",
     "build:build": "tsx build/build.ts",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
-    "release": "release-it",
+    "release": "pnpm run build && release-it",
     "prepare": "pnpm build"
   },
   "peerDependencies": {
