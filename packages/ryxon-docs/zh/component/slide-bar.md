@@ -23,6 +23,14 @@ slide-bar/wheel-blocks
 
 :::
 
+## 居中布局
+
+:::demo
+
+slide-bar/centered
+
+:::
+
 ## API
 
 ### Props
@@ -39,13 +47,16 @@ slide-bar/wheel-blocks
 | load-prev-next | 允许将延迟加载应用到最接近的块（后一个显示级） | `boolean` | `false` |
 | duration | 动画时间，单位秒，设置为 0 可以禁用动画 | `number` | `0.3` |
 | gutter | 滚动块之间的间距 | `number` | `15` |
+| centered | 居中布局 | `boolean` | `false` |
+| blockWidth | 单元格宽度 | `number` | `auto` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| click | 滑动块点击事件;data: 点击的滑块数据，index: 点击的滑块索引值 | `Function(data, index)` |
+| click | 滑动块点击事件;data: 点击的滑块数据，index: 点击的滑块索引值 | `Function(data)` |
 | arrow-click | 箭头点击或者滚轮事件触发 | `Function(type, [startIndex,endIndex])` |
+| progress | 页面变动触发的方法 | `Function(currentIndex)` |
 
 ### 方法
 

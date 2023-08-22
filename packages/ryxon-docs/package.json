@@ -21,7 +21,7 @@
     "markdown-it": "^13.0.1",
     "ryxon": "workspace:*",
     "sass": "^1.54.5",
-    "vitepress": "^1.0.0-beta.7",
+    "vitepress": "^1.0.0-rc.4",
     "vitepress-theme-demoblock": "^3.0.3"
   },
   "dependencies": {

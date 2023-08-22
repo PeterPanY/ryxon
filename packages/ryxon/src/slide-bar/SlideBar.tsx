@@ -13,6 +13,7 @@ import {
 
 import { useResizeObserver } from '@vueuse/core'
 import {
+  extend,
   truthProp,
   makeArrayProp,
   makeStringProp,
@@ -37,7 +38,9 @@ export const slideBarProps = {
   lazyRender: truthProp,
   loadPrevNext: Boolean,
   duration: makeNumericProp(0.3),
-  gutter: makeNumericProp(15)
+  gutter: makeNumericProp(15),
+  centered: Boolean,
+  blockWidth: makeNumericProp('auto')
 }
 
 export type SlideBarProps = ExtractPropTypes<typeof slideBarProps>
@@ -45,7 +48,7 @@ export type SlideBarProps = ExtractPropTypes<typeof slideBarProps>
 export default defineComponent({
   name,
   props: slideBarProps,
-  emits: ['click', 'arrow-click'],
+  emits: ['click', 'arrow-click', 'progress'],
   setup(props, { emit, slots }) {
     // 初始化actions数据
     const showActions = (showNum: number) => {
@@ -60,12 +63,14 @@ export default defineComponent({
       leftLength: 0, // transform偏移
       blockWidth: 0, // 单元格宽度
       blockMargin: 0, // 单元格margin-left
+      disableWidth: 0,
       showLeft: false, // 禁用左箭头
       showRight: false, // 禁用右箭头
       blockWrapper: 0, // list大小
-      wrapperWidth: 0,
-      offsetWidth: 0,
+      wrapperWidth: 0, // 实际展示宽度
       swiping: true, // 判断是不是第一次进来
+      currentIndex: 0,
+      symmetry: 0, // 对称数
       startIndex: 0, // 开始的index
       endIndex: 0 // 结束的index
     })
@@ -86,23 +91,46 @@ export default defineComponent({
         state.endIndex = props.initBlocks - 1
 
         // 单个宽度
-        state.blockWidth = parseInt(
-          String(
-            (state.wrapperWidth - (props.initBlocks - 1) * state.blockMargin) /
-              props.initBlocks
-          ),
-          10
-        )
+        state.blockWidth =
+          props.blockWidth === 'auto'
+            ? parseInt(
+                String(
+                  (state.wrapperWidth -
+                    (props.initBlocks - 1) * state.blockMargin) /
+                    props.initBlocks
+                ),
+                10
+              )
+            : props.blockWidth
 
         // list宽度
         state.blockWrapper =
           props.actions.length * state.blockWidth +
           (props.actions.length - 1) * state.blockMargin
+
+        state.currentIndex = 0
+
+        // 居中展示
+        if (props.centered) {
+          if (props.initBlocks % 2 !== 1) {
+            console.error('initBlocks 需要为奇数')
+          } else {
+            state.symmetry = Math.floor(props.initBlocks / 2) // 对称数
+            state.startIndex = -state.symmetry
+            state.endIndex = props.initBlocks - (state.symmetry + 1)
+
+            state.disableWidth =
+              (state.blockWidth + state.blockMargin) * state.symmetry
+
+            state.leftLength = state.disableWidth
+
+            emit('progress', state.currentIndex)
+          }
+        }
       })
     }
 
     let initShowNum = 0
-    // showActions(initShowNum)
 
     watch(
       () => props.initBlocks,
@@ -117,9 +145,7 @@ export default defineComponent({
 
         resize()
       },
-      {
-        immediate: true
-      }
+      { immediate: true }
     )
 
     // 监听元素尺寸的变化
@@ -130,13 +156,22 @@ export default defineComponent({
 
       const contentWidth = state.blockWrapper
 
-      state.showLeft = !(parseInt(String(state.leftLength), 10) >= 0)
-      state.showRight =
-        contentWidth <= Math.abs(state.leftLength) + state.wrapperWidth
+      if (props.centered) {
+        state.showLeft = !(
+          parseInt(String(state.leftLength), 10) >= state.disableWidth
+        )
+        state.showRight =
+          contentWidth <=
+          Math.abs(state.leftLength) + state.wrapperWidth - state.disableWidth
+      } else {
+        state.showLeft = !(parseInt(String(state.leftLength), 10) >= 0)
+        state.showRight =
+          contentWidth <= Math.abs(state.leftLength) + state.wrapperWidth
+      }
     }
 
     const leftClick = () => {
-      if (state.leftLength >= 0) {
+      if (state.leftLength >= state.disableWidth) {
         return
       }
 
@@ -147,6 +182,9 @@ export default defineComponent({
       state.startIndex -= props.wheelBlocks
       state.endIndex -= props.wheelBlocks
 
+      state.currentIndex -= props.wheelBlocks
+      emit('progress', state.currentIndex)
+
       emit('arrow-click', 'left', [state.startIndex, state.endIndex])
 
       changeState()
@@ -154,7 +192,10 @@ export default defineComponent({
     const rightClick = () => {
       if (
         state.blockWrapper <
-        Math.abs(state.leftLength) + state.wrapperWidth
+          Math.abs(state.leftLength) +
+            state.wrapperWidth -
+            state.disableWidth ||
+        state.currentIndex > props.actions.length - 2
       ) {
         return
       }
@@ -165,6 +206,9 @@ export default defineComponent({
 
       state.startIndex += props.wheelBlocks
       state.endIndex += props.wheelBlocks
+
+      state.currentIndex += props.wheelBlocks
+      emit('progress', state.currentIndex)
 
       initShowNum += props.wheelBlocks // 显示的总数
       showActions(initShowNum)
@@ -181,16 +225,9 @@ export default defineComponent({
       if (props.wheel) {
         e.preventDefault()
         if (e.wheelDelta >= 0) {
-          if (state.leftLength < 0) {
-            leftClick()
-          }
+          leftClick()
         } else {
-          if (
-            state.blockWrapper >
-            Math.abs(state.leftLength) + state.wrapperWidth
-          ) {
-            rightClick()
-          }
+          rightClick()
         }
       }
     }
@@ -201,12 +238,20 @@ export default defineComponent({
     }
 
     const rederSubTag = (item: any, key: number) => {
+      const styleOBj = extend(
+        {},
+        {
+          width: state.blockWidth + 'px',
+          'margin-left': key === 0 ? 0 : state.blockMargin + 'px'
+        },
+        item.style || {}
+      )
       return (
         <props.subTag
           key={key}
-          style={{
-            width: state.blockWidth + 'px',
-            'margin-left': key === 0 ? 0 : state.blockMargin + 'px'
+          style={styleOBj}
+          class={{
+            active: state.currentIndex === key
           }}
           onClick={() => blockClick(item, key)}
         >
@@ -235,7 +280,7 @@ export default defineComponent({
             <ArrowLeft></ArrowLeft>
           </Icon>
         )}
-        <div class={bem('content')}>
+        <div class={bem('content', { centered: props.centered })}>
           <Transition>
             <props.tag
               ref={insider}
