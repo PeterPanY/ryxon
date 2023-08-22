@@ -21,7 +21,7 @@
     "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
     "build:bundle": "node ./build.js",
     "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
-    "release": "pnpm build && release-it",
+    "release": "release-it",
     "prepare": "pnpm build"
   },
   "publishConfig": {
