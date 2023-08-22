@@ -1,0 +1,5 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <circle fill="currentColor" cx="512" cy="512" r="512" />
+    <path fill="#fff" fill-rule='evenodd'
+        d="M285.73,570.51A32,32,0,0,1,331,525.25L444.1,638.37,693,389.49a32,32,0,0,1,45.25,45.26L467.13,705.88l-.38.39a32,32,0,0,1-45.26,0Z" />
+</svg>

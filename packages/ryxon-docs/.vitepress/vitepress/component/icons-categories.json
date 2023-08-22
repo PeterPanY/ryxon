@@ -293,6 +293,9 @@
         "AeonCaretRight",
         "AeonCheckBold",
         "AeonCloseBold",
+        "AeonSuccessFilled",
+        "AeonCloseFilled",
+        "AeonCoinOverlap",
         "AeonEmail",
         "AeonGridFilled",
         "AeonGridCheckedFilled",
@@ -306,6 +309,7 @@
         "AeonLikesFilled",
         "AeonLocation",
         "AeonOrderFilled",
+        "AeonPresentFilled",
         "AeonPlusSquare",
         "AeonShop",
         "AeonStarOn",
@@ -315,10 +319,13 @@
         "AeonCirclePlus",
         "AeonRemove",
         "AeonWarning",
+        "AeonCircleCalendar",
         "AeonCircleDataLine",
+        "AeonCircleNotebook",
         "AeonCircleOrder",
         "AeonCircleSales",
-        "AeonCircleView"
+        "AeonCircleView",
+        "AeonCoinUntidy"
       ]
     }
   ]
