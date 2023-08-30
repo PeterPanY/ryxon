@@ -65,6 +65,7 @@ dropdown/sizes
 | type | 菜单按钮类型，同 Button 组件一样，仅在 split-button 为 true 的情况下有效。 | `string` | — | — |
 | size | 菜单尺寸，在 split-button 为 true 的情况下也对触发按钮生效。 | ^[enum]`string` | `large / default / small` | `default` |
 | max-height | 菜单最大高度 | `string / number` | — | — |
+| show-arrow | 是否展示小箭头 | `boolean` | `true` |
 | split-button | 下拉触发元素呈现为按钮组 | `boolean` | — | `false` |
 | disabled | 是否禁用 | `boolean` | — | `false` |
 | placement | 菜单弹出位置 | `string` | ^[enum]`top/top-start/top-end/bottom/bottom-start/bottom-end` | `bottom` |

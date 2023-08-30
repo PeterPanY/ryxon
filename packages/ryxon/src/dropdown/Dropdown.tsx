@@ -14,6 +14,7 @@ import {
 } from 'vue'
 import {
   addUnit,
+  truthProp,
   definePropType,
   makeStringProp,
   createNamespace,
@@ -56,8 +57,8 @@ export const dropdownProps = {
   id: String,
   size: { type: String, default: '' },
   splitButton: Boolean,
-  hideOnClick: { type: Boolean, default: true },
-  loop: { type: Boolean, default: true },
+  hideOnClick: truthProp,
+  loop: truthProp,
   showTimeout: { type: Number, default: 150 },
   hideTimeout: { type: Number, default: 150 },
   tabindex: {
@@ -68,6 +69,7 @@ export const dropdownProps = {
     type: definePropType<number | string>([Number, String]),
     default: ''
   },
+  showArrow: truthProp,
   popperClass: { type: String, default: '' },
   disabled: { type: Boolean, default: false },
   role: { type: String, default: 'menu' },
@@ -329,6 +331,7 @@ export default defineComponent({
           show-after={props.trigger === 'hover' ? props.showTimeout : 0}
           stop-popper-mouse-event={false}
           disabled={props.disabled}
+          show-arrow={props.showArrow}
           transition="r-zoom-in-top"
           teleport={props.teleport}
           lazyRender={false}
