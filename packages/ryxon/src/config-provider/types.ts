@@ -60,4 +60,5 @@ export type ConfigProviderThemeVars =
     import('../tooltip').TooltipThemeVars &
     import('../tree').TreeThemeVars &
     import('../tree-select-pc').TreeSelectPcThemeVars &
-    import('../upload').UploadThemeVars
+    import('../upload').UploadThemeVars &
+    import('../watermark').WatermarkThemeVars

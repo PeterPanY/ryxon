@@ -59,7 +59,8 @@
         { "link": "/tag", "text": "Tag 标签" },
         { "link": "/text-ellipsis", "text": "TextEllipsis 文本省略" },
         { "link": "/tree", "text": "Tree 树形控件" },
-        { "link": "/tree-select-pc", "text": "TreeSelectPc 树形选择" }
+        { "link": "/tree-select-pc", "text": "TreeSelectPc 树形选择" },
+        { "link": "/watermark", "text": "Watermark 水印" }
       ]
     },
     "navigation": {
