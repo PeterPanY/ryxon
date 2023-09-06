@@ -117,6 +117,7 @@ date-picker/custom-content
 | value-format | 可选，绑定值的格式。 不指定则绑定值为 Date 对象 | `string` | `时间格式` | `-` |
 | id | 等价于原生 id 属性 | `string / [string, string]` | `-` | `-` |
 | name | 等价于原生 name 属性 | `string` | `-` | `-` |
+| isSingle | 在范围选择器是否值显示一个日历，优先级高于 unlink-panels | `boolean` | `-` | `false` |
 | unlink-panels | 在范围选择器里取消两个日期面板之间的联动 | `boolean` | `-` | `false` |
 | prefix-icon | 自定义前缀图标 | `string / Component` | `-` | `Date` |
 | clear-icon | 自定义清除图标 | `string / Component` | `-` | `CircleClose` |

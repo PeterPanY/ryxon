@@ -50,7 +50,8 @@ export const panelRangeSharedProps = {
   unlinkPanels: Boolean,
   parsedValue: {
     type: definePropType<Dayjs[]>(Array)
-  }
+  },
+  isSingle: { type: Boolean, default: false }
 } as const
 
 export const selectionModeWithDefault = (

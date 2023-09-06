@@ -4,7 +4,8 @@
       ppNs(),
       drpNs(),
       {
-        'has-sidebar': Boolean($slots.sidebar) || hasShortcuts
+        'has-sidebar': Boolean($slots.sidebar) || hasShortcuts,
+        'has-single': isSingle
       }
     ]"
   >
@@ -34,9 +35,9 @@
               <r-icon><d-arrow-left /></r-icon>
             </button>
             <button
-              v-if="unlinkPanels"
+              v-if="isSingle || unlinkPanels"
               type="button"
-              :disabled="!enableYearArrow"
+              :disabled="!isSingle && !enableYearArrow"
               :class="[
                 ppNs('icon-btn'),
                 { [isBem('disabled')]: !enableYearArrow }
@@ -61,7 +62,11 @@
           />
         </div>
 
-        <div :class="[ppNs('content'), drpNs('content')]" class="is-right">
+        <div
+          v-if="!isSingle"
+          :class="[ppNs('content'), drpNs('content')]"
+          class="is-right"
+        >
           <div :class="drpNs('header')">
             <button
               v-if="unlinkPanels"

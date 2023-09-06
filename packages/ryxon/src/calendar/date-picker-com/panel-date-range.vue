@@ -5,7 +5,8 @@
       drpNs(),
       {
         'has-sidebar': $slots.sidebar || hasShortcuts,
-        'has-time': showTime
+        'has-time': showTime,
+        'has-single': isSingle
       }
     ]"
   >
@@ -132,10 +133,13 @@
             </button>
 
             <button
-              v-if="unlinkPanels"
+              v-if="isSingle || unlinkPanels"
               type="button"
-              :disabled="!enableYearArrow"
-              :class="[ppNs('icon-btn'), { 'is-disabled': !enableYearArrow }]"
+              :disabled="!isSingle && !enableYearArrow"
+              :class="[
+                ppNs('icon-btn'),
+                { 'is-disabled': !isSingle && !enableYearArrow }
+              ]"
               class="d-arrow-right"
               @click="leftNextYear"
             >
@@ -143,10 +147,13 @@
             </button>
 
             <button
-              v-if="unlinkPanels"
+              v-if="isSingle || unlinkPanels"
               type="button"
-              :disabled="!enableMonthArrow"
-              :class="[ppNs('icon-btn'), { 'is-disabled': !enableMonthArrow }]"
+              :disabled="!isSingle && !enableMonthArrow"
+              :class="[
+                ppNs('icon-btn'),
+                { 'is-disabled': !isSingle && !enableMonthArrow }
+              ]"
               class="arrow-right"
               @click="leftNextMonth"
             >
@@ -170,7 +177,11 @@
           />
         </div>
 
-        <div :class="[ppNs('content'), drpNs('content')]" class="is-right">
+        <div
+          v-if="!isSingle"
+          :class="[ppNs('content'), drpNs('content')]"
+          class="is-right"
+        >
           <div :class="drpNs('header')">
             <button
               v-if="unlinkPanels"
