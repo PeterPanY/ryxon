@@ -64,8 +64,13 @@ export default defineComponent({
 
     provide('EP_PICKER_BASE', { props })
 
-    const { parsedValue, onPick, setSelectionRange, onPanelChange } =
-      useCalendar(props, ctx)
+    const {
+      parsedValue,
+      onPick,
+      onPanelChange,
+      onCalendarChange,
+      setSelectionRange
+    } = useCalendar(props, ctx)
 
     return () => (
       <Component
@@ -77,6 +82,7 @@ export default defineComponent({
         defaultValue={props.defaultValue}
         onPick={onPick}
         onSelectRange={setSelectionRange}
+        onCalendarChange={onCalendarChange}
         onPanelChange={onPanelChange}
         onCurrentRows={(start, end) => emit('current-rows', start, end)}
       />
