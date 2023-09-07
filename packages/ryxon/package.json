@@ -1,6 +1,6 @@
 {
   "name": "ryxon",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Components built on Vue",
   "main": "lib/ryxon.cjs.js",
   "module": "es/index.mjs",
