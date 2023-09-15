@@ -73,7 +73,8 @@ export const paginationProps = {
   layout: {
     type: String,
     default: (['prev', 'pager', 'next'] as PaginationLayout[]).join(', ')
-  }
+  },
+  placement: { type: String, default: 'bottom' }
 }
 
 export type PaginationProps = ExtractPropTypes<typeof paginationProps>
@@ -242,6 +243,7 @@ export default defineComponent({
             v-model={innerPageSize.value}
             popper-class={props.popperClass}
             onChange={handleChange}
+            placement={props.placement}
           >
             {props.pageSizes.map((item) => (
               <Option value={item} label={item + t('pagesize')}></Option>

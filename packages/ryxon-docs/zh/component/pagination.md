@@ -44,7 +44,7 @@ pagination/custom
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | v-model | 当前页码 | `number` | - |
 | mode | 显示模式，可选值为 `simple` | `string` | `multi` |
 | prev-text | 上一页按钮文字 | `string` | `上一页` |
@@ -54,6 +54,7 @@ pagination/custom
 | page-count | 总页数 | `number \| string` | 根据页数计算 |
 | total-items | 总记录数 | `number \| string` | `0` |
 | items-per-page/ v-model:items-per-page | 每页记录数 | `number \| string` | `10` |
+| placement | 下拉框出现的位置 | `string` | `top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end` | `bottom` |
 | show-page-size | 显示的页码个数 | `number \| string` | `5` |
 | force-ellipses | 是否显示省略号 | `boolean` | `false` |
 | show-prev-button | 是否展示上一页按钮 | _boolean_ | `true` |
