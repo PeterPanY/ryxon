@@ -79,6 +79,7 @@ export default defineComponent({
     const wrapper = ref(null)
     const resize = () => {
       nextTick(() => {
+        if (!wrapper.value) return
         const computedStyle = getComputedStyle(wrapper.value)
         const paddingLeft = parseInt(computedStyle.paddingLeft)
         const paddingRight = parseInt(computedStyle.paddingRight)
