@@ -1,5 +1,6 @@
 import {
   ref,
+  computed,
   reactive,
   Teleport,
   nextTick,
@@ -11,15 +12,16 @@ import {
 } from 'vue'
 
 // Utils
-import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
+import { usePopper, buildPopperOptions } from '../tooltip/use-popper'
 import {
-  extend,
   inBrowser,
   truthProp,
   unknownProp,
   numericProp,
   makeArrayProp,
   getZIndexStyle,
+  definePropType,
+  makeStringProp,
   createNamespace,
   type ComponentInstance
 } from '../utils'
@@ -37,6 +39,12 @@ import { Popup } from '../popup'
 
 // Types
 import type { TabsMenuItemOption, TabsMenuItemPlacement } from './types'
+import type {
+  Instance,
+  Options,
+  Placement,
+  PositioningStrategy
+} from '@popperjs/core'
 
 const [name, bem] = createNamespace('tabs-menu-item')
 
@@ -53,7 +61,17 @@ export const tabsMenuItemProps = {
   offset: {
     type: Array as unknown as PropType<[number, number]>,
     default: () => [0, 8]
-  }
+  },
+  popperOptions: {
+    type: definePropType<Partial<Options>>(Object),
+    default: () => ({})
+  },
+  strategy: makeStringProp<PositioningStrategy>('absolute'),
+  fallbackPlacements: {
+    type: definePropType<Placement[]>(Array),
+    default: undefined
+  },
+  gpuAcceleration: { type: Boolean, default: false }
 }
 
 export type TabsMenuItemProps = ExtractPropTypes<typeof tabsMenuItemProps>
@@ -102,42 +120,25 @@ export default defineComponent({
       }
     }
 
-    let popper: Instance | null
-    const popoverRef = ref<ComponentInstance>()
+    const { createPopperInstance } = usePopper()
 
-    const getPopoverOptions = () => ({
-      placement:
-        parent.props.direction === 'down'
-          ? 'bottom'
-          : ('top' as TabsMenuItemPlacement),
-      modifiers: [
-        {
-          name: 'computeStyles',
-          options: {
-            adaptive: false,
-            gpuAcceleration: false
-          }
-        },
-        extend({}, offsetModifier, {
-          options: {
-            offset: props.offset
-          }
-        })
-      ]
+    const options = computed(() => {
+      return buildPopperOptions({
+        placement:
+          parent.props.direction === 'down'
+            ? 'bottom'
+            : ('top' as TabsMenuItemPlacement),
+        strategy: props.strategy,
+        popperOptions: props.popperOptions,
+        offset: props.offset,
+        gpuAcceleration: props.gpuAcceleration,
+        fallbackPlacements: props.fallbackPlacements
+      })
     })
 
+    let popper: Instance | null
     const wrapperRef = ref<HTMLElement>()
-
-    const createPopperInstance = () => {
-      if (wrapperRef.value && popoverRef.value) {
-        return createPopper(
-          wrapperRef.value,
-          popoverRef.value.popupRef.value,
-          getPopoverOptions()
-        )
-      }
-      return null
-    }
+    const popoverRef = ref<ComponentInstance>()
 
     const updateLocation = () => {
       nextTick(() => {
@@ -146,13 +147,17 @@ export default defineComponent({
         }
 
         if (!popper) {
-          popper = createPopperInstance()
+          popper = createPopperInstance(
+            wrapperRef,
+            popoverRef.value?.popupRef,
+            options.value
+          )
           if (inBrowser) {
             window.addEventListener('animationend', updateLocation)
             window.addEventListener('transitionend', updateLocation)
           }
         } else {
-          popper.setOptions(getPopoverOptions())
+          popper.setOptions(options.value)
         }
       })
     }
