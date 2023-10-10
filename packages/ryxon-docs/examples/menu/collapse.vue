@@ -12,7 +12,7 @@
   >
     <r-sub-menu index="1">
       <template #title>
-        <r-icon><location /></r-icon>
+        <r-icon :size="24"><location /></r-icon>
         <span>Navigator One</span>
       </template>
       <r-menu-item-group>
@@ -29,15 +29,15 @@
       </r-sub-menu>
     </r-sub-menu>
     <r-menu-item index="2">
-      <r-icon><icon-menu /></r-icon>
+      <r-icon :size="24"><icon-menu /></r-icon>
       <template #title>Navigator Two</template>
     </r-menu-item>
     <r-menu-item index="3" disabled>
-      <r-icon><document /></r-icon>
+      <r-icon :size="24"><document /></r-icon>
       <template #title>Navigator Three</template>
     </r-menu-item>
     <r-menu-item index="4">
-      <r-icon><setting /></r-icon>
+      <r-icon :size="24"><setting /></r-icon>
       <template #title>Navigator Four</template>
     </r-menu-item>
   </r-menu>

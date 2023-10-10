@@ -78,7 +78,7 @@ export default defineComponent({
 
     const currentPlacement = computed(() =>
       mode.value === 'horizontal' && isFirstLevel.value
-        ? 'bottom'
+        ? 'bottom-start'
         : 'right-start'
     )
     const subMenuTitleIcon = computed(() =>

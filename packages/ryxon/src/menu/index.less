@@ -225,7 +225,7 @@
   white-space: nowrap;
 
   * {
-    vertical-align: bottom;
+    vertical-align: middle;
   }
 
   i {
@@ -263,7 +263,7 @@
     vertical-align: middle;
   }
 
-  .r-menu__tooltip-trigger {
+  .r-tooltip__wrapper {
     position: absolute;
     left: 0;
     top: 0;
@@ -293,6 +293,10 @@
   list-style: none;
   margin: 0;
   padding-left: 0;
+
+  .r-tooltip__wrapper {
+    display: block;
+  }
 
   &__title {
     display: flex;
