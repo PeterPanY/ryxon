@@ -1,16 +1,13 @@
 // @ts-nocheck
-import { createPopper, offsetModifier } from '@ryxon/popperjs'
+import { createPopper } from '@popperjs/core'
 import { flatMap, get, merge } from 'lodash-unified'
-import { extend, hasOwn, isArray, isBoolean, isObject } from '../utils'
+import { hasOwn, isArray, isBoolean, isObject } from '../utils'
 import escapeHtml from 'escape-html'
 import { useDelayedToggle } from '../composables/use-delayed-toggle'
 import type { TooltipProps } from '../tooltip'
 import type { TableColumnCtx } from '../table-column/defaults'
 import type { Nullable } from '../utils'
-import {
-  useGlobalZIndex,
-  setGlobalZIndex
-} from '../composables/use-global-z-index'
+import { useGlobalZIndex } from '../composables/use-global-z-index'
 
 export type TableOverflowTooltipOptions = Partial<
   Pick<
@@ -397,7 +394,6 @@ export function walkTreeNode(
   })
 }
 
-// eslint-disable-next-line import/no-mutable-exports
 export let removePopper
 
 export function createTablePopper(
@@ -419,23 +415,32 @@ export function createTablePopper(
   const scrollContainer = parentNode?.querySelector(`.${ns}-scrollbar__wrap`)
   function renderContent(): HTMLDivElement {
     const isLight = tooltipOptions.theme === 'light'
-    const content = document.createElement('div')
+    const content = document.createElement('div') // tooltip 外层标签
     content.className = [
-      `${ns}-popup ${ns}-table-popup`,
-      isLight ? '' : 'is-dark',
+      `${ns}-popup ${ns}-tooltip`,
+      isLight ? 'r-tooltip--light' : 'r-tooltip--dark',
       tooltipOptions.popperClass || ''
     ].join(' ')
     popperContent = escapeHtml(popperContent)
-    content.innerHTML = popperContent
+
+    const menuContent = document.createElement('div') // tooltip内容标签
+    menuContent.className = ['r-tooltip__content']
+    menuContent.innerHTML = popperContent
+
+    content.appendChild(menuContent)
 
     const index = useGlobalZIndex()
     content.style.zIndex = index
-    setGlobalZIndex(index)
+
     // Avoid side effects caused by append to body
     parentNode?.appendChild(content)
     return content
   }
-
+  function renderArrow(): HTMLDivElement {
+    const arrow = document.createElement('div')
+    arrow.className = `${ns}-tooltip__arrow`
+    return arrow
+  }
   function showPopper() {
     // eslint-disable-next-line no-use-before-define
     popperInstance && popperInstance.update()
@@ -477,22 +482,35 @@ export function createTablePopper(
     {
       name: 'computeStyles',
       options: {
-        adaptive: false,
+        // adaptive: false,
         gpuAcceleration: false
       }
-    },
-    extend({}, offsetModifier, {
+    }
+  ]
+
+  if (tooltipOptions.offset) {
+    modifiers.push({
+      name: 'offset',
       options: {
         offset: [0, tooltipOptions.offset]
       }
     })
-  ]
+  }
+  if (tooltipOptions.showArrow) {
+    const arrow = content.appendChild(renderArrow())
+    modifiers.push({
+      name: 'arrow',
+      options: {
+        element: arrow,
+        padding: 10
+      }
+    })
+  }
 
   const popperOptions = tooltipOptions.popperOptions || {}
 
   popperInstance = createPopper(trigger, content, {
     placement: tooltipOptions.placement || 'top',
-    showArrow: tooltipOptions.showArrow,
     strategy: 'fixed',
     // eslint-disable-next-line no-restricted-syntax
     ...popperOptions,
