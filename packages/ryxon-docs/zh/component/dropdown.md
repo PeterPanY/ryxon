@@ -77,6 +77,7 @@ dropdown/sizes
 | tabindex | Dropdown 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number` | — | `0` |
 | popper-class | 自定义浮层类名 | `string` | — | — |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的[to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | — | `body` |
+| lazyRender | 是否在显示弹层时才渲染节点 | `boolean` | — | `false` |
 
 ### Dropdown Events
 

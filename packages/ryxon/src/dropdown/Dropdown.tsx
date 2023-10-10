@@ -77,7 +77,8 @@ export const dropdownProps = {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
-  }
+  },
+  lazyRender: Boolean
 }
 
 export type DropdownProps = ExtractPropTypes<typeof dropdownProps>
@@ -334,7 +335,7 @@ export default defineComponent({
           show-arrow={props.showArrow}
           transition="r-zoom-in-top"
           teleport={props.teleport}
-          lazyRender={false}
+          lazyRender={props.lazyRender}
           persistent={true}
           onBeforeShow={handleBeforeShowTooltip}
           onShow={handleShowTooltip}
