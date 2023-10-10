@@ -11,7 +11,6 @@ import {
   onActivated,
   onDeactivated,
   defineComponent,
-  type PropType,
   type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
@@ -59,7 +58,6 @@ export const popupProps = extend({}, popupSharedProps, {
   closeIconPosition: makeStringProp<PopupCloseIconPosition>('top-right'),
   safeAreaInsetTop: Boolean,
   safeAreaInsetBottom: Boolean,
-  customStyle: Object as PropType<CSSProperties>,
   id: String
 })
 
@@ -104,7 +102,7 @@ export default defineComponent({
         {
           zIndex: zIndex.value
         },
-        props.customStyle
+        props.popperStyle
       )
 
       if (isDef(props.duration)) {
