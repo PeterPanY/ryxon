@@ -35,8 +35,8 @@ popover/icon
 
 你可以把 Popover 当做受控组件或非受控组件使用：
 
-- 当绑定 `v-model:show` 时，Popover 为受控组件，此时组件的显示完全由 `v-model:show` 的值决定。
-- 当未绑定 `v-model:show` 时，Popover 为非受控组件，此时你可以通过 `show` 属性传入一个默认值，组件值的显示由组件自身控制。
+- 当绑定 `v-model:visible` 时，Popover 为受控组件，此时组件的显示完全由 `v-model:visible` 的值决定。
+- 当未绑定 `v-model:visible` 时，Popover 为非受控组件，此时你可以通过 `visible` 属性传入一个默认值，组件值的显示由组件自身控制。
 
 :::demo
 
@@ -50,23 +50,25 @@ popover/mode
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model:show | 是否展示气泡弹出层 | `boolean` | `false` |
+| v-model:visible | Popover 是否显示 | `boolean` | `false` |
+| theme | 主题风格 | ^[PopoverTheme]`'light' \| 'dark'` | `light` |
 | actions | 选项列表 | `PopoverAction[]` | `[]` |
 | actions-direction | 选项列表的排列方向 | ^[PopoverActionsDirection]`'vertical' \| 'horizontal'` | `vertical` |
-| placement | 弹出位置 | `PopoverPlacement` | `bottom` |
-| theme | 主题风格 | ^[PopoverTheme]`'light' \| 'dark'` | `light` |
-| trigger | 触发方式 | ^[PopoverTrigger]`'manual' \| 'click' \| 'focus' \| 'hover' \| 'contextmenu'` | `click` |
-| duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
-| offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
-| overlay | 是否显示遮罩层 | `boolean` | `false` |
-| overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |
-| overlay-style | 自定义遮罩层样式 | `object` | - |
+| trigger | 触发方式 | ^[PopoverTrigger]`'click' \| 'focus' \| 'hover' \| 'contextmenu'` | `click` |
 | show-arrow | 是否展示小箭头 | `boolean` | `true` |
-| close-on-click-action | 是否在点击选项后关闭 | `boolean` | `true` |
-| close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
-| close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
-| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
+| placement | 弹出位置 | ^[PopoverPlacement]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | `bottom` |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
+| width | 宽度 | `string / number` | `150` |
+| offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
+| show-after | 在触发后多久显示内容，单位毫秒 | `number` | `0` |
+| hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
+| auto-close | tooltip 出现后自动隐藏延时，单位毫秒 | `number` | `0` |
+| teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
+| disabled | Popover 是否可用 | `boolean` | `false` |
+| popper-options | [popper.js](https://popper.js.org/docs/v2/)参数 | ^[object]请参考[popper.js](https://popper.js.org/docs/v2/) | {} |
+| popper-class | 自定义弹窗样式 | `string / Array / object` | - |
+| popper-style | 自定义弹窗样式 | `object` | - |
+| persistent | 当 popover 组件长时间不触发且 persistent 属性设置为 false 时, popover 将会被删除 | `boolean` | `true` |
 
 ### PopoverAction 数据结构
 
@@ -85,11 +87,10 @@ popover/mode
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | select | 点击选项时触发 | `action: PopoverAction, index: number` |
-| open | 打开菜单时触发 | - |
-| close | 关闭菜单时触发 | - |
-| opened | 打开菜单且动画结束后触发 | - |
-| closed | 关闭菜单且动画结束后触发 | - |
-| click-overlay | 点击遮罩层时触发 | `event: MouseEvent` |
+| before-enter | 显示动画播放前触发 | - |
+| before-leave | 隐藏动画播放前触发 | - |
+| after-enter | 显示动画播放完毕后触发 | - |
+| after-leave | 隐藏动画播放完毕后触发 | - |
 
 ### Slots
 
@@ -122,21 +123,14 @@ import type {
 
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |
-| --r-popover-arrow-size | `6px` | - |
-| --r-popover-radius | `var(--r-radius-lg)` | - |
-| --r-popover-action-width | `128px` | - |
-| --r-popover-action-height | `44px` | - |
-| --r-popover-action-font-size | `var(--r-font-size-md)` | - |
-| --r-popover-action-line-height | `var(--r-line-height-md)` | - |
-| --r-popover-action-icon-size | `20px` | - |
-| --r-popover-horizontal-action-height | `34px` | - |
-| --r-popover-horizontal-action-icon-size | `16px` | - |
-| --r-popover-light-text-color | `var(--r-text-color)` | - |
-| --r-popover-light-background | `var(--r-background-2)` | - |
-| --r-popover-light-action-disabled-text-color | `var(--r-text-color-3)` | - |
-| --r-popover-dark-text-color | `var(--r-white)` | - |
-| --r-popover-dark-background | `#4a4a4a` | - |
-| --r-popover-dark-action-disabled-text-color | `var(--r-text-color-2)` | - |
+| --r-popover-action-width | `128px` |
+| --r-popover-action-height | `44px` |
+| --r-popover-action-font-size | `var(--r-font-size-md)` |
+| --r-popover-action-icon-size | `20px` |
+| --r-popover-horizontal-action-height | `34px` |
+| --r-popover-horizontal-action-icon-size | `16px` |
+| --r-popover-light-action-disabled-text-color | `var(--r-text-color-3)` |
+| --r-popover-dark-action-disabled-text-color | `var(--r-text-color-2)` |
 
 ## 常见问题
 

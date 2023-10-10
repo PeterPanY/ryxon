@@ -1,5 +1,9 @@
 <template>
-  <r-popover v-model:show="showPopover" :placement="currentPlacement">
+  <r-popover
+    v-model:visible="showPopover"
+    :placement="currentPlacement"
+    width="auto"
+  >
     <div>啊！</div>
     <template #reference>
       <div class="demo-popover-refer" />

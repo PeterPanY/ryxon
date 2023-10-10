@@ -1,44 +1,38 @@
 import {
   h,
   ref,
-  watch,
-  nextTick,
-  onMounted,
-  watchEffect,
-  onBeforeUnmount,
+  computed,
   defineComponent,
   type PropType,
   type CSSProperties,
   type TeleportProps,
   type ExtractPropTypes
 } from 'vue'
-import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
 
 // Utils
 import {
   pick,
   extend,
-  inBrowser,
+  addUnit,
   truthProp,
-  numericProp,
   unknownProp,
   BORDER_RIGHT,
   BORDER_BOTTOM,
   makeArrayProp,
+  definePropType,
   makeStringProp,
-  createNamespace,
-  type ComponentInstance
+  createNamespace
 } from '../utils'
 
 // Composables
-import { useClickAway } from '@ryxon/use'
-import { useSyncPropRef } from '../composables/use-sync-prop-ref'
+import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
-import { Popup } from '../popup'
+import { Tooltip } from '../tooltip'
 
 // Types
+import type { Options } from '@popperjs/core'
 import {
   PopoverTheme,
   PopoverAction,
@@ -50,37 +44,53 @@ import {
 const [name, bem] = createNamespace('popover')
 
 const popupProps = [
-  'overlay',
-  'duration',
+  'theme',
+  'offset',
+  'trigger',
   'teleport',
-  'overlayStyle',
-  'overlayClass',
-  'closeOnClickOverlay'
+  'disabled',
+  'showArrow',
+  'placement',
+  'showAfter',
+  'hideAfter',
+  'autoClose',
+  'enterable',
+  'persistent',
+  'popperOptions'
 ] as const
 
 export const popoverProps = {
-  show: Boolean,
+  visible: { type: definePropType<boolean | null>(Boolean), default: null },
   theme: makeStringProp<PopoverTheme>('light'),
-  overlay: Boolean,
   actions: makeArrayProp<PopoverAction>(),
   actionsDirection: makeStringProp<PopoverActionsDirection>('vertical'),
   trigger: makeStringProp<PopoverTrigger>('click'),
-  duration: numericProp,
   showArrow: truthProp,
   placement: makeStringProp<PopoverPlacement>('bottom'),
   iconPrefix: String,
-  overlayClass: unknownProp,
-  overlayStyle: Object as PropType<CSSProperties>,
-  closeOnClickAction: truthProp,
-  closeOnClickOverlay: truthProp,
-  closeOnClickOutside: truthProp,
+  width: { type: [String, Number], default: 150 },
   offset: {
     type: Array as unknown as PropType<[number, number]>,
     default: () => [0, 8]
   },
+  showAfter: { type: Number, default: 0 },
+  hideAfter: { type: Number, default: 200 },
+  autoClose: { type: Number, default: 0 },
+  enterable: truthProp,
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
+  },
+  disabled: { type: Boolean }, // Tooltip 组件是否禁用
+  popperClass: unknownProp,
+  popperStyle: Object as PropType<CSSProperties>,
+  popperOptions: {
+    type: definePropType<Partial<Options>>(Object),
+    default: () => ({})
+  },
+  persistent: truthProp,
+  'onUpdate:visible': {
+    type: Function as PropType<(visible: boolean) => void>
   }
 }
 
@@ -91,116 +101,22 @@ export default defineComponent({
 
   props: popoverProps,
 
-  emits: ['select', 'click', 'update:show'],
+  emits: [
+    'select',
+    'update:visible',
+    'before-enter',
+    'before-leave',
+    'after-enter',
+    'after-leave'
+  ],
 
   setup(props, { emit, slots, attrs }) {
-    let popper: Instance | null
-
-    const popupRef = ref<HTMLElement>()
-    const wrapperRef = ref<HTMLElement>()
-    const popoverRef = ref<ComponentInstance>()
-
-    const show = useSyncPropRef(
-      () => props.show,
-      (value) => emit('update:show', value)
-    )
-
-    const getPopoverOptions = () => ({
-      placement: props.placement,
-      modifiers: [
-        {
-          name: 'computeStyles',
-          options: {
-            adaptive: false,
-            gpuAcceleration: false
-          }
-        },
-        extend({}, offsetModifier, {
-          options: {
-            offset: props.offset
-          }
-        })
-      ]
-    })
-
-    const createPopperInstance = () => {
-      if (wrapperRef.value && popoverRef.value) {
-        return createPopper(
-          wrapperRef.value,
-          popoverRef.value.popupRef.value,
-          getPopoverOptions()
-        )
-      }
-      return null
-    }
-
-    const updateLocation = () => {
-      nextTick(() => {
-        if (!show.value) {
-          return
-        }
-
-        if (!popper) {
-          popper = createPopperInstance()
-          if (inBrowser) {
-            window.addEventListener('animationend', updateLocation)
-            window.addEventListener('transitionend', updateLocation)
-          }
-        } else {
-          popper.setOptions(getPopoverOptions())
-        }
-      })
-    }
-
-    const updateShow = (value: boolean) => {
-      show.value = value
-    }
-
-    // 点击事件
-    const onClickWrapper = () => {
-      if (props.trigger === 'click') show.value = !show.value
-    }
-
-    // 右键点击事件
-    const onContextmenuWrapper = (e: Event) => {
-      if (props.trigger === 'contextmenu') {
-        e.preventDefault()
-        show.value = !show.value
-      }
-    }
-
-    // 显示
-    const onShowWrapper = () => {
-      if (props.trigger === 'hover' || props.trigger === 'focus')
-        show.value = true
-    }
-
-    // 隐藏
-    const onHideWrapper = () => {
-      if (props.trigger === 'hover' || props.trigger === 'focus')
-        show.value = false
-    }
-
     const onClickAction = (action: PopoverAction, index: number) => {
       if (action.disabled) {
         return
       }
 
       emit('select', action, index)
-
-      if (props.closeOnClickAction) {
-        show.value = false
-      }
-    }
-
-    const onClickAway = () => {
-      if (
-        show.value &&
-        props.closeOnClickOutside &&
-        (!props.overlay || props.closeOnClickOverlay)
-      ) {
-        show.value = false
-      }
     }
 
     const renderActionContent = (action: PopoverAction, index: number) => {
@@ -251,61 +167,76 @@ export default defineComponent({
       )
     }
 
-    onMounted(() => {
-      updateLocation()
-      watchEffect(() => {
-        popupRef.value = popoverRef.value?.popupRef.value
-      })
+    const rendercontentontent = {
+      content: () => (
+        <div role="menu" class={bem('content', props.actionsDirection)}>
+          {slots.default ? slots.default() : props.actions.map(renderAction)}
+        </div>
+      ),
+      default: () => <>{slots.reference?.()}</>
+    }
+
+    const kls = computed(() => {
+      return [
+        bem({
+          plain: props.actions && props.actions.length > 0
+        }),
+        props.popperClass!
+      ]
     })
 
-    onBeforeUnmount(() => {
-      if (popper) {
-        if (inBrowser) {
-          window.removeEventListener('animationend', updateLocation)
-          window.removeEventListener('transitionend', updateLocation)
-        }
-        popper.destroy()
-        popper = null
-      }
+    const style = computed(() =>
+      extend({}, { width: addUnit(props.width) }, props.popperStyle!)
+    )
+
+    const beforeEnter = () => {
+      emit('before-enter')
+    }
+
+    const beforeLeave = () => {
+      emit('before-leave')
+    }
+
+    const afterEnter = () => {
+      emit('after-enter')
+    }
+
+    const afterLeave = () => {
+      emit('update:visible', false)
+      emit('after-leave')
+    }
+
+    const tooltipRef = ref<InstanceType<typeof Tooltip> | null>(null)
+
+    const hide = () => {
+      tooltipRef.value?.hide()
+    }
+
+    useExpose({
+      hide
     })
 
-    watch(() => [show.value, props.offset, props.placement], updateLocation)
-
-    useClickAway([wrapperRef, popupRef], onClickAway, {
-      eventName: 'click'
+    const updateEventKeyRaw = `onUpdate:visible` as const
+    const onUpdateVisible = computed(() => {
+      return props[updateEventKeyRaw]
     })
 
     return () => (
-      <>
-        <span
-          ref={wrapperRef}
-          class={bem('wrapper')}
-          onClick={onClickWrapper}
-          onMouseenter={onShowWrapper}
-          onMouseleave={onHideWrapper}
-          onFocus={onShowWrapper}
-          onBlur={onHideWrapper}
-          onContextmenu={onContextmenuWrapper}
-        >
-          {slots.reference?.()}
-        </span>
-        <Popup
-          ref={popoverRef}
-          show={show.value}
-          class={bem([props.theme])}
-          position={''}
-          transition="r-popover-zoom"
-          lockScroll={false}
-          onUpdate:show={updateShow}
-          {...attrs}
-          {...pick(props, popupProps)}
-        >
-          {props.showArrow && <div class={bem('arrow')} />}
-          <div role="menu" class={bem('content', props.actionsDirection)}>
-            {slots.default ? slots.default() : props.actions.map(renderAction)}
-          </div>
-        </Popup>
-      </>
+      <Tooltip
+        ref={tooltipRef}
+        v-slots={rendercontentontent}
+        {...attrs}
+        visible={props.visible}
+        transition="r-popover-zoom"
+        popperClass={kls.value}
+        popperStyle={style.value}
+        {...pick(props, popupProps)}
+        onBeforeShow={beforeEnter}
+        onBeforeHide={beforeLeave}
+        onHide={afterLeave}
+        onShow={afterEnter}
+        onUpdate:visible={onUpdateVisible.value}
+      ></Tooltip>
     )
   }
 })

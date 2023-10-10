@@ -31,17 +31,12 @@ export type PopoverAction = {
 }
 
 export type PopoverThemeVars = {
-  popoverArrowSize?: string
-  popoverRadius?: string
   popoverActionWidth?: string
   popoverActionHeight?: string
   popoverActionFontSize?: string
-  popoverActionLineHeight?: number | string
   popoverActionIconSize?: string
-  popoverLightTextColor?: string
-  popoverLightBackground?: string
+  popoverHorizontalActionHeight?: string
+  popoverHorizontalActionIconSize?: string
   popoverLightActionDisabledTextColor?: string
-  popoverDarkTextColor?: string
-  popoverDarkBackground?: string
   popoverDarkActionDisabledTextColor?: string
 }
