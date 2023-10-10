@@ -105,12 +105,13 @@ tooltip/controlled
 | trigger | 触发方式，可选值为 `click、focus、contextmenu ` | `TooltipTrigger` | `hover` |
 | trigger-keys | 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示 | `Array` | `['Enter','Space']` |
 | show-arrow | 是否展示小箭头 | `boolean` | `true` |
-| placement | 弹出位置 | `TooltipPlacement` | `bottom` |
+| placement | 弹出位置 | ^[TooltipPlacement]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | `bottom` |
 | offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
-| show-after | 在触发后多久显示内容，单位毫秒 | `number ` | `0` |
-| hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
 | transition | 动画名称 | `string ` | `r-tooltip-zoom` |
 | enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
+| show-after | 在触发后多久显示内容，单位毫秒 | `number ` | `0` |
+| hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
+| auto-close | tooltip 出现后自动隐藏延时，单位毫秒 | `number` | `0` |
 | z-index | 将弹窗的 z-index 层级设置为一个固定值 | `number \| string` | `2000+` |
 | duration | 动画时长，单位秒，设置为 0 可以禁用动画 | `number / string` | `0.3` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
@@ -118,6 +119,7 @@ tooltip/controlled
 | before-close | 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise<boolean>` | `-` |
 | overlay-class | 自定义遮罩层类名 | `string / Array / object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
+| popper-options | [popper.js](https://popper.js.org/docs/v2/)参数 | ^[object]请参考[popper.js](https://popper.js.org/docs/v2/) | {} |
 | popper-class | 自定义弹窗样式 | `string / Array / object` | - |
 | popper-style | 自定义弹窗样式 | `object` | - |
 | transition-appear | 是否在初始渲染时启用过渡动画 | `boolean` | `false` |

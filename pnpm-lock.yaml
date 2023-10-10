@@ -63,9 +63,9 @@ importers:
       '@ctrl/tinycolor':
         specifier: ^3.6.0
         version: 3.6.0
-      '@ryxon/popperjs':
-        specifier: ^1.0.3
-        version: link:../ryxon-popperjs
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: 2.11.8
       '@ryxon/use':
         specifier: ^1.0.5
         version: link:../ryxon-use
@@ -2475,6 +2475,10 @@ packages:
   /@popperjs/core@2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: true
+
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
 
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}

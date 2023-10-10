@@ -15,13 +15,16 @@ import {
   type ExtractPropTypes
 } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import { Instance, createPopper, offsetModifier } from '@ryxon/popperjs'
 import {
   tooltipEmits,
   useTooltipModelToggle,
+  useTooltipModelToggleProps,
   whenTrigger
 } from './tooltip-utils'
-import { useDelayedToggle } from '../composables/use-delayed-toggle'
+import {
+  useDelayedToggleProps,
+  useDelayedToggle
+} from '../composables/use-delayed-toggle'
 
 // Utils
 import {
@@ -40,6 +43,12 @@ import { popupSharedProps } from '../popup/shared'
 // Composables
 import { useClickAway } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
+import {
+  buildPopperOptions,
+  eventListenerModifier,
+  arrowModifier,
+  usePopper
+} from './use-popper'
 
 // Components
 import { Popup } from '../popup'
@@ -47,6 +56,12 @@ import { Popup } from '../popup'
 // Types
 import { TooltipTheme, TooltipTrigger, TooltipPlacement } from './types'
 import type { TooltipProvide } from './types'
+import type {
+  Instance,
+  Options,
+  Placement,
+  PositioningStrategy
+} from '@popperjs/core'
 
 const [, bem] = createNamespace('tooltip')
 
@@ -66,39 +81,54 @@ const popupProps = [
   'closeOnClickOverlay'
 ] as const
 
-export const tooltipProps = extend({}, popupSharedProps, {
-  /**
-   * 因为模型切换属性是动态生成的,因此typescript无法将类型评估为类型：
-   */
-  visible: { type: definePropType<boolean | null>(Boolean), default: null }, // Tooltip 组件可见性
-  content: { type: String, default: '' }, // 显示的内容
-  rawContent: { type: Boolean, default: false }, // content 中的内容是否作为 HTML 字符串处理
-  disabled: { type: Boolean }, // Tooltip 组件是否禁用
-  theme: makeStringProp<TooltipTheme>('dark'), // Tooltip 主题
-  trigger: makeStringProp<TooltipTrigger>('hover'),
-  // 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示
-  triggerKeys: {
-    type: definePropType<string[]>(Array),
-    default: () => ['Enter', 'Space']
-  },
-  showArrow: truthProp,
-  placement: makeStringProp<TooltipPlacement>('bottom'), // Tooltip 组件出现的位置
-  // 出现位置的偏移量
-  offset: {
-    type: Array as unknown as PropType<[number, number]>,
-    default: () => [0, 8]
-  },
-  showAfter: { type: Number, default: 0 }, // 在触发后多久显示内容，单位毫秒
-  hideAfter: { type: Number, default: 200 }, // 延迟关闭，单位毫秒
-  transition: { type: String, default: 'r-tooltip-zoom' }, // 动画名称
-  enterable: { type: Boolean, default: true }, // 鼠标是否可进入到 tooltip 中
-  closeOnClickOutside: truthProp,
-  teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body'
-  },
-  persistent: Boolean
-})
+export const tooltipProps = extend(
+  {},
+  popupSharedProps,
+  useDelayedToggleProps,
+  useTooltipModelToggleProps,
+  {
+    /**
+     * 因为模型切换属性是动态生成的,因此typescript无法将类型评估为类型：
+     */
+    visible: { type: definePropType<boolean | null>(Boolean), default: null }, // Tooltip 组件可见性
+    content: { type: String, default: '' }, // 显示的内容
+    rawContent: { type: Boolean, default: false }, // content 中的内容是否作为 HTML 字符串处理
+    disabled: { type: Boolean }, // Tooltip 组件是否禁用
+    theme: makeStringProp<TooltipTheme>('dark'), // Tooltip 主题
+    trigger: makeStringProp<TooltipTrigger>('hover'),
+    // 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示
+    triggerKeys: {
+      type: definePropType<string[]>(Array),
+      default: () => ['Enter', 'Space']
+    },
+    showArrow: truthProp,
+    placement: makeStringProp<TooltipPlacement>('bottom'), // Tooltip 组件出现的位置
+    // 出现位置的偏移量
+    offset: {
+      type: Array as unknown as PropType<[number, number]>,
+      default: () => [0, 8]
+    },
+    arrowOffset: { type: Number, default: 5 },
+    transition: { type: String, default: 'r-tooltip-zoom' }, // 动画名称
+    enterable: { type: Boolean, default: true }, // 鼠标是否可进入到 tooltip 中
+    closeOnClickOutside: truthProp,
+    teleport: {
+      type: [String, Object] as PropType<TeleportProps['to']>,
+      default: 'body'
+    },
+    persistent: Boolean,
+    popperOptions: {
+      type: definePropType<Partial<Options>>(Object),
+      default: () => ({})
+    },
+    strategy: makeStringProp<PositioningStrategy>('absolute'),
+    fallbackPlacements: {
+      type: definePropType<Placement[]>(Array),
+      default: undefined
+    },
+    gpuAcceleration: { type: Boolean, default: false }
+  }
+)
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
 
@@ -125,6 +155,7 @@ export default defineComponent({
     const { onOpen, onClose } = useDelayedToggle({
       showAfter: toRef(props, 'showAfter'),
       hideAfter: toRef(props, 'hideAfter'),
+      autoClose: toRef(props, 'autoClose'),
       open: show,
       close: hide
     })
@@ -150,36 +181,18 @@ export default defineComponent({
       return popperContent && popperContent.contains(document.activeElement)
     }
 
-    // 获取Tooltip的配置信息
-    const getTooltipOptions = () => ({
-      placement: props.placement,
-      modifiers: [
-        {
-          name: 'computeStyles',
-          options: {
-            adaptive: false,
-            gpuAcceleration: false
-          }
-        },
-        extend({}, offsetModifier, {
-          options: {
-            offset: props.offset
-          }
-        })
-      ]
-    })
+    const { createPopperInstance } = usePopper()
+    const arrowRef = ref<HTMLElement>()
 
-    // 创建Popper实例
-    const createPopperInstance = () => {
-      if (wrapperRef.value && contentRef.value) {
-        return createPopper(
-          wrapperRef.value,
-          contentRef.value.popupRef.value,
-          getTooltipOptions()
-        )
+    const options = computed(() => {
+      return {
+        // eslint-disable-next-line no-restricted-syntax
+        ...buildPopperOptions(props, [
+          arrowModifier.value(arrowRef, props.arrowOffset),
+          eventListenerModifier.value(!!props.visible)
+        ])
       }
-      return null
-    }
+    })
 
     // 更新Popper实例
     const updatePopper = () => {
@@ -189,9 +202,14 @@ export default defineComponent({
         }
 
         if (!popper) {
-          popper = createPopperInstance()
+          // 创建Popper实例
+          popper = createPopperInstance(
+            wrapperRef,
+            contentRef.value?.popupRef,
+            options.value
+          )
         } else {
-          popper.setOptions(getTooltipOptions())
+          popper.setOptions(options.value)
         }
       })
     }
@@ -433,7 +451,7 @@ export default defineComponent({
           onMouseleave={onContentLeave}
         >
           {shouldRender.value && props.showArrow && (
-            <div class={bem('arrow')} />
+            <div ref={arrowRef} class={bem('arrow')} />
           )}
           {shouldRender.value && (
             <div role="menu" class={bem('content')}>
