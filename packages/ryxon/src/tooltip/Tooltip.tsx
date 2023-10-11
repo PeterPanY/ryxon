@@ -110,7 +110,7 @@ export const tooltipProps = extend(
     },
     arrowOffset: { type: Number, default: 5 },
     transition: { type: String, default: 'r-tooltip-zoom' }, // 动画名称
-    enterable: { type: Boolean, default: true }, // 鼠标是否可进入到 tooltip 中
+    enterable: truthProp, // 鼠标是否可进入到 tooltip 中
     closeOnClickOutside: truthProp,
     teleport: {
       type: [String, Object] as PropType<TeleportProps['to']>,

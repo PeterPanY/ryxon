@@ -63,6 +63,8 @@ popover/mode
 | show-after | 在触发后多久显示内容，单位毫秒 | `number` | `0` |
 | hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
 | auto-close | tooltip 出现后自动隐藏延时，单位毫秒 | `number` | `0` |
+| enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
+| close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string / Element` | `body` |
 | disabled | Popover 是否可用 | `boolean` | `false` |
 | popper-options | [popper.js](https://popper.js.org/docs/v2/)参数 | ^[object]请参考[popper.js](https://popper.js.org/docs/v2/) | {} |

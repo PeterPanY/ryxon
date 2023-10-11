@@ -56,7 +56,8 @@ const popupProps = [
   'autoClose',
   'enterable',
   'persistent',
-  'popperOptions'
+  'popperOptions',
+  'closeOnClickOutside'
 ] as const
 
 export const popoverProps = {
@@ -77,6 +78,7 @@ export const popoverProps = {
   hideAfter: { type: Number, default: 200 },
   autoClose: { type: Number, default: 0 },
   enterable: truthProp,
+  closeOnClickOutside: truthProp,
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
@@ -213,7 +215,8 @@ export default defineComponent({
     }
 
     useExpose({
-      hide
+      hide,
+      contentRef: tooltipRef
     })
 
     const updateEventKeyRaw = `onUpdate:visible` as const

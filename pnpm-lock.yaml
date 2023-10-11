@@ -345,8 +345,8 @@ importers:
         specifier: ^1.54.5
         version: 1.57.1
       vitepress:
-        specifier: ^1.0.0-rc.10
-        version: 1.0.0-rc.10(sass@1.57.1)
+        specifier: ^1.0.0-rc.20
+        version: 1.0.0-rc.20(sass@1.57.1)
       vitepress-theme-demoblock:
         specifier: ^3.0.3
         version: 3.0.3(sass@1.57.1)
@@ -2641,6 +2641,13 @@ packages:
     dependencies:
       '@types/linkify-it': 3.0.2
       '@types/mdurl': 1.0.2
+
+  /@types/markdown-it@13.0.2:
+    resolution: {integrity: sha512-Tla7hH9oeXHOlJyBFdoqV61xWE9FZf/y2g+gFVwQ2vE1/eBzjUno5JCd3Hdb5oATve5OF6xNjZ/4VIZhVVx+hA==}
+    dependencies:
+      '@types/linkify-it': 3.0.2
+      '@types/mdurl': 1.0.2
+    dev: true
 
   /@types/mdast@3.0.12:
     resolution: {integrity: sha512-DT+iNIRNX884cx0/Q1ja7NyUPpZuv0KPyL5rGNxm1WC1OtHstl7n4Jb7nk+xacNShQMbczJjt8uFzznpp6kYBg==}
@@ -9229,6 +9236,15 @@ packages:
       vscode-textmate: 8.0.0
     dev: true
 
+  /shiki@0.14.5:
+    resolution: {integrity: sha512-1gCAYOcmCFONmErGTrS1fjzJLA7MGZmKzrBNX7apqSwhyITJg2O102uFzXUeBxNnEkDA9vHIKLyeKq0V083vIw==}
+    dependencies:
+      ansi-sequence-parser: 1.1.0
+      jsonc-parser: 3.2.0
+      vscode-oniguruma: 1.7.0
+      vscode-textmate: 8.0.0
+    dev: true
+
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
@@ -10249,7 +10265,7 @@ packages:
       shiki: 0.14.3
       unified: 10.1.2
       unist-util-visit: 4.1.2
-      vitepress: 1.0.0-rc.10(sass@1.57.1)
+      vitepress: 1.0.0-rc.20(sass@1.57.1)
       vue: 3.3.4
       yaml: 2.3.1
     transitivePeerDependencies:
@@ -10266,7 +10282,9 @@ packages:
       - jwt-decode
       - less
       - lightningcss
+      - markdown-it-mathjax3
       - nprogress
+      - postcss
       - qrcode
       - react
       - react-dom
@@ -10280,19 +10298,28 @@ packages:
       - universal-cookie
     dev: true
 
-  /vitepress@1.0.0-rc.10(sass@1.57.1):
-    resolution: {integrity: sha512-+MsahIWqq5WUEmj6MR4obcKYbT7im07jZPCQPdNJExkeOSbOAJ4xypSLx88x7rvtzWHhHc5aXbOhCRvGEGjFrw==}
+  /vitepress@1.0.0-rc.20(sass@1.57.1):
+    resolution: {integrity: sha512-CykMUJ8JLxLcGWek0ew3wln4RYbsOd1+0YzXITTpajggpynm2S331TNkJVOkHrMRc6GYe3y4pS40GfgcW0ZwAw==}
     hasBin: true
+    peerDependencies:
+      markdown-it-mathjax3: ^4.3.2
+      postcss: ^8.4.30
+    peerDependenciesMeta:
+      markdown-it-mathjax3:
+        optional: true
+      postcss:
+        optional: true
     dependencies:
       '@docsearch/css': 3.5.2
       '@docsearch/js': 3.5.2
+      '@types/markdown-it': 13.0.2
       '@vue/devtools-api': 6.5.0
       '@vueuse/core': 10.4.1(vue@3.3.4)
       '@vueuse/integrations': 10.4.1(focus-trap@7.5.2)(vue@3.3.4)
       focus-trap: 7.5.2
       mark.js: 8.11.1
       minisearch: 6.1.0
-      shiki: 0.14.3
+      shiki: 0.14.5
       vite: 4.4.9(sass@1.57.1)
       vue: 3.3.4
     transitivePeerDependencies:
