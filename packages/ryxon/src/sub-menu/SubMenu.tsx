@@ -19,7 +19,12 @@ import {
   type VNodeArrayChildren
 } from 'vue'
 
-import { isString, iconPropType, createNamespace } from '../utils'
+import {
+  isString,
+  iconPropType,
+  createNamespace,
+  makeStringProp
+} from '../utils'
 import { useTimeoutFn } from '@vueuse/core'
 import useMenu from '../menu/use-menu'
 import { useMenuCssVar } from '../menu/use-menu-css-var'
@@ -30,6 +35,7 @@ import { Icon } from '../icon'
 import { ArrowDown, ArrowRight } from '@ryxon/icons'
 
 import type { MenuProvider, SubMenuProvider } from '../menu/types'
+import type { Placement } from '@popperjs/core'
 
 const [, nsMenu] = createNamespace('menu')
 const [, nsSubMenu, , isBem] = createNamespace('sub-menu')
@@ -45,7 +51,8 @@ export const subMenuProps = {
   expandCloseIcon: { type: iconPropType },
   expandOpenIcon: { type: iconPropType },
   collapseCloseIcon: { type: iconPropType },
-  collapseOpenIcon: { type: iconPropType }
+  collapseOpenIcon: { type: iconPropType },
+  placement: makeStringProp<Placement>('')
 }
 
 export type SubMenuProps = ExtractPropTypes<typeof subMenuProps>
@@ -78,8 +85,8 @@ export default defineComponent({
 
     const currentPlacement = computed(() =>
       mode.value === 'horizontal' && isFirstLevel.value
-        ? 'bottom-start'
-        : 'right-start'
+        ? props.placement || 'bottom-start'
+        : props.placement || 'right-start'
     )
     const subMenuTitleIcon = computed(() =>
       (mode.value === 'horizontal' && isFirstLevel.value) ||
