@@ -18,13 +18,13 @@ import { onClickOutside } from '@vueuse/core'
 import {
   tooltipEmits,
   useTooltipModelToggle,
-  useTooltipModelToggleProps,
-  whenTrigger
+  useTooltipModelToggleProps
 } from './tooltip-utils'
 import {
   useDelayedToggleProps,
   useDelayedToggle
 } from '../composables/use-delayed-toggle'
+import { useId } from '../composables/use-id'
 
 // Utils
 import {
@@ -39,9 +39,9 @@ import {
   type ComponentInstance
 } from '../utils'
 import { popupSharedProps } from '../popup/shared'
+import { POPPER_INJECTION_KEY } from '../popup/types'
 
 // Composables
-import { useClickAway } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 import {
   buildPopperOptions,
@@ -52,10 +52,12 @@ import {
 
 // Components
 import { Popup } from '../popup'
+import RTooltipTrigger from './trigger'
 
 // Types
 import { TooltipTheme, TooltipTrigger, TooltipPlacement } from './types'
 import type { TooltipProvide } from './types'
+import type { Measurable, RoleTypes } from '../popup/types'
 import type {
   Instance,
   Options,
@@ -91,6 +93,10 @@ export const tooltipProps = extend(
      * 因为模型切换属性是动态生成的,因此typescript无法将类型评估为类型：
      */
     visible: { type: definePropType<boolean | null>(Boolean), default: null }, // Tooltip 组件可见性
+    virtualRef: {
+      type: definePropType<Measurable>(Object)
+    },
+    virtualTriggering: Boolean,
     content: { type: String, default: '' }, // 显示的内容
     rawContent: { type: Boolean, default: false }, // content 中的内容是否作为 HTML 字符串处理
     disabled: { type: Boolean }, // Tooltip 组件是否禁用
@@ -126,7 +132,8 @@ export const tooltipProps = extend(
       type: definePropType<Placement[]>(Array),
       default: undefined
     },
-    gpuAcceleration: { type: Boolean, default: false }
+    gpuAcceleration: { type: Boolean, default: false },
+    role: makeStringProp<RoleTypes>('tooltip')
   }
 )
 
@@ -139,7 +146,6 @@ export default defineComponent({
   setup(props, { emit, slots, attrs }) {
     let popper: Instance | null
 
-    const wrapperRef = ref<HTMLElement>()
     const contentRef = ref<ComponentInstance>()
 
     const open = ref(false)
@@ -195,6 +201,7 @@ export default defineComponent({
     })
 
     // 更新Popper实例
+    const triggerRef = ref<HTMLElement>()
     const updatePopper = () => {
       nextTick(() => {
         if (!open.value) {
@@ -204,7 +211,7 @@ export default defineComponent({
         if (!popper) {
           // 创建Popper实例
           popper = createPopperInstance(
-            wrapperRef,
+            triggerRef,
             contentRef.value?.popupRef,
             options.value
           )
@@ -214,67 +221,7 @@ export default defineComponent({
       })
     }
 
-    // 受控或禁用时停止
-    const stopWhenControlledOrDisabled = () => {
-      if (unref(controlled) || props.disabled) {
-        return true
-      }
-    }
-
     const trigger = toRef(props, 'trigger')
-
-    // 点击事件
-    const onClickWrapper = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'click', (e) => {
-        if ((e as MouseEvent).button === 0) {
-          onToggle(e)
-        }
-      })
-    )
-
-    // 鼠标移入
-    const onMouseenter = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'hover', onOpen)
-    )
-
-    // 鼠标移出
-    const onMouseleave = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'hover', onClose)
-    )
-
-    // 获得焦点
-    const onFocus = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'focus', onOpen)
-    )
-
-    // 失去焦点
-    const onBlur = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'focus', onClose)
-    )
-
-    const onContextMenu = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'contextmenu', (e: Event) => {
-        e.preventDefault()
-        onToggle(e)
-      })
-    )
-
-    const onKeydown = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      (e: KeyboardEvent) => {
-        const { code } = e
-        if (props.triggerKeys.includes(code)) {
-          e.preventDefault()
-          onToggle(e)
-        }
-      }
-    )
 
     const stopWhenControlled = () => {
       if (unref(controlled)) return true
@@ -307,7 +254,7 @@ export default defineComponent({
     const onAfterShow = () => {
       emit('show', toggleReason.value)
       stopHandle = onClickOutside(
-        computed(() => contentRef.value?.popupRef),
+        computed(() => contentRef.value?.popupRef.value),
         () => {
           if (unref(controlled)) return
           const $trigger = unref(trigger)
@@ -339,20 +286,23 @@ export default defineComponent({
       }
     )
 
-    const onClickAway = () => {
-      const flag = stopWhenControlledOrDisabled()
-      if (
-        open.value &&
-        props.closeOnClickOutside &&
-        (!props.overlay || props.closeOnClickOverlay) &&
-        !flag
-      ) {
-        open.value = false
-      }
-    }
+    const popperInstanceRef = ref<Instance>()
+    const referenceRef = ref<HTMLElement>()
+    const role = computed(() => props.role)
+
+    provide(POPPER_INJECTION_KEY, {
+      triggerRef,
+      popperInstanceRef,
+      contentRef: contentRef.value?.popupRef,
+      referenceRef,
+      role
+    })
+
+    const id = useId()
 
     provide(TOOLTIP_INJECTION_KEY, {
       controlled,
+      id: computed(() => id),
       open: readonly(open),
       trigger: toRef(props, 'trigger'),
       onOpen: (event?: Event) => {
@@ -398,12 +348,16 @@ export default defineComponent({
 
     // 属性值发生变化时，更新实例
     watch(
-      () => [open.value, props.offset, props.content, props.placement],
-      updatePopper
+      () => [
+        open.value,
+        props.offset,
+        props.content,
+        props.placement,
+        triggerRef.value
+      ],
+      updatePopper,
+      { deep: true }
     )
-
-    // 监听点击元素外部的事件。
-    useClickAway([wrapperRef], onClickAway, { eventName: 'click' })
 
     const persistentRef = computed(() => {
       // For testing, we would always want the content to be rendered
@@ -420,19 +374,15 @@ export default defineComponent({
 
     return () => (
       <>
-        <span
-          ref={wrapperRef}
-          class={bem('wrapper')}
-          onClick={onClickWrapper}
-          onMouseenter={onMouseenter}
-          onMouseleave={onMouseleave}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onContextmenu={onContextMenu}
-          onKeydown={onKeydown}
+        <RTooltipTrigger
+          disabled={props.disabled}
+          trigger={props.trigger}
+          trigger-keys={props.triggerKeys}
+          virtual-ref={props.virtualRef}
+          virtual-triggering={props.virtualTriggering}
         >
           {slots.default?.()}
-        </span>
+        </RTooltipTrigger>
         <Popup
           ref={contentRef}
           show={shouldShow.value}

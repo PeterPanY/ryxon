@@ -1,4 +1,10 @@
-import type { Ref, ComponentPublicInstance } from 'vue'
+import type {
+  Ref,
+  InjectionKey,
+  ComputedRef,
+  ComponentPublicInstance
+} from 'vue'
+import type { Instance } from '@popperjs/core'
 import type { PopupProps } from './Popup'
 
 export type PopupPosition = 'top' | 'left' | 'bottom' | 'right' | 'center' | ''
@@ -24,3 +30,28 @@ export type PopupThemeVars = {
   popupCloseIconMargin?: string
   popupCloseIconZIndex?: number | string
 }
+
+export type Measurable = {
+  getBoundingClientRect: () => DOMRect
+}
+
+export type PopperInjectionContext = {
+  triggerRef: Ref<Measurable | undefined>
+  contentRef: Ref<HTMLElement | undefined>
+  popperInstanceRef: Ref<Instance | undefined>
+  referenceRef: Ref<Measurable | undefined>
+  role: ComputedRef<string>
+}
+
+export const POPPER_INJECTION_KEY: InjectionKey<PopperInjectionContext> =
+  Symbol('popper')
+
+export type RoleTypes =
+  | 'dialog'
+  | 'grid'
+  | 'group'
+  | 'listbox'
+  | 'menu'
+  | 'navigation'
+  | 'tooltip'
+  | 'tree'

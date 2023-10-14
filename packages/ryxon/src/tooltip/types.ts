@@ -19,7 +19,7 @@ export type TooltipPlacement =
 
 export type TooltipProvide = {
   controlled: Ref<boolean>
-  // id: Ref<string>
+  id: Ref<string>
   open: Ref<boolean>
   trigger: Ref<unknown>
   onOpen: (e?: Event) => void

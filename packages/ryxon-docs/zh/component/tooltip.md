@@ -83,6 +83,20 @@ tooltip/html-content
 
 :::
 
+## 虚拟触发
+
+:::demo tooltip 的触发元素放在别的地方，而不需要写在一起，这时候就可以使用虚拟触发。
+
+tooltip/virtual
+
+:::
+
+:::tip
+
+需要注意的是，虚拟触发的 tooltip 是受控组件，因此你必须自己去控制 tooltip 是否显示，你将无法通过点击空白处来关闭 tooltip。
+
+:::
+
 ## 受控模式
 
 :::demo Tooltip 可以通过父组件使用 `:visible` 来控制它的显示与关闭。
@@ -103,12 +117,14 @@ tooltip/controlled
 | disabled | Tooltip 组件是否禁用 | `boolean` | `false` |
 | theme | 主题风格，可选值为 `light` | `TooltipTheme` | `dark` |
 | trigger | 触发方式，可选值为 `click、focus、contextmenu ` | `TooltipTrigger` | `hover` |
+| virtual-triggering | 用来标识虚拟触发是否被启用 | `boolean` | `-` |
+| virtual-ref | 标识虚拟触发时的触发元素 | `HTMLElement` | `-` |
 | trigger-keys | 当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示 | `Array` | `['Enter','Space']` |
 | show-arrow | 是否展示小箭头 | `boolean` | `true` |
 | placement | 弹出位置 | ^[TooltipPlacement]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | `bottom` |
 | offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
 | transition | 动画名称 | `string ` | `r-tooltip-zoom` |
-| enterable | 鼠标是否可进入到 tooltip 中 | `Boolean` | `true` |
+| enterable | 鼠标是否可进入到 tooltip 中(设置为 false 时只有触发方式为 hover 下才有作用) | `Boolean` | `true` |
 | show-after | 在触发后多久显示内容，单位毫秒 | `number ` | `0` |
 | hide-after | 延迟关闭，单位毫秒 | `number` | `200` |
 | auto-close | tooltip 出现后自动隐藏延时，单位毫秒 | `number` | `0` |
@@ -133,6 +149,16 @@ tooltip/controlled
 | ------- | ------------------------- | ---- |
 | default | Tooltip 触发 & 引用的元素 | -    |
 | content | 自定义内容                | -    |
+
+### Events
+
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| isFocusInsideContent | 验证当前焦点事件是否在 r-tooltip-content 中触发 | ^[Function]`() => boolean \| undefined` |
+| updatePopper | 更新 r-popper 组件实例 | ^[Function]`() => void` |
+| onOpen | onOpen 方法控制 r-tooltip 显示状态 | ^[Function]`(event?: Event \| undefined) => void` |
+| onClose | onClose 方法控制 r-tooltip 显示状态 | ^[Function]`(event?: Event \| undefined) => void` |
+| hide | 提供 hide 方法 | ^[Function]`(event?: Event \| undefined) => void` |
 
 ### 类型定义
 

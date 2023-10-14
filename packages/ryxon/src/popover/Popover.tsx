@@ -175,7 +175,7 @@ export default defineComponent({
           {slots.default ? slots.default() : props.actions.map(renderAction)}
         </div>
       ),
-      default: () => <>{slots.reference?.()}</>
+      default: () => slots.reference?.()
     }
 
     const kls = computed(() => {
