@@ -56,7 +56,7 @@ export const dialogProps = extend({}, popupSharedProps, {
   theme: String as PropType<DialogTheme>,
   width: numericProp,
   position: makeStringProp<DialogPositon>('center'),
-  message: [String, Function] as PropType<DialogMessage>,
+  message: [String, Object, Function] as PropType<DialogMessage>,
   type: makeStringProp<DialogType>(''),
   icon: iconPropType,
   callback: Function as PropType<(action?: DialogAction) => void>,

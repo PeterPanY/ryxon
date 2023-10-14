@@ -1,10 +1,10 @@
-import type { CSSProperties, TeleportProps, Component } from 'vue'
+import type { CSSProperties, TeleportProps, Component, VNode } from 'vue'
 import type { Interceptor, Numeric } from '../utils'
 
 export type DialogTheme = 'default' | 'space-button'
 export type DialogPositon = 'center' | 'top'
 export type DialogAction = 'confirm' | 'cancel'
-export type DialogMessage = string | (() => JSX.Element)
+export type DialogMessage = string | VNode | (() => VNode)
 export type DialogMessageAlign = 'left' | 'center' | 'right' | 'justify'
 export type DialogType = '' | 'success' | 'warning' | 'info' | 'danger'
 

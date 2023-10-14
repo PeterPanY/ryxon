@@ -107,7 +107,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | theme | 样式风格，可选值为 `space-button` | `string` | `default` |
 | width | 弹窗宽度，默认单位为 `px` | `number \| string` | `320px` |
 | position | 弹窗位置，可以`top`，使用`top`,`--r-dialog-margin-top`将失效 | `string` | `center` |
-| message | 文本内容，支持通过 `\n` 换行 | `string \| () => JSX.ELement` | - |
+| message | 文本内容，支持通过 `\n` 换行 | `string \| VNode \| () => VNode` | - |
 | type | 弹窗类型，用于图标显示，可选`success / info / warning / danger` | `string` | - |
 | icon | 自定义图标组件，会覆盖 type 的类型 | `string / Component` | - |
 | allowHtml | 是否允许 message 内容中渲染 HTML | `boolean` | `false` |
