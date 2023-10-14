@@ -31,14 +31,13 @@ dropdown/how-to-trigger
 
 :::
 
-<!--
 ## 菜单隐藏方式
 
 :::demo 下拉菜单默认在点击菜单项后会被隐藏，将 `hide-on-click` 属性设置为 `false` 可以关闭此功能。
 
 dropdown/menu-hiding-behavior
 
-::: -->
+:::
 
 ## 下拉方法
 
@@ -69,12 +68,14 @@ dropdown/sizes
 | split-button | 下拉触发元素呈现为按钮组 | `boolean` | — | `false` |
 | disabled | 是否禁用 | `boolean` | — | `false` |
 | placement | 菜单弹出位置 | `string` | ^[enum]`top/top-start/top-end/bottom/bottom-start/bottom-end` | `bottom` |
+| offset | 出现位置的偏移量 | `[number, number]` | `[0, 8]` |
 | trigger | 触发下拉的行为 | string | ^[enum]`hover/click/contextmenu` | `hover` |
 | hide-on-click | 是否在点击菜单项后隐藏菜单 | `boolean` | — | `true` |
 | show-timeout | 展开下拉菜单的延时，仅在 trigger 为 hover 时有效 | `number` | — | `250` |
 | hide-timeout | 收起下拉菜单的延时（仅在 trigger 为 hover 时有效 | `number` | — | `150` |
 | role | 下拉菜单的 ARIA 属性。 根据具体场景 | — | `menu` |
 | tabindex | Dropdown 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number` | — | `0` |
+| popper-options | [popper.js](https://popper.js.org/docs/v2/)参数 | ^[object]请参考[popper.js](https://popper.js.org/docs/v2/) | {} |
 | popper-class | 自定义浮层类名 | `string` | — | — |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的[to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | — | `body` |
 | lazyRender | 是否在显示弹层时才渲染节点 | `boolean` | — | `false` |

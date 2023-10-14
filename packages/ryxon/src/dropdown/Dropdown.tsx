@@ -3,8 +3,10 @@ import {
   ref,
   unref,
   toRef,
+  watch,
   provide,
   computed,
+  onBeforeUnmount,
   defineComponent,
   getCurrentInstance,
   type PropType,
@@ -13,12 +15,13 @@ import {
   type ExtractPropTypes
 } from 'vue'
 import {
+  pick,
   addUnit,
   truthProp,
+  ensureArray,
   definePropType,
   makeStringProp,
-  createNamespace,
-  composeEventHandlers
+  createNamespace
 } from '../utils'
 import { useId } from '../composables/use-id'
 import { EVENT_CODE } from '../constants/aria'
@@ -27,9 +30,9 @@ import {
   DROPDOWN_INJECTION_KEY,
   RCollection as RDropdownCollection
 } from './types'
-import { whenTrigger } from '../tooltip/tooltip-utils'
 
 import { Tooltip } from '../tooltip'
+import { OnlyChild } from '../popup/only-child'
 import { Scrollbar } from '../scrollbar'
 import { ButtonGroup } from '../button-group'
 import { Button } from '../button'
@@ -39,8 +42,12 @@ import RRovingFocusGroup from '../roving-focus-group'
 
 import type { TooltipTheme, TooltipTrigger, TooltipPlacement } from '../tooltip'
 import type { ButtonType, ButtonProps } from '../button'
+import type { RoleTypes } from '../popup/types'
+import type { Options } from '@popperjs/core'
 
 const [name, bem, t, isBem] = createNamespace('dropdown')
+
+const tooltipProps = [] as const
 
 export const dropdownProps = {
   trigger: makeStringProp<TooltipTrigger>('hover'),
@@ -50,10 +57,6 @@ export const dropdownProps = {
     type: definePropType<TooltipPlacement>(String),
     default: 'bottom'
   },
-  // popperOptions: {
-  //   type: definePropType<Partial<Options>>(Object),
-  //   default: () => ({})
-  // },
   id: String,
   size: { type: String, default: '' },
   splitButton: Boolean,
@@ -70,9 +73,17 @@ export const dropdownProps = {
     default: ''
   },
   showArrow: truthProp,
+  popperOptions: {
+    type: definePropType<Partial<Options>>(Object),
+    default: () => ({})
+  },
   popperClass: { type: String, default: '' },
+  offset: {
+    type: Array as unknown as PropType<[number, number]>,
+    default: null
+  },
   disabled: { type: Boolean, default: false },
-  role: { type: String, default: 'menu' },
+  role: makeStringProp<RoleTypes>('menu'),
   buttonProps: { type: definePropType<ButtonProps>(Object) },
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
@@ -178,80 +189,58 @@ export default defineComponent({
       hideOnClick: toRef(props, 'hideOnClick')
     })
 
-    useExpose({ handleOpen, handleClose })
+    const onFocusAfterTrapped = (e: Event) => {
+      e.preventDefault()
+      contentRef.value?.focus?.({ preventScroll: true })
+    }
+
+    useExpose({ handleOpen, handleClose, onFocusAfterTrapped })
 
     const handlerMainButtonClick = (event: MouseEvent) => {
       emit('click', event)
     }
 
-    // 受控或禁用时停止
-    const stopWhenControlledOrDisabled = () => {
-      if (props.disabled) {
-        return true
-      }
+    const triggerEnsure = computed(() => ensureArray(props.trigger))
+    function onAutofocusTriggerEnter() {
+      triggeringElementRef.value?.$el?.focus()
     }
 
-    const trigger = toRef(props, 'trigger')
-
-    const onClickWrapper = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'click', (e) => {
-        if ((e as MouseEvent).button === 0) {
-          popperRef.value.onToggle(e)
+    watch(
+      [triggeringElementRef, triggerEnsure],
+      ([triggeringElement, trigger], [prevTriggeringElement]) => {
+        if (prevTriggeringElement?.$el?.removeEventListener) {
+          prevTriggeringElement.$el.removeEventListener(
+            'pointerenter',
+            onAutofocusTriggerEnter
+          )
         }
-      })
-    )
-
-    // 鼠标移入
-    const onMouseenter = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'hover', () => {
-        popperRef.value.onOpen()
-      })
-    )
-
-    // 鼠标移出
-    const onMouseleave = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'hover', () => {
-        popperRef.value.onClose()
-      })
-    )
-
-    // 获得焦点
-    const onFocus = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'focus', () => {
-        popperRef.value.onOpen()
-      })
-    )
-
-    // 失去焦点
-    const onBlur = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'focus', () => {
-        popperRef.value.onClose()
-      })
-    )
-
-    const onContextMenu = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      whenTrigger(trigger, 'contextmenu', (e: Event) => {
-        e.preventDefault()
-        popperRef.value.onToggle(e)
-      })
-    )
-
-    const onKeydown = composeEventHandlers(
-      stopWhenControlledOrDisabled,
-      (e: KeyboardEvent) => {
-        const { code } = e
-        if (props.triggerKeys.includes(code)) {
-          e.preventDefault()
-          onToggle(e)
+        if (triggeringElement?.$el?.removeEventListener) {
+          triggeringElement.$el.removeEventListener(
+            'pointerenter',
+            onAutofocusTriggerEnter
+          )
         }
+        if (
+          triggeringElement?.$el?.addEventListener &&
+          trigger.includes('hover')
+        ) {
+          triggeringElement.$el.addEventListener(
+            'pointerenter',
+            onAutofocusTriggerEnter
+          )
+        }
+      },
+      { immediate: true }
+    )
+
+    onBeforeUnmount(() => {
+      if (triggeringElementRef.value?.$el?.removeEventListener) {
+        triggeringElementRef.value.$el.removeEventListener(
+          'pointerenter',
+          onAutofocusTriggerEnter
+        )
       }
-    )
+    })
 
     const rendercontentontent = {
       content: () => (
@@ -272,7 +261,17 @@ export default defineComponent({
           </RRovingFocusGroup>
         </Scrollbar>
       ),
-      default: () => <>{!props.splitButton && slots.default?.()}</>
+      default: () =>
+        !props.splitButton && (
+          <OnlyChild
+            ref={triggeringElementRef}
+            id={triggerId.value}
+            role="button"
+            tabindex={props.tabindex}
+          >
+            {slots.default?.()}
+          </OnlyChild>
+        )
     }
     return () => (
       <div class={[bem(), isBem('disabled', props.disabled)]}>
@@ -300,13 +299,6 @@ export default defineComponent({
               disabled={props.disabled}
               tabindex={props.tabindex}
               aria-label={t('toggleDropdown')}
-              onClick={onClickWrapper}
-              onMouseenter={onMouseenter}
-              onMouseleave={onMouseleave}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              onContextmenu={onContextMenu}
-              onKeydown={onKeydown}
             >
               <Icon class={bem('icon')}>
                 <ArrowDown></ArrowDown>
@@ -317,9 +309,10 @@ export default defineComponent({
         <Tooltip
           ref={popperRef}
           role={props.role}
-          offset={props.splitButton ? [-16, 8] : [0, 8]}
+          offset={props.offset || (props.splitButton ? [-16, 8] : [0, 8])}
           theme={props.theme}
           fallback-placements={['bottom', 'top']}
+          popper-options={props.popperOptions}
           gpu-acceleration={false}
           hide-after={props.trigger === 'hover' ? props.hideTimeout : 0}
           manual-mode={true}
@@ -331,12 +324,15 @@ export default defineComponent({
           trigger-target-el={contentRef}
           show-after={props.trigger === 'hover' ? props.showTimeout : 0}
           stop-popper-mouse-event={false}
+          virtual-triggering={props.splitButton}
+          virtual-ref={triggeringElementRef}
           disabled={props.disabled}
           show-arrow={props.showArrow}
           transition="r-zoom-in-top"
           teleport={props.teleport}
           lazyRender={props.lazyRender}
           persistent={true}
+          {...pick(props, tooltipProps)}
           onBeforeShow={handleBeforeShowTooltip}
           onShow={handleShowTooltip}
           onBeforeHide={handleBeforeHideTooltip}
