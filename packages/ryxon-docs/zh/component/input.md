@@ -228,7 +228,7 @@ inputRef.value?.focus()
 | --r-input-icon-size               | `16px`                         | -    |
 | --r-input-clear-icon-size         | `16px`                         | -    |
 | --r-input-clear-icon-color        | `var(--r-gray-5)`              | -    |
-| --r-input-right-icon-color        | `var(--r-gray-6)`              | -    |
+| --r-input-right-icon-color        | `var(--r-info-color)`          | -    |
 | --r-input-error-message-color     | `var(--r-danger-color)`        | -    |
 | --r-input-error-message-font-size | `12px`                         | -    |
 | --r-input-text-area-min-height    | `60px`                         | -    |
@@ -236,7 +236,7 @@ inputRef.value?.focus()
 | --r-input-word-limit-font-size    | `var(--r-font-size-sm)`        | -    |
 | --r-input-word-limit-line-height  | `16px`                         | -    |
 | --r-input-disabled-text-color     | `var(--r-text-color-3)`        | -    |
-| --r-input-required-mark-color     | `var(--r-red)`                 | -    |
+| --r-input-required-mark-color     | `var(--r-danger-color)`        | -    |
 | --r-input-hover-border-color      | `var(--r-text-color-disabled)` | -    |
 | --r-input-focus-border-color      | `var(--r-primary-color)`       | -    |
 

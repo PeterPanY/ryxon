@@ -83,8 +83,8 @@ import type { TextEllipsisProps, TextEllipsisThemeVars } from 'ryxon'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/config-provider)。
 
-| 名称                           | 默认值          | 描述           |
-| ------------------------------ | --------------- | -------------- |
-| --r-text-ellipsis-font-size    | `14px`          | 文本的字体大小 |
-| --r-text-ellipsis-line-height  | `1.6`           | 文本的行高     |
-| --r-text-ellipsis-action-color | `var(--r-blue)` | 操作按钮的颜色 |
+| 名称                           | 默认值                   | 描述           |
+| ------------------------------ | ------------------------ | -------------- |
+| --r-text-ellipsis-font-size    | `14px`                   | 文本的字体大小 |
+| --r-text-ellipsis-line-height  | `1.6`                    | 文本的行高     |
+| --r-text-ellipsis-action-color | `var(--r-primary-color)` | 操作按钮的颜色 |

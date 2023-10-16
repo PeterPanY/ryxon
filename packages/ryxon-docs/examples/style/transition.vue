@@ -34,7 +34,7 @@ const animate = (newName: string) => {
   width: 100px;
   height: 100px;
   margin: -50px 0 0 -50px;
-  background-color: var(--r-blue);
+  background-color: var(--r-primary-color);
   border-radius: 8px;
 }
 </style>

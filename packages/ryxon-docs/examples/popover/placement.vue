@@ -46,7 +46,7 @@ const onPlacementChange = (value: PopoverPlacement) => {
   &-refer {
     width: 60px;
     height: 60px;
-    background-color: var(--r-blue);
+    background-color: var(--r-primary-color);
     border-radius: 8px;
   }
 

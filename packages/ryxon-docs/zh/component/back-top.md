@@ -79,12 +79,12 @@ import type { BackTopProps, BackTopThemeVars } from 'ryxon'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/zh/component/config-provider.html)。
 
-| 名称                    | 默认值          | 描述 |
-| ----------------------- | --------------- | ---- |
-| --r-back-top-size       | `40px`          | -    |
-| --r-back-top-icon-size  | `20px`          | -    |
-| --r-back-top-right      | `30px`          | -    |
-| --r-back-top-bottom     | `40px`          | -    |
-| --r-back-top-z-index    | `100`           | -    |
-| --r-back-top-text-color | `#fff`          | -    |
-| --r-back-top-background | `var(--r-blue)` | -    |
+| 名称                    | 默认值                   | 描述 |
+| ----------------------- | ------------------------ | ---- |
+| --r-back-top-size       | `40px`                   | -    |
+| --r-back-top-icon-size  | `20px`                   | -    |
+| --r-back-top-right      | `30px`                   | -    |
+| --r-back-top-bottom     | `40px`                   | -    |
+| --r-back-top-z-index    | `100`                    | -    |
+| --r-back-top-text-color | `#fff`                   | -    |
+| --r-back-top-background | `var(--r-primary-color)` | -    |

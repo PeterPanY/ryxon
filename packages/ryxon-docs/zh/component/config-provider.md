@@ -39,7 +39,7 @@ Ryxon 组件通过丰富的 [CSS 变量](https://developer.mozilla.org/zh-CN/doc
 ```css
 :root {
   --r-white: #fff;
-  --r-blue: #1989fa;
+  --r-primary-color: #1989fa;
   --r-button-primary-color: var(--r-white);
   --r-button-primary-background: var(--r-primary-color);
 }
@@ -135,19 +135,17 @@ Ryxon 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 --r-gray-7: #646566;
 --r-gray-8: #323233;
 --r-red: #ee0a24;
---r-blue: #1989fa;
 --r-orange: #ff976a;
 --r-orange-dark: #ed6a0c;
 --r-orange-light: #fffbe8;
---r-green: #07c160;
 
 // Gradient Colors
 --r-gradient-red: linear-gradient(to right, #ff6034, #ee0a24);
 --r-gradient-orange: linear-gradient(to right, #ffd01e, #ff8917);
 
 // Component Colors
---r-primary-color: var(--r-blue);
---r-success-color: var(--r-green);
+--r-primary-color: #1989fa;
+--r-success-color: #07c160;
 --r-danger-color: var(--r-red);
 --r-warning-color: var(--r-orange);
 --r-text-color: var(--r-gray-8);

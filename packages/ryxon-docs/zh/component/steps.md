@@ -106,6 +106,6 @@ import type { StepsProps, StepsDirection } from 'ryxon'
 | --r-step-finish-text-color | `var(--r-success-color)` | - |
 | --r-step-icon-size | `12px` | - |
 | --r-step-circle-size | `5px` | - |
-| --r-step-circle-color | `var(--r-gray-6)` | - |
+| --r-step-circle-color | `var(--r-info-color)` | - |
 | --r-step-horizontal-title-font-size | `var(--r-font-size-sm)` | - |
 | --r-steps-background | `var(--r-background-2)` | 步骤条背景颜色 |
