@@ -147,7 +147,7 @@ export default defineComponent({
 
       const inputs = getInputsByNames(name)
       inputs.forEach((item) => {
-        item.resetValidation()
+        item.resetValidation && item.resetValidation()
       })
     }
 
