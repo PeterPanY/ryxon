@@ -152,15 +152,14 @@
 .r-menu__collapse {
   width: calc(var(--r-menu-icon-width) + var(--r-menu-base-level-padding) * 2);
 
-  & > .r-menu-item [class^='r-icon'],
+  & > .r-menu-item [class*='r-icon'],
   &
     > .r-menu-item-group
     > ul
     > .r-sub-menu
-    > .r-tooltip__wrapper
     > .r-sub-menu__title
-    [class^='r-icon'],
-  & > .r-sub-menu > .r-tooltip__wrapper > .r-sub-menu__title .r-icon {
+    [class*='r-icon'],
+  & > .r-sub-menu > .r-sub-menu__title .r-icon {
     margin: 0;
     vertical-align: middle;
     width: var(--r-menu-icon-width);
@@ -172,26 +171,15 @@
     > .r-menu-item-group
     > ul
     > .r-sub-menu
-    > .r-tooltip__wrapper
     > .r-sub-menu__title
     .r-sub-menu__icon-arrow,
-  &
-    > .r-sub-menu
-    > .r-tooltip__wrapper
-    > .r-sub-menu__title
-    .r-sub-menu__icon-arrow {
+  & > .r-sub-menu > .r-sub-menu__title .r-sub-menu__icon-arrow {
     display: none;
   }
 
-  &
-    > .r-menu-item-group
-    > ul
-    > .r-sub-menu
-    > .r-tooltip__wrapper
-    > .r-sub-menu__title
-    > span,
+  & > .r-menu-item-group > ul > .r-sub-menu > .r-sub-menu__title > span,
   & > .r-menu-item > .r-tooltip__wrapper > span,
-  & > .r-sub-menu > .r-tooltip__wrapper > .r-sub-menu__title > span {
+  & > .r-sub-menu > .r-sub-menu__title > span {
     height: 0;
     width: 0;
     overflow: hidden;
@@ -255,7 +243,7 @@
     }
   }
 
-  [class^='r-icon'] {
+  [class*='r-icon'] {
     margin-right: 5px;
     width: var(--r-menu-icon-width);
     text-align: center;
