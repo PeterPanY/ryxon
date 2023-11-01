@@ -171,17 +171,20 @@ export default defineComponent({
       }
     }
 
+    // 滚动到位置
+    const moveTo = (index: number) => {
+      state.leftLength = -(state.blockWidth + state.blockMargin) * index
+    }
+
     const leftClick = () => {
       if (state.leftLength >= state.disableWidth) {
         return
       }
 
-      state.leftLength =
-        state.leftLength +
-        (state.blockWidth + state.blockMargin) * props.wheelBlocks
-
       state.startIndex -= props.wheelBlocks
       state.endIndex -= props.wheelBlocks
+
+      moveTo(state.startIndex)
 
       state.currentIndex -= props.wheelBlocks
       emit('progress', state.currentIndex)
@@ -201,12 +204,10 @@ export default defineComponent({
         return
       }
 
-      state.leftLength =
-        state.leftLength -
-        (state.blockWidth + state.blockMargin) * props.wheelBlocks
-
       state.startIndex += props.wheelBlocks
       state.endIndex += props.wheelBlocks
+
+      moveTo(state.startIndex)
 
       state.currentIndex += props.wheelBlocks
       emit('progress', state.currentIndex)
@@ -269,7 +270,7 @@ export default defineComponent({
       transform: `translate3d(${state.leftLength}px, 0px, 0px)`
     }))
 
-    useExpose({ resize })
+    useExpose({ resize, moveTo })
 
     return () => (
       <div ref={wrapper} class={bem()} onMousewheel={mouseEvent}>
