@@ -174,6 +174,22 @@ export default defineComponent({
     // 滚动到位置
     const moveTo = (index: number) => {
       state.leftLength = -(state.blockWidth + state.blockMargin) * index
+
+      const type = state.startIndex < index ? 'right' : 'left' // 判断是左边的点击还是右边的点击事件
+
+      state.startIndex = index
+      state.endIndex = index + props.wheelBlocks
+
+      state.currentIndex = index + Math.ceil(props.wheelBlocks)
+      emit('progress', state.currentIndex)
+      emit('arrow-click', type, [state.startIndex, state.endIndex])
+
+      if (type === 'right') {
+        initShowNum += props.wheelBlocks // 显示的总数
+        showActions(initShowNum)
+      }
+
+      changeState()
     }
 
     const leftClick = () => {
@@ -181,17 +197,7 @@ export default defineComponent({
         return
       }
 
-      state.startIndex -= props.wheelBlocks
-      state.endIndex -= props.wheelBlocks
-
-      moveTo(state.startIndex)
-
-      state.currentIndex -= props.wheelBlocks
-      emit('progress', state.currentIndex)
-
-      emit('arrow-click', 'left', [state.startIndex, state.endIndex])
-
-      changeState()
+      moveTo(state.startIndex - props.wheelBlocks)
     }
     const rightClick = () => {
       if (
@@ -204,20 +210,7 @@ export default defineComponent({
         return
       }
 
-      state.startIndex += props.wheelBlocks
-      state.endIndex += props.wheelBlocks
-
-      moveTo(state.startIndex)
-
-      state.currentIndex += props.wheelBlocks
-      emit('progress', state.currentIndex)
-
-      initShowNum += props.wheelBlocks // 显示的总数
-      showActions(initShowNum)
-
-      emit('arrow-click', 'right', [state.startIndex, state.endIndex])
-
-      changeState()
+      moveTo(state.startIndex + props.wheelBlocks)
     }
 
     const mouseEvent = (e: {
