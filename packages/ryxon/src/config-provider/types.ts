@@ -8,6 +8,7 @@ export type ConfigProviderThemeVars =
     import('../button').ButtonThemeVars &
     import('../calendar').CalendarVars &
     import('../card').CardThemeVars &
+    import('../carousel').CarouselThemeVars &
     import('../cell').CellThemeVars &
     import('../cell-group').CellGroupThemeVars &
     import('../checkbox').CheckboxThemeVars &

@@ -41,6 +41,7 @@
         { "link": "/badge", "text": "Badge 徽章" },
         { "link": "/calendar", "text": "Calendar 日历" },
         { "link": "/card", "text": "Card 卡片" },
+        { "link": "/carousel", "text": "Carousel 走马灯" },
         { "link": "/collapse", "text": "Collapse 折叠面板" },
         { "link": "/count-down", "text": "CountDown 倒计时" },
         { "link": "/divider", "text": "Divider 分割线" },

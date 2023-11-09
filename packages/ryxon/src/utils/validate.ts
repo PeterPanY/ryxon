@@ -1,6 +1,11 @@
 import { inBrowser, type Numeric } from './basic'
 
 const { hasOwnProperty } = Object.prototype
+
+export const isTouchEvent = (e: MouseEvent | TouchEvent): e is TouchEvent => {
+  return window.TouchEvent && e instanceof window.TouchEvent
+}
+
 // 是不是自己本身所拥有的属性
 export const hasOwn = (val: object, key: string | symbol) =>
   hasOwnProperty.call(val, key)

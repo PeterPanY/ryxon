@@ -145,6 +145,7 @@ import {
   keys_default,
   lastIndexOf_default,
   last_default,
+  lodash_default_default,
   lowerCase_default,
   lowerFirst_default,
   lt_default,
@@ -345,6 +346,7 @@ export {
   curryRight_default as curryRight,
   debounce_default as debounce,
   deburr_default as deburr,
+  lodash_default_default as default,
   defaultTo_default as defaultTo,
   defaults_default as defaults,
   defaultsDeep_default as defaultsDeep,
@@ -630,4 +632,4 @@ export {
   zipObjectDeep_default as zipObjectDeep,
   zipWith_default as zipWith
 }
-//# sourceMappingURL=lodash-unified.js.map
+//# sourceMappingURL=lodash-es.js.map
