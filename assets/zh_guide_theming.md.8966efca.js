@@ -1,0 +1,29 @@
+import{_ as s,o as n,a,Q as l}from"./chunks/framework.26632e4b.js";const u=JSON.parse('{"title":"自定义主题","description":"","frontmatter":{"title":"自定义主题","lang":"zh"},"headers":[],"relativePath":"zh/guide/theming.md","filePath":"zh/guide/theming.md"}'),p={name:"zh/guide/theming.md"},o=l(`<h1 id="自定义主题" tabindex="-1">自定义主题 <a class="header-anchor" href="#自定义主题" aria-label="Permalink to &quot;自定义主题&quot;">​</a></h1><h2 id="_1-主题定制" tabindex="-1">1. 主题定制 <a class="header-anchor" href="#_1-主题定制" aria-label="Permalink to &quot;1. 主题定制&quot;">​</a></h2><p>Ryxon 基于 CSS 变量提供了主题定制的能力，可以对组件样式进行统一修改，详见 <a href="/ryxon/zh/component/config-provider.html">ConfigProvider 全局配置</a> 组件。</p><h2 id="_2-覆盖默认样式" tabindex="-1">2. 覆盖默认样式 <a class="header-anchor" href="#_2-覆盖默认样式" aria-label="Permalink to &quot;2. 覆盖默认样式&quot;">​</a></h2><p>如果主题定制不能满足你的需求，也可以通过<strong>自定义样式类</strong>来覆盖默认样式，参考下面的示例：</p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#E1E4E8;">&lt;</span><span style="color:#85E89D;">template</span><span style="color:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8;">  &lt;</span><span style="color:#85E89D;">r-button</span><span style="color:#E1E4E8;"> </span><span style="color:#B392F0;">class</span><span style="color:#E1E4E8;">=</span><span style="color:#9ECBFF;">&quot;my-button&quot;</span><span style="color:#E1E4E8;">&gt;按钮&lt;/</span><span style="color:#85E89D;">r-button</span><span style="color:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8;">&lt;/</span><span style="color:#85E89D;">template</span><span style="color:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;">&lt;</span><span style="color:#85E89D;">style</span><span style="color:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#6A737D;">/** 覆盖 Button 最外层元素的样式 */</span></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#B392F0;">.my-button</span><span style="color:#E1E4E8;"> {</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#79B8FF;">width</span><span style="color:#E1E4E8;">: </span><span style="color:#79B8FF;">200</span><span style="color:#F97583;">px</span><span style="color:#E1E4E8;">;</span></span>
+<span class="line"><span style="color:#E1E4E8;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#6A737D;">/** 覆盖 Button 内部子元素的样式 */</span></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#B392F0;">.my-button</span><span style="color:#E1E4E8;"> </span><span style="color:#B392F0;">.r-button__text</span><span style="color:#E1E4E8;"> {</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#79B8FF;">color</span><span style="color:#E1E4E8;">: </span><span style="color:#79B8FF;">red</span><span style="color:#E1E4E8;">;</span></span>
+<span class="line"><span style="color:#E1E4E8;">  }</span></span>
+<span class="line"><span style="color:#E1E4E8;">&lt;/</span><span style="color:#85E89D;">style</span><span style="color:#E1E4E8;">&gt;</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292E;">&lt;</span><span style="color:#22863A;">template</span><span style="color:#24292E;">&gt;</span></span>
+<span class="line"><span style="color:#24292E;">  &lt;</span><span style="color:#22863A;">r-button</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">class</span><span style="color:#24292E;">=</span><span style="color:#032F62;">&quot;my-button&quot;</span><span style="color:#24292E;">&gt;按钮&lt;/</span><span style="color:#22863A;">r-button</span><span style="color:#24292E;">&gt;</span></span>
+<span class="line"><span style="color:#24292E;">&lt;/</span><span style="color:#22863A;">template</span><span style="color:#24292E;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;">&lt;</span><span style="color:#22863A;">style</span><span style="color:#24292E;">&gt;</span></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6A737D;">/** 覆盖 Button 最外层元素的样式 */</span></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6F42C1;">.my-button</span><span style="color:#24292E;"> {</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#005CC5;">width</span><span style="color:#24292E;">: </span><span style="color:#005CC5;">200</span><span style="color:#D73A49;">px</span><span style="color:#24292E;">;</span></span>
+<span class="line"><span style="color:#24292E;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6A737D;">/** 覆盖 Button 内部子元素的样式 */</span></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6F42C1;">.my-button</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">.r-button__text</span><span style="color:#24292E;"> {</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#005CC5;">color</span><span style="color:#24292E;">: </span><span style="color:#005CC5;">red</span><span style="color:#24292E;">;</span></span>
+<span class="line"><span style="color:#24292E;">  }</span></span>
+<span class="line"><span style="color:#24292E;">&lt;/</span><span style="color:#22863A;">style</span><span style="color:#24292E;">&gt;</span></span></code></pre></div>`,6),t=[o];function e(c,r,E,y,i,d){return n(),a("div",null,t)}const _=s(p,[["render",e]]);export{u as __pageData,_ as default};
