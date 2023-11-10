@@ -28,7 +28,6 @@ import { routeProps } from '../composables/use-route'
 import { TAB_STATUS_KEY } from '../composables/use-tab-status'
 
 // Components
-import { SwipeItem } from '../swipe-item'
 
 const [name, bem] = createNamespace('tab')
 
@@ -120,7 +119,7 @@ export default defineComponent({
 
       if (animated || swipeable) {
         return (
-          <SwipeItem
+          <div
             id={id}
             role="tabpanel"
             class={bem('panel-wrapper', { inactive: hasInactiveClass.value })}
@@ -128,8 +127,10 @@ export default defineComponent({
             aria-hidden={!active.value}
             aria-labelledby={label}
           >
-            <div class={bem('panel')}>{slots.default?.()}</div>
-          </SwipeItem>
+            <div class={bem('panel')}>
+              {inited.value ? slots.default?.() : null}
+            </div>
+          </div>
         )
       }
 

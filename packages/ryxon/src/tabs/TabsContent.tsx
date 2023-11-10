@@ -1,6 +1,7 @@
 import { ref, watch, onMounted, defineComponent } from 'vue'
 import { numericProp, makeRequiredProp, createNamespace } from '../utils'
-import { Swipe, SwipeInstance } from '../swipe'
+import { Carousel, CarouselInstance } from '../carousel'
+import { flatten } from '../utils/flatten'
 import { useExpose } from '../composables/use-expose'
 
 const [name, bem] = createNamespace('tabs')
@@ -21,28 +22,30 @@ export default defineComponent({
   emits: ['change'],
 
   setup(props, { emit, slots }) {
-    const swipeRef = ref<SwipeInstance>()
+    const swipeRef = ref<CarouselInstance>()
 
     const onChange = (index: number) => emit('change', index)
 
     const renderChildren = () => {
       const Content = slots.default?.()
 
+      const children = (slots.default && flatten(slots.default())) || []
+
       if (props.animated || props.swipeable) {
         return (
-          <Swipe
+          <Carousel
             ref={swipeRef}
             loop={false}
-            arrow="never"
             class={bem('track')}
-            duration={+props.duration * 1000}
-            touchable={props.swipeable}
-            lazyRender={props.lazyRender}
-            indicator-position="none"
+            transitionStyle={{
+              transitionDuration: +props.duration + 's'
+            }}
+            draggable={props.swipeable}
+            showDots={false}
             onChange={onChange}
           >
-            {Content}
-          </Swipe>
+            {children.map((item) => item)}
+          </Carousel>
         )
       }
 
@@ -51,9 +54,7 @@ export default defineComponent({
 
     const swipeToCurrentTab = (index: number) => {
       const swipe = swipeRef.value
-      if (swipe && swipe.state.active !== index) {
-        swipe.swipeTo(index, { immediate: !props.inited })
-      }
+      swipe?.to(index)
     }
 
     watch(() => props.currentIndex, swipeToCurrentTab)

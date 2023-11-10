@@ -215,7 +215,6 @@ export default defineComponent({
         filename,
         action,
         onProgress: (evt) => {
-          console.log(rawFile)
           handleProgress(evt, rawFile)
         },
         onSuccess: (res) => {

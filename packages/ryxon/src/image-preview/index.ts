@@ -10,7 +10,6 @@ export { showImagePreview } from './function-call'
 export type { ImagePreviewProps }
 export type {
   ImagePreviewOptions,
-  ImagePreviewInstance,
   ImagePreviewThemeVars,
   ImagePreviewScaleEventParams
 } from './types'

@@ -1,13 +1,6 @@
-import type {
-  Component,
-  CSSProperties,
-  TeleportProps,
-  ComponentPublicInstance
-} from 'vue'
+import type { Component, CSSProperties, TeleportProps } from 'vue'
 import type { Interceptor } from '../utils'
-import type { SwipeToOptions } from '../swipe'
 import type { PopupCloseIconPosition } from '../popup'
-import type { ImagePreviewProps } from './ImagePreview'
 
 export type ImagePreviewOptions = {
   loop?: boolean
@@ -52,15 +45,6 @@ export type ImageViewerMode = {
   name: string
   icon: Component
 }
-
-export type ImagePreviewExpose = {
-  swipeTo: (index: number, options?: SwipeToOptions) => void
-}
-
-export type ImagePreviewInstance = ComponentPublicInstance<
-  ImagePreviewProps,
-  ImagePreviewExpose
->
 
 export type ImagePreviewThemeVars = {
   imagePreviewIndexTextColor?: string

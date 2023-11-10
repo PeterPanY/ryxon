@@ -53,8 +53,6 @@ const notify: NotifyFn & Partial<Notify> & { _context: AppContext | null } =
         render(null, container)
       },
       'onUpdate:show': (val: boolean) => {
-        console.log(val)
-
         // eslint-disable-next-line no-use-before-define
         vm.component!.props.show = val
       }

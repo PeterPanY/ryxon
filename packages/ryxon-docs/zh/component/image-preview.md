@@ -157,20 +157,8 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 import type {
   ImagePreviewProps,
   ImagePreviewOptions,
-  ImagePreviewInstance,
   ImagePreviewScaleEventParams
 } from 'ryxon'
-```
-
-`ImagePreviewInstance` 是组件实例的类型，用法如下：
-
-```ts
-import { ref } from 'vue'
-import type { ImagePreviewInstance } from 'ryxon'
-
-const imagePreviewRef = ref<ImagePreviewInstance>()
-
-imagePreviewRef.value?.swipeTo(1)
 ```
 
 ## 主题定制

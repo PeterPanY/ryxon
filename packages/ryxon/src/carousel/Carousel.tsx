@@ -46,7 +46,7 @@ import {
   getPreciseEventTarget,
   resolveSlotWithProps
 } from './utils'
-import { flatten } from './utils/flatten'
+import { flatten } from '../utils/flatten'
 import {
   provideCarouselContext,
   type CarouselContextValue
