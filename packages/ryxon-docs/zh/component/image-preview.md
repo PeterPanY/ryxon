@@ -55,7 +55,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | images | 需要预览的图片 URL 数组 | `string[]` | `[]` |
 | minZoom | 手势缩放时，最小缩放比例 | `number \| string` | `1/3` |
 | maxZoom | 手势缩放时，最大缩放比例 | `number \| string` | `3` |
-| closeable | 是否显示关闭图标 | `boolean` | `false` |
+| closeable | 是否显示关闭图标 | `boolean` | `true` |
 | showIndex | 是否显示页码 | `boolean` | `true` |
 | className | 自定义类名 | `string \| Array \| object` | - |
 | closeIcon | 关闭图标名称或图片链接 | `string` | `clear` |
@@ -63,10 +63,9 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
 | overlayClass | 自定义遮罩层类名 | `string \| Array \| object` | - |
 | overlayStyle | 自定义遮罩层样式 | `object` | - |
-| swipeDuration | 动画时长，单位为 `ms` | `number \| string` | `300` |
 | startPosition | 图片预览起始位置索引 | `number \| string` | `0` |
-| indicatorPosition | 指示器的位置，可选`` | `string` | `none` |
-| showArrow | 切换箭头的显示时机，可选`hover/never` | `string` | `always` |
+| showDots | 是否显示指示点 | `boolean` | `false` |
+| showArrow | 是否显示箭头 | `boolean` | `true` |
 | closeOnPopstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | closeIconPosition | 关闭图标位置，可选值为 `top-left`<br>`bottom-left` `bottom-right` | `string` | `top-right` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#telepor) | `string \| Element` | - |
@@ -96,10 +95,9 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
 | overlay-class | 自定义遮罩层类名 | `string \| Array \| object` | - |
 | overlay-style | 自定义遮罩层样式 | `object` | - |
-| swipe-duration | 动画时长，单位为 ms | `number \| string` | `300` |
 | start-position | 图片预览起始位置索引 | `number \| string` | `0` |
-| indicator-position | 指示器的位置，可选`` | `string` | `none` |
-| show-arrow | 切换箭头的显示时机，可选`hover/never` | `string` | `always` |
+| show-dots | 是否显示指示点 | `boolean` | `false` |
+| show-arrow | 是否显示箭头 | `boolean` | `true` |
 | close-on-popstate | 是否在页面回退时自动关闭 | `boolean` | `true` |
 | close-icon-position | 关闭图标位置，可选值为 `top-left`<br>`bottom-left` `bottom-right` | `string` | `top-right` |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |

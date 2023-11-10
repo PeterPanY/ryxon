@@ -2,11 +2,9 @@ import {
   h,
   ref,
   watch,
-  markRaw,
   nextTick,
   reactive,
   onMounted,
-  shallowRef,
   effectScope,
   defineComponent,
   type PropType,
@@ -22,8 +20,6 @@ import {
   truthProp,
   unknownProp,
   Interceptor,
-  windowWidth,
-  windowHeight,
   iconPropType,
   makeArrayProp,
   makeStringProp,
@@ -37,30 +33,24 @@ import { throttle } from 'lodash-unified'
 import { EVENT_CODE } from '../constants/aria'
 
 // Composables
-import { useRect } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 
 // Components
 import { Icon } from '../icon'
 import {
   Close,
-  FullScreen,
+  ZoomIn,
+  ZoomOut,
   RefreshLeft,
   RefreshRight,
-  ScaleToOriginal,
-  ZoomIn,
-  ZoomOut
+  ScaleToOriginal
 } from '@ryxon/icons'
-import { Swipe, SwipeInstance, SwipeToOptions } from '../swipe'
+import { Carousel, CarouselInstance } from '../carousel'
 import { Popup, PopupCloseIconPosition } from '../popup'
 import ImagePreviewItem from './ImagePreviewItem'
 
 // Types
-import {
-  ImageViewerMode,
-  ImageViewerAction,
-  ImagePreviewScaleEventParams
-} from './types'
+import { ImageViewerAction, ImagePreviewScaleEventParams } from './types'
 
 const [name, bem] = createNamespace('image-preview')
 
@@ -79,7 +69,7 @@ export const imagePreviewProps = {
   minZoom: makeNumericProp(1 / 3),
   maxZoom: makeNumericProp(3),
   overlay: truthProp,
-  closeable: Boolean,
+  closeable: truthProp,
   showIndex: truthProp,
   className: unknownProp,
   closeIcon: iconPropType,
@@ -87,18 +77,9 @@ export const imagePreviewProps = {
   beforeClose: Function as PropType<Interceptor>,
   overlayClass: unknownProp,
   overlayStyle: Object as PropType<CSSProperties>,
-  swipeDuration: makeNumericProp(300),
   startPosition: makeNumericProp(0),
-  indicatorPosition: {
-    type: String,
-    values: ['', 'none'],
-    default: 'none'
-  },
-  showArrow: {
-    type: String,
-    values: ['always', 'hover', 'never'],
-    default: 'always'
-  },
+  showDots: Boolean,
+  showArrow: truthProp,
   closeOnPopstate: truthProp,
   closeIconPosition: makeStringProp<PopupCloseIconPosition>('top-right'),
   teleport: [String, Object] as PropType<TeleportProps['to']>,
@@ -114,22 +95,9 @@ export default defineComponent({
   props: imagePreviewProps,
   emits: ['scale', 'close', 'closed', 'change', 'longPress', 'update:show'],
   setup(props, { emit, slots }) {
-    const swipeRef = ref<SwipeInstance>()
+    const swipeRef = ref<CarouselInstance>()
 
     const scopeEventListener = effectScope()
-
-    const modes: Record<'CONTAIN' | 'ORIGINAL', ImageViewerMode> = {
-      CONTAIN: {
-        name: 'contain',
-        icon: markRaw(FullScreen)
-      },
-      ORIGINAL: {
-        name: 'original',
-        icon: markRaw(ScaleToOriginal)
-      }
-    }
-
-    const mode = shallowRef<ImageViewerMode>(modes.CONTAIN)
 
     const state = reactive({
       active: 0,
@@ -137,15 +105,6 @@ export default defineComponent({
       rootHeight: 0,
       disableZoom: false
     })
-
-    const resize = () => {
-      if (swipeRef.value) {
-        const rect = useRect(swipeRef.value.$el)
-        state.rootWidth = rect.width
-        state.rootHeight = rect.height
-        swipeRef.value.resize()
-      }
-    }
 
     const currentScale = ref(1)
 
@@ -191,18 +150,19 @@ export default defineComponent({
     }
 
     const handleActions = (action: ImageViewerAction) => {
+      const activeIndex = state.active + 1
       switch (action) {
         case 'zoomOut':
-          boxRefs[state.active]?.setScale(currentScale.value - props.zoomRate)
+          boxRefs[activeIndex]?.setScale(currentScale.value - props.zoomRate)
           break
         case 'zoomIn':
-          boxRefs[state.active]?.setScale(currentScale.value + props.zoomRate)
+          boxRefs[activeIndex]?.setScale(currentScale.value + props.zoomRate)
           break
         case 'clockwise':
-          boxRefs[state.active]?.setDeg('clockwise')
+          boxRefs[activeIndex]?.setDeg('clockwise')
           break
         case 'anticlockwise':
-          boxRefs[state.active]?.setDeg('anticlockwise')
+          boxRefs[activeIndex]?.setDeg('anticlockwise')
           break
       }
     }
@@ -210,7 +170,7 @@ export default defineComponent({
     // 图标切换
     const toggleMode = () => {
       //  将对象中key 变成数组
-      boxRefs[state.active]?.resetScale()
+      boxRefs[state.active + 1]?.resetScale()
     }
 
     function unregisterEventListener() {
@@ -280,7 +240,9 @@ export default defineComponent({
                 <Icon onClick={() => handleActions('zoomIn')}>
                   <ZoomIn />
                 </Icon>
-                <Icon onClick={toggleMode}>{h(mode.value.icon)}</Icon>
+                <Icon onClick={toggleMode}>
+                  <ScaleToOriginal />
+                </Icon>
                 <Icon onClick={() => handleActions('anticlockwise')}>
                   <RefreshLeft />
                 </Icon>
@@ -294,30 +256,17 @@ export default defineComponent({
       }
     }
 
-    // 开始拖动轮播组件时触发
-    const onDragStart = () => {
-      state.disableZoom = true
-    }
-
-    // 结束拖动轮播组件时触发
-    const onDragEnd = () => {
-      state.disableZoom = false
-    }
-
     const renderImages = () => (
-      <Swipe
+      <Carousel
         ref={swipeRef}
         lazyRender
+        draggable
         loop={props.loop}
         class={bem('swipe')}
-        duration={props.swipeDuration}
-        initialSwipe={props.startPosition}
-        indicatorPosition={props.indicatorPosition}
-        indicatorColor="white"
-        arrow={props.showArrow}
+        default-index={props.startPosition}
+        show-dots={props.showDots}
+        show-arrow={props.showArrow}
         onChange={setActive}
-        onDragEnd={onDragEnd}
-        onDragStart={onDragStart}
       >
         {props.images.map((image, index) => (
           <ImagePreviewItem
@@ -338,7 +287,7 @@ export default defineComponent({
             onLongPress={() => emit('longPress', { index })}
           />
         ))}
-      </Swipe>
+      </Carousel>
     )
 
     const renderClose = () => {
@@ -366,18 +315,15 @@ export default defineComponent({
     // 关闭且动画结束后触发
     const onClosed = () => emit('closed')
 
-    const swipeTo = (index: number, options?: SwipeToOptions) =>
-      swipeRef.value?.swipeTo(index, options)
+    const swipeTo = (index: number) => {
+      swipeRef.value?.to(index)
+    }
 
     useExpose({ swipeTo })
 
     onMounted(() => {
       registerEventListener()
-
-      resize()
     })
-
-    watch([windowWidth, windowHeight], resize)
 
     watch(
       () => props.startPosition,
@@ -391,8 +337,7 @@ export default defineComponent({
         if (value) {
           setActive(+startPosition)
           nextTick(() => {
-            resize()
-            swipeTo(+startPosition, { immediate: true })
+            swipeTo(+startPosition)
           })
         } else {
           emit('close', {

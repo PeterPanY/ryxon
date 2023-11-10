@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import '@ryxon/touch-emulator'
+// import '@ryxon/touch-emulator'
 import { showMessage } from '@ryxon/components'
 
 const count = ref(0)

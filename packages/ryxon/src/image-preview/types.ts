@@ -25,8 +25,8 @@ export type ImagePreviewOptions = {
   overlayClass?: unknown
   swipeDuration?: number
   startPosition?: number
-  indicatorPosition?: string
-  showArrow?: string
+  showDots?: boolean
+  showArrow?: boolean
   closeOnPopstate?: boolean
   closeIconPosition?: PopupCloseIconPosition
   showTool?: boolean

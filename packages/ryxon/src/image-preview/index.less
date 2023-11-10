@@ -10,8 +10,8 @@
   --r-image-preview-close-icon-z-index: 1;
 }
 
-.r-image-preview {
-  position: fixed;
+.r-popup.r-image-preview {
+  // position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -19,11 +19,13 @@
   max-width: none;
   background-color: transparent;
   transform: none;
-
+}
+.r-image-preview {
   &__swipe {
     height: 100%;
 
     &-item {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -68,7 +70,6 @@
 
   &__image,
   &__image-wrap {
-    width: 100%;
     transition-property: transform;
 
     &--vertical {
