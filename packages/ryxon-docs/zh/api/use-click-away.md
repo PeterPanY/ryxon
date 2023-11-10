@@ -1,12 +1,13 @@
-# useClickAway
+---
+title: useClickAway
+lang: zh
+---
 
-### 介绍
+# useClickAway
 
 监听点击元素外部的事件。
 
-## 代码演示
-
-### 基本用法
+## 基本用法
 
 ```html
 <div ref="root" />
@@ -28,7 +29,7 @@ export default {
 }
 ```
 
-### 自定义事件
+## 自定义事件
 
 通过 `eventName` 选项可以自定义需要监听的事件类型。
 
@@ -46,9 +47,9 @@ export default {
     useClickAway(
       root,
       () => {
-        console.log('touch outside!')
+        console.log('mouseenter outside!')
       },
-      { eventName: 'touchstart' }
+      { eventName: 'mouseenter' }
     )
 
     return { root }
@@ -79,12 +80,12 @@ function useClickAway(
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| target | 绑定事件的元素，支持传入数组来绑定多个元素 | _Element \| Ref\<Element> \| Array\<Element \| Ref\<Element>>_ | - |
-| listener | 点击外部时触发的回调函数 | _EventListener_ | - |
-| options | 可选的配置项 | _Options_ | 见下表 |
+| target | 绑定事件的元素，支持传入数组来绑定多个元素 | `Element \| Ref\<Element> \| Array\<Element \| Ref\<Element>>` | - |
+| listener | 点击外部时触发的回调函数 | `EventListener` | - |
+| options | 可选的配置项 | `Options` | 见下表 |
 
 ### Options
 
 | 参数      | 说明           | 类型     | 默认值  |
 | --------- | -------------- | -------- | ------- |
-| eventName | 监听的事件类型 | _string_ | `click` |
+| eventName | 监听的事件类型 | `string` | `click` |

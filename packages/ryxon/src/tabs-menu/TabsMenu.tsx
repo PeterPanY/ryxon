@@ -29,7 +29,7 @@ import {
   HAPTICS_FEEDBACK,
   type ComponentInstance
 } from '../utils'
-import { useResizeObserver } from '@vueuse/core'
+import { useResizeObserver, onClickOutside } from '@vueuse/core'
 
 import { Icon } from '../icon'
 import { ArrowDown, ArrowLeft, ArrowRight } from '@ryxon/icons'
@@ -43,7 +43,6 @@ import { onPopupReopen } from '../composables/on-popup-reopen'
 import {
   useRect,
   useChildren,
-  useClickAway,
   useScrollParent,
   useEventListener,
   onMountedOrActivated
@@ -560,7 +559,7 @@ export default defineComponent({
 
     useExpose({ close, resize })
     linkChildren({ id, props, offset, updateOffset, updateActive })
-    useClickAway(root, onClickAway)
+    onClickOutside(root, onClickAway)
     useEventListener('scroll', onScroll, {
       target: scrollParent,
       passive: true

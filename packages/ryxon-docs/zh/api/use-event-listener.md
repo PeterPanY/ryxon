@@ -1,12 +1,13 @@
-# useEventListener
+---
+title: useEventListener
+lang: zh
+---
 
-### 介绍
+# useCustomInputValue
 
 方便地进行事件绑定，在组件 `mounted` 和 `activated` 时绑定事件，`unmounted` 和 `deactivated` 时解绑事件。
 
-## 代码演示
-
-### 基本用法
+## 基本用法
 
 ```js
 import { ref } from 'vue'
@@ -32,7 +33,7 @@ export default {
 }
 ```
 
-### 取消事件监听
+## 取消事件监听
 
 `useEventListener` 会返回一个 `cleanup` 函数，调用该函数可以取消事件监听。
 
@@ -73,14 +74,14 @@ function useEventListener(
 
 | 参数     | 说明           | 类型            | 默认值 |
 | -------- | -------------- | --------------- | ------ |
-| type     | 监听的事件类型 | _string_        | -      |
-| listener | 事件回调函数   | _EventListener_ | -      |
-| options  | 可选的配置项   | _Options_       | -      |
+| type     | 监听的事件类型 | `string`        | -      |
+| listener | 事件回调函数   | `EventListener` | -      |
+| options  | 可选的配置项   | `Options`       | -      |
 
 ### Options
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| target | 绑定事件的元素 | _EventTarget \| Ref\<EventTarget>_ | `window` |
-| capture | 是否在事件捕获阶段触发 | _boolean_ | `false` |
-| passive | 设置为 `true` 时，表示 `listener` 永远不会调用 `preventDefault` | _boolean_ | `false` |
+| target | 绑定事件的元素 | `EventTarget \| Ref\<EventTarget>` | `window` |
+| capture | 是否在事件捕获阶段触发 | `boolean` | `false` |
+| passive | 设置为 `true` 时，表示 `listener` 永远不会调用 `preventDefault` | `boolean` | `false` |

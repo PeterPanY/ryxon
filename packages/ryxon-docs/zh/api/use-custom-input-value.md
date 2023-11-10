@@ -60,4 +60,4 @@ function useCustomInputValue(customValue: () => unknown): void
 
 | 参数        | 说明               | 类型            | 默认值 |
 | ----------- | ------------------ | --------------- | ------ |
-| customValue | 获取表单项值的函数 | _() => unknown_ | -      |
+| customValue | 获取表单项值的函数 | `() => unknown` | -      |

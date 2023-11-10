@@ -1,37 +1,38 @@
-# useScrollParent
+---
+title: useScrollParent
+lang: zh
+---
 
-### 介绍
+# useScrollParent
 
 获取元素最近的可滚动父元素。
 
-## 代码演示
-
-### 基本用法
+## 基本用法
 
 ```html
 <div ref="root" />
 ```
 
 ```js
-import { ref, watch } from 'vue';
-import { useScrollParent, useEventListener } from '@ryxon/use';
+import { ref, watch } from 'vue'
+import { useScrollParent, useEventListener } from '@ryxon/use'
 
 export default {
   setup() {
-    const root = ref();
-    const scrollParent = useScrollParent(root);
+    const root = ref()
+    const scrollParent = useScrollParent(root)
 
     useEventListener(
       'scroll',
       () => {
-        console.log('scroll');
+        console.log('scroll')
       },
       { target: scrollParent }
-    );
+    )
 
-    return { root };
-  },
-};
+    return { root }
+  }
+}
 ```
 
 ## API
@@ -41,17 +42,17 @@ export default {
 ```ts
 function useScrollParent(
   element: Ref<Element | undefined>
-): Ref<Element | Window | undefined>;
+): Ref<Element | Window | undefined>
 ```
 
 ### 参数
 
 | 参数    | 说明     | 类型            | 默认值 |
 | ------- | -------- | --------------- | ------ |
-| element | 当前元素 | _Ref\<Element>_ | -      |
+| element | 当前元素 | `Ref\<Element>` | -      |
 
 ### 返回值
 
 | 参数         | 说明               | 类型            |
 | ------------ | ------------------ | --------------- |
-| scrollParent | 最近的可滚动父元素 | _Ref\<Element>_ |
+| scrollParent | 最近的可滚动父元素 | `Ref\<Element>` |

@@ -8,15 +8,21 @@
       "text": "组合式 API",
       "children": [
         { "link": "/use-intro", "text": "介绍" },
+        { "link": "/use-click-away", "text": "useClickAway" },
         { "link": "/use-count-down", "text": "useCountDown" },
-        { "link": "/use-custom-input-value", "text": "useCustomInputValue" }
+        { "link": "/use-custom-input-value", "text": "useCustomInputValue" },
+        { "link": "/use-event-listener", "text": "useEventListener" },
+        { "link": "/use-page-visibility", "text": "usePageVisibility" },
+        { "link": "/use-rect", "text": "useRect" },
+        { "link": "/use-relation", "text": "useRelation" },
+        { "link": "/use-scroll-parent", "text": "useScrollParent" },
+        { "link": "/use-toggle", "text": "useToggle" },
+        { "link": "/use-window-size", "text": "useWindowSize" }
       ]
     },
     "utils": {
       "text": "方法",
-      "children": [
-        { "link": "/deepmerge", "text": "深度合并" }
-      ]
+      "children": [{ "link": "/deepmerge", "text": "深度合并" }]
     }
   }
 }
