@@ -1,3 +1,5 @@
+import type { ComponentPublicInstance } from 'vue'
+import type { CarouselProps } from './Carousel'
 import type { CarouselContextValue } from './CarouselContext'
 
 export type CarouselTrigger = 'click' | 'hover'
@@ -33,6 +35,11 @@ export interface Size {
   width: number
   height: number
 }
+
+export type CarouselInstance = ComponentPublicInstance<
+  CarouselProps,
+  CarouselInst
+>
 
 export type CarouselThemeVars = {
   carouselBezier?: string

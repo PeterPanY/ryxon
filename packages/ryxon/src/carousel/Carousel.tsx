@@ -23,7 +23,6 @@ import {
 } from 'vue'
 import { on, off } from 'evtd'
 import { useResizeObserver } from '@vueuse/core'
-import { flatten } from 'lodash-unified'
 
 // Utils
 import {
@@ -47,6 +46,7 @@ import {
   getPreciseEventTarget,
   resolveSlotWithProps
 } from './utils'
+import { flatten } from './utils/flatten'
 import {
   provideCarouselContext,
   type CarouselContextValue
@@ -115,13 +115,7 @@ export const carouselProps = {
   touchable: truthProp,
   lazyRender: Boolean,
   mousewheel: Boolean,
-  keyboard: Boolean,
-  'onUpdate:currentIndex': Function as PropType<
-    (currentIndex: number, lastIndex: number) => void
-  >,
-  onUpdateCurrentIndex: Function as PropType<
-    (currentIndex: number, lastIndex: number) => void
-  >
+  keyboard: Boolean
 }
 
 export type CarouselProps = ExtractPropTypes<typeof carouselProps>
@@ -369,7 +363,7 @@ export default defineComponent({
       return getRealNextIndex() === null
     }
 
-    // To
+    // 跳转到
     function to(index: number): void {
       const realIndex = clampValue(
         getRealIndex(index, duplicatedableRef.value),
@@ -718,6 +712,7 @@ export default defineComponent({
       }
       inTransition = false
     }
+
     function handleMousewheel(event: WheelEvent): void {
       event.preventDefault()
       if (inTransition) return
