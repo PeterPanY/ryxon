@@ -289,7 +289,7 @@ export default defineComponent({
 
     useExpose({ popupRef })
 
-    useLockScroll(popupRef, () => props.show && props.lockScroll)
+    useLockScroll(document.body, () => props.show && props.lockScroll)
 
     useEventListener('popstate', () => {
       if (props.closeOnPopstate) {
