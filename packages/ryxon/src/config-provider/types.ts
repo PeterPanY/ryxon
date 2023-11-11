@@ -35,8 +35,6 @@ export type ConfigProviderThemeVars =
     import('../notify').NotifyThemeVars &
     import('../overlay').OverlayThemeVars &
     import('../pagination').PaginationThemeVars &
-    import('../picker').PickerThemeVars &
-    import('../picker-group').PickerGroupThemeVars &
     import('../popover').PopoverThemeVars &
     import('../popup').PopupThemeVars &
     import('../progress').ProgressThemeVars &
