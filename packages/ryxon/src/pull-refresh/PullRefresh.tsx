@@ -9,16 +9,15 @@ import {
 
 // Utils
 import {
+  pick,
+  extend,
   numericProp,
-  getScrollTop,
-  preventDefault,
   createNamespace,
   makeNumericProp
 } from '../utils'
 
 // Composables
-import { useEventListener, useScrollParent } from '@ryxon/use'
-import { useTouch } from '../composables/use-touch'
+import { touchProps, useDragTouch } from './use-touch'
 
 // Components
 import { Loading } from '../loading'
@@ -35,7 +34,7 @@ type PullRefreshStatus =
   | 'pulling'
   | 'success'
 
-export const pullRefreshProps = {
+export const pullRefreshProps = extend({}, touchProps, {
   disabled: Boolean,
   modelValue: Boolean,
   headHeight: makeNumericProp(DEFAULT_HEAD_HEIGHT),
@@ -46,40 +45,22 @@ export const pullRefreshProps = {
   pullDistance: numericProp,
   successDuration: makeNumericProp(500),
   animationDuration: makeNumericProp(300)
-}
+})
 
 export type PullRefreshProps = ExtractPropTypes<typeof pullRefreshProps>
 
 export default defineComponent({
   name,
-
   props: pullRefreshProps,
-
   emits: ['change', 'refresh', 'update:modelValue'],
-
   setup(props, { emit, slots }) {
-    let reachTop: boolean
-
-    const root = ref<HTMLElement>()
-    const track = ref<HTMLElement>()
-    const scrollParent = useScrollParent(root)
-
     const state = reactive({
       status: 'normal' as PullRefreshStatus,
       distance: 0,
       duration: 0
     })
 
-    const touch = useTouch()
-
-    const getHeadStyle = () => {
-      if (props.headHeight !== DEFAULT_HEAD_HEIGHT) {
-        return {
-          height: `${props.headHeight}px`
-        }
-      }
-    }
-
+    // 判断是不是可拖拽
     const isTouchable = () =>
       state.status !== 'loading' &&
       state.status !== 'success' &&
@@ -117,6 +98,57 @@ export default defineComponent({
         status: state.status,
         distance
       })
+    }
+
+    const deltaY = ref(0)
+
+    const onStart = () => {
+      if (isTouchable()) {
+        state.duration = 0
+      }
+    }
+
+    const onMove = (offset: number) => {
+      if (isTouchable()) {
+        deltaY.value = offset
+
+        if (offset >= 0) {
+          setStatus(ease(offset))
+        }
+      }
+    }
+
+    const onEnd = () => {
+      if (deltaY.value && isTouchable()) {
+        state.duration = +props.animationDuration
+
+        if (state.status === 'loosing') {
+          setStatus(+props.headHeight, true)
+          emit('update:modelValue', true)
+
+          // ensure value change can be watched
+          nextTick(() => emit('refresh'))
+        } else {
+          setStatus(0)
+        }
+      }
+    }
+
+    const { direction, slidesElRef, controlListeners } = useDragTouch(
+      // eslint-disable-next-line no-restricted-syntax
+      { ...pick(props, ['touchable', 'draggable', 'mousewheel']) },
+      onStart,
+      onMove,
+      onEnd
+    )
+    direction.value = 'vertical' // 设定拖拽方式
+
+    const getHeadStyle = () => {
+      if (props.headHeight !== DEFAULT_HEAD_HEIGHT) {
+        return {
+          height: `${props.headHeight}px`
+        }
+      }
     }
 
     const getStatusText = () => {
@@ -159,53 +191,6 @@ export default defineComponent({
       }, +props.successDuration)
     }
 
-    const checkPosition = (event: TouchEvent) => {
-      reachTop = getScrollTop(scrollParent.value!) === 0
-
-      if (reachTop) {
-        state.duration = 0
-        touch.start(event)
-      }
-    }
-
-    const onTouchStart = (event: TouchEvent) => {
-      if (isTouchable()) {
-        checkPosition(event)
-      }
-    }
-
-    const onTouchMove = (event: TouchEvent) => {
-      if (isTouchable()) {
-        if (!reachTop) {
-          checkPosition(event)
-        }
-
-        const { deltaY } = touch
-        touch.move(event)
-
-        if (reachTop && deltaY.value >= 0 && touch.isVertical()) {
-          preventDefault(event)
-          setStatus(ease(deltaY.value))
-        }
-      }
-    }
-
-    const onTouchEnd = () => {
-      if (reachTop && touch.deltaY.value && isTouchable()) {
-        state.duration = +props.animationDuration
-
-        if (state.status === 'loosing') {
-          setStatus(+props.headHeight, true)
-          emit('update:modelValue', true)
-
-          // ensure value change can be watched
-          nextTick(() => emit('refresh'))
-        } else {
-          setStatus(0)
-        }
-      }
-    }
-
     watch(
       () => props.modelValue,
       (value) => {
@@ -221,11 +206,6 @@ export default defineComponent({
       }
     )
 
-    // useEventListener will set passive to `false` to eliminate the warning of Chrome
-    useEventListener('touchmove', onTouchMove, {
-      target: track
-    })
-
     return () => {
       const trackStyle = {
         transitionDuration: `${state.duration}ms`,
@@ -233,15 +213,8 @@ export default defineComponent({
       }
 
       return (
-        <div ref={root} class={bem()}>
-          <div
-            ref={track}
-            class={bem('track')}
-            style={trackStyle}
-            onTouchstartPassive={onTouchStart}
-            onTouchend={onTouchEnd}
-            onTouchcancel={onTouchEnd}
-          >
+        <div class={bem()} {...controlListeners.value}>
+          <div ref={slidesElRef} class={bem('track')} style={trackStyle}>
             <div class={bem('head')} style={getHeadStyle()}>
               {renderStatus()}
             </div>
