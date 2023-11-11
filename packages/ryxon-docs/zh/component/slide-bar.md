@@ -7,6 +7,12 @@ lang: zh
 
 SlideBar 滚动块，可以用作文字块的滑动。
 
+:::warning
+
+这个 SlideBar 滚动块组件已经被废弃，不会迭代任何新的功能，并将在下一个版本中彻底移除。推荐使用新的 [Carousel 走马灯](/zh/component/carousel.html)。
+
+:::
+
 ## 基础用法
 
 :::demo

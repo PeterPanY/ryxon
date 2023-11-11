@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-// import '@ryxon/touch-emulator'
 
 const list = ref([])
 const loading = ref(false)

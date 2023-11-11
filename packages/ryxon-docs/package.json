@@ -14,18 +14,17 @@
   "devDependencies": {
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
-    "@ryxon/touch-emulator": "workspace:*",
     "clipboard-copy": "^4.0.1",
     "escape-html": "^1.0.3",
     "fast-glob": "^3.2.11",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "ryxon": "workspace:*",
     "sass": "^1.54.5",
-    "vitepress": "^1.0.0-rc.24",
+    "vitepress": "^1.0.0-rc.25",
     "vitepress-theme-demoblock": "^3.0.3"
   },
   "dependencies": {
-    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it": "^13.0.6",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "markdown-it-container": "^3.0.0",
     "prism-theme-vars": "^0.2.4",

@@ -5,7 +5,7 @@ lang: zh
 
 # PullRefresh 下拉刷新
 
-用于提供下拉刷新的交互操作。在 pc 端需要搭配`@ryxon/touch-emulator`插件使用
+用于提供下拉刷新的交互操作。
 
 ## 基础用法
 

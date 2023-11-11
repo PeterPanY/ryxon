@@ -7,6 +7,12 @@ lang: zh
 
 用于循环播放一组图片或内容。
 
+:::warning
+
+这个 Swipe 轮播图组件已经被废弃，不会迭代任何新的功能，并将在下一个版本中彻底移除。推荐使用新的 [Carousel 走马灯](/zh/component/carousel.html)。
+
+:::
+
 ## 基础用法
 
 :::demo 每个 `SwipeItem` 代表一张轮播卡片，可以通过 `autoplay` 属性设置自动轮播的间隔。默认情况下，在鼠标 `hover` 底部的指示器时就会触发切换。 通过设置 `trigger` 属性为 `click`，可以达到点击触发的效果。
