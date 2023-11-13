@@ -289,8 +289,6 @@ export default defineComponent({
 
     useExpose({ popupRef })
 
-    useLockScroll(document.body, () => props.show && props.lockScroll)
-
     useEventListener('popstate', () => {
       if (props.closeOnPopstate) {
         close()
@@ -299,6 +297,9 @@ export default defineComponent({
     })
 
     onMounted(() => {
+      // 兼容ssr上找不到document报错问题。
+      useLockScroll(document.body, () => props.show && props.lockScroll)
+
       if (props.show) {
         open()
       }
