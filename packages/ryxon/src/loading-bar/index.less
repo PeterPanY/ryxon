@@ -1,0 +1,49 @@
+:root {
+  --r-loading-bar-height: 2px;
+  --r-loading-bar-color-loading: var(--r-primary-color);
+  --r-loading-bar-color-error: var(--r-danger-color);
+}
+
+.r-loading-bar-container {
+  z-index: 5999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+
+  .r-loading-bar {
+    width: 100%;
+    transition: max-width 4s linear, background 0.2s linear;
+    height: var(--r-loading-bar-height);
+
+    &--starting {
+      background: var(--r-loading-bar-color-loading);
+    }
+
+    &--finishing {
+      background: var(--r-loading-bar-color-loading);
+      transition: max-width 0.2s linear, background 0.2s linear;
+    }
+
+    &--error {
+      background: var(--r-loading-bar-color-error);
+      transition: max-width 0.5s linear, background 0.2s linear;
+    }
+  }
+}
+
+.r-fade-in-transition-enter-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.r-fade-in-transition-leave-active {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.r-fade-in-transition-enter-from,
+.r-fade-in-transition-leave-to {
+  opacity: 0;
+}
+.r-fade-in-transition-leave-from,
+.r-fade-in-transition-enter-to {
+  opacity: 1;
+}

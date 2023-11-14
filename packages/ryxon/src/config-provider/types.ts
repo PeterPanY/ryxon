@@ -28,6 +28,7 @@ export type ConfigProviderThemeVars =
     import('../input-number').InputNumberThemeVars &
     import('../list').ListThemeVars &
     import('../loading').LoadingThemeVars &
+    import('../loading-bar').LoadingBarThemeVars &
     import('../main').MainThemeVars &
     import('../menu').MenuThemeVars &
     import('../message').MessageThemeVars &

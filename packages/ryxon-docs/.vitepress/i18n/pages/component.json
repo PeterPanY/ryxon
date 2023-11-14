@@ -80,6 +80,7 @@
       "children": [
         { "link": "/dialog", "text": "Dialog 对话框" },
         { "link": "/loading", "text": "Loading 加载" },
+        { "link": "/loading-bar", "text": "Loading Bar 加载条" },
         { "link": "/message", "text": "Message 消息提示" },
         { "link": "/notify", "text": "Notify 通知" },
         { "link": "/overlay", "text": "Overlay 遮罩层" },

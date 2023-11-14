@@ -112,7 +112,7 @@ export const carouselProps = {
   nextSlideStyle: [Object, String] as PropType<CSSProperties | string>,
   touchable: truthProp,
   lazyRender: Boolean,
-  mousewheel: truthProp,
+  mousewheel: Boolean,
   keyboard: Boolean
 }
 
