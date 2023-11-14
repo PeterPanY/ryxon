@@ -21,14 +21,12 @@ import {
   type TransitionProps,
   type ExtractPropTypes
 } from 'vue'
-import { on, off } from 'evtd'
 import { useResizeObserver } from '@vueuse/core'
 
 // Utils
 import {
   pick,
   truthProp,
-  isTouchEvent,
   makeStringProp,
   makeNumberProp,
   createNamespace
@@ -43,7 +41,6 @@ import {
   getRealIndex,
   getDisplayTotalView,
   addDuplicateSlides,
-  getPreciseEventTarget,
   resolveSlotWithProps
 } from './utils'
 import { flatten } from '../utils/flatten'
@@ -53,6 +50,7 @@ import {
 } from './CarouselContext'
 
 // Composables
+import { useDragTouch } from '../pull-refresh/use-touch'
 import useMergedState from './use-merged-state'
 
 // Components
@@ -114,14 +112,11 @@ export const carouselProps = {
   nextSlideStyle: [Object, String] as PropType<CSSProperties | string>,
   touchable: truthProp,
   lazyRender: Boolean,
-  mousewheel: Boolean,
+  mousewheel: truthProp,
   keyboard: Boolean
 }
 
 export type CarouselProps = ExtractPropTypes<typeof carouselProps>
-
-// only one carousel is allowed to trigger touch globally
-let globalDragging = false
 
 export default defineComponent({
   name,
@@ -129,7 +124,7 @@ export default defineComponent({
   emits: ['update:currentIndex', 'change', 'item-click'],
   setup(props, { emit }) {
     // Dom
-    const slidesElRef = ref<HTMLDivElement | null>(null)
+    // const slidesElRef = ref<HTMLDivElement>()
     const slideElsRef = ref<HTMLElement[]>([])
     const slideVNodesRef = { value: [] as VNode[] }
 
@@ -570,71 +565,29 @@ export default defineComponent({
     }
 
     // Drag
-    let dragStartX = 0
-    let dragStartY = 0
     let dragOffset = 0
     let dragStartTime = 0
-    let dragging = false
     let isEffectiveDrag = false
-    function handleTouchstart(event: MouseEvent | TouchEvent): void {
-      if (globalDragging) return
-      if (
-        !slidesElRef.value?.contains(
-          getPreciseEventTarget(event) as Node | null
-        )
-      ) {
-        return
-      }
-      globalDragging = true
-      dragging = true
+
+    // 开始
+    const onStart = () => {
       isEffectiveDrag = false
       dragStartTime = Date.now()
       stopAutoplay()
-      if (
-        event.type !== 'touchstart' &&
-        !(event.target as HTMLElement).isContentEditable
-      ) {
-        event.preventDefault()
-      }
-      const touchEvent = isTouchEvent(event) ? event.touches[0] : event
-      if (verticalRef.value) {
-        dragStartY = touchEvent.clientY
-      } else {
-        dragStartX = touchEvent.clientX
-      }
-      if (props.touchable) {
-        on('touchmove', document, handleTouchmove, { passive: true } as any)
-        on('touchend', document, handleTouchend)
-        on('touchcancel', document, handleTouchend)
-      }
-      if (props.draggable) {
-        on('mousemove', document, handleTouchmove)
-        on('mouseup', document, handleTouchend)
-      }
     }
-
     // 移动
-    function handleTouchmove(event: MouseEvent | TouchEvent): void {
-      const { value: vertical } = verticalRef
+    const onMove = (offset: number) => {
       const { value: axis } = sizeAxisRef
-      const touchEvent = isTouchEvent(event) ? event.touches[0] : event
-
-      const offset = vertical
-        ? touchEvent.clientY - dragStartY
-        : touchEvent.clientX - dragStartX
       const perViewSize = perViewSizeRef.value[axis]
 
       dragOffset = clampValue(offset, -perViewSize, perViewSize)
-
-      if (event.cancelable) {
-        event.preventDefault()
-      }
 
       if (sequenceLayoutRef.value) {
         updateTranslate(previousTranslate - dragOffset, 0)
       }
     }
-    function handleTouchend(): void {
+    // 结束
+    const onEnd = () => {
       const { value: realIndex } = realIndexRef
       let currentIndex: number | null = realIndex
       if (!inTransition && dragOffset !== 0 && sequenceLayoutRef.value) {
@@ -681,25 +634,9 @@ export default defineComponent({
       } else {
         fixTranslate(speedRef.value)
       }
-      resetDragStatus()
       resetAutoplay()
     }
-    function resetDragStatus(): void {
-      if (dragging) {
-        globalDragging = false
-      }
-      dragging = false
-      dragStartX = 0
-      dragStartY = 0
-      dragOffset = 0
-      dragStartTime = 0
-      off('touchmove', document, handleTouchmove)
-      off('touchend', document, handleTouchend)
-      off('touchcancel', document, handleTouchend)
-      off('mousemove', document, handleTouchmove)
-      off('mouseup', document, handleTouchend)
-    }
-
+    // 过度结束事件
     function handleTransitionEnd(): void {
       if (sequenceLayoutRef.value && inTransition) {
         const { value: realIndex } = realIndexRef
@@ -713,6 +650,7 @@ export default defineComponent({
       inTransition = false
     }
 
+    // 鼠标滚动
     function handleMousewheel(event: WheelEvent): void {
       event.preventDefault()
       if (inTransition) return
@@ -740,6 +678,25 @@ export default defineComponent({
         }
       }
     }
+
+    const onReset = () => {
+      dragOffset = 0
+      dragStartTime = 0
+    }
+
+    const { dragging, direction, slidesElRef, controlListeners } = useDragTouch(
+      // eslint-disable-next-line no-restricted-syntax
+      { ...pick(props, ['touchable', 'draggable', 'mousewheel']) },
+      onStart,
+      onMove,
+      onEnd,
+      onReset,
+      handleMousewheel
+    )
+    watchEffect(() => {
+      direction.value = props.direction
+    })
+
     // function handleResize(): void {}
     // 监听页面slidesElRef尺寸变化
     const selfElRef = ref<HTMLDivElement | null>(null)
@@ -764,7 +721,6 @@ export default defineComponent({
       requestAnimationFrame(() => (isMountedRef.value = true))
     })
     onBeforeUnmount(() => {
-      resetDragStatus()
       stopAutoplay()
     })
 
@@ -834,13 +790,6 @@ export default defineComponent({
         fixTranslate()
       }
     })
-    const slidesControlListenersRef = computed(() => {
-      return {
-        onTouchstartPassive: props.touchable ? handleTouchstart : undefined,
-        onMousedown: props.draggable ? handleTouchstart : undefined,
-        onWheel: props.mousewheel ? handleMousewheel : undefined
-      }
-    })
 
     // 是不是当前index
     function isDisplayActive(index: number): boolean {
@@ -887,7 +836,7 @@ export default defineComponent({
       realIndex: realIndexRef,
       slideStyles: slideStylesRef,
       translateStyle: translateStyleRef,
-      slidesControlListeners: slidesControlListenersRef,
+      slidesControlListeners: controlListeners,
       handleTransitionEnd,
       handleMouseenter,
       handleMouseleave,

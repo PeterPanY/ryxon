@@ -1,5 +1,5 @@
 import { ref, computed, onBeforeUnmount, type ExtractPropTypes } from 'vue'
-import { on, off } from 'evtd'
+import { useEventListener } from '@vueuse/core'
 import { truthProp, isTouchEvent } from '../utils'
 import { getPreciseEventTarget } from '../carousel/utils'
 
@@ -13,24 +13,31 @@ export const touchProps = {
 
 export type TouchProps = ExtractPropTypes<typeof touchProps>
 
+// 只允许一个全局触发触摸
+let globalDragging = false
+
 export function useDragTouch(
   props: TouchProps,
   onStart: () => void,
   onMove: (offset: number) => void,
   onEnd: () => void,
-  onMousewheel?: () => void
+  onReset?: () => void,
+  onMousewheel?: (event: WheelEvent) => void
 ) {
   const direction = ref<TouchDirection>('')
 
   const slidesElRef = ref<HTMLDivElement | null>(null)
   const verticalRef = computed(() => direction.value === 'vertical')
 
-  // 只允许一个全局触发触摸
-  let globalDragging = false
-
   let dragStartX = 0
   let dragStartY = 0
-  let dragging = false
+  const dragging = ref(false)
+
+  let cleanTouchmove: () => void
+  let cleanTouchend: () => void
+  let cleanTouchcancel: () => void
+  let cleanMousemove: () => void
+  let cleanMouseup: () => void
 
   const handleTouchmove = (event: MouseEvent | TouchEvent): void => {
     const { value: vertical } = verticalRef
@@ -39,8 +46,6 @@ export function useDragTouch(
     const offset = vertical
       ? touchEvent.clientY - dragStartY
       : touchEvent.clientX - dragStartX
-
-    console.log(event.cancelable)
 
     if (event.cancelable) {
       event.preventDefault()
@@ -62,7 +67,10 @@ export function useDragTouch(
       return
     }
     globalDragging = true
-    dragging = true
+    dragging.value = true
+
+    onStart()
+
     if (
       event.type !== 'touchstart' &&
       !(event.target as HTMLElement).isContentEditable
@@ -76,33 +84,46 @@ export function useDragTouch(
       dragStartX = touchEvent.clientX
     }
 
-    onStart()
-
     if (props.touchable) {
-      on('touchmove', document, handleTouchmove, { passive: true } as any)
-      on('touchend', document, handleTouchend)
-      on('touchcancel', document, handleTouchend)
+      cleanTouchmove = useEventListener(
+        slidesElRef,
+        'touchmove',
+        handleTouchmove,
+        { passive: true }
+      )
+      cleanTouchend = useEventListener(slidesElRef, 'touchend', handleTouchend)
+      cleanTouchcancel = useEventListener(
+        slidesElRef,
+        'touchcancel',
+        handleTouchend
+      )
     }
     if (props.draggable) {
-      on('mousemove', document, handleTouchmove)
-      on('mouseup', document, handleTouchend)
+      cleanMousemove = useEventListener(
+        slidesElRef,
+        'mousemove',
+        handleTouchmove
+      )
+      cleanMouseup = useEventListener(slidesElRef, 'mouseup', handleTouchend)
     }
   }
 
   const resetDragStatus = (): void => {
-    if (dragging) {
+    if (dragging.value) {
       globalDragging = false
     }
 
-    dragging = false
+    dragging.value = false
     dragStartX = 0
     dragStartY = 0
 
-    off('touchmove', document, handleTouchmove)
-    off('touchend', document, handleTouchend)
-    off('touchcancel', document, handleTouchend)
-    off('mousemove', document, handleTouchmove)
-    off('mouseup', document, handleTouchend)
+    onReset?.()
+
+    cleanTouchmove && cleanTouchmove()
+    cleanTouchend && cleanTouchend()
+    cleanTouchcancel && cleanTouchcancel()
+    cleanMousemove && cleanMousemove()
+    cleanMouseup && cleanMouseup()
   }
 
   onBeforeUnmount(() => {
@@ -110,8 +131,8 @@ export function useDragTouch(
   })
 
   // 鼠标滚轮事件
-  const handleMousewheel = () => {
-    onMousewheel?.()
+  const handleMousewheel = (event: WheelEvent): void => {
+    onMousewheel?.(event)
   }
 
   const controlListeners = computed(() => ({
@@ -121,6 +142,7 @@ export function useDragTouch(
   }))
 
   return {
+    dragging,
     direction,
     slidesElRef,
     controlListeners
