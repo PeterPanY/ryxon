@@ -499,7 +499,7 @@ export default defineComponent({
     // 轮播图item点击
     function onCarouselItemClick(index: number, event: MouseEvent): void {
       // 判断是不是在动效阶段（transition、拖拽）
-      let allowClick = !inTransition && !dragging && !isEffectiveDrag
+      let allowClick = !inTransition && !dragging.value && !isEffectiveDrag
 
       if (allowClick) emit('item-click', index)
 
