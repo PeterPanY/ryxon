@@ -1,10 +1,24 @@
-import type { InjectionKey, ExtractPropTypes } from 'vue'
+import type {
+  InjectionKey,
+  TeleportProps,
+  CSSProperties,
+  ExtractPropTypes
+} from 'vue'
 import type { loadingBarProps } from './LoadingBar'
 
 export interface LoadingBarInst {
   start: () => void
   error: () => void
   finish: () => void
+}
+
+export type LoadingBarOptions = {
+  teleport?: TeleportProps['to'] | boolean
+  containerStyle: string | CSSProperties
+  loadingBarStyle: {
+    loading?: string | CSSProperties
+    error?: string | CSSProperties
+  }
 }
 
 export type LoadingBarProviderInst = LoadingBarInst

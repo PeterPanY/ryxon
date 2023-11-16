@@ -6,21 +6,21 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useLoadingBar } from '@ryxon/components'
+import { Button as RButton, createLoadingBar } from '@ryxon/components'
 
-const loadingBar = useLoadingBar()
 const disabled = ref(true)
+const { loadingBar } = createLoadingBar()
 
 const handleStart = () => {
-  loadingBar.start()
+  loadingBar?.start()
   disabled.value = false
 }
 const handleFinish = () => {
-  loadingBar.finish()
+  loadingBar?.finish()
   disabled.value = true
 }
 const handleError = () => {
   disabled.value = true
-  loadingBar.error()
+  loadingBar?.error()
 }
 </script>

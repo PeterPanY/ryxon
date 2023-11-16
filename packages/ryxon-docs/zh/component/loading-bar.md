@@ -35,6 +35,24 @@ loading-bar/hook
 
 :::
 
+## 脱离上下文方式
+
+如果你想在 setup 外使用 Loading Bar 加载条，可以通过 `createLoadingBar` 来构建对应的 API。
+
+:::warning
+
+1.脱离上下文的 API 不会受 r-loading-bar 的影响，并且和应用上下文中对应组件会使用不同的 DOM 容器。如果需要的话，你需要手动同步这些信息。并且最好不要混用两类 API。
+
+2.不要在 setup 中调用 createLoadingBar，可能会有一些意外的问题出现。
+
+:::
+
+:::demo
+
+loading-bar/create
+
+:::
+
 ## API
 
 ### Props
