@@ -701,7 +701,12 @@ export default defineComponent({
     // 监听页面slidesElRef尺寸变化
     const selfElRef = ref<HTMLDivElement | null>(null)
     useResizeObserver(slidesElRef, () => {
-      perViewSizeRef.value = calculateSize(selfElRef.value as HTMLElement, true)
+      if (selfElRef.value) {
+        perViewSizeRef.value = calculateSize(
+          selfElRef.value as HTMLElement,
+          true
+        )
+      }
       resetAutoplay()
     })
 
