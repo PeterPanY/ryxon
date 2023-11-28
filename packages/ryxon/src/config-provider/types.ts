@@ -45,12 +45,10 @@ export type ConfigProviderThemeVars =
     import('../scrollbar').ScrollbarThemeVars &
     import('../select').SelectThemeVars &
     import('../skeleton').SkeletonThemeVars &
-    import('../slide-bar').SlideBarThemeVars &
     import('../slider').SliderThemeVars &
     import('../step').StepThemeVars &
     import('../steps').StepsThemeVars &
     import('../sticky').StickyThemeVars &
-    import('../swipe').SwipeThemeVars &
     import('../switch').SwitchThemeVars &
     import('../table').TableThemeVars &
     import('../tabs').TabsThemeVars &

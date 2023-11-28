@@ -90,13 +90,6 @@
         { "link": "/pull-refresh", "text": "PullRefresh 下拉刷新" },
         { "link": "/tooltip", "text": "Tooltip 文字提示" }
       ]
-    },
-    "discard": {
-      "text": "Discard 废弃组件",
-      "children": [
-        { "link": "/slide-bar", "text": "SlideBar 滚动块" },
-        { "link": "/swipe", "text": "Swipe 轮播" }
-      ]
     }
   }
 }
