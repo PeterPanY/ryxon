@@ -271,6 +271,15 @@ export default defineComponent({
       isMentionMode.value = false
     }
 
+    // 更新文本值
+    const handleInput = () => {
+      emit('update:html', mentionElementRef.value?.innerHTML)
+      emit('update:text', mentionElementRef.value?.innerText)
+      emit('change', mentionElementRef.value?.innerText)
+    }
+
+    useCustomInputValue(() => props.text)
+
     // 在光标位置插入内容
     const insertContent = (
       content: HTMLSpanElement | Array<HTMLSpanElement>,
@@ -329,6 +338,8 @@ export default defineComponent({
 
       // 创建一个只包含空格的元素节点，存放焦点信息
       setCursorToNode(blankNode)
+
+      handleInput()
     }
 
     // 创建一个选区，选中当前<span>标签，删除时，可以一并删除。
@@ -457,15 +468,6 @@ export default defineComponent({
     const handlePaste = (e) => {
       emit('paste', e)
     }
-
-    // 更新文本值
-    const handleInput = () => {
-      emit('update:html', mentionElementRef.value?.innerHTML)
-      emit('update:text', mentionElementRef.value?.innerText)
-      emit('change', mentionElementRef.value?.innerText)
-    }
-
-    useCustomInputValue(() => props.text)
 
     // 初始化显示
     onMounted(() => {
