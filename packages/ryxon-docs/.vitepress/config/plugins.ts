@@ -6,9 +6,10 @@ import path from 'path'
 import fs from 'fs'
 import tableWrapper from '../plugins/table-wrapper'
 import tooltip from '../plugins/tooltip'
+import tag from '../plugins/tag'
 import { highlight } from '../utils/highlight'
 
-const localMd = MarkdownIt()
+const localMd = MarkdownIt().use(tag)
 
 interface ContainerOpts {
   marker?: string | undefined
@@ -25,6 +26,7 @@ interface ContainerOpts {
 export const mdPlugin = (md: MarkdownIt) => {
   md.use(tableWrapper)
   md.use(tooltip)
+  md.use(tag)
   md.use(mdContainer, 'div', {
     validate(params) {
       return !!params.trim().match(/^demo\s*(.*)$/)
