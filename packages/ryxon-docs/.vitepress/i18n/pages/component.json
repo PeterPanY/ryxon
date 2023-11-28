@@ -26,6 +26,7 @@
         { "link": "/form", "text": "Form 表单" },
         { "link": "/input", "text": "Input 输入框" },
         { "link": "/input-number", "text": "InputNumber 数字输入框" },
+        { "link": "/mention", "text": "Mention 提及" },
         { "link": "/radio", "text": "Radio 单选框" },
         { "link": "/select", "text": "Select 选择器" },
         { "link": "/slider", "text": "Slider 滑块" },

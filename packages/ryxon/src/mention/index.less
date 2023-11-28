@@ -1,0 +1,96 @@
+:root {
+  --r-mention-text-color: var(--r-text-color);
+  --r-mention-height: 82px;
+  --r-mention-padding-vertical: 5px;
+  --r-mention-line-height: 24px;
+  --r-mention-placeholder-text-color: var(--r-text-color-3);
+  --r-mention-disabled-text-color: var(--r-text-color-3);
+  --r-mention-hover-fill: var(--r-primary-color-light-9);
+  --r-mention-hover-color: var(--r-primary-color);
+}
+
+.r-mention {
+  width: 100%;
+  z-index: auto;
+  position: relative;
+
+  &__content.r-scrollbar {
+    padding: var(--r-mention-padding-vertical) 0;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px var(--r-border-color) inset;
+    height: var(--r-mention-height) !important;
+
+    .r-scrollbar__view {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+  }
+
+  &__editor {
+    padding: 0 15px;
+    color: var(--r-mention-text-color);
+    line-height: var(--r-mention-line-height);
+    min-height: var(--r-mention-line-height);
+    flex: 1;
+
+    &:empty::before {
+      content: attr(placeholder);
+      color: var(--r-mention-placeholder-text-color);
+    }
+
+    &--disabled {
+      pointer-events: none;
+    }
+  }
+
+  &--disabled {
+    color: var(--r-mention-disabled-text-color);
+    cursor: not-allowed;
+    opacity: 1;
+    // 修复移动safari中禁用的颜色
+    -webkit-text-fill-color: var(--r-mention-disabled-text-color);
+  }
+}
+
+.r-mention__popup {
+  .r-tooltip__content {
+    padding-left: 0;
+    padding-right: 0;
+
+    .r-scrollbar__wrap {
+      max-height: 160px;
+      width: 160px;
+    }
+  }
+
+  .r-mention__item {
+    line-height: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: var(--r-text-color-regular);
+
+    &.active,
+    &:hover {
+      background-color: var(--r-mention-hover-fill);
+      color: var(--r-mention-hover-color);
+    }
+
+    &.disabled {
+      color: var(--r-text-color-placeholder);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: unset;
+      }
+    }
+  }
+
+  .r-loading {
+    text-align: center;
+    color: var(--r-primary-color);
+  }
+}
