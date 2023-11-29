@@ -13,6 +13,9 @@ yarn add @ryxon/touch-emulator
 
 # with pnpm
 pnpm add @ryxon/touch-emulator
+
+# with bun
+bun add @ryxon/touch-emulator
 ```
 
 ## 使用指南
@@ -20,7 +23,7 @@ pnpm add @ryxon/touch-emulator
 直接在代码中引入模块即可，模块会自动完成初始化并生效
 
 ```js
-import '@ryxon/touch-emulator';
+import '@ryxon/touch-emulator'
 ```
 
 ## CDN 引入

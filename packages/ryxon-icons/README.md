@@ -11,6 +11,9 @@ yarn add @ryxon/icons
 
 # with pnpm
 pnpm add @ryxon/icons
+
+# with bun
+bun add @ryxon/icons
 ```
 
 ## Document

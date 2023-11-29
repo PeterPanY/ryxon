@@ -11,6 +11,9 @@ yarn add @ryxon/eslint-config -D
 
 # with pnpm
 pnpm add @ryxon/eslint-config -D
+
+# with Bun
+bun add @ryxon/eslint-config -D
 ```
 
 ## Usage

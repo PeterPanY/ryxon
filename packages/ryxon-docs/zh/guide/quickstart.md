@@ -48,6 +48,9 @@ yarn add unplugin-vue-components -D
 
 # 通过 pnpm 安装
 pnpm add unplugin-vue-components -D
+
+# 通过 bun 安装
+bun add unplugin-vue-components -D
 ```
 
 ### 2. 配置插件

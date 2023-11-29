@@ -1,40 +1,40 @@
 # Ryxon CLI
 
-Ryxon CLI is a tool for building vue component library. You can quickly build a full-featured Vue component library with ryxon-cli.
+Ryxon CLI 是一个基于 Vite 实现的 Vue 组件库构建工具，通过 Ryxon CLI 可以快速搭建一套功能完备的 Vue 组件库。
 
-🇨🇳 <a href="./README.zh-CN.md">查看中文版介绍</a>
+### 特性
 
----
+- 基于 Vite 实现，享受愉悦的开发体验
+- 提供丰富的命令，涵盖从开发测试到构建发布的完整流程
+- 基于约定的目录结构，自动生成优雅的文档站点和组件示例
+- 内置 ESLint 校验规则，提交代码时自动执行校验
+- 构建后的组件库默认支持按需引入、主题定制、Tree Shaking
 
-### Features
+### 快速上手
 
-- Provides rich commands covering the complete process from development to deploy
-- Based on conventional directory structure. Generate elegant document website and component examples automatically.
-- ESlint built-in.
-- Support Tree Shaking/Theme Customization/Import on Demand
-
-### Quickstart
-
-To create a Ryxon CLI project, run:
+执行以下命令可以快速创建一个基于 Ryxon CLI 的项目：
 
 ```bash
 yarn create ryxon-cli-app
 ```
 
-### Install Manually
+### 手动安装
 
 ```shell
-# via npm
+# 通过 npm
 npm i @ryxon/cli -D
 
-# via yarn
+# 通过 yarn
 yarn add @ryxon/cli -D
 
-# via pnpm
+# 通过 pnpm
 pnpm add @ryxon/cli -D
+
+# via Bun
+bun add @ryxon/cli -D
 ```
 
-Please add the followed config to `package.json` file.
+安装完成后，请将以下配置添加到 package.json 文件中
 
 ```json
 {
@@ -63,9 +63,9 @@ Please add the followed config to `package.json` file.
 }
 ```
 
-## More Details
+## 详细文档
 
-- [cli](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/commands.md)
-- [config](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/config.md)
-- [directory structure](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/directory.md)
-- [CHANGELOG](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/changelog.md)
+- [命令](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/commands.zh-CN.md)
+- [配置指南](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/config.zh-CN.md)
+- [目录结构](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/docs/directory.zh-CN.md)
+- [更新日志](https://github.com/PeterPanY/ryxon/tree/main/packages/ryxon-cli/changelog.md)

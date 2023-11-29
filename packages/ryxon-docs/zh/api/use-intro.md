@@ -20,6 +20,9 @@ yarn add @ryxon/use
 
 # with pnpm
 pnpm add @ryxon/use
+
+# with Bun
+bun add @ryxon/use
 ```
 
 ## 示例

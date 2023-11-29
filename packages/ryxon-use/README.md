@@ -13,4 +13,7 @@ yarn add @ryxon/use
 
 # with pnpm
 pnpm add @ryxon/use
+
+# with bun
+bun add @ryxon/use
 ```

@@ -13,6 +13,9 @@ yarn add @ryxon/area-data
 
 # 通过 pnpm
 pnpm add @ryxon/area-data
+
+# 通过 Bun
+bun add @ryxon/area-data
 ```
 
 ## 使用

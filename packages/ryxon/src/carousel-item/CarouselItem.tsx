@@ -140,7 +140,6 @@ export default defineComponent({
         style={style}
         // We use ts-ignore for vue-tsc, since it seems to patch native event
         // for vue components
-        // @ts-expect-error vue's tsx has type for capture events
         onClickCapture={this.handleClick}
       >
         {shouldRender
