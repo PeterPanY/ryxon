@@ -25,6 +25,7 @@ import {
 } from '../utils'
 
 // Composables
+import { useScopeId } from '../composables/use-scope-id'
 import { useExpose } from '../composables/use-expose'
 
 // Components
@@ -229,6 +230,7 @@ export default defineComponent({
         ref={tooltipRef}
         v-slots={rendercontentontent}
         {...attrs}
+        {...useScopeId()}
         visible={props.visible}
         transition="r-popover-zoom"
         popperClass={kls.value}

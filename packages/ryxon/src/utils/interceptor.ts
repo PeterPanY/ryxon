@@ -11,11 +11,13 @@ export function callInterceptor(
   {
     args = [],
     done,
-    canceled
+    canceled,
+    error
   }: {
     args?: unknown[]
     done: () => void
     canceled?: () => void
+    error?: () => void
   }
 ) {
   if (interceptor) {
@@ -31,7 +33,7 @@ export function callInterceptor(
             canceled()
           }
         })
-        .catch(noop)
+        .catch(error || noop)
     } else if (returnVal) {
       done()
     } else if (canceled) {
