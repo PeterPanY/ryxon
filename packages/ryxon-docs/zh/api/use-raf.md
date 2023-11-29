@@ -9,16 +9,16 @@ lang: zh
 
 ## 单次调用
 
+通过 `useRaf` 方法，可以在下一次浏览器重新绘制之前调用指定的函数。
+
 ```js
-import { useRaf } from '@vant/use'
+import { useRaf } from '@ryxon/use'
 
 export default {
   setup() {
     let count = 0
-    // 单次调用在回调执行完后会被自动 cancelRaf
     useRaf(() => {
-      count++
-      console.log(count) // 只会执行 1 次
+      console.log(++count) // 只会执行 1 次
     })
   }
 }
@@ -26,24 +26,25 @@ export default {
 
 ## 循环调用
 
+通过开启 `isLoop` 选项，你可以按指定的间隔重复执行某个函数，直到被取消。
+
 ```js
-import { useRaf } from '@vant/use'
+import { useRaf } from '@ryxon/use'
 
 export default {
   setup() {
-    // isLoop 开启循环
     let count = 0
     const cancelRaf = useRaf(
       () => {
-        count++
-        console.log(count) // 无限的执行，直到被 cancel
+        console.log(++count) // 无限执行，直到被 cancel
+
         if (count === 5) {
           cancelRaf()
         }
       },
       {
-        interval: 0, // 控制间隔多久去调用
-        isLoop: true
+        isLoop: true, // 开启循环
+        interval: 100 // 设置调用间隔
       }
     )
   }

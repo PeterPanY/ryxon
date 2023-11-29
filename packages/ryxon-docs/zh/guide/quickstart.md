@@ -33,7 +33,9 @@ app.component(Button.name, Button)
 
 ## 按需引入
 
-在基于 `vite`、`webpack` 或 `vue-cli` 的项目中使用 Ryxon 时，可以使用 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件，它可以自动引入组件，并按需引入组件的样式。
+在基于 `vite`、`webpack` 或 `vue-cli` 的项目中使用 Ryxon 时，可以使用 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件，它可以自动引入组件。
+
+Ryxon 官方基于 `unplugin-vue-components` 提供了自动导入样式的解析器 [@ryxon/auto-import-resolver](https://github.com/PeterPanY/ryxon/tree/master/packages/auto-import-resolver)，两者可以配合使用。
 
 相比于全局注册，这种方式可以按需引入组件的 CSS 样式，从而减少一部分代码体积，但使用起来会变得繁琐一些。如果业务对 CSS 的体积要求不是特别极致，推荐使用更简便的全局注册。
 
@@ -41,66 +43,32 @@ app.component(Button.name, Button)
 
 ```bash
 # 通过 npm 安装
-npm i unplugin-vue-components -D
+npm i @ryxon/auto-import-resolver unplugin-vue-components -D
 
 # 通过 yarn 安装
-yarn add unplugin-vue-components -D
+yarn add @ryxon/auto-import-resolver unplugin-vue-components -D
 
 # 通过 pnpm 安装
-pnpm add unplugin-vue-components -D
+pnpm add @ryxon/auto-import-resolver unplugin-vue-components -D
 
 # 通过 bun 安装
-bun add unplugin-vue-components -D
+bun add @ryxon/auto-import-resolver unplugin-vue-components -D
 ```
 
 ### 2. 配置插件
-
-公共方法
-
-```js
-const isSSR = false
-const moduleType = isSSR ? 'lib' : 'es'
-
-function getSideEffects(dirName, options) {
-  const { importStyle = true } = options
-
-  if (!importStyle || isSSR) return
-
-  if (importStyle === 'less') return `ryxon/${moduleType}/${dirName}/style/less`
-
-  if (importStyle === 'css') return `ryxon/${moduleType}/${dirName}/style/index`
-
-  return `ryxon/${moduleType}/${dirName}/style/index`
-}
-
-function kebabCase(key) {
-  const result = key.replace(/([A-Z])/g, ' $1').trim()
-  return result.split(' ').join('-').toLowerCase()
-}
-```
 
 如果是基于 `vite` 的项目，在 `vite.config.js` 文件中配置插件：
 
 ```js
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
+import { RyxonResolver } from '@ryxon/auto-import-resolver'
 
 export default {
   plugins: [
     vue(),
     Components({
-      resolvers: [
-        // 导入 Ryxon
-        (componentName) => {
-          // where `componentName` is always CapitalCase
-          if (componentName.startsWith('R'))
-            return {
-              name: componentName.slice(1),
-              from: `ryxon/${moduleType}`,
-              sideEffects: getSideEffects(kebabCase(componentName.slice(1)), {})
-            }
-        }
-      ]
+      resolvers: [RyxonResolver()]
     })
   ]
 }
@@ -109,27 +77,14 @@ export default {
 如果是基于 `vue-cli` 的项目，在 `vue.config.js` 文件中配置插件：
 
 ```js
+const { RyxonResolver } = require('@ryxon/auto-import-resolver')
 const ComponentsPlugin = require('unplugin-vue-components/webpack')
 
 module.exports = {
   configureWebpack: {
     plugins: [
       ComponentsPlugin({
-        resolvers: [
-          // 导入 Ryxon
-          (componentName) => {
-            // where `componentName` is always CapitalCase
-            if (componentName.startsWith('R'))
-              return {
-                name: componentName.slice(1),
-                from: `ryxon/${moduleType}`,
-                sideEffects: getSideEffects(
-                  kebabCase(componentName.slice(1)),
-                  {}
-                )
-              }
-          }
-        ]
+        resolvers: [RyxonResolver()]
       })
     ]
   }
@@ -139,23 +94,13 @@ module.exports = {
 如果是基于 `webpack` 的项目，在 `webpack.config.js` 文件中配置插件：
 
 ```js
+const { RyxonResolver } = require('@ryxon/auto-import-resolver')
 const ComponentsPlugin = require('unplugin-vue-components/webpack')
 
 module.exports = {
   plugins: [
     ComponentsPlugin({
-      resolvers: [
-        // 导入 Ryxon
-        (componentName) => {
-          // where `componentName` is always CapitalCase
-          if (componentName.startsWith('R'))
-            return {
-              name: componentName.slice(1),
-              from: `ryxon/${moduleType}`,
-              sideEffects: getSideEffects(kebabCase(componentName.slice(1)), {})
-            }
-        }
-      ]
+      resolvers: [RyxonResolver()]
     })
   ]
 }
@@ -163,7 +108,7 @@ module.exports = {
 
 ### 3. 使用组件
 
-完成以上两步，就可以直接在模板中使用 Ryxon 组件了，`unplugin-vue-components` 会解析模板并自动注册对应的组件。
+完成以上两步，就可以直接在模板中使用 Ryxon 组件了，`unplugin-vue-components` 会解析模板并自动注册对应的组件, `@ryxon/auto-import-resolver` 会自动引入对应的组件样式。
 
 ```html
 <template>
@@ -173,7 +118,7 @@ module.exports = {
 
 ### 4. 引入函数组件的样式
 
-Ryxon 中有个别组件是以函数的形式提供的，包括 `showMessage`，`Dialog`，`Notify` 和 `ImagePreview` 组件。在使用函数组件时，`unplugin-vue-components` 无法自动引入对应的样式，因此需要手动引入样式。
+Ryxon 中有个别组件是以函数的形式提供的，包括 `Message`，`Dialog`，`Notify` 和 `ImagePreview` 组件。在使用函数组件时，`unplugin-vue-components` 无法解析自动注册组件，导致 `@ryxon/auto-import-resolver` 无法解析样式，因此需要手动引入样式。
 
 ```js
 // showMessage
@@ -261,7 +206,8 @@ export default defineNuxtConfig({
 ## 使用注意
 
 - 请避免同时使用「全局注册」和「按需引入」这两种引入方式，否则会导致代码重复、样式错乱等问题。
-- unplugin-vue-components 并不是 Ryxon 官方维护的插件，如果在使用过程中遇到问题，建议优先到 [antfu/unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 仓库下反馈。
+- 在使用过程中，如果你遇到组件不能导入的问题，因为 unplugin-vue-components 并不是 Ryxon 官方维护的插件，所以建议到 [antfu/unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 仓库下反馈。
+- 如果是样式不生效的相关问题，你可以在 Ryxon 仓库下反馈。
 
 ## babel-plugin-import
 
@@ -270,7 +216,7 @@ Ryxon 不支持 `babel-plugin-import`。
 移除 `babel-plugin-import` 有以下收益：
 
 - 不再强依赖 babel，项目可以使用 esbuild、swc 等更高效的编译工具，大幅度提升编译效率。
-- 不再受到 `babel-plugin-import` 的 import 写法限制，可以从 ryxon 中导入除了组件以外的其他内容，比如 Ryxon 中新增的 `showMessage` 等方法：
+- 不再受到 `babel-plugin-import` 的 import 写法限制，可以从 ryxon 中导入除了组件以外的其他内容，比如 Ryxon 中新增的 `showMessage` 等方法。
 
 ```ts
 import { showMessage, showDialog } from 'ryxon'

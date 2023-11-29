@@ -167,6 +167,15 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
+  packages/ryxon-auto-import-resolver:
+    devDependencies:
+      rimraf:
+        specifier: ^5.0.0
+        version: 5.0.0
+      typescript:
+        specifier: ^5.0.4
+        version: 5.1.6
+
   packages/ryxon-cli:
     dependencies:
       '@babel/core':
