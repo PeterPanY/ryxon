@@ -23,7 +23,7 @@ Ryxon 目前还处于快速开发迭代中。
 
 ## 使用包管理器
 
-**建议您使用包管理器 (NPM, [Yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) 安装 Ryxon**, 然后您就可以使用打包工具，例如 [Vite](https://vitejs.dev) 或 [webpack](https://webpack.js.org/).
+**建议您使用包管理器 (NPM, [Yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/), bun) 安装 Ryxon**, 然后您就可以使用打包工具，例如 [Vite](https://vitejs.dev) 或 [webpack](https://webpack.js.org/).
 
 ```shell
 # 选择一个你喜欢的包管理器.
@@ -36,13 +36,16 @@ $ yarn add ryxon
 
 # pnpm
 $ pnpm install ryxon
+
+# bun
+$ bun add ryxon
 ```
 
 如果您的网络环境不好，建议使用相关镜像服务 [cnpm](https://github.com/cnpm/cnpm) 或 [Alibaba](https://registry.npmmirror.com/).
 
 ## 通过 CDN 安装
 
-使用 Ryxon 最简单的方法是直接在 HTML 文件中引入 CDN 链接，之后你可以通过全局变量 `ryxon` 访问到所有组件。
+如果你只需要开发一个简单的 HTML 页面，那么可以直接在 HTML 文件中引入 CDN 链接，之后你可以通过全局变量 `ryxon` 访问到所有组件。
 
 根据不同的 CDN 提供商有不同的引入方式， 我们在这里以 [unpkg](https://unpkg.com) 和 [jsDelivr](https://jsdelivr.com) 举例。 你也可以使用其它的 CDN 供应商。
 

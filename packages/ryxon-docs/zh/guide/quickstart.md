@@ -33,9 +33,9 @@ app.component(Button.name, Button)
 
 ## 按需引入
 
-在基于 `vite`、`webpack` 或 `vue-cli` 的项目中使用 Ryxon 时，可以使用 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 插件，它可以自动引入组件。
+在基于 `vite`、`webpack` 或 `vue-cli` 的项目中使用 Ryxon 时，可以使用 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 插件，它可以自动引入组件。
 
-Ryxon 官方基于 `unplugin-vue-components` 提供了自动导入样式的解析器 [@ryxon/auto-import-resolver](https://github.com/PeterPanY/ryxon/tree/master/packages/auto-import-resolver)，两者可以配合使用。
+Ryxon 官方基于 `unplugin-vue-components` 提供了自动导入样式的解析器 [@ryxon/auto-import-resolver](https://github.com/PeterPanY/ryxon/tree/master/packages/ryxon-auto-import-resolver)，两者可以配合使用。
 
 相比于全局注册，这种方式可以按需引入组件的 CSS 样式，从而减少一部分代码体积，但使用起来会变得繁琐一些。如果业务对 CSS 的体积要求不是特别极致，推荐使用更简便的全局注册。
 
@@ -206,7 +206,7 @@ export default defineNuxtConfig({
 ## 使用注意
 
 - 请避免同时使用「全局注册」和「按需引入」这两种引入方式，否则会导致代码重复、样式错乱等问题。
-- 在使用过程中，如果你遇到组件不能导入的问题，因为 unplugin-vue-components 并不是 Ryxon 官方维护的插件，所以建议到 [antfu/unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 仓库下反馈。
+- 在使用过程中，如果你遇到组件不能导入的问题，因为 unplugin-vue-components 并不是 Ryxon 官方维护的插件，所以建议到 [unplugin/unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 仓库下反馈。
 - 如果是样式不生效的相关问题，你可以在 Ryxon 仓库下反馈。
 
 ## babel-plugin-import

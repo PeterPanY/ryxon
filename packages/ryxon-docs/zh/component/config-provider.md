@@ -74,7 +74,7 @@ config-provider/theme-vars
 
 :::tip
 
-注意：Config Provider 仅影响它的子组件的样式，不影响全局 root 节点。
+注意：ConfigProvider 默认仅影响它的子组件的样式，不影响全局 root 节点。设置为 `global` 整个页面生效。
 
 :::
 
@@ -207,6 +207,7 @@ Ryxon 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 | theme-vars | 自定义主题变量，局部生效 | `object` | - |
 | theme-vars-dark | 仅在深色模式下生效的主题变量，优先级高于 `theme-vars` | `object` | - |
 | theme-vars-light | 仅在浅色模式下生效的主题变量，优先级高于 `theme-vars` | `object` | - |
+| theme-vars-scope | 默认仅影响子组件的样式，设置为 `global` 整个页面生效 | `ConfigProviderThemeVarsScope` | `local` |
 | tag | 根节点对应的 HTML 标签名 | `string` | `div` |
 | z-index | 设置所有弹窗类组件的 z-index，该属性对全局生效 | `number` | `2000` |
 | icon-prefix | 所有图标的类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
@@ -219,6 +220,7 @@ Ryxon 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 import type {
   ConfigProviderProps,
   ConfigProviderTheme,
-  ConfigProviderThemeVars
+  ConfigProviderThemeVars,
+  ConfigProviderThemeVarsScope
 } from 'ryxon'
 ```

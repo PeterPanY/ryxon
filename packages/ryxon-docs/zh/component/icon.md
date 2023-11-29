@@ -62,7 +62,7 @@ for (const [key, component] of Object.entries(RyxonIconsVue)) {
 
 ### 自动导入
 
-使用 [unplugin-icons](https://github.com/antfu/unplugin-icons) 和 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 从 iconify 中自动导入任何图标集。
+使用 [unplugin-icons](https://github.com/unplugin/unplugin-icons) 和 [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import) 从 iconify 中自动导入任何图标集。
 
 ```ts
 // vite.config.ts
