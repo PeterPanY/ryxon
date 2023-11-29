@@ -48,6 +48,9 @@ function initInstance() {
   }))
 }
 
+/**
+ * Display a full-screen image preview component
+ */
 export const showImagePreview = (
   options: string[] | ImagePreviewOptions,
   startPosition = 0
