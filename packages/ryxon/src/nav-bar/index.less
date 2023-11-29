@@ -7,6 +7,7 @@
   --r-nav-bar-title-font-size: var(--r-font-size-lg);
   --r-nav-bar-title-text-color: var(--r-text-color);
   --r-nav-bar-z-index: 1;
+  --r-nav-bar-disabled-opacity: var(--r-disabled-opacity);
 }
 
 .r-nav-bar {
@@ -62,6 +63,11 @@
     align-items: center;
     padding: 0 var(--r-padding-md);
     font-size: var(--r-font-size-md);
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: var(--van-nav-bar-disabled-opacity);
+    }
   }
 
   &__left {

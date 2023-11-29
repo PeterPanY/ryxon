@@ -57,6 +57,8 @@ nav-bar/custom
 | title | 标题 | `string` | `''` |
 | left-text | 左侧文案 | `string` | `''` |
 | right-text | 右侧文案 | `string` | `''` |
+| left-disabled | 是否禁用左侧按钮，禁用时透明度降低，且无法点击 | `boolean` | `false` |
+| right-disabled | 是否禁用右侧按钮，禁用时透明度降低，且无法点击 | `boolean` | `false` |
 | left-arrow | 是否显示左侧箭头 | `boolean` | `false` |
 | border | 是否显示下边框 | `boolean` | `true` |
 | fixed | 是否固定在顶部 | `boolean` | `false` |
