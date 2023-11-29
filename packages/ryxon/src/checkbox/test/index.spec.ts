@@ -1,118 +1,118 @@
-import { Checkbox } from '..';
-import { mount } from '../../../test';
+import { Checkbox } from '..'
+import { mount } from '../../../test'
 
 test('should emit "update:modelValue" event when checkbox icon is clicked', async () => {
-  const wrapper = mount(Checkbox);
+  const wrapper = mount(Checkbox)
 
-  const icon = wrapper.find('.r-checkbox__icon');
-  icon.trigger('click');
-  expect(wrapper.emitted('update:modelValue')![0]).toEqual([true]);
+  const icon = wrapper.find('.r-checkbox__icon')
+  icon.trigger('click')
+  expect(wrapper.emitted('update:modelValue')![0]).toEqual([true])
 
-  await wrapper.setProps({ modelValue: true });
-  icon.trigger('click');
-  expect(wrapper.emitted('update:modelValue')![1]).toEqual([false]);
-});
+  await wrapper.setProps({ modelValue: true })
+  icon.trigger('click')
+  expect(wrapper.emitted('update:modelValue')![1]).toEqual([false])
+})
 
 test('should emit change event when modelValue is changed', async () => {
-  const wrapper = mount(Checkbox);
+  const wrapper = mount(Checkbox)
 
-  const icon = wrapper.find('.r-checkbox__icon');
-  icon.trigger('click');
-  await wrapper.setProps({ modelValue: true });
-  expect(wrapper.emitted('change')![0]).toEqual([true]);
+  const icon = wrapper.find('.r-checkbox__icon')
+  icon.trigger('click')
+  await wrapper.setProps({ modelValue: true })
+  expect(wrapper.emitted('change')![0]).toEqual([true])
 
-  icon.trigger('click');
-  await wrapper.setProps({ modelValue: false });
-  expect(wrapper.emitted('change')![1]).toEqual([false]);
-});
+  icon.trigger('click')
+  await wrapper.setProps({ modelValue: false })
+  expect(wrapper.emitted('change')![1]).toEqual([false])
+})
 
 test('should not emit "update:modelValue" event when checkbox icon is disabled and clicked', () => {
   const wrapper = mount(Checkbox, {
     props: {
-      disabled: true,
-    },
-  });
+      disabled: true
+    }
+  })
 
-  wrapper.find('.r-checkbox__icon').trigger('click');
-  expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-});
+  wrapper.find('.r-checkbox__icon').trigger('click')
+  expect(wrapper.emitted('update:modelValue')).toBeFalsy()
+})
 
 test('should render "r-checkbox--label-disabled" class when using label-disabled prop', () => {
   const wrapper = mount(Checkbox, {
     props: {
-      labelDisabled: true,
+      labelDisabled: true
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  expect(wrapper.classes()).toContain('r-checkbox--label-disabled');
-});
+  expect(wrapper.classes()).toContain('r-checkbox--label-disabled')
+})
 
 test('should emit "update:modelValue" event when label is clicked', () => {
   const wrapper = mount(Checkbox, {
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  const icon = wrapper.find('.r-checkbox__label');
-  icon.trigger('click');
-  expect(wrapper.emitted('update:modelValue')![0]).toEqual([true]);
-});
+  const icon = wrapper.find('.r-checkbox__label')
+  icon.trigger('click')
+  expect(wrapper.emitted('update:modelValue')![0]).toEqual([true])
+})
 
 test('should not emit "update:modelValue" event when label is disabled and clicked', () => {
   const wrapper = mount(Checkbox, {
     props: {
-      labelDisabled: true,
+      labelDisabled: true
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  const icon = wrapper.find('.r-checkbox__label');
-  icon.trigger('click');
-  expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-});
+  const icon = wrapper.find('.r-checkbox__label')
+  icon.trigger('click')
+  expect(wrapper.emitted('update:modelValue')).toBeFalsy()
+})
 
 test('should adjust label position when using label-position prop', () => {
   const wrapper = mount(Checkbox, {
     props: {
-      labelPosition: 'left',
+      labelPosition: 'left'
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  expect(wrapper.html()).toMatchSnapshot();
-});
+  expect(wrapper.html()).toMatchSnapshot()
+})
 
 test('should emit click event when checkbox icon is clicked', async () => {
-  const onClick = jest.fn();
+  const onClick = vi.fn()
   const wrapper = mount(Checkbox, {
     props: {
-      onClick,
-    },
-  });
+      onClick
+    }
+  })
 
-  wrapper.trigger('click');
-  expect(onClick).toHaveBeenCalledTimes(1);
+  wrapper.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(1)
 
-  const icon = wrapper.find('.r-checkbox__icon');
-  icon.trigger('click');
-  expect(onClick).toHaveBeenCalledTimes(2);
-});
+  const icon = wrapper.find('.r-checkbox__icon')
+  icon.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(2)
+})
 
 test('should render icon slot correctly', async () => {
   const wrapper = mount(Checkbox, {
     slots: {
       icon: ({ checked, disabled }) =>
-        `checked: ${checked}, disabled: ${disabled}`,
-    },
-  });
+        `checked: ${checked}, disabled: ${disabled}`
+    }
+  })
 
-  expect(wrapper.find('.r-checkbox__icon').html()).toMatchSnapshot();
-});
+  expect(wrapper.find('.r-checkbox__icon').html()).toMatchSnapshot()
+})

@@ -1,46 +1,46 @@
-import Dialog from '../Dialog';
-import { mount } from '../../../test';
+import Dialog from '../Dialog'
+import { mount } from '../../../test'
 
 test('should allow to intercept closing action with before-close prop', async () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
       showCancelButton: true,
-      beforeClose: (action) => action === 'cancel',
-    },
-  });
+      beforeClose: (action) => action === 'cancel'
+    }
+  })
 
-  const confirm = wrapper.find('.r-dialog__confirm');
-  confirm.trigger('click');
-  expect(wrapper.emitted('update:show')).toBeFalsy();
+  const confirm = wrapper.find('.r-dialog__confirm')
+  confirm.trigger('click')
+  expect(wrapper.emitted('update:show')).toBeFalsy()
 
-  const cancel = wrapper.find('.r-dialog__cancel');
-  cancel.trigger('click');
-  expect(wrapper.emitted('update:show')).toBeTruthy();
-});
+  const cancel = wrapper.find('.r-dialog__cancel')
+  cancel.trigger('click')
+  expect(wrapper.emitted('update:show')).toBeTruthy()
+})
 
 test('should change confirm button color when using confirm-button-color prop', () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
-      confirmButtonColor: 'red',
-    },
-  });
-  const confirmButton = wrapper.find('.r-dialog__confirm');
-  expect(confirmButton.style.color).toEqual('red');
-});
+      confirmButtonColor: 'red'
+    }
+  })
+  const confirmButton = wrapper.find('.r-dialog__confirm')
+  expect(confirmButton.style.color).toEqual('red')
+})
 
 test('should change cancel button color when using cancel-button-color prop', () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
       showCancelButton: true,
-      cancelButtonColor: 'red',
-    },
-  });
-  const cancelButton = wrapper.find('.r-dialog__cancel');
-  expect(cancelButton.style.color).toEqual('red');
-});
+      cancelButtonColor: 'red'
+    }
+  })
+  const cancelButton = wrapper.find('.r-dialog__cancel')
+  expect(cancelButton.style.color).toEqual('red')
+})
 
 test('should render button text correctly', () => {
   const wrapper = mount(Dialog, {
@@ -48,113 +48,113 @@ test('should render button text correctly', () => {
       show: true,
       showCancelButton: true,
       cancelButtonText: 'Custom Cancel',
-      confirmButtonText: 'Custom Confirm',
-    },
-  });
-  expect(wrapper.find('.r-dialog__footer').html()).toMatchSnapshot();
-});
+      confirmButtonText: 'Custom Confirm'
+    }
+  })
+  expect(wrapper.find('.r-dialog__footer').html()).toMatchSnapshot()
+})
 
 test('should render default slot correctly', () => {
   const wrapper = mount(Dialog, {
     props: {
-      show: true,
+      show: true
     },
     slots: {
-      default: () => 'Custom Message',
-    },
-  });
-  expect(wrapper.find('.r-dialog__content').html()).toMatchSnapshot();
-});
+      default: () => 'Custom Message'
+    }
+  })
+  expect(wrapper.find('.r-dialog__content').html()).toMatchSnapshot()
+})
 
 test('should render title slot correctly', () => {
   const wrapper = mount(Dialog, {
     props: {
-      show: true,
+      show: true
     },
     slots: {
-      title: () => 'Custom Title',
-    },
-  });
-  expect(wrapper.find('.r-dialog__header').html()).toMatchSnapshot();
-});
+      title: () => 'Custom Title'
+    }
+  })
+  expect(wrapper.find('.r-dialog__header').html()).toMatchSnapshot()
+})
 
 test('should render message as html when using allow-html prop', async () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
       message: '<span class="foo">text</span>',
-      allowHtml: false,
-    },
-  });
+      allowHtml: false
+    }
+  })
 
-  expect(wrapper.find('.foo').exists()).toBeFalsy();
+  expect(wrapper.find('.foo').exists()).toBeFalsy()
 
-  await wrapper.setProps({ allowHtml: true });
-  expect(wrapper.find('.foo').exists()).toBeTruthy();
-});
+  await wrapper.setProps({ allowHtml: true })
+  expect(wrapper.find('.foo').exists()).toBeTruthy()
+})
 
 test('should emit open event when show prop is set to true', async () => {
-  const onOpen = jest.fn();
+  const onOpen = vi.fn()
   const wrapper = mount(Dialog, {
     props: {
-      onOpen,
-    },
-  });
+      onOpen
+    }
+  })
 
-  await wrapper.setProps({ show: true });
-  expect(onOpen).toHaveBeenCalledTimes(1);
-});
+  await wrapper.setProps({ show: true })
+  expect(onOpen).toHaveBeenCalledTimes(1)
+})
 
 test('should emit close event when show prop is set to false', async () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn()
   const wrapper = mount(Dialog, {
     props: {
       show: true,
-      onClose,
-    },
-  });
+      onClose
+    }
+  })
 
-  await wrapper.setProps({ show: false });
-  expect(onClose).toHaveBeenCalledTimes(1);
-});
+  await wrapper.setProps({ show: false })
+  expect(onClose).toHaveBeenCalledTimes(1)
+})
 
 test('should update width when using width prop', async () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
-      width: 200,
-    },
-  });
+      width: 200
+    }
+  })
 
-  const dialog = wrapper.find('.r-dialog').element;
-  expect(dialog.style.width).toEqual('200px');
-});
+  const dialog = wrapper.find('.r-dialog').element
+  expect(dialog.style.width).toEqual('200px')
+})
 
 test('should render footer slot correctly', () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
-      message: 'message',
+      message: 'message'
     },
     slots: {
-      footer: () => 'Custom Footer',
-    },
-  });
-  expect(wrapper.find('.r-dialog').html()).toMatchSnapshot();
-});
+      footer: () => 'Custom Footer'
+    }
+  })
+  expect(wrapper.find('.r-dialog').html()).toMatchSnapshot()
+})
 
 test('should allow to disable confirm button', () => {
   const wrapper = mount(Dialog, {
     props: {
       show: true,
       message: 'message',
-      confirmButtonDisabled: true,
-    },
-  });
+      confirmButtonDisabled: true
+    }
+  })
   expect(wrapper.find('.r-dialog__confirm').classes()).toContain(
     'r-button--disabled'
-  );
-});
+  )
+})
 
 test('should allow to disable cancel button', () => {
   const wrapper = mount(Dialog, {
@@ -162,10 +162,10 @@ test('should allow to disable cancel button', () => {
       show: true,
       showCancelButton: true,
       message: 'message',
-      cancelButtonDisabled: true,
-    },
-  });
+      cancelButtonDisabled: true
+    }
+  })
   expect(wrapper.find('.r-dialog__cancel').classes()).toContain(
     'r-button--disabled'
-  );
-});
+  )
+})

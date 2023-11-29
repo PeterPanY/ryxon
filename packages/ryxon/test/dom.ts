@@ -37,7 +37,7 @@ function mockHTMLElementOffset() {
 }
 
 export function mockScrollIntoView() {
-  const fn = jest.fn()
+  const fn = vi.fn()
   if (inBrowser) {
     Element.prototype.scrollIntoView = fn
   }
@@ -46,7 +46,7 @@ export function mockScrollIntoView() {
 
 export function mockGetBoundingClientRect(rect: Partial<DOMRect>): () => void {
   if (inBrowser) {
-    const spy = jest.spyOn(Element.prototype, 'getBoundingClientRect')
+    const spy = vi.spyOn(Element.prototype, 'getBoundingClientRect')
     spy.mockReturnValue(rect as DOMRect)
     return () => spy.mockRestore()
   }

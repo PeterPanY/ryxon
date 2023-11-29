@@ -36,7 +36,7 @@ test('should not reset validation after blurred when validate-trigger is onChang
 })
 
 test('should render correctly when dynamically add/remove inputs', async () => {
-  const onSubmit = jest.fn()
+  const onSubmit = vi.fn()
   const wrapper = mount({
     render() {
       return (
@@ -65,7 +65,7 @@ test('should render correctly when dynamically add/remove inputs', async () => {
 })
 
 test('should validate first correctly when dynamically add input', async () => {
-  const onFailed = jest.fn()
+  const onFailed = vi.fn()
   const wrapper = mount({
     render() {
       return (

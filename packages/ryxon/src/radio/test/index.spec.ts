@@ -1,89 +1,89 @@
-import { Radio } from '..';
-import { mount } from '../../../test';
+import { Radio } from '..'
+import { mount } from '../../../test'
 
 test('should emit "update:modelValue" event when radio icon or label is clicked', async () => {
-  const props = { name: 'a' };
+  const props = { name: 'a' }
   const wrapper = mount(Radio, {
     props,
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  const icon = wrapper.find('.r-radio__icon');
-  const label = wrapper.find('.r-radio__label');
-  icon.trigger('click');
-  expect(wrapper.emitted('update:modelValue')![0]).toEqual([props.name]);
+  const icon = wrapper.find('.r-radio__icon')
+  const label = wrapper.find('.r-radio__label')
+  icon.trigger('click')
+  expect(wrapper.emitted('update:modelValue')![0]).toEqual([props.name])
 
-  label.trigger('click');
-  expect(wrapper.emitted('update:modelValue')![0]).toEqual([props.name]);
-});
+  label.trigger('click')
+  expect(wrapper.emitted('update:modelValue')![0]).toEqual([props.name])
+})
 
 test('should not emit "update:modelValue" event when radio icon is disabled and clicked', () => {
   const wrapper = mount(Radio, {
     props: {
-      disabled: true,
-    },
-  });
+      disabled: true
+    }
+  })
 
-  wrapper.find('.r-radio__icon').trigger('click');
-  expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-});
+  wrapper.find('.r-radio__icon').trigger('click')
+  expect(wrapper.emitted('update:modelValue')).toBeFalsy()
+})
 
 test('should render "r-radio--label-disabled" class when using label-disabled prop', () => {
   const wrapper = mount(Radio, {
     props: {
-      labelDisabled: true,
+      labelDisabled: true
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  expect(wrapper.classes()).toContain('r-radio--label-disabled');
-});
+  expect(wrapper.classes()).toContain('r-radio--label-disabled')
+})
 
 test('should not emit "update:modelValue" event when label is disabled and clicked', () => {
   const wrapper = mount(Radio, {
     props: {
-      labelDisabled: true,
+      labelDisabled: true
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  const label = wrapper.find('.r-radio__label');
-  label.trigger('click');
-  expect(wrapper.emitted('update:modelValue')).toBeFalsy();
-});
+  const label = wrapper.find('.r-radio__label')
+  label.trigger('click')
+  expect(wrapper.emitted('update:modelValue')).toBeFalsy()
+})
 
 test('should adjust label position when using label-position prop', () => {
   const wrapper = mount(Radio, {
     props: {
-      labelPosition: 'left',
+      labelPosition: 'left'
     },
     slots: {
-      default: () => 'Label',
-    },
-  });
+      default: () => 'Label'
+    }
+  })
 
-  const label = wrapper.find('.r-radio__label');
-  expect(label.classes()).toContain('r-radio__label--left');
-});
+  const label = wrapper.find('.r-radio__label')
+  expect(label.classes()).toContain('r-radio__label--left')
+})
 
 test('should emit click event when radio icon is clicked', async () => {
-  const onClick = jest.fn();
+  const onClick = vi.fn()
   const wrapper = mount(Radio, {
     props: {
-      onClick,
-    },
-  });
+      onClick
+    }
+  })
 
-  wrapper.trigger('click');
-  expect(onClick).toHaveBeenCalledTimes(1);
+  wrapper.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(1)
 
-  const icon = wrapper.find('.r-radio__icon');
-  icon.trigger('click');
-  expect(onClick).toHaveBeenCalledTimes(2);
-});
+  const icon = wrapper.find('.r-radio__icon')
+  icon.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(2)
+})

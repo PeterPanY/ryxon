@@ -1,9 +1,9 @@
-import { raf, cancelRaf } from '../src/utils';
+import { raf, cancelRaf } from '../src/utils'
 
 test('raf', async () => {
-  const spy = jest.fn();
-  raf(spy);
+  const spy = vi.fn()
+  raf(spy)
 
-  expect(spy).toHaveBeenCalledTimes(1);
-  cancelRaf(1);
-});
+  expect(spy).toHaveBeenCalledTimes(1)
+  cancelRaf(1)
+})
