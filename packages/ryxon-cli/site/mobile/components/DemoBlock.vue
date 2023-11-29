@@ -1,6 +1,6 @@
 <template>
   <div class="r-doc-demo-block">
-    <h2 v-if="title" class="van-doc-demo-block__title" :id="slugifyTitle">
+    <h2 v-if="title" class="r-doc-demo-block__title" :id="slugifyTitle">
       {{ title }}
     </h2>
     <div v-if="card" class="r-doc-demo-block__card">

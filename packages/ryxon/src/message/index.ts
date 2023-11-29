@@ -6,7 +6,7 @@ export default Message
 
 export { messageProps } from './Message'
 export type { MessageProps } from './Message'
-export type { MessageThemeVars } from './types'
+export type { MessageInstance, MessageThemeVars } from './types'
 export {
   showMessage,
   showSuccessMessage,

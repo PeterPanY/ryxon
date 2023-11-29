@@ -175,7 +175,7 @@ Ryxon 中导出了以下 Message 相关的辅助函数：
 组件导出以下类型定义：
 
 ```ts
-import type { MessageProps, MessageThemeVars } from 'ryxon'
+import type { MessageProps, MessageThemeVars, MessageInstance } from 'ryxon'
 ```
 
 ## 主题定制
