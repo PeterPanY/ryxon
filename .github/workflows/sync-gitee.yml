@@ -2,7 +2,14 @@ name: Sync to Gitee
 
 on:
   push:
-    branches: [master, dev, gh-pages]
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+  # Sync to gitee everyday
+  schedule:
+    - cron: '0 1 * * *'
+
+  workflow_dispatch:
 
 jobs:
   build:

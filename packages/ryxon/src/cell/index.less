@@ -15,11 +15,13 @@
   --r-cell-label-line-height: var(--r-line-height-sm);
   --r-cell-label-margin-top: var(--r-padding-base);
   --r-cell-value-color: var(--r-text-color-2);
+  --r-cell-value-font-size: inherit;
   --r-cell-icon-size: 16px;
   --r-cell-right-icon-color: var(--r-info-color);
   --r-cell-large-vertical-padding: var(--r-padding-sm);
   --r-cell-large-title-font-size: var(--r-font-size-lg);
   --r-cell-large-label-font-size: var(--r-font-size-md);
+  --r-cell-large-value-font-size: inherit;
 }
 
 .r-cell {
@@ -59,6 +61,7 @@
     position: relative;
     overflow: hidden;
     color: var(--r-cell-value-color);
+    font-size: var(--r-cell-value-font-size);
     text-align: right;
     vertical-align: middle;
     word-wrap: break-word;
@@ -114,6 +117,10 @@
 
     .r-cell__label {
       font-size: var(--r-cell-large-label-font-size);
+    }
+
+    .r-cell__value {
+      font-size: var(--r-cell-large-value-font-size);
     }
   }
 }

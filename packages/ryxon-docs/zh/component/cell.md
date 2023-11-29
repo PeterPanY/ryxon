@@ -157,11 +157,13 @@ import type {
 | --r-cell-label-line-height | `var(--r-line-height-sm)` | - |
 | --r-cell-label-margin-top | `var(--r-padding-base)` | - |
 | --r-cell-value-color | `var(--r-text-color-2)` | - |
+| --r-cell-value-font-size | `inherit` | - |
 | --r-cell-icon-size | `16px` | - |
 | --r-cell-right-icon-color | `var(--r-info-color)` | - |
 | --r-cell-large-vertical-padding | `var(--r-padding-sm)` | - |
 | --r-cell-large-title-font-size | `var(--r-font-size-lg)` | - |
 | --r-cell-large-label-font-size | `var(--r-font-size-md)` | - |
+| --r-cell-large-value-font-size | `inherit` | - |
 | --r-cell-group-background | `var(--r-background-2)` | - |
 | --r-cell-group-title-color | `var(--r-text-color-2)` | - |
 | --r-cell-group-title-padding | `var(--r-padding-md) var(--r-padding-md) var(--r-padding-xs)` | - |
