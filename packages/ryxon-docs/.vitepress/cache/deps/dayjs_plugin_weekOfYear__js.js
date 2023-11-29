@@ -10,11 +10,11 @@ var require_weekOfYear = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = t())
         : 'function' == typeof define && define.amd
-        ? define(t)
-        : ((e =
-            'undefined' != typeof globalThis
-              ? globalThis
-              : e || self).dayjs_plugin_weekOfYear = t())
+          ? define(t)
+          : ((e =
+              'undefined' != typeof globalThis
+                ? globalThis
+                : e || self).dayjs_plugin_weekOfYear = t())
     })(exports, function () {
       'use strict'
       var e = 'week',

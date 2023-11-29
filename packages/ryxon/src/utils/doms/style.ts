@@ -1,6 +1,6 @@
 import { isClient } from '@vueuse/core'
 import { camelize } from '../format'
-import { isObject } from '../validate'
+import { isObject } from '../basic'
 import { entriesOf, keysOf } from '../objects'
 import type { CSSProperties } from 'vue'
 

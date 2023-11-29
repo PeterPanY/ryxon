@@ -8,8 +8,8 @@ function getTarget() {
   return typeof navigator !== 'undefined' && typeof window !== 'undefined'
     ? window
     : typeof global !== 'undefined'
-    ? global
-    : {}
+      ? global
+      : {}
 }
 var isProxyAvailable = typeof Proxy === 'function'
 

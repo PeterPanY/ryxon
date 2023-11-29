@@ -10,11 +10,11 @@ var require_weekYear = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = t())
         : 'function' == typeof define && define.amd
-        ? define(t)
-        : ((e =
-            'undefined' != typeof globalThis
-              ? globalThis
-              : e || self).dayjs_plugin_weekYear = t())
+          ? define(t)
+          : ((e =
+              'undefined' != typeof globalThis
+                ? globalThis
+                : e || self).dayjs_plugin_weekYear = t())
     })(exports, function () {
       'use strict'
       return function (e, t) {
@@ -25,8 +25,8 @@ var require_weekYear = __commonJS({
           return 1 === t2 && 11 === e2
             ? n + 1
             : 0 === e2 && t2 >= 52
-            ? n - 1
-            : n
+              ? n - 1
+              : n
         }
       }
     })

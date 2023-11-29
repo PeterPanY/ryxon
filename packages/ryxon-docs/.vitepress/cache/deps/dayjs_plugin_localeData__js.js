@@ -10,11 +10,11 @@ var require_localeData = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = e())
         : 'function' == typeof define && define.amd
-        ? define(e)
-        : ((n =
-            'undefined' != typeof globalThis
-              ? globalThis
-              : n || self).dayjs_plugin_localeData = e())
+          ? define(e)
+          : ((n =
+              'undefined' != typeof globalThis
+                ? globalThis
+                : n || self).dayjs_plugin_localeData = e())
     })(exports, function () {
       'use strict'
       return function (n, e, t) {

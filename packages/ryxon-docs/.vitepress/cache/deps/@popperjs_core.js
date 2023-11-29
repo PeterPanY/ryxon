@@ -16,15 +16,12 @@ var reference = 'reference'
 var variationPlacements = basePlacements.reduce(function (acc, placement) {
   return acc.concat([placement + '-' + start, placement + '-' + end])
 }, [])
-var placements = []
-  .concat(basePlacements, [auto])
-  .reduce(function (acc, placement) {
-    return acc.concat([
-      placement,
-      placement + '-' + start,
-      placement + '-' + end
-    ])
-  }, [])
+var placements = [].concat(basePlacements, [auto]).reduce(function (
+  acc,
+  placement
+) {
+  return acc.concat([placement, placement + '-' + start, placement + '-' + end])
+}, [])
 var beforeRead = 'beforeRead'
 var read = 'read'
 var afterRead = 'afterRead'
@@ -910,8 +907,8 @@ function getClientRectFromMixedType(element, clippingParent, strategy) {
   return clippingParent === viewport
     ? rectToClientRect(getViewportRect(element, strategy))
     : isElement(clippingParent)
-    ? getInnerBoundingClientRect(clippingParent, strategy)
-    : rectToClientRect(getDocumentRect(getDocumentElement(element)))
+      ? getInnerBoundingClientRect(clippingParent, strategy)
+      : rectToClientRect(getDocumentRect(getDocumentElement(element)))
 }
 function getClippingParents(element) {
   var clippingParents2 = listScrollParents(getParentNode(element))
@@ -939,18 +936,17 @@ function getClippingRect(element, boundary, rootBoundary, strategy) {
       : [].concat(boundary)
   var clippingParents2 = [].concat(mainClippingParents, [rootBoundary])
   var firstClippingParent = clippingParents2[0]
-  var clippingRect = clippingParents2.reduce(function (
-    accRect,
-    clippingParent
-  ) {
-    var rect = getClientRectFromMixedType(element, clippingParent, strategy)
-    accRect.top = max(rect.top, accRect.top)
-    accRect.right = min(rect.right, accRect.right)
-    accRect.bottom = min(rect.bottom, accRect.bottom)
-    accRect.left = max(rect.left, accRect.left)
-    return accRect
-  },
-  getClientRectFromMixedType(element, firstClippingParent, strategy))
+  var clippingRect = clippingParents2.reduce(
+    function (accRect, clippingParent) {
+      var rect = getClientRectFromMixedType(element, clippingParent, strategy)
+      accRect.top = max(rect.top, accRect.top)
+      accRect.right = min(rect.right, accRect.right)
+      accRect.bottom = min(rect.bottom, accRect.bottom)
+      accRect.left = max(rect.left, accRect.left)
+      return accRect
+    },
+    getClientRectFromMixedType(element, firstClippingParent, strategy)
+  )
   clippingRect.width = clippingRect.right - clippingRect.left
   clippingRect.height = clippingRect.bottom - clippingRect.top
   clippingRect.x = clippingRect.left
@@ -1214,8 +1210,8 @@ function flip(_ref) {
         ? right
         : left
       : isStartVariation
-      ? bottom
-      : top
+        ? bottom
+        : top
     if (referenceRect[len] > popperRect[len]) {
       mainVariationSide = getOppositePlacement(mainVariationSide)
     }
@@ -1808,8 +1804,8 @@ function popperGenerator(generatorOptions) {
           reference: isElement(reference2)
             ? listScrollParents(reference2)
             : reference2.contextElement
-            ? listScrollParents(reference2.contextElement)
-            : [],
+              ? listScrollParents(reference2.contextElement)
+              : [],
           popper: listScrollParents(popper2)
         }
         var orderedModifiers = orderModifiers(

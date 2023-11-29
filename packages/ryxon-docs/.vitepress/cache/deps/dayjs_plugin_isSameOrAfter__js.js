@@ -10,11 +10,11 @@ var require_isSameOrAfter = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = t())
         : 'function' == typeof define && define.amd
-        ? define(t)
-        : ((e =
-            'undefined' != typeof globalThis
-              ? globalThis
-              : e || self).dayjs_plugin_isSameOrAfter = t())
+          ? define(t)
+          : ((e =
+              'undefined' != typeof globalThis
+                ? globalThis
+                : e || self).dayjs_plugin_isSameOrAfter = t())
     })(exports, function () {
       'use strict'
       return function (e, t) {

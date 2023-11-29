@@ -1289,8 +1289,8 @@ function watchArray(source, cb, options) {
         ...(source instanceof Function
           ? source()
           : Array.isArray(source)
-          ? source
-          : unref(source))
+            ? source
+            : unref(source))
       ]
   return watch(
     source,
@@ -2112,8 +2112,8 @@ function useActiveElement(options = {}) {
     (_a2 = options.document) != null
       ? _a2
       : window2 == null
-      ? void 0
-      : window2.document
+        ? void 0
+        : window2.document
   const activeElement = computedWithControl(
     () => null,
     () => (document2 == null ? void 0 : document2.activeElement)
@@ -2836,12 +2836,12 @@ var _global =
   typeof globalThis !== 'undefined'
     ? globalThis
     : typeof window !== 'undefined'
-    ? window
-    : typeof global !== 'undefined'
-    ? global
-    : typeof self !== 'undefined'
-    ? self
-    : {}
+      ? window
+      : typeof global !== 'undefined'
+        ? global
+        : typeof self !== 'undefined'
+          ? self
+          : {}
 var globalKey = '__vueuse_ssr_handlers__'
 _global[globalKey] = _global[globalKey] || {}
 var handlers = _global[globalKey]
@@ -2855,20 +2855,20 @@ function guessSerializerType(rawInit) {
   return rawInit == null
     ? 'any'
     : rawInit instanceof Set
-    ? 'set'
-    : rawInit instanceof Map
-    ? 'map'
-    : rawInit instanceof Date
-    ? 'date'
-    : typeof rawInit === 'boolean'
-    ? 'boolean'
-    : typeof rawInit === 'string'
-    ? 'string'
-    : typeof rawInit === 'object'
-    ? 'object'
-    : !Number.isNaN(rawInit)
-    ? 'number'
-    : 'any'
+      ? 'set'
+      : rawInit instanceof Map
+        ? 'map'
+        : rawInit instanceof Date
+          ? 'date'
+          : typeof rawInit === 'boolean'
+            ? 'boolean'
+            : typeof rawInit === 'string'
+              ? 'string'
+              : typeof rawInit === 'object'
+                ? 'object'
+                : !Number.isNaN(rawInit)
+                  ? 'number'
+                  : 'any'
 }
 var __defProp$j = Object.defineProperty
 var __getOwnPropSymbols$l = Object.getOwnPropertySymbols
@@ -4070,8 +4070,8 @@ function useElementSize(
         box === 'border-box'
           ? entry.borderBoxSize
           : box === 'content-box'
-          ? entry.contentBoxSize
-          : entry.devicePixelContentBoxSize
+            ? entry.contentBoxSize
+            : entry.devicePixelContentBoxSize
       if (boxSize) {
         width.value = boxSize.reduce(
           (acc, { inlineSize }) => acc + inlineSize,
@@ -7770,8 +7770,8 @@ function useTitle(newTitle = null, options = {}) {
       newTitle != null
         ? newTitle
         : document2 == null
-        ? void 0
-        : document2.title) != null
+          ? void 0
+          : document2.title) != null
       ? _a2
       : null
   )

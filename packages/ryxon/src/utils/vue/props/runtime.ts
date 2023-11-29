@@ -1,6 +1,6 @@
 import { warn } from 'vue'
 import { fromPairs } from 'lodash-unified'
-import { isObject, hasOwn } from '../../validate'
+import { isObject, hasOwn } from '../../basic'
 
 import type { PropType } from 'vue'
 import type {

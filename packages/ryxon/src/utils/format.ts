@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue'
 import { inBrowser, type Numeric } from './basic'
 import { windowWidth, windowHeight } from './dom'
-import { isDef, isNumeric } from './validate'
+import { isDef, isNumeric } from './basic'
 
 export function addUnit(value?: Numeric): string | undefined {
   if (isDef(value)) {

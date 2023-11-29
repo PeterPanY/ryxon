@@ -1,46 +1,46 @@
-import { execa } from 'execa';
-import { consola } from './logger.js';
-import { execSync } from 'child_process';
-import { getRyxonConfig } from './constant.js';
+import { execa } from 'execa'
+import { consola } from './logger.js'
+import { execSync } from 'child_process'
+import { getRyxonConfig } from './constant.js'
 
-let hasYarnCache: boolean;
+let hasYarnCache: boolean
 
 export function hasYarn() {
   if (hasYarnCache === undefined) {
     try {
-      execSync('yarn --version', { stdio: 'ignore' });
-      hasYarnCache = true;
+      execSync('yarn --version', { stdio: 'ignore' })
+      hasYarnCache = true
     } catch (e) {
-      hasYarnCache = false;
+      hasYarnCache = false
     }
   }
 
-  return hasYarnCache;
+  return hasYarnCache
 }
 
-function getPackageManager() {
-  const { build } = getRyxonConfig();
+export function getPackageManager() {
+  const { build } = getRyxonConfig()
 
   if (build?.packageManager) {
-    return build?.packageManager;
+    return build?.packageManager
   }
 
-  return hasYarn() ? 'yarn' : 'npm';
+  return hasYarn() ? 'yarn' : 'npm'
 }
 
 export async function installDependencies() {
-  consola.info('Install Dependencies\n');
+  consola.info('Install Dependencies\n')
 
   try {
-    const manager = getPackageManager();
+    const manager = getPackageManager()
 
     await execa(manager, ['install', '--prod=false'], {
-      stdio: 'inherit',
-    });
+      stdio: 'inherit'
+    })
 
-    console.log('');
+    console.log('')
   } catch (err) {
-    console.log(err);
-    throw err;
+    console.log(err)
+    throw err
   }
 }

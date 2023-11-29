@@ -110,12 +110,12 @@ var getGlobalThis = () => {
       typeof globalThis !== 'undefined'
         ? globalThis
         : typeof self !== 'undefined'
-        ? self
-        : typeof window !== 'undefined'
-        ? window
-        : typeof global !== 'undefined'
-        ? global
-        : {})
+          ? self
+          : typeof window !== 'undefined'
+            ? window
+            : typeof global !== 'undefined'
+              ? global
+              : {})
   )
 }
 var GLOBALS_ALLOWED =
@@ -268,12 +268,12 @@ var toDisplayString = (val) => {
   return isString(val)
     ? val
     : val == null
-    ? ''
-    : isArray(val) ||
-      (isObject(val) &&
-        (val.toString === objectToString || !isFunction(val.toString)))
-    ? JSON.stringify(val, replacer, 2)
-    : String(val)
+      ? ''
+      : isArray(val) ||
+          (isObject(val) &&
+            (val.toString === objectToString || !isFunction(val.toString)))
+        ? JSON.stringify(val, replacer, 2)
+        : String(val)
 }
 var replacer = (_key, val) => {
   if (val && val.__v_isRef) {
@@ -728,8 +728,8 @@ var BaseReactiveHandler = class {
             ? shallowReadonlyMap
             : readonlyMap
           : shallow
-          ? shallowReactiveMap
-          : reactiveMap
+            ? shallowReactiveMap
+            : reactiveMap
         ).get(target)
     ) {
       return target
@@ -1099,8 +1099,8 @@ function createInstrumentationGetter(isReadonly2, shallow) {
       ? shallowReadonlyInstrumentations
       : shallowInstrumentations
     : isReadonly2
-    ? readonlyInstrumentations
-    : mutableInstrumentations
+      ? readonlyInstrumentations
+      : mutableInstrumentations
   return (target, key, receiver) => {
     if (key === '__v_isReactive') {
       return !isReadonly2
@@ -3365,8 +3365,8 @@ function doWatch(
           oldValue === INITIAL_WATCHER_VALUE
             ? void 0
             : isMultiSource && oldValue[0] === INITIAL_WATCHER_VALUE
-            ? []
-            : oldValue,
+              ? []
+              : oldValue,
           onCleanup
         ])
         oldValue = newValue
@@ -5071,8 +5071,8 @@ function applyOptions(instance) {
       const get2 = isFunction(opt)
         ? opt.bind(publicThis, publicThis)
         : isFunction(opt.get)
-        ? opt.get.bind(publicThis, publicThis)
-        : NOOP
+          ? opt.get.bind(publicThis, publicThis)
+          : NOOP
       if (get2 === NOOP) {
         warn2(`Computed property "${key}" has no getter.`)
       }
@@ -5080,12 +5080,12 @@ function applyOptions(instance) {
         !isFunction(opt) && isFunction(opt.set)
           ? opt.set.bind(publicThis)
           : true
-          ? () => {
-              warn2(
-                `Write operation failed: computed property "${key}" is readonly.`
-              )
-            }
-          : NOOP
+            ? () => {
+                warn2(
+                  `Write operation failed: computed property "${key}" is readonly.`
+                )
+              }
+            : NOOP
       const c = computed2({
         get: get2,
         set: set2
@@ -6655,8 +6655,8 @@ function createHydrationFunctions(rendererInternals) {
       node.nodeType === 3
         ? `(text)`
         : isComment(node) && node.data === '['
-        ? `(start of fragment)`
-        : ``
+          ? `(start of fragment)`
+          : ``
     )
     vnode.el = null
     if (isFragment) {
@@ -8941,14 +8941,14 @@ function _createVNode(
   const shapeFlag = isString(type)
     ? 1
     : isSuspense(type)
-    ? 128
-    : isTeleport(type)
-    ? 64
-    : isObject(type)
-    ? 4
-    : isFunction(type)
-    ? 2
-    : 0
+      ? 128
+      : isTeleport(type)
+        ? 64
+        : isObject(type)
+          ? 4
+          : isFunction(type)
+            ? 2
+            : 0
   if (shapeFlag & 4 && isProxy(type)) {
     type = toRaw(type)
     warn2(
@@ -10510,8 +10510,8 @@ var patchProp = (
     key[0] === '.'
       ? ((key = key.slice(1)), true)
       : key[0] === '^'
-      ? ((key = key.slice(1)), false)
-      : shouldSetAsProp(el, key, nextValue, isSVG)
+        ? ((key = key.slice(1)), false)
+        : shouldSetAsProp(el, key, nextValue, isSVG)
   ) {
     patchDOMProp(
       el,

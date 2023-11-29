@@ -10,11 +10,11 @@ var require_customParseFormat = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = t())
         : 'function' == typeof define && define.amd
-        ? define(t)
-        : ((e =
-            'undefined' != typeof globalThis
-              ? globalThis
-              : e || self).dayjs_plugin_customParseFormat = t())
+          ? define(t)
+          : ((e =
+              'undefined' != typeof globalThis
+                ? globalThis
+                : e || self).dayjs_plugin_customParseFormat = t())
     })(exports, function () {
       'use strict'
       var e = {
@@ -257,8 +257,8 @@ var require_customParseFormat = __commonJS({
                         Date.UTC(M2, Y, m2, p, v, D, g + 60 * d3.offset * 1e3)
                       )
                     : n3
-                    ? new Date(Date.UTC(M2, Y, m2, p, v, D, g))
-                    : new Date(M2, Y, m2, p, v, D, g)
+                      ? new Date(Date.UTC(M2, Y, m2, p, v, D, g))
+                      : new Date(M2, Y, m2, p, v, D, g)
                 } catch (e5) {
                   return /* @__PURE__ */ new Date('')
                 }

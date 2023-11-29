@@ -1,4 +1,4 @@
-import { isFunction } from '../validate'
+import { isFunction } from '../basic'
 
 import type { ComponentPublicInstance, Ref } from 'vue'
 

@@ -1,5 +1,5 @@
 import { noop } from './basic'
-import { isPromise } from './validate'
+import { isPromise } from './basic'
 
 export type Interceptor = (
   ...args: any[]

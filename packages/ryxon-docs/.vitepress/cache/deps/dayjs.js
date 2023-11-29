@@ -10,10 +10,10 @@ var require_dayjs_min = __commonJS({
       'object' == typeof exports && 'undefined' != typeof module
         ? (module.exports = e())
         : 'function' == typeof define && define.amd
-        ? define(e)
-        : ((t =
-            'undefined' != typeof globalThis ? globalThis : t || self).dayjs =
-            e())
+          ? define(e)
+          : ((t =
+              'undefined' != typeof globalThis ? globalThis : t || self).dayjs =
+              e())
     })(exports, function () {
       'use strict'
       var t = 1e3,

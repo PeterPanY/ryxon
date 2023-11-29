@@ -1,6 +1,6 @@
 import { get } from './basic'
 import { camelize } from './format'
-import { isFunction } from './validate'
+import { isFunction } from './basic'
 import locale from '../locale'
 
 export function createTranslate(name: string) {

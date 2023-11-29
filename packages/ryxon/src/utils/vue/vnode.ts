@@ -1,5 +1,5 @@
 import { isVNode } from 'vue'
-import { isArray } from '../validate'
+import { isArray } from '../basic'
 import type { VNode, VNodeChild, VNodeNormalizedChildren } from 'vue'
 
 export type VNodeChildAtom = Exclude<VNodeChild, Array<any>>

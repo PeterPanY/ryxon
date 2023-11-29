@@ -146,7 +146,7 @@ input/label-align
 
 ### Events
 
-| 事件 | 说明 | 回调参数 |
+| 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | update:model-value | 输入框内容变化时触发 | `value: string (当前输入的值)` |
 | focus | 输入框获得焦点时触发 | `event: Event` |

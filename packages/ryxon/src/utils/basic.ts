@@ -1,4 +1,3 @@
-import { isObject } from './validate'
 import type { ComponentPublicInstance } from 'vue'
 
 // 空函数
@@ -12,6 +11,87 @@ export type Numeric = number | string
 
 // eslint-disable-next-line
 export type ComponentInstance = ComponentPublicInstance<{}, any>
+
+const { hasOwnProperty } = Object.prototype
+
+export const isTouchEvent = (e: MouseEvent | TouchEvent): e is TouchEvent => {
+  return window.TouchEvent && e instanceof window.TouchEvent
+}
+
+// 是不是自己本身所拥有的属性
+export const hasOwn = (val: object, key: string | symbol) =>
+  hasOwnProperty.call(val, key)
+
+// 判断是不是数组
+export const { isArray } = Array
+
+// 判断是不是对象
+export const isObject = (val: unknown): val is Record<any, any> =>
+  val !== null && typeof val === 'object'
+
+// 判断是不是为空
+export const isEmpty = (val: unknown) =>
+  (!val && val !== 0) ||
+  (isArray(val) && val.length === 0) ||
+  (isObject(val) && !Object.keys(val).length)
+
+// 判断是不是元素
+export const isElement = (e: unknown): e is Element => {
+  if (typeof Element === 'undefined') return false
+  return e instanceof Element
+}
+
+// 判断是不是字符串
+export const isString = (val: any): val is string => typeof val === 'string'
+
+// 判断是不是undefined
+export const isUndefined = (val: any): val is undefined => val === undefined
+
+export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
+
+export const isDef = <T>(val: T): val is NonNullable<T> =>
+  val !== undefined && val !== null
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const isFunction = (val: unknown): val is Function =>
+  typeof val === 'function'
+
+export const isPromise = <T = any>(val: unknown): val is Promise<T> =>
+  isObject(val) && isFunction(val.then) && isFunction(val.catch)
+
+export const isDate = (val: unknown): val is Date =>
+  Object.prototype.toString.call(val) === '[object Date]' &&
+  !Number.isNaN((val as Date).getTime())
+
+export function isMobile(value: string): boolean {
+  value = value.replace(/[^-|\d]/g, '')
+  return (
+    /^((\+86)|(86))?(1)\d{10}$/.test(value) || /^0[0-9-]{10,13}$/.test(value)
+  )
+}
+
+export const isNumeric = (val: Numeric): val is string =>
+  typeof val === 'number' || /^\d+(\.\d+)?$/.test(val)
+
+export const isIOS = (): boolean =>
+  inBrowser
+    ? /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
+    : false
+
+export const isKorean = (text: string) =>
+  /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text)
+
+// 对象转字符串
+export const objectToString = Object.prototype.toString
+
+// 对象转字符串
+export const toTypeString = (value: unknown): string =>
+  objectToString.call(value)
+
+// 对象转字符串 截取后几位
+// extract "RawType" from strings like "[object RawType]"
+export const toRawType = (value: unknown): string =>
+  toTypeString(value).slice(8, -1)
 
 export function get(object: any, path: string): any {
   const keys = path.split('.')
@@ -35,12 +115,15 @@ export function pick<T, U extends keyof T>(
   keys: ReadonlyArray<U>,
   ignoreUndefined?: boolean
 ) {
-  return keys.reduce((ret, key) => {
-    if (!ignoreUndefined || obj[key] !== undefined) {
-      ret[key] = obj[key]
-    }
-    return ret
-  }, {} as Writeable<Pick<T, U>>)
+  return keys.reduce(
+    (ret, key) => {
+      if (!ignoreUndefined || obj[key] !== undefined) {
+        ret[key] = obj[key]
+      }
+      return ret
+    },
+    {} as Writeable<Pick<T, U>>
+  )
 }
 
 export const isSameValue = (newValue: unknown, oldValue: unknown) =>

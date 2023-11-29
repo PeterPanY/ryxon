@@ -75,6 +75,7 @@ program
   .command('release')
   .description('Compile components and release it')
   .option('--tag <tag>', 'Release tag')
+  .option('--gitTag', 'Generate git tag')
   .action(async (options) => {
     const { release } = await import('./commands/release.js')
     return release(options)
@@ -86,14 +87,6 @@ program
   .action(async () => {
     const { buildSite } = await import('./commands/build-site.js')
     return buildSite()
-  })
-
-program
-  .command('changelog')
-  .description('Generate changelog')
-  .action(async () => {
-    const { changelog } = await import('./commands/changelog.js')
-    return changelog()
   })
 
 program
