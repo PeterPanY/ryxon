@@ -46,3 +46,4 @@ console.log(height.value) // -> 窗口高度
 | --- | --- |
 | [useCountDown](/zh/api/use-count-down.html) | 提供倒计时管理能力 |
 | [useCustomInputValue](/zh/api/use-custom-input-value.html) | 自定义表单组件中的表单项 |
+| [useRaf](/zh/api/use-raf.html) | 提供requestAnimationFrame管理能力 |

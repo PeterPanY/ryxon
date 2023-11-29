@@ -13,6 +13,7 @@
         { "link": "/use-custom-input-value", "text": "useCustomInputValue" },
         { "link": "/use-event-listener", "text": "useEventListener" },
         { "link": "/use-page-visibility", "text": "usePageVisibility" },
+        { "link": "/use-raf", "text": "useRaf" },
         { "link": "/use-rect", "text": "useRect" },
         { "link": "/use-relation", "text": "useRelation" },
         { "link": "/use-scroll-parent", "text": "useScrollParent" },
