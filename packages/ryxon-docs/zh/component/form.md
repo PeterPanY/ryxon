@@ -45,6 +45,7 @@ form/types
 | colon | 是否在 label 后面添加冒号 | `boolean` | `false` |
 | disabled | 是否禁用表单中的所有输入框 | `boolean` | `false` |
 | readonly | 是否将表单中的所有输入框设置为只读状态 | `boolean` | `false` |
+| required ^(v1.10.1) | 是否显示表单必填星号 | `boolean \| 'auto'` | `null` |
 | validate-first | 是否在某一项校验不通过时停止校验 | `boolean` | `false` |
 | scroll-to-error | 是否在提交表单且校验不通过时滚动至错误的表单项 | `boolean` | `false` |
 | show-error | 是否在校验不通过时标红输入框 | `boolean` | `false` |

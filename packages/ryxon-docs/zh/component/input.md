@@ -114,7 +114,7 @@ input/label-align
 | disabled | 是否禁用输入框 | `boolean` | `false` |
 | readonly | 是否为只读状态，只读状态下无法输入内容 | `boolean` | `false` |
 | colon | 是否在 label 后面添加冒号 | `boolean` | `false` |
-| required | 是否显示表单必填星号 | `boolean` | `false` |
+| required | 是否显示表单必填星号 | `boolean \| 'auto'` | `null` |
 | center | 是否使内容垂直居中 | `boolean` | `false` |
 | clearable | 是否启用清除图标，点击清除图标后会清空输入框 | `boolean` | `false` |
 | clear-icon | 清除图标名称或图片链接，等同于 Icon 组件的 `name 属性` | `string` | `clear` |

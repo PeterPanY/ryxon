@@ -72,6 +72,7 @@ export type InputValidationStatus = 'passed' | 'failed' | 'unvalidated'
 // Shared props of Input and Form
 export type InputFormSharedProps =
   | 'colon'
+  | 'required'
   | 'disabled'
   | 'readonly'
   | 'labelWidth'

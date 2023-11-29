@@ -89,10 +89,10 @@ export const inputSharedProps = {
   autocorrect: String,
   errorMessage: String,
   enterkeyhint: String,
-  spellcheck: { type: Boolean, default: null },
-  clearIcon: { type: iconPropType, default: CircleClose },
   clearTrigger: makeStringProp<InputClearTrigger>('focus'),
   formatTrigger: makeStringProp<InputFormatTrigger>('onChange'),
+  spellcheck: { type: Boolean, default: null },
+  clearIcon: { type: iconPropType, default: CircleClose },
   error: { type: Boolean, default: null },
   disabled: { type: Boolean, default: null },
   readonly: { type: Boolean, default: null },
@@ -186,6 +186,14 @@ export default defineComponent({
         return customValue.value()
       }
       return props.modelValue
+    })
+
+    const showRequiredMark = computed(() => {
+      const required = getProp('required')
+      if (required === 'auto') {
+        return props.rules?.some((rule: InputRule) => rule.required)
+      }
+      return required
     })
 
     const runRules = (rules: InputRule[]) =>
@@ -766,7 +774,7 @@ export default defineComponent({
           titleStyle={labelStyle.value}
           valueClass={bem('value')}
           titleClass={[
-            bem('label', [labelAlign, { required: props.required }]),
+            bem('label', [labelAlign, { required: showRequiredMark.value }]),
             props.labelClass
           ]}
           arrowDirection={props.arrowDirection}
