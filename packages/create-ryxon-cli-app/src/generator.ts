@@ -13,10 +13,6 @@ const PROMPTS = [
     type: 'select',
     choices: [
       {
-        name: 'vue2',
-        message: 'Vue 2'
-      },
-      {
         name: 'vue3',
         message: 'Vue 3'
       }
