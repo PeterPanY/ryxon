@@ -1,5 +1,6 @@
 import { computed, defineComponent, type ExtractPropTypes } from 'vue'
 import {
+  extend,
   mutable,
   isObject,
   numericProp,
@@ -64,15 +65,21 @@ export default defineComponent({
         return
       }
 
-      const { spaces } = parent
-
+      const { spaces, verticalSpaces } = parent
+      let styles = {}
       if (spaces && spaces.value && spaces.value[index.value]) {
         const { left, right } = spaces.value[index.value]
-        return {
+        styles = {
           paddingLeft: left ? `${left}px` : null,
           paddingRight: right ? `${right}px` : null
         }
       }
+
+      const { bottom } = verticalSpaces.value[index.value] || {}
+
+      return extend(styles, {
+        marginBottom: bottom ? `${bottom}px` : null
+      })
     })
 
     return () => {

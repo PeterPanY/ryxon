@@ -160,7 +160,9 @@ export default defineComponent({
           { disabled: disabled.value }
         ])}
       >
-        {slots.default ? slots.default() : props.name}
+        {slots.default
+          ? slots.default({ checked: props.checked, disabled: disabled.value })
+          : props.name}
       </span>
     )
 

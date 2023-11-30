@@ -93,7 +93,7 @@ radio/border
 
 | 名称    | 说明       | 参数                                      |
 | ------- | ---------- | ----------------------------------------- |
-| default | 自定义文本 | -                                         |
+| default | 自定义文本 | `{ checked: boolean, disabled: boolean }` |
 | icon    | 自定义图标 | `{ checked: boolean, disabled: boolean }` |
 
 ### 类型定义

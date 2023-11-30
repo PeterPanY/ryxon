@@ -31,6 +31,14 @@ layout/justify
 
 :::
 
+## 垂直间距
+
+:::demo 如果需要设置垂直间距，可以使用数组形式设置 `[水平间距, 垂直间距]`。
+
+layout/vertical
+
+:::
+
 ## 响应式布局
 
 :::demo 参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl
@@ -45,7 +53,7 @@ layout/sizes
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| gutter | 列元素之间的间距（单位为 px） | `number \| string` | - |
+| gutter | 列元素之间的间距（单位为 px） | `number \| string \| Array` | - |
 | tag | 自定义元素标签 | `string` | `div` |
 | justify | 主轴对齐方式，可选值为 `end` `center` `space-around` `space-between` | `string` | `start` |
 | align | 交叉轴对齐方式，可选值为 `center` `bottom` | `string` | `top` |

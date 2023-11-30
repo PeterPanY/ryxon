@@ -319,7 +319,7 @@ export default defineComponent({
       swipeRef.value?.to(index)
     }
 
-    useExpose({ swipeTo })
+    useExpose({ resetScale: toggleMode, swipeTo })
 
     onMounted(() => {
       registerEventListener()

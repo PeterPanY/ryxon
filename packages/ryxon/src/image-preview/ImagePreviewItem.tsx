@@ -3,7 +3,8 @@ import {
   computed,
   reactive,
   defineComponent,
-  type CSSProperties
+  type CSSProperties,
+  type ExtractPropTypes
 } from 'vue'
 
 // Utils
@@ -18,17 +19,23 @@ import { Loading } from '../loading'
 
 const bem = createNamespace('image-preview')[1]
 
+const imagePreviewItemProps = {
+  src: String,
+  show: Boolean,
+  active: Number,
+  minZoom: makeRequiredProp(numericProp),
+  maxZoom: makeRequiredProp(numericProp),
+  rootWidth: makeRequiredProp(Number),
+  rootHeight: makeRequiredProp(Number),
+  disableZoom: Boolean
+}
+
+export type ImagePreviewItemProps = ExtractPropTypes<
+  typeof imagePreviewItemProps
+>
+
 export default defineComponent({
-  props: {
-    src: String,
-    show: Boolean,
-    active: Number,
-    minZoom: makeRequiredProp(numericProp),
-    maxZoom: makeRequiredProp(numericProp),
-    rootWidth: makeRequiredProp(Number),
-    rootHeight: makeRequiredProp(Number),
-    disableZoom: Boolean
-  },
+  props: imagePreviewItemProps,
   emits: ['scale', 'close', 'longPress'],
   setup(props, { emit, slots }) {
     const state = reactive({

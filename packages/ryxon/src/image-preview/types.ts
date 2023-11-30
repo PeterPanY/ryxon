@@ -46,6 +46,11 @@ export type ImageViewerMode = {
   icon: Component
 }
 
+export type ImagePreviewExpose = {
+  resetScale: () => void
+  swipeTo: (index: number) => void
+}
+
 export type ImagePreviewThemeVars = {
   imagePreviewIndexTextColor?: string
   imagePreviewIndexFontSize?: string
