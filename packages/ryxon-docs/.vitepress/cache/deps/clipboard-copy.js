@@ -1,4 +1,4 @@
-import { __commonJS } from './chunk-76J2PTFD.js'
+import { __commonJS } from './chunk-Y2F7D3TJ.js'
 
 // ../../node_modules/.pnpm/clipboard-copy@4.0.1/node_modules/clipboard-copy/index.js
 var require_clipboard_copy = __commonJS({

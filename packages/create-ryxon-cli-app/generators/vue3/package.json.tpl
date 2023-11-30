@@ -28,12 +28,12 @@
     "*.{ts,tsx,js,vue}": "eslint --fix"
   },
   "peerDependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.9"
   },
   "devDependencies": {
     "@ryxon/cli": "^1.0.0",
-    "vue": "^3.3.4",
-    "sass": "^1.49.7"
+    "vue": "^3.3.9",
+    "sass": "^1.54.5"
   },
   "eslintConfig": {
     "root": true,

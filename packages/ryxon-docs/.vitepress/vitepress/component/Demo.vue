@@ -37,7 +37,10 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-const demos = import.meta.globEager('../../../examples/**/*.vue')
+const demos = import.meta.glob('../../../examples/**/*.vue', {
+  eager: true,
+  import: 'default'
+})
 
 const props = defineProps<{
   source: string
@@ -53,7 +56,7 @@ const formatPathDemos = computed(() => {
 
   Object.keys(demos || {}).forEach((key) => {
     demoObj[key.replace('../../../examples/', '').replace('.vue', '')] =
-      demos[key].default
+      demos[key]
   })
 
   return demoObj

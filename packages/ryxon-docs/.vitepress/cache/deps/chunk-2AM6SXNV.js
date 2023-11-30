@@ -1,4 +1,4 @@
-// ../../node_modules/.pnpm/@vue+shared@3.3.7/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+shared@3.3.9/node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
   const map2 = /* @__PURE__ */ Object.create(null)
   const list = str.split(',')
@@ -298,7 +298,7 @@ var replacer = (_key, val) => {
   return val
 }
 
-// ../../node_modules/.pnpm/@vue+reactivity@3.3.7/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+reactivity@3.3.9/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 function warn(msg, ...args) {
   console.warn(`[Vue warn] ${msg}`, ...args)
 }
@@ -997,7 +997,7 @@ function createReadonlyMethod(type) {
         toRaw(this)
       )
     }
-    return type === 'delete' ? false : this
+    return type === 'delete' ? false : type === 'clear' ? void 0 : this
   }
 }
 function createInstrumentations() {
@@ -1481,7 +1481,7 @@ function computed(getterOrOptions, debugOptions, isSSR = false) {
 }
 var tick = Promise.resolve()
 
-// ../../node_modules/.pnpm/@vue+runtime-core@3.3.7/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+runtime-core@3.3.9/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 var stack = []
 function pushWarningContext(vnode) {
   stack.push(vnode)
@@ -2316,9 +2316,21 @@ function renderComponentRoot(instance) {
   try {
     if (vnode.shapeFlag & 4) {
       const proxyToUse = withProxy || proxy
+      const thisProxy = setupState.__isScriptSetup
+        ? new Proxy(proxyToUse, {
+            get(target, key, receiver) {
+              warn2(
+                `Property '${String(
+                  key
+                )}' was accessed via 'this'. Avoid using 'this' in templates.`
+              )
+              return Reflect.get(target, key, receiver)
+            }
+          })
+        : proxyToUse
       result = normalizeVNode(
         render2.call(
-          proxyToUse,
+          thisProxy,
           proxyToUse,
           renderCache,
           props,
@@ -2564,6 +2576,79 @@ function updateHOCHostEl({ vnode, parent }, el) {
     ;(vnode = parent.vnode).el = el
     parent = parent.parent
   }
+}
+var COMPONENTS = 'components'
+var DIRECTIVES = 'directives'
+function resolveComponent(name, maybeSelfReference) {
+  return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name
+}
+var NULL_DYNAMIC_COMPONENT = Symbol.for('v-ndc')
+function resolveDynamicComponent(component) {
+  if (isString(component)) {
+    return resolveAsset(COMPONENTS, component, false) || component
+  } else {
+    return component || NULL_DYNAMIC_COMPONENT
+  }
+}
+function resolveDirective(name) {
+  return resolveAsset(DIRECTIVES, name)
+}
+function resolveAsset(
+  type,
+  name,
+  warnMissing = true,
+  maybeSelfReference = false
+) {
+  const instance = currentRenderingInstance || currentInstance
+  if (instance) {
+    const Component = instance.type
+    if (type === COMPONENTS) {
+      const selfName = getComponentName(
+        Component,
+        false
+        /* do not include inferred name to avoid breaking existing code */
+      )
+      if (
+        selfName &&
+        (selfName === name ||
+          selfName === camelize(name) ||
+          selfName === capitalize(camelize(name)))
+      ) {
+        return Component
+      }
+    }
+    const res =
+      // local registration
+      // check instance[type] first which is resolved for options API
+      resolve(instance[type] || Component[type], name) || // global registration
+      resolve(instance.appContext[type], name)
+    if (!res && maybeSelfReference) {
+      return Component
+    }
+    if (warnMissing && !res) {
+      const extra =
+        type === COMPONENTS
+          ? `
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.`
+          : ``
+      warn2(`Failed to resolve ${type.slice(0, -1)}: ${name}${extra}`)
+    }
+    return res
+  } else if (true) {
+    warn2(
+      `resolve${capitalize(
+        type.slice(0, -1)
+      )} can only be used in render() or setup().`
+    )
+  }
+}
+function resolve(registry, name) {
+  return (
+    registry &&
+    (registry[name] ||
+      registry[camelize(name)] ||
+      registry[capitalize(camelize(name))])
+  )
 }
 var isSuspense = (type) => type.__isSuspense
 var SuspenseImpl = {
@@ -3175,7 +3260,10 @@ function normalizeSuspenseSlot(s) {
   }
   if (isArray(s)) {
     const singleChild = filterSingleRoot(s)
-    if (!singleChild) {
+    if (
+      !singleChild &&
+      s.filter((child) => child !== NULL_DYNAMIC_COMPONENT).length > 0
+    ) {
       warn2(`<Suspense> slots expect a single root node.`)
     }
     s = singleChild
@@ -3318,6 +3406,7 @@ function doWatch(
   let onCleanup = (fn) => {
     cleanup = effect2.onStop = () => {
       callWithErrorHandling(fn, instance, 4)
+      cleanup = effect2.onStop = void 0
     }
   }
   let ssrCleanup
@@ -3830,9 +3919,13 @@ function emptyPlaceholder(vnode) {
 }
 function getKeepAliveChild(vnode) {
   return isKeepAlive(vnode)
-    ? vnode.children
-      ? vnode.children[0]
-      : void 0
+    ? // #7121 ensure get the child component subtree in case
+      // it's been replaced during HMR
+      vnode.component
+      ? vnode.component.subTree
+      : vnode.children
+        ? vnode.children[0]
+        : void 0
     : vnode
 }
 function setTransitionHooks(vnode, hooks) {
@@ -4332,79 +4425,6 @@ var onRenderTriggered = createHook('rtg')
 var onRenderTracked = createHook('rtc')
 function onErrorCaptured(hook, target = currentInstance) {
   injectHook('ec', hook, target)
-}
-var COMPONENTS = 'components'
-var DIRECTIVES = 'directives'
-function resolveComponent(name, maybeSelfReference) {
-  return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name
-}
-var NULL_DYNAMIC_COMPONENT = Symbol.for('v-ndc')
-function resolveDynamicComponent(component) {
-  if (isString(component)) {
-    return resolveAsset(COMPONENTS, component, false) || component
-  } else {
-    return component || NULL_DYNAMIC_COMPONENT
-  }
-}
-function resolveDirective(name) {
-  return resolveAsset(DIRECTIVES, name)
-}
-function resolveAsset(
-  type,
-  name,
-  warnMissing = true,
-  maybeSelfReference = false
-) {
-  const instance = currentRenderingInstance || currentInstance
-  if (instance) {
-    const Component = instance.type
-    if (type === COMPONENTS) {
-      const selfName = getComponentName(
-        Component,
-        false
-        /* do not include inferred name to avoid breaking existing code */
-      )
-      if (
-        selfName &&
-        (selfName === name ||
-          selfName === camelize(name) ||
-          selfName === capitalize(camelize(name)))
-      ) {
-        return Component
-      }
-    }
-    const res =
-      // local registration
-      // check instance[type] first which is resolved for options API
-      resolve(instance[type] || Component[type], name) || // global registration
-      resolve(instance.appContext[type], name)
-    if (!res && maybeSelfReference) {
-      return Component
-    }
-    if (warnMissing && !res) {
-      const extra =
-        type === COMPONENTS
-          ? `
-If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.`
-          : ``
-      warn2(`Failed to resolve ${type.slice(0, -1)}: ${name}${extra}`)
-    }
-    return res
-  } else if (true) {
-    warn2(
-      `resolve${capitalize(
-        type.slice(0, -1)
-      )} can only be used in render() or setup().`
-    )
-  }
-}
-function resolve(registry, name) {
-  return (
-    registry &&
-    (registry[name] ||
-      registry[camelize(name)] ||
-      registry[capitalize(camelize(name))])
-  )
 }
 function renderList(source, renderItem, cache, index) {
   let ret
@@ -5989,6 +6009,9 @@ function assertType(value, type) {
   }
 }
 function getInvalidTypeMessage(name, value, expectedTypes) {
+  if (expectedTypes.length === 0) {
+    return `Prop type [] for prop "${name}" won't match anything. Did you mean to use type Array instead?`
+  }
   let message = `Invalid prop: type check failed for prop "${name}". Expected ${expectedTypes
     .map(capitalize)
     .join(' | ')}`
@@ -6273,6 +6296,20 @@ function createHydrationFunctions(rendererInternals) {
     const { type, ref: ref2, shapeFlag, patchFlag } = vnode
     let domType = node.nodeType
     vnode.el = node
+    if (true) {
+      if (!('__vnode' in node)) {
+        Object.defineProperty(node, '__vnode', {
+          value: vnode,
+          enumerable: false
+        })
+      }
+      if (!('__vueParentComponent' in node)) {
+        Object.defineProperty(node, '__vueParentComponent', {
+          value: parentComponent,
+          enumerable: false
+        })
+      }
+    }
     if (patchFlag === -2) {
       optimized = false
       vnode.dynamicChildren = null
@@ -6301,15 +6338,15 @@ function createHydrationFunctions(rendererInternals) {
         }
         break
       case Comment:
-        if (domType !== 8 || isFragmentStart) {
-          if (node.tagName.toLowerCase() === 'template') {
-            const content = vnode.el.content.firstChild
-            replaceNode(content, node, parentComponent)
-            vnode.el = node = content
-            nextNode = nextSibling(node)
-          } else {
-            nextNode = onMismatch()
-          }
+        if (isTemplateNode(node)) {
+          nextNode = nextSibling(node)
+          replaceNode(
+            (vnode.el = node.content.firstChild),
+            node,
+            parentComponent
+          )
+        } else if (domType !== 8 || isFragmentStart) {
+          nextNode = onMismatch()
         } else {
           nextNode = nextSibling(node)
         }
@@ -6447,17 +6484,19 @@ function createHydrationFunctions(rendererInternals) {
   ) => {
     optimized = optimized || !!vnode.dynamicChildren
     const { type, props, patchFlag, shapeFlag, dirs, transition } = vnode
-    const forcePatchValue = (type === 'input' && dirs) || type === 'option'
+    const forcePatch = type === 'input' || type === 'option'
     if (true) {
       if (dirs) {
         invokeDirectiveHook(vnode, null, parentComponent, 'created')
       }
       if (props) {
-        if (forcePatchValue || !optimized || patchFlag & (16 | 32)) {
+        if (forcePatch || !optimized || patchFlag & (16 | 32)) {
           for (const key in props) {
             if (
-              (forcePatchValue && key.endsWith('value')) ||
-              (isOn(key) && !isReservedProp(key))
+              (forcePatch &&
+                (key.endsWith('value') || key === 'indeterminate')) ||
+              (isOn(key) && !isReservedProp(key)) || // force hydrate v-bind with .prop modifiers
+              key[0] === '.'
             ) {
               patchProp2(
                 el,
@@ -6710,8 +6749,7 @@ function createHydrationFunctions(rendererInternals) {
     let parent = parentComponent
     while (parent) {
       if (parent.vnode.el === oldNode) {
-        parent.vnode.el = newNode
-        parent.subTree.el = newNode
+        parent.vnode.el = parent.subTree.el = newNode
       }
       parent = parent.parent
     }
@@ -8482,6 +8520,7 @@ var resolveTarget = (props, select) => {
   }
 }
 var TeleportImpl = {
+  name: 'Teleport',
   __isTeleport: true,
   process(
     n1,
@@ -8952,7 +8991,7 @@ function _createVNode(
   if (shapeFlag & 4 && isProxy(type)) {
     type = toRaw(type)
     warn2(
-      `Vue received a Component which was made a reactive object. This can lead to unnecessary performance overhead, and should be avoided by marking the component with \`markRaw\` or using \`shallowRef\` instead of \`ref\`.`,
+      `Vue received a Component that was made a reactive object. This can lead to unnecessary performance overhead and should be avoided by marking the component with \`markRaw\` or using \`shallowRef\` instead of \`ref\`.`,
       `
 Component that was made reactive: `,
       type
@@ -9838,7 +9877,7 @@ function isMemoSame(cached, memo) {
   }
   return true
 }
-var version = '3.3.7'
+var version = '3.3.9'
 var _ssrUtils = {
   createComponentInstance,
   setupComponent,
@@ -9851,7 +9890,7 @@ var ssrUtils = _ssrUtils
 var resolveFilter = null
 var compatUtils = null
 
-// ../../node_modules/.pnpm/@vue+runtime-dom@3.3.7/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+// ../../node_modules/.pnpm/@vue+runtime-dom@3.3.9/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 var svgNS = 'http://www.w3.org/2000/svg'
 var doc = typeof document !== 'undefined' ? document : null
 var templateContainer = doc && doc.createElement('template')
@@ -11020,24 +11059,21 @@ var vModelText = {
   beforeUpdate(el, { value, modifiers: { lazy, trim, number } }, vnode) {
     el[assignKey] = getModelAssigner(vnode)
     if (el.composing) return
+    const elValue =
+      number || el.type === 'number' ? looseToNumber(el.value) : el.value
+    const newValue = value == null ? '' : value
+    if (elValue === newValue) {
+      return
+    }
     if (document.activeElement === el && el.type !== 'range') {
       if (lazy) {
         return
       }
-      if (trim && el.value.trim() === value) {
-        return
-      }
-      if (
-        (number || el.type === 'number') &&
-        looseToNumber(el.value) === value
-      ) {
+      if (trim && el.value.trim() === newValue) {
         return
       }
     }
-    const newValue = value == null ? '' : value
-    if (el.value !== newValue) {
-      el.value = newValue
-    }
+    el.value = newValue
   }
 }
 var vModelCheckbox = {
@@ -11413,7 +11449,7 @@ var initDirectivesForSSR = () => {
   }
 }
 
-// ../../node_modules/.pnpm/vue@3.3.7/node_modules/vue/dist/vue.runtime.esm-bundler.js
+// ../../node_modules/.pnpm/vue@3.3.9_typescript@5.3.2/node_modules/vue/dist/vue.runtime.esm-bundler.js
 function initDev() {
   {
     initCustomFormatter()
@@ -11479,6 +11515,9 @@ export {
   popScopeId,
   withScopeId,
   withCtx,
+  resolveComponent,
+  resolveDynamicComponent,
+  resolveDirective,
   Suspense,
   watchEffect,
   watchPostEffect,
@@ -11506,9 +11545,6 @@ export {
   onRenderTriggered,
   onRenderTracked,
   onErrorCaptured,
-  resolveComponent,
-  resolveDynamicComponent,
-  resolveDirective,
   renderList,
   createSlots,
   renderSlot,
@@ -11595,4 +11631,4 @@ export {
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (*! #__NO_SIDE_EFFECTS__ *)
 */
-//# sourceMappingURL=chunk-73BS2DTN.js.map
+//# sourceMappingURL=chunk-2AM6SXNV.js.map
