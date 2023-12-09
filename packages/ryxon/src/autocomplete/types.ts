@@ -1,7 +1,9 @@
+import { CircleClose } from '@ryxon/icons'
 import {
   noop,
   isObject,
   isString,
+  iconPropType,
   definePropType,
   makeStringProp
 } from '../utils'
@@ -47,7 +49,8 @@ export const autocompleteProps = {
   },
   highlightFirstItem: { type: Boolean, default: false },
   fitInputWidth: { type: Boolean, default: false },
-  disabled: { type: Boolean, default: false }
+  disabled: { type: Boolean, default: false },
+  clearIcon: { type: iconPropType, default: CircleClose }
 }
 
 export type AutocompleteProps = ExtractPropTypes<typeof autocompleteProps>

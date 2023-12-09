@@ -40,6 +40,7 @@ autocomplete/remote-search
 | model-value / v-model | 选中项绑定值 | ^[string] | — |
 | placeholder | 占位文本 | ^[string] | — |
 | clearable | 是否可清空 | ^[boolean] | `false` |
+| clear-icon ^(v1.10.2) | 清除图标名称或图片链接，等同于 Icon 组件的 `name 属性` | `string` | `clear` |
 | disabled | 自动补全组件是否被禁用 | ^[boolean] | `false` |
 | value-key | 输入建议对象中用于显示的键名 | ^[string] | `value` |
 | debounce | 获取输入建议的防抖延时，单位为毫秒 | ^[number] | `300` |
