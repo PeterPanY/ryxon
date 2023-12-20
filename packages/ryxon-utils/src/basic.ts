@@ -7,7 +7,17 @@ export const extend = Object.assign
 // 判断是不是浏览器
 export const inBrowser = typeof window !== 'undefined'
 
+export type Numeric = number | string
+
+// eslint-disable-next-line
+export type ComponentInstance = ComponentPublicInstance<{}, any>
+
 const { hasOwnProperty } = Object.prototype
+
+export const isTouchEvent = (e: MouseEvent | TouchEvent): e is TouchEvent => {
+  return window.TouchEvent && e instanceof window.TouchEvent
+}
+
 // 是不是自己本身所拥有的属性
 export const hasOwn = (val: object, key: string | symbol) =>
   hasOwnProperty.call(val, key)
@@ -83,11 +93,6 @@ export const toTypeString = (value: unknown): string =>
 export const toRawType = (value: unknown): string =>
   toTypeString(value).slice(8, -1)
 
-export type Numeric = number | string
-
-// eslint-disable-next-line
-export type ComponentInstance = ComponentPublicInstance<{}, any>
-
 export function get(object: any, path: string): any {
   const keys = path.split('.')
   let result = object
@@ -100,6 +105,10 @@ export function get(object: any, path: string): any {
 }
 
 export type Writeable<T> = { -readonly [P in keyof T]: T[P] }
+
+export type RequiredParams<T> = T extends (...args: infer P) => infer R
+  ? (...args: { [K in keyof P]-?: NonNullable<P[K]> }) => R
+  : never
 
 export function pick<T, U extends keyof T>(
   obj: T,
