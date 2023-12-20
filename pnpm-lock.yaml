@@ -339,8 +339,8 @@ importers:
         specifier: ^1.54.5
         version: 1.57.1
       vitepress:
-        specifier: ^1.0.0-rc.31
-        version: 1.0.0-rc.31(sass@1.57.1)
+        specifier: ^1.0.0-rc.32
+        version: 1.0.0-rc.32(sass@1.57.1)
       vitepress-theme-demoblock:
         specifier: ^3.0.3
         version: 3.0.3(sass@1.57.1)
@@ -3024,14 +3024,14 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /@vitejs/plugin-vue@4.5.2(vite@5.0.7)(vue@3.3.11):
+  /@vitejs/plugin-vue@4.5.2(vite@5.0.10)(vue@3.3.11):
     resolution: {integrity: sha512-UGR3DlzLi/SaVBPX0cnSyE37vqxU3O6chn8l0HJNzQzDia6/Au2A4xKv+iIJW8w2daf80G7TYHhi1pAUjdZ0bQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.7(sass@1.57.1)
+      vite: 5.0.10(sass@1.57.1)
       vue: 3.3.11(typescript@5.0.4)
     dev: true
 
@@ -8227,14 +8227,14 @@ packages:
       vscode-textmate: 8.0.0
     dev: true
 
-  /shikiji-transformers@0.7.6:
-    resolution: {integrity: sha512-yTp+7JMD/aXbV9ndn14eo9IK/UNt8iDsLNyqlOmCtcldlkqWE9T2YKAlOHOTVaeDfYWUWZa2EgSXb/CBfepBrw==}
+  /shikiji-transformers@0.9.2:
+    resolution: {integrity: sha512-WEBeNm+oUL/4OTENjnZ5G29ErNM2cPGJHRRhqjwoTFkHnsJsACtTluTaYjPEppCl46Vo3M4TV9GwrMxz2WeCSg==}
     dependencies:
-      shikiji: 0.7.6
+      shikiji: 0.9.2
     dev: true
 
-  /shikiji@0.7.6:
-    resolution: {integrity: sha512-KzEtvSGQtBvfwVIB70kOmIfl/5rz1LC8j+tvlHXsJKAIdONNQvG1at7ivUUq3xUctqgO6fsO3AGomUSh0F+wsQ==}
+  /shikiji@0.9.2:
+    resolution: {integrity: sha512-bxXd5iOVvuPj0NVFWQG3YMNLAGkWHyjTGixM7wLzqJNz3WMaeiOZbOP12gjQWKMJg+Ca4jmgATrUWu/rFb3B8A==}
     dependencies:
       hast-util-to-html: 9.0.0
     dev: true
@@ -9172,6 +9172,42 @@ packages:
       fsevents: 2.3.3
     dev: false
 
+  /vite@5.0.10(sass@1.57.1):
+    resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.19.8
+      postcss: 8.4.32
+      rollup: 4.7.0
+      sass: 1.57.1
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
   /vite@5.0.7(@types/node@20.10.4):
     resolution: {integrity: sha512-B4T4rJCDPihrQo2B+h1MbeGL/k/GMAHzhQ8S0LjQ142s6/+l3hHTT095ORvsshj4QCkoWu3Xtmob5mazvakaOw==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -9208,42 +9244,6 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.0.7(sass@1.57.1):
-    resolution: {integrity: sha512-B4T4rJCDPihrQo2B+h1MbeGL/k/GMAHzhQ8S0LjQ142s6/+l3hHTT095ORvsshj4QCkoWu3Xtmob5mazvakaOw==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.19.8
-      postcss: 8.4.32
-      rollup: 4.7.0
-      sass: 1.57.1
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: true
-
   /vitepress-theme-demoblock@3.0.3(sass@1.57.1):
     resolution: {integrity: sha512-LmHvoffRnqVvhYie6spOQhA42+Rwxu6/9N1pTADwEufJ/U+GZ4oC00518/6I67bklx1E+NZWrA3G47Y5azRGXw==}
     engines: {node: '>=16.0.0'}
@@ -9270,7 +9270,7 @@ packages:
       shiki: 0.14.3
       unified: 10.1.2
       unist-util-visit: 4.1.2
-      vitepress: 1.0.0-rc.31(sass@1.57.1)
+      vitepress: 1.0.0-rc.32(sass@1.57.1)
       vue: 3.3.7
       yaml: 2.3.1
     transitivePeerDependencies:
@@ -9304,12 +9304,12 @@ packages:
       - universal-cookie
     dev: true
 
-  /vitepress@1.0.0-rc.31(sass@1.57.1):
-    resolution: {integrity: sha512-ikH9pIjOOAbyoYAGBVfTz8TzuXp+UoWaIRMU4bw/oiTg8R65SbAaGKY84xx6TuL+f4VqUJ8lhzW82YyxSLvstA==}
+  /vitepress@1.0.0-rc.32(sass@1.57.1):
+    resolution: {integrity: sha512-yf00Skn5BGP+YOQvTbSrB5s9qEb/cV+i+wM5rw+mlaxcIYtK+ORvyBEYZLvKogs7OO70TppJtixb4ofeo5K7HA==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
-      postcss: ^8.4.31
+      postcss: ^8.4.32
     peerDependenciesMeta:
       markdown-it-mathjax3:
         optional: true
@@ -9319,7 +9319,7 @@ packages:
       '@docsearch/css': 3.5.2
       '@docsearch/js': 3.5.2
       '@types/markdown-it': 13.0.7
-      '@vitejs/plugin-vue': 4.5.2(vite@5.0.7)(vue@3.3.11)
+      '@vitejs/plugin-vue': 4.5.2(vite@5.0.10)(vue@3.3.11)
       '@vue/devtools-api': 6.5.1
       '@vueuse/core': 10.7.0(vue@3.3.11)
       '@vueuse/integrations': 10.7.0(focus-trap@7.5.4)(vue@3.3.11)
@@ -9327,9 +9327,9 @@ packages:
       mark.js: 8.11.1
       minisearch: 6.3.0
       mrmime: 1.0.1
-      shikiji: 0.7.6
-      shikiji-transformers: 0.7.6
-      vite: 5.0.7(sass@1.57.1)
+      shikiji: 0.9.2
+      shikiji-transformers: 0.9.2
+      vite: 5.0.10(sass@1.57.1)
       vue: 3.3.11(typescript@5.0.4)
     transitivePeerDependencies:
       - '@algolia/client-search'
