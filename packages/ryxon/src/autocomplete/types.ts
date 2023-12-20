@@ -3,6 +3,7 @@ import {
   noop,
   isObject,
   isString,
+  truthProp,
   iconPropType,
   definePropType,
   makeStringProp
@@ -33,6 +34,7 @@ export const autocompleteProps = {
   valueKey: { type: String, default: 'value' },
   modelValue: { type: [String, Number], default: '' },
   debounce: { type: Number, default: 300 },
+  showArrow: truthProp,
   placement: makeStringProp<AutocompletePlacement>('bottom-start'),
   fetchSuggestions: {
     type: definePropType<AutocompleteFetchSuggestions>([Function, Array]),

@@ -7,6 +7,7 @@
     :popper-class="[bem('popper'), popperClass]"
     :teleport="teleport"
     :gpu-acceleration="false"
+    :show-arrow="showArrow"
     pure
     manual-mode
     theme="light"
@@ -30,6 +31,7 @@
         ref="inputRef"
         v-bind="attrs"
         :model-value="modelValue"
+        :clear-icon="clearIcon"
         @input="handleInput"
         @change="handleChange"
         @focus="handleFocus"
