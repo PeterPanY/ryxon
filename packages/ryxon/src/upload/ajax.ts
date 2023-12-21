@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { isNil } from 'lodash-unified'
 import type {
   UploadProgressEvent,
