@@ -14,7 +14,7 @@ lang: zh
 ## 使用
 
 ```js
-import merge from 'ryxon/lib/utils/deepmerge'
+import deepmerge from '@ryxon/utils'
 
 const obj1 = {
   a: { a: 1 }
@@ -30,7 +30,7 @@ const obj3 = {
   c: 3
 }
 
-const result = merge(obj1, obj2, obj3)
+const result = deepmerge(obj1, obj2, obj3)
 
 // 结果数据
 // {
@@ -45,13 +45,13 @@ const result = merge(obj1, obj2, obj3)
 如果您想提供更改合并行为的选项，您可以使用以下.withOptions 方法：
 
 ```js
-import merge from 'ryxon/lib/utils/deepmerge'
+import deepmerge from '@ryxon/utils'
 
 const obj1 = { array: ['A'] }
 
 const obj2 = { array: ['B'] }
 
-const result = merge.withOptions({ mergeArrays: false }, obj1, obj2)
+const result = deepmerge.withOptions({ mergeArrays: false }, obj1, obj2)
 
 // 结果数据
 // { "array": ["B"] }

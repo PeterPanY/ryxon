@@ -20,10 +20,6 @@
         { "link": "/use-toggle", "text": "useToggle" },
         { "link": "/use-window-size", "text": "useWindowSize" }
       ]
-    },
-    "utils": {
-      "text": "方法",
-      "children": [{ "link": "/deepmerge", "text": "深度合并" }]
     }
   }
 }
