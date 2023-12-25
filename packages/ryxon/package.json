@@ -67,6 +67,7 @@
     "@ryxon/cli": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
     "@ryxon/icons": "workspace:*",
+    "@ryxon/utils": "workspace:*",
     "@types/node": "^18.16.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",

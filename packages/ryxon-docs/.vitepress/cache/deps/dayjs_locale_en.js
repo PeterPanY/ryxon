@@ -1,8 +1,8 @@
 import { __commonJS } from './chunk-Y2F7D3TJ.js'
 
-// ../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/locale/en.js
+// ../../node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/locale/en.js
 var require_en = __commonJS({
-  '../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/locale/en.js'(
+  '../../node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/locale/en.js'(
     exports,
     module
   ) {

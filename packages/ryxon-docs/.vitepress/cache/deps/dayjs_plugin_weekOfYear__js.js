@@ -1,8 +1,8 @@
 import { __commonJS } from './chunk-Y2F7D3TJ.js'
 
-// ../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/weekOfYear.js
+// ../../node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/weekOfYear.js
 var require_weekOfYear = __commonJS({
-  '../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/weekOfYear.js'(
+  '../../node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/weekOfYear.js'(
     exports,
     module
   ) {

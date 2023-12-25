@@ -1,6 +1,7 @@
 import componentLocale from '../i18n/pages/component.json'
 import guideLocale from '../i18n/pages/guide.json'
 import apiLocale from '../i18n/pages/api.json'
+import functionsLocale from '../i18n/pages/functions.json'
 
 // 指南左侧导航
 function getGuideSidebar() {
@@ -35,13 +36,25 @@ function getApiSideBar() {
   return result
 }
 
+// 方法导航
+function getFunctionsSideBar() {
+  const result = {}
+  Object.entries(functionsLocale).map(([lang, val]) => {
+    result[`/${lang}/functions/`] = Object.values(val).map((item) =>
+      mapPrefix(item, lang, '/functions')
+    )
+  })
+  return result
+}
+
 // 返回带有语言配置的侧边栏。
 // 这可能会创建重复的数据，但开销是可以忽略的
 const getSidebars = () => {
   return Object.assign(
     getGuideSidebar(),
     getComponentsSideBar(),
-    getApiSideBar()
+    getApiSideBar(),
+    getFunctionsSideBar()
   )
 }
 

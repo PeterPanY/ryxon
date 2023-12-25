@@ -109,6 +109,9 @@ importers:
       '@ryxon/icons':
         specifier: workspace:*
         version: link:../ryxon-icons
+      '@ryxon/utils':
+        specifier: workspace:*
+        version: link:../ryxon-utils
       '@types/node':
         specifier: ^18.16.3
         version: 18.19.3

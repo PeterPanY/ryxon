@@ -14,6 +14,11 @@
       "text": "API",
       "link": "/api/use-intro",
       "activeMatch": "/api/"
+    },
+    {
+      "text": "方法",
+      "link": "/functions/home",
+      "activeMatch": "/functions/"
     }
   ]
 }
