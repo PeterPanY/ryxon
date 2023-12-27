@@ -93,17 +93,6 @@ export const toTypeString = (value: unknown): string =>
 export const toRawType = (value: unknown): string =>
   toTypeString(value).slice(8, -1)
 
-export function get(object: any, path: string): any {
-  const keys = path.split('.')
-  let result = object
-
-  keys.forEach((key) => {
-    result = isObject(result) ? result[key] ?? '' : ''
-  })
-
-  return result
-}
-
 export type Writeable<T> = { -readonly [P in keyof T]: T[P] }
 
 export type RequiredParams<T> = T extends (...args: infer P) => infer R
