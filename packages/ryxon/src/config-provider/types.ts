@@ -152,6 +152,7 @@ export type ConfigProviderThemeVars = BaseThemeVars &
   import('../dialog').DialogThemeVars &
   import('../divider').DividerThemeVars &
   import('../dropdown').DropdownThemeVars &
+  import('../dynamic-tags').DynamicTagsThemeVars &
   import('../empty').EmptyThemeVars &
   import('../footer').FooterThemeVars &
   import('../grid-item').GridItemThemeVars &

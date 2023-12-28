@@ -51,7 +51,7 @@ import {
 
 // Composables
 import { useDragTouch } from '../pull-refresh/use-touch'
-import useMergedState from './use-merged-state'
+import useMergedState from '../composables/use-merged-state'
 
 // Components
 import RCarouselItem, { isCarouselItem } from '../carousel-item/CarouselItem'
@@ -75,7 +75,7 @@ const transitionProperties = [
 ] as const
 
 type TransitionStyle = Partial<
-  Pick<CSSProperties, typeof transitionProperties[number]>
+  Pick<CSSProperties, (typeof transitionProperties)[number]>
 >
 
 const [name, bem] = createNamespace('carousel')
@@ -459,8 +459,8 @@ export default defineComponent({
       return typeof slideOrIndex === 'number'
         ? slideOrIndex
         : slideOrIndex
-        ? slideElsRef.value.indexOf(slideOrIndex)
-        : -1
+          ? slideElsRef.value.indexOf(slideOrIndex)
+          : -1
     }
     // 获取Slide的样式
     function getSlideStyle(
