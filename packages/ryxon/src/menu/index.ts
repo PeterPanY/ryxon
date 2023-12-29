@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Menu from './Menu'
 
 export const Menu = withInstall(_Menu)

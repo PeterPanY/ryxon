@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Pagination from './Pagination'
 
 export const Pagination = withInstall(_Pagination)

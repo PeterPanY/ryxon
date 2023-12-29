@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Upload, { UploadProps } from './Upload'
 
 export const Upload = withInstall(_Upload)

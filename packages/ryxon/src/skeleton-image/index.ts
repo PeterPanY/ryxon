@@ -1,5 +1,5 @@
 import _SkeletonImage from './SkeletonImage'
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 
 export const SkeletonImage = withInstall(_SkeletonImage)
 export default SkeletonImage

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Mention from './Mention'
 
 export const Mention = withInstall(_Mention)

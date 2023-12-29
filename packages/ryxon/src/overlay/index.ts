@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Overlay from './Overlay'
 
 export const Overlay = withInstall(_Overlay)

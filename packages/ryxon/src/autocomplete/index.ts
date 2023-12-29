@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Autocomplete from './Autocomplete.vue'
 
 export const Autocomplete = withInstall(_Autocomplete)

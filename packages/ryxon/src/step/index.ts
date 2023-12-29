@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Step from './Step'
 
 export const Step = withInstall(_Step)

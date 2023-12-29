@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Collapse from './Collapse'
 
 export const Collapse = withInstall(_Collapse)

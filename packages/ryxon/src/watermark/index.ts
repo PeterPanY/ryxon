@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Watermark from './Watermark'
 
 export const Watermark = withInstall(_Watermark)

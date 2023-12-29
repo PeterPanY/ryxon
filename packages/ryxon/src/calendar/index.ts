@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Calendar from './Calendar'
 
 export const Calendar = withInstall(_Calendar)

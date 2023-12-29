@@ -1,5 +1,5 @@
 import _SkeletonParagraph from './SkeletonParagraph'
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 
 export const SkeletonParagraph = withInstall(_SkeletonParagraph)
 export default SkeletonParagraph

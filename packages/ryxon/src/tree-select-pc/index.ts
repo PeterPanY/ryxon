@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _TreeSelectPc from './TreeSelectPc'
 
 export const TreeSelectPc = withInstall(_TreeSelectPc)

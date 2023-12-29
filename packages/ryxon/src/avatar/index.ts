@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Avatar from './Avatar'
 
 export const Avatar = withInstall(_Avatar)

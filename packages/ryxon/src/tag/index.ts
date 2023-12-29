@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Tag from './Tag'
 
 export const Tag = withInstall(_Tag)

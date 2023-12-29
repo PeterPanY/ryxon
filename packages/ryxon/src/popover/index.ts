@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Popover from './Popover'
 
 export const Popover = withInstall(_Popover)

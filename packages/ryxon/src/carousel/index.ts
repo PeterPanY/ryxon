@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Carousel from './Carousel'
 
 export const Carousel = withInstall(_Carousel)

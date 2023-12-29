@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _ColorPicker from './ColorPicker.vue'
 
 export const ColorPicker = withInstall(_ColorPicker)

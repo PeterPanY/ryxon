@@ -1,5 +1,5 @@
 import _Skeleton from './Skeleton'
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 
 export const Skeleton = withInstall(_Skeleton)
 

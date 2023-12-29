@@ -1,5 +1,5 @@
 import _SkeletonTitle from './SkeletonTitle'
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 
 export const SkeletonTitle = withInstall(_SkeletonTitle)
 export default SkeletonTitle

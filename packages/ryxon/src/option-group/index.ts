@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _OptionGroup from '../select/Option-group'
 
 export const OptionGroup = withInstall(_OptionGroup)

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Form, { FormProps } from './Form'
 
 export const Form = withInstall(_Form)

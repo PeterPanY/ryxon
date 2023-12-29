@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _TimePickerPc, { TimePickerPcProps } from './TimePicker'
 
 export const TimePickerPc = withInstall(_TimePickerPc)

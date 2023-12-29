@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Container from './Container'
 
 export const Container = withInstall(_Container)

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Button from './Button'
 
 export const Button = withInstall(_Button)

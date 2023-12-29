@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Breadcrumb from './Breadcrumb'
 
 export const Breadcrumb = withInstall(_Breadcrumb)

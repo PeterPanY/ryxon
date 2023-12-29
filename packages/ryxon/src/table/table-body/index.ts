@@ -8,7 +8,8 @@ import {
   watch
 } from 'vue'
 import { isClient } from '@vueuse/core'
-import { addClass, removeClass, createNamespace } from '../../utils'
+import { addClass, removeClass } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import useLayoutObserver from '../layout-observer'
 import { removePopper } from '../util'
 import { TABLE_INJECTION_KEY } from '../tokens'
@@ -37,8 +38,8 @@ export default defineComponent({
       raf(() => {
         // just get first level children; fix #9723
         const el = instance?.vnode.el as HTMLElement
-        const rows = Array.from(el?.children || []).filter((e) =>
-          e?.classList.contains(`${bem('row')}`)
+        const rows = Array.from(el?.children || []).filter(
+          (e) => e?.classList.contains(`${bem('row')}`)
         )
         const oldRow = rows[oldVal]
         const newRow = rows[newVal]

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Divider from './Divider'
 
 export const Divider = withInstall(_Divider)

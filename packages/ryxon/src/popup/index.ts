@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Popup from './Popup'
 
 export const Popup = withInstall(_Popup)

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Progress from './Progress'
 
 export const Progress = withInstall(_Progress)

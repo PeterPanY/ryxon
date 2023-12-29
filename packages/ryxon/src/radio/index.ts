@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Radio from './Radio'
 
 export const Radio = withInstall(_Radio)

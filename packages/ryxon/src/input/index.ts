@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Input, { InputProps } from './Input'
 
 export const Input = withInstall(_Input)

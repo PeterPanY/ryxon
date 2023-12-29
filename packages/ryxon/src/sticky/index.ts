@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Sticky from './Sticky'
 
 export const Sticky = withInstall(_Sticky)

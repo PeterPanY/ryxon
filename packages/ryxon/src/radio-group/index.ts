@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _RadioGroup from './RadioGroup'
 
 export const RadioGroup = withInstall(_RadioGroup)

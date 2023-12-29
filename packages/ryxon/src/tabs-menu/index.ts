@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _TabsMenu, { TabsMenuProps } from './TabsMenu'
 
 export const TabsMenu = withInstall(_TabsMenu)

@@ -1,5 +1,5 @@
 import { ref, reactive } from 'vue'
-import merge from '../utils/deepmerge'
+import { deepmerge } from '@ryxon/utils'
 import defaultMessages from './lang/zh-CN'
 
 type Message = Record<string, any>
@@ -21,7 +21,7 @@ export const Locale = {
   },
 
   add(newMessages: Message = {}) {
-    const newMergMessage = merge(messages, newMessages)
+    const newMergMessage = deepmerge(messages, newMessages)
     Object.keys(newMergMessage).forEach((lange: string) => {
       messages[lange] = newMergMessage[lange]
     })

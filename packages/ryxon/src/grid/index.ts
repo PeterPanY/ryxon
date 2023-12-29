@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Grid from './Grid'
 
 export const Grid = withInstall(_Grid)

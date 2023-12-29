@@ -1,6 +1,6 @@
 // This component is ported from https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus
 // with some modification for Vue
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _RovingFocusGroup from './RovingFocusGroup.vue'
 import RovingFocusItem from './RovingFocusItem.vue'
 

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _CollapseTransition from './CollapseTransition.vue'
 
 export const CollapseTransition = withInstall(_CollapseTransition)

@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Checkbox from './Checkbox'
 
 export const Checkbox = withInstall(_Checkbox)

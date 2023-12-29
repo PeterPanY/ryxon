@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _TableColumn from './TableColumn'
 
 export const TableColumn = withInstall(_TableColumn)

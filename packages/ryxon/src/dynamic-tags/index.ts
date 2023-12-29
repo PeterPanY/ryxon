@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _DynamicTags from './DynamicTags'
 
 export const DynamicTags = withInstall(_DynamicTags)

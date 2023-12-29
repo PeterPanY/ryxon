@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Tooltip from './Tooltip'
 
 export const Tooltip = withInstall(_Tooltip)

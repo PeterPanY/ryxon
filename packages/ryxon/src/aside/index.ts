@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Aside from './Aside'
 
 export const Aside = withInstall(_Aside)

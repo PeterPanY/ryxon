@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Empty from './Empty'
 
 export const Empty = withInstall(_Empty)

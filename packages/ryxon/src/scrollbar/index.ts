@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Scrollbar, { ScrollbarProps } from './Scrollbar'
 
 export const Scrollbar = withInstall(_Scrollbar)

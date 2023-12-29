@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Select from './Select.vue'
 
 export const Select = withInstall(_Select)

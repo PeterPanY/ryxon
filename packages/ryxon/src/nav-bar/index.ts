@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _NavBar from './NavBar'
 
 export const NavBar = withInstall(_NavBar)

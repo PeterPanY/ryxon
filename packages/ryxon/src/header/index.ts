@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Header from './Header'
 
 export const Header = withInstall(_Header)

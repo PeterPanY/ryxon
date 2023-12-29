@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _CheckboxGroup from './CheckboxGroup'
 
 export const CheckboxGroup = withInstall(_CheckboxGroup)

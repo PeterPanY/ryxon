@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _ConfigProvider from './ConfigProvider'
 
 export const ConfigProvider = withInstall(_ConfigProvider)

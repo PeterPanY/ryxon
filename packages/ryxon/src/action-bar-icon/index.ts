@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _ActionBarIcon from './ActionBarIcon'
 
 export const ActionBarIcon = withInstall(_ActionBarIcon)

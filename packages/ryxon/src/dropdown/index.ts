@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Dropdown from './Dropdown'
 
 export const Dropdown = withInstall(_Dropdown)

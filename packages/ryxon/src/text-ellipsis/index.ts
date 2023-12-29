@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _TextEllipsis from './TextEllipsis'
 
 export const TextEllipsis = withInstall(_TextEllipsis)

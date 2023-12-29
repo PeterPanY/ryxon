@@ -1,4 +1,4 @@
-import { withInstall } from '../utils'
+import { withInstall } from '@ryxon/utils'
 import _Row from './Row'
 
 export const Row = withInstall(_Row)
