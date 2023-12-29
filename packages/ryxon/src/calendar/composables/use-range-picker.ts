@@ -1,5 +1,6 @@
 import { getCurrentInstance, ref, unref, watch } from 'vue'
-import { isArray, createNamespace } from '../../utils'
+import { isArray } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { getDefaultValue, isValidRange } from '../utils'
 import { useShortcut } from './use-shortcut'

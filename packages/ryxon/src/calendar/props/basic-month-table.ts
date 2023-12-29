@@ -1,4 +1,4 @@
-import { extend } from '../../utils'
+import { extend } from '@ryxon/utils'
 import { datePickerSharedProps, selectionModeWithDefault } from './shared'
 
 import type { ExtractPropTypes } from 'vue'

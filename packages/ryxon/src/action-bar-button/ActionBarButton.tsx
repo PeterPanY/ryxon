@@ -4,7 +4,8 @@ import {
   type PropType,
   type ExtractPropTypes
 } from 'vue'
-import { extend, createNamespace } from '../utils'
+import { extend } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { ACTION_BAR_KEY } from '../action-bar/ActionBar'
 
 // Composables

@@ -1,4 +1,4 @@
-import { extend } from '../../utils'
+import { extend } from '@ryxon/utils'
 import { panelRangeSharedProps } from './shared'
 
 import type { ExtractPropTypes } from 'vue'

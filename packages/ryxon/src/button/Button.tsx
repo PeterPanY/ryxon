@@ -13,11 +13,10 @@ import {
   extend,
   isString,
   numericProp,
-  iconPropType,
   preventDefault,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+  makeStringProp
+} from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import { useRoute, routeProps } from '../composables/use-route'
 import { buttonGroupContextKey } from '../button-group/ButtonGroup'
 
@@ -112,8 +111,8 @@ export default defineComponent({
         text = slots.default
           ? slots.default()
           : isString(props.text)
-          ? props.text
-          : ''
+            ? props.text
+            : ''
       }
 
       if (text) {

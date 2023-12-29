@@ -34,7 +34,8 @@
 // @ts-nocheck
 import { ref, watch, computed, nextTick, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { newCastArray, hasClass, createNamespace } from '../../utils'
+import { hasClass, newCastArray } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { basicMonthTableProps } from '../props/basic-month-table'
 import { rangeArr } from '../../time-picker-pc'

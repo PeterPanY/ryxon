@@ -1,12 +1,6 @@
 import { h, defineComponent, type PropType, type ExtractPropTypes } from 'vue'
-import {
-  extend,
-  isString,
-  unknownProp,
-  numericProp,
-  iconPropType,
-  createNamespace
-} from '../utils'
+import { extend, isString, unknownProp, numericProp } from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import { ACTION_BAR_KEY } from '../action-bar/ActionBar'
 
 // Composables

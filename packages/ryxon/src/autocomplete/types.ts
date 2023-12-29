@@ -4,12 +4,12 @@ import {
   isObject,
   isString,
   truthProp,
-  iconPropType,
   definePropType,
   makeStringProp
-} from '../utils'
+} from '@ryxon/utils'
+import { iconPropType } from '../utils'
 import type { PropType, TeleportProps, ExtractPropTypes } from 'vue'
-import type { Awaitable } from '../utils'
+import type { Awaitable } from '@ryxon/utils'
 
 export type AutocompletePlacement =
   | 'top'

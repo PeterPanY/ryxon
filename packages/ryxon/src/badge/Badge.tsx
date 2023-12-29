@@ -12,9 +12,9 @@ import {
   truthProp,
   numericProp,
   makeStringProp,
-  createNamespace,
   type Numeric
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 const [, bem] = createNamespace('badge')
 

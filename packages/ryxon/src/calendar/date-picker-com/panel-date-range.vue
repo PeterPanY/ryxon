@@ -266,7 +266,7 @@
 // @ts-nocheck
 import { ref, toRef, unref, inject, computed, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { isArray } from '../../utils'
+import { isArray } from '@ryxon/utils'
 import { useCurrentLang } from '../../locale'
 import { extractDateFormat, extractTimeFormat } from '../../time-picker-pc'
 import TimePickPanel from '../../time-picker-pc/time-picker-com/panel-time-pick.vue'

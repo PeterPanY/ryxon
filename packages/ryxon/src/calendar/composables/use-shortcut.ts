@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { getCurrentInstance, useAttrs, useSlots } from 'vue'
 import dayjs from 'dayjs'
-import { isFunction } from '../../utils'
+import { isFunction } from '@ryxon/utils'
 
 import type { SetupContext } from 'vue'
 import type { RangePickerSharedEmits } from '../props/shared'

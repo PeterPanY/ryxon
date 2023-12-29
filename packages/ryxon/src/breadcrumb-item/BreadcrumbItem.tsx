@@ -6,7 +6,8 @@ import {
   defineComponent,
   type ExtractPropTypes
 } from 'vue'
-import { extend, isString, createNamespace } from '../utils'
+import { extend, isString } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useRoute, routeProps } from '../composables/use-route'
 
 import { Icon } from '../icon'

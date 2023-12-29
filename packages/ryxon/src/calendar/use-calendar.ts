@@ -2,7 +2,7 @@ import { ref, unref, computed, type ComponentPublicInstance } from 'vue'
 import type { Dayjs } from 'dayjs'
 import { isEqual } from 'lodash-unified'
 import { useCurrentLang } from '../locale'
-import { isArray } from '../utils'
+import { isArray } from '@ryxon/utils'
 import {
   UserInput,
   DayOrDays,

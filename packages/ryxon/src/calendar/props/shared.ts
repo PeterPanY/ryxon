@@ -1,4 +1,4 @@
-import { definePropType, isArray } from '../../utils'
+import { definePropType, isArray } from '@ryxon/utils'
 import { datePickTypes } from '../../constants'
 
 import type { ExtractPropTypes } from 'vue'
@@ -55,7 +55,7 @@ export const panelRangeSharedProps = {
 } as const
 
 export const selectionModeWithDefault = (
-  mode: typeof selectionModes[number]
+  mode: (typeof selectionModes)[number]
 ) => ({
   type: String,
   values: selectionModes,

@@ -1,5 +1,6 @@
 import { defineComponent, ref, type ExtractPropTypes } from 'vue'
-import { truthProp, createNamespace } from '../utils'
+import { truthProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useChildren } from '@ryxon/use'
 import { usePlaceholder } from '../composables/use-placeholder'
 

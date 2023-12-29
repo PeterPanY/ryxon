@@ -1,4 +1,4 @@
-import { definePropType } from '../../utils'
+import { definePropType } from '@ryxon/utils'
 
 import type { ExtractPropTypes } from 'vue'
 import type { IDatePickerType } from '../type'

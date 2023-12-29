@@ -21,9 +21,9 @@ import {
   numericProp,
   getScrollTop,
   getZIndexStyle,
-  createNamespace,
   makeNumericProp
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { throttle } from '../lazyload/vue-lazyload/util'
 
 // Composables

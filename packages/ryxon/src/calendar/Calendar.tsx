@@ -2,7 +2,8 @@
 import { provide, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { extend, createNamespace } from '../utils'
+import { extend } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { getPanel } from './panel-utils'
 import { useCalendar } from './use-calendar'
 import dayjs from 'dayjs'

@@ -8,7 +8,8 @@ import {
 } from 'vue'
 
 // Utils
-import { makeStringProp, createNamespace } from '../utils'
+import { makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Types
 import { ButtonSize, ButtonType } from '../button/types'
