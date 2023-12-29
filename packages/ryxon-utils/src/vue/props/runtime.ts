@@ -1,5 +1,5 @@
 import { warn } from 'vue'
-import { fromPairs } from 'lodash-unified'
+import { fromPairs } from '../../lodash'
 import { isObject, hasOwn } from '../../basic'
 
 import type { PropType } from 'vue'

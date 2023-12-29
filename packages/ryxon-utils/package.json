@@ -41,7 +41,10 @@
   },
   "dependencies": {
     "@ryxon/use": "^1.0.7",
-    "@vueuse/core": "^9.1.0"
+    "@vueuse/core": "^9.1.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.2"
   },
   "devDependencies": {
     "esbuild": "^0.18.11",

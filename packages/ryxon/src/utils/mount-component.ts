@@ -1,5 +1,5 @@
 import { createApp, reactive, Component } from 'vue'
-import { extend } from './basic'
+import { extend } from '@ryxon/utils'
 import { useExpose } from '../composables/use-expose'
 
 export function usePopupState() {

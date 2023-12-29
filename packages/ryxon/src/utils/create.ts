@@ -1,6 +1,4 @@
-import { get } from './basic'
-import { camelize } from './format'
-import { isFunction } from './basic'
+import { get, camelize, isFunction } from '@ryxon/utils'
 import locale from '../locale'
 
 export function createTranslate(name: string) {

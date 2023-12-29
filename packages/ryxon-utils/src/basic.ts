@@ -25,7 +25,11 @@ export const hasOwn = (val: object, key: string | symbol) =>
 // 判断是不是数组
 export const { isArray } = Array
 
-// 判断是不是对象
+/**
+ * 判断是不是类对象。如果一个值是类对象，那么它不应该是 null，而且 typeof 后的结果是 "object"
+ * @param val 要检查的值
+ * @returns 如果 value 为一个类对象，那么返回 true，否则返回 false。
+ */
 export const isObject = (val: unknown): val is Record<any, any> =>
   val !== null && typeof val === 'object'
 

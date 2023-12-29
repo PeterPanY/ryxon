@@ -55,8 +55,8 @@ export type EpPropInputDefault<
 > = Required extends true
   ? never
   : Default extends Record<string, unknown> | Array<any>
-  ? () => Default
-  : (() => Default) | Default
+    ? () => Default
+    : (() => Default) | Default
 
 /**
  * 原生 prop `类型，BooleanConstructor`、`StringConstructor`、`null`、`undefined` 等

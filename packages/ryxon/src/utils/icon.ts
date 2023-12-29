@@ -4,7 +4,7 @@ import {
   SuccessFilled,
   WarningFilled
 } from '@ryxon/icons'
-import { definePropType } from './props'
+import { definePropType } from '@ryxon/utils'
 
 import type { Component } from 'vue'
 

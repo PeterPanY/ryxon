@@ -1,4 +1,22 @@
 // @ts-nocheck
+// TODO: remove import alias
+// avoid naming conflicts
+export {
+  get,
+  set,
+  union,
+  merge,
+  isNil,
+  isEqual,
+  flatMap,
+  throttle,
+  debounce,
+  fromPairs,
+  pick as lodashPick,
+  flatten as loadshFlatten,
+  castArray as ensureArray
+} from 'lodash-unified'
+
 export const unique = <T>(arr: T[]) => [...new Set(arr)]
 
 type Many<T> = T | ReadonlyArray<T>
@@ -8,7 +26,3 @@ export const newCastArray = <T>(arr: Many<T>): T[] => {
   if (!arr && (arr as any) !== 0) return []
   return Array.isArray(arr) ? arr : [arr]
 }
-
-// TODO: remove import alias
-// avoid naming conflicts
-export { castArray as ensureArray } from 'lodash-unified'
