@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { getCurrentInstance, watch } from 'vue'
-import { hasOwn } from '../utils'
+import { hasOwn } from '@ryxon/utils'
 import { parseMinWidth, parseWidth } from '../table/util'
 
 import type { ComputedRef } from 'vue'

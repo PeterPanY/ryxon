@@ -21,9 +21,9 @@ import {
   getScrollTop,
   getZIndexStyle,
   makeStringProp,
-  makeNumericProp,
-  createNamespace
-} from '../utils'
+  makeNumericProp
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { useRect, useEventListener, useScrollParent } from '@ryxon/use'

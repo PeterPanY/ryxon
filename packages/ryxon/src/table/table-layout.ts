@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { isRef, nextTick, ref } from 'vue'
 import { isClient } from '@vueuse/core'
-import { hasOwn } from '../utils'
+import { hasOwn } from '@ryxon/utils'
 import { parseHeight } from './util'
 import type { Ref } from 'vue'
 
@@ -83,7 +83,7 @@ class TableLayout<T> {
      * 初始化表后，如果未配置高度，则高度为0。
      */
     if (height === null) return false
-    const {scrollBarRef} = this.table.refs
+    const { scrollBarRef } = this.table.refs
     if (this.table.vnode.el && scrollBarRef) {
       let scrollY = true
       const prevScrollY = this.scrollY.value

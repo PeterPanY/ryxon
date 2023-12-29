@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { computed, nextTick, ref, shallowRef } from 'vue'
 import type { CSSProperties, Ref, SetupContext } from 'vue'
-import type { Arrayable } from '../../utils'
+import type { Arrayable } from '@ryxon/utils'
 import type { SliderEmits, SliderInitData } from '../types'
 import type { SliderProps } from '../Slider'
 import type { ButtonRefs, SliderButtonInstance } from '../button-props'

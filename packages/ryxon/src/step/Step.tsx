@@ -1,7 +1,8 @@
 import { h, defineComponent } from 'vue'
 
 // Utils
-import { BORDER, isString, createNamespace } from '../utils'
+import { isString } from '@ryxon/utils'
+import { BORDER, createNamespace } from '../utils'
 import { STEPS_KEY } from '../steps/Steps'
 
 // Composables

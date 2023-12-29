@@ -19,12 +19,8 @@ import {
   type VNodeArrayChildren
 } from 'vue'
 
-import {
-  isString,
-  iconPropType,
-  createNamespace,
-  makeStringProp
-} from '../utils'
+import { isString, makeStringProp } from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import { useTimeoutFn } from '@vueuse/core'
 import useMenu from '../menu/use-menu'
 import { useMenuCssVar } from '../menu/use-menu-css-var'
@@ -97,10 +93,10 @@ export default defineComponent({
             : props.expandCloseIcon
           : ArrowDown
         : props.collapseCloseIcon && props.collapseOpenIcon
-        ? opened.value
-          ? props.collapseOpenIcon
-          : props.collapseCloseIcon
-        : ArrowRight
+          ? opened.value
+            ? props.collapseOpenIcon
+            : props.collapseCloseIcon
+          : ArrowRight
     )
 
     const appendToBody = computed(() =>

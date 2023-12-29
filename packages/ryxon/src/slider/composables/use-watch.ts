@@ -1,6 +1,6 @@
 import { watch } from 'vue'
 import type { ComputedRef, SetupContext } from 'vue'
-import type { Arrayable } from '../../utils'
+import type { Arrayable } from '@ryxon/utils'
 import type { SliderProps } from '../Slider'
 import type { SliderEmits, SliderInitData } from '../types'
 

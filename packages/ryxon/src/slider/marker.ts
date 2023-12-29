@@ -1,5 +1,6 @@
 import { computed, defineComponent, h } from 'vue'
-import { createNamespace, definePropType, isString } from '../utils'
+import { definePropType, isString } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import type { CSSProperties, ExtractPropTypes } from 'vue'
 
 export const sliderMarkerProps = {

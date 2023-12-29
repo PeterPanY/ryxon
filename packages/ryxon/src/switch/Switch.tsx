@@ -6,10 +6,9 @@ import {
   isBoolean,
   numericProp,
   unknownProp,
-  iconPropType,
-  definePropType,
-  createNamespace
-} from '../utils'
+  definePropType
+} from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import { useCustomInputValue } from '@ryxon/use'
 import { Loading } from '../loading'
 import { Icon } from '../icon'
@@ -113,8 +112,8 @@ export default defineComponent({
                     ? activeIcon
                     : ''
                   : isString(inactiveIcon)
-                  ? inactiveIcon
-                  : ''
+                    ? inactiveIcon
+                    : ''
               }
               class={isBem('icon')}
             >

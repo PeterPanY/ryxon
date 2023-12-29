@@ -10,12 +10,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  makeStringProp,
-  definePropType,
-  createNamespace,
-  makeNumericProp
-} from '../utils'
+import { makeStringProp, definePropType, makeNumericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { sliderEmits, sliderContextKey } from './types'
 import SliderButton from './button.vue'
 import SliderMarker from './marker'

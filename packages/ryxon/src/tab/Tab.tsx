@@ -11,13 +11,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  extend,
-  truthProp,
-  unknownProp,
-  numericProp,
-  createNamespace
-} from '../utils'
+import { extend, truthProp, unknownProp, numericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { TABS_KEY } from '../tabs/Tabs'
 
 // Composables

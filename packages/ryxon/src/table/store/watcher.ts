@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { getCurrentInstance, ref, toRefs, unref, watch } from 'vue'
-import { hasOwn } from '../../utils'
+import { hasOwn } from '@ryxon/utils'
 import {
   getColumnById,
   getColumnByKey,

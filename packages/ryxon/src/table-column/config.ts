@@ -3,7 +3,7 @@ import { h } from 'vue'
 import { Checkbox } from '../checkbox'
 import { Icon } from '../icon'
 import { ArrowRight, Loading } from '@ryxon/icons'
-import { getProp } from '../utils'
+import { getProp } from '@ryxon/utils'
 
 import type { VNode } from 'vue'
 import type { TableColumnCtx } from './defaults'

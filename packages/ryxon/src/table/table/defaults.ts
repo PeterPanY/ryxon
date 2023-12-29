@@ -6,7 +6,7 @@ import type {
   Ref,
   VNode
 } from 'vue'
-import type { Nullable } from '../../utils'
+import type { Nullable } from '@ryxon/utils'
 import type { Store } from '../store'
 import type { TableColumnCtx } from '../../table-column/defaults'
 import type TableLayout from '../table-layout'

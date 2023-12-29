@@ -4,12 +4,8 @@ import {
   type SetupContext,
   type ExtractPropTypes
 } from 'vue'
-import {
-  iconPropType,
-  makeStringProp,
-  makeNumericProp,
-  createNamespace
-} from '../utils'
+import { makeStringProp, makeNumericProp } from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import { useChildren } from '@ryxon/use'
 
 const [name, bem] = createNamespace('steps')

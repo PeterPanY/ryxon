@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { getCurrentInstance, inject, ref } from 'vue'
 import { isClient } from '@vueuse/core'
-import { addClass, hasClass, removeClass } from '../../utils'
+import { addClass, hasClass, removeClass } from '@ryxon/utils'
 import { TABLE_INJECTION_KEY } from '../tokens'
 import type { TableHeaderProps } from '.'
 import type { TableColumnCtx } from '../../table-column/defaults'

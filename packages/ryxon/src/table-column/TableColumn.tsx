@@ -13,7 +13,7 @@ import {
 } from 'vue'
 
 // Utils
-import { isString } from '../utils'
+import { isString } from '@ryxon/utils'
 import { cellStarts } from './config'
 import { compose, mergeOptions } from '../table/util'
 

@@ -1,5 +1,5 @@
 import { isNumber } from '@vueuse/core'
-import { makeStringProp } from '../utils'
+import { makeStringProp } from '@ryxon/utils'
 import { TooltipPlacement } from '../tooltip'
 import type { ExtractPropTypes, Ref } from 'vue'
 import type Button from './button.vue'

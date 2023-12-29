@@ -1,12 +1,12 @@
 // @ts-nocheck
 import { createPopper } from '@popperjs/core'
 import { flatMap, get, merge } from 'lodash-unified'
-import { hasOwn, isArray, isBoolean, isObject } from '../utils'
+import { hasOwn, isArray, isBoolean, isObject } from '@ryxon/utils'
 import escapeHtml from 'escape-html'
 import { useDelayedToggle } from '../composables/use-delayed-toggle'
 import type { TooltipProps } from '../tooltip'
 import type { TableColumnCtx } from '../table-column/defaults'
-import type { Nullable } from '../utils'
+import type { Nullable } from '@ryxon/utils'
 import { useGlobalZIndex } from '../composables/use-global-z-index'
 
 export type TableOverflowTooltipOptions = Partial<

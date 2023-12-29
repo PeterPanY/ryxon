@@ -1,4 +1,4 @@
-import { isArray, Arrayable } from '../utils'
+import { isArray, Arrayable } from '@ryxon/utils'
 import { isNumber } from '@vueuse/core'
 import type { ComputedRef, InjectionKey, Ref, ToRefs } from 'vue'
 import type { SliderProps } from './Slider'
