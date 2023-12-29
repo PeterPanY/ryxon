@@ -5,7 +5,7 @@ import {
   isFunction,
   getRootScrollTop,
   setRootScrollTop
-} from '../utils'
+} from '@ryxon/utils'
 import type { InputRule, InputType, InputAutosizeConfig } from './types'
 
 export function isEmptyValue(value: unknown) {

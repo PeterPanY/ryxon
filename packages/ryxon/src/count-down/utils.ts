@@ -1,4 +1,4 @@
-import { padZero } from '../utils'
+import { padZero } from '@ryxon/utils'
 import { CurrentTime } from '@ryxon/use'
 
 export function parseFormat(format: string, currentTime: CurrentTime): string {

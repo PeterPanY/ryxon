@@ -2,7 +2,7 @@
 import { ref, provide, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { extend, type ComponentInstance } from '../utils'
+import { extend, type ComponentInstance } from '@ryxon/utils'
 import { getPanel } from '../calendar/panel-utils'
 import { ROOT_PICKER_INJECTION_KEY } from '../calendar/type'
 import dayjs from 'dayjs'

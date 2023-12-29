@@ -1,5 +1,5 @@
 import type { CSSProperties, TeleportProps, Component, VNode } from 'vue'
-import type { Interceptor, Numeric } from '../utils'
+import type { Interceptor, Numeric } from '@ryxon/utils'
 
 export type DialogTheme = 'default' | 'space-button'
 export type DialogPositon = 'center' | 'top'

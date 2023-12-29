@@ -1,5 +1,5 @@
 import type { Component, CSSProperties, TeleportProps } from 'vue'
-import type { Interceptor } from '../utils'
+import type { Interceptor } from '@ryxon/utils'
 import type { PopupCloseIconPosition } from '../popup'
 
 export type ImagePreviewOptions = {

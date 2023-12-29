@@ -4,9 +4,9 @@ import {
   extend,
   isString,
   composeRefs,
-  createNamespace,
   composeEventHandlers
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { dropdownItemProps } from './props'
 import { EVENT_CODE } from '../constants'
 import { Icon } from '../icon'

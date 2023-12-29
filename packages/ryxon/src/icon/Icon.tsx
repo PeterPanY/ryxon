@@ -5,7 +5,8 @@ import {
   type PropType,
   type ExtractPropTypes
 } from 'vue'
-import { addUnit, numericProp, makeStringProp, createNamespace } from '../utils'
+import { addUnit, numericProp, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { Badge, type BadgeProps } from '../badge'
 import { CONFIG_PROVIDER_KEY } from '../config-provider/ConfigProvider'
 

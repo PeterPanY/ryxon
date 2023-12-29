@@ -6,12 +6,8 @@ import {
   defineComponent,
   type ExtractPropTypes
 } from 'vue'
-import {
-  composeRefs,
-  definePropType,
-  createNamespace,
-  composeEventHandlers
-} from '../utils'
+import { composeRefs, definePropType, composeEventHandlers } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useDropdown } from '../dropdown/use-dropdown'
 import { EVENT_CODE } from '../constants'
 import {

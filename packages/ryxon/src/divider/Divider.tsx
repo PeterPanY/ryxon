@@ -4,7 +4,8 @@ import {
   type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
-import { cssVarBlock, makeStringProp, createNamespace } from '../utils'
+import { makeStringProp } from '@ryxon/utils'
+import { cssVarBlock, createNamespace } from '../utils'
 
 const [name, bem] = createNamespace('divider')
 

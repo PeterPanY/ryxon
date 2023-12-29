@@ -7,12 +7,8 @@ import {
   defineComponent,
   getCurrentInstance
 } from 'vue'
-import {
-  extend,
-  whenMouse,
-  createNamespace,
-  composeEventHandlers
-} from '../utils'
+import { extend, whenMouse, composeEventHandlers } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { RRovingFocusItem } from '../roving-focus-group'
 import RDropdownItemImpl from './dropdown-item-impl'
 import {

@@ -21,12 +21,14 @@ import {
   formatNumber,
   getSizeStyle,
   preventDefault,
-  createNamespace,
   callInterceptor,
   makeNumericProp,
-  HAPTICS_FEEDBACK,
-  LONG_PRESS_START_TIME,
   type Numeric
+} from '@ryxon/utils'
+import {
+  createNamespace,
+  HAPTICS_FEEDBACK,
+  LONG_PRESS_START_TIME
 } from '../utils'
 import { isNil } from 'lodash-unified'
 

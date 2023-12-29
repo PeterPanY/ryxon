@@ -8,7 +8,8 @@ import {
 } from 'vue'
 
 // Utils
-import { clamp, numericProp, createNamespace, makeRequiredProp } from '../utils'
+import { clamp, numericProp, makeRequiredProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { useExpose } from '../composables/use-expose'

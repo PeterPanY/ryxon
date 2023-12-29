@@ -20,14 +20,12 @@ import {
   truthProp,
   unknownProp,
   Interceptor,
-  iconPropType,
   makeArrayProp,
   makeStringProp,
   makeNumericProp,
-  callInterceptor,
-  createNamespace,
-  HAPTICS_FEEDBACK
-} from '../utils'
+  callInterceptor
+} from '@ryxon/utils'
+import { iconPropType, createNamespace, HAPTICS_FEEDBACK } from '../utils'
 import { useEventListener } from '@vueuse/core'
 import { throttle } from 'lodash-unified'
 import { EVENT_CODE } from '../constants/aria'

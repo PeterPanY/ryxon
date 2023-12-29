@@ -8,15 +8,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  BORDER,
-  extend,
-  addUnit,
-  isString,
-  numericProp,
-  iconPropType,
-  createNamespace
-} from '../utils'
+import { extend, addUnit, isString, numericProp } from '@ryxon/utils'
+import { BORDER, iconPropType, createNamespace } from '../utils'
 import { GRID_KEY } from '../grid/Grid'
 
 // Composables

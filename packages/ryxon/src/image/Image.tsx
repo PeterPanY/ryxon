@@ -21,10 +21,9 @@ import {
   isString,
   inBrowser,
   truthProp,
-  numericProp,
-  iconPropType,
-  createNamespace
-} from '../utils'
+  numericProp
+} from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 
 // Components
 import { Icon } from '../icon'

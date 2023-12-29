@@ -1,12 +1,8 @@
 import { watch, computed, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import {
-  truthProp,
-  makeStringProp,
-  makeNumericProp,
-  createNamespace
-} from '../utils'
+import { truthProp, makeStringProp, makeNumericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { parseFormat } from './utils'
 
 // Composables

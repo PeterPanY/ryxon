@@ -6,7 +6,7 @@ import type {
   InjectionKey,
   ComponentInternalInstance
 } from 'vue'
-import type { Nullable } from '../utils'
+import type { Nullable } from '@ryxon/utils'
 
 export type RDropdownInjectionContext = {
   contentRef: Ref<HTMLElement | null>

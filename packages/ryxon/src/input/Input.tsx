@@ -19,19 +19,17 @@ import {
   extend,
   addUnit,
   toArray,
-  FORM_KEY,
   truthProp,
   numericProp,
   unknownProp,
   resetScroll,
   formatNumber,
-  iconPropType,
   preventDefault,
   makeStringProp,
   makeNumericProp,
-  createNamespace,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { FORM_KEY, iconPropType, createNamespace } from '../utils'
 import {
   cutString,
   runSyncRule,

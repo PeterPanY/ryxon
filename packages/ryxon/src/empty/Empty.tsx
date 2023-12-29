@@ -1,11 +1,7 @@
 import { defineComponent, type PropType, type ExtractPropTypes } from 'vue'
 import { useId } from '../composables/use-id'
-import {
-  Numeric,
-  getSizeStyle,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { Numeric, getSizeStyle, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 const [name, bem] = createNamespace('empty')
 

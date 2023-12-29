@@ -1,13 +1,8 @@
 import { defineComponent, type PropType, type ExtractPropTypes } from 'vue'
 
 // Utils
-import {
-  FORM_KEY,
-  truthProp,
-  numericProp,
-  preventDefault,
-  createNamespace
-} from '../utils'
+import { truthProp, numericProp, preventDefault } from '@ryxon/utils'
+import { FORM_KEY, createNamespace } from '../utils'
 
 // Composables
 import { useChildren } from '@ryxon/use'

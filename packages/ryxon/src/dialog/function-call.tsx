@@ -1,4 +1,4 @@
-import { extend, inBrowser, ComponentInstance } from '../utils'
+import { extend, inBrowser, ComponentInstance } from '@ryxon/utils'
 import { mountComponent, usePopupState } from '../utils/mount-component'
 import Dialog from './Dialog'
 import type { DialogAction, DialogOptions } from './types'

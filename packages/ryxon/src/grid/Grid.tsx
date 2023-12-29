@@ -4,14 +4,8 @@ import {
   type InjectionKey,
   type ExtractPropTypes
 } from 'vue'
-import {
-  createNamespace,
-  addUnit,
-  truthProp,
-  numericProp,
-  makeNumericProp
-} from '../utils'
-import { BORDER_TOP } from '../utils/constant'
+import { addUnit, truthProp, numericProp, makeNumericProp } from '@ryxon/utils'
+import { BORDER_TOP, createNamespace } from '../utils'
 import { useChildren } from '@ryxon/use'
 
 const [name, bem] = createNamespace('grid')

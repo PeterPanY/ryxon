@@ -20,9 +20,9 @@ import {
   truthProp,
   ensureArray,
   definePropType,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+  makeStringProp
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useId } from '../composables/use-id'
 import { EVENT_CODE } from '../constants/aria'
 import { useExpose } from '../composables/use-expose'

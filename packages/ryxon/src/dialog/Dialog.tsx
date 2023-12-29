@@ -18,16 +18,18 @@ import {
   isString,
   truthProp,
   isFunction,
-  BORDER_TOP,
-  BORDER_LEFT,
   unknownProp,
   numericProp,
-  iconPropType,
   makeStringProp,
   callInterceptor,
-  createNamespace,
-  TypeComponentsMap,
   type ComponentInstance
+} from '@ryxon/utils'
+import {
+  BORDER_TOP,
+  BORDER_LEFT,
+  iconPropType,
+  createNamespace,
+  TypeComponentsMap
 } from '../utils'
 import { popupSharedProps, popupSharedPropKeys } from '../popup/shared'
 
