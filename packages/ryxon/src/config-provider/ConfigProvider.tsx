@@ -17,9 +17,9 @@ import {
   inBrowser,
   kebabCase,
   makeStringProp,
-  createNamespace,
   type Numeric
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { setGlobalZIndex } from '../composables/use-global-z-index'
 
 const [name, bem] = createNamespace('config-provider')

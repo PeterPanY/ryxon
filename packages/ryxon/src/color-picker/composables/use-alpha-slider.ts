@@ -6,7 +6,8 @@ import {
   shallowRef,
   watch
 } from 'vue'
-import { addUnit, getClientXY, createNamespace } from '../../utils'
+import { addUnit, getClientXY } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import { draggable } from '../utils/draggable'
 
 import type { AlphaSliderProps } from '../props/alpha-slider'

@@ -1,6 +1,6 @@
 import { unref } from 'vue'
 import { isNumber } from '@vueuse/core'
-import { buildProps } from '../utils'
+import { buildProps } from '@ryxon/utils'
 import { useTimeout } from './use-timeout'
 
 import type { ExtractPropTypes, ToRefs } from 'vue'

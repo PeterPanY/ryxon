@@ -9,7 +9,8 @@ import {
 
 // Utils
 import { cellSharedProps } from '../cell/Cell'
-import { pick, extend, truthProp, numericProp, createNamespace } from '../utils'
+import { pick, extend, truthProp, numericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { COLLAPSE_KEY } from '../collapse/Collapse'
 
 // Composables

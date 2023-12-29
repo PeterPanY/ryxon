@@ -1,6 +1,6 @@
 import { useRect } from '@ryxon/use'
 import { Ref, ref, onMounted, nextTick, watch } from 'vue'
-import { windowHeight, windowWidth } from '../utils'
+import { windowHeight, windowWidth } from '@ryxon/utils'
 import { onPopupReopen } from './on-popup-reopen'
 
 export const useHeight = (

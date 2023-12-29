@@ -19,7 +19,8 @@ import {
   getCurrentInstance,
   type PropType
 } from 'vue'
-import { getClientXY, createNamespace } from '../../utils'
+import { getClientXY } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import { draggable } from '../utils/draggable'
 import type Color from '../utils/color'
 

@@ -10,7 +10,7 @@ import {
   makeStringProp,
   makeRequiredProp,
   type Numeric
-} from '../utils'
+} from '@ryxon/utils'
 import { Icon } from '../icon'
 import { Check, Minus } from '@ryxon/icons'
 

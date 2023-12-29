@@ -6,12 +6,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  numericProp,
-  makeArrayProp,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { numericProp, makeArrayProp, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { useChildren, useCustomInputValue } from '@ryxon/use'

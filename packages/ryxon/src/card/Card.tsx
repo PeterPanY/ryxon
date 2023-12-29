@@ -1,7 +1,8 @@
 import { defineComponent, type StyleValue, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { createNamespace, definePropType } from '../utils'
+import { definePropType } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Components
 

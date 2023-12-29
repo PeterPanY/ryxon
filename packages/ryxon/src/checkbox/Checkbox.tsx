@@ -1,7 +1,8 @@
 import { computed, defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { createNamespace, extend, pick, truthProp } from '../utils'
+import { extend, pick, truthProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { CHECKBOX_GROUP_KEY } from '../checkbox-group/CheckboxGroup'
 
 // Composables

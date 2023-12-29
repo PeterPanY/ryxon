@@ -1,4 +1,4 @@
-import { hasOwn } from '../../utils'
+import { hasOwn } from '@ryxon/utils'
 
 const hsv2hsl = function (hue: number, sat: number, val: number) {
   // eslint-disable-next-line no-return-assign

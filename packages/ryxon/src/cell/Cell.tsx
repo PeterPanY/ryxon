@@ -14,10 +14,9 @@ import {
   truthProp,
   unknownProp,
   numericProp,
-  iconPropType,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+  makeStringProp
+} from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 
 // Composables
 import { useRoute, routeProps } from '../composables/use-route'

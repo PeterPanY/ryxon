@@ -5,12 +5,8 @@ import {
   type ExtractPropTypes,
   type ComponentPublicInstance
 } from 'vue'
-import {
-  truthProp,
-  createNamespace,
-  BORDER_TOP_BOTTOM,
-  type Numeric
-} from '../utils'
+import { truthProp, type Numeric } from '@ryxon/utils'
+import { createNamespace, BORDER_TOP_BOTTOM } from '../utils'
 import { useChildren } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 

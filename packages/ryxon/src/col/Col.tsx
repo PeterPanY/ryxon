@@ -4,10 +4,10 @@ import {
   mutable,
   isObject,
   numericProp,
-  createNamespace,
   makeStringProp,
   definePropType
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useParent } from '@ryxon/use'
 import { ROW_KEY } from '../row/Row'
 

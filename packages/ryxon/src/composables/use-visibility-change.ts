@@ -1,4 +1,4 @@
-import { inBrowser } from '../utils'
+import { inBrowser } from '@ryxon/utils'
 import { Ref, onDeactivated, onBeforeUnmount } from 'vue'
 import { onMountedOrActivated } from '@ryxon/use'
 

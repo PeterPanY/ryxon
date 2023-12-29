@@ -1,4 +1,4 @@
-import { buildProps, definePropType } from '../../utils'
+import { buildProps, definePropType } from '@ryxon/utils'
 
 import type { ExtractPropTypes } from 'vue'
 import type Color from '../utils/color'

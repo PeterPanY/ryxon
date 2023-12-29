@@ -1,5 +1,5 @@
 import { isClient } from '@vueuse/core'
-import { isElement } from '../utils'
+import { isElement } from '@ryxon/utils'
 
 import type {
   ObjectDirective,

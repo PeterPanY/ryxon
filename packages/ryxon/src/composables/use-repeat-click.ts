@@ -1,4 +1,4 @@
-import { isFunction } from '../utils'
+import { isFunction } from '@ryxon/utils'
 
 import type { ObjectDirective } from 'vue'
 

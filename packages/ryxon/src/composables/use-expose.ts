@@ -1,5 +1,5 @@
 import { getCurrentInstance } from 'vue'
-import { extend } from '../utils'
+import { extend } from '@ryxon/utils'
 
 // expose public api
 export function useExpose<T = Record<string, any>>(apis: T) {

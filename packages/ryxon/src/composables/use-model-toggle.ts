@@ -1,7 +1,7 @@
 import { computed, getCurrentInstance, onMounted, watch } from 'vue'
 import { isClient } from '@vueuse/core'
-import { isBoolean, isFunction, buildProp, definePropType } from '../utils'
-import type { ExtractPropType } from '../utils'
+import { isBoolean, isFunction, buildProp, definePropType } from '@ryxon/utils'
+import type { ExtractPropType } from '@ryxon/utils'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 import type { ComponentPublicInstance, ExtractPropTypes, Ref } from 'vue'

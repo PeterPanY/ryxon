@@ -24,13 +24,8 @@ import {
 import { useResizeObserver } from '@vueuse/core'
 
 // Utils
-import {
-  pick,
-  truthProp,
-  makeStringProp,
-  makeNumberProp,
-  createNamespace
-} from '../utils'
+import { pick, truthProp, makeStringProp, makeNumberProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import {
   calculateSize,
   clampValue,
@@ -43,7 +38,7 @@ import {
   addDuplicateSlides,
   resolveSlotWithProps
 } from './utils'
-import { flatten } from '../utils/flatten'
+import { flatten } from '@ryxon/utils'
 import {
   provideCarouselContext,
   type CarouselContextValue
