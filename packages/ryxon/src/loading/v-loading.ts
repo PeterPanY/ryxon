@@ -11,7 +11,8 @@ import {
   createVNode,
   withDirectives
 } from 'vue'
-import { removeClass, createNamespace } from '../utils'
+import { removeClass } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { Loading } from './index'
 import type { LoadingOptionsResolved } from './types'
 

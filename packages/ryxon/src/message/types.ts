@@ -1,11 +1,11 @@
-import type { Mutable } from '../utils'
+import type { Mutable } from '@ryxon/utils'
 import type { AppContext } from 'vue'
 import type MessageConstructor from './Message'
 import type { MessageProps } from './Message'
 
 export const messageTypes = ['success', 'info', 'warning', 'danger']
 
-export type messageType = typeof messageTypes[number]
+export type messageType = (typeof messageTypes)[number]
 
 export interface MessageConfigContext {
   max?: number

@@ -11,7 +11,8 @@ import {
   type ExtractPropTypes
 } from 'vue'
 
-import { isString, definePropType, createNamespace } from '../utils'
+import { isString, definePropType } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import useMenu from '../menu/use-menu'
 
 import { Tooltip } from '../tooltip'

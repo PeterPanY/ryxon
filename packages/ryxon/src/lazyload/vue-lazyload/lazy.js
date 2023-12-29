@@ -4,7 +4,7 @@
  */
 
 import { nextTick } from 'vue'
-import { inBrowser, getScrollParent } from '@ryxon/use'
+import { getScrollParent } from '@ryxon/use'
 import {
   remove,
   on,
@@ -17,7 +17,7 @@ import {
   modeType,
   ImageCache
 } from './util'
-import { isObject } from '../../utils'
+import { inBrowser, isObject } from '@ryxon/utils'
 import ReactiveListener from './listener'
 
 const DEFAULT_URL =

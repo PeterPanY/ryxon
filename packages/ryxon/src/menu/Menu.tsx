@@ -21,9 +21,9 @@ import {
   isObject,
   isString,
   definePropType,
-  createNamespace,
   flattedChildren
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useResizeObserver } from '@vueuse/core'
 import { useMenuCssVar } from './use-menu-css-var'
 

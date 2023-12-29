@@ -16,13 +16,8 @@ import {
 // Utils
 import { isNumber, onClickOutside } from '@vueuse/core'
 import { useCustomInputValue } from '@ryxon/use'
-import {
-  isArray,
-  isString,
-  makeStringProp,
-  unknownProp,
-  createNamespace
-} from '../utils'
+import { isArray, isString, makeStringProp, unknownProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useExpose } from '../composables/use-expose'
 
 // Components

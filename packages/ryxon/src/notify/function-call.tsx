@@ -2,7 +2,7 @@
 import { createVNode, render, isVNode } from 'vue'
 import { isClient } from '@vueuse/core'
 import NotifyConstructor, { NotifyProps } from './Notify'
-import { extend, isString, isElement } from '../utils'
+import { extend, isString, isElement } from '@ryxon/utils'
 import type { AppContext, VNode } from 'vue'
 import type { Notify, NotifyFn, NotifyQueue, NotifyOptions } from './types'
 

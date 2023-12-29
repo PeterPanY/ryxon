@@ -11,13 +11,8 @@ import {
   type ExtractPropTypes
 } from 'vue'
 
-import {
-  typeComp,
-  isString,
-  iconPropType,
-  definePropType,
-  createNamespace
-} from '../utils'
+import { isString, definePropType } from '@ryxon/utils'
+import { typeComp, iconPropType, createNamespace } from '../utils'
 import { useEventListener, useResizeObserver, useTimeoutFn } from '@vueuse/core'
 import { useGlobalZIndex } from '../composables/use-global-z-index'
 import { getLastOffset } from './instance'

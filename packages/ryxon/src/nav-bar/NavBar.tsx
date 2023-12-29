@@ -7,13 +7,10 @@ import {
 } from 'vue'
 
 // Utils
+import { isString, truthProp, numericProp, getZIndexStyle } from '@ryxon/utils'
 import {
-  isString,
-  truthProp,
-  numericProp,
   iconPropType,
   BORDER_BOTTOM,
-  getZIndexStyle,
   createNamespace,
   HAPTICS_FEEDBACK
 } from '../utils'

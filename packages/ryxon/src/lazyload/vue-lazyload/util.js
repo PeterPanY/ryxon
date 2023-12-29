@@ -3,7 +3,7 @@
  * license at https://github.com/hilongjw/vue-lazyload/blob/master/LICENSE
  */
 
-import { inBrowser } from '@ryxon/use'
+import { inBrowser } from '@ryxon/utils'
 
 export const hasIntersectionObserver =
   inBrowser &&

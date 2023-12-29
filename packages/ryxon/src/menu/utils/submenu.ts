@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { triggerEvent } from '../../utils'
+import { triggerEvent } from '@ryxon/utils'
 import { EVENT_CODE } from '../../constants'
 import type MenuItem from './menu-item'
 
@@ -8,7 +8,10 @@ class SubMenu {
 
   public subIndex = 0
 
-  constructor(public parent: MenuItem, public domNode: ParentNode) {
+  constructor(
+    public parent: MenuItem,
+    public domNode: ParentNode
+  ) {
     this.subIndex = 0
     this.init()
   }

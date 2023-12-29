@@ -1,12 +1,7 @@
 // @ts-nocheck
 import { nextTick } from 'vue'
-import {
-  isString,
-  addClass,
-  getStyle,
-  removeClass,
-  createNamespace
-} from '../utils'
+import { isString, addClass, getStyle, removeClass } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { isClient } from '@vueuse/core'
 import { createLoadingComponent } from './v-loading'
 import { useGlobalZIndex } from '../composables/use-global-z-index'

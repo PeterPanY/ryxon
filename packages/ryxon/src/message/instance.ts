@@ -1,6 +1,6 @@
 import { shallowReactive } from 'vue'
 import type { ComponentInternalInstance, VNode } from 'vue'
-import type { Mutable } from '../utils'
+import type { Mutable } from '@ryxon/utils'
 import type { MessageHandler } from './types'
 import type { MessageProps } from './Message'
 

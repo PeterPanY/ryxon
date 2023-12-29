@@ -4,9 +4,9 @@ import {
   addUnit,
   numericProp,
   getSizeStyle,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+  makeStringProp
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 const [, bem] = createNamespace('loading')
 

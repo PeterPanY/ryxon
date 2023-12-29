@@ -1,12 +1,15 @@
 // @ts-nocheck
-import { triggerEvent } from '../../utils'
+import { triggerEvent } from '@ryxon/utils'
 import { EVENT_CODE } from '../../constants'
 import SubMenu from './submenu'
 
 class MenuItem {
   public submenu: SubMenu = null
 
-  constructor(public domNode: HTMLElement, namespace: string) {
+  constructor(
+    public domNode: HTMLElement,
+    namespace: string
+  ) {
     this.submenu = null
     this.init(namespace)
   }

@@ -1,7 +1,7 @@
 import { h, createApp, type App, type VNode } from 'vue'
 import LoadingBar from './LoadingBar'
 import { RInjectionExtractor } from './InjectionExtractor'
-import { extend, inBrowser } from '../utils'
+import { extend, inBrowser } from '@ryxon/utils'
 import { useLoadingBar } from './use-loading-bar'
 import type { LoadingBarApiInjection, LoadingBarOptions } from './types'
 

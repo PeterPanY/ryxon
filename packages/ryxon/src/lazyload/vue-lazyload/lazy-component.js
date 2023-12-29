@@ -4,7 +4,8 @@
  */
 
 import { h } from 'vue'
-import { inBrowser, useRect } from '@ryxon/use'
+import { inBrowser } from '@ryxon/utils'
+import { useRect } from '@ryxon/use'
 
 export default (lazy) => ({
   props: {

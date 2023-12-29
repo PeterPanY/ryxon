@@ -5,7 +5,7 @@
 
 import { useRect } from '@ryxon/use'
 import { loadImageAsync } from './util'
-import { noop } from '../../utils'
+import { noop } from '@ryxon/utils'
 
 export default class ReactiveListener {
   constructor({

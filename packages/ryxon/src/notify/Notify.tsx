@@ -10,14 +10,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  isString,
-  typeComp,
-  iconPropType,
-  makeStringProp,
-  definePropType,
-  createNamespace
-} from '../utils'
+import { isString, makeStringProp, definePropType } from '@ryxon/utils'
+import { typeComp, iconPropType, createNamespace } from '../utils'
 import { useEventListener, useTimeoutFn } from '@vueuse/core'
 import { EVENT_CODE } from '../constants/aria'
 import { useGlobalZIndex } from '../composables/use-global-z-index'

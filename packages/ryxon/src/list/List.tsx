@@ -15,9 +15,9 @@ import {
   isHidden,
   truthProp,
   makeStringProp,
-  makeNumericProp,
-  createNamespace
-} from '../utils'
+  makeNumericProp
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { useRect, useScrollParent, useEventListener } from '@ryxon/use'

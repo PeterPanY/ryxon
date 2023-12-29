@@ -2,7 +2,7 @@
 import { render, isVNode, createVNode } from 'vue'
 import { isClient, isNumber } from '@vueuse/core'
 import { instances } from './instance'
-import { extend, isElement, isString, isFunction } from '../utils'
+import { extend, isElement, isString, isFunction } from '@ryxon/utils'
 
 import MessageConstructor from './Message'
 import type { AppContext } from 'vue'

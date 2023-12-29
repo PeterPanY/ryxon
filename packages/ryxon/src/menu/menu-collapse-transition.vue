@@ -6,7 +6,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { addClass, hasClass, removeClass, createNamespace } from '../utils'
+import { addClass, hasClass, removeClass } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import type { BaseTransitionProps, TransitionProps } from 'vue'
 
 export default defineComponent({
