@@ -1,6 +1,7 @@
 import { defineComponent, ExtractPropTypes } from 'vue'
 
-import { createNamespace, numericProp } from '../utils'
+import { numericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 export const DEFAULT_ROW_WIDTH = '100%'
 

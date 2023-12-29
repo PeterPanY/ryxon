@@ -1,11 +1,7 @@
 import { defineComponent, type ExtractPropTypes } from 'vue'
 
-import {
-  numericProp,
-  getSizeStyle,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { numericProp, getSizeStyle, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 import { Icon } from '../icon'
 

@@ -28,85 +28,90 @@
           <div
             v-if="multiple"
             ref="tags"
+            tabindex="-1"
             :class="bem('tags')"
             :style="selectTagsStyle"
           >
-            <span
-              v-if="collapseTags && selected.length"
-              :class="[
-                bem('tags-wrapper'),
-                { 'has-prefix': prefixWidth && selected.length }
-              ]"
-            >
-              <r-tag
-                :closeable="!selectDisabled && !selected[0].isDisabled"
-                :size="collapseTagSize"
-                :hit="selected[0].hitState"
-                :type="tagType"
-                disable-transitions
-                @close="deleteTag($event, selected[0])"
-              >
-                <span :class="bem('tags-text')" :style="tagTextStyle">
-                  {{ selected[0].currentLabel }}</span
-                >
-              </r-tag>
-              <r-tag
-                v-if="selected.length > 1"
-                :closeable="false"
-                :size="collapseTagSize"
-                :type="tagType"
-                disable-transitions
-              >
-                <r-tooltip
-                  v-if="collapseTagsTooltip"
-                  :disabled="dropMenuVisible"
-                  :fallback-placements="['bottom', 'top', 'right', 'left']"
-                  :theme="theme"
-                  placement="bottom"
-                  :teleport="teleport"
-                >
-                  <template #default>
-                    <span :class="bem('tags-text')"
-                      >+ {{ selected.length - 1 }}</span
-                    >
-                  </template>
-                  <template #content>
-                    <div :class="bem('collapse-tags')">
-                      <div
-                        v-for="(item, idx) in selected.slice(1)"
-                        :key="idx"
-                        :class="bem('collapse-tag')"
-                      >
-                        <r-tag
-                          :key="getValueKey(item)"
-                          class="in-tooltip"
-                          :closeable="!selectDisabled && !item.isDisabled"
-                          :size="collapseTagSize"
-                          :hit="item.hitState"
-                          :type="tagType"
-                          disable-transitions
-                          :style="{ margin: '2px' }"
-                          @close="deleteTag($event, item)"
-                        >
-                          <span
-                            :class="bem('tags-text')"
-                            :style="{
-                              maxWidth: inputWidth - 75 + 'px'
-                            }"
-                            >{{ item.currentLabel }}</span
-                          >
-                        </r-tag>
-                      </div>
-                    </div>
-                  </template>
-                </r-tooltip>
-                <span v-else :class="bem('tags-text')"
-                  >+ {{ selected.length - 1 }}</span
-                >
-              </r-tag>
-            </span>
-            <transition v-if="!collapseTags" @after-leave="resetInputHeight">
+            <transition @after-leave="resetInputHeight">
               <span
+                v-if="collapseTags && selected.length"
+                :class="[
+                  bem('tags-wrapper'),
+                  { 'has-prefix': prefixWidth && selected.length }
+                ]"
+              >
+                <r-tag
+                  :closeable="!selectDisabled && !selected[0].isDisabled"
+                  :size="collapseTagSize"
+                  :hit="selected[0].hitState"
+                  :type="tagType"
+                  disable-transitions
+                  @close="deleteTag($event, selected[0])"
+                >
+                  <span :class="bem('tags-text')" :style="tagTextStyle">
+                    {{ selected[0].currentLabel }}</span
+                  >
+                </r-tag>
+                <r-tag
+                  v-if="selected.length > 1"
+                  :closeable="false"
+                  :size="collapseTagSize"
+                  :type="tagType"
+                  disable-transitions
+                >
+                  <r-tooltip
+                    v-if="collapseTagsTooltip"
+                    :disabled="dropMenuVisible"
+                    :fallback-placements="['bottom', 'top', 'right', 'left']"
+                    :theme="theme"
+                    placement="bottom"
+                    :teleport="teleport"
+                  >
+                    <template #default>
+                      <span :class="bem('tags-text')"
+                        >+ {{ selected.length - 1 }}</span
+                      >
+                    </template>
+                    <template #content>
+                      <div :class="bem('collapse-tags')">
+                        <div
+                          v-for="(item, idx) in selected.slice(1)"
+                          :key="idx"
+                          :class="bem('collapse-tag')"
+                        >
+                          <r-tag
+                            :key="getValueKey(item)"
+                            class="in-tooltip"
+                            :closeable="!selectDisabled && !item.isDisabled"
+                            :size="collapseTagSize"
+                            :hit="item.hitState"
+                            :type="tagType"
+                            disable-transitions
+                            :style="{ margin: '2px' }"
+                            @close="deleteTag($event, item)"
+                          >
+                            <span
+                              :class="bem('tags-text')"
+                              :style="{
+                                maxWidth: inputWidth - 75 + 'px'
+                              }"
+                              >{{ item.currentLabel }}</span
+                            >
+                          </r-tag>
+                        </div>
+                      </div>
+                    </template>
+                  </r-tooltip>
+                  <span v-else :class="bem('tags-text')"
+                    >+ {{ selected.length - 1 }}</span
+                  >
+                </r-tag>
+              </span>
+            </transition>
+
+            <transition @after-leave="resetInputHeight">
+              <span
+                v-if="!collapseTags"
                 :class="[
                   bem('tags-wrapper'),
                   { 'has-prefix': prefixWidth && selected.length }
@@ -282,7 +287,8 @@ import { Option } from '../option'
 import { Tag } from '../tag'
 import ClickOutside from '../composables/use-click-outside'
 import { selectProps } from './select-props'
-import { isString, createNamespace } from '../utils'
+import { isString } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useSelect, useSelectStates } from './useSelect'
 import { useFocus } from '../composables/use-focus'
 import { useResizeObserver } from '@vueuse/core'

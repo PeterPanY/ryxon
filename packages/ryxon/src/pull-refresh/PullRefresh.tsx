@@ -8,13 +8,8 @@ import {
 } from 'vue'
 
 // Utils
-import {
-  pick,
-  extend,
-  numericProp,
-  createNamespace,
-  makeNumericProp
-} from '../utils'
+import { pick, extend, numericProp, makeNumericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { touchProps, useDragTouch } from './use-touch'

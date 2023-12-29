@@ -20,9 +20,9 @@ import {
   addUnit,
   unknownProp,
   makeStringProp,
-  createNamespace,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { isNumber, useEventListener, useResizeObserver } from '@vueuse/core'
 import { scrollbarContextKey } from './token'
 import { useExpose } from '../composables/use-expose'

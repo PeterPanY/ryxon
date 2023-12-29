@@ -7,7 +7,8 @@ import {
   inject,
   withDirectives
 } from 'vue'
-import { noop, isObject, createNamespace } from '../utils'
+import { noop, isObject } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import {
   FORWARD_REF_INJECTION_KEY,
   useForwardRefDirective

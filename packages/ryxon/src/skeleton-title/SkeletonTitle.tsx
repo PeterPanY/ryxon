@@ -1,6 +1,7 @@
 import { defineComponent, type ExtractPropTypes } from 'vue'
 
-import { createNamespace, numericProp, addUnit } from '../utils'
+import { numericProp, addUnit } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 const [name, bem] = createNamespace('skeleton-title')
 

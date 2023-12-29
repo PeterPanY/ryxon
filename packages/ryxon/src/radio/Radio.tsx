@@ -1,7 +1,8 @@
 import { defineComponent, type ExtractPropTypes } from 'vue'
 
 // Utils
-import { pick, extend, makeStringProp, createNamespace } from '../utils'
+import { pick, extend, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { RADIO_KEY } from '../radio-group/RadioGroup'
 
 // Composables

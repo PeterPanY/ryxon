@@ -19,7 +19,7 @@ import {
   unref
 } from 'vue'
 import { useId } from '../composables/use-id'
-import { composeEventHandlers } from '../utils'
+import { composeEventHandlers } from '@ryxon/utils'
 import { EVENT_CODE } from '../constants'
 import {
   RCollectionItem as RRovingFocusCollectionItem,

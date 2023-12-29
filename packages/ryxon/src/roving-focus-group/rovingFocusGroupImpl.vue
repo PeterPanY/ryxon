@@ -15,7 +15,7 @@ import {
   watch
 } from 'vue'
 import { useEventListener } from '@vueuse/core'
-import { composeEventHandlers } from '../utils'
+import { composeEventHandlers } from '@ryxon/utils'
 import {
   rovingFocusGroupProps,
   ROVING_FOCUS_COLLECTION_INJECTION_KEY

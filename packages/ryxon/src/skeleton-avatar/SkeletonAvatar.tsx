@@ -1,12 +1,8 @@
 import { defineComponent, ExtractPropTypes } from 'vue'
 
 // Utils
-import {
-  numericProp,
-  getSizeStyle,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { numericProp, getSizeStyle, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 export type SkeletonAvatarShape = 'square' | 'round'
 

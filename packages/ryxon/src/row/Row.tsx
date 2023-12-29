@@ -6,7 +6,8 @@ import {
   type InjectionKey,
   type ExtractPropTypes
 } from 'vue'
-import { truthProp, makeStringProp, createNamespace } from '../utils'
+import { truthProp, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useChildren } from '@ryxon/use'
 
 const [name, bem] = createNamespace('row')

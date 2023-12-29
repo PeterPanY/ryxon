@@ -4,12 +4,8 @@ import {
   type InjectionKey,
   type ExtractPropTypes
 } from 'vue'
-import {
-  unknownProp,
-  numericProp,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { unknownProp, numericProp, makeStringProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { useChildren, useCustomInputValue } from '@ryxon/use'
 import { CheckboxSize } from '../checkbox/types'
 

@@ -16,13 +16,11 @@ import {
   addUnit,
   truthProp,
   unknownProp,
-  BORDER_RIGHT,
-  BORDER_BOTTOM,
   makeArrayProp,
   definePropType,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+  makeStringProp
+} from '@ryxon/utils'
+import { BORDER_RIGHT, BORDER_BOTTOM, createNamespace } from '../utils'
 
 // Composables
 import { useScopeId } from '../composables/use-scope-id'

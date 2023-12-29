@@ -15,16 +15,15 @@ import { useParent } from '@ryxon/use'
 import { get, isEqual, debounce as lodashDebounce } from 'lodash-unified'
 import { isNumber, isClient } from '@vueuse/core'
 import {
-  FORM_KEY,
   isObject,
   isString,
   isKorean,
   toRawType,
   isFunction,
   scrollIntoView,
-  createNamespace,
   getComponentSize
-} from '../utils'
+} from '@ryxon/utils'
+import { FORM_KEY, createNamespace } from '../utils'
 import { Tooltip } from '../tooltip'
 
 import type { QueryChangeCtx, SelectOptionProxy } from './token'
@@ -361,8 +360,8 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     const label = isObjectValue
       ? value.label
       : !isNull && !isUndefined
-      ? value
-      : ''
+        ? value
+        : ''
     const newOption = {
       value,
       currentLabel: label

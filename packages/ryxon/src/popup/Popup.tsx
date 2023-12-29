@@ -21,12 +21,10 @@ import {
   isDef,
   extend,
   isString,
-  iconPropType,
   makeStringProp,
-  callInterceptor,
-  createNamespace,
-  HAPTICS_FEEDBACK
-} from '../utils'
+  callInterceptor
+} from '@ryxon/utils'
+import { iconPropType, createNamespace, HAPTICS_FEEDBACK } from '../utils'
 
 // Composables
 import { useEventListener } from '@ryxon/use'

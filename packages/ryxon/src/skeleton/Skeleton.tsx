@@ -7,9 +7,9 @@ import {
   numericProp,
   makeStringProp,
   makeNumericProp,
-  createNamespace,
   type Numeric
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Components
 import SkeletonTitle from '../skeleton-title'

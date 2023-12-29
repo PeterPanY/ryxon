@@ -1,4 +1,4 @@
-import { definePropType } from '../utils'
+import { definePropType } from '@ryxon/utils'
 import { createCollectionWithScope } from '../collection'
 import type { ExtractPropTypes, HTMLAttributes, StyleValue } from 'vue'
 

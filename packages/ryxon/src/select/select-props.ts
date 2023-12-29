@@ -1,9 +1,9 @@
 import {
-  iconPropType,
-  makeStringProp,
   ComponentSize,
+  makeStringProp,
   isValidComponentSize
-} from '../utils'
+} from '@ryxon/utils'
+import { iconPropType } from '../utils'
 import { SelectTheme, SelectPlacement } from './types'
 import { ArrowDown, CircleClose } from '@ryxon/icons'
 import type { PropType, TeleportProps, ExtractPropTypes } from 'vue'

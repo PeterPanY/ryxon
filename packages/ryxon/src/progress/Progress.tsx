@@ -8,7 +8,8 @@ import {
 } from 'vue'
 
 // Utils
-import { isString, isFunction, createNamespace, definePropType } from '../utils'
+import { isString, isFunction, definePropType } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Components
 import { Icon } from '../icon'

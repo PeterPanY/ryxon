@@ -13,14 +13,13 @@ import {
   mutable,
   isString,
   truthProp,
-  iconPropType,
   definePropType,
   makeStringProp,
   makeNumberProp,
   makeNumericProp,
-  createNamespace,
   type Numeric
-} from '../utils'
+} from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 
 import { Icon } from '../icon'
 import { Select } from '../select'

@@ -15,9 +15,9 @@ import {
   numericProp,
   unknownProp,
   preventDefault,
-  createNamespace,
   getZIndexStyle
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 // Composables
 import { useEventListener } from '@ryxon/use'

@@ -1,4 +1,4 @@
-import { truthProp, unknownProp, Interceptor, numericProp } from '../utils'
+import { truthProp, unknownProp, Interceptor, numericProp } from '@ryxon/utils'
 import type { PropType, CSSProperties, TeleportProps } from 'vue'
 
 export const popupSharedProps = {

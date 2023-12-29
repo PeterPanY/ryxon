@@ -1,6 +1,6 @@
 import { ref, computed, onBeforeUnmount, type ExtractPropTypes } from 'vue'
 import { useEventListener } from '@vueuse/core'
-import { truthProp, isTouchEvent } from '../utils'
+import { truthProp, isTouchEvent } from '@ryxon/utils'
 import { getPreciseEventTarget } from '../carousel/utils'
 
 export type TouchDirection = '' | 'horizontal' | 'vertical'
