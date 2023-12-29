@@ -2,7 +2,6 @@
   "zh": [
     { "link": "/home", "text": "方法介绍" },
     { "link": "/basic", "text": "基础方法" },
-    { "link": "/callInterceptor", "text": "callInterceptor" },
-    { "link": "/deepmerge", "text": "deepmerge" }
+    { "link": "/callInterceptor", "text": "callInterceptor" }
   ]
 }
