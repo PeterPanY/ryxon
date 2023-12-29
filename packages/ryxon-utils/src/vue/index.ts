@@ -1,4 +1,4 @@
-export * from './props'
+export * from '../vue-props'
 export * from './refs'
 export * from './size'
 export * from './validator'
