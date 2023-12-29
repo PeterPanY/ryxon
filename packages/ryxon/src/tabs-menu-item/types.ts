@@ -1,6 +1,6 @@
 import type { TabsMenuItemProps } from './TabsMenuItem'
 import type { VNode, ComponentPublicInstance } from 'vue'
-import type { Numeric } from '../utils'
+import type { Numeric } from '@ryxon/utils'
 
 export type TabsMenuItemPlacement =
   | 'top'

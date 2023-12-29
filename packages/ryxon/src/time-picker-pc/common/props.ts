@@ -3,7 +3,7 @@ import {
   definePropType,
   ComponentSize,
   isValidComponentSize
-} from '../../utils'
+} from '@ryxon/utils'
 import { CircleClose } from '@ryxon/icons'
 import { disabledTimeListsProps } from '../props/shared'
 

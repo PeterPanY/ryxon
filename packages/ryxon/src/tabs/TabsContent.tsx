@@ -1,7 +1,7 @@
 import { ref, watch, onMounted, defineComponent } from 'vue'
-import { numericProp, makeRequiredProp, createNamespace } from '../utils'
+import { flatten, numericProp, makeRequiredProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { Carousel, CarouselInstance } from '../carousel'
-import { flatten } from '../utils/flatten'
 import { useExpose } from '../composables/use-expose'
 
 const [name, bem] = createNamespace('tabs')

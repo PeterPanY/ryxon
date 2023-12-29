@@ -22,9 +22,9 @@ import {
   getZIndexStyle,
   definePropType,
   makeStringProp,
-  createNamespace,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { TABSMENU_KEY } from '../tabs-menu/TabsMenu'
 
 // Composables

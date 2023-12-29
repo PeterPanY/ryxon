@@ -34,10 +34,10 @@ import {
   truthProp,
   makeStringProp,
   definePropType,
-  createNamespace,
   composeEventHandlers,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { popupSharedProps } from '../popup/shared'
 import { POPPER_INJECTION_KEY } from '../popup/types'
 

@@ -1,5 +1,5 @@
 import { raf } from '@ryxon/use'
-import { ScrollElement, getScrollTop, setScrollTop } from '../utils'
+import { ScrollElement, getScrollTop, setScrollTop } from '@ryxon/utils'
 
 export function scrollLeftTo(
   scroller: HTMLElement,

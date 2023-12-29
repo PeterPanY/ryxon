@@ -11,7 +11,8 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { isArray, createNamespace } from '../utils'
+import { isArray } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 export default defineComponent({
   name: 'RUploadDrag',

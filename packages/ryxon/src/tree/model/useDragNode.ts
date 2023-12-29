@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { provide, ref } from 'vue'
-import { addClass, removeClass, createNamespace } from '../../utils'
+import { addClass, removeClass } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import type { InjectionKey } from 'vue'
 import type Node from './node'
 import type { TreeNodeDropType } from '../types'

@@ -11,12 +11,12 @@ import {
   extend,
   truthProp,
   numericProp,
-  createNamespace,
   getZIndexStyle,
   makeNumberProp,
   makeNumericProp,
   makeStringProp
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 
 const [name, bem] = createNamespace('watermark')
 

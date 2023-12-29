@@ -9,7 +9,8 @@ import {
 } from 'vue'
 
 // Utils
-import { extend, createNamespace } from '../utils'
+import { extend } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { pick } from 'lodash-unified'
 import { useSelect } from './select'
 import { useTree } from './tree'

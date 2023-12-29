@@ -100,7 +100,8 @@ import {
   type PropType,
   type ComponentInternalInstance
 } from 'vue'
-import { isString, isFunction, createNamespace } from '../utils'
+import { isString, isFunction } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { getNodeKey as getNodeKeyUtil, handleCurrentChange } from './model/util'
 import { dragEventsKey } from './model/useDragNode'
 import { useNodeExpandEventBroadcast } from './model/useNodeExpandEventBroadcast'
@@ -110,7 +111,7 @@ import { CaretRight, Loading } from '@ryxon/icons'
 import { CollapseTransition } from '../collapse-transition'
 import NodeContent from './tree-node-content.vue'
 import Node from './model/node'
-import type { Nullable } from '../utils'
+import type { Nullable } from '@ryxon/utils'
 import type { RootTreeType, TreeNodeData, TreeOptionProps } from './types'
 
 export default defineComponent({

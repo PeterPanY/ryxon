@@ -1,9 +1,9 @@
 // @ts-nocheck
 import { reactive } from 'vue'
-import { hasOwn } from '../../utils'
+import { hasOwn } from '@ryxon/utils'
 import { NODE_KEY, markNodeData } from './util'
 import type TreeStore from './tree-store'
-import type { Nullable } from '../../utils'
+import type { Nullable } from '@ryxon/utils'
 import type {
   FakeNode,
   TreeKey,

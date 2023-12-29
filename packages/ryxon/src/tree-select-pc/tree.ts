@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { computed, nextTick, toRefs, watch } from 'vue'
 import { isEqual, pick } from 'lodash-unified'
-import { isFunction } from '../utils'
+import { isFunction } from '@ryxon/utils'
 import { Tree, treeProps } from '../tree'
 import TreeSelectOption from './tree-select-option'
 import {
@@ -139,8 +139,8 @@ export const useTree = (
         props.renderContent
           ? () => props.renderContent(h, { node, data, store })
           : slots.default
-          ? () => slots.default({ node, data, store })
-          : undefined
+            ? () => slots.default({ node, data, store })
+            : undefined
       ),
     filterNodeMethod: (value, data, node) => {
       if (props.filterNodeMethod)
@@ -177,8 +177,8 @@ export const useTree = (
           props.multiple
             ? params.checkedKeys
             : params.checkedKeys.includes(dataValue)
-            ? dataValue
-            : undefined
+              ? dataValue
+              : undefined
         )
       }
       // only can select leaf node

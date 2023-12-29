@@ -1,6 +1,6 @@
 import { computed, onBeforeUnmount, shallowRef, unref } from 'vue'
 import { createPopper } from '@popperjs/core'
-import { isUndefined } from '../utils'
+import { isUndefined } from '@ryxon/utils'
 import type { Ref } from 'vue'
 import type {
   Options,

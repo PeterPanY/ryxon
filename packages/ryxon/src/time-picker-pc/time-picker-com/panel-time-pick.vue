@@ -40,7 +40,8 @@
 <script lang="ts">
 import { ref, computed, inject, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { isUndefined, createNamespace } from '../../utils'
+import { isUndefined } from '@ryxon/utils'
+import { createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { panelTimePickerProps } from '../props/panel-time-picker'
 import { useTimePanel } from '../composables/use-time-panel'

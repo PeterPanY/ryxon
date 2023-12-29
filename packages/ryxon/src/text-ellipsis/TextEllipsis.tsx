@@ -11,13 +11,8 @@ import {
 import { useEventListener } from '@ryxon/use'
 
 // Utils
-import {
-  isString,
-  iconPropType,
-  makeNumericProp,
-  makeStringProp,
-  createNamespace
-} from '../utils'
+import { isString, makeNumericProp, makeStringProp } from '@ryxon/utils'
+import { iconPropType, createNamespace } from '../utils'
 import type { TextEllipsisType } from './types'
 
 import { Icon } from '../icon'

@@ -22,7 +22,6 @@ import {
   entriesOf,
   truthProp,
   Interceptor,
-  iconPropType,
   getSizeStyle,
   makeArrayProp,
   makeStringProp,
@@ -30,7 +29,8 @@ import {
   makeNumericProp,
   type Numeric,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { iconPropType } from '../utils'
 import { useHandlers } from './use-handlers'
 import {
   t,

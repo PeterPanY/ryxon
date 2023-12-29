@@ -24,7 +24,7 @@ import RTreeNode from './tree-node.vue'
 
 import TreeStore from './model/tree-store'
 import type Node from './model/node'
-import type { Nullable } from '../utils'
+import type { Nullable } from '@ryxon/utils'
 import type {
   TreeKey,
   TreeData,

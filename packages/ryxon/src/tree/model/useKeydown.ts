@@ -5,7 +5,7 @@ import { EVENT_CODE } from '../../constants/aria'
 import { createNamespace } from '../../utils'
 import type TreeStore from './tree-store'
 import type { Ref } from 'vue'
-import type { Nullable } from '../../utils'
+import type { Nullable } from '@ryxon/utils'
 
 interface UseKeydownOption {
   el$: Ref<HTMLElement>
@@ -46,9 +46,10 @@ export function useKeydown({ el$ }: UseKeydownOption, store: Ref<TreeStore>) {
           currentIndex === -1
             ? 0
             : currentIndex !== 0
-            ? currentIndex - 1
-            : treeItems.value.length - 1
+              ? currentIndex - 1
+              : treeItems.value.length - 1
         const startIndex = nextIndex
+        // eslint-disable-next-line no-constant-condition
         while (true) {
           if (
             store.value.getNode(treeItems.value[nextIndex].dataset.key).canFocus
@@ -68,9 +69,10 @@ export function useKeydown({ el$ }: UseKeydownOption, store: Ref<TreeStore>) {
           currentIndex === -1
             ? 0
             : currentIndex < treeItems.value.length - 1
-            ? currentIndex + 1
-            : 0
+              ? currentIndex + 1
+              : 0
         const startIndex = nextIndex
+        // eslint-disable-next-line no-constant-condition
         while (true) {
           if (
             store.value.getNode(treeItems.value[nextIndex].dataset.key).canFocus

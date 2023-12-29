@@ -1,5 +1,5 @@
 import type { ComponentPublicInstance, ComputedRef } from 'vue'
-import type { Numeric } from '../utils'
+import type { Numeric } from '@ryxon/utils'
 import type { TabsProps } from './Tabs'
 
 export type TabsType = 'line' | 'card'

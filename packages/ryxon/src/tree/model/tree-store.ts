@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { hasOwn, isObject } from '../../utils'
+import { hasOwn, isObject } from '@ryxon/utils'
 import Node from './node'
 import { getNodeKey } from './util'
 import type {

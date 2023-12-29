@@ -10,7 +10,7 @@ import {
   makeRequiredProp,
   type Numeric,
   type Interceptor
-} from '../utils'
+} from '@ryxon/utils'
 
 // Components
 import { Icon } from '../icon'

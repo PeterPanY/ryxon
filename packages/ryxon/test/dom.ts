@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { trigger } from './event'
-import { inBrowser } from '@ryxon/use'
+import { inBrowser } from '@ryxon/utils'
 
 function mockHTMLElementOffset() {
   if (!inBrowser) {

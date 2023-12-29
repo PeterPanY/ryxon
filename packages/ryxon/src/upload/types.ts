@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance } from 'vue'
 import type { ImageFit } from '../image'
-import type { Numeric, Interceptor } from '../utils'
+import type { Numeric, Interceptor } from '@ryxon/utils'
 import type { UploadProps } from './Upload'
 import type { UploadAjaxError } from './ajax'
 

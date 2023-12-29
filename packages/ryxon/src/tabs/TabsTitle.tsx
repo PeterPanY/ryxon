@@ -1,5 +1,6 @@
 import { computed, defineComponent, type CSSProperties } from 'vue'
-import { isDef, truthProp, numericProp, createNamespace } from '../utils'
+import { isDef, truthProp, numericProp } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { Badge } from '../badge'
 import { Icon } from '../icon'
 import { Close } from '@ryxon/icons'

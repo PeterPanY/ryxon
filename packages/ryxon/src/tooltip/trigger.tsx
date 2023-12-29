@@ -12,9 +12,9 @@ import {
 import {
   definePropType,
   makeStringProp,
-  createNamespace,
   composeEventHandlers
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import { whenTrigger } from './tooltip-utils'
 
 // Components

@@ -4,13 +4,8 @@ import {
   type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
-import {
-  truthProp,
-  makeStringProp,
-  componentSizes,
-  createNamespace,
-  HAPTICS_FEEDBACK
-} from '../utils'
+import { truthProp, makeStringProp, componentSizes } from '@ryxon/utils'
+import { createNamespace, HAPTICS_FEEDBACK } from '../utils'
 import { Icon } from '../icon'
 import { Close } from '@ryxon/icons'
 import type { TagType } from './types'

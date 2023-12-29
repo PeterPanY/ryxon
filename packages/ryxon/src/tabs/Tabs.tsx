@@ -27,14 +27,13 @@ import {
   getElementTop,
   makeStringProp,
   callInterceptor,
-  createNamespace,
   makeNumericProp,
   setRootScrollTop,
-  BORDER_TOP_BOTTOM,
   type Numeric,
   type Interceptor,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace, BORDER_TOP_BOTTOM } from '../utils'
 import { useResizeObserver } from '@vueuse/core'
 import { scrollLeftTo, scrollTopTo } from './utils'
 import { EVENT_CODE } from '../constants'

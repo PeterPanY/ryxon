@@ -1,4 +1,5 @@
-import { toArray, createNamespace, isFunction } from '../utils'
+import { toArray, isFunction } from '@ryxon/utils'
+import { createNamespace } from '../utils'
 import type {
   UploadMaxSize,
   UploadResultType,

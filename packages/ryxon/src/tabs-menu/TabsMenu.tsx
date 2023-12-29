@@ -25,10 +25,9 @@ import {
   scrollLeftTo,
   makeStringProp,
   makeNumericProp,
-  createNamespace,
-  HAPTICS_FEEDBACK,
   type ComponentInstance
-} from '../utils'
+} from '@ryxon/utils'
+import { createNamespace, HAPTICS_FEEDBACK } from '../utils'
 import { useResizeObserver, onClickOutside } from '@vueuse/core'
 
 import { Icon } from '../icon'

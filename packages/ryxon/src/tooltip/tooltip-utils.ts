@@ -1,6 +1,6 @@
 import { createModelToggleComposable } from '../composables/use-model-toggle'
 import { unref } from 'vue'
-import { Arrayable } from '../utils'
+import { Arrayable } from '@ryxon/utils'
 import type { Ref } from 'vue'
 import type { TooltipTrigger } from './types'
 

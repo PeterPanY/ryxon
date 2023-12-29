@@ -166,7 +166,8 @@ import {
 } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { useParent } from '@ryxon/use'
-import { isArray, FORM_KEY, createNamespace } from '../../utils'
+import { isArray } from '@ryxon/utils'
+import { FORM_KEY, createNamespace } from '../../utils'
 import { timePickerDefaultProps } from './props'
 import { valueEquals } from '../utils'
 import { useExpose } from '../../composables/use-expose'
@@ -174,7 +175,7 @@ import { useCalendar } from '../../calendar/use-calendar'
 
 import type { ComponentPublicInstance } from 'vue'
 import type { Dayjs } from 'dayjs'
-import type { ComponentInstance } from '../../utils'
+import type { ComponentInstance } from '@ryxon/utils'
 import type {
   DateOrDates,
   DayOrDays,
