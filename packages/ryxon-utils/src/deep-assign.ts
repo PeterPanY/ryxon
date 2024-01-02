@@ -19,10 +19,33 @@ function assignKey(to: ObjectIndex, from: ObjectIndex, key: string) {
   }
 }
 
+// 单个合并
 export function deepAssign(to: ObjectIndex, from: ObjectIndex): ObjectIndex {
   Object.keys(from).forEach((key) => {
     assignKey(to, from, key)
   })
 
   return to
+}
+
+// 批量合并
+export function deepAssignMore(...args: ObjectIndex[]) {
+  if (args.length < 2) {
+    console.error('数据合并方法最少需要两个参数。')
+    return false
+  }
+
+  const object = args[0]
+  const source = args.slice(1)
+
+  if (!isObject(object)) {
+    console.error('第一个产数错误，需要复杂数据类型。')
+    return false
+  }
+
+  source.forEach((item) => {
+    deepAssign(object, item)
+  })
+
+  return object
 }
