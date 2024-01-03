@@ -46,7 +46,6 @@ dynamic-tags/custom
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | v-model | 受控模式下的值 | ^[enum]`string[] \| Array<{ label: string, value: string }>` | `[]` |
-| default-value | 非受控模式下的默认值 | ^[enum]`string[] \| Array<{ label: string, value: string }>` | `[]` |
 | max | tag 的最大数量 | `number` | `-` |
 | tag-class | 自定义标签的类名 | `string` | `-` |
 | tag-style | 自定义标签的样式 | `string \| Object` | `-` |

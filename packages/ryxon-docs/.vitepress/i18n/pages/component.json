@@ -23,7 +23,7 @@
         { "link": "/color-picker", "text": "ColorPicker 颜色选择器" },
         { "link": "/date-picker", "text": "DatePicker 日期选择" },
         { "link": "/date-time-picker", "text": "DateTimePicker 日期时间" },
-        { "link": "/dynamic-tags", "text": "Dynamic Tags 动态标签" },
+        { "link": "/dynamic-tags", "text": "DynamicTags 动态标签" },
         { "link": "/form", "text": "Form 表单" },
         { "link": "/input", "text": "Input 输入框" },
         { "link": "/input-number", "text": "InputNumber 数字输入框" },

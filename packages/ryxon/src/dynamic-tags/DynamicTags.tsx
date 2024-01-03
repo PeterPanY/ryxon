@@ -1,6 +1,5 @@
 import {
   ref,
-  toRef,
   computed,
   nextTick,
   defineComponent,
@@ -9,9 +8,10 @@ import {
   type CSSProperties,
   type ExtractPropTypes
 } from 'vue'
+import { useVModel } from '@vueuse/core'
+import { extend } from '@ryxon/utils'
 import { iconPropType, createNamespace } from '../utils'
 import { useCustomInputValue } from '@ryxon/use'
-import useMergedState from '../composables/use-merged-state'
 import { useExpose } from '../composables/use-expose'
 
 import { Plus } from '@ryxon/icons'
@@ -24,8 +24,7 @@ import type { OnCreate, DynamicTagsExpose, DynamicTagsOption } from './types'
 const [name, bem] = createNamespace('dynamic-tags')
 
 export const dynamicTagsProps = {
-  modelValue: Array as PropType<Array<string | DynamicTagsOption>>,
-  defaultValue: {
+  modelValue: {
     type: Array as PropType<Array<string | DynamicTagsOption>>,
     default: () => []
   },
@@ -56,14 +55,10 @@ export default defineComponent({
   props: dynamicTagsProps,
   emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
-    const uncontrolledValue = ref(props.defaultValue)
-    const controlledValue = toRef(props, 'modelValue')
-
-    const mergedValue = useMergedState(controlledValue, uncontrolledValue)
+    const mergedValue = useVModel(props, 'modelValue', emit)
 
     function doChange(value: Array<string | DynamicTagsOption>): void {
       emit('update:modelValue', value)
-      uncontrolledValue.value = value
     }
     useCustomInputValue(() => props.modelValue)
 
@@ -129,7 +124,7 @@ export default defineComponent({
                 key={index}
                 class={props.tagClass}
                 style={props.tagStyle}
-                {...props.tagProps}
+                {...extend({ closeable: true }, props.tagProps)}
                 onClose={() => {
                   handleCloseClick(index)
                 }}
