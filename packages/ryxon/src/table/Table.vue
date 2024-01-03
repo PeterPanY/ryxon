@@ -203,7 +203,7 @@ export default defineComponent({
   setup(props) {
     const [, bem, t] = createNamespace('table')
 
-    type Row = typeof props.data[number]
+    type Row = (typeof props.data)[number]
 
     const table = getCurrentInstance() as Table<Row>
     provide(TABLE_INJECTION_KEY, table)
@@ -321,5 +321,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped></style>

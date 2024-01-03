@@ -41,5 +41,3 @@ const shortcuts = [
 
 const disabledDate = (time: Date) => time.getTime() > Date.now()
 </script>
-
-<style scoped></style>

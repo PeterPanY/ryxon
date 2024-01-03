@@ -32,5 +32,3 @@ const handleSelect = (index: number) => {
   console.log(index)
 }
 </script>
-
-<style scoped></style>

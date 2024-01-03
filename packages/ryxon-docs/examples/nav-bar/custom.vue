@@ -11,5 +11,3 @@
 <script setup lang="ts">
 import { Search } from '@ryxon/icons'
 </script>
-
-<style scoped></style>

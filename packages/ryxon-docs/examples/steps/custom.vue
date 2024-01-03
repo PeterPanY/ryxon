@@ -18,5 +18,3 @@ import { SuccessFilled, Loading, Coin } from '@ryxon/icons'
 
 const active = ref(2)
 </script>
-
-<style scoped></style>

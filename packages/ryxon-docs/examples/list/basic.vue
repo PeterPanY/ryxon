@@ -36,5 +36,3 @@ const onLoad = () => {
   }, 1000)
 }
 </script>
-
-<style scoped></style>

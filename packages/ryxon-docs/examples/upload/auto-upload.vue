@@ -11,5 +11,3 @@ import { ref } from 'vue'
 
 const fileList = ref([])
 </script>
-
-<style scoped></style>

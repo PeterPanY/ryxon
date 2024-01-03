@@ -52,5 +52,3 @@ const themeVars = {
   buttonPrimaryBorderColor: '#07c160'
 }
 </script>
-
-<style scoped></style>

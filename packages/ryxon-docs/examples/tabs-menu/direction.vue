@@ -22,5 +22,3 @@ const option2 = [
   { text: '销量排序', value: 'c' }
 ]
 </script>
-
-<style scoped></style>

@@ -48,5 +48,3 @@ const onRefresh = () => {
   onLoad()
 }
 </script>
-
-<style scoped></style>
