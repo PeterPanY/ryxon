@@ -15,7 +15,6 @@ import { useCustomInputValue } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 
 import { Plus } from '@ryxon/icons'
-import { Space } from '../space'
 import { Tag, TagProps } from '../tag'
 import { Button } from '../button'
 import { Input, InputProps } from '../input'
@@ -114,14 +113,14 @@ export default defineComponent({
     })
 
     return () => (
-      <Space class={bem()}>
-        {mergedValue.value
-          .map((tag, index) => {
+      <div class={bem()}>
+        <span class={bem('body')}>
+          {mergedValue.value.map((tag, index) => {
             return props.renderTag ? (
               props.renderTag(tag as string & DynamicTagsOption, index)
             ) : (
               <Tag
-                key={index}
+                key={typeof tag === 'string' ? tag : tag.value}
                 class={props.tagClass}
                 style={props.tagStyle}
                 {...extend({ closeable: true }, props.tagProps)}
@@ -132,36 +131,37 @@ export default defineComponent({
                 {{ default: () => (typeof tag === 'string' ? tag : tag.label) }}
               </Tag>
             )
-          })
-          .concat(
-            showInput.value ? (
-              slots.input ? (
-                slots.input()
-              ) : (
-                <Input
-                  ref={inputInstRef}
-                  modelValue={inputValue.value}
-                  onUpdate:modelValue={(v) => {
-                    inputValue.value = v
-                  }}
-                  style={props.inputStyle}
-                  class={props.inputClass}
-                  {...props.inputProps}
-                  onKeydown={handleInputKeyDown}
-                  onBlur={handleInputBlur}
-                ></Input>
-              )
-            ) : slots.trigger ? (
-              slots.trigger({ disabled: triggerDisabled.value })
+          })}
+        </span>
+        <span class={bem('tool')}>
+          {showInput.value ? (
+            slots.input ? (
+              slots.input()
             ) : (
-              <Button
-                disabled={triggerDisabled.value}
-                icon={props.icon}
-                onClick={handleAddClick}
-              ></Button>
+              <Input
+                ref={inputInstRef}
+                modelValue={inputValue.value}
+                onUpdate:modelValue={(v) => {
+                  inputValue.value = v
+                }}
+                style={props.inputStyle}
+                class={props.inputClass}
+                {...props.inputProps}
+                onKeydown={handleInputKeyDown}
+                onBlur={handleInputBlur}
+              ></Input>
             )
+          ) : slots.trigger ? (
+            slots.trigger({ disabled: triggerDisabled.value })
+          ) : (
+            <Button
+              disabled={triggerDisabled.value}
+              icon={props.icon}
+              onClick={handleAddClick}
+            ></Button>
           )}
-      </Space>
+        </span>
+      </div>
     )
   }
 })

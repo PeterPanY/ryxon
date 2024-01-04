@@ -14,13 +14,15 @@
   "devDependencies": {
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
+    "@vueuse/integrations": "^10.7.1",
     "clipboard-copy": "^4.0.1",
     "escape-html": "^1.0.3",
     "fast-glob": "^3.3.2",
     "markdown-it": "^13.0.2",
     "ryxon": "workspace:*",
     "sass": "^1.54.5",
-    "vitepress": "^1.0.0-rc.32",
+    "sortablejs": "^1.15.0",
+    "vitepress": "^1.0.0-rc.34",
     "vitepress-theme-demoblock": "^3.0.3",
     "vue": "^3.3.4"
   },
