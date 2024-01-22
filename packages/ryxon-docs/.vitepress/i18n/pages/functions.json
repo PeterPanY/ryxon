@@ -1,7 +1,14 @@
 {
   "zh": [
     { "link": "/home", "text": "方法介绍" },
-    { "link": "/basic", "text": "基础方法" },
+    {
+      "text": "基础方法",
+      "children": [
+        { "link": "/extend", "text": "extend" },
+        { "link": "/is-array", "text": "isArray" },
+        { "link": "/noop", "text": "noop" }
+      ]
+    },
     { "link": "/callInterceptor", "text": "callInterceptor" }
   ]
 }
