@@ -47,10 +47,11 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
+import { CarouselEffect } from '@ryxon/components'
 
 export default defineComponent({
   setup() {
-    const effectRef = ref<'slide' | 'fade' | 'card'>('slide')
+    const effectRef = ref<CarouselEffect>('slide-alone')
     const isCardRef = computed(() => effectRef.value === 'card')
 
     const handleItemClick = (index: number) => {
@@ -60,7 +61,7 @@ export default defineComponent({
     return {
       isCard: isCardRef,
       myEffect: effectRef,
-      effects: ['slide', 'fade', 'card'],
+      effects: ['slide-alone', 'slide', 'fade', 'card'],
       handleItemClick
     }
   }

@@ -6,7 +6,11 @@ export default Carousel
 
 export { carouselProps } from './Carousel'
 export type { CarouselProps } from './Carousel'
-export type { CarouselInstance, CarouselThemeVars } from './types'
+export type {
+  CarouselEffect,
+  CarouselInstance,
+  CarouselThemeVars
+} from './types'
 
 declare module 'vue' {
   export interface GlobalComponents {

@@ -3,7 +3,12 @@ import type { CarouselProps } from './Carousel'
 import type { CarouselContextValue } from './CarouselContext'
 
 export type CarouselTrigger = 'click' | 'hover'
-export type CarouselEffect = 'slide' | 'fade' | 'card' | 'custom'
+export type CarouselEffect =
+  | 'slide'
+  | 'slide-alone'
+  | 'fade'
+  | 'card'
+  | 'custom'
 export type CarouselDirection = 'horizontal' | 'vertical'
 export type CarouselDotType = 'dot' | 'line'
 export type CarouselDotPlacement = 'top' | 'bottom' | 'left' | 'right'

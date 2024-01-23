@@ -1,5 +1,6 @@
 import {
   ref,
+  watch,
   nextTick,
   reactive,
   computed,
@@ -55,6 +56,15 @@ export default defineComponent({
     const isActiveRef = computed(() => isActive(indexRef.value))
     const styleRef = computed(() => getSlideStyle(indexRef.value))
 
+    const animating = ref(false)
+    watch(
+      () => currentIndexRef.value,
+      (activeIndex, oldIndex) => {
+        animating.value =
+          activeIndex === indexRef.value || oldIndex === indexRef.value
+      }
+    )
+
     // 判断当前组件是否加载
     const shouldRender = computed(() => {
       // 未开启懒加载、已经加载过了、自动每屏显示数量
@@ -108,6 +118,7 @@ export default defineComponent({
       isPrev: isPrevRef,
       isNext: isNextRef,
       isActive: isActiveRef,
+      isAnimate: animating,
       index: indexRef,
       style: styleRef,
       shouldRender,
@@ -120,6 +131,7 @@ export default defineComponent({
       isPrev,
       isNext,
       isActive,
+      isAnimate,
       index,
       style,
       shouldRender
@@ -131,7 +143,8 @@ export default defineComponent({
         class={bem('slide', {
           current: isActive,
           prev: isPrev,
-          next: isNext
+          next: isNext,
+          animate: isAnimate
         })}
         role="option"
         tabindex="-1"
@@ -143,12 +156,7 @@ export default defineComponent({
         onClickCapture={this.handleClick}
       >
         {shouldRender
-          ? slots.default?.({
-              isPrev,
-              isNext,
-              isActive,
-              index
-            })
+          ? slots.default?.({ isPrev, isNext, isActive, index })
           : null}
       </div>
     )

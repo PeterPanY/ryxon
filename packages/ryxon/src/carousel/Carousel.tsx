@@ -122,7 +122,7 @@ export default defineComponent({
     const slideVNodesRef = { value: [] as VNode[] }
 
     // Computed states
-    const verticalRef = computed(() => props.direction === 'vertical')
+    const verticalRef = computed(() => props.direction === 'vertical') // 是否水平方向
     const sizeAxisRef = computed(() => (verticalRef.value ? 'height' : 'width'))
     const spaceAxisRef = computed(() =>
       verticalRef.value ? 'bottom' : 'right'
@@ -222,6 +222,27 @@ export default defineComponent({
           }
         }
       }
+
+      // effect为slide-alone主题时 偏移尺寸
+      const calcTranslate = (index: number) => {
+        const { value: axis } = sizeAxisRef
+
+        let diff = index - mergedDisplayIndexRef.value
+        if (diff === slidesEls.length - 1) {
+          diff = -1
+        }
+        if (diff === -(slidesEls.length - 1)) {
+          diff = 1
+        }
+
+        const translate = slideSizesRef.value[index][axis] * diff
+
+        const transform = verticalRef.value
+          ? `translateY(${translate}px)`
+          : `translateX(${translate}px)`
+
+        return transform
+      }
       if (userWantsControlRef.value) {
         // We center each slide when user wants to control the transition animation,
         // so there is no need to calculate the offset
@@ -238,6 +259,13 @@ export default defineComponent({
         styles.push(style)
         if (isMountedRef.value && (effect === 'fade' || effect === 'card')) {
           Object.assign(style, transitionStyleRef.value)
+        }
+
+        if (isMountedRef.value && effect === 'slide-alone') {
+          Object.assign(style, transitionStyleRef.value, {
+            transform: calcTranslate(i),
+            transitionDuration: 0
+          })
         }
         return styles
       }, [])
@@ -398,6 +426,7 @@ export default defineComponent({
         transitionDuration: `${speed}ms`
       })
     }
+    // 恢复移动数据
     function fixTranslate(speed = 0): void {
       if (sequenceLayoutRef.value) {
         translateTo(realIndexRef.value, speed)
@@ -775,9 +804,7 @@ export default defineComponent({
       () => {
         sequenceLayoutRef.value && fixTranslate()
       },
-      {
-        deep: true
-      }
+      { deep: true }
     )
     watch(sequenceLayoutRef, (value) => {
       if (!value) {

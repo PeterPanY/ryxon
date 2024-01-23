@@ -127,11 +127,11 @@ carousel/card-custom
 | centered-slides | 是否居中显示当前页轮播图 | `boolean` | `false` |
 | current-index | 当前显示页 | `number` | `undefined` |
 | default-index | 默认显示页 | `number` | `0` |
-| direction | 轮播图显示的方向 | `'horizontal' \| 'vertical'` | `horizontal` |
-| dot-placement | 轮播指示点位置 | `'top' \| 'bottom' \| 'left' \| 'right'` | `bottom` |
-| dot-type | 轮播指示点样式 | `'dot' \| 'line'` | `dot` |
+| direction | 轮播图显示的方向 | `horizontal \| vertical` | `horizontal` |
+| dot-placement | 轮播指示点位置 | `top \| bottom \| left \| right` | `bottom` |
+| dot-type | 轮播指示点样式 | `dot \| line` | `dot` |
 | draggable | 是否通过鼠标拖拽切换轮播图 | `boolean` | `false` |
-| effect | 轮播图切换时的过渡效果 | `'slide' \| 'fade' \| 'card' \| 'custom'` | `slide` |
+| effect | 轮播图切换时的过渡效果 | `slide \| slide-alone(v1.10.1)  \| fade \| card \| custom ` | `slide` |
 | interval | 自动播放的间隔（ms） | `number` | `5000` |
 | keyboard | 是否通过按键切换轮播图，只有焦点在 Dots 上时才起作用 | `boolean` | `false` |
 | loop | 是否循环播放 | `boolean` | `true` |
@@ -147,7 +147,7 @@ carousel/card-custom
 | lazy-render | 是否延迟渲染未展示的轮播，slides-per-view 为 auto 时延迟渲染无效 | `boolean` | `false` |
 | transition-style | transition-style | `{ transitionDuration?: string, transitionTimingFunction?: string }` | `{ transitionDuration: '300ms' }` |
 | transition-props | 自定义过渡效果属性[官方文档](https://cn.vuejs.org/api/built-in-components.html#transition) | `TransitionProps` | `undefined` |
-| trigger | 触发切换的方式 | `'click' \| 'hover'` | `click` |
+| trigger | 触发切换的方式 | `click \| hover` | `click` |
 
 ### Carousel Slots
 
