@@ -97,9 +97,7 @@ export const carouselProps = {
   trigger: makeStringProp<CarouselTrigger>('click'),
   transitionStyle: {
     type: Object as PropType<TransitionStyle>,
-    default: (): TransitionStyle => ({
-      transitionDuration: '300ms'
-    })
+    default: (): TransitionStyle => ({ transitionDuration: '300ms' })
   },
   transitionProps: Object as PropType<TransitionProps>,
   draggable: Boolean,
@@ -903,9 +901,7 @@ export default defineComponent({
                 <div style={slideStyles[i]} key={i}>
                   {withDirectives(
                     <Transition {...transitionProps}>
-                      {{
-                        default: () => slide
-                      }}
+                      {{ default: () => slide }}
                     </Transition>,
                     [[vShow, this.isActive(i)]]
                   )}
