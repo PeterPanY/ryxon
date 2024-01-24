@@ -23,7 +23,6 @@ const defaultConfig: ImagePreviewOptions = {
   overlayStyle: undefined,
   overlayClass: undefined,
   startPosition: 0,
-  swipeDuration: 300,
   showDots: false,
   showArrow: true,
   closeOnPopstate: true,

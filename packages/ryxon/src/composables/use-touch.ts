@@ -1,85 +1,145 @@
-import { ref } from 'vue'
-import { TAP_OFFSET } from '../utils'
+import { ref, computed, onBeforeUnmount, type ExtractPropTypes } from 'vue'
+import { useEventListener } from '@vueuse/core'
+import { truthProp, isTouchEvent } from '@ryxon/utils'
+import { getPreciseEventTarget } from '../carousel/utils'
 
-type Direction = '' | 'vertical' | 'horizontal'
-
-function getDirection(x: number, y: number) {
-  if (x > y) {
-    return 'horizontal'
-  }
-  if (y > x) {
-    return 'vertical'
-  }
-  return ''
+export type OffsetParams = {
+  deltaX: number
+  deltaY: number
 }
 
-export function useTouch() {
-  const startX = ref(0)
-  const startY = ref(0)
-  const deltaX = ref(0)
-  const deltaY = ref(0)
-  const offsetX = ref(0)
-  const offsetY = ref(0)
-  const direction = ref<Direction>('')
-  const isTap = ref(true)
+export const touchProps = {
+  touchable: truthProp,
+  draggable: truthProp,
+  mousewheel: Boolean
+}
 
-  const isVertical = () => direction.value === 'vertical'
-  const isHorizontal = () => direction.value === 'horizontal'
+export type TouchProps = ExtractPropTypes<typeof touchProps>
 
-  const reset = () => {
-    deltaX.value = 0
-    deltaY.value = 0
-    offsetX.value = 0
-    offsetY.value = 0
-    direction.value = ''
-    isTap.value = true
+// 只允许一个全局触发触摸
+let globalDragging = false
+
+export function useDragTouch(
+  props: TouchProps,
+  onStart: () => void,
+  onMove: (offset: OffsetParams) => void,
+  onEnd: () => void,
+  onReset?: () => void,
+  onMousewheel?: (event: WheelEvent) => void
+) {
+  const slidesElRef = ref<HTMLDivElement | null>(null)
+
+  let dragStartX = 0
+  let dragStartY = 0
+  const dragging = ref(false)
+
+  let cleanTouchmove: () => void
+  let cleanTouchend: () => void
+  let cleanTouchcancel: () => void
+  let cleanMousemove: () => void
+  let cleanMouseup: () => void
+
+  const handleTouchmove = (event: MouseEvent | TouchEvent): void => {
+    const touchEvent = isTouchEvent(event) ? event.touches[0] : event
+
+    if (event.cancelable) {
+      event.preventDefault()
+    }
+
+    const deltaX = touchEvent.clientX - dragStartX
+    const deltaY = touchEvent.clientY - dragStartY
+
+    onMove({ deltaX, deltaY })
   }
 
-  const start = ((event: TouchEvent) => {
-    reset()
-    startX.value = event.touches[0].clientX
-    startY.value = event.touches[0].clientY
-  }) as EventListener
+  const handleTouchend = () => {
+    onEnd()
+    resetDragStatus()
+  }
 
-  const move = ((event: TouchEvent) => {
-    const touch = event.touches[0]
-    // safari back will set clientX to negative number
-    deltaX.value = (touch.clientX < 0 ? 0 : touch.clientX) - startX.value
-    deltaY.value = touch.clientY - startY.value
-    offsetX.value = Math.abs(deltaX.value)
-    offsetY.value = Math.abs(deltaY.value)
-
-    // lock direction when distance is greater than a certain value
-    const LOCK_DIRECTION_DISTANCE = 10
+  const handleTouchstart = (event: MouseEvent | TouchEvent): void => {
+    if (globalDragging) return
     if (
-      !direction.value ||
-      (offsetX.value < LOCK_DIRECTION_DISTANCE &&
-        offsetY.value < LOCK_DIRECTION_DISTANCE)
+      !slidesElRef.value?.contains(getPreciseEventTarget(event) as Node | null)
     ) {
-      direction.value = getDirection(offsetX.value, offsetY.value)
+      return
     }
+    globalDragging = true
+    dragging.value = true
+
+    onStart()
 
     if (
-      isTap.value &&
-      (offsetX.value > TAP_OFFSET || offsetY.value > TAP_OFFSET)
+      event.type !== 'touchstart' &&
+      !(event.target as HTMLElement).isContentEditable
     ) {
-      isTap.value = false
+      event.preventDefault()
     }
-  }) as EventListener
+    const touchEvent = isTouchEvent(event) ? event.touches[0] : event
+
+    dragStartY = touchEvent.clientY
+    dragStartX = touchEvent.clientX
+
+    if (props.touchable) {
+      cleanTouchmove = useEventListener(
+        slidesElRef,
+        'touchmove',
+        handleTouchmove,
+        { passive: true }
+      )
+      cleanTouchend = useEventListener(slidesElRef, 'touchend', handleTouchend)
+      cleanTouchcancel = useEventListener(
+        slidesElRef,
+        'touchcancel',
+        handleTouchend
+      )
+    }
+    if (props.draggable) {
+      cleanMousemove = useEventListener(
+        slidesElRef,
+        'mousemove',
+        handleTouchmove
+      )
+      cleanMouseup = useEventListener(slidesElRef, 'mouseup', handleTouchend)
+    }
+  }
+
+  const resetDragStatus = (): void => {
+    if (dragging.value) {
+      globalDragging = false
+    }
+
+    dragging.value = false
+    dragStartX = 0
+    dragStartY = 0
+
+    onReset?.()
+
+    cleanTouchmove && cleanTouchmove()
+    cleanTouchend && cleanTouchend()
+    cleanTouchcancel && cleanTouchcancel()
+    cleanMousemove && cleanMousemove()
+    cleanMouseup && cleanMouseup()
+  }
+
+  onBeforeUnmount(() => {
+    resetDragStatus()
+  })
+
+  // 鼠标滚轮事件
+  const handleMousewheel = (event: WheelEvent): void => {
+    onMousewheel?.(event)
+  }
+
+  const controlListeners = computed(() => ({
+    onTouchstartPassive: props.touchable ? handleTouchstart : undefined,
+    onMousedown: props.draggable ? handleTouchstart : undefined,
+    onWheel: props.mousewheel ? handleMousewheel : undefined
+  }))
 
   return {
-    move,
-    start,
-    reset,
-    startX,
-    startY,
-    deltaX,
-    deltaY,
-    offsetX,
-    offsetY,
-    direction,
-    isVertical,
-    isHorizontal,
-    isTap
+    dragging,
+    slidesElRef,
+    controlListeners
   }
 }

@@ -109,13 +109,12 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 
 通过组件调用 `ImagePreview` 时，支持以下事件：
 
-| 事件名     | 说明                   | 回调参数                           |
-| ---------- | ---------------------- | ---------------------------------- |
-| close      | 关闭时触发             | `{ index: number, url: string }`   |
-| closed     | 关闭且且动画结束后触发 | -                                  |
-| change     | 切换当前图片时触发     | `index: number`                    |
-| scale      | 缩放当前图片时触发     | `{ index: number, scale: number }` |
-| long-press | 长按当前图片时触发     | `{ index: number }`                |
+| 事件名 | 说明                   | 回调参数                           |
+| ------ | ---------------------- | ---------------------------------- |
+| close  | 关闭时触发             | `{ index: number, url: string }`   |
+| closed | 关闭且且动画结束后触发 | -                                  |
+| change | 切换当前图片时触发     | `index: number`                    |
+| scale  | 缩放当前图片时触发     | `{ index: number, scale: number }` |
 
 ### 方法
 

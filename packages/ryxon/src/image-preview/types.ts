@@ -1,6 +1,8 @@
-import type { Component, CSSProperties, TeleportProps } from 'vue'
+import type { CSSProperties, TeleportProps, ComponentPublicInstance } from 'vue'
 import type { Interceptor } from '@ryxon/utils'
 import type { PopupCloseIconPosition } from '../popup'
+import type { ImagePreviewProps } from './ImagePreview'
+import type { ImagePreviewItemProps } from './ImagePreviewItem'
 
 export type ImagePreviewOptions = {
   loop?: boolean
@@ -16,7 +18,6 @@ export type ImagePreviewOptions = {
   beforeClose?: Interceptor
   overlayStyle?: CSSProperties
   overlayClass?: unknown
-  swipeDuration?: number
   startPosition?: number
   showDots?: boolean
   showArrow?: boolean
@@ -43,13 +44,29 @@ export type ImageViewerAction =
 
 export type ImageViewerMode = {
   name: string
-  icon: Component
+  icon: () => void
 }
+
+type ImagePreviewItemExpose = {
+  setScale: (scale: number) => void
+  setDeg: (type: string) => void
+  resetScale: () => void
+}
+
+export type ImagePreviewItemInstance = ComponentPublicInstance<
+  ImagePreviewItemProps,
+  ImagePreviewItemExpose
+>
 
 export type ImagePreviewExpose = {
   resetScale: () => void
   swipeTo: (index: number) => void
 }
+
+export type ImagePreviewInstance = ComponentPublicInstance<
+  ImagePreviewProps,
+  ImagePreviewExpose
+>
 
 export type ImagePreviewThemeVars = {
   imagePreviewIndexTextColor?: string

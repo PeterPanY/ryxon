@@ -12,7 +12,11 @@ import { pick, extend, numericProp, makeNumericProp } from '@ryxon/utils'
 import { createNamespace } from '../utils'
 
 // Composables
-import { touchProps, useDragTouch } from './use-touch'
+import {
+  touchProps,
+  useDragTouch,
+  OffsetParams
+} from '../composables/use-touch'
 
 // Components
 import { Loading } from '../loading'
@@ -103,12 +107,12 @@ export default defineComponent({
       }
     }
 
-    const onMove = (offset: number) => {
+    const onMove = (offset: OffsetParams) => {
       if (isTouchable()) {
-        deltaY.value = offset
+        deltaY.value = offset.deltaY
 
-        if (offset >= 0) {
-          setStatus(ease(offset))
+        if (offset.deltaY >= 0) {
+          setStatus(ease(offset.deltaY))
         }
       }
     }
@@ -129,14 +133,13 @@ export default defineComponent({
       }
     }
 
-    const { direction, slidesElRef, controlListeners } = useDragTouch(
+    const { slidesElRef, controlListeners } = useDragTouch(
       // eslint-disable-next-line no-restricted-syntax
       { ...pick(props, ['touchable', 'draggable', 'mousewheel']) },
       onStart,
       onMove,
       onEnd
     )
-    direction.value = 'vertical' // 设定拖拽方式
 
     const getHeadStyle = () => {
       if (props.headHeight !== DEFAULT_HEAD_HEIGHT) {

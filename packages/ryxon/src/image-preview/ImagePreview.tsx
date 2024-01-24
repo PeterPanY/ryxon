@@ -8,6 +8,7 @@ import {
   effectScope,
   defineComponent,
   type PropType,
+  type EffectScope,
   type CSSProperties,
   type ExtractPropTypes,
   type TeleportProps
@@ -20,6 +21,8 @@ import {
   truthProp,
   unknownProp,
   Interceptor,
+  windowWidth,
+  windowHeight,
   makeArrayProp,
   makeStringProp,
   makeNumericProp,
@@ -31,6 +34,7 @@ import { throttle } from 'lodash-unified'
 import { EVENT_CODE } from '../constants/aria'
 
 // Composables
+import { useRect } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
 
 // Components
@@ -48,7 +52,11 @@ import { Popup, PopupCloseIconPosition } from '../popup'
 import ImagePreviewItem from './ImagePreviewItem'
 
 // Types
-import { ImageViewerAction, ImagePreviewScaleEventParams } from './types'
+import {
+  ImageViewerAction,
+  ImagePreviewItemInstance,
+  ImagePreviewScaleEventParams
+} from './types'
 
 const [name, bem] = createNamespace('image-preview')
 
@@ -91,18 +99,26 @@ export type ImagePreviewProps = ExtractPropTypes<typeof imagePreviewProps>
 export default defineComponent({
   name,
   props: imagePreviewProps,
-  emits: ['scale', 'close', 'closed', 'change', 'longPress', 'update:show'],
+  emits: ['scale', 'close', 'closed', 'change', 'update:show'],
   setup(props, { emit, slots }) {
     const swipeRef = ref<CarouselInstance>()
+    const activedPreviewItemRef = ref<ImagePreviewItemInstance>()
 
-    const scopeEventListener = effectScope()
+    let scopeEventListener: EffectScope | null = null
 
     const state = reactive({
       active: 0,
       rootWidth: 0,
-      rootHeight: 0,
-      disableZoom: false
+      rootHeight: 0
     })
+
+    const resize = () => {
+      if (swipeRef.value) {
+        const rect = useRect(swipeRef.value.$el)
+        state.rootWidth = rect.width
+        state.rootHeight = rect.height
+      }
+    }
 
     const currentScale = ref(1)
 
@@ -141,38 +157,34 @@ export default defineComponent({
       }
     }
 
-    const boxRefs: Array<any> = []
-
-    const setBoxRef = (el: any) => {
-      if (el) boxRefs.push(el)
-    }
-
     const handleActions = (action: ImageViewerAction) => {
-      const activeIndex = state.active + 1
       switch (action) {
         case 'zoomOut':
-          boxRefs[activeIndex]?.setScale(currentScale.value - props.zoomRate)
+          activedPreviewItemRef.value?.setScale(
+            currentScale.value - props.zoomRate
+          )
           break
         case 'zoomIn':
-          boxRefs[activeIndex]?.setScale(currentScale.value + props.zoomRate)
+          activedPreviewItemRef.value?.setScale(
+            currentScale.value + props.zoomRate
+          )
           break
         case 'clockwise':
-          boxRefs[activeIndex]?.setDeg('clockwise')
+          activedPreviewItemRef.value?.setDeg('clockwise')
           break
         case 'anticlockwise':
-          boxRefs[activeIndex]?.setDeg('anticlockwise')
+          activedPreviewItemRef.value?.setDeg('anticlockwise')
           break
       }
     }
 
     // 图标切换
     const toggleMode = () => {
-      //  将对象中key 变成数组
-      boxRefs[state.active + 1]?.resetScale()
+      activedPreviewItemRef.value?.resetScale()
     }
 
     function unregisterEventListener() {
-      scopeEventListener.stop()
+      scopeEventListener?.stop()
     }
 
     function hide() {
@@ -217,7 +229,7 @@ export default defineComponent({
         handleActions(delta < 0 ? 'zoomIn' : 'zoomOut')
       })
 
-      scopeEventListener.run(() => {
+      scopeEventListener?.run(() => {
         useEventListener(document, 'keydown', keydownHandler)
         useEventListener(document, 'wheel', mousewheelHandler)
       })
@@ -258,8 +270,10 @@ export default defineComponent({
       <Carousel
         ref={swipeRef}
         lazyRender
-        draggable
+        draggable={false}
+        touchable={false}
         loop={props.loop}
+        effect="fade"
         class={bem('swipe')}
         default-index={props.startPosition}
         show-dots={props.showDots}
@@ -268,21 +282,19 @@ export default defineComponent({
       >
         {props.images.map((image, index) => (
           <ImagePreviewItem
-            ref={setBoxRef}
-            v-slots={{
-              image: slots.image
+            ref={(item) => {
+              if (index === state.active) {
+                activedPreviewItemRef.value = item as ImagePreviewItemInstance
+              }
             }}
+            v-slots={{ image: slots.image }}
             src={image}
-            show={props.show}
             active={state.active}
             maxZoom={props.maxZoom}
             minZoom={props.minZoom}
             rootWidth={state.rootWidth}
             rootHeight={state.rootHeight}
-            disableZoom={state.disableZoom}
             onScale={emitScale}
-            onClose={hide}
-            onLongPress={() => emit('longPress', { index })}
           />
         ))}
       </Carousel>
@@ -311,7 +323,10 @@ export default defineComponent({
     }
 
     // 关闭且动画结束后触发
-    const onClosed = () => emit('closed')
+    const onClosed = () => {
+      emit('closed')
+      toggleMode() // 重置
+    }
 
     const swipeTo = (index: number) => {
       swipeRef.value?.to(index)
@@ -319,9 +334,9 @@ export default defineComponent({
 
     useExpose({ resetScale: toggleMode, swipeTo })
 
-    onMounted(() => {
-      registerEventListener()
-    })
+    watch([windowWidth, windowHeight], resize)
+
+    onMounted(resize)
 
     watch(
       () => props.startPosition,
@@ -334,14 +349,14 @@ export default defineComponent({
         const { images, startPosition } = props
         if (value) {
           setActive(+startPosition)
+          scopeEventListener = effectScope()
+          registerEventListener()
           nextTick(() => {
+            resize()
             swipeTo(+startPosition)
           })
         } else {
-          emit('close', {
-            index: state.active,
-            url: images[state.active]
-          })
+          emit('close', { index: state.active, url: images[state.active] })
         }
       }
     )

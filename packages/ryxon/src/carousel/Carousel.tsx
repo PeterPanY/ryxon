@@ -45,7 +45,7 @@ import {
 } from './CarouselContext'
 
 // Composables
-import { useDragTouch } from '../pull-refresh/use-touch'
+import { OffsetParams, useDragTouch } from '../composables/use-touch'
 import useMergedState from '../composables/use-merged-state'
 
 // Components
@@ -598,11 +598,12 @@ export default defineComponent({
       stopAutoplay()
     }
     // 移动
-    const onMove = (offset: number) => {
+    const onMove = (offset: OffsetParams) => {
+      const offsetAxis = verticalRef.value ? offset.deltaY : offset.deltaX
       const { value: axis } = sizeAxisRef
       const perViewSize = perViewSizeRef.value[axis]
 
-      dragOffset = clampValue(offset, -perViewSize, perViewSize)
+      dragOffset = clampValue(offsetAxis, -perViewSize, perViewSize)
 
       if (sequenceLayoutRef.value) {
         updateTranslate(previousTranslate - dragOffset, 0)
@@ -706,7 +707,7 @@ export default defineComponent({
       dragStartTime = 0
     }
 
-    const { dragging, direction, slidesElRef, controlListeners } = useDragTouch(
+    const { dragging, slidesElRef, controlListeners } = useDragTouch(
       // eslint-disable-next-line no-restricted-syntax
       { ...pick(props, ['touchable', 'draggable', 'mousewheel']) },
       onStart,
@@ -715,9 +716,6 @@ export default defineComponent({
       onReset,
       handleMousewheel
     )
-    watchEffect(() => {
-      direction.value = props.direction
-    })
 
     // function handleResize(): void {}
     // 监听页面slidesElRef尺寸变化
