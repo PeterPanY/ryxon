@@ -12,6 +12,7 @@
         { "link": "/use-count-down", "text": "useCountDown" },
         { "link": "/use-custom-input-value", "text": "useCustomInputValue" },
         { "link": "/use-event-listener", "text": "useEventListener" },
+        { "link": "/use-is-mounted", "text": "useIsMounted" },
         { "link": "/use-page-visibility", "text": "usePageVisibility" },
         { "link": "/use-raf", "text": "useRaf" },
         { "link": "/use-rect", "text": "useRect" },

@@ -3,7 +3,6 @@ import {
   nextTick,
   provide,
   Teleport,
-  onMounted,
   defineComponent,
   type PropType,
   type CSSProperties,
@@ -21,6 +20,7 @@ import {
 
 // Components
 import Bar from './Bar'
+import { useIsMounted } from '@ryxon/use'
 
 // Types
 import type { LoadingBarInst, LoadingBarProviderInst } from './types'
@@ -49,15 +49,11 @@ export default defineComponent({
   emits: [],
   setup(props) {
     const loadingBarRef = ref<LoadingBarInst | null>(null)
-    const isMounted = ref(false)
-
-    onMounted(() => {
-      isMounted.value = true
-    })
+    const isMountedRef = useIsMounted()
 
     const methods: LoadingBarProviderInst = {
       start() {
-        if (isMounted.value) {
+        if (isMountedRef.value) {
           loadingBarRef.value?.start()
         } else {
           void nextTick(() => {
@@ -66,7 +62,7 @@ export default defineComponent({
         }
       },
       error() {
-        if (isMounted.value) {
+        if (isMountedRef.value) {
           loadingBarRef.value?.error()
         } else {
           void nextTick(() => {
@@ -75,7 +71,7 @@ export default defineComponent({
         }
       },
       finish() {
-        if (isMounted.value) {
+        if (isMountedRef.value) {
           loadingBarRef.value?.finish()
         } else {
           void nextTick(() => {
