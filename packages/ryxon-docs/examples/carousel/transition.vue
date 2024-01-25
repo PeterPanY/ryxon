@@ -15,6 +15,7 @@
     :centered-slides="isCard"
     :slides-per-view="isCard ? 'auto' : 1"
     draggable
+    show-arrow
     style="height: 240px"
     @item-click="handleItemClick"
   >

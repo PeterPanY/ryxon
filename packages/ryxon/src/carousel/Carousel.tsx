@@ -261,20 +261,12 @@ export default defineComponent({
           Object.assign(style, transitionStyleRef.value)
         }
 
-        if (effect === 'slide-alone') {
-          if (isMountedRef.value) {
-            Object.assign(style, transitionStyleRef.value, {
-              transform: calcTranslate(i),
-              transitionDuration: 0
-            })
-          } else {
-            Object.assign(style, transitionStyleRef.value, {
-              transitionDuration: 0,
-              opacity: 0
-            })
-          }
+        if (isMountedRef.value && effect === 'slide-alone') {
+          Object.assign(style, transitionStyleRef.value, {
+            transform: calcTranslate(i),
+            transitionDuration: 0
+          })
         }
-
         return styles
       }, [])
     })

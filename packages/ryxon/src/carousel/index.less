@@ -127,10 +127,22 @@
     }
 
     .r-carousel__slide {
+      opacity: 0;
       position: absolute;
       top: 0;
       left: 0;
       display: inline-block;
+    }
+    .r-carousel__slide--prev,
+    .r-carousel__slide--current,
+    .r-carousel__slide--next {
+      opacity: 1;
+    }
+
+    .r-carousel__slide--current,
+    .r-carousel__dots,
+    .r-carousel__arrow-group {
+      z-index: 2;
     }
 
     .r-carousel__slide--animate {
