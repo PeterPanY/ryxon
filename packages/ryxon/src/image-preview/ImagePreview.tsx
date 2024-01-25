@@ -271,7 +271,6 @@ export default defineComponent({
         ref={swipeRef}
         lazyRender
         draggable={false}
-        touchable={false}
         loop={props.loop}
         effect="fade"
         class={bem('swipe')}
