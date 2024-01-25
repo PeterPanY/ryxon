@@ -5,7 +5,7 @@ lang: zh
 
 # Carousel 走马灯
 
-## 基础使用
+<!-- ## 基础使用
 
 :::demo
 
@@ -75,7 +75,7 @@ carousel/slides-per-auto
 
 carousel/centered
 
-:::
+::: -->
 
 ## 过渡效果
 
@@ -85,7 +85,7 @@ carousel/transition
 
 :::
 
-## 自定义过渡效果
+<!-- ## 自定义过渡效果
 
 :::demo 如果你想要自定义过渡效果，可以使用 `transition-props`，并把 `effect` 设置为 `custom`，具体配置见[官方文档](https://cn.vuejs.org/api/built-in-components.html#transition)。
 
@@ -115,7 +115,7 @@ carousel/dots-custom
 
 carousel/card-custom
 
-:::
+::: -->
 
 ## API
 
