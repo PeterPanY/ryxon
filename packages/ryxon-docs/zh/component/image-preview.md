@@ -57,7 +57,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | maxZoom | 手势缩放时，最大缩放比例 | `number \| string` | `3` |
 | closeable | 是否显示关闭图标 | `boolean` | `true` |
 | showIndex | 是否显示页码 | `boolean` | `true` |
-| className | 自定义类名 | `string \| Array \| object` | - |
+| className | 自定义类名(应用在图片预览的弹出层) | `string \| Array \| object` | - |
 | closeIcon | 关闭图标名称或图片链接 | `string` | `clear` |
 | transition | 动画类名，等价于 [transition](https://cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
@@ -89,7 +89,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | max-zoom | 手势缩放时，最大缩放比例 | `number \| string` | `3` |
 | closeable | 是否显示关闭图标 | `boolean` | `false` |
 | show-index | 是否显示页码 | `boolean` | `true` |
-| class-name | 自定义类名 | `string \| Array \| object` | - |
+| class-name | 自定义类名(应用在图片预览的弹出层) | `string \| Array \| object` | - |
 | close-icon | 关闭图标名称或图片链接 | `string` | `clear` |
 | transition | 动画类名，等价于 [transition](https://cn.vuejs.org/api/built-in-components.html#transition) 的 `name` 属性 | `string` | `r-fade` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(active: number) => boolean \| Promise\<boolean\>` | - |
