@@ -7,11 +7,15 @@ import {
   type ExtractPropTypes
 } from 'vue'
 
-// Composables
-import { useEventListener } from '@ryxon/use'
+import { useExpose } from '../composables/use-expose'
 
 // Utils
-import { isString, makeNumericProp, makeStringProp } from '@ryxon/utils'
+import {
+  isString,
+  makeNumericProp,
+  makeStringProp,
+  windowWidth
+} from '@ryxon/utils'
 import { iconPropType, createNamespace } from '../utils'
 import type { TextEllipsisType } from './types'
 
@@ -39,7 +43,7 @@ export default defineComponent({
 
   props: textEllipsisProps,
 
-  emits: ['clickAction'],
+  emits: ['click-action'],
 
   setup(props, { emit }) {
     const text = ref('')
@@ -130,9 +134,13 @@ export default defineComponent({
       document.body.removeChild(container)
     }
 
+    const toggle = (isExpanded = !expanded.value) => {
+      expanded.value = isExpanded
+    }
+
     const onClickAction = (event: MouseEvent) => {
-      expanded.value = !expanded.value
-      emit('clickAction', event)
+      toggle()
+      emit('click-action', event)
     }
 
     // 省略时提示
@@ -183,9 +191,9 @@ export default defineComponent({
 
     onMounted(calcEllipsised)
 
-    watch(() => [props.content, props.rows], calcEllipsised)
+    watch([windowWidth, () => [props.content, props.rows]], calcEllipsised)
 
-    useEventListener('resize', calcEllipsised)
+    useExpose({ toggle })
 
     return () => (
       <div ref={root} class={bem()}>

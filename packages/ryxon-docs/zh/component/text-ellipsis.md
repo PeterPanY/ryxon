@@ -69,12 +69,35 @@ text-ellipsis/icon
 | ------------ | ------------------- | ------------------- |
 | click-action | 点击展开/收起时触发 | `event: MouseEvent` |
 
+### TextEllipsis 方法
+
+通过 ref 可以获取到 TextEllipsis 实例并调用实例方法，详见[组件实例方法](/zh/guide/advanced-usage.html#组件实例方法)。
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| toggle | 切换文本的展开状态，传 `true` 为展开，`false` 为收起，不传参为切换 | `expanded?: boolean` | - |
+
 ### 类型定义
 
 组件导出以下类型定义：
 
 ```ts
-import type { TextEllipsisProps, TextEllipsisThemeVars } from 'ryxon'
+import type {
+  TextEllipsisProps,
+  TextEllipsisInstance,
+  TextEllipsisThemeVars
+} from 'ryxon'
+```
+
+`TextEllipsisInstance` 是组件实例的类型，用法如下：
+
+```ts
+import { ref } from 'vue'
+import type { TextEllipsisInstance } from 'ryxon'
+
+const textEllipsisRef = ref<TextEllipsisInstance>()
+
+textEllipsisRef.value?.toggle()
 ```
 
 ## 主题定制
