@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { isNumber } from '@vueuse/core'
+import { isNumber } from '@ryxon/utils'
 
 export const useScrollbar = () => {
   const scrollBarRef = ref()

@@ -10,9 +10,8 @@ import {
 } from 'vue'
 
 // Utils
-import { addUnit, isString, componentSizes } from '@ryxon/utils'
+import { addUnit, isNumber, isString, componentSizes } from '@ryxon/utils'
 import { cssVarBlock, iconPropType, createNamespace } from '../utils'
-import { isNumber } from '@vueuse/core'
 import type { ImageFit } from '../image'
 
 // Components

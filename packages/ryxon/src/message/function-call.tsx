@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { render, isVNode, createVNode } from 'vue'
-import { isClient, isNumber } from '@vueuse/core'
+import { isClient } from '@vueuse/core'
 import { instances } from './instance'
-import { extend, isElement, isString, isFunction } from '@ryxon/utils'
+import { extend, isElement, isNumber, isString, isFunction } from '@ryxon/utils'
 
 import MessageConstructor from './Message'
 import type { AppContext } from 'vue'

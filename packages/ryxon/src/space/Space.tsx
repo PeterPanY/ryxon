@@ -12,9 +12,8 @@ import {
   type VNode,
   type VNodeChild
 } from 'vue'
-import { extend, isString, definePropType } from '@ryxon/utils'
+import { extend, isNumber, isString, definePropType } from '@ryxon/utils'
 import { createNamespace } from '../utils'
-import { isNumber } from '@vueuse/core'
 
 const [name, bem] = createNamespace('space')
 

@@ -33,6 +33,8 @@ export const { isArray } = Array
 export const isObject = (val: unknown): val is Record<any, any> =>
   val !== null && typeof val === 'object'
 
+export const isNumber = (val: any): val is number => typeof val === 'number'
+
 // 判断是不是为空
 export const isEmpty = (val: unknown) =>
   (!val && val !== 0) ||

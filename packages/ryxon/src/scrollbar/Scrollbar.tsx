@@ -16,14 +16,15 @@ import {
 } from 'vue'
 
 import {
-  isObject,
   addUnit,
+  isObject,
+  isNumber,
   unknownProp,
   makeStringProp,
   type ComponentInstance
 } from '@ryxon/utils'
 import { createNamespace } from '../utils'
-import { isNumber, useEventListener, useResizeObserver } from '@vueuse/core'
+import { useEventListener, useResizeObserver } from '@vueuse/core'
 import { scrollbarContextKey } from './token'
 import { useExpose } from '../composables/use-expose'
 import { GAP } from './util'
