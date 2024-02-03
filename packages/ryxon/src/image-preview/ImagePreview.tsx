@@ -29,8 +29,7 @@ import {
   callInterceptor
 } from '@ryxon/utils'
 import { iconPropType, createNamespace, HAPTICS_FEEDBACK } from '../utils'
-import { useEventListener } from '@vueuse/core'
-import { throttle } from 'lodash-unified'
+import { useEventListener, useThrottleFn } from '@vueuse/core'
 import { EVENT_CODE } from '../constants/aria'
 
 // Composables
@@ -196,7 +195,7 @@ export default defineComponent({
     }
 
     function registerEventListener() {
-      const keydownHandler = throttle((e: KeyboardEvent) => {
+      const keydownHandler = useThrottleFn((e: KeyboardEvent) => {
         switch (e.code) {
           // ESC
           case EVENT_CODE.esc:
@@ -224,7 +223,7 @@ export default defineComponent({
             break
         }
       })
-      const mousewheelHandler = throttle((e: WheelEvent) => {
+      const mousewheelHandler = useThrottleFn((e: WheelEvent) => {
         const delta = e.deltaY || e.deltaX
         handleActions(delta < 0 ? 'zoomIn' : 'zoomOut')
       })

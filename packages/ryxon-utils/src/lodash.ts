@@ -9,7 +9,6 @@ export {
   isNil,
   isEqual,
   flatMap,
-  throttle,
   debounce,
   fromPairs,
   pick as lodashPick,

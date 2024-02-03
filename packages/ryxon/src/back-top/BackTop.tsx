@@ -24,7 +24,7 @@ import {
   makeNumericProp
 } from '@ryxon/utils'
 import { createNamespace } from '../utils'
-import { throttle } from '../lazyload/vue-lazyload/util'
+import { useThrottleFn } from '@vueuse/core'
 
 // Composables
 import { useEventListener, getScrollParent } from '@ryxon/use'
@@ -117,7 +117,9 @@ export default defineComponent({
       }
     }
 
-    useEventListener('scroll', throttle(scroll, 100), { target: scrollParent })
+    useEventListener('scroll', useThrottleFn(scroll, 100), {
+      target: scrollParent
+    })
 
     onMounted(updateTarget)
 

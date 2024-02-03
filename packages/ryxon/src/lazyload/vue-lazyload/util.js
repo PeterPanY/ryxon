@@ -108,27 +108,6 @@ export function supportWebp() {
   return support
 }
 
-export function throttle(action, delay) {
-  let timeout = null
-  let lastRun = 0
-  return function (...args) {
-    if (timeout) {
-      return
-    }
-    const elapsed = Date.now() - lastRun
-    const runCallback = () => {
-      lastRun = Date.now()
-      timeout = false
-      action.apply(this, args)
-    }
-    if (elapsed >= delay) {
-      runCallback()
-    } else {
-      timeout = setTimeout(runCallback, delay)
-    }
-  }
-}
-
 export function on(el, type, func) {
   el.addEventListener(type, func, {
     capture: false,
