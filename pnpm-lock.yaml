@@ -341,6 +341,9 @@ importers:
       '@ryxon/icons':
         specifier: workspace:*
         version: link:../ryxon-icons
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.15)
       '@vueuse/integrations':
         specifier: ^10.7.2
         version: 10.7.2(focus-trap@7.5.4)(sortablejs@1.15.1)(vue@3.4.15)
