@@ -15,7 +15,6 @@
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
     "@vueuse/integrations": "^10.7.2",
-    "clipboard-copy": "^4.0.1",
     "escape-html": "^1.0.3",
     "fast-glob": "^3.3.2",
     "markdown-it": "^13.0.2",

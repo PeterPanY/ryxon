@@ -27,8 +27,8 @@
 
 <script lang="ts" setup>
 import { ref, markRaw } from 'vue'
+import { useClipboard } from '@vueuse/core'
 import type { DefineComponent } from 'vue'
-import clipboardCopy from 'clipboard-copy'
 import { showMessage } from '@ryxon/components'
 import * as Icons from '@ryxon/icons'
 import IconCategories from './icons-categories.json'
@@ -40,29 +40,24 @@ type CategoriesItem = {
 
 const copyIcon = ref(true)
 
-const copyContent = async (content) => {
-  try {
-    await clipboardCopy(content)
+const { copy } = useClipboard()
 
-    showMessage({
-      message: '复制成功',
-      type: 'success'
-    })
-  } catch {
-    showMessage({
-      message: '复制失败',
-      type: 'danger'
-    })
-  }
-}
+const copySvgIcon = (name, refs) => {
+  let content = ''
 
-const copySvgIcon = async (name, refs) => {
   if (copyIcon.value) {
-    await copyContent(`<r-icon><${name} /></r-icon>`)
+    content = `<r-icon><${name} /></r-icon>`
   } else {
-    const content = refs[name]?.[0].querySelector('svg')?.outerHTML ?? ''
-    await copyContent(content)
+    content = refs[name]?.[0].querySelector('svg')?.outerHTML ?? ''
   }
+
+  copy(content)
+    .then(() => {
+      showMessage({ message: '复制成功', type: 'success' })
+    })
+    .catch(() => {
+      showMessage({ message: '复制失败', type: 'danger' })
+    })
 }
 
 const categories = markRaw<CategoriesItem[]>([])

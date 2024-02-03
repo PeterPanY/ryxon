@@ -344,9 +344,6 @@ importers:
       '@vueuse/integrations':
         specifier: ^10.7.2
         version: 10.7.2(focus-trap@7.5.4)(sortablejs@1.15.1)(vue@3.4.15)
-      clipboard-copy:
-        specifier: ^4.0.1
-        version: 4.0.1
       escape-html:
         specifier: ^1.0.3
         version: 1.0.3
@@ -3929,10 +3926,6 @@ packages:
   /cli-width@4.1.0:
     resolution: {integrity: sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ==}
     engines: {node: '>= 12'}
-    dev: true
-
-  /clipboard-copy@4.0.1:
-    resolution: {integrity: sha512-wOlqdqziE/NNTUJsfSgXmBMIrYmfd5V0HCGsR8uAKHcg+h9NENWINcfRjtWGU77wDHC8B8ijV4hMTGYbrKovng==}
     dev: true
 
   /cliui@8.0.1:
