@@ -31,15 +31,8 @@ import { PhotoFilled, PhotoFailFilled } from '@ryxon/icons'
 
 const [, bem] = createNamespace('image')
 
-export type ImageFit = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-
-export type ImagePosition =
-  | 'center'
-  | 'top'
-  | 'right'
-  | 'bottom'
-  | 'left'
-  | string
+// Types
+import type { ImageFit, ImagePosition } from './types'
 
 export const imageProps = {
   src: String,

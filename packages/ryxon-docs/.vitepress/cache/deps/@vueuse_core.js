@@ -1,4 +1,4 @@
-import { del, isVue2, isVue3, set } from './chunk-I6GE3T3M.js'
+import { del, isVue2, isVue3, set } from './chunk-JRNWA3HP.js'
 import {
   computed,
   customRef,
@@ -29,10 +29,10 @@ import {
   version,
   watch,
   watchEffect
-} from './chunk-C4XR4E6H.js'
+} from './chunk-TRFVCSD4.js'
 import './chunk-Y2F7D3TJ.js'
 
-// ../../node_modules/.pnpm/@vueuse+shared@9.13.0_vue@3.3.13/node_modules/@vueuse/shared/index.mjs
+// ../../node_modules/.pnpm/@vueuse+shared@9.13.0_vue@3.4.15/node_modules/@vueuse/shared/index.mjs
 var __defProp$9 = Object.defineProperty
 var __defProps$6 = Object.defineProperties
 var __getOwnPropDescs$6 = Object.getOwnPropertyDescriptors
@@ -1721,7 +1721,7 @@ function whenever(source, cb, options) {
   )
 }
 
-// ../../node_modules/.pnpm/@vueuse+core@9.13.0_vue@3.3.13/node_modules/@vueuse/core/index.mjs
+// ../../node_modules/.pnpm/@vueuse+core@9.13.0_vue@3.4.15/node_modules/@vueuse/core/index.mjs
 function computedAsync(evaluationCallback, initialState, optionsOrRef) {
   let options
   if (isRef(optionsOrRef)) {

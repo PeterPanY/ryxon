@@ -72,29 +72,16 @@ export async function compileSite(isProd = false) {
       },
       distPath: {
         root: ryxonConfig.build?.site?.outputDir || SITE_DIST_DIR
-      }
+      },
+      cleanDistPath: true
     },
     html: {
       template: ({ entryName }) => join(SITE_SRC_DIR, `${entryName}.html`),
       templateParameters: getTemplateParams()
     },
     tools: {
-      bundlerChain(chain, { CHAIN_ID }) {
-        const vueRule = chain.module.rules
-          .get(CHAIN_ID.RULE.VUE)
-          .use(CHAIN_ID.USE.VUE)
-        const vueLoader = vueRule.get('loader')
-        const vueOptions = vueRule.get('options')
-
-        chain.module
-          .rule('md')
-          .test(/\.md$/)
-          .use('vue')
-          .loader(vueLoader)
-          .options(vueOptions)
-          .end()
-          .use('md')
-          .loader(MD_LOADER)
+      bundlerChain(chain) {
+        chain.module.rule('md').test(/\.md$/).use('md').loader(MD_LOADER)
       },
       rspack: {
         plugins: [

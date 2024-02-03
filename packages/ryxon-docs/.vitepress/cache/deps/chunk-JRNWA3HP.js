@@ -1,4 +1,4 @@
-// ../../node_modules/.pnpm/vue-demi@0.14.6_vue@3.3.13/node_modules/vue-demi/lib/index.mjs
+// ../../node_modules/.pnpm/vue-demi@0.14.6_vue@3.4.15/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false
 var isVue3 = true
 function set(target, key, val) {
@@ -19,4 +19,4 @@ function del(target, key) {
 }
 
 export { isVue2, isVue3, set, del }
-//# sourceMappingURL=chunk-I6GE3T3M.js.map
+//# sourceMappingURL=chunk-JRNWA3HP.js.map

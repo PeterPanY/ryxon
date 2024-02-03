@@ -94,7 +94,7 @@ app.use(Lazyload, {
 | ------------- | ---------------- | ---------- | ---------- |
 | loading       | 加载时的图片     | `string`   | -          |
 | error         | 错误时的图片     | `string`   | -          |
-| preload       | 预加载高度的比例 | `string`   | -          |
+| preLoad       | 预加载高度的比例 | `string`   | -          |
 | attempt       | 尝试次数         | `number`   | `3`        |
 | listenEvents  | 监听的事件       | `string[]` | `scroll`等 |
 | adapter       | 适配器           | `object`   | -          |

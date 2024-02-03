@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { inject, onBeforeUnmount, onMounted, provide, ref, unref } from 'vue'
 import Collection from './collection.vue'
 import CollectionItem from './collection-item.vue'
@@ -11,7 +12,7 @@ import type {
 export const COLLECTION_ITEM_SIGN = `data-el-collection-item`
 
 // Make sure the first letter of name is capitalized
-export const createCollectionWithScope = (name: string) => {
+export const createCollectionWithScope = (name: string): any => {
   const COLLECTION_NAME = `R${name}Collection`
   const COLLECTION_ITEM_NAME = `${COLLECTION_NAME}Item`
   const COLLECTION_INJECTION_KEY: InjectionKey<RCollectionInjectionContext> =

@@ -6,7 +6,7 @@ export type CollectionItem<T = Record<string, any>> = {
 
 export type RCollectionInjectionContext = {
   itemMap: Map<HTMLElement, CollectionItem>
-  getItems: () => void
+  getItems: <T>() => CollectionItem<T>[]
   collectionRef: Ref<HTMLElement | null>
 }
 
