@@ -90,7 +90,7 @@ import {
   onMounted,
   defineComponent
 } from 'vue'
-import { debounce } from 'lodash-unified'
+import { useDebounceFn } from '@vueuse/core'
 import { createNamespace } from '../../utils'
 import { useRepeatClick as RepeatClick } from '../../composables/use-repeat-click'
 import { basicTimeSpinnerProps } from '../props/basic-time-spinner'
@@ -194,7 +194,7 @@ export default defineComponent({
       adjustSpinner(type, unref(timePartials)[type])
     }
 
-    const debouncedResetScroll = debounce((type) => {
+    const debouncedResetScroll = useDebounceFn((type) => {
       isScrolling = false
       adjustCurrentSpinner(type)
     }, 200)

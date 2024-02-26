@@ -1,5 +1,5 @@
 import { computed, inject, nextTick, ref, watch } from 'vue'
-import { debounce } from 'lodash-unified'
+import { useDebounceFn } from '@vueuse/core'
 import { EVENT_CODE } from '../../constants'
 import { sliderContextKey } from '../types'
 import type { CSSProperties, ComputedRef, Ref, SetupContext } from 'vue'
@@ -30,11 +30,11 @@ const useTooltip = (
       props.modelValue
   )
 
-  const displayTooltip = debounce(() => {
+  const displayTooltip = useDebounceFn(() => {
     showTooltip.value && (tooltipVisible.value = true)
   }, 50)
 
-  const hideTooltip = debounce(() => {
+  const hideTooltip = useDebounceFn(() => {
     showTooltip.value && (tooltipVisible.value = false)
   }, 50)
 

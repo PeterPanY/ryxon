@@ -99,9 +99,9 @@ import {
   onMounted,
   defineComponent
 } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 import { ArrowDown, Close } from '@ryxon/icons'
 import { useParent, useCustomInputValue } from '@ryxon/use'
-import { debounce } from 'lodash-unified'
 import { Input } from '../input'
 import { Button } from '../button'
 import { Icon } from '../icon'
@@ -194,7 +194,7 @@ export default defineComponent({
       showPicker.value = value
     }
 
-    const debounceSetShowPicker = debounce(setShowPicker, 100)
+    const debounceSetShowPicker = useDebounceFn(setShowPicker, 100)
 
     function show() {
       if (colorDisabled.value) return

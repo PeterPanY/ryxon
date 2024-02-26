@@ -12,8 +12,8 @@ import {
 } from 'vue'
 import { SelectProps } from './select-props'
 import { useParent } from '@ryxon/use'
-import { get, isEqual, debounce as lodashDebounce } from 'lodash-unified'
-import { isClient } from '@vueuse/core'
+import { get, isEqual } from 'lodash-unified'
+import { isClient, useDebounceFn } from '@vueuse/core'
 import {
   isObject,
   isNumber,
@@ -62,7 +62,11 @@ export function useSelectStates(props: SelectProps) {
 
 type States = ReturnType<typeof useSelectStates>
 
-export const useSelect = (props: SelectProps, states: States, ctx: any) => {
+export const useSelect = (
+  props: SelectProps,
+  states: States,
+  ctx: any
+): any => {
   const reference = ref<ComponentPublicInstance<{
     focus: () => void
     blur: () => void
@@ -746,11 +750,11 @@ export const useSelect = (props: SelectProps, states: States, ctx: any) => {
     }
   }
 
-  const debouncedOnInputChange = lodashDebounce(() => {
+  const debouncedOnInputChange = useDebounceFn(() => {
     onInputChange()
   }, debounce.value)
 
-  const debouncedQueryChange = lodashDebounce((e) => {
+  const debouncedQueryChange = useDebounceFn((e) => {
     handleQueryChange(e.target.value)
   }, debounce.value)
 

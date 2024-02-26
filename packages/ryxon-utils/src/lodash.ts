@@ -9,7 +9,6 @@ export {
   isNil,
   isEqual,
   flatMap,
-  debounce,
   fromPairs,
   pick as lodashPick,
   flatten as loadshFlatten,

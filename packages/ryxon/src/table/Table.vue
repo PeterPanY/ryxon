@@ -149,7 +149,7 @@
 
 <script lang="ts">
 import { provide, computed, defineComponent, getCurrentInstance } from 'vue'
-import { debounce } from 'lodash-unified'
+import { useDebounceFn } from '@vueuse/core'
 import Mousewheel from '../composables/use-mousewheel'
 import { createNamespace } from '../utils'
 import TableLayout from './table-layout'
@@ -200,7 +200,7 @@ export default defineComponent({
     'header-dragend',
     'expand-change'
   ],
-  setup(props) {
+  setup(props): any {
     const [, bem, t] = createNamespace('table')
 
     type Row = (typeof props.data)[number]
@@ -258,7 +258,7 @@ export default defineComponent({
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } =
       useScrollbar()
 
-    const debouncedUpdateLayout = debounce(doLayout, 50)
+    const debouncedUpdateLayout = useDebounceFn(doLayout, 50)
 
     const tableId = `r-table_${tableIdSeed++}`
     table.tableId = tableId

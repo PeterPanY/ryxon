@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { h, inject, ref } from 'vue'
-import { debounce } from 'lodash-unified'
+import { useDebounceFn } from '@vueuse/core'
 import { getStyle, hasClass } from '@ryxon/utils'
 import { createTablePopper, getCell, getColumnByCell } from '../util'
 import { TABLE_INJECTION_KEY } from '../tokens'
@@ -8,7 +8,7 @@ import type { TableColumnCtx } from '../../table-column/defaults'
 import type { TableBodyProps } from './defaults'
 import type { TableOverflowTooltipOptions } from '../util'
 
-function useEvents<T>(props: Partial<TableBodyProps<T>>) {
+function useEvents<T>(props: Partial<TableBodyProps<T>>): any {
   const parent = inject(TABLE_INJECTION_KEY)
   const tooltipContent = ref('')
   const tooltipTrigger = ref(h('div'))
@@ -42,11 +42,11 @@ function useEvents<T>(props: Partial<TableBodyProps<T>>) {
     handleEvent(event, row, 'contextmenu')
   }
 
-  const handleMouseEnter = debounce((index: number) => {
+  const handleMouseEnter = useDebounceFn((index: number) => {
     props.store.commit('setHoverRow', index)
   }, 30)
 
-  const handleMouseLeave = debounce(() => {
+  const handleMouseLeave = useDebounceFn(() => {
     props.store.commit('setHoverRow', null)
   }, 30)
 

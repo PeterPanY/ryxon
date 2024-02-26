@@ -102,10 +102,9 @@ import {
   useAttrs as useRawAttrs,
   type StyleValue
 } from 'vue'
-import { debounce } from 'lodash-unified'
-import { useCustomInputValue } from '@ryxon/use'
+import { onClickOutside, useDebounceFn } from '@vueuse/core'
 import { Loading } from '@ryxon/icons'
-import { onClickOutside } from '@vueuse/core'
+import { useCustomInputValue } from '@ryxon/use'
 import { isArray, generateId } from '@ryxon/utils'
 import { createNamespace } from '../utils'
 import { Tooltip } from '../tooltip'
@@ -211,7 +210,7 @@ export default defineComponent({
       }
     }
 
-    const debouncedGetData = debounce(getData, props.debounce)
+    const debouncedGetData = useDebounceFn(getData, props.debounce)
 
     const handleInput = (value: string) => {
       const valuePresented = !!value

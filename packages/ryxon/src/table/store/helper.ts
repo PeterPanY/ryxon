@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { watch } from 'vue'
-import { debounce } from 'lodash-unified'
+import { useDebounceFn } from '@vueuse/core'
 import useStore from '.'
 
 import type { Store } from '.'
@@ -62,7 +62,7 @@ export function createStore<T>(table: Table<T>, props: TableProps<T>) {
   }
 
   const store = useStore<T>()
-  store.toggleAllSelection = debounce(store._toggleAllSelection, 10)
+  store.toggleAllSelection = useDebounceFn(store._toggleAllSelection, 10)
   Object.keys(InitialStateMap).forEach((key) => {
     handleValue(getArrKeysValue(props, key), key, store)
   })
