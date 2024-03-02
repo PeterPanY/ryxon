@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { computed, getCurrentInstance } from 'vue'
-import { fromPairs } from 'lodash-unified'
+import { fromPairs } from '@ryxon/utils'
 
 import type { ComputedRef } from 'vue'
 

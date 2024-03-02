@@ -2925,7 +2925,7 @@ Sortable.mount(new AutoScrollPlugin())
 Sortable.mount(Remove, Revert)
 var sortable_esm_default = Sortable
 
-// ../../node_modules/.pnpm/@vueuse+integrations@10.7.2_focus-trap@7.5.4_sortablejs@1.15.1_vue@3.4.15/node_modules/@vueuse/integrations/useSortable.mjs
+// ../../node_modules/.pnpm/@vueuse+integrations@10.7.2_sortablejs@1.15.1_vue@3.4.15/node_modules/@vueuse/integrations/useSortable.mjs
 function useSortable(el, list, options = {}) {
   let sortable
   const { document: document2 = defaultDocument, ...resetOptions } = options

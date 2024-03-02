@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { watch } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { isNil } from 'lodash-unified'
+import { isNil } from '@ryxon/utils'
 import { genFileId } from './utils'
 import type { UploadProps } from './Upload'
 import type {

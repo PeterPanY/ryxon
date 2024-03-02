@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { computed, h, inject } from 'vue'
-import { merge } from 'lodash-unified'
+import { merge } from '@ryxon/utils'
 import { createNamespace } from '../../utils'
 import { getRowIdentity } from '../util'
 import { TABLE_INJECTION_KEY } from '../tokens'

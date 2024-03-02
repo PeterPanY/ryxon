@@ -10,6 +10,7 @@ import {
 
 // Utils
 import {
+  isNil,
   isDef,
   addUnit,
   addNumber,
@@ -30,7 +31,6 @@ import {
   HAPTICS_FEEDBACK,
   LONG_PRESS_START_TIME
 } from '../utils'
-import { isNil } from 'lodash-unified'
 
 // Composables
 import { useCustomInputValue } from '@ryxon/use'

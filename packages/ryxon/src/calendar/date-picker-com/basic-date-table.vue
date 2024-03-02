@@ -48,8 +48,7 @@
 // @ts-nocheck
 import { ref, unref, watch, computed, nextTick, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { flatten } from 'lodash-unified'
-import { newCastArray } from '@ryxon/utils'
+import { newCastArray, loadshFlatten } from '@ryxon/utils'
 import { createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { buildPickerTable } from '../utils'
@@ -292,7 +291,7 @@ export default defineComponent({
     })
 
     const hasCurrent = computed<boolean>(() =>
-      flatten(rows.value).some((row) => row.isCurrent)
+      loadshFlatten(rows.value).some((row) => row.isCurrent)
     )
 
     watch(

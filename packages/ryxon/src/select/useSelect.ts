@@ -12,9 +12,10 @@ import {
 } from 'vue'
 import { SelectProps } from './select-props'
 import { useParent } from '@ryxon/use'
-import { get, isEqual } from 'lodash-unified'
 import { isClient, useDebounceFn } from '@vueuse/core'
 import {
+  get,
+  isEqual,
   isObject,
   isNumber,
   isString,

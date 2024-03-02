@@ -44,7 +44,12 @@ export function deepAssignMore(...args: ObjectIndex[]) {
   }
 
   source.forEach((item) => {
-    deepAssign(object, item)
+    // 判断是不是对象
+    if (isObject(item)) {
+      deepAssign(object, item)
+    } else {
+      // 不是对象的情况下
+    }
   })
 
   return object

@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { computed, getCurrentInstance, inject, toRaw, unref, watch } from 'vue'
-import { get } from 'lodash-unified'
-import { escapeStringRegexp } from '@ryxon/utils'
+import { get, escapeStringRegexp } from '@ryxon/utils'
 import { selectGroupKey, selectKey } from './token'
 
 import type { Ref } from 'vue'

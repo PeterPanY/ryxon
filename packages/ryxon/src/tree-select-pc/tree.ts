@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { computed, nextTick, toRefs, watch } from 'vue'
-import { isEqual, pick } from 'lodash-unified'
-import { isFunction } from '@ryxon/utils'
+import { isEqual, isFunction, lodashPick } from '@ryxon/utils'
 import { Tree, treeProps } from '../tree'
 import TreeSelectOption from './tree-select-option'
 import {
@@ -110,7 +109,7 @@ export const useTree = (
 
   return {
     // eslint-disable-next-line no-restricted-syntax
-    ...pick(toRefs(props), Object.keys(treeProps)),
+    ...lodashPick(toRefs(props), Object.keys(treeProps)),
     // eslint-disable-next-line no-restricted-syntax
     ...attrs,
     nodeKey: key,

@@ -9,9 +9,8 @@ import {
 } from 'vue'
 
 // Utils
-import { extend } from '@ryxon/utils'
+import { extend, lodashPick } from '@ryxon/utils'
 import { createNamespace } from '../utils'
-import { pick } from 'lodash-unified'
 import { useSelect } from './select'
 import { useTree } from './tree'
 import CacheOptions from './cache-options'
@@ -55,7 +54,7 @@ export default defineComponent({
     onMounted(() => {
       Object.assign(methods, {
         // eslint-disable-next-line no-restricted-syntax
-        ...pick(tree.value, [
+        ...lodashPick(tree.value, [
           'filter',
           'updateKeyChildren',
           'getCheckedNodes',
@@ -76,7 +75,7 @@ export default defineComponent({
           'insertAfter'
         ]),
         // eslint-disable-next-line no-restricted-syntax
-        ...pick(select.value, ['focus', 'blur'])
+        ...lodashPick(select.value, ['focus', 'blur'])
       })
     })
     return () =>

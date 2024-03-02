@@ -81,8 +81,7 @@
 <script lang="ts">
 import { ref, unref, inject, computed, defineComponent } from 'vue'
 import dayjs from 'dayjs'
-import { union } from 'lodash-unified'
-import { isArray } from '@ryxon/utils'
+import { union, isArray } from '@ryxon/utils'
 import { createNamespace } from '../../utils'
 import { useCurrentLang } from '../../locale'
 import { panelTimeRangeProps } from '../props/panel-time-range'

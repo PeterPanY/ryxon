@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { computed, nextTick, toRefs, type Ref } from 'vue'
-import { pick } from 'lodash-unified'
+import { lodashPick } from '@ryxon/utils'
 import { Select, selectProps } from '../select'
 import { createNamespace } from '../utils'
 import { Tree } from '../tree'
@@ -21,7 +21,7 @@ export const useSelect = (
 
   const result = {
     // eslint-disable-next-line no-restricted-syntax
-    ...pick(toRefs(props), Object.keys(selectProps)),
+    ...lodashPick(toRefs(props), Object.keys(selectProps)),
     // eslint-disable-next-line no-restricted-syntax
     ...attrs,
     valueKey: key,

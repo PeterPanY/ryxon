@@ -1,5 +1,10 @@
-import { isNil } from 'lodash-unified'
-import { isString, buildProps, useSizeProp, definePropType } from '@ryxon/utils'
+import {
+  isNil,
+  isString,
+  buildProps,
+  useSizeProp,
+  definePropType
+} from '@ryxon/utils'
 import type { ComputedRef, ExtractPropTypes, InjectionKey } from 'vue'
 import type ColorPicker from './color-picker.vue'
 

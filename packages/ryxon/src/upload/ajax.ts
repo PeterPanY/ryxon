@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isNil } from 'lodash-unified'
+import { isNil } from '@ryxon/utils'
 import type {
   UploadProgressEvent,
   UploadRequestHandler,

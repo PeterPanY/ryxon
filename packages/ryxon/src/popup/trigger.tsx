@@ -11,8 +11,7 @@ import {
 
 // Utils
 import { unrefElement } from '@vueuse/core'
-import { isNil } from 'lodash-unified'
-import { isElement, definePropType } from '@ryxon/utils'
+import { isNil, isElement, definePropType } from '@ryxon/utils'
 import { createNamespace } from '../utils'
 import { POPPER_INJECTION_KEY } from './types'
 import { useExpose } from '../composables/use-expose'
