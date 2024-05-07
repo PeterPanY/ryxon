@@ -157,6 +157,7 @@ export type ConfigProviderThemeVars = BaseThemeVars &
   import('../footer').FooterThemeVars &
   import('../grid-item').GridItemThemeVars &
   import('../header').HeaderThemeVars &
+  import('../highlight').HighlightThemeVars &
   import('../image').ImageThemeVars &
   import('../image-preview').ImagePreviewThemeVars &
   import('../input').InputThemeVars &
