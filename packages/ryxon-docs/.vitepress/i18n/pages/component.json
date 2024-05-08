@@ -54,6 +54,7 @@
         { "link": "/list", "text": "List 无限滚动列表" },
         { "link": "/pagination", "text": "Pagination 分页" },
         { "link": "/progress", "text": "Progress 进度条" },
+        { "link": "/rolling-text", "text": "RollingText 翻滚文本动效" },
         { "link": "/skeleton", "text": "Skeleton 骨架屏" },
         { "link": "/steps", "text": "Steps 步骤条" },
         { "link": "/sticky", "text": "Sticky 粘性布局" },

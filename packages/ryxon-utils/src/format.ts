@@ -97,6 +97,7 @@ export const kebabCase = (str: string) =>
     .toLowerCase()
     .replace(/^-/, '')
 
+// 补0
 export function padZero(num: Numeric, targetLength = 2): string {
   let str = num + ''
 

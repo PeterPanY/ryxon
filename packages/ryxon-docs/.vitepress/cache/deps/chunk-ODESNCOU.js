@@ -1,3 +1,4 @@
+import { del, isVue2, isVue3, set } from './chunk-ZAOLHGFE.js'
 import {
   Fragment,
   TransitionGroup,
@@ -34,26 +35,6 @@ import {
   watch,
   watchEffect
 } from './chunk-TRFVCSD4.js'
-
-// ../../node_modules/.pnpm/vue-demi@0.14.6_vue@3.4.15/node_modules/vue-demi/lib/index.mjs
-var isVue2 = false
-var isVue3 = true
-function set(target, key, val) {
-  if (Array.isArray(target)) {
-    target.length = Math.max(target.length, key)
-    target.splice(key, 1, val)
-    return val
-  }
-  target[key] = val
-  return val
-}
-function del(target, key) {
-  if (Array.isArray(target)) {
-    target.splice(key, 1)
-    return
-  }
-  delete target[key]
-}
 
 // ../../node_modules/.pnpm/@vueuse+shared@10.7.2_vue@3.4.15/node_modules/@vueuse/shared/index.mjs
 function computedEager(fn, options) {
@@ -9562,4 +9543,4 @@ export {
   useWindowScroll,
   useWindowSize
 }
-//# sourceMappingURL=chunk-3HXOOZB7.js.map
+//# sourceMappingURL=chunk-ODESNCOU.js.map
