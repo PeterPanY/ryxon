@@ -3,6 +3,7 @@ import {
   ref,
   watch,
   onMounted,
+  onActivated,
   defineComponent,
   type ExtractPropTypes
 } from 'vue'
@@ -50,6 +51,7 @@ export default defineComponent({
     const expanded = ref(props.defaultExpanded)
     const hasAction = ref(false)
     const root = ref<HTMLElement>()
+    let needRecalculate = false
 
     const pxToNum = (value: string | null) => {
       if (!value) return 0
@@ -58,34 +60,35 @@ export default defineComponent({
     }
 
     // 计算文本
-    const calcEllipsised = () => {
-      const cloneContainer = () => {
-        if (!root.value) return
+    const cloneContainer = () => {
+      if (!root.value || !root.value.isConnected) return
 
-        const originStyle = window.getComputedStyle(root.value)
-        const container = document.createElement('div')
-        const styleNames: string[] = Array.prototype.slice.apply(originStyle)
-        styleNames.forEach((name) => {
-          container.style.setProperty(name, originStyle.getPropertyValue(name))
-        })
+      const originStyle = window.getComputedStyle(root.value)
+      const container = document.createElement('div')
+      const styleNames: string[] = Array.prototype.slice.apply(originStyle)
 
-        container.style.position = 'fixed'
-        container.style.zIndex = '-9999'
-        container.style.top = '-9999px'
-        container.style.height = 'auto'
-        container.style.minHeight = 'auto'
-        container.style.maxHeight = 'auto'
+      styleNames.forEach((name) => {
+        container.style.setProperty(name, originStyle.getPropertyValue(name))
+      })
 
-        if (props.isHtml) {
-          container.innerHTML = props.content
-        } else {
-          container.innerText = props.content
-        }
+      container.style.position = 'fixed'
+      container.style.zIndex = '-9999'
+      container.style.top = '-9999px'
+      container.style.height = 'auto'
+      container.style.minHeight = 'auto'
+      container.style.maxHeight = 'auto'
 
-        document.body.appendChild(container)
-        return container
+      if (props.isHtml) {
+        container.innerHTML = props.content
+      } else {
+        container.innerText = props.content
       }
+      document.body.appendChild(container)
 
+      return container
+    }
+
+    const calcEllipsised = () => {
       // 计算显示的文本
       const calcEllipsisText = (
         container: HTMLDivElement,
@@ -116,7 +119,11 @@ export default defineComponent({
       }
 
       const container = cloneContainer()
-      if (!container) return
+
+      if (!container) {
+        needRecalculate = true
+        return
+      }
 
       const { paddingBottom, paddingTop, lineHeight } = container.style
       const maxHeight =
@@ -190,6 +197,13 @@ export default defineComponent({
     )
 
     onMounted(calcEllipsised)
+
+    onActivated(() => {
+      if (needRecalculate) {
+        needRecalculate = false
+        calcEllipsised()
+      }
+    })
 
     watch([windowWidth, () => [props.content, props.rows]], calcEllipsised)
 
