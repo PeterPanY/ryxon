@@ -11,7 +11,8 @@ import {
   type Slot,
   type PropType,
   type CSSProperties,
-  type ExtractPropTypes
+  type ExtractPropTypes,
+  type ImgHTMLAttributes
 } from 'vue'
 
 // Utils
@@ -50,7 +51,9 @@ export const imageProps = {
   errorIcon: { type: iconPropType, default: PhotoFailFilled },
   iconPrefix: String,
   showLoading: truthProp,
-  loadingIcon: { type: iconPropType, default: PhotoFilled }
+  loadingIcon: { type: iconPropType, default: PhotoFilled },
+  crossorigin: String as PropType<ImgHTMLAttributes['crossorigin']>,
+  referrerpolicy: String as PropType<ImgHTMLAttributes['referrerpolicy']>
 }
 
 export type ImageProps = ExtractPropTypes<typeof imageProps>
@@ -154,7 +157,9 @@ export default defineComponent({
         style: {
           objectFit: props.fit,
           objectPosition: props.position
-        }
+        },
+        crossorigin: props.crossorigin,
+        referrerpolicy: props.referrerpolicy
       }
 
       if (props.lazyLoad) {

@@ -69,6 +69,8 @@ image/error
 | loading-icon | 加载时提示的图标名称或图片链接，等同于 Icon 组件的 `name 属性` | `string` | `photo` |
 | icon-size | 加载图标和失败图标的大小 | `number \| string` | `32px` |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 `class-prefix 属性` | `string` | `r-icon` |
+| crossorigin | 等同于原生的 [crossorigin](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement/crossOrigin) 属性 | `string` | - |
+| referrerpolicy | 等同于原生的 [referrerpolicy](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement/referrerPolicy) 属性 | `string` | - |
 
 ### 图片填充模式
 
