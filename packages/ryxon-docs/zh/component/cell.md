@@ -79,7 +79,7 @@ cell/solts
 | --- | --- | --- | --- |
 | title | 左侧标题 | `number \| string` | - |
 | value | 右侧内容 | `number \| string` | - |
-| label | 标题下方的描述信息 | `string` | - |
+| label | 标题下方的描述信息 | `number \| string` | - |
 | size | 单元格大小，可选值为 `large` | `string` | - |
 | icon | 左侧图标名称或图片链接 | `string \| Component` | - |
 | icon-prefix | 图标类名前缀，等同于 Icon 组件的 [class-prefix 属性](/zh/component/icon.html#api) | `string` | `r-icon` |
