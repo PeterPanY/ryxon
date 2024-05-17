@@ -20,7 +20,7 @@
   "engines": {
     "pnpm": ">= 9.0.0"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.1.1",
   "devDependencies": {
     "@ryxon/cli": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
