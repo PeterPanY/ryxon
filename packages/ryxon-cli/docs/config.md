@@ -1,6 +1,8 @@
 # Config
 
 - [Config](#----)
+  - [rsbuild.config.mjs](#rsbuildconfigmjs)
+  - [vite.config.mjs](#viteconfigmjs)
   - [ryxon.config.mjs](#ryxonconfigmjs)
     - [name](#name)
     - [build.css.base](#buildcssbase)
@@ -8,7 +10,6 @@
     - [build.site.publicPath](#buildsitepublicpath)
     - [build.srcDir](#buildsrcdir)
     - [build.namedExport](#buildnamedexport)
-    - [build.configureVite](#buildconfigurevite)
     - [build.packageManager](#buildpackagemanager)
     - [site.title](#sitetitle)
     - [site.logo](#sitelogo)
@@ -23,6 +24,34 @@
   - [PostCSS](#postcss)
     - [Default Config](#-----1)
   - [browserslist](#browserslist)
+
+## rsbuild.config.mjs
+
+Ryxon CLI uses [Rsbuild](https://github.com/web-infra-dev/rsbuild) to build the documentation site. You can create an Rsbuild configuration file in the same directory as `ryxon.config.mjs`. The contents of the file will be automatically read by Ryxon CLI.
+
+```js
+// rsbuild.config.mjs or rsbuild.config.ts
+export default {
+  plugins: [
+    // Configure Rsbuild plugins
+  ],
+  dev: {
+    // Options related to local development
+  },
+  html: {
+    // Options related to HTML generation
+  }
+  // Other options
+}
+```
+
+> Please refer to [Configure Rsbuild](https://rsbuild.dev/guide/basic/configure-rsbuild) for more information.
+
+## vite.config.mjs
+
+Ryxon Cli uses Vite to build component library code. You can create a Vite configuration file in the same directory as `ryxon.config.mjs`. In this file, you can add any Vite configuration.
+
+> Please refer to [Vite Configuration](https://vitejs.dev/config/) to learn more.
 
 ## ryxon.config.mjs
 
@@ -191,28 +220,6 @@ module.exports = {
   }
 }
 ```
-
-```js
-module.exports = {
-  build: {
-    configureVite(config) {
-      const { BUILD_TARGET } = process.env
-
-      if (BUILD_TARGET === 'package') {
-        // component library bundle config
-      }
-
-      if (BUILD_TARGET === 'site') {
-        // documentation site bundle config
-      }
-
-      return config
-    }
-  }
-}
-```
-
-Note that you are not allowed to import vite plugins in `ryxon.config.mjs`, because the file will be bundled into the website code.
 
 If you need to configure some vite plugins, please create a `vite.config.ts` file in the same directory of `ryxon.config.mjs`, in which you can add any vite configuration (this feature requires @ryxon/cli 5.1.0).
 

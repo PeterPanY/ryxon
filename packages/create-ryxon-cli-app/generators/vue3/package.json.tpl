@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@ryxon/cli": "^1.0.0",
-    "vue": "^3.4.21",
+    "vue": "^3.4.26",
     "sass": "^1.54.5"
   },
   "eslintConfig": {
