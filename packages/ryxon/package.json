@@ -58,7 +58,6 @@
     "normalize-wheel-es": "^1.2.0"
   },
   "devDependencies": {
-    "@ryxon/area-data": "workspace:*",
     "@ryxon/cli": "workspace:*",
     "@ryxon/eslint-config": "workspace:*",
     "@ryxon/icons": "workspace:*",

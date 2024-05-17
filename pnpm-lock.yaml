@@ -82,9 +82,6 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
     devDependencies:
-      '@ryxon/area-data':
-        specifier: workspace:*
-        version: link:../ryxon-area-data
       '@ryxon/cli':
         specifier: workspace:*
         version: link:../ryxon-cli
@@ -145,27 +142,6 @@ importers:
       vue-router:
         specifier: ^4.3.0
         version: 4.3.2(vue@3.4.27)
-
-  packages/ryxon-area-data:
-    devDependencies:
-      esbuild:
-        specifier: ^0.20.2
-        version: 0.20.2
-      release-it:
-        specifier: ^16.1.3
-        version: 16.3.0(typescript@5.4.5)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-
-  packages/ryxon-auto-import-resolver:
-    devDependencies:
-      rimraf:
-        specifier: ^5.0.5
-        version: 5.0.5
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
 
   packages/ryxon-cli:
     dependencies:
