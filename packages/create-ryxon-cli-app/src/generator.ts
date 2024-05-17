@@ -22,7 +22,7 @@ const PROMPTS = [
     name: 'preprocessor',
     message: 'Select css preprocessor',
     type: 'select',
-    choices: ['Less', 'Sass']
+    choices: ['Sass', 'Less']
   }
 ]
 

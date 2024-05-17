@@ -24,10 +24,10 @@
     "sortablejs": "^1.15.0",
     "vitepress": "^1.1.4",
     "vitepress-theme-demoblock": "^3.0.7",
-    "vue": "^3.4.13"
+    "vue": "^3.4.21"
   },
   "dependencies": {
-    "@types/markdown-it": "^13.0.6",
+    "@types/markdown-it": "^13.0.7",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "markdown-it-container": "^3.0.0",
     "prism-theme-vars": "^0.2.4",

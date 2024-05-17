@@ -34,7 +34,7 @@ import {
   version,
   watch,
   watchEffect
-} from './chunk-TRFVCSD4.js'
+} from './chunk-Y3DRBOC2.js'
 import './chunk-Y2F7D3TJ.js'
 
 // ../../node_modules/.pnpm/@vueuse+shared@10.9.0_vue@3.4.27/node_modules/@vueuse/shared/index.mjs
@@ -8455,13 +8455,9 @@ function useUrlSearchParams(mode = 'history', options = {}) {
   function constructQuery(params) {
     const stringified = params.toString()
     if (mode === 'history')
-      return `${stringified ? `?${stringified}` : ''}${
-        window2.location.hash || ''
-      }`
+      return `${stringified ? `?${stringified}` : ''}${window2.location.hash || ''}`
     if (mode === 'hash-params')
-      return `${window2.location.search || ''}${
-        stringified ? `#${stringified}` : ''
-      }`
+      return `${window2.location.search || ''}${stringified ? `#${stringified}` : ''}`
     const hash = window2.location.hash || '#'
     const index = hash.indexOf('?')
     if (index > 0)

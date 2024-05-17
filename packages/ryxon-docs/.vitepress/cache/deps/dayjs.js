@@ -226,10 +226,10 @@ var require_dayjs_min = __commonJS({
                   return b.w(
                     n2
                       .toDate()
-                      [t3].apply(
-                        n2.toDate('s'),
-                        (r2 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)
-                      ),
+                      [
+                        t3
+                      ].apply(n2.toDate('s'), (r2 ? [0, 0, 0, 0] : [23, 59, 59,
+                              999]).slice(e3)),
                     n2
                   )
                 },
