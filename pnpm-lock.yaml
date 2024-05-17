@@ -67,7 +67,7 @@ importers:
         specifier: ^2.11.8
         version: 2.11.8
       '@ryxon/use':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: link:../ryxon-use
       '@vueuse/core':
         specifier: ^10.7.2
@@ -478,7 +478,7 @@ importers:
   packages/ryxon-utils:
     dependencies:
       '@ryxon/use':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: link:../ryxon-use
       '@types/lodash':
         specifier: ^4.17
