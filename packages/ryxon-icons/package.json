@@ -3,49 +3,22 @@
   "version": "1.4.1",
   "description": "ryxon icons",
   "type": "module",
-  "keywords": [
-    "icon",
-    "svg",
-    "vue",
-    "ryxon"
-  ],
-  "license": "MIT",
-  "bugs": "https://github.com/PeterPanY/ryxon/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/PeterPanY/ryxon.git",
-    "directory": "packages/ryxon-icons"
-  },
-  "files": [
-    "dist"
-  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
+  "unpkg": "dist/index.iife.min.js",
+  "jsdelivr": "dist/index.iife.min.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
-    },
-    "./global": {
-      "types": "./dist/types/global.d.ts",
-      "require": "./dist/global.cjs",
-      "import": "./dist/global.js"
-    },
-    "./*": "./*"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./*",
-        "./dist/types/*"
-      ]
     }
   },
   "sideEffects": false,
-  "unpkg": "dist/index.iife.min.js",
-  "jsdelivr": "dist/index.iife.min.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "pnpm clean && pnpm run build:generate && run-p build:build build:types",
@@ -55,14 +28,27 @@
     "release": "pnpm run build && release-it",
     "prepare": "pnpm build"
   },
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterPanY/ryxon.git",
+    "directory": "packages/ryxon-icons"
+  },
+  "bugs": "https://github.com/PeterPanY/ryxon/issues",
   "author": "PeterPanY",
+  "license": "MIT",
+  "keywords": [
+    "icon",
+    "svg",
+    "vue",
+    "ryxon"
+  ],
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
   "devDependencies": {
     "@ryxon/icons-svg": "workspace:*",
     "@pnpm/find-workspace-dir": "^6.0.3",

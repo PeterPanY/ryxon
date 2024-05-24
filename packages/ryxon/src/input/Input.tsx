@@ -67,7 +67,7 @@ import type {
   InputFormSharedProps
 } from './types'
 
-const [, bem, , isBem] = createNamespace('input')
+const [name, bem, , isBem] = createNamespace('input')
 
 // provide to Search component to inherit
 export const inputSharedProps = {
@@ -82,7 +82,7 @@ export const inputSharedProps = {
   modelValue: makeNumericProp(''),
   inputAlign: String as PropType<InputTextAlign>,
   placeholder: String,
-  autocomplete: { type: String, default: 'off' },
+  autocomplete: String,
   autocapitalize: String,
   autocorrect: String,
   errorMessage: String,
@@ -116,7 +116,7 @@ export type InputProps = ExtractPropTypes<typeof inputProps>
 type TargetElement = HTMLInputElement | HTMLTextAreaElement
 
 export default defineComponent({
-  name: 'RInput',
+  name,
   props: inputProps,
   emits: [
     'blur',
