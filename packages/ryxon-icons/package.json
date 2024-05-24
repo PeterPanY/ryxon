@@ -1,6 +1,6 @@
 {
   "name": "@ryxon/icons",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "ryxon icons",
   "type": "module",
   "main": "./dist/index.cjs",
