@@ -22,7 +22,7 @@
     "ryxon": "workspace:*",
     "sass": "^1.54.5",
     "sortablejs": "^1.15.0",
-    "vitepress": "^1.1.4",
+    "vitepress": "^1.2.2",
     "vitepress-theme-demoblock": "^3.0.7",
     "vue": "^3.4.26"
   },

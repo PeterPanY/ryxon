@@ -38,6 +38,7 @@ autocomplete/remote-search
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | model-value / v-model | 选中项绑定值 | ^[string] | — |
+| input-id | 输入框 id，同时会设置 label 的 for 属性 | `string` | `r-input-n-input` |
 | placeholder | 占位文本 | ^[string] | — |
 | clearable | 是否可清空 | ^[boolean] | `false` |
 | clear-icon ^(v1.10.2) | 清除图标名称或图片链接，等同于 Icon 组件的 `name 属性` | `string` | `clear` |

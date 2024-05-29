@@ -32,6 +32,7 @@
         v-bind="attrs"
         :model-value="modelValue"
         :clear-icon="clearIcon"
+        :id="inputId"
         @input="handleInput"
         @change="handleChange"
         @focus="handleFocus"

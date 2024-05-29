@@ -31,6 +31,7 @@ export type AutocompleteFetchSuggestions =
   | AutocompleteData
 
 export const autocompleteProps = {
+  inputId: String,
   valueKey: { type: String, default: 'value' },
   modelValue: { type: [String, Number], default: '' },
   debounce: { type: Number, default: 300 },
