@@ -29,6 +29,7 @@
         { "link": "/input-number", "text": "InputNumber 数字输入框" },
         { "link": "/mention", "text": "Mention 提及" },
         { "link": "/radio", "text": "Radio 单选框" },
+        { "link": "/rate", "text": "Rate 评分" },
         { "link": "/select", "text": "Select 选择器" },
         { "link": "/slider", "text": "Slider 滑块" },
         { "link": "/switch", "text": "Switch 开关" },

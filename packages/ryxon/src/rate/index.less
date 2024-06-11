@@ -1,0 +1,69 @@
+:root {
+  --r-rate-font-size: var(--r-font-size-md);
+  --r-rate-void-color: var(--r-gray-5);
+  --r-rate-fill-color: #f7ba2a;
+  --r-rate-disabled-void-color: var(--r-fill-color);
+  --r-rate-text-color: var(--r-text-color-primary);
+}
+
+.r-rate {
+  display: inline-flex;
+  align-items: center;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &__item {
+    color: var(--r-rate-void-color);
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+    vertical-align: middle;
+    line-height: normal;
+  }
+
+  &__icon {
+    display: inline-block;
+    position: relative;
+    transition: var(--r-duration-fast);
+
+    &.hover {
+      transform: scale(1.15);
+    }
+
+    &.is-active {
+      color: var(--r-rate-fill-color);
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+
+  &__decimal {
+    color: var(--r-rate-fill-color);
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__decimal,
+  &__decimal--box {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &__text {
+    color: var(--r-rate-text-color);
+    font-size: var(--r-rate-font-size);
+    vertical-align: middle;
+  }
+
+  &--disabled .r-rate__item {
+    color: var(--r-rate-disabled-void-color);
+    cursor: auto;
+  }
+}

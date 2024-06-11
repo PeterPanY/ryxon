@@ -178,6 +178,7 @@ export type ConfigProviderThemeVars = BaseThemeVars &
   import('../progress').ProgressThemeVars &
   import('../pull-refresh').PullRefreshThemeVars &
   import('../radio').RadioThemeVars &
+  import('../rate').RateThemeVars &
   import('../rolling-text').RollingTextThemeVars &
   import('../scrollbar').ScrollbarThemeVars &
   import('../select').SelectThemeVars &
