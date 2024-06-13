@@ -168,6 +168,7 @@ upload/image-options
 | 名称           | 说明                           | 参数                 |
 | -------------- | ------------------------------ | -------------------- |
 | default        | 自定义上传区域                 | -                    |
+| preview-file   | 自定义文件预览区域展示形式     | -                    |
 | preview-delete | 自定义删除按钮                 | -                    |
 | preview-cover  | 自定义覆盖在预览区域上方的内容 | `item: FileListItem` |
 

@@ -419,7 +419,11 @@ export default defineComponent({
 
       return (
         <UploadPreviewItem
-          v-slots={pick(slots, ['preview-cover', 'preview-delete'])}
+          v-slots={pick(slots, [
+            'preview-file',
+            'preview-cover',
+            'preview-delete'
+          ])}
           item={item}
           index={index}
           uploadingText={props.uploadingText}

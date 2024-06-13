@@ -130,7 +130,7 @@ export default defineComponent({
     }
 
     const renderPreview = () => {
-      const { item, lazyLoad, imageFit, previewSize } = props
+      const { item, index, lazyLoad, imageFit, previewSize } = props
 
       if (isImageFile(item)) {
         return (
@@ -149,12 +149,19 @@ export default defineComponent({
 
       return (
         <div class={bem('file')} style={getSizeStyle(props.previewSize)}>
-          <Icon class={bem('file-icon')}>
-            <Document></Document>
-          </Icon>
-          <div class={[bem('file-name'), 'r-ellipsis']}>
-            {item.file ? item.file.name : item.url}
-          </div>
+          {slots['preview-file'] ? (
+            slots['preview-file'](extend({ index }, item))
+          ) : (
+            <>
+              <Icon class={bem('file-icon')}>
+                <Document></Document>
+              </Icon>
+              <div class={[bem('file-name'), 'r-ellipsis']}>
+                {item.file ? item.file.name : item.url}
+              </div>
+            </>
+          )}
+
           {renderCover()}
         </div>
       )
