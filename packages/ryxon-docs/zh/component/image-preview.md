@@ -72,6 +72,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | showTool | 是否显示操作栏 | `boolean` | `true` |
 | zoomRate | 缩放事件的缩放速度 | `number` | `0.2` |
 | closeOnPressEscape | 是否可以通过按下 ESC 关闭 Image Viewer | `Boolean` | `true` |
+| destroyOnClose | 当弹窗关闭时，销毁其中的元素 | `boolean` | `false` |
 | onClose | 关闭时的回调函数 | `Function` | - |
 | onChange | 切换图片时的回调函数，回调参数为当前索引 | `Function` | - |
 | onScale | 缩放图片时的回调函数，回调参数为当前索引和当前缩放值组成的对象 | `Function` | - |
@@ -104,6 +105,7 @@ Ryxon 中导出了以下 ImagePreview 相关的辅助函数：
 | show-tool | 是否显示操作栏 | `boolean` | `true` |
 | zoom-rate | 缩放事件的缩放速度 | `number` | `0.2` |
 | close-on-press-escape | 是否可以通过按下 ESC 关闭 Image Viewer | `Boolean` | `true` |
+| destroy-on-close | 当弹窗关闭时，销毁其中的元素 | `boolean` | `false` |
 
 ### Events
 

@@ -29,7 +29,8 @@ const defaultConfig: ImagePreviewOptions = {
   closeIconPosition: 'top-right',
   showTool: true,
   zoomRate: 0.2,
-  closeOnPressEscape: true
+  closeOnPressEscape: true,
+  destroyOnClose: false
 }
 
 function initInstance() {

@@ -64,7 +64,8 @@ const popupProps = [
   'teleport',
   'transition',
   'overlayStyle',
-  'closeOnPopstate'
+  'closeOnPopstate',
+  'destroyOnClose'
 ] as const
 
 export const imagePreviewProps = {
@@ -90,7 +91,8 @@ export const imagePreviewProps = {
   teleport: [String, Object] as PropType<TeleportProps['to']>,
   showTool: { type: Boolean, default: true },
   zoomRate: { type: Number, default: 0.2 },
-  closeOnPressEscape: { type: Boolean, default: true }
+  closeOnPressEscape: { type: Boolean, default: true },
+  destroyOnClose: Boolean
 }
 
 export type ImagePreviewProps = ExtractPropTypes<typeof imagePreviewProps>

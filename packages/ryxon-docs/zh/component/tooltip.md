@@ -142,6 +142,7 @@ tooltip/controlled
 | close-on-click-outside | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | close-on-click-overlay | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
 | persistent | 当 tooltip 组件长时间不触发且 persistent 属性设置为 false 时, popconfirm 将会被删除 | `boolean` | `false` |
+| destroy-on-close | 当弹窗关闭时，销毁其中的元素 | `boolean` | `false` |
 
 ### Slots
 

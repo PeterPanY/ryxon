@@ -27,7 +27,9 @@ export const popupSharedProps = {
   // Initial rendering animation
   transitionAppear: Boolean,
   // whether to close popup when overlay is clicked
-  closeOnClickOverlay: truthProp
+  closeOnClickOverlay: truthProp,
+  // 关闭时销毁对话框中的元素
+  destroyOnClose: Boolean
 }
 
 export type PopupSharedPropKeys = Array<keyof typeof popupSharedProps>

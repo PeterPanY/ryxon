@@ -89,15 +89,14 @@ export default defineComponent({
 
     const zIndex = ref<number>()
     const popupRef = ref<HTMLElement>()
+    const rendered = ref(false) // 当destroyOnClose为true时，我们将其初始化为false，反之亦然
 
     // 判断是否在显示弹层时才渲染节点
     const lazyRender = useLazyRender(() => props.show || !props.lazyRender)
 
     const style = computed(() => {
       const style: CSSProperties = extend(
-        {
-          zIndex: zIndex.value
-        },
+        { zIndex: zIndex.value },
         props.popperStyle
       )
 
@@ -197,6 +196,10 @@ export default defineComponent({
     const onClosed = () => {
       emit('afterLeave')
       emit('closed')
+
+      if (props.destroyOnClose) {
+        rendered.value = false
+      }
     }
     const onBeforeEnter = () => emit('beforeEnter')
     let timer: ReturnType<typeof setTimeout> | null
@@ -223,10 +226,7 @@ export default defineComponent({
           tabindex={0}
           id={props.id}
           class={[
-            bem({
-              round,
-              [position]: position
-            }),
+            bem({ round, [position]: position }),
             {
               'r-safe-area-top': safeAreaInsetTop,
               'r-safe-area-bottom': safeAreaInsetBottom
@@ -240,8 +240,12 @@ export default defineComponent({
           onMouseleave={onMouseleave}
           onClick={onClickPopup}
         >
-          {slots.default?.()}
-          {renderCloseIcon()}
+          {rendered.value && (
+            <>
+              {slots.default?.()}
+              {renderCloseIcon()}
+            </>
+          )}
         </div>
       )
     })
@@ -267,6 +271,10 @@ export default defineComponent({
     watch(
       () => props.show,
       (show) => {
+        if (show) {
+          rendered.value = true // 启用延迟渲染
+        }
+
         if (show && !opened) {
           open()
 
@@ -297,6 +305,7 @@ export default defineComponent({
       useLockScroll(document.body, () => props.show && props.lockScroll)
 
       if (props.show) {
+        rendered.value = true // 启用延迟渲染
         open()
       }
     })

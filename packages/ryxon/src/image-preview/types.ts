@@ -26,6 +26,7 @@ export type ImagePreviewOptions = {
   showTool?: boolean
   zoomRate?: number
   closeOnPressEscape?: boolean
+  destroyOnClose?: boolean
   onClose?(): void
   onScale?(args: { scale: number; index: number }): void
   onChange?(index: number): void

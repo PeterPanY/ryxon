@@ -80,7 +80,8 @@ const popupProps = [
   'popperClass',
   'popperStyle',
   'transitionAppear',
-  'closeOnClickOverlay'
+  'closeOnClickOverlay',
+  'destroyOnClose'
 ] as const
 
 export const tooltipProps = extend(

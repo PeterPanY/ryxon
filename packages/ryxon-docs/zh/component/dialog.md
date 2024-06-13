@@ -133,6 +133,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | lockScroll | 是否锁定背景滚动 | `boolean` | `true` |
 | beforeClose | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | `body` |
+| destroyOnClose | 当弹窗关闭时，销毁其中的元素 | `boolean` | `false` |
 
 ### Props
 
@@ -173,6 +174,7 @@ Ryxon 中导出了以下 Dialog 相关的辅助函数：
 | lock-scroll | 是否锁定背景滚动 | `boolean` | `true` |
 | before-close | 关闭前的回调函数，返回 `false` 可阻止关闭，支持返回 Promise | `(action: string) => boolean \| Promise\<boolean\>` | - |
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 [to 属性](https://cn.vuejs.org/api/built-in-components.html#teleport) | `string \| Element` | - |
+| destroy-on-close | 当弹窗关闭时，销毁其中的元素 | `boolean` | `false` |
 
 ### Events
 
