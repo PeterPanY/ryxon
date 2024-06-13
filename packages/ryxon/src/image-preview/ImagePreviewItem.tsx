@@ -219,7 +219,13 @@ export default defineComponent({
         {...controlListeners.value}
       >
         {slots.image ? (
-          <div class={bem('image-wrap')}>{slots.image({ src: props.src })}</div>
+          <div class={bem('image-wrap')}>
+            {slots.image({
+              imageStyle: imageStyle.value,
+              src: props.src,
+              onLoad
+            })}
+          </div>
         ) : (
           <Image
             v-slots={imageSlots}

@@ -136,7 +136,10 @@ export default defineComponent({
         <span class={bem('tool')}>
           {showInput.value ? (
             slots.input ? (
-              slots.input()
+              slots.input({
+                submit: handleInputConfirm,
+                deactivate: handleInputBlur
+              })
             ) : (
               <Input
                 ref={inputInstRef}
@@ -149,16 +152,19 @@ export default defineComponent({
                 {...props.inputProps}
                 onKeydown={handleInputKeyDown}
                 onBlur={handleInputBlur}
-              ></Input>
+              />
             )
           ) : slots.trigger ? (
-            slots.trigger({ disabled: triggerDisabled.value })
+            slots.trigger({
+              activate: handleAddClick,
+              disabled: triggerDisabled.value
+            })
           ) : (
             <Button
               disabled={triggerDisabled.value}
               icon={props.icon}
               onClick={handleAddClick}
-            ></Button>
+            />
           )}
         </span>
       </div>
