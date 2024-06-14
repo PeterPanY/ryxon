@@ -89,7 +89,7 @@ export default defineComponent({
 
     const zIndex = ref<number>()
     const popupRef = ref<HTMLElement>()
-    const rendered = ref(false) // 当destroyOnClose为true时，我们将其初始化为false，反之亦然
+    const rendered = ref(!props.destroyOnClose) // 当destroyOnClose为true时，我们将其初始化为false，反之亦然
 
     // 判断是否在显示弹层时才渲染节点
     const lazyRender = useLazyRender(() => props.show || !props.lazyRender)
