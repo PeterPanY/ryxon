@@ -82,7 +82,7 @@ export const inputSharedProps = {
   modelValue: makeNumericProp(''),
   inputAlign: String as PropType<InputTextAlign>,
   placeholder: String,
-  autocomplete: String,
+  autocomplete: makeStringProp('off'),
   autocapitalize: String,
   autocorrect: String,
   errorMessage: String,
