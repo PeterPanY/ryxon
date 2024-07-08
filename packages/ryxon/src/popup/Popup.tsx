@@ -1,6 +1,7 @@
 import {
   h,
   ref,
+  toRef,
   watch,
   provide,
   Teleport,
@@ -300,9 +301,13 @@ export default defineComponent({
       }
     })
 
+    if (props.lockScroll) {
+      useLockScroll(toRef(props, 'show'))
+    }
+
     onMounted(() => {
       // 兼容ssr上找不到document报错问题。
-      useLockScroll(document.body, () => props.show && props.lockScroll)
+      // useLockScroll(document.body, () => props.show && props.lockScroll)
 
       if (props.show) {
         rendered.value = true // 启用延迟渲染
