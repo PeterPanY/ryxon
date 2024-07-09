@@ -126,6 +126,7 @@ upload/image-options
 | upload-text | 上传区域文字提示 | `string` | - |
 | uploading-text | 上传中文字提示 | `string` | `上传中...` |
 | failed-text | 上传失败文字提示 | `string` | `上传失败` |
+| show-failed-tool | 是否显示重新上传、文件替换按钮 | `boolean` | `false` |
 | deletable | 是否展示删除按钮 | `boolean` | `true` |
 | show-upload | 是否展示上传区域 | `boolean` | `true` |
 | preview-size | 预览图和上传区域的尺寸，默认单位为 `px` | `number \| string \| Array` | `80px` |

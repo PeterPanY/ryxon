@@ -2,6 +2,8 @@
 import {
   h,
   ref,
+  computed,
+  nextTick,
   reactive,
   shallowRef,
   defineComponent,
@@ -27,6 +29,8 @@ import {
   makeStringProp,
   definePropType,
   makeNumericProp,
+  callInterceptor,
+  stopPropagation,
   type Numeric,
   type ComponentInstance
 } from '@ryxon/utils'
@@ -70,6 +74,13 @@ import type {
   UploadRequestOptions
 } from './types'
 
+const needPickData = [
+  'imageFit',
+  'deletable',
+  'previewSize',
+  'beforeDelete'
+] as const
+
 export const uploadProps = {
   modelValue: makeArrayProp<UploadFileListItem>(),
   name: makeNumericProp(''),
@@ -86,6 +97,7 @@ export const uploadProps = {
   uploadText: String,
   uploadingText: { type: String, default: t('uploading') },
   failedText: { type: String, default: t('failed') },
+  showFailedTool: Boolean,
   deletable: truthProp,
 
   showUpload: truthProp,
@@ -245,7 +257,10 @@ export default defineComponent({
       doUpload(rawFile)
     }
 
-    const onAfterRead = (items: UploadFileListItem | UploadFileListItem[]) => {
+    const onAfterRead = (
+      items: UploadFileListItem | UploadFileListItem[],
+      index?: number
+    ) => {
       resetInput()
 
       if (isOversize(items, props.maxSize)) {
@@ -276,13 +291,13 @@ export default defineComponent({
       for (const file of files) {
         const rawFile = file as UploadRawFile
         rawFile.uid = genFileId()
-        handleStart(rawFile)
+        handleStart(rawFile, index) // 添加到上传列表中
         // 判断是否开启自动上传
         if (props.autoUpload) upload(rawFile)
       }
     }
 
-    const readFile = (files: File | File[]) => {
+    const readFile = (files: File | File[], index?: number) => {
       const { maxCount, modelValue, resultType } = props
 
       if (Array.isArray(files)) {
@@ -311,7 +326,7 @@ export default defineComponent({
             return result
           })
 
-          onAfterRead(fileList)
+          onAfterRead(fileList, index)
         })
       } else {
         readFileContent(files, resultType).then((content) => {
@@ -327,11 +342,12 @@ export default defineComponent({
             result.content = content
           }
 
-          onAfterRead(result)
+          onAfterRead(result, index)
         })
       }
     }
 
+    const reselectionCallBack = ref()
     const onChange = (event: Event) => {
       const { files } = event.target as HTMLInputElement
 
@@ -354,9 +370,13 @@ export default defineComponent({
           response
             .then((data) => {
               if (data) {
-                readFile(data)
+                reselectionCallBack.value
+                  ? reselectionCallBack.value(data)
+                  : readFile(data)
               } else {
-                readFile(file)
+                reselectionCallBack.value
+                  ? reselectionCallBack.value(file)
+                  : readFile(file)
               }
             })
             .catch(resetInput)
@@ -364,7 +384,9 @@ export default defineComponent({
         }
       }
 
-      readFile(file)
+      reselectionCallBack.value
+        ? reselectionCallBack.value(file)
+        : readFile(file)
     }
 
     let imagePreview: ComponentInstance | undefined
@@ -405,17 +427,30 @@ export default defineComponent({
     }
 
     const renderPreviewItem = (item: UploadFileListItem, index: number) => {
-      const needPickData = [
-        'imageFit',
-        'deletable',
-        'previewSize',
-        'beforeDelete'
-      ] as const
-
       const previewData = extend(
         pick(props, needPickData),
         pick(item, needPickData, true)
       )
+
+      const onDelete = (event: MouseEvent) => {
+        event.stopPropagation()
+        callInterceptor(previewData.beforeDelete, {
+          args: [item, { name: props.name, index }],
+          done: () => handleRemove(item, getDetail(index))
+        })
+      }
+
+      const onReupload = (event: MouseEvent) => {
+        onDelete(event)
+        readFile(item.file, index)
+      }
+
+      const onReselection = (event) => {
+        onClickUpload(event, (file) => {
+          onDelete(event)
+          readFile(file, index)
+        })
+      }
 
       return (
         <UploadPreviewItem
@@ -428,9 +463,12 @@ export default defineComponent({
           index={index}
           uploadingText={props.uploadingText}
           failedText={props.failedText}
+          showFailedTool={props.showFailedTool}
           onClick={() => emit('clickPreview', item, getDetail(index))}
-          onDelete={() => handleRemove(item, getDetail(index))}
+          onDelete={onDelete}
           onPreview={() => previewImage(item)}
+          onReupload={onReupload}
+          onReselection={onReselection}
           {...pick(props, ['name', 'lazyLoad'])}
           {...previewData}
         />
@@ -445,14 +483,25 @@ export default defineComponent({
 
     const chooseFile = () => {
       if (inputRef.value && !props.disabled) {
-        inputRef.value.click()
+        nextTick(() => {
+          inputRef.value.click()
+        })
       }
     }
 
-    const onClickUpload = (event: MouseEvent) => {
+    const onClickUpload = (
+      event: MouseEvent,
+      callBack?: (file: File | File[]) => void
+    ) => {
+      reselectionCallBack.value = callBack
+
       chooseFile()
       emit('clickUpload', event)
     }
+
+    const multiple = computed(() =>
+      reselectionCallBack.value ? false : props.multiple
+    )
 
     const renderUpload = () => {
       if (props.modelValue.length >= +props.maxCount) {
@@ -466,8 +515,9 @@ export default defineComponent({
           class={bem('input')}
           accept={props.accept}
           capture={props.capture as unknown as boolean}
-          multiple={props.multiple}
+          multiple={multiple.value}
           disabled={props.disabled}
+          onClick={stopPropagation}
           onChange={onChange}
         />
       )

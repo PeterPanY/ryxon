@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { watch } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { isNil } from '@ryxon/utils'
+import { isNil, isNumber } from '@ryxon/utils'
 import { genFileId } from './utils'
 import type { UploadProps } from './Upload'
 import type {
@@ -78,9 +78,15 @@ export const useHandlers = (
     props.onChange(file, uploadFiles.value)
   }
 
-  const handleStart = (file) => {
+  const handleStart = (file, index?: number) => {
     if (isNil(file.uid)) file.uid = genFileId()
-    uploadFiles.value = [...uploadFiles.value, file]
+
+    if (isNumber(index)) {
+      uploadFiles.value.splice(index, 0, file)
+    } else {
+      uploadFiles.value = [...uploadFiles.value, file]
+    }
+
     props.onChange(file, uploadFiles.value)
   }
 

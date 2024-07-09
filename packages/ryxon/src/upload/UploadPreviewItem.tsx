@@ -6,7 +6,6 @@ import {
   extend,
   numericProp,
   getSizeStyle,
-  callInterceptor,
   makeRequiredProp,
   type Numeric,
   type Interceptor
@@ -14,9 +13,17 @@ import {
 
 // Components
 import { Icon } from '../icon'
-import { Check, CircleClose, Close, Document } from '@ryxon/icons'
+import {
+  Close,
+  Check,
+  Upload,
+  Refresh,
+  Document,
+  CircleClose
+} from '@ryxon/icons'
 import { Image, ImageFit } from '../image'
 import { Loading } from '../loading'
+import { Space } from '../space'
 
 // Types
 import type { UploadFileListItem } from './types'
@@ -34,21 +41,43 @@ export default defineComponent({
     >,
     beforeDelete: Function as PropType<Interceptor>,
     uploadingText: String,
-    failedText: String
+    failedText: String,
+    showFailedTool: Boolean
   },
 
-  emits: ['delete', 'preview'],
+  emits: ['delete', 'preview', 'reupload', 'reselection'],
 
   setup(props, { emit, slots }) {
     const renderMask = () => {
-      const { status } = props.item
+      const { status, file } = props.item
 
       if (status === 'uploading' || status === 'failed') {
+        console.log(props.showFailedTool)
+
         const MaskIcon =
           status === 'failed' ? (
-            <Icon class={bem('mask-icon')}>
-              <CircleClose></CircleClose>
-            </Icon>
+            props.showFailedTool ? (
+              <Space class={bem('mask-failed')}>
+                {file && (
+                  <Icon
+                    class={bem('mask-icon')}
+                    onClick={(event) => emit('reupload', event)}
+                  >
+                    <Upload />
+                  </Icon>
+                )}
+                <Icon
+                  class={bem('mask-icon')}
+                  onClick={(event) => emit('reselection', event)}
+                >
+                  <Refresh />
+                </Icon>
+              </Space>
+            ) : (
+              <Icon class={bem('mask-icon')}>
+                <CircleClose></CircleClose>
+              </Icon>
+            )
           ) : (
             <Loading class={bem('loading')} />
           )
@@ -58,20 +87,14 @@ export default defineComponent({
 
         return (
           <div class={bem('mask')}>
-            {MaskIcon}
+            {(status === 'uploading' ||
+              (status === 'failed' && !props.showFailedTool)) &&
+              MaskIcon}
             {message && <div class={bem('mask-message')}>{message}</div>}
+            {status === 'failed' && props.showFailedTool && MaskIcon}
           </div>
         )
       }
-    }
-
-    const onDelete = (event: MouseEvent) => {
-      const { name, item, index, beforeDelete } = props
-      event.stopPropagation()
-      callInterceptor(beforeDelete, {
-        args: [item, { name, index }],
-        done: () => emit('delete')
-      })
     }
 
     const onPreview = () => emit('preview')
@@ -98,7 +121,7 @@ export default defineComponent({
             })}
             tabindex={0}
             aria-label={t('delete')}
-            onClick={onDelete}
+            onClick={(event) => emit('delete', event)}
             onMouseenter={handleMouseenter}
             onMouseleave={handleMouseleave}
           >
@@ -107,9 +130,9 @@ export default defineComponent({
             ) : (
               <Icon class={bem('preview-delete-icon')}>
                 {props.item.status === 'done' && isDone.value ? (
-                  <Check></Check>
+                  <Check />
                 ) : (
-                  <Close></Close>
+                  <Close />
                 )}
               </Icon>
             )}
@@ -154,7 +177,7 @@ export default defineComponent({
           ) : (
             <>
               <Icon class={bem('file-icon')}>
-                <Document></Document>
+                <Document />
               </Icon>
               <div class={[bem('file-name'), 'r-ellipsis']}>
                 {item.file ? item.file.name : item.url}
