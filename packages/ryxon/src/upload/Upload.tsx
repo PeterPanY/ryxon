@@ -504,10 +504,6 @@ export default defineComponent({
     )
 
     const renderUpload = () => {
-      if (props.modelValue.length >= +props.maxCount) {
-        return
-      }
-
       const Input = props.readonly ? null : (
         <input
           ref={inputRef}
@@ -521,6 +517,10 @@ export default defineComponent({
           onChange={onChange}
         />
       )
+
+      if (props.modelValue.length >= +props.maxCount) {
+        return Input
+      }
 
       if (slots.default || props.drag) {
         const uploadFiles = (files: File[]) => {
