@@ -230,6 +230,7 @@ export default defineComponent({
           <Image
             v-slots={imageSlots}
             src={props.src}
+            fit="contain"
             class={bem('image', { vertical: vertical.value })}
             style={imageStyle.value}
             onLoad={onLoad}
