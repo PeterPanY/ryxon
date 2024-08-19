@@ -220,7 +220,7 @@ import TimePickPanel from '../../time-picker-pc/time-picker-com/panel-time-pick.
 import { panelDatePickProps } from '../props/panel-date-pick'
 import type { SetupContext } from 'vue'
 import type { ConfigType, Dayjs } from 'dayjs'
-import 'dayjs/locale/en'
+import 'dayjs/locale/en.js'
 import type { PanelDatePickProps } from '../props/panel-date-pick'
 import type {
   DateTableEmits,
