@@ -153,10 +153,12 @@ export default defineComponent({
 
     // Carousel size
     const perViewSizeRef = ref({ width: 0, height: 0 })
+    const slideSizesTrigger = ref(0)
     const slideSizesRef = computed(() => {
       const { value: slidesEls } = slideElsRef
 
       if (!slidesEls.length) return []
+      slideSizesTrigger.value
       const { value: autoSlideSize } = autoSlideSizeRef
       if (autoSlideSize) {
         return slidesEls.map((slide) => calculateSize(slide))
@@ -380,6 +382,7 @@ export default defineComponent({
     }
 
     // 跳转到
+    let expectedTransitionDirection = 0
     function to(index: number): void {
       const realIndex = clampValue(
         getRealIndex(index, duplicatedableRef.value),
@@ -397,12 +400,18 @@ export default defineComponent({
     // 前一页
     function prev(): void {
       const prevIndex = getRealPrevIndex()
-      if (prevIndex !== null) toRealIndex(prevIndex)
+      if (prevIndex !== null) {
+        expectedTransitionDirection = -1
+        toRealIndex(prevIndex)
+      }
     }
     // 后一页
     function next(): void {
       const nextIndex = getRealNextIndex()
-      if (nextIndex !== null) toRealIndex(nextIndex)
+      if (nextIndex !== null) {
+        expectedTransitionDirection = 1
+        toRealIndex(nextIndex)
+      }
     }
     // 滑动至前一页
     function prevIfSlideTransitionEnd(): void {
@@ -539,8 +548,7 @@ export default defineComponent({
     // Slide尺寸变化(当用户需要自定义幻灯片的大小时，我们会听取他们的意见来修复当前translate)
     function handleSlideResize(): void {
       if (autoSlideSizeRef.value) {
-        slideSizesRef.effect.scheduler?.()
-        slideSizesRef.effect.run()
+        slideSizesTrigger.value++
       }
     }
 
@@ -635,12 +643,12 @@ export default defineComponent({
         const perViewSize = perViewSizeRef.value[axis]
         // more than 50% width or faster than 0.4px per ms
         if (dragOffset > perViewSize / 2 || dragOffset / timeElapsed > 0.4) {
-          currentIndex = getRealPrevIndex(realIndex)
+          prev()
         } else if (
           dragOffset < -perViewSize / 2 ||
           dragOffset / timeElapsed < -0.4
         ) {
-          currentIndex = getRealNextIndex(realIndex)
+          next()
         }
       }
       if (currentIndex !== null && currentIndex !== realIndex) {
@@ -771,22 +779,34 @@ export default defineComponent({
     })
     watch(
       realIndexRef,
-      (realIndex, lastRealIndex) => {
-        if (realIndex === lastRealIndex) return
+      (nextRealIndex, lastRealIndex) => {
+        if (nextRealIndex === lastRealIndex) {
+          expectedTransitionDirection = 0
+          return
+        }
         resetAutoplay()
         if (sequenceLayoutRef.value) {
-          if (duplicatedableRef.value && displayTotalViewRef.value > 2) {
+          if (duplicatedableRef.value) {
             const { value: length } = totalViewRef
-            if (realIndex === length - 2 && lastRealIndex === 1) {
-              realIndex = 0
-            } else if (realIndex === 1 && lastRealIndex === length - 2) {
-              realIndex = length - 1
+            if (
+              expectedTransitionDirection === -1 &&
+              lastRealIndex === 1 &&
+              nextRealIndex === length - 2
+            ) {
+              nextRealIndex = 0
+            } else if (
+              expectedTransitionDirection === 1 &&
+              lastRealIndex === length - 2 &&
+              nextRealIndex === 1
+            ) {
+              nextRealIndex = length - 1
             }
           }
-          translateTo(realIndex, speedRef.value)
+          translateTo(nextRealIndex, speedRef.value)
         } else {
           fixTranslate()
         }
+        expectedTransitionDirection = 0
       },
       { immediate: true }
     )
