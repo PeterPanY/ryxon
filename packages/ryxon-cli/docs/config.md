@@ -334,7 +334,7 @@ module.exports = {
     versions: [
       {
         label: 'v1',
-        link: 'https://ryxon-ui.github.io/ryxon/v1/'
+        link: '/v1/'
       }
     ]
   }
