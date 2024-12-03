@@ -103,6 +103,7 @@ export default defineComponent({
         aria-selected={props.isActive}
         aria-disabled={props.disabled || undefined}
         aria-controls={props.controls}
+        data-allow-mismatch="attribute"
       >
         {renderText()}
         {!props.disabled &&

@@ -121,6 +121,7 @@ export default defineComponent({
             tabindex={active.value ? 0 : -1}
             aria-hidden={!active.value}
             aria-labelledby={label}
+            data-allow-mismatch="attribute"
           >
             <div class={bem('panel')}>
               {inited.value ? slots.default?.() : null}
@@ -142,6 +143,7 @@ export default defineComponent({
           class={bem('panel')}
           tabindex={show ? 0 : -1}
           aria-labelledby={label}
+          data-allow-mismatch="attribute"
         >
           {Content}
         </div>

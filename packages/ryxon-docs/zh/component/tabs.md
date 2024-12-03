@@ -121,9 +121,9 @@ tabs/before-change
 | sticky | 是否使用粘性布局 | `boolean` | `false` |
 | shrink | 是否开启左侧收缩布局 | `boolean` | `false` |
 | duration | 动画时间，单位秒，设置为 0 可以禁用动画 | `number \| string` | `0.3` |
-| animated | 是否开启切换标签内容时的转场动画 | `boolean` | `false` |
-| ellipsis | 是否省略过长的标题文字 | `boolean` | `true` |
-| swipeable | 是否开启手势左右滑动切换 | `boolean` | `false` |
+| animated | 是否开启切换标签内容时的转场动画（开启该属性后，内容区如果有粘性布局将会不达预期） | `boolean` | `false` |
+| ellipsis | 是否省略过长的标题文字（仅在 `shrink` 为 `false` 且 `tab` 数量小于等于 `swipe-threshold` 时生效） | `boolean` | `true` |
+| swipeable | 是否开启手势左右滑动切换（开启该属性后，内容区如果有粘性布局将会不达预期） | `boolean` | `false` |
 | scrollspy | 是否开启滚动导航 | `boolean` | `false` |
 | offset-top | 粘性布局下吸顶时与顶部的距离，支持 `px` `vw` `vh` `rem` 单位，默认 `px` | `number \| string` | `0` |
 | background | 标签栏背景色 | `string` | `white` |
@@ -131,7 +131,7 @@ tabs/before-change
 | line-width | 底部条宽度，默认单位 `px` | `number \| string` | `40px` |
 | line-height | 底部条高度，默认单位 `px` | `number \| string` | `3px` |
 | before-change | 切换标签前的回调函数，返回 `false` 可阻止切换，支持返回 Promise | `(name: number \| string) => boolean \| Promise\<boolean\>` | - |
-| swipe-threshold | 滚动阈值，标签数量超过阈值且总宽度超过标签栏宽度时开始横向滚动 | `number \| string` | `5` |
+| swipe-threshold | 滚动阈值，标签数量超过阈值且总宽度超过标签栏宽度时开始横向滚动（仅在 `shrink` 为 `false` 且 `ellipsis` 为 `true` 时生效） | `number \| string` | `5` |
 | title-active-color | 标题选中态颜色 | `string` | - |
 | title-inactive-color | 标题默认态颜色 | `string` | - |
 | closable | 标签是否可关闭 | `boolean` | `false` |
@@ -171,7 +171,7 @@ tabs/before-change
 | title | 标题 | `string` | - |
 | disabled | 是否禁用标签 | `boolean` | `false` |
 | dot | 是否在标题右上角显示小红点 | `boolean` | `false` |
-| badge | 图标右上角徽标的内容 | `number \| string` | - |
+| badge | 图标右上角徽标的内容（`dot` 为 `fasle` 时生效） | `number \| string` | - |
 | name | 标签名称，作为匹配的标识符 | `number \| string` | 标签的索引值 |
 | url | 点击后跳转的链接地址 | `string` | - |
 | to | 点击后跳转的目标路由对象，等同于 Vue Router 的 [to 属性](https://router.vuejs.org/zh/api/interfaces/RouterLinkProps.html#Properties-to) | `string \| object` | - |
@@ -254,3 +254,19 @@ Tabs 组件在挂载时，会获取自身的宽度，并计算出底部条的位
 ```js
 this.$refs.tabs.resize()
 ```
+
+#### Tabs 开启 swipeable 或 animated 属性后，内容区元素的 sticky 功能将不达预期
+
+`Tabs` 开启 `swipeable` 或 `animated` 属性后，内容区将被带有 `transform` 属性的元素包裹，此时如果内容区的元素开启了 `sticky` 功能，那么该功能生效了，但显示位置将不达预期。比如下面的代码：
+
+```html
+<r-tabs v-model:active="active" swipeable>
+  <r-tab>
+    <r-sticky>
+      <r-button>sticky button</r-button>
+    </r-sticky>
+  </r-tab>
+</r-tabs>
+```
+
+这是因为 `transform` 元素内部的 `fixed` 定位会相对于该元素进行计算，而不是相对于整个文档，从而导致布局异常。

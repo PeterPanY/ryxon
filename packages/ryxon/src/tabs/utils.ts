@@ -1,4 +1,4 @@
-import { raf } from '@ryxon/use'
+import { raf, cancelRaf } from '@ryxon/use'
 import { ScrollElement, getScrollTop, setScrollTop } from '@ryxon/utils'
 
 export function scrollLeftTo(
@@ -6,19 +6,28 @@ export function scrollLeftTo(
   to: number,
   duration: number
 ) {
+  let rafId: number
   let count = 0
   const from = scroller.scrollLeft
   const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
+  let scrollLeft = from
+
+  function cancel() {
+    cancelRaf(rafId)
+  }
 
   function animate() {
-    scroller.scrollLeft += (to - from) / frames
+    scrollLeft += (to - from) / frames
+    scroller.scrollLeft = scrollLeft
 
     if (++count < frames) {
-      raf(animate)
+      rafId = raf(animate)
     }
   }
 
   animate()
+
+  return cancel
 }
 
 export function scrollTopTo(
@@ -27,11 +36,15 @@ export function scrollTopTo(
   duration: number,
   callback: () => void
 ) {
+  let rafId: number
   let current = getScrollTop(scroller)
-
   const isDown = current < to
   const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
   const step = (to - current) / frames
+
+  function cancel() {
+    cancelRaf(rafId)
+  }
 
   function animate() {
     current += step
@@ -43,11 +56,13 @@ export function scrollTopTo(
     setScrollTop(scroller, current)
 
     if ((isDown && current < to) || (!isDown && current > to)) {
-      raf(animate)
+      rafId = raf(animate)
     } else if (callback) {
-      raf(callback as FrameRequestCallback)
+      rafId = raf(callback as FrameRequestCallback)
     }
   }
 
   animate()
+
+  return cancel
 }
