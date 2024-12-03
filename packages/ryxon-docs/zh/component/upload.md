@@ -203,7 +203,9 @@ import type {
   UploadProps,
   UploadInstance,
   UploadResultType,
-  UploadFileListItem
+  UploadFileListItem,
+  UploadBeforeRead,
+  UploadAfterRead
 } from 'ryxon'
 ```
 

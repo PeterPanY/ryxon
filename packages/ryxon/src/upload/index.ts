@@ -9,7 +9,9 @@ export type {
   UploadInstance,
   UploadThemeVars,
   UploadResultType,
-  UploadFileListItem
+  UploadFileListItem,
+  UploadBeforeRead,
+  UploadAfterRead
 } from './types'
 
 declare module 'vue' {
