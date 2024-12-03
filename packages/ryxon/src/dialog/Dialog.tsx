@@ -76,6 +76,7 @@ export const dialogProps = extend({}, popupSharedProps, {
   cancelButtonColor: String,
   cancelButtonDisabled: Boolean,
   closeOnClickOverlay: Boolean,
+  keyboardEnabled: truthProp,
   showClose: truthProp,
   showFooter: truthProp
 })
@@ -135,6 +136,9 @@ export default defineComponent({
     const onConfirm = getActionHandler('confirm')
     const onKeydown = withKeys(
       (event: KeyboardEvent) => {
+        if (!props.keyboardEnabled) {
+          return
+        }
         // skip keyboard events of child elements
         if (event.target !== root.value?.popupRef?.value) {
           return
