@@ -9,7 +9,8 @@ import {
   onMounted,
   defineComponent,
   type PropType,
-  type ExtractPropTypes
+  type ExtractPropTypes,
+  type HTMLAttributes
 } from 'vue'
 
 // Utils
@@ -27,7 +28,8 @@ import {
   preventDefault,
   makeStringProp,
   makeNumericProp,
-  type ComponentInstance
+  type ComponentInstance,
+  clamp
 } from '@ryxon/utils'
 import { FORM_KEY, iconPropType, createNamespace } from '../utils'
 import {
@@ -78,6 +80,8 @@ export const inputSharedProps = {
   autofocus: Boolean,
   clearable: Boolean,
   maxlength: numericProp,
+  max: Number,
+  min: Number,
   formatter: Function as PropType<(value: string) => string>,
   modelValue: makeNumericProp(''),
   inputAlign: String as PropType<InputTextAlign>,
@@ -95,7 +99,8 @@ export const inputSharedProps = {
   disabled: { type: Boolean, default: null },
   readonly: { type: Boolean, default: null },
   inputBorder: truthProp,
-  tabindex: { type: [String, Number], default: 0 } // 输入框的 tabindex
+  tabindex: { type: [String, Number], default: 0 }, // 输入框的 tabindex
+  inputmode: String as PropType<HTMLAttributes['inputmode']>
 }
 
 export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
@@ -318,6 +323,19 @@ export default defineComponent({
       if (props.type === 'number' || props.type === 'digit') {
         const isNumber = props.type === 'number'
         value = formatNumber(value, isNumber, isNumber)
+
+        if (
+          trigger === 'onBlur' &&
+          value !== '' &&
+          (props.min !== undefined || props.max !== undefined)
+        ) {
+          const adjustedValue = clamp(
+            +value,
+            props.min ?? -Infinity,
+            props.max ?? Infinity
+          )
+          value = adjustedValue.toString()
+        }
       }
 
       let formatterDiffLen = 0
@@ -533,6 +551,7 @@ export default defineComponent({
         enterkeyhint: props.enterkeyhint,
         spellcheck: props.spellcheck,
         'aria-labelledby': props.label ? `${id}-label` : undefined,
+        'data-allow-mismatch': 'attribute',
         onBlur,
         onFocus,
         onInput,
@@ -547,10 +566,12 @@ export default defineComponent({
       }
 
       if (props.type === 'textarea') {
-        return <textarea {...inputAttrs} />
+        return <textarea {...inputAttrs} inputmode={props.inputmode} />
       }
 
-      return <input {...mapInputType(props.type)} {...inputAttrs} />
+      return (
+        <input {...mapInputType(props.type, props.inputmode)} {...inputAttrs} />
+      )
     }
 
     const renderLeftIcon = () => {
@@ -646,6 +667,7 @@ export default defineComponent({
           <label
             id={`${id}-label`}
             for={slots.input ? undefined : getInputId()}
+            data-allow-mismatch="attribute"
             onClick={(event: MouseEvent) => {
               // 组件在点击label位置时，绑定的click事件会执行两次
               preventDefault(event)

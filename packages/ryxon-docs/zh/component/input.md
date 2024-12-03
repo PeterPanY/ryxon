@@ -108,6 +108,8 @@ input/label-align
 | type | 输入框类型, 支持原生 input 标签的所有 [type 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%3Cinput%3E_types)，额外支持了 `digit` 类型 | `InputType` | `text` |
 | size | 大小，可选值为 `large` | `string` | - |
 | maxlength | 输入的最大字符数 | `number / string` | - |
+| min | 输入框类型为 `number` 或 `digit` 类型时设置可允许的最小值 | `number` | - |
+| max | 输入框类型为 `number` 或 `digit` 类型时设置可允许的最大值 | `number` | - |
 | placeholder | 输入框占位提示文字 | `string` | - |
 | input-border | 输入框是否显示边框 | `boolean` | `true` |
 | border | 是否显示内边框 | `boolean` | `true` |
@@ -142,7 +144,8 @@ input/label-align
 | autocapitalize ^(v1.10.1) | HTML 原生属性，用于控制文本输入时是否自动大写，此 API 仅在部分浏览器支持，详见 [MDN - autocapitalize](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize) | `string` | - |
 | enterkeyhint | HTML 原生属性，用于控制回车键样式，此 API 仅在部分浏览器支持，详见 [MDN - enterkeyhint](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint)<br> | `string` | - |
 | spellcheck ^(v1.10.1) | HTML 原生属性，用于检查元素的拼写错误，此 API 仅在部分浏览器支持，详见 [MDN - spellcheck](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck)<br> | `boolean` | - |
-| autocorrect ^(v1.10.1) | 仅 Safari 适用，用于自动更正输入的文本，详见 [MDN - autocorrect](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autocorrect)<br> | `string` | - |
+| autocorrect ^(v1.10.1) | HTML 原生属性，仅 Safari 适用，用于自动更正输入的文本，详见 [MDN - autocorrect](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autocorrect)<br> | `string` | - |
+| inputmode ^(v1.13.11) | HTML 原生属性，用于指定输入框的输入模式，详见 [MDN - inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) | _string_ | 根据 `type` 属性自动设置 |
 
 ### Events
 
