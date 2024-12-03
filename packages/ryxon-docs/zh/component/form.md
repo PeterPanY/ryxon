@@ -48,6 +48,7 @@ form/types
 | required ^(v1.10.1) | 是否显示表单必填星号 | `boolean \| 'auto'` | `null` |
 | validate-first | 是否在某一项校验不通过时停止校验 | `boolean` | `false` |
 | scroll-to-error | 是否在提交表单且校验不通过时滚动至错误的表单项 | `boolean` | `false` |
+| scroll-to-error-position ^(v1.13.11) | 滚动至错误的表单项时的位置，可选值为 `center` \| `end` \| `nearest` \| `start` | `String` | - |
 | show-error | 是否在校验不通过时标红输入框 | `boolean` | `false` |
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示 | `boolean` | `true` |
 | submit-on-enter | 是否在按下回车键时提交表单 | `boolean` | `true` |

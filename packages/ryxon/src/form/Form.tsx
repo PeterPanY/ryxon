@@ -29,6 +29,7 @@ export const formProps = {
   labelAlign: String as PropType<InputTextAlign>,
   inputAlign: String as PropType<InputTextAlign>,
   scrollToError: Boolean,
+  scrollToErrorPosition: String as PropType<ScrollLogicalPosition>,
   validateFirst: Boolean,
   submitOnEnter: truthProp,
   showErrorMessage: truthProp,
@@ -183,8 +184,17 @@ export default defineComponent({
         .catch((errors: InputValidateError[]) => {
           emit('failed', { values, errors })
 
-          if (props.scrollToError && errors[0].name) {
-            scrollToInput(errors[0].name)
+          const { scrollToError, scrollToErrorPosition } = props
+
+          if (scrollToError && errors[0].name) {
+            scrollToInput(
+              errors[0].name,
+              scrollToErrorPosition
+                ? {
+                    block: scrollToErrorPosition
+                  }
+                : undefined
+            )
           }
         })
     }

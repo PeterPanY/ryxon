@@ -27,6 +27,7 @@ const DEFAULT_OPTIONS = {
   cancelButtonColor: null,
   cancelButtonDisabled: false,
   closeOnClickOverlay: false,
+  keyboardEnabled: true,
   showClose: true,
   callback: null,
   overlay: true,

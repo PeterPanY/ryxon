@@ -36,6 +36,7 @@ export type DialogOptions = {
   confirmButtonColor?: string
   confirmButtonDisabled?: boolean
   closeOnClickOverlay?: boolean
+  keyboardEnabled?: boolean
   showClose?: boolean
 }
 
