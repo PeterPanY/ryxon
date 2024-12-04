@@ -214,9 +214,6 @@ importers:
       less:
         specifier: ^4.2.0
         version: 4.2.0
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
       markdown-it:
         specifier: ^13.0.2
         version: 13.0.2
@@ -266,9 +263,6 @@ importers:
       '@types/less':
         specifier: ^3.0.6
         version: 3.0.6
-      '@types/lodash':
-        specifier: ^4.17
-        version: 4.17.3
       '@types/markdown-it':
         specifier: ^13.0.8
         version: 13.0.8
@@ -442,10 +436,10 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(vue@3.4.27(typescript@5.4.5))
       '@types/lodash':
-        specifier: ^4.17
-        version: 4.17.3
+        specifier: ^4.17.13
+        version: 4.17.13
       '@types/lodash-es':
-        specifier: ^4.17.6
+        specifier: ^4.17.12
         version: 4.17.12
       '@vueuse/core':
         specifier: ^10.7.2
@@ -457,7 +451,7 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       lodash-unified:
-        specifier: ^1.0.2
+        specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
     devDependencies:
       esbuild:
@@ -1725,8 +1719,8 @@ packages:
   '@types/lodash-es@4.17.12':
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
 
-  '@types/lodash@4.17.3':
-    resolution: {integrity: sha512-zmNrEJaBvNskZXQWaUQq6bktF4IDGVfDS78M+YEk5aCn9M/b94/mB/6WCyfH2/MjwBdc6QuOor95CIlKWYRL3A==}
+  '@types/lodash@4.17.13':
+    resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
 
   '@types/markdown-it@13.0.8':
     resolution: {integrity: sha512-V+KmpgiipS+zoypeUSS9ojesWtY/0k4XfqcK2fnVrX/qInJhX7rsCxZ/rygiPH2zxlPPrhfuW0I6ddMcWTKLsg==}
@@ -6886,9 +6880,9 @@ snapshots:
 
   '@types/lodash-es@4.17.12':
     dependencies:
-      '@types/lodash': 4.17.3
+      '@types/lodash': 4.17.13
 
-  '@types/lodash@4.17.3': {}
+  '@types/lodash@4.17.13': {}
 
   '@types/markdown-it@13.0.8':
     dependencies:
