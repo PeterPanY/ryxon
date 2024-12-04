@@ -1,6 +1,6 @@
-import type MarkdownIt from 'markdown-it'
+import type { MarkdownRenderer } from 'vitepress'
 
-export default (md: MarkdownIt): void => {
+export default (md: MarkdownRenderer): void => {
   /**
    * To enable the plugin to be parsed in the demo description, the content is rendered as span instead of ElTag.
    */
