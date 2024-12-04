@@ -55,7 +55,7 @@
     "@ryxon/eslint-config": "workspace:*",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
-    "@vue/babel-plugin-jsx": "^1.2.2",
+    "@vue/babel-plugin-jsx": "^1.2.5",
     "autoprefixer": "^10.4.19",
     "commander": "^12.0.0",
     "rslog": "^1.2.2",
