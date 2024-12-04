@@ -1,4 +1,8 @@
+import 'normalize.css'
+
 import '@ryxon/components/index.less'
+
+import './styles/css-vars.scss'
 import './styles/app.scss'
 
 import Demo from './component/Demo.vue'

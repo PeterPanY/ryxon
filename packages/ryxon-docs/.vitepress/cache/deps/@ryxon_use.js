@@ -17,7 +17,7 @@ import {
   unref,
   watch
 } from './chunk-LRI6K42L.js'
-import './chunk-Y2F7D3TJ.js'
+import './chunk-BUSYA2B4.js'
 
 // ../../node_modules/.pnpm/@ryxon+use@1.1.2_vue@3.4.27_typescript@5.4.5_/node_modules/@ryxon/use/dist/index.esm.mjs
 var inBrowser = typeof window !== 'undefined'
