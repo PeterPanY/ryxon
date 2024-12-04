@@ -39,7 +39,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/less": "^3.0.6",
+    "@types/less": "^3.0.7",
     "@types/markdown-it": "^13.0.8",
     "vue": "^3.4.26"
   },
@@ -67,7 +67,7 @@
     "hash-sum": "^2.0.0",
     "highlight.js": "^11.9.0",
     "husky": "^9.1.7",
-    "less": "^4.2.0",
+    "less": "^4.2.1",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "nano-staged": "^0.8.0",
