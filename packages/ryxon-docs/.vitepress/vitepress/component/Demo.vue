@@ -2,6 +2,7 @@
   <ClientOnly>
     <!-- danger here DO NOT USE INLINE SCRIPT TAG -->
     <p text="sm" v-html="decodedDescription" />
+
     <div class="example">
       <!-- <Example :file="path" :demo="formatPathDemos[path]" /> -->
       <div class="example-showcase">
@@ -11,10 +12,10 @@
       <div class="example-divider"></div>
 
       <div class="op-btns">
-        <span class="op-btn" @click="toggleSourceVisible()">查看源代码</span>
+        <span ref="sourceCodeRef" class="op-btn" @click="toggleSourceVisible()"
+          >查看源代码</span
+        >
       </div>
-
-      <div v-show="sourceVisible"></div>
 
       <Transition name="r-collapse-transition">
         <div v-show="sourceVisible" class="example-source-wrapper">
@@ -26,7 +27,10 @@
         <div
           v-show="sourceVisible"
           class="example-float-control"
-          @click="toggleSourceVisible()"
+          tabindex="0"
+          role="button"
+          @click="toggleSourceVisible(false)"
+          @keydown="onSourceVisibleKeydown"
         >
           <span>隐藏代码</span>
         </div>
@@ -37,6 +41,8 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
+import { useToggle } from '@vueuse/core'
+
 const demos = import.meta.glob('../../../examples/**/*.vue', {
   eager: true,
   import: 'default'
@@ -49,8 +55,6 @@ const props = defineProps<{
   description?: string
 }>()
 
-const n = 'button/basic'
-
 const formatPathDemos = computed(() => {
   const demoObj = {}
 
@@ -62,8 +66,6 @@ const formatPathDemos = computed(() => {
   return demoObj
 })
 
-const sourceVisible = ref(false)
-
 const decodedSource = computed(() => {
   return decodeURIComponent(props.source)
 })
@@ -71,8 +73,15 @@ const decodedDescription = computed(() =>
   decodeURIComponent(props.description!)
 )
 
-function toggleSourceVisible() {
-  sourceVisible.value = !sourceVisible.value
+const [sourceVisible, toggleSourceVisible] = useToggle()
+const sourceCodeRef = ref<HTMLButtonElement>()
+
+const onSourceVisibleKeydown = (e: KeyboardEvent) => {
+  if (['Enter', 'NumpadEnter', 'Space'].includes(e.code)) {
+    e.preventDefault()
+    toggleSourceVisible(false)
+    sourceCodeRef.value?.focus()
+  }
 }
 </script>
 
