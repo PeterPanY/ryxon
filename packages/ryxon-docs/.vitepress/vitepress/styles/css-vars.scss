@@ -1,0 +1,11 @@
+:root {
+  --border-color: var(--r-border-color);
+
+  --font-family-mono: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
+
+  --code-bg-color: #f5f7fa;
+  --code-font-family: var(--font-family-mono);
+  --code-tooltip-bg-color: var(--code-bg-color);
+  --code-tooltip-color: #0c61c9;
+}
