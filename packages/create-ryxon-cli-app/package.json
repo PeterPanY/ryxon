@@ -36,11 +36,11 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "rslog": "^1.2.2",
+    "rslog": "^1.2.3",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
     "enquirer": "2.4.1",
-    "picocolors": "^1.0.0"
+    "picocolors": "^1.0.1"
   },
   "release-it": {
     "git": {
