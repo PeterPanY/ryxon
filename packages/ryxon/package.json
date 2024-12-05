@@ -62,7 +62,7 @@
     "@ryxon/eslint-config": "workspace:*",
     "@ryxon/icons": "workspace:*",
     "@ryxon/utils": "workspace:*",
-    "@types/node": "^18.19.31",
+    "@types/node": "^22.10.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vitest/coverage-istanbul": "^2.1.6",
