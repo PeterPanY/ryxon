@@ -22,7 +22,7 @@
   "author": "PeterPanY",
   "license": "MIT",
   "devDependencies": {
-    "release-it": "^16.1.3"
+    "release-it": "^17.10.0"
   },
   "release-it": {
     "git": {
