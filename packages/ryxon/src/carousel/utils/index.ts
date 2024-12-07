@@ -1,4 +1,10 @@
-import { isVNode, Fragment, type Slot, type VNodeArrayChildren } from 'vue'
+import {
+  isVNode,
+  Comment,
+  Fragment,
+  type Slot,
+  type VNodeArrayChildren
+} from 'vue'
 import type { Size } from '../types'
 
 export * from './duplicatedLogic'
