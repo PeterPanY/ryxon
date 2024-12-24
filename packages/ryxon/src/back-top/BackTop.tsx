@@ -24,7 +24,7 @@ import {
   makeNumericProp
 } from '@ryxon/utils'
 import { createNamespace } from '../utils'
-import { useThrottleFn } from '@vueuse/core'
+import { throttle } from '../lazyload/vue-lazyload/util'
 
 // Composables
 import { useEventListener, getScrollParent } from '@ryxon/use'
@@ -36,6 +36,7 @@ import { CaretTop } from '@ryxon/icons'
 const [name, bem] = createNamespace('back-top')
 
 export const backTopProps = {
+  active: Boolean,
   right: numericProp,
   bottom: numericProp,
   zIndex: numericProp,
@@ -57,7 +58,7 @@ export default defineComponent({
 
   props: backTopProps,
 
-  emits: ['click'],
+  emits: ['update:active', 'click'],
 
   setup(props, { emit, slots, attrs }) {
     let shouldReshow = false
@@ -84,6 +85,10 @@ export default defineComponent({
       show.value = scrollParent.value
         ? getScrollTop(scrollParent.value) >= +props.offset
         : false
+
+      if (show.value !== props.active) {
+        emit('update:active', show.value)
+      }
     }
 
     const getTarget = () => {
@@ -117,9 +122,8 @@ export default defineComponent({
       }
     }
 
-    useEventListener('scroll', useThrottleFn(scroll, 100), {
-      target: scrollParent
-    })
+    // throttle不能使用@vueuse/core的useThrottle，因为useThrottle会导致滚动太快时，back-top不隐藏
+    useEventListener('scroll', throttle(scroll, 100), { target: scrollParent })
 
     onMounted(updateTarget)
 
@@ -139,6 +143,15 @@ export default defineComponent({
     })
 
     watch(() => props.target, updateTarget)
+    watch(
+      () => props.active,
+      (value) => {
+        if (value !== show.value) {
+          show.value = value
+        }
+      },
+      { immediate: true }
+    )
 
     return () => {
       const Content = (

@@ -45,6 +45,7 @@ back-top/immediate
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| v-model:active | 绑定当前组件是否显示的标识符 | `boolearn` | `false` |
 | target | 触发滚动的目标对象，支持传入选择器或 DOM 元素，默认最近的父级滚动容器 | `string \| HTMLElement` | - |
 | right | 距离页面右侧的距离，默认单位为 `px` | `number \| string` | `30` |
 | bottom | 距离页面底部的距离，默认单位为 `px` | `number \| string` | `40` |

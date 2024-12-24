@@ -4,12 +4,12 @@
  */
 
 import { nextTick } from 'vue'
-import { useThrottleFn } from '@vueuse/core'
 import { getScrollParent } from '@ryxon/use'
 import {
   remove,
   on,
   off,
+  throttle,
   supportWebp,
   getDPR,
   getBestSelectionFromSrcset,
@@ -77,7 +77,7 @@ export default function () {
       }
       this.initEvent()
       this.imageCache = new ImageCache({ max: 200 })
-      this.lazyLoadHandler = useThrottleFn(
+      this.lazyLoadHandler = throttle(
         this.lazyLoadHandler.bind(this),
         this.options.throttleWait
       )
