@@ -80,12 +80,12 @@ space/fill-ratio
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | direction | 间距方向 | `vertical \| horizontal` | `horizontal` |
-| size | 间距大小，如 `20px` `2em`，默认单位为 `px`，支持数组形式来分别设置横向和纵向间距 | `number \| string \| number[] \| string[]` | `8px` |
-| align | 设置子元素的对齐方式 | `start \| end \| center \| baseline` | - |
+| size | 间距大小，如 `20px` `2em`，默认单位为 `px`，支持数组形式来分别设置横向和纵向间距 | ^[enum]`number \| string \| number[] \| string[]` | `8px` |
+| align | 设置子元素的对齐方式 | ^[enum]`start \| end \| center \| baseline` | - |
 | wrap | 是否自动换行，仅适用于水平方向排列 | `boolean` | `false` |
 | fill | 是否让 Space 变为一个块级元素，填充整个父元素 | `boolean` | `false` |
 | fill-ratio | 填充父容器的比例 | `number` | 100 |
-| spacer | 间隔符 | `string \| number \| VNode ` | - |
+| spacer | 间隔符 | ^[enum]`string \| number \| VNode ` | - |
 
 ### Slots
 

@@ -93,11 +93,11 @@ select/allow-create
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
-| model-value / v-model | 选中项绑定值 | `array / string / number / boolean / object` | `-` | `-` |
+| model-value / v-model | 选中项绑定值 | ^[enum]`array \| string \| number \| boolean \| object` | `-` | `-` |
 | multiple | 是否多选 | `boolean` | `true/false` | `false` |
 | disabled | 是否禁用 | `boolean` | `true/false` | `false` |
 | value-key | 作为 value 唯一标识的键名，绑定值为对象类型时必填 | `string` | `-` | `value` |
-| size | 输入框尺寸 | `string` | `large/default/small` | `small` |
+| size | 输入框尺寸 | `string` | ^[enum]`large \| default \| small` | `small` |
 | clearable | 是否可以清空选项 | `boolean` | `true / false` | `false` |
 | collapse-tags | 多选时是否将选中值按文字的形式展示 | `boolean` | `true / false` | `false` |
 | collapse-tags-tooltip | 当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，`collapse-tags`属性必须设定为 true | `boolean` | `true / false` | `false` |
@@ -125,9 +125,9 @@ select/allow-create
 | clear-icon | 自定义清除图标 | `string \| Component` | `-` | `CircleClose` |
 | fit-input-width | 下拉框的宽度是否与输入框相同 | `boolean` | `true / false` | `false` |
 | suffix-icon | 自定义后缀图标组件 | `string \| Component` | `-` | `ArrowDown` |
-| tag-type | 标签类型 | `string` | `success/info/warning/danger` | `info` |
+| tag-type | 标签类型 | `string` | ^[enum]`success \| info \| warning \| danger` | `info` |
 | validate-event | 是否触发表单验证 | `boolean` | `true / false` | `true` |
-| placement | 下拉框出现的位置 | `string` | `top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end` | `bottom` |
+| placement | 下拉框出现的位置 | `string` | ^[enum]`top \| top-start \| top-end \| bottom \| bottom-start \| bottom-end \| left \| left-start \| left-end \| right \| right-start \| right-end` | `bottom` |
 
 ### Select 事件
 

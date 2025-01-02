@@ -69,8 +69,8 @@ calendar/date-and-time
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
-| model-value / v-model | 绑定值，如果它是数组，长度应该是 2 | `Date / number / string / Array` | `-` | `-` |
-| type | 显示类型 | `string` | `year/month/date/dates/datetime/ week/datetimerange/daterange/ monthrange` | `date` |
+| model-value / v-model | 绑定值，如果它是数组，长度应该是 2 | ^[enum]`Date \| number \| string \| Array` | `-` | `-` |
+| type | 显示类型 | `string` | ^[enum]`year \| month \| date \| dates \| datetime \| week \| datetimerange \| daterange \| monthrange` | `date` |
 | format | v-model 中数据的格式 | `string` | `时间格式` | `YYYY-MM-DD` |
 | default-value | 可选，选择器打开时默认显示的时间 | `Date / [Date, Date]` | `-` | `-` |
 | default-time | 范围选择时选中日期所使用的当日内具体时刻 | `Date / [Date, Date]` | `-` | `-` |

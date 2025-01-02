@@ -85,8 +85,8 @@ button/custom
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
-| type | 类型 | string | `primary success warning danger info` | `-` |
-| size | 尺寸 | string | `'large' / 'default' / 'small'` | `—` |
+| type | 类型 | string | ^[enum]`primary \| success \| warning \| danger \| info` | `-` |
+| size | 尺寸 | string | ^[enum]`'large' \| 'default' \| 'small'` | `—` |
 | text | 按钮文字/是否为文字按钮 | `string/boolean` | `-` | `-` |
 | bg | 是否显示文字按钮背景颜色 | `boolean` | `-` | `false` |
 | color | 按钮颜色 | `string` | `-` | `-` |

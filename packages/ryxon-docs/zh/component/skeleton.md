@@ -38,7 +38,7 @@ skeleton/loading
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | row | 段落占位图行数 | `number \| string` | `0` |
-| row-width | 段落占位图宽度，可传数组来设置每一行的宽度 | `number \| string \|<br>(number \| string)[]` | `100%` |
+| row-width | 段落占位图宽度，可传数组来设置每一行的宽度 | ^[enum]`number \| string \|(number \| string)[]` | `100%` |
 | title | 是否显示标题占位图 | `boolean` | `false` |
 | avatar | 是否显示头像占位图 | `boolean` | `false` |
 | loading | 是否显示骨架屏，传 `false` 时会展示子组件内容 | `boolean` | `true` |

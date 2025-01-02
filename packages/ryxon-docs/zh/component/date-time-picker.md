@@ -51,16 +51,16 @@ date-time-picker/default-time
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
-| model-value / v-model | 绑定值，如果它是数组，长度应该是 2 | `Date / number / string / Array` | `-` | `-` |
+| model-value / v-model | 绑定值，如果它是数组，长度应该是 2 | ^[enum]`Date \| number \| string \| Array` | `-` | `-` |
 | readonly | 只读 | `boolean` | `-` | `false` |
 | disabled | 禁用 | `boolean` | `-` | `false` |
-| size | 输入框尺寸 | `string` | `large/default/small` | `default` |
+| size | 输入框尺寸 | `string` | ^[enum]`large \| default \| small` | `default` |
 | editable | 文本框可输入 | `boolean` | `-` | `true` |
 | clearable | 是否显示清除按钮 | `boolean` | `-` | `true` |
 | placeholder | 非范围选择时的占位内容 | `string` | `-` | `-` |
 | start-placeholder | 范围选择时开始日期的占位内容 | `string` | `-` | `-` |
 | end-placeholder | 范围选择时结束日期的占位内容 | `string` | `-` | `-` |
-| type | 显示类型 | `string` | `year/month/date/dates/datetime/ week/datetimerange/daterange/ monthrange` | `date` |
+| type | 显示类型 | `string` | ^[enum]`year \| month \| date \| dates \| datetime \| week \| datetimerange \| daterange \| monthrange` | `date` |
 | format | 显示在输入框中的格式 | `string` | `时间格式` | `YYYY-MM-DD` |
 | popper-class | DatePicker 下拉框的类 | `string` | `-` | `-` |
 | range-separator | 选择范围时的分隔符 | `string` | `-` | `-` |

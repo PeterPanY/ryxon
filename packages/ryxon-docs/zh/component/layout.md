@@ -53,7 +53,7 @@ layout/sizes
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| gutter | 列元素之间的间距（单位为 px） | `number \| string \| Array` | - |
+| gutter | 列元素之间的间距（单位为 px） | ^[enum]`number \| string \| Array` | - |
 | tag | 自定义元素标签 | `string` | `div` |
 | justify | 主轴对齐方式，可选值为 `end` `center` `space-around` `space-between` | `string` | `start` |
 | align | 交叉轴对齐方式，可选值为 `center` `bottom` | `string` | `top` |

@@ -93,10 +93,10 @@ cell/solts
 | required | 是否显示表单必填星号 | `boolean` | `false` |
 | center | 是否使内容垂直居中 | `boolean` | `false` |
 | arrow-direction | 箭头方向，可选值为 `left` `up` `down` | `string` | `right` |
-| title-style | 左侧标题额外样式 | `string \| Array \| object` | - |
-| title-class | 左侧标题额外类名 | `string \| Array \| object` | - |
-| value-class | 右侧内容额外类名 | `string \| Array \| object` | - |
-| label-class | 描述信息额外类名 | `string \| Array \| object` | - |
+| title-style | 左侧标题额外样式 | ^[enum]`string \| Array \| object` | - |
+| title-class | 左侧标题额外类名 | ^[enum]`string \| Array \| object` | - |
+| value-class | 右侧内容额外类名 | ^[enum]`string \| Array \| object` | - |
+| label-class | 描述信息额外类名 | ^[enum]`string \| Array \| object` | - |
 
 ### Cell Events
 
