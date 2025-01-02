@@ -12,6 +12,7 @@ export type CarouselEffect =
 export type CarouselDirection = 'horizontal' | 'vertical'
 export type CarouselDotType = 'dot' | 'line'
 export type CarouselDotPlacement = 'top' | 'bottom' | 'left' | 'right'
+export type CarouselCardType = '3d' | '2d'
 
 export interface CarouselInst {
   getCurrentIndex: () => number

@@ -58,6 +58,7 @@ import type {
   CarouselTrigger,
   CarouselEffect,
   CarouselDotType,
+  CarouselCardType,
   CarouselDirection,
   DotScopedSlotProps,
   CarouselDotPlacement,
@@ -101,6 +102,9 @@ export const carouselProps = {
   },
   transitionProps: Object as PropType<TransitionProps>,
   draggable: Boolean,
+  cardType: makeStringProp<CarouselCardType>('3d'),
+  cardScale: makeNumberProp(0.8),
+  cardSpace: makeNumberProp(0),
   prevSlideStyle: [Object, String] as PropType<CSSProperties | string>,
   nextSlideStyle: [Object, String] as PropType<CSSProperties | string>,
   touchable: truthProp,
@@ -225,6 +229,51 @@ export default defineComponent({
         }
       }
 
+      const transformList = [-2, -1, 0, 1, 2]
+
+      // effect为card主题尺寸偏移
+      const calcCardTranslate = (index: number) => {
+        const { value: axis } = sizeAxisRef
+        const parentWidth = slideSizesRef.value[index][axis]
+
+        let translate = 0
+
+        const scale =
+          index === mergedDisplayIndexRef.value ? 1 : props.cardScale
+
+        const startIndex = mergedDisplayIndexRef.value + slidesEls.length - 2
+        const collectionEls = [...slidesEls, ...slidesEls, ...slidesEls].slice(
+          startIndex,
+          startIndex + 5
+        )
+
+        const currentEl = slidesEls[index]
+        const transformIndex = collectionEls.indexOf(currentEl)
+        // 只有在左右两侧两条数据的才需要计算精细点，其余都随意只要不在当前位置造成底部有过度效果就行
+        if (transformIndex !== -1) {
+          if (transformList[transformIndex] === 0) {
+            translate = transformList[transformIndex] * parentWidth
+          } else if (transformList[transformIndex] < 0) {
+            translate =
+              transformList[transformIndex] * parentWidth - props.cardSpace
+          } else {
+            translate =
+              transformList[transformIndex] * parentWidth + props.cardSpace
+          }
+        } else if (index < mergedDisplayIndexRef.value) {
+          translate = -index * parentWidth
+        } else {
+          translate = index * parentWidth
+        }
+
+        const translateType = `translate${verticalRef.value ? 'Y' : 'X'}`
+        const _translate = `${translateType}(calc(-50% + ${translate}px))`
+        const _scale = `scale(${scale})`
+        const transform = [_translate, _scale].join(' ')
+
+        return { transform }
+      }
+
       // effect为slide-alone主题时 偏移尺寸
       const calcTranslate = (index: number) => {
         const { value: axis } = sizeAxisRef
@@ -260,7 +309,13 @@ export default defineComponent({
         }
         styles.push(style)
         if (isMountedRef.value && (effect === 'fade' || effect === 'card')) {
-          Object.assign(style, transitionStyleRef.value)
+          Object.assign(
+            style,
+            transitionStyleRef.value,
+            effect === 'card' && props.cardType === '2d'
+              ? calcCardTranslate(i)
+              : {}
+          )
         }
 
         if (isMountedRef.value && effect === 'slide-alone') {

@@ -128,14 +128,17 @@ carousel/card-custom
 | current-index | 当前显示页 | `number` | `undefined` |
 | default-index | 默认显示页 | `number` | `0` |
 | direction | 轮播图显示的方向 | `horizontal \| vertical` | `horizontal` |
-| dot-placement | 轮播指示点位置 | `top \| bottom \| left \| right` | `bottom` |
+| dot-placement | 轮播指示点位置 | ^[enum]`top \| bottom \| left \| right` | `bottom` |
 | dot-type | 轮播指示点样式 | `dot \| line` | `dot` |
 | draggable | 是否通过鼠标拖拽切换轮播图 | `boolean` | `false` |
-| effect | 轮播图切换时的过渡效果 | `slide \| slide-alone(v1.10.1)  \| fade \| card \| custom ` | `slide` |
+| effect | 轮播图切换时的过渡效果 | ^[enum]`slide \| slide-alone(v1.10.1)  \| fade \| card \| custom ` | `slide` |
 | interval | 自动播放的间隔（ms） | `number` | `5000` |
 | keyboard | 是否通过按键切换轮播图，只有焦点在 Dots 上时才起作用 | `boolean` | `false` |
 | loop | 是否循环播放 | `boolean` | `true` |
 | mousewheel | 是否通过鼠标滚轮切换轮播图 | `boolean` | `false` |
+| card-type ^(v1.14.3) | 当effect为card时，card的过度方式 | `3d \| 2d` | `3d` |
+| card-scale ^(v1.14.3) | 当effect为card时，二级卡的缩放大小 | `number` | `0.8` |
+| card-space ^(v1.14.3) | 当effect为card时，图片间隔 | `number` | `0` |
 | next-slide-style | 下一张轮播图的样式 | `object \| string` | `undefined` |
 | prev-slide-style | 上一张轮播图的样式 | `object \| string` | `undefined` |
 | slides-per-view | 每一页显示的轮播图数量 | `'auto' \| number` | `1` |
@@ -145,7 +148,7 @@ carousel/card-custom
 | show-dots | 是否展示指示点 | `boolean` | `true` |
 | touchable | 是否通过触摸拖拽切换轮播图 | `boolean` | `true` |
 | lazy-render | 是否延迟渲染未展示的轮播，slides-per-view 为 auto 时延迟渲染无效 | `boolean` | `false` |
-| transition-style | transition-style | `{ transitionDuration?: string, transitionTimingFunction?: string }` | `{ transitionDuration: '300ms' }` |
+| transition-style | transition-style | ^[enum]`{ transitionDuration?: string, transitionTimingFunction?: string }` | `{ transitionDuration: '300ms' }` |
 | transition-props | 自定义过渡效果属性[官方文档](https://cn.vuejs.org/api/built-in-components.html#transition) | `TransitionProps` | `undefined` |
 | trigger | 触发切换的方式 | `click \| hover` | `click` |
 
