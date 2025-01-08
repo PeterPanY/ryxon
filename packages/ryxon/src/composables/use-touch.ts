@@ -11,7 +11,8 @@ export type OffsetParams = {
 export const touchProps = {
   touchable: truthProp,
   draggable: truthProp,
-  mousewheel: Boolean
+  mousewheel: Boolean,
+  isDoc: Boolean
 }
 
 export type TouchProps = ExtractPropTypes<typeof touchProps>
@@ -82,25 +83,33 @@ export function useDragTouch(
 
     if (props.touchable) {
       cleanTouchmove = useEventListener(
-        slidesElRef,
+        props.isDoc ? document : slidesElRef,
         'touchmove',
         handleTouchmove,
         { passive: true }
       )
-      cleanTouchend = useEventListener(slidesElRef, 'touchend', handleTouchend)
+      cleanTouchend = useEventListener(
+        props.isDoc ? document : slidesElRef,
+        'touchend',
+        handleTouchend
+      )
       cleanTouchcancel = useEventListener(
-        slidesElRef,
+        props.isDoc ? document : slidesElRef,
         'touchcancel',
         handleTouchend
       )
     }
     if (props.draggable) {
       cleanMousemove = useEventListener(
-        slidesElRef,
+        props.isDoc ? document : slidesElRef,
         'mousemove',
         handleTouchmove
       )
-      cleanMouseup = useEventListener(slidesElRef, 'mouseup', handleTouchend)
+      cleanMouseup = useEventListener(
+        props.isDoc ? document : slidesElRef,
+        'mouseup',
+        handleTouchend
+      )
     }
   }
 

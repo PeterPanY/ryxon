@@ -134,8 +134,11 @@ export default defineComponent({
     }
 
     const { slidesElRef, controlListeners } = useDragTouch(
-      // eslint-disable-next-line no-restricted-syntax
-      { ...pick(props, ['touchable', 'draggable', 'mousewheel']) },
+      {
+        // eslint-disable-next-line no-restricted-syntax
+        ...pick(props, ['touchable', 'draggable', 'mousewheel']),
+        isDoc: false
+      },
       onStart,
       onMove,
       onEnd

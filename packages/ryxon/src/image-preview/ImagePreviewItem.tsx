@@ -140,7 +140,7 @@ export default defineComponent({
     }
 
     const { slidesElRef, controlListeners } = useDragTouch(
-      { touchable: true, draggable: true, mousewheel: false },
+      { touchable: true, draggable: true, mousewheel: false, isDoc: false },
       onStart,
       onMove,
       onEnd
