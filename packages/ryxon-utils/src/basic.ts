@@ -105,6 +105,7 @@ export type RequiredParams<T> = T extends (...args: infer P) => infer R
   ? (...args: { [K in keyof P]-?: NonNullable<P[K]> }) => R
   : never
 
+// 创建一个从 obj 中选中的属性的对象。
 export function pick<T, U extends keyof T>(
   obj: T,
   keys: ReadonlyArray<U>,

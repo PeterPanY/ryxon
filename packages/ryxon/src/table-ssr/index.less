@@ -1,0 +1,51 @@
+:root {
+}
+
+.r-table-ssr {
+  &.r-table__border {
+    border-top: var(--r-table-border);
+  }
+
+  &__only {
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    clip: rect(0, 0, 0, 0);
+    border-width: 0;
+    white-space: nowrap;
+  }
+
+  &__table {
+    width: 100%;
+    min-width: 100%;
+    table-layout: fixed;
+    border-color: inherit;
+    text-indent: 0;
+  }
+
+  &__thead {
+    position: relative;
+    border-bottom: var(--r-table-border);
+  }
+
+  &__progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    padding: 0;
+    z-index: 2;
+  }
+
+  .r-checkbox {
+    margin-right: 0;
+  }
+
+  &__loading {
+    padding-bottom: 3.5rem;
+    padding-top: 3.5rem;
+  }
+}
