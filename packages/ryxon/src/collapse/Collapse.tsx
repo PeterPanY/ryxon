@@ -2,27 +2,16 @@ import {
   defineComponent,
   type PropType,
   type InjectionKey,
-  type ExtractPropTypes,
-  type ComponentPublicInstance
+  type ExtractPropTypes
 } from 'vue'
 import { truthProp, type Numeric } from '@ryxon/utils'
 import { createNamespace, BORDER_TOP_BOTTOM } from '../utils'
 import { useChildren } from '@ryxon/use'
 import { useExpose } from '../composables/use-expose'
+import { validateModelValue } from './utils'
+import type { CollapseProvide, CollapseToggleAllOptions } from './types'
 
 const [name, bem] = createNamespace('collapse')
-
-export type CollapseProvide = {
-  toggle: (name: Numeric, expanded: boolean) => void
-  isExpanded: (name: Numeric) => boolean
-}
-
-export type CollapseToggleAllOptions =
-  | boolean
-  | {
-      expanded?: boolean
-      skipDisabled?: boolean
-    }
 
 export const COLLAPSE_KEY: InjectionKey<CollapseProvide> = Symbol(name)
 
@@ -36,29 +25,6 @@ export const collapseProps = {
 }
 
 export type CollapseProps = ExtractPropTypes<typeof collapseProps>
-
-export type CollapseInstance = ComponentPublicInstance<{
-  toggleAll: (options?: boolean | CollapseToggleAllOptions) => void
-}>
-
-function validateModelValue(
-  modelValue: Numeric | Numeric[],
-  accordion: boolean
-) {
-  if (accordion && Array.isArray(modelValue)) {
-    console.error(
-      '[Ryxon] Collapse: "v-model" should not be Array in accordion mode'
-    )
-    return false
-  }
-  if (!accordion && !Array.isArray(modelValue)) {
-    console.error(
-      '[Ryxon] Collapse: "v-model" should be Array in non-accordion mode'
-    )
-    return false
-  }
-  return true
-}
 
 export default defineComponent({
   name,

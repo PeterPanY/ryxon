@@ -153,28 +153,29 @@ export default defineComponent({
       )
     }
     // label文字
-    const renderLabel = () =>
-      (slots.default || props.name) && (
-        <span
-          class={props.bem('label', [
-            props.labelPosition,
-            { disabled: disabled.value }
-          ])}
-        >
-          {slots.default
-            ? slots.default({
-                checked: props.checked,
-                disabled: disabled.value
-              })
-            : props.name}
-        </span>
-      )
+    const renderLabel = () => (
+      <span
+        class={props.bem('label', [
+          props.labelPosition,
+          { disabled: disabled.value }
+        ])}
+      >
+        {slots.default
+          ? slots.default({
+              checked: props.checked,
+              disabled: disabled.value
+            })
+          : props.name}
+      </span>
+    )
 
     return () => {
       const nodes: (JSX.Element | undefined)[] =
-        props.labelPosition === 'left'
-          ? [renderLabel(), renderIcon()]
-          : [renderIcon(), renderLabel()]
+        slots.default || props.name
+          ? props.labelPosition === 'left'
+            ? [renderLabel(), renderIcon()]
+            : [renderIcon(), renderLabel()]
+          : [renderIcon()]
 
       return (
         <div
