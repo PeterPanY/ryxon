@@ -86,7 +86,6 @@ export default defineComponent({
         const titleSlot = slots.title?.()
 
         // Allow Input to dynamically set empty label
-        // https://github.com/youzan/ryxon/issues/11368
         if (Array.isArray(titleSlot) && titleSlot.length === 0) {
           return
         }

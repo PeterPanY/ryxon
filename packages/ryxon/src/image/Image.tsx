@@ -210,7 +210,6 @@ export default defineComponent({
 
     // In nuxt3, the image may not trigger load event,
     // so the initial complete state should be checked.
-    // https://github.com/youzan/ryxon/issues/11335
     onMounted(() => {
       nextTick(() => {
         if (imageRef.value?.complete && !props.lazyLoad) {

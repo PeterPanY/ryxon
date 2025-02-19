@@ -85,7 +85,6 @@ export default defineComponent({
       } else {
         // mark tab as inactive until the active tab is rendered
         // to avoid incorrect scroll position or other render issue
-        // https://github.com/youzan/ryxon/issues/11050
         doubleRaf(() => {
           hasInactiveClass.value = true
         })
