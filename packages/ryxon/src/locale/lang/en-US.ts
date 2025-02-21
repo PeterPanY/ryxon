@@ -110,7 +110,7 @@ export default {
   rSubmitBar: {
     label: 'Total:'
   },
-  table: {
+  rTable: {
     emptyText: 'No Data',
     confirmFilter: 'Confirm',
     resetFilter: 'Reset',
