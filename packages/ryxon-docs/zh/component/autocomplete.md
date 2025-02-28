@@ -25,9 +25,15 @@ autocomplete/autocomplete-template
 
 ## 远程搜索
 
-:::demo 从服务端搜索数据。
+:::demo 从服务端搜索数据，异步显示。
 
 autocomplete/remote-search
+
+:::
+
+:::demo 从服务端搜索数据，同步显示。
+
+autocomplete/remote-search-2
 
 :::
 
@@ -57,6 +63,7 @@ autocomplete/remote-search
 | teleport | 指定挂载的节点，等同于 Teleport 组件的 to 属性 | `string \| Element` | `body` |
 | highlight-first-item | 是否默认高亮远程搜索结果的第一项 | ^[boolean] | `false` |
 | fit-input-width | 下拉框的宽度是否与输入框相同 | ^[boolean] | `false` |
+| lazy-render | 是否在首次展开时才渲染面板内容 | `boolean` | `true` |
 
 ### Events
 
