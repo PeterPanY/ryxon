@@ -53,8 +53,7 @@ export const autocompleteProps = {
   highlightFirstItem: { type: Boolean, default: false },
   fitInputWidth: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
-  clearIcon: { type: iconPropType, default: CircleClose },
-  lazyRender: truthProp
+  clearIcon: { type: iconPropType, default: CircleClose }
 }
 
 export type AutocompleteProps = ExtractPropTypes<typeof autocompleteProps>

@@ -13,7 +13,6 @@
     theme="light"
     trigger="click"
     transition="r-zoom-in-top"
-    :lazy-render="lazyRender"
     persistent
     @before-show="onSuggestionShow"
     @show="onShow"
@@ -213,10 +212,6 @@ export default defineComponent({
     }
 
     const debouncedGetData = useDebounceFn(getData, props.debounce)
-
-    if (!props.lazyRender) {
-      debouncedGetData(String(props.modelValue))
-    }
 
     const handleInput = (value: string) => {
       const valuePresented = !!value
