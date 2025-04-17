@@ -4,8 +4,8 @@ import {
   tryOnMounted,
   tryOnScopeDispose,
   unrefElement
-} from './chunk-RRIUGO4Q.js'
-import './chunk-AKAT3X4O.js'
+} from './chunk-EEDKIDSG.js'
+import './chunk-IXWUNVU6.js'
 import { isRef, nextTick } from './chunk-LRI6K42L.js'
 import './chunk-BUSYA2B4.js'
 
@@ -2926,7 +2926,7 @@ Sortable.mount(new AutoScrollPlugin())
 Sortable.mount(Remove, Revert)
 var sortable_esm_default = Sortable
 
-// ../../node_modules/.pnpm/@vueuse+integrations@10.7.2_focus-trap@7.6.2_sortablejs@1.15.1_vue@3.4.27_typescript@5.4.5_/node_modules/@vueuse/integrations/useSortable.mjs
+// ../../node_modules/.pnpm/@vueuse+integrations@10.7.2_89cc59f4b5b27e21c60d6705ef063924/node_modules/@vueuse/integrations/useSortable.mjs
 function useSortable(el, list, options = {}) {
   let sortable
   const { document: document2 = defaultDocument, ...resetOptions } = options
