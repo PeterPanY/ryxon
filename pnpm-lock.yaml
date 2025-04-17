@@ -67,8 +67,8 @@ importers:
         specifier: ^2.11.8
         version: 2.11.8
       '@ryxon/use':
-        specifier: ^1.1.3
-        version: 1.1.3(vue@3.4.27(typescript@5.4.5))
+        specifier: ^1.2.0
+        version: 1.2.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/core':
         specifier: ^13.1.0
         version: 13.1.0(vue@3.4.27(typescript@5.4.5))
@@ -436,8 +436,8 @@ importers:
   packages/ryxon-utils:
     dependencies:
       '@ryxon/use':
-        specifier: ^1.1.3
-        version: 1.1.3(vue@3.4.27(typescript@5.4.5))
+        specifier: ^1.2.0
+        version: 1.2.0(vue@3.4.27(typescript@5.4.5))
       '@types/lodash':
         specifier: ^4.17.16
         version: 4.17.16
@@ -1914,8 +1914,8 @@ packages:
     resolution: {integrity: sha512-VynGOEsVw2s8TAlLf/uESfrgfrq2+rcXB1muPJYBWbsm1Oa6r5qVQhjA5ggM6z/coYPrsVMgovl3Ff7Q7OCp1w==}
     engines: {node: '>=16.0.0'}
 
-  '@ryxon/use@1.1.3':
-    resolution: {integrity: sha512-lNwUP6vYogaLcUOj9Kl+g2Zt0zmLCJSN1GAb8r/SQE8ZDbF0CDOsdJO+Ey8PWFU+xZ+88lrU/Rnz8hr+/ZUkWQ==}
+  '@ryxon/use@1.2.0':
+    resolution: {integrity: sha512-+nZAudYrMmZirUMrFF7+gbT1dXfeVOZdfVd3YyeO95S68HEVs7lWJXMM3BzOPdZzxJ51eZeOZxCPMI33rIQgnA==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -7060,7 +7060,7 @@ snapshots:
 
   '@rspack/lite-tapable@1.0.1': {}
 
-  '@ryxon/use@1.1.3(vue@3.4.27(typescript@5.4.5))':
+  '@ryxon/use@1.2.0(vue@3.4.27(typescript@5.4.5))':
     dependencies:
       vue: 3.4.27(typescript@5.4.5)
 
