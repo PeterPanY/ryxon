@@ -21,7 +21,7 @@
     "@ryxon/components": "workspace:*",
     "@ryxon/icons": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "markdown-it-container": "^3.0.0",
     "ryxon": "workspace:*",
     "sass": "^1.54.5",
