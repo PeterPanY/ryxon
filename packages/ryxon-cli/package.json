@@ -41,7 +41,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/less": "^3.0.8",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.14.1",
     "vue": "^3.4.26"
   },
   "dependencies": {
@@ -54,10 +54,10 @@
     "@rsbuild/plugin-vue": "^1.0.7",
     "@rsbuild/plugin-vue-jsx": "^1.1.0",
     "@ryxon/eslint-config": "workspace:*",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vitejs/plugin-vue-jsx": "^4.1.1",
-    "@vue/babel-plugin-jsx": "^1.2.5",
-    "autoprefixer": "^10.4.20",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
+    "@vue/babel-plugin-jsx": "^1.4.0",
+    "autoprefixer": "^10.4.21",
     "commander": "^13.1.0",
     "rslog": "^1.2.3",
     "esbuild": "^0.25.2",

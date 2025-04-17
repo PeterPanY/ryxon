@@ -1,4 +1,4 @@
-// ../../node_modules/.pnpm/vitepress@1.5.0_@algolia+cl_4f298229f9eb25bfdb6f04622f551112/node_modules/vitepress/lib/vue-demi.mjs
+// ../../node_modules/.pnpm/vitepress@1.5.0_@algolia+cl_657fb0acd02962f7a4202660fdf1e388/node_modules/vitepress/lib/vue-demi.mjs
 var isVue2 = false
 var isVue3 = true
 function set(target, key, val) {
@@ -28,4 +28,4 @@ vitepress/lib/vue-demi.mjs:
    * @license MIT
    *)
 */
-//# sourceMappingURL=chunk-52K64I5X.js.map
+//# sourceMappingURL=chunk-ZV5JF6RL.js.map
