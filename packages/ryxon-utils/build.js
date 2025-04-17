@@ -1,1 +1,1 @@
-require('../ryxon-use/build')
+require('../ryxon-use/build.cjs')
