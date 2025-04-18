@@ -2,7 +2,6 @@
   "name": "ryxon",
   "version": "2.0.5",
   "description": "Components built on Vue",
-  "type": "module",
   "main": "lib/ryxon.cjs.js",
   "module": "es/index.mjs",
   "style": "lib/index.css",
