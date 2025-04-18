@@ -9,13 +9,6 @@
   "typings": "lib/index.d.ts",
   "unpkg": "lib/ryxon.min.js",
   "jsdelivr": "lib/ryxon.min.js",
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./es/index.mjs",
-      "require": "./lib/ryxon.cjs.js"
-    }
-  },
   "files": [
     "es",
     "lib"
