@@ -19,45 +19,37 @@ import {
 } from './chunk-LRI6K42L.js'
 import './chunk-BUSYA2B4.js'
 
-// ../../node_modules/.pnpm/@ryxon+use@1.1.3_vue@3.4.27_typescript@5.4.5_/node_modules/@ryxon/use/dist/index.esm.mjs
-var inBrowser = typeof window !== 'undefined'
+// ../../node_modules/.pnpm/@ryxon+use@1.2.0_vue@3.4.27_typescript@5.4.5_/node_modules/@ryxon/use/dist/index.js
+var inBrowser = 'undefined' != typeof window
 function raf(fn) {
   return inBrowser ? requestAnimationFrame(fn) : -1
 }
 function cancelRaf(id) {
-  if (inBrowser) {
-    cancelAnimationFrame(id)
-  }
+  if (inBrowser) cancelAnimationFrame(id)
 }
 function doubleRaf(fn) {
   raf(() => raf(fn))
 }
 function onMountedOrActivated(hook) {
   let mounted
-  onMounted(() => {
+  ;(0, onMounted)(() => {
     hook()
-    nextTick(() => {
+    ;(0, nextTick)(() => {
       mounted = true
     })
   })
-  onActivated(() => {
-    if (mounted) {
-      hook()
-    }
+  ;(0, onActivated)(() => {
+    if (mounted) hook()
   })
 }
 function useEventListener(type, listener, options = {}) {
-  if (!inBrowser) {
-    return
-  }
+  if (!inBrowser) return
   const { target = window, passive = false, capture = false } = options
   let cleaned = false
   let attached
   const add = (target2) => {
-    if (cleaned) {
-      return
-    }
-    const element = unref(target2)
+    if (cleaned) return
+    const element = (0, unref)(target2)
     if (element && !attached) {
       element.addEventListener(type, listener, {
         capture,
@@ -67,47 +59,42 @@ function useEventListener(type, listener, options = {}) {
     }
   }
   const remove = (target2) => {
-    if (cleaned) {
-      return
-    }
-    const element = unref(target2)
+    if (cleaned) return
+    const element = (0, unref)(target2)
     if (element && attached) {
       element.removeEventListener(type, listener, capture)
       attached = false
     }
   }
-  onUnmounted(() => remove(target))
-  onDeactivated(() => remove(target))
+  ;(0, onUnmounted)(() => remove(target))
+  ;(0, onDeactivated)(() => remove(target))
   onMountedOrActivated(() => add(target))
   let stopWatch
-  if (isRef(target)) {
-    stopWatch = watch(target, (val, oldVal) => {
+  if ((0, isRef)(target))
+    stopWatch = (0, watch)(target, (val, oldVal) => {
       remove(oldVal)
       add(val)
     })
-  }
   return () => {
-    stopWatch == null ? void 0 : stopWatch()
+    null == stopWatch || stopWatch()
     remove(target)
     cleaned = true
   }
 }
 function useClickAway(target, listener, options = {}) {
-  if (!inBrowser) {
-    return
-  }
+  if (!inBrowser) return
   const { eventName = 'click' } = options
   const onClick = (event) => {
     const targets = Array.isArray(target) ? target : [target]
     const isClickAway = targets.every((item) => {
-      const element = unref(item)
+      const element = (0, unref)(item)
       return element && !element.contains(event.target)
     })
-    if (isClickAway) {
-      listener(event)
-    }
+    if (isClickAway) listener(event)
   }
-  useEventListener(eventName, onClick, { target: document })
+  useEventListener(eventName, onClick, {
+    target: document
+  })
 }
 var SECOND = 1e3
 var MINUTE = 60 * SECOND
@@ -136,29 +123,30 @@ function useCountDown(options) {
   let endTime
   let counting
   let deactivated
-  const remain = ref(options.time)
-  const current = computed(() => parseTime(remain.value))
+  const remain = (0, ref)(options.time)
+  const current = (0, computed)(() => parseTime(remain.value))
   const pause = () => {
     counting = false
     cancelRaf(rafId)
   }
   const getCurrentRemain = () => Math.max(endTime - Date.now(), 0)
   const setRemain = (value) => {
-    var _a, _b
+    var _options_onChange
     remain.value = value
-    ;(_a = options.onChange) == null ? void 0 : _a.call(options, current.value)
-    if (value === 0) {
+    null == (_options_onChange = options.onChange) ||
+      _options_onChange.call(options, current.value)
+    if (0 === value) {
+      var _options_onFinish
       pause()
-      ;(_b = options.onFinish) == null ? void 0 : _b.call(options)
+      null == (_options_onFinish = options.onFinish) ||
+        _options_onFinish.call(options)
     }
   }
   const microTick = () => {
     rafId = raf(() => {
       if (counting) {
         setRemain(getCurrentRemain())
-        if (remain.value > 0) {
-          microTick()
-        }
+        if (remain.value > 0) microTick()
       }
     })
   }
@@ -166,24 +154,16 @@ function useCountDown(options) {
     rafId = raf(() => {
       if (counting) {
         const remainRemain = getCurrentRemain()
-        if (!isSameSecond(remainRemain, remain.value) || remainRemain === 0) {
+        if (!isSameSecond(remainRemain, remain.value) || 0 === remainRemain)
           setRemain(remainRemain)
-        }
-        if (remain.value > 0) {
-          macroTick()
-        }
+        if (remain.value > 0) macroTick()
       }
     })
   }
   const tick = () => {
-    if (!inBrowser) {
-      return
-    }
-    if (options.millisecond) {
-      microTick()
-    } else {
-      macroTick()
-    }
+    if (!inBrowser) return
+    if (options.millisecond) microTick()
+    else macroTick()
   }
   const start = () => {
     if (!counting) {
@@ -196,15 +176,15 @@ function useCountDown(options) {
     pause()
     remain.value = totalTime
   }
-  onBeforeUnmount(pause)
-  onActivated(() => {
+  ;(0, onBeforeUnmount)(pause)
+  ;(0, onActivated)(() => {
     if (deactivated) {
       counting = true
       deactivated = false
       tick()
     }
   })
-  onDeactivated(() => {
+  ;(0, onDeactivated)(() => {
     if (counting) {
       pause()
       deactivated = true
@@ -219,26 +199,26 @@ function useCountDown(options) {
 }
 var CUSTOM_INPUT_INJECTION_KEY = Symbol('r-input')
 function useCustomInputValue(customValue) {
-  const customInput = inject(CUSTOM_INPUT_INJECTION_KEY, null)
+  const customInput = (0, inject)(CUSTOM_INPUT_INJECTION_KEY, null)
   if (customInput && !customInput.customValue.value) {
     customInput.customValue.value = customValue
-    watch(customValue, () => {
+    ;(0, watch)(customValue, () => {
       customInput.resetValidation()
       customInput.validateWithTrigger('onChange')
     })
   }
 }
 function useIsMounted() {
-  const isMounted = ref(false)
-  onMounted(() => {
+  const isMounted = (0, ref)(false)
+  ;(0, onMounted)(() => {
     isMounted.value = true
   })
-  return readonly(isMounted)
+  return (0, readonly)(isMounted)
 }
 var visibility
 function usePageVisibility() {
   if (!visibility) {
-    visibility = ref('visible')
+    visibility = (0, ref)('visible')
     if (inBrowser) {
       const update = () => {
         visibility.value = document.hidden ? 'hidden' : 'visible'
@@ -261,15 +241,11 @@ function useRaf(fn, options) {
     }
     const frameWrapper = (timestamp) => {
       if (isStopped) return
-      if (start === void 0) {
-        start = timestamp
-      } else if (timestamp - start > interval) {
+      if (void 0 === start) start = timestamp
+      else if (timestamp - start > interval) {
         fn(timestamp)
         start = timestamp
-        if (!isLoop) {
-          stop()
-          return
-        }
+        if (!isLoop) return void stop()
       }
       rafId = requestAnimationFrame(frameWrapper)
     }
@@ -279,34 +255,33 @@ function useRaf(fn, options) {
   return () => {}
 }
 var isWindow = (val) => val === window
-var makeDOMRect = (width2, height2) => ({
+var makeDOMRect = (width, height) => ({
   top: 0,
   left: 0,
-  right: width2,
-  bottom: height2,
-  width: width2,
-  height: height2
+  right: width,
+  bottom: height,
+  width,
+  height
 })
 var useRect = (elementOrRef) => {
-  const element = unref(elementOrRef)
+  const element = (0, unref)(elementOrRef)
   if (isWindow(element)) {
-    const width2 = element.innerWidth
-    const height2 = element.innerHeight
-    return makeDOMRect(width2, height2)
+    const width = element.innerWidth
+    const height = element.innerHeight
+    return makeDOMRect(width, height)
   }
-  if (element == null ? void 0 : element.getBoundingClientRect) {
+  if (null == element ? void 0 : element.getBoundingClientRect)
     return element.getBoundingClientRect()
-  }
   return makeDOMRect(0, 0)
 }
 function useParent(key) {
-  const parent = inject(key, null)
+  const parent = (0, inject)(key, null)
   if (parent) {
-    const instance = getCurrentInstance()
+    const instance = (0, getCurrentInstance)()
     const { link, unlink, internalChildren } = parent
     link(instance)
-    onUnmounted(() => unlink(instance))
-    const index = computed(() => internalChildren.indexOf(instance))
+    ;(0, onUnmounted)(() => unlink(instance))
+    const index = (0, computed)(() => internalChildren.indexOf(instance))
     return {
       parent,
       index
@@ -314,42 +289,42 @@ function useParent(key) {
   }
   return {
     parent: null,
-    index: ref(-1)
+    index: (0, ref)(-1)
   }
 }
 function flattenVNodes(children) {
   const result = []
   const traverse = (children2) => {
-    if (Array.isArray(children2)) {
+    if (Array.isArray(children2))
       children2.forEach((child) => {
-        var _a
-        if (isVNode(child)) {
+        if ((0, isVNode)(child)) {
+          var _child_component
           result.push(child)
-          if ((_a = child.component) == null ? void 0 : _a.subTree) {
+          if (
+            null == (_child_component = child.component)
+              ? void 0
+              : _child_component.subTree
+          ) {
             result.push(child.component.subTree)
             traverse(child.component.subTree.children)
           }
-          if (child.children) {
-            traverse(child.children)
-          }
+          if (child.children) traverse(child.children)
         }
       })
-    }
   }
   traverse(children)
   return result
 }
 var findVNodeIndex = (vnodes, vnode) => {
   const index = vnodes.indexOf(vnode)
-  if (index === -1) {
+  if (-1 === index)
     return vnodes.findIndex(
       (item) =>
-        vnode.key !== void 0 &&
-        vnode.key !== null &&
+        void 0 !== vnode.key &&
+        null !== vnode.key &&
         item.type === vnode.type &&
         item.key === vnode.key
     )
-  }
   return index
 }
 function sortChildren(parent, publicChildren, internalChildren) {
@@ -365,9 +340,9 @@ function sortChildren(parent, publicChildren, internalChildren) {
   })
 }
 function useChildren(key) {
-  const publicChildren = reactive([])
-  const internalChildren = reactive([])
-  const parent = getCurrentInstance()
+  const publicChildren = (0, reactive)([])
+  const internalChildren = (0, reactive)([])
+  const parent = (0, getCurrentInstance)()
   const linkChildren = (value) => {
     const link = (child) => {
       if (child.proxy) {
@@ -381,7 +356,7 @@ function useChildren(key) {
       publicChildren.splice(index, 1)
       internalChildren.splice(index, 1)
     }
-    provide(
+    ;(0, provide)(
       key,
       Object.assign(
         {
@@ -404,8 +379,8 @@ var defaultRoot = inBrowser ? window : void 0
 function isElement(node) {
   const ELEMENT_NODE_TYPE = 1
   return (
-    node.tagName !== 'HTML' &&
-    node.tagName !== 'BODY' &&
+    'HTML' !== node.tagName &&
+    'BODY' !== node.tagName &&
     node.nodeType === ELEMENT_NODE_TYPE
   )
 }
@@ -413,46 +388,49 @@ function getScrollParent(el, root = defaultRoot) {
   let node = el
   while (node && node !== root && isElement(node)) {
     const { overflowY } = window.getComputedStyle(node)
-    if (overflowScrollReg.test(overflowY)) {
-      return node
-    }
+    if (overflowScrollReg.test(overflowY)) return node
     node = node.parentNode
   }
   return root
 }
 function useScrollParent(el, root = defaultRoot) {
-  const scrollParent = ref()
-  onMounted(() => {
-    if (el.value) {
-      scrollParent.value = getScrollParent(el.value, root)
-    }
+  const scrollParent = (0, ref)()
+  ;(0, onMounted)(() => {
+    if (el.value) scrollParent.value = getScrollParent(el.value, root)
   })
   return scrollParent
 }
 function useToggle(defaultValue = false) {
-  const state = ref(defaultValue)
+  const state = (0, ref)(defaultValue)
   const toggle = (value = !state.value) => {
     state.value = value
   }
   return [state, toggle]
 }
-var width
-var height
+var useWindowSize_width
+var useWindowSize_height
 function useWindowSize() {
-  if (!width) {
-    width = ref(0)
-    height = ref(0)
+  if (!useWindowSize_width) {
+    useWindowSize_width = (0, ref)(0)
+    useWindowSize_height = (0, ref)(0)
     if (inBrowser) {
       const update = () => {
-        width.value = window.innerWidth
-        height.value = window.innerHeight
+        useWindowSize_width.value = window.innerWidth
+        useWindowSize_height.value = window.innerHeight
       }
       update()
-      window.addEventListener('resize', update, { passive: true })
-      window.addEventListener('orientationchange', update, { passive: true })
+      window.addEventListener('resize', update, {
+        passive: true
+      })
+      window.addEventListener('orientationchange', update, {
+        passive: true
+      })
     }
   }
-  return { width, height }
+  return {
+    width: useWindowSize_width,
+    height: useWindowSize_height
+  }
 }
 export {
   CUSTOM_INPUT_INJECTION_KEY,
