@@ -1,4 +1,4 @@
-import { Ref, watch, onScopeDispose } from 'vue'
+import { Ref, watch, isRef, onScopeDispose } from 'vue'
 import { isClient } from '@vueuse/core'
 import {
   getStyle,
@@ -12,6 +12,13 @@ export function useLockScroll(
   // rootRef: HTMLElement | Ref<HTMLElement | undefined>,
   trigger: Ref<boolean>
 ) {
+  if (!isRef(trigger)) {
+    console.error(
+      '[useLockscreen]',
+      'You need to pass a ref param to this function'
+    )
+  }
+
   const hiddenCls = 'r-popup-parent--hidden'
 
   if (!isClient || hasClass(document.body, hiddenCls)) {
@@ -24,9 +31,10 @@ export function useLockScroll(
 
   const cleanup = () => {
     setTimeout(() => {
-      removeClass(document?.body, hiddenCls)
+      if (typeof document === 'undefined') return
       if (withoutHiddenClass && document) {
         document.body.style.width = bodyWidth
+        removeClass(document.body, hiddenCls)
       }
     }, 200)
   }
@@ -39,6 +47,7 @@ export function useLockScroll(
     withoutHiddenClass = !hasClass(document.body, hiddenCls)
     if (withoutHiddenClass) {
       bodyWidth = document.body.style.width
+      addClass(document.body, hiddenCls)
     }
     scrollBarWidth = getScrollBarWidth('r')
     const bodyHasOverflow =
@@ -51,7 +60,6 @@ export function useLockScroll(
     ) {
       document.body.style.width = `calc(100% - ${scrollBarWidth}px)`
     }
-    addClass(document.body, hiddenCls)
   })
 
   // 当前组件的作用域被销毁时被调用
