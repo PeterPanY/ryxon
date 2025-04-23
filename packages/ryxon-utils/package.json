@@ -39,7 +39,7 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@ryxon/use": "^1.2.0",
+    "@ryxon/use": "^1.2.1",
     "@types/lodash": "^4.17.16",
     "@types/lodash-es": "^4.17.12",
     "@vueuse/core": "^10.7.2",
