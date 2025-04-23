@@ -1,6 +1,6 @@
 {
   "name": "@ryxon/utils",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Ryxon Composition utils",
   "type": "module",
   "main": "dist/index.cjs",
