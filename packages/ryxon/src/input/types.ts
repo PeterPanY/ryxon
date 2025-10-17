@@ -78,6 +78,7 @@ export type InputFormSharedProps =
   | 'labelWidth'
   | 'labelAlign'
   | 'inputAlign'
+  | 'errorMessageIcon'
   | 'errorMessageAlign'
 
 export type InputInstance = ComponentPublicInstance<InputProps>

@@ -33,6 +33,7 @@ export const formProps = {
   validateFirst: Boolean,
   submitOnEnter: truthProp,
   showErrorMessage: truthProp,
+  errorMessageIcon: Boolean,
   errorMessageAlign: String as PropType<InputTextAlign>,
   validateTrigger: {
     type: [String, Array] as PropType<

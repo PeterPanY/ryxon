@@ -19,7 +19,7 @@ import {
 } from './chunk-LRI6K42L.js'
 import './chunk-BUSYA2B4.js'
 
-// ../../node_modules/.pnpm/@ryxon+use@1.2.0_vue@3.4.27_typescript@5.4.5_/node_modules/@ryxon/use/dist/index.js
+// ../../node_modules/.pnpm/@ryxon+use@1.2.1_vue@3.4.27_typescript@5.4.5_/node_modules/@ryxon/use/dist/index.js
 var inBrowser = 'undefined' != typeof window
 function raf(fn) {
   return inBrowser ? requestAnimationFrame(fn) : -1

@@ -1,10 +1,11 @@
 import {
   defaultDocument,
+  toValue,
   tryOnMounted,
   tryOnScopeDispose,
   unrefElement
-} from './chunk-YYYYRAJE.js'
-import { isRef, nextTick, toValue } from './chunk-LRI6K42L.js'
+} from './chunk-SCJRJOZZ.js'
+import { isRef, nextTick } from './chunk-LRI6K42L.js'
 import './chunk-BUSYA2B4.js'
 
 // ../../node_modules/.pnpm/sortablejs@1.15.1/node_modules/sortablejs/modular/sortable.esm.js
@@ -2924,13 +2925,13 @@ Sortable.mount(new AutoScrollPlugin())
 Sortable.mount(Remove, Revert)
 var sortable_esm_default = Sortable
 
-// ../../node_modules/.pnpm/@vueuse+integrations@13.1.0_2993be74cf35152a3535bdedbe29a142/node_modules/@vueuse/integrations/useSortable.mjs
+// ../../node_modules/.pnpm/@vueuse+integrations@10.7.2_0b132eaad8bf9bce5e4c8b2f22ee21ff/node_modules/@vueuse/integrations/useSortable.mjs
 function useSortable(el, list, options = {}) {
   let sortable
   const { document: document2 = defaultDocument, ...resetOptions } = options
   const defaultOptions = {
     onUpdate: (e) => {
-      moveArrayElement(list, e.oldIndex, e.newIndex, e)
+      moveArrayElement(list, e.oldIndex, e.newIndex)
     }
   }
   const start = () => {
@@ -2957,24 +2958,9 @@ function useSortable(el, list, options = {}) {
   }
   tryOnMounted(start)
   tryOnScopeDispose(stop)
-  return {
-    stop,
-    start,
-    option: option2
-  }
+  return { stop, start, option: option2 }
 }
-function insertNodeAt(parentElement, element, index2) {
-  const refElement = parentElement.children[index2]
-  parentElement.insertBefore(element, refElement)
-}
-function removeNode(node) {
-  if (node.parentNode) node.parentNode.removeChild(node)
-}
-function moveArrayElement(list, from, to, e = null) {
-  if (e != null) {
-    removeNode(e.item)
-    insertNodeAt(e.from, e.item, from)
-  }
+function moveArrayElement(list, from, to) {
   const _valueIsRef = isRef(list)
   const array = _valueIsRef ? [...toValue(list)] : toValue(list)
   if (to >= 0 && to < array.length) {
@@ -2985,7 +2971,7 @@ function moveArrayElement(list, from, to, e = null) {
     })
   }
 }
-export { insertNodeAt, moveArrayElement, removeNode, useSortable }
+export { moveArrayElement, useSortable }
 /*! Bundled license information:
 
 sortablejs/modular/sortable.esm.js:

@@ -53,7 +53,7 @@ import { useExpose } from '../composables/use-expose'
 import { Icon } from '../icon'
 import { Cell } from '../cell'
 
-import { CircleClose } from '@ryxon/icons'
+import { CircleClose, WarningFilled } from '@ryxon/icons'
 
 // Types
 import type {
@@ -112,6 +112,7 @@ export const inputProps = extend({}, cellSharedProps, inputSharedProps, {
   labelClass: unknownProp,
   labelAlign: String as PropType<InputTextAlign>,
   showWordLimit: Boolean,
+  errorMessageIcon: { type: Boolean, default: null },
   errorMessageAlign: String as PropType<InputTextAlign>,
   colon: { type: Boolean, default: null }
 })
@@ -647,9 +648,12 @@ export default defineComponent({
       if (message) {
         isError.value = true
         const slot = slots['error-message']
+        const errorMessageIcon = getProp('errorMessageIcon')
         const errorMessageAlign = getProp('errorMessageAlign')
+
         return (
           <div class={bem('error-message', errorMessageAlign)}>
+            {errorMessageIcon ? <Icon>{h(WarningFilled)}</Icon> : null}
             {slot ? slot({ message }) : message}
           </div>
         )
