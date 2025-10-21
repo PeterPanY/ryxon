@@ -9,6 +9,7 @@
         { "link": "/container", "text": "Container 布局容器" },
         { "link": "/grid", "text": "Grid 宫格" },
         { "link": "/icon", "text": "Icon 图标" },
+        { "link": "/link", "text": "Link 链接" },
         { "link": "/layout", "text": "Layout 布局" },
         { "link": "/scrollbar", "text": "Scrollbar 滚动条" },
         { "link": "/style", "text": "Style 内置样式" },

@@ -162,6 +162,7 @@ export type ConfigProviderThemeVars = BaseThemeVars &
   import('../image-preview').ImagePreviewThemeVars &
   import('../input').InputThemeVars &
   import('../input-number').InputNumberThemeVars &
+  import('../link').LinkThemeVars &
   import('../list').ListThemeVars &
   import('../loading').LoadingThemeVars &
   import('../loading-bar').LoadingBarThemeVars &
